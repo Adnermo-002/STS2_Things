@@ -282,7 +282,7 @@ if ($ExportPck) {
     Assert-GodotLogClean $exportLog
 
     $forbiddenPackEntries = Select-String -LiteralPath $exportLog `
-        -Pattern 'res://(tools|manifests|source_assets|docs|scripts|build|dist)/|res://STS2_Things\.json' `
+        -Pattern 'res://(bootstrap|tools|manifests|source_assets|docs|scripts|build|dist)/|res://STS2_Things\.json' `
         -CaseSensitive:$false
     if ($forbiddenPackEntries) {
         $preview = ($forbiddenPackEntries | Select-Object -First 12 | ForEach-Object Line) `
@@ -334,7 +334,7 @@ elseif (-not [string]::IsNullOrWhiteSpace($ReusePck)) {
 
 $dll = Join-Path $Root ".godot\mono\temp\bin\$Configuration\STS2_Things.dll"
 if (-not (Test-Path -LiteralPath $dll)) {
-    throw "Built DLL not found: $dll"
+    throw "Built $TargetVersion implementation DLL not found: $dll"
 }
 Copy-Item -LiteralPath $dll -Destination (Join-Path $BuildDir 'STS2_Things.dll') -Force
 Copy-Item -LiteralPath $Manifest -Destination (Join-Path $BuildDir 'STS2_Things.json') -Force

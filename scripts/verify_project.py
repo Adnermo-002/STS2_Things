@@ -15,6 +15,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "STS2_Things"
+BOOTSTRAP = ROOT / "bootstrap"
 
 
 def fail(errors: list[str], message: str) -> None:
@@ -61,8 +62,18 @@ def main() -> int:
             fail(errors, f"{target} manifest must set affects_gameplay=true")
         if manifest.get("dependencies"):
             fail(errors, f"{target} native build must not declare third-party dependencies")
-    if target_manifests.get("v109") != root_manifest:
-        fail(errors, "root development manifest must match manifests/v109")
+    if root_manifest.get("version") != project_value("Version"):
+        fail(errors, "unified manifest and implementation versions differ")
+    if root_manifest.get("min_game_version") != "v0.107.1":
+        fail(errors, "unified manifest must use the lowest supported game version")
+    if root_manifest.get("affects_gameplay") is not True:
+        fail(errors, "unified manifest must set affects_gameplay=true")
+    if root_manifest.get("dependencies"):
+        fail(errors, "unified native package must not declare third-party dependencies")
+    for target, manifest in target_manifests.items():
+        for field in ("id", "name", "author", "description", "version", "has_pck", "has_dll"):
+            if manifest.get(field) != root_manifest.get(field):
+                fail(errors, f"{target} manifest differs from unified manifest field {field}")
     if project_value("Nullable") != "enable":
         fail(errors, "Nullable must be enable")
     if project_value("TreatWarningsAsErrors") != "true":
@@ -72,8 +83,10 @@ def main() -> int:
         "Sts2TargetVersion",
         "STS2_V107_1",
         "STS2_V109",
+        "<AssemblyName>STS2_Things</AssemblyName>",
         "Unsupported Sts2TargetVersion",
         '<Compile Remove="tools\\**\\*.cs" />',
+        '<Compile Remove="bootstrap\\**\\*.cs" />',
     ):
         if required not in project_text:
             fail(errors, f"dual-version project contract missing {required!r}")
@@ -93,6 +106,8 @@ def main() -> int:
         )
     if "source_assets/**" not in export_preset:
         fail(errors, "editable monster source art must be excluded from the shipping PCK")
+    if "bootstrap/**" not in export_preset:
+        fail(errors, "bootstrap build outputs must be excluded from the shipping PCK")
     if not (ROOT / "source_assets" / ".gdignore").is_file():
         fail(errors, "source_assets/.gdignore must prevent Godot from importing build-time art")
 
@@ -106,11 +121,49 @@ def main() -> int:
         r"\bMonsterRegistrar\b": "legacy global MonsterRegistrar",
         r"creature_visuals/fallback": "fallback creature visuals",
     }
-    for path in sorted(SOURCE.rglob("*.cs")):
+    for path in sorted([*SOURCE.rglob("*.cs"), *BOOTSTRAP.rglob("*.cs")]):
         text = path.read_text(encoding="utf-8")
         for pattern, label in forbidden_patterns.items():
             if re.search(pattern, text):
                 fail(errors, f"{path.relative_to(ROOT)} contains forbidden {label}")
+
+    bootstrap_project_path = BOOTSTRAP / "STS2_Things.Bootstrap.csproj"
+    bootstrap_source_path = BOOTSTRAP / "UnifiedBootstrap.cs"
+    if not bootstrap_project_path.is_file():
+        fail(errors, "unified bootstrap project is missing")
+    else:
+        bootstrap_project = ET.parse(bootstrap_project_path).getroot()
+
+        def bootstrap_value(name: str) -> str | None:
+            node = bootstrap_project.find(f".//{name}")
+            return node.text.strip() if node is not None and node.text else None
+
+        if bootstrap_value("AssemblyName") != "STS2_Things.Bootstrap":
+            fail(errors, "bootstrap internal assembly name must not collide with the selected implementation")
+        if bootstrap_value("Version") != project_value("Version"):
+            fail(errors, "bootstrap and implementation versions differ")
+        bootstrap_project_text = bootstrap_project_path.read_text(encoding="utf-8")
+        for required in (
+            "STS2_Things.Implementations.v107.1.dll",
+            "STS2_Things.Implementations.v109.dll",
+            "ImplementationV1071",
+            "ImplementationV109",
+        ):
+            if required not in bootstrap_project_text:
+                fail(errors, f"bootstrap embedding contract missing {required!r}")
+    if not bootstrap_source_path.is_file():
+        fail(errors, "unified bootstrap source is missing")
+    else:
+        bootstrap_text = bootstrap_source_path.read_text(encoding="utf-8")
+        for required in (
+            "ModifyDamageMultiplicative",
+            "AssociateAssemblyWithMod",
+            "AppendV1071ImplementationTypes",
+            "PromoteV1071ImplementationAssembly",
+            "InvokeImplementationInitializer",
+        ):
+            if required not in bootstrap_text:
+                fail(errors, f"bootstrap runtime contract missing {required!r}")
 
     compatibility_text = source_text("Compatibility/Sts2VersionCompatibility.cs")
     for snippet in (
@@ -136,10 +189,26 @@ def main() -> int:
         "Sts2TargetVersion=$TargetVersion",
         "manifests\\$TargetVersion\\STS2_Things.json",
         "verify-harmony-targets.ps1",
+        ".godot\\mono\\temp\\bin\\$Configuration\\STS2_Things.dll",
         "ReusePck",
     ):
         if required not in build_text:
             fail(errors, f"target-aware build script missing {required!r}")
+
+    build_all_text = (ROOT / "scripts" / "build-all.ps1").read_text(encoding="utf-8")
+    for required in ("build-unified.ps1", "build\\unified", "DataDirV1071", "DataDirV109"):
+        if required not in build_all_text:
+            fail(errors, f"unified build orchestration missing {required!r}")
+    unified_build_text = (ROOT / "scripts" / "build-unified.ps1").read_text(encoding="utf-8")
+    for required in (
+        "STS2_Things.Bootstrap.csproj",
+        "verify-unified-package.ps1",
+        "build\\v107.1\\STS2_Things.dll",
+        "build\\v109\\STS2_Things.dll",
+        "build\\unified",
+    ):
+        if required not in unified_build_text:
+            fail(errors, f"unified package build missing {required!r}")
     for stale in (
         "Building image-generated semantic monster cutout rigs",
         "Building native Spine 4.2 monster assets",

@@ -2,16 +2,16 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <LangVersion>13.0</LangVersion>
+    <!-- Build with /p:Sts2TargetVersion=v107.1 for the stable implementation. -->
+    <Sts2TargetVersion Condition="'$(Sts2TargetVersion)' == ''">v109</Sts2TargetVersion>
     <AssemblyName>STS2_Things</AssemblyName>
-    <Version>1.6.1</Version>
+    <Version>1.7.0</Version>
     <RootNamespace>STS2_Things</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 
-    <!-- Build with /p:Sts2TargetVersion=v107.1 for the stable branch. -->
-    <Sts2TargetVersion Condition="'$(Sts2TargetVersion)' == ''">v109</Sts2TargetVersion>
     <DefineConstants Condition="'$(Sts2TargetVersion)' == 'v107.1'">$(DefineConstants);STS2_V107_1</DefineConstants>
     <DefineConstants Condition="'$(Sts2TargetVersion)' == 'v109'">$(DefineConstants);STS2_V109</DefineConstants>
 
@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Compile Remove="tools\**\*.cs" />
+    <Compile Remove="bootstrap\**\*.cs" />
 
     <Reference Include="sts2">
       <HintPath>$(Sts2DataDir)\sts2.dll</HintPath>

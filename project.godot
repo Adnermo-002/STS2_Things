@@ -1,4 +1,4 @@
-; STS2_Things asset/PCK project for Slay the Spire 2 v0.108.0.
+; STS2_Things asset/PCK project for the unified V107.1/V109 package.
 ; The DLL is built from STS2_Things/STS2_Things.csproj and is not embedded in the PCK.
 
 config_version=5

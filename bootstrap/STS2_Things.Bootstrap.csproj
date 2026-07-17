@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>13.0</LangVersion>
+    <AssemblyName>STS2_Things.Bootstrap</AssemblyName>
+    <RootNamespace>STS2_Things.Bootstrap</RootNamespace>
+    <Version>1.7.0</Version>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="sts2">
+      <HintPath>$(Sts2DataDir)\sts2.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(Sts2DataDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <EmbeddedResource Include="$(ImplementationV1071)"
+                      LogicalName="STS2_Things.Implementations.v107.1.dll" />
+    <EmbeddedResource Include="$(ImplementationV109)"
+                      LogicalName="STS2_Things.Implementations.v109.dll" />
+  </ItemGroup>
+
+  <Target Name="ValidateUnifiedInputs" BeforeTargets="PrepareForBuild;ResolveReferences">
+    <Error Condition="!Exists('$(Sts2DataDir)\sts2.dll')"
+           Text="V107.1 sts2.dll was not found at '$(Sts2DataDir)\sts2.dll'." />
+    <Error Condition="!Exists('$(Sts2DataDir)\0Harmony.dll')"
+           Text="Harmony was not found at '$(Sts2DataDir)\0Harmony.dll'." />
+    <Error Condition="!Exists('$(ImplementationV1071)')"
+           Text="V107.1 implementation was not found at '$(ImplementationV1071)'." />
+    <Error Condition="!Exists('$(ImplementationV109)')"
+           Text="V109 implementation was not found at '$(ImplementationV109)'." />
+  </Target>
+</Project>
