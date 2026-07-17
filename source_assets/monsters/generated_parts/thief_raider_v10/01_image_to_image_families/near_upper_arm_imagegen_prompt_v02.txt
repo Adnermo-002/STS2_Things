@@ -1,0 +1,32 @@
+Use case: precise-object-edit
+Asset type: one isolated 2D skeletal-animation attachment for Thief Raider v10
+Input image: near_upper_arm_i2i_guide_v02_1536x1024.png
+
+Generate exactly ONE isolated piece: the near-side upper-arm dark cloth sleeve shown in the large TARGET panel. This is not a four-part family and not a complete arm.
+
+Identity lock:
+- Match the locked Thief Raider exactly: compact crouched proportions, left-facing three-quarter camera, original asymmetry, original light direction, original charcoal blue-gray palette, and the same smooth matte low-frequency hand-painted rendering.
+- Preserve the corrected master-visible sleeve silhouette, scale, diagonal shoulder-to-elbow axis, value grouping, folds, and soft cloth material shown in the TARGET panel as closely as image generation permits.
+- The native visible envelope is only 77x64 pixels. Keep the piece compact. Do not lengthen, inflate, straighten, rotate, or redesign it.
+- The corrected source contains dark cloth only. The former white sliver belongs to the separate shoulder plate and must not appear anywhere in this result.
+
+Hidden overlap construction:
+- Add pixels only for two short concealed cloth continuations indicated by the open cyan contour pairs. The cyan itself is guidance and must not be painted.
+- Proximal shoulder end: a short, broad, asymmetric dark-cloth flap that follows the sleeve folds and disappears beneath the pauldron. It must not resemble armor and must not close into a round cap.
+- Distal elbow end: a shorter, narrower, asymmetric dark-cloth continuation following the down-left sleeve axis and disappearing beneath the forearm bracer.
+- Both continuations must preserve the same cloth color, matte shading, edge softness, and low-frequency painted mass as their adjacent visible pixels.
+- Ends must taper organically under the neighboring attachments. No flat transverse cut, circular seal, plug, tube mouth, hollow socket, or inflated bulb.
+
+Output layout:
+- Place exactly one complete near_upper_arm attachment centered with generous empty padding.
+- Keep the exact bind orientation shown by the corrected target fragment.
+- Use a perfectly flat solid #00FF00 chroma-key background. The background must be one uniform color with no shadow, gradient, texture, floor, reflection, or lighting variation. Do not use #00FF00 in the sleeve.
+- No cast shadow, contact shadow, labels, numbers, arrows, cyan lines, panels, checkerboard, coordinate grid, text, logo, signature, or watermark.
+
+Hard exclusions:
+- no shoulder plate, pauldron, white or silver fragment, metal, rivet, armor trim;
+- no forearm, bracer, wrist, hand, finger, handle, pommel, dagger, full arm, full character, or extra body part;
+- no front-facing anatomy, realistic long human proportions, glossy 3D volume, plastic sheen, polygon facets, excessive micro-shading, or palette shift;
+- no square block, rectangular crop edge, round end cap, mushroom end, ball joint, sausage limb, open cuff, hollow tube, socket hole, detached fragment, or second piece.
+
+Return only the one corrected near-upper-arm cloth attachment on the flat chroma background. This is a source candidate for ownership overlay and extreme-pose review, not a redesign.

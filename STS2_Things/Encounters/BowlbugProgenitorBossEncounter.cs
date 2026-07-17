@@ -13,16 +13,16 @@ public sealed class BowlbugProgenitorBossEncounter : ModBossEncounter
 
     public override RoomType RoomType => RoomType.Boss;
 
-    // 复用SoulFysh的专属Boss音乐（同为Hive Act Boss）
-    public override string CustomBgm => "event:/music/act1_b_boss_soul_fysh";
+    // Keep the BGM in Hive's native act2 bank. EncounterModel has no cross-Act
+    // bank declaration, so cross-bank music needs an invasive loader patch.
+    public override string CustomBgm => "event:/music/act2_boss_kaiser_crab";
 
     public override bool HasScene => true;
 
-    protected override bool HasCustomBackground => false;
+    protected override bool HasCustomBackground => true;
 
     public override IEnumerable<string> ExtraAssetPaths => new[]
     {
-        "res://images/monsters/bowlbug_progenitor.png",
         "res://images/ui/run_history/bowlbug_progenitor_boss_encounter.png",
         "res://images/ui/run_history/bowlbug_progenitor_boss_encounter_outline.png"
     };
@@ -43,7 +43,7 @@ public sealed class BowlbugProgenitorBossEncounter : ModBossEncounter
 
     protected override IReadOnlyList<(MonsterModel, string?)> GenerateMonsters()
     {
-        return new[]
+        return new (MonsterModel, string?)[]
         {
             (ModelDb.Monster<BowlbugProgenitor>().ToMutable(),
                 "bowlbug_progenitor")

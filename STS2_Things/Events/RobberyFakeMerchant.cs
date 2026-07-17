@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -14,8 +16,11 @@ namespace STS2_Things.Events;
 
 public sealed class RobberyFakeMerchant : EventModel
 {
+    private Player EventOwner => Owner
+        ?? throw new InvalidOperationException("Robbery Fake Merchant event has not been initialized with an owner.");
+
     // 改为懒加载，避免类首次访问时 ModelDb 尚未初始化
-    private static RelicModel[] _fakeRelicPool;
+    private static RelicModel[]? _fakeRelicPool;
     private static RelicModel[] FakeRelicPool => _fakeRelicPool ??= new RelicModel[] //所有假遗物
     {
         ModelDb.Relic<FakeAnchor>(),
@@ -29,7 +34,7 @@ public sealed class RobberyFakeMerchant : EventModel
         ModelDb.Relic<FakeVenerableTeaSet>()
     };
 
-    private static RelicModel[] _trueRelicPool;
+    private static RelicModel[]? _trueRelicPool;
     private static RelicModel[] TrueRelicPool => _trueRelicPool ??= new RelicModel[] //所有真遗物
     {
         ModelDb.Relic<Anchor>(),
@@ -68,7 +73,7 @@ public sealed class RobberyFakeMerchant : EventModel
 
     private async Task TakeGolds()
     {
-        await PlayerCmd.GainGold((int)DynamicVars["GoldsCount"].BaseValue, Owner);
+        await PlayerCmd.GainGold((int)DynamicVars["GoldsCount"].BaseValue, EventOwner);
         SetEventFinished(L10NLookup("ROBBERY_FAKE_MERCHANT.pages.INITIAL.options.TAKEGOLDS.description"));
     }
 
@@ -81,7 +86,7 @@ public sealed class RobberyFakeMerchant : EventModel
             .ToList();
 
         foreach (var relic in relics)
-            await RelicCmd.Obtain(relic.ToMutable(), Owner);
+            await RelicCmd.Obtain(relic.ToMutable(), EventOwner);
 
         SetEventFinished(L10NLookup("ROBBERY_FAKE_MERCHANT.pages.TAKERELICS.description"));
     }
@@ -93,24 +98,31 @@ public sealed class RobberyFakeMerchant : EventModel
         return Task.CompletedTask;
     }
 
-    private Task Fight()
+    private async Task Fight()
     {
         // 假商人血量改为原版一半
-        var merchant = _combatStateForCombatLayout?.Enemies.FirstOrDefault();
+#if STS2_V107_1
+        var combatState = _combatStateForCombatLayout
+            ?? throw new InvalidOperationException("Robbery Fake Merchant combat layout state is not initialized.");
+#else
+        var combatSynchronizer = _combatSynchronizer
+            ?? throw new InvalidOperationException("Robbery Fake Merchant combat synchronizer is not initialized.");
+        var combatState = combatSynchronizer.CombatStateForLayout
+            ?? throw new InvalidOperationException("Robbery Fake Merchant combat layout state is not initialized.");
+#endif
+        var merchant = combatState.Enemies.FirstOrDefault();
         if (merchant != null)
         {
             int halfHp = merchant.MaxHp / 2;
-            merchant.SetMaxHpInternal(halfHp);
-            merchant.SetCurrentHpInternal(halfHp);
+            await CreatureCmd.SetMaxAndCurrentHp(merchant, halfHp);
         }
 
         var extraRewards = TrueRelicPool
             .ToList()
             .UnstableShuffle(Rng)
             .Take((int)DynamicVars["TrueRelicsCount"].BaseValue)
-            .Select(relic => (Reward)new RelicReward(relic.ToMutable(), Owner))
+            .Select(relic => (Reward)new RelicReward(relic.ToMutable(), EventOwner))
             .ToList();
         EnterCombatWithoutExitingEvent<FakeMerchantEventEncounter>(extraRewards, false);
-        return Task.CompletedTask;
     }
 }

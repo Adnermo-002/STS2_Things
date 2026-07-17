@@ -1,0 +1,22 @@
+{
+	"MAGIC_GLOVE.title": "Severed Sleeve",
+	"MAGIC_GLOVE.description": "Upon pickup, choose [blue]{Cards}[/blue] cards from your [gold]deck[/gold] and [gold]transform[/gold] them into 1 [gold]Bright Blade[/gold] and 1 [gold]Cunning Plan[/gold], then lose [red]{HpLoss}[/red] Max HP.",
+	"MAGIC_GLOVE.eventDescription": "Choose [blue]{Cards}[/blue] cards from your [gold]deck[/gold] and [gold]transform[/gold] them into 1 [gold]Bright Blade[/gold] and 1 [gold]Cunning Plan[/gold], then lose [red]{HpLoss}[/red] Max HP.",
+	"MAGIC_GLOVE.flavor": "[red]There's just a blade hidden inside.[/red]",
+	"WHITE_FLAG.title": "White Flag",
+	"WHITE_FLAG.description": "Add [blue]1[/blue] [gold]Surrender[/gold] and [blue]1[/blue] [red]Shame[/red] to your [gold]deck[/gold].",
+	"WHITE_FLAG.eventDescription": "Add [blue]1[/blue] [gold]Surrender[/gold] and [blue]1[/blue] [red]Shame[/red] to your [gold]deck[/gold].",
+	"WHITE_FLAG.flavor": "[red]I surrender!...[/red]",
+	"CURSE_REMOVER.title": "Yellow Talisman",
+	"CURSE_REMOVER.description": "Upon pickup, lose [blue]{HpLoss}[/blue] HP. The first [blue]{Cards}[/blue] [red]Curse[/red] cards you obtain this run gain [blue]Disperse[/blue].",
+	"CURSE_REMOVER.flavor": "The only answer comes from [red]yourself, a thousand years ago[/red]...",
+	"ENERGY_BOTTLE.title": "Gold-Energy Converter",
+	"ENERGY_BOTTLE.description": "At the start of each combat, gain {Energy} Energy and lose {Gold} Gold.",
+	"ENERGY_BOTTLE.flavor": "Contains boundless power.",
+	"ALMOND_WATER.title": "Almond Water",
+	"ALMOND_WATER.description": "At the start of normal, [gold]Elite[/gold], and [red]Boss[/red] combats, gain [blue]{NormalRegen}[/blue] | [blue]{EliteRegen}[/blue] | [blue]{BossRegen}[/blue] [green]Regeneration[/green].",
+	"ALMOND_WATER.flavor": "[green][sine]This water is healing your mind.[/sine][/green]",
+	"MEDUSA_HAIR.title": "Medusa's Hair",
+	"MEDUSA_HAIR.description": "At the start of combat, add a non-upgraded [gold]Stone Armor[/gold] that costs [blue]0[/blue] to your hand.",
+	"MEDUSA_HAIR.flavor": "A strand of hair from Medusa. It feels as cold as stone to the touch."
+}

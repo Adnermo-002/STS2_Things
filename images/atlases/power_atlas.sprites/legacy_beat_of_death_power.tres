@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://5v2gwlvnfokk"]
+
+[ext_resource type="Texture2D" uid="uid://y0nv7wnci517" path="res://images/powers/legacy_beat_of_death_power.png" id="1_ej587"]
+
+[resource]
+atlas = ExtResource("1_ej587")
+region = Rect2(0, 0, 96, 96)

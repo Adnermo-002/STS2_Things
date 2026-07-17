@@ -1,0 +1,78 @@
+[
+  {
+    "name": "part_000",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_supplement/part_000.png",
+    "source_bbox": [
+      130,
+      96,
+      439,
+      513
+    ],
+    "source_center": [
+      278.647,
+      297.495
+    ],
+    "size": [
+      309,
+      417
+    ],
+    "opaque_area": 70067
+  },
+  {
+    "name": "part_001",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_supplement/part_001.png",
+    "source_bbox": [
+      808,
+      96,
+      1115,
+      517
+    ],
+    "source_center": [
+      965.689,
+      297.967
+    ],
+    "size": [
+      307,
+      421
+    ],
+    "opaque_area": 70430
+  },
+  {
+    "name": "part_002",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_supplement/part_002.png",
+    "source_bbox": [
+      168,
+      731,
+      480,
+      1077
+    ],
+    "source_center": [
+      321.638,
+      900.997
+    ],
+    "size": [
+      312,
+      346
+    ],
+    "opaque_area": 65243
+  },
+  {
+    "name": "part_003",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_supplement/part_003.png",
+    "source_bbox": [
+      741,
+      751,
+      1084,
+      1089
+    ],
+    "source_center": [
+      910.488,
+      929.874
+    ],
+    "size": [
+      343,
+      338
+    ],
+    "opaque_area": 72674
+  }
+]

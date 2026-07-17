@@ -20,17 +20,18 @@ public sealed class OriginGainEnergyPower : PowerModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         new[] { new DynamicVar("Energy", 1m) };
 
-    public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature,
+    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature,
         bool wasRemovalPrevented, float deathAnimLength)
     {
-        if (creature == Owner)
-        {
-            Flash();
-            foreach (var player in Owner.CombatState.Players)
-            {
-                PlayerCmd.GainEnergy(DynamicVars["Energy"].BaseValue, player);
-            }
-        }
-        return Task.CompletedTask;
+        if (creature != Owner)
+            return;
+
+        var combatState = Owner.CombatState;
+        if (combatState == null)
+            return;
+
+        Flash();
+        foreach (var player in combatState.Players)
+            await PlayerCmd.GainEnergy(DynamicVars["Energy"].BaseValue, player);
     }
 }

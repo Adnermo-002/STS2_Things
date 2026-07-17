@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "status": "full_character_visual_review_required",
+  "technique": "two-dimensional rigid-transform blend mesh plus exact rigid overlays",
+  "mesh": {
+    "bounds_xyxy": [
+      278,
+      102,
+      406,
+      250
+    ],
+    "grid_step": 4,
+    "shoulder_xy": [
+      332.0,
+      154.0
+    ],
+    "elbow_xy": [
+      367.0,
+      194.0
+    ],
+    "wrist_xy": [
+      302.0,
+      194.0
+    ],
+    "weight": "78% arc-length smoothstep + 22% nearest-segment distance"
+  },
+  "cases": [
+    {
+      "name": "bind",
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "alpha_bounds": [
+        18,
+        54,
+        516,
+        412
+      ],
+      "bind_mismatch_pixels": 0
+    },
+    {
+      "name": "idle_inhale",
+      "shoulder": -1.5,
+      "elbow": 2.0,
+      "alpha_bounds": [
+        18,
+        54,
+        516,
+        412
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "idle_exhale",
+      "shoulder": 1.0,
+      "elbow": -1.5,
+      "alpha_bounds": [
+        18,
+        54,
+        516,
+        412
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "attack_windup",
+      "shoulder": -6.0,
+      "elbow": 8.0,
+      "alpha_bounds": [
+        18,
+        54,
+        516,
+        412
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "attack_contact",
+      "shoulder": 4.0,
+      "elbow": -6.0,
+      "alpha_bounds": [
+        18,
+        54,
+        516,
+        412
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "hurt_brace",
+      "shoulder": -10.0,
+      "elbow": 12.0,
+      "alpha_bounds": [
+        18,
+        54,
+        516,
+        412
+      ],
+      "bind_mismatch_pixels": null
+    }
+  ],
+  "bind_exact_rgba": true,
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "next_gate": "visual review at full character scale before Spine mesh export"
+}

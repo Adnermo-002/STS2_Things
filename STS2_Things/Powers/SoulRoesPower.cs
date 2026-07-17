@@ -1,11 +1,15 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using STS2_Things.Compatibility;
 using STS2_Things.Encounters;
 using STS2_Things.Monsters;
 
@@ -41,22 +45,42 @@ public sealed class SoulRoesPower : PowerModel
         if (wasRemovalPrevented || Owner != target)
             return;
 
-        await Cmd.CustomScaledWait(deathAnimLength, deathAnimLength);
-
-        var spawnCount = Amount;
-        for (var i = 0; i < spawnCount; i++)
+        var spawnCount = (int)Math.Clamp(Amount, 0m, SoulRoesEncounter.SoulRoeSlotCount);
+        var spawnedSoulRoes = new List<Creature>(spawnCount);
+        var spawned = 0;
+        for (var i = 0; i < SoulRoesEncounter.SoulRoeSlotCount && spawned < spawnCount; i++)
         {
             var slotName = SoulRoesEncounter.GetSoulRoeSlotName(i);
 
-            if (CombatState.Enemies.Any(c => c.SlotName == slotName))
+            // A multi-target hit may have reduced an existing SoulRoe to 0 HP before its
+            // queued death is processed. Dead creatures must not reserve a slot for the
+            // replacement wave, otherwise 2 existing roes + the intended 6 only yields 4.
+            if (CombatState.Enemies.Any(c => c.IsAlive && c.SlotName == slotName))
                 continue;
 
             var soulRoe = (SoulRoe)ModelDb.Monster<SoulRoe>().ToMutable();
             soulRoe.StartStunned = true;
-            soulRoe.StartMovePhase = i % 3;
+            soulRoe.StartMovePhase = spawned % 3;
 
-            await CreatureCmd.Add(soulRoe, CombatState,
+            var creature = await CreatureCmd.Add(soulRoe, CombatState,
                 Owner.Side, slotName);
+            Sts2VersionCompatibility.SetCreatureNodeVisible(creature, visible: false);
+            spawnedSoulRoes.Add(creature);
+            spawned++;
         }
+
+        // Match the native InfestedPower lifecycle: add the replacements immediately so
+        // combat cannot end, then reveal them after the parent's death animation without
+        // blocking processing of other creatures killed by the same attack.
+        _ = TaskHelper.RunSafely(RevealAfterDeathAnimation(spawnedSoulRoes, deathAnimLength));
+    }
+
+    private static async Task RevealAfterDeathAnimation(
+        IReadOnlyList<Creature> soulRoes,
+        float deathAnimLength)
+    {
+        await Cmd.CustomScaledWait(deathAnimLength, deathAnimLength);
+        foreach (var soulRoe in soulRoes)
+            Sts2VersionCompatibility.SetCreatureNodeVisible(soulRoe, visible: true);
     }
 }

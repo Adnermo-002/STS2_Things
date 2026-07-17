@@ -1,0 +1,1360 @@
+{
+  "schema": "thief-raider-v5-hidden-donor-grid/1",
+  "visible_payload_rule": "approved_master ownership cutouts only",
+  "sheets": {
+    "body": {
+      "source": "body_sheet_alpha.png",
+      "parts": [
+        {
+          "name": "hooded_head",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            0,
+            0
+          ],
+          "cell_xyxy": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "alpha_bbox_in_cell": [
+            83,
+            62,
+            268,
+            265
+          ],
+          "crop_xyxy_in_cell": [
+            79,
+            58,
+            272,
+            269
+          ],
+          "output": "body/hooded_head.png",
+          "size": [
+            193,
+            211
+          ],
+          "visible_pixels": 25925,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "scarf_back",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            0,
+            1
+          ],
+          "cell_xyxy": [
+            314,
+            0,
+            627,
+            314
+          ],
+          "alpha_bbox_in_cell": [
+            59,
+            107,
+            271,
+            231
+          ],
+          "crop_xyxy_in_cell": [
+            55,
+            103,
+            275,
+            235
+          ],
+          "output": "body/scarf_back.png",
+          "size": [
+            220,
+            132
+          ],
+          "visible_pixels": 16617,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "scarf_front",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            0,
+            2
+          ],
+          "cell_xyxy": [
+            627,
+            0,
+            940,
+            314
+          ],
+          "alpha_bbox_in_cell": [
+            55,
+            109,
+            237,
+            261
+          ],
+          "crop_xyxy_in_cell": [
+            51,
+            105,
+            241,
+            265
+          ],
+          "output": "body/scarf_front.png",
+          "size": [
+            190,
+            160
+          ],
+          "visible_pixels": 15094,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "torso_core",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            0,
+            3
+          ],
+          "cell_xyxy": [
+            940,
+            0,
+            1254,
+            314
+          ],
+          "alpha_bbox_in_cell": [
+            18,
+            61,
+            244,
+            307
+          ],
+          "crop_xyxy_in_cell": [
+            14,
+            57,
+            248,
+            311
+          ],
+          "output": "body/torso_core.png",
+          "size": [
+            234,
+            254
+          ],
+          "visible_pixels": 36304,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "pelvis_skirt",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            1,
+            0
+          ],
+          "cell_xyxy": [
+            0,
+            314,
+            314,
+            627
+          ],
+          "alpha_bbox_in_cell": [
+            85,
+            74,
+            261,
+            257
+          ],
+          "crop_xyxy_in_cell": [
+            81,
+            70,
+            265,
+            261
+          ],
+          "output": "body/pelvis_skirt.png",
+          "size": [
+            184,
+            191
+          ],
+          "visible_pixels": 22102,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "waist_cloth_front",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            1,
+            1
+          ],
+          "cell_xyxy": [
+            314,
+            314,
+            627,
+            627
+          ],
+          "alpha_bbox_in_cell": [
+            68,
+            74,
+            252,
+            280
+          ],
+          "crop_xyxy_in_cell": [
+            64,
+            70,
+            256,
+            284
+          ],
+          "output": "body/waist_cloth_front.png",
+          "size": [
+            192,
+            214
+          ],
+          "visible_pixels": 21540,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "upper_back_cloak",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            1,
+            2
+          ],
+          "cell_xyxy": [
+            627,
+            314,
+            940,
+            627
+          ],
+          "alpha_bbox_in_cell": [
+            33,
+            27,
+            270,
+            311
+          ],
+          "crop_xyxy_in_cell": [
+            29,
+            23,
+            274,
+            313
+          ],
+          "output": "body/upper_back_cloak.png",
+          "size": [
+            245,
+            290
+          ],
+          "visible_pixels": 42990,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 1,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "cloak_tail_near",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            1,
+            3
+          ],
+          "cell_xyxy": [
+            940,
+            314,
+            1254,
+            627
+          ],
+          "alpha_bbox_in_cell": [
+            27,
+            23,
+            257,
+            313
+          ],
+          "crop_xyxy_in_cell": [
+            23,
+            19,
+            261,
+            313
+          ],
+          "output": "body/cloak_tail_near.png",
+          "size": [
+            238,
+            294
+          ],
+          "visible_pixels": 30824,
+          "touches_grid_boundary": true,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 22,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": false,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "reference_only_clipped_at_grid_boundary"
+        },
+        {
+          "name": "cloak_tail_far",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            2,
+            0
+          ],
+          "cell_xyxy": [
+            0,
+            627,
+            314,
+            940
+          ],
+          "alpha_bbox_in_cell": [
+            108,
+            21,
+            254,
+            274
+          ],
+          "crop_xyxy_in_cell": [
+            104,
+            17,
+            258,
+            278
+          ],
+          "output": "body/cloak_tail_far.png",
+          "size": [
+            154,
+            261
+          ],
+          "visible_pixels": 18954,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "loot_sack",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            2,
+            1
+          ],
+          "cell_xyxy": [
+            314,
+            627,
+            627,
+            940
+          ],
+          "alpha_bbox_in_cell": [
+            72,
+            36,
+            256,
+            255
+          ],
+          "crop_xyxy_in_cell": [
+            68,
+            32,
+            260,
+            259
+          ],
+          "output": "body/loot_sack.png",
+          "size": [
+            192,
+            227
+          ],
+          "visible_pixels": 27935,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "bag_knot",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            2,
+            2
+          ],
+          "cell_xyxy": [
+            627,
+            627,
+            940,
+            940
+          ],
+          "alpha_bbox_in_cell": [
+            46,
+            76,
+            194,
+            211
+          ],
+          "crop_xyxy_in_cell": [
+            42,
+            72,
+            198,
+            215
+          ],
+          "output": "body/bag_knot.png",
+          "size": [
+            156,
+            143
+          ],
+          "visible_pixels": 10919,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "sack_strap_back",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            2,
+            3
+          ],
+          "cell_xyxy": [
+            940,
+            627,
+            1254,
+            940
+          ],
+          "alpha_bbox_in_cell": [
+            34,
+            64,
+            240,
+            269
+          ],
+          "crop_xyxy_in_cell": [
+            30,
+            60,
+            244,
+            273
+          ],
+          "output": "body/sack_strap_back.png",
+          "size": [
+            214,
+            213
+          ],
+          "visible_pixels": 11228,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 267,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "sack_strap_front",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            3,
+            0
+          ],
+          "cell_xyxy": [
+            0,
+            940,
+            314,
+            1254
+          ],
+          "alpha_bbox_in_cell": [
+            76,
+            6,
+            259,
+            233
+          ],
+          "crop_xyxy_in_cell": [
+            72,
+            2,
+            263,
+            237
+          ],
+          "output": "body/sack_strap_front.png",
+          "size": [
+            191,
+            235
+          ],
+          "visible_pixels": 8690,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "belt_and_pouch",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            3,
+            1
+          ],
+          "cell_xyxy": [
+            314,
+            940,
+            627,
+            1254
+          ],
+          "alpha_bbox_in_cell": [
+            36,
+            83,
+            265,
+            204
+          ],
+          "crop_xyxy_in_cell": [
+            32,
+            79,
+            269,
+            208
+          ],
+          "output": "body/belt_and_pouch.png",
+          "size": [
+            237,
+            129
+          ],
+          "visible_pixels": 14079,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "near_shoulder_plate",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            3,
+            2
+          ],
+          "cell_xyxy": [
+            627,
+            940,
+            940,
+            1254
+          ],
+          "alpha_bbox_in_cell": [
+            67,
+            32,
+            225,
+            224
+          ],
+          "crop_xyxy_in_cell": [
+            63,
+            28,
+            229,
+            228
+          ],
+          "output": "body/near_shoulder_plate.png",
+          "size": [
+            166,
+            200
+          ],
+          "visible_pixels": 19766,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "far_shoulder_plate",
+          "sheet": "body_sheet_alpha.png",
+          "grid_rc": [
+            3,
+            3
+          ],
+          "cell_xyxy": [
+            940,
+            940,
+            1254,
+            1254
+          ],
+          "alpha_bbox_in_cell": [
+            60,
+            35,
+            197,
+            220
+          ],
+          "crop_xyxy_in_cell": [
+            56,
+            31,
+            201,
+            224
+          ],
+          "output": "body/far_shoulder_plate.png",
+          "size": [
+            145,
+            193
+          ],
+          "visible_pixels": 17214,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        }
+      ]
+    },
+    "limbs": {
+      "source": "limbs_sheet_alpha.png",
+      "parts": [
+        {
+          "name": "near_upper_arm",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            0,
+            0
+          ],
+          "cell_xyxy": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "alpha_bbox_in_cell": [
+            155,
+            91,
+            300,
+            306
+          ],
+          "crop_xyxy_in_cell": [
+            151,
+            87,
+            304,
+            310
+          ],
+          "output": "limbs/near_upper_arm.png",
+          "size": [
+            153,
+            223
+          ],
+          "visible_pixels": 17070,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "near_forearm",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            0,
+            1
+          ],
+          "cell_xyxy": [
+            314,
+            0,
+            627,
+            314
+          ],
+          "alpha_bbox_in_cell": [
+            102,
+            97,
+            246,
+            292
+          ],
+          "crop_xyxy_in_cell": [
+            98,
+            93,
+            250,
+            296
+          ],
+          "output": "limbs/near_forearm.png",
+          "size": [
+            152,
+            203
+          ],
+          "visible_pixels": 13209,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "near_dagger_hand",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            0,
+            2
+          ],
+          "cell_xyxy": [
+            627,
+            0,
+            940,
+            314
+          ],
+          "alpha_bbox_in_cell": [
+            63,
+            120,
+            210,
+            263
+          ],
+          "crop_xyxy_in_cell": [
+            59,
+            116,
+            214,
+            267
+          ],
+          "output": "limbs/near_dagger_hand.png",
+          "size": [
+            155,
+            151
+          ],
+          "visible_pixels": 9856,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 2,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "dagger",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            0,
+            3
+          ],
+          "cell_xyxy": [
+            940,
+            0,
+            1254,
+            314
+          ],
+          "alpha_bbox_in_cell": [
+            0,
+            115,
+            176,
+            260
+          ],
+          "crop_xyxy_in_cell": [
+            0,
+            111,
+            180,
+            264
+          ],
+          "output": "limbs/dagger.png",
+          "size": [
+            180,
+            153
+          ],
+          "visible_pixels": 6978,
+          "touches_grid_boundary": true,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 4,
+            "right": 0
+          },
+          "approved_for_underlap": false,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "reference_only_clipped_at_grid_boundary"
+        },
+        {
+          "name": "far_upper_arm",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            1,
+            0
+          ],
+          "cell_xyxy": [
+            0,
+            314,
+            314,
+            627
+          ],
+          "alpha_bbox_in_cell": [
+            158,
+            60,
+            264,
+            225
+          ],
+          "crop_xyxy_in_cell": [
+            154,
+            56,
+            268,
+            229
+          ],
+          "output": "limbs/far_upper_arm.png",
+          "size": [
+            114,
+            173
+          ],
+          "visible_pixels": 11574,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "far_forearm",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            1,
+            1
+          ],
+          "cell_xyxy": [
+            314,
+            314,
+            627,
+            627
+          ],
+          "alpha_bbox_in_cell": [
+            93,
+            52,
+            234,
+            230
+          ],
+          "crop_xyxy_in_cell": [
+            89,
+            48,
+            238,
+            234
+          ],
+          "output": "limbs/far_forearm.png",
+          "size": [
+            149,
+            186
+          ],
+          "visible_pixels": 12051,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "far_strap_hand",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            1,
+            2
+          ],
+          "cell_xyxy": [
+            627,
+            314,
+            940,
+            627
+          ],
+          "alpha_bbox_in_cell": [
+            77,
+            41,
+            193,
+            224
+          ],
+          "crop_xyxy_in_cell": [
+            73,
+            37,
+            197,
+            228
+          ],
+          "output": "limbs/far_strap_hand.png",
+          "size": [
+            124,
+            191
+          ],
+          "visible_pixels": 9298,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "strap_grip",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            1,
+            3
+          ],
+          "cell_xyxy": [
+            940,
+            314,
+            1254,
+            627
+          ],
+          "alpha_bbox_in_cell": [
+            52,
+            89,
+            107,
+            205
+          ],
+          "crop_xyxy_in_cell": [
+            48,
+            85,
+            111,
+            209
+          ],
+          "output": "limbs/strap_grip.png",
+          "size": [
+            63,
+            124
+          ],
+          "visible_pixels": 3212,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "near_thigh",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            2,
+            0
+          ],
+          "cell_xyxy": [
+            0,
+            627,
+            314,
+            940
+          ],
+          "alpha_bbox_in_cell": [
+            121,
+            9,
+            286,
+            230
+          ],
+          "crop_xyxy_in_cell": [
+            117,
+            5,
+            290,
+            234
+          ],
+          "output": "limbs/near_thigh.png",
+          "size": [
+            173,
+            229
+          ],
+          "visible_pixels": 20708,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 83,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "near_shin",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            2,
+            1
+          ],
+          "cell_xyxy": [
+            314,
+            627,
+            627,
+            940
+          ],
+          "alpha_bbox_in_cell": [
+            112,
+            8,
+            222,
+            213
+          ],
+          "crop_xyxy_in_cell": [
+            108,
+            4,
+            226,
+            217
+          ],
+          "output": "limbs/near_shin.png",
+          "size": [
+            118,
+            213
+          ],
+          "visible_pixels": 14340,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 107,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "near_foot",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            2,
+            2
+          ],
+          "cell_xyxy": [
+            627,
+            627,
+            940,
+            940
+          ],
+          "alpha_bbox_in_cell": [
+            63,
+            56,
+            202,
+            213
+          ],
+          "crop_xyxy_in_cell": [
+            59,
+            52,
+            206,
+            217
+          ],
+          "output": "limbs/near_foot.png",
+          "size": [
+            147,
+            165
+          ],
+          "visible_pixels": 11695,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "near_knee_cover",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            2,
+            3
+          ],
+          "cell_xyxy": [
+            940,
+            627,
+            1254,
+            940
+          ],
+          "alpha_bbox_in_cell": [
+            48,
+            71,
+            151,
+            196
+          ],
+          "crop_xyxy_in_cell": [
+            44,
+            67,
+            155,
+            200
+          ],
+          "output": "limbs/near_knee_cover.png",
+          "size": [
+            111,
+            133
+          ],
+          "visible_pixels": 9105,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "far_thigh",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            3,
+            0
+          ],
+          "cell_xyxy": [
+            0,
+            940,
+            314,
+            1254
+          ],
+          "alpha_bbox_in_cell": [
+            143,
+            0,
+            265,
+            205
+          ],
+          "crop_xyxy_in_cell": [
+            139,
+            0,
+            269,
+            209
+          ],
+          "output": "limbs/far_thigh.png",
+          "size": [
+            130,
+            209
+          ],
+          "visible_pixels": 16737,
+          "touches_grid_boundary": true,
+          "boundary_alpha_pixels": {
+            "top": 35,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": false,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "reference_only_clipped_at_grid_boundary"
+        },
+        {
+          "name": "far_shin",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            3,
+            1
+          ],
+          "cell_xyxy": [
+            314,
+            940,
+            627,
+            1254
+          ],
+          "alpha_bbox_in_cell": [
+            122,
+            0,
+            232,
+            197
+          ],
+          "crop_xyxy_in_cell": [
+            118,
+            0,
+            236,
+            201
+          ],
+          "output": "limbs/far_shin.png",
+          "size": [
+            118,
+            201
+          ],
+          "visible_pixels": 13343,
+          "touches_grid_boundary": true,
+          "boundary_alpha_pixels": {
+            "top": 40,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": false,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "reference_only_clipped_at_grid_boundary"
+        },
+        {
+          "name": "far_foot",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            3,
+            2
+          ],
+          "cell_xyxy": [
+            627,
+            940,
+            940,
+            1254
+          ],
+          "alpha_bbox_in_cell": [
+            76,
+            42,
+            189,
+            204
+          ],
+          "crop_xyxy_in_cell": [
+            72,
+            38,
+            193,
+            208
+          ],
+          "output": "limbs/far_foot.png",
+          "size": [
+            121,
+            170
+          ],
+          "visible_pixels": 10692,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        },
+        {
+          "name": "far_knee_cover",
+          "sheet": "limbs_sheet_alpha.png",
+          "grid_rc": [
+            3,
+            3
+          ],
+          "cell_xyxy": [
+            940,
+            940,
+            1254,
+            1254
+          ],
+          "alpha_bbox_in_cell": [
+            49,
+            33,
+            128,
+            158
+          ],
+          "crop_xyxy_in_cell": [
+            45,
+            29,
+            132,
+            162
+          ],
+          "output": "limbs/far_knee_cover.png",
+          "size": [
+            87,
+            133
+          ],
+          "visible_pixels": 7642,
+          "touches_grid_boundary": false,
+          "boundary_alpha_pixels": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          },
+          "approved_for_underlap": true,
+          "removed_neighbor_fragment_pixels": 0,
+          "usage": "hidden_underlap_donor_only"
+        }
+      ]
+    }
+  }
+}

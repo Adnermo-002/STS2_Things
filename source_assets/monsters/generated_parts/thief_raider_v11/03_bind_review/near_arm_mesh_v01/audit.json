@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "status": "full_character_topology_visual_review_required",
+  "technique": "continuous context-reveal base + 2D rigid-transform blend + rigid semantic overlays",
+  "draw_order": "near upper -> forearm -> shoulder plate -> dagger -> gripping hand",
+  "mesh": {
+    "bounds_xyxy": [
+      186,
+      232,
+      318,
+      400
+    ],
+    "grid_step": 4,
+    "shoulder_xy": [
+      271.0,
+      274.0
+    ],
+    "elbow_xy": [
+      239.0,
+      333.0
+    ],
+    "wrist_xy": [
+      210.0,
+      371.0
+    ]
+  },
+  "cases": [
+    {
+      "name": "bind",
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "hand": 0.0,
+      "alpha_bounds": [
+        118,
+        104,
+        616,
+        462
+      ],
+      "bind_mismatch_pixels": 0
+    },
+    {
+      "name": "idle_inhale",
+      "shoulder": -0.6,
+      "elbow": 0.8,
+      "hand": 0.0,
+      "alpha_bounds": [
+        118,
+        104,
+        616,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "idle_exhale",
+      "shoulder": 0.4,
+      "elbow": -0.6,
+      "hand": 0.0,
+      "alpha_bounds": [
+        118,
+        104,
+        616,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "attack_windup",
+      "shoulder": -18.0,
+      "elbow": 28.0,
+      "hand": 4.0,
+      "alpha_bounds": [
+        118,
+        104,
+        616,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "attack_contact",
+      "shoulder": 42.0,
+      "elbow": -32.0,
+      "hand": -4.0,
+      "alpha_bounds": [
+        74,
+        104,
+        616,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "attack_recoil",
+      "shoulder": 15.0,
+      "elbow": -12.0,
+      "hand": 2.0,
+      "alpha_bounds": [
+        96,
+        104,
+        616,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "hurt_guard",
+      "shoulder": -12.0,
+      "elbow": 20.0,
+      "hand": 5.0,
+      "alpha_bounds": [
+        113,
+        104,
+        616,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    }
+  ],
+  "bind_exact_rgba": true,
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "next_gate": "reject_or_tune_attack_contact_before_full_body_motion"
+}

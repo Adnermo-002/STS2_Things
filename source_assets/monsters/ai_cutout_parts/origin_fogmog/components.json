@@ -1,0 +1,1142 @@
+[
+  {
+    "name": "part_000",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_000.png",
+    "source_bbox": [
+      494,
+      31,
+      856,
+      226
+    ],
+    "source_center": [
+      673.981,
+      115.073
+    ],
+    "size": [
+      362,
+      195
+    ],
+    "opaque_area": 40769
+  },
+  {
+    "name": "part_001",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_001.png",
+    "source_bbox": [
+      1163,
+      42,
+      1207,
+      106
+    ],
+    "source_center": [
+      1184.11,
+      79.993
+    ],
+    "size": [
+      44,
+      64
+    ],
+    "opaque_area": 1205
+  },
+  {
+    "name": "part_002",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_002.png",
+    "source_bbox": [
+      1215,
+      30,
+      1261,
+      106
+    ],
+    "source_center": [
+      1237.137,
+      76.062
+    ],
+    "size": [
+      46,
+      76
+    ],
+    "opaque_area": 1484
+  },
+  {
+    "name": "part_003",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_003.png",
+    "source_bbox": [
+      1270,
+      44,
+      1312,
+      106
+    ],
+    "source_center": [
+      1290.005,
+      80.654
+    ],
+    "size": [
+      42,
+      62
+    ],
+    "opaque_area": 1103
+  },
+  {
+    "name": "part_004",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_004.png",
+    "source_bbox": [
+      1322,
+      45,
+      1364,
+      106
+    ],
+    "source_center": [
+      1342.175,
+      80.99
+    ],
+    "size": [
+      42,
+      61
+    ],
+    "opaque_area": 1078
+  },
+  {
+    "name": "part_005",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_005.png",
+    "source_bbox": [
+      1372,
+      50,
+      1411,
+      106
+    ],
+    "source_center": [
+      1390.635,
+      82.662
+    ],
+    "size": [
+      39,
+      56
+    ],
+    "opaque_area": 904
+  },
+  {
+    "name": "part_006",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_006.png",
+    "source_bbox": [
+      1419,
+      50,
+      1457,
+      106
+    ],
+    "source_center": [
+      1437.3,
+      82.981
+    ],
+    "size": [
+      38,
+      56
+    ],
+    "opaque_area": 858
+  },
+  {
+    "name": "part_007",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_007.png",
+    "source_bbox": [
+      1464,
+      53,
+      1502,
+      106
+    ],
+    "source_center": [
+      1482.287,
+      83.766
+    ],
+    "size": [
+      38,
+      53
+    ],
+    "opaque_area": 802
+  },
+  {
+    "name": "part_008",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_008.png",
+    "source_bbox": [
+      0,
+      15,
+      505,
+      249
+    ],
+    "source_center": [
+      254.624,
+      129.54
+    ],
+    "size": [
+      505,
+      234
+    ],
+    "opaque_area": 54062
+  },
+  {
+    "name": "part_009",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_009.png",
+    "source_bbox": [
+      1182,
+      123,
+      1221,
+      176
+    ],
+    "source_center": [
+      1201.047,
+      153.524
+    ],
+    "size": [
+      39,
+      53
+    ],
+    "opaque_area": 817
+  },
+  {
+    "name": "part_010",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_010.png",
+    "source_bbox": [
+      1232,
+      123,
+      1270,
+      176
+    ],
+    "source_center": [
+      1250.662,
+      153.545
+    ],
+    "size": [
+      38,
+      53
+    ],
+    "opaque_area": 796
+  },
+  {
+    "name": "part_011",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_011.png",
+    "source_bbox": [
+      1282,
+      126,
+      1318,
+      176
+    ],
+    "source_center": [
+      1299.52,
+      154.493
+    ],
+    "size": [
+      36,
+      50
+    ],
+    "opaque_area": 696
+  },
+  {
+    "name": "part_012",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_012.png",
+    "source_bbox": [
+      1329,
+      126,
+      1364,
+      176
+    ],
+    "source_center": [
+      1346.006,
+      154.523
+    ],
+    "size": [
+      35,
+      50
+    ],
+    "opaque_area": 683
+  },
+  {
+    "name": "part_013",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_013.png",
+    "source_bbox": [
+      1376,
+      127,
+      1411,
+      176
+    ],
+    "source_center": [
+      1392.764,
+      154.877
+    ],
+    "size": [
+      35,
+      49
+    ],
+    "opaque_area": 648
+  },
+  {
+    "name": "part_014",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_014.png",
+    "source_bbox": [
+      1422,
+      130,
+      1455,
+      176
+    ],
+    "source_center": [
+      1437.677,
+      155.525
+    ],
+    "size": [
+      33,
+      46
+    ],
+    "opaque_area": 589
+  },
+  {
+    "name": "part_015",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_015.png",
+    "source_bbox": [
+      1465,
+      130,
+      1498,
+      175
+    ],
+    "source_center": [
+      1480.632,
+      155.897
+    ],
+    "size": [
+      33,
+      45
+    ],
+    "opaque_area": 551
+  },
+  {
+    "name": "part_016",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_016.png",
+    "source_bbox": [
+      837,
+      60,
+      1169,
+      249
+    ],
+    "source_center": [
+      1003.608,
+      168.221
+    ],
+    "size": [
+      332,
+      189
+    ],
+    "opaque_area": 17294
+  },
+  {
+    "name": "part_017",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_017.png",
+    "source_bbox": [
+      1178,
+      222,
+      1236,
+      276
+    ],
+    "source_center": [
+      1206.886,
+      249.087
+    ],
+    "size": [
+      58,
+      54
+    ],
+    "opaque_area": 1721
+  },
+  {
+    "name": "part_018",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_018.png",
+    "source_bbox": [
+      1248,
+      216,
+      1308,
+      269
+    ],
+    "source_center": [
+      1277.742,
+      242.533
+    ],
+    "size": [
+      60,
+      53
+    ],
+    "opaque_area": 1828
+  },
+  {
+    "name": "part_019",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_019.png",
+    "source_bbox": [
+      1321,
+      216,
+      1370,
+      262
+    ],
+    "source_center": [
+      1344.803,
+      237.892
+    ],
+    "size": [
+      49,
+      46
+    ],
+    "opaque_area": 1121
+  },
+  {
+    "name": "part_020",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_020.png",
+    "source_bbox": [
+      1386,
+      229,
+      1422,
+      265
+    ],
+    "source_center": [
+      1403.722,
+      246.793
+    ],
+    "size": [
+      36,
+      36
+    ],
+    "opaque_area": 618
+  },
+  {
+    "name": "part_021",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_021.png",
+    "source_bbox": [
+      1436,
+      224,
+      1494,
+      277
+    ],
+    "source_center": [
+      1464.349,
+      249.963
+    ],
+    "size": [
+      58,
+      53
+    ],
+    "opaque_area": 1743
+  },
+  {
+    "name": "part_022",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_022.png",
+    "source_bbox": [
+      1125,
+      270,
+      1164,
+      306
+    ],
+    "source_center": [
+      1144.029,
+      287.322
+    ],
+    "size": [
+      39,
+      36
+    ],
+    "opaque_area": 662
+  },
+  {
+    "name": "part_023",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_023.png",
+    "source_bbox": [
+      1292,
+      275,
+      1340,
+      319
+    ],
+    "source_center": [
+      1315.42,
+      296.881
+    ],
+    "size": [
+      48,
+      44
+    ],
+    "opaque_area": 1129
+  },
+  {
+    "name": "part_024",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_024.png",
+    "source_bbox": [
+      1360,
+      268,
+      1395,
+      300
+    ],
+    "source_center": [
+      1377.215,
+      283.612
+    ],
+    "size": [
+      35,
+      32
+    ],
+    "opaque_area": 521
+  },
+  {
+    "name": "part_025",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_025.png",
+    "source_bbox": [
+      1460,
+      278,
+      1498,
+      312
+    ],
+    "source_center": [
+      1478.432,
+      294.214
+    ],
+    "size": [
+      38,
+      34
+    ],
+    "opaque_area": 593
+  },
+  {
+    "name": "part_026",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_026.png",
+    "source_bbox": [
+      502,
+      249,
+      678,
+      446
+    ],
+    "source_center": [
+      590.803,
+      342.319
+    ],
+    "size": [
+      176,
+      197
+    ],
+    "opaque_area": 24814
+  },
+  {
+    "name": "part_027",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_027.png",
+    "source_bbox": [
+      784,
+      295,
+      931,
+      425
+    ],
+    "source_center": [
+      857.244,
+      359.428
+    ],
+    "size": [
+      147,
+      130
+    ],
+    "opaque_area": 13750
+  },
+  {
+    "name": "part_028",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_028.png",
+    "source_bbox": [
+      1123,
+      304,
+      1190,
+      365
+    ],
+    "source_center": [
+      1156.268,
+      334.811
+    ],
+    "size": [
+      67,
+      61
+    ],
+    "opaque_area": 2393
+  },
+  {
+    "name": "part_029",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_029.png",
+    "source_bbox": [
+      1213,
+      286,
+      1268,
+      341
+    ],
+    "source_center": [
+      1239.932,
+      313.598
+    ],
+    "size": [
+      55,
+      55
+    ],
+    "opaque_area": 1641
+  },
+  {
+    "name": "part_030",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_030.png",
+    "source_bbox": [
+      1283,
+      330,
+      1318,
+      364
+    ],
+    "source_center": [
+      1299.963,
+      346.417
+    ],
+    "size": [
+      35,
+      34
+    ],
+    "opaque_area": 535
+  },
+  {
+    "name": "part_031",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_031.png",
+    "source_bbox": [
+      1353,
+      335,
+      1383,
+      364
+    ],
+    "source_center": [
+      1367.585,
+      349.066
+    ],
+    "size": [
+      30,
+      29
+    ],
+    "opaque_area": 376
+  },
+  {
+    "name": "part_032",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_032.png",
+    "source_bbox": [
+      1396,
+      292,
+      1457,
+      348
+    ],
+    "source_center": [
+      1426.23,
+      319.927
+    ],
+    "size": [
+      61,
+      56
+    ],
+    "opaque_area": 1950
+  },
+  {
+    "name": "part_033",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_033.png",
+    "source_bbox": [
+      1458,
+      325,
+      1512,
+      376
+    ],
+    "source_center": [
+      1484.614,
+      349.845
+    ],
+    "size": [
+      54,
+      51
+    ],
+    "opaque_area": 1475
+  },
+  {
+    "name": "part_034",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_034.png",
+    "source_bbox": [
+      1191,
+      349,
+      1229,
+      385
+    ],
+    "source_center": [
+      1209.568,
+      366.422
+    ],
+    "size": [
+      38,
+      36
+    ],
+    "opaque_area": 632
+  },
+  {
+    "name": "part_035",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_035.png",
+    "source_bbox": [
+      1256,
+      365,
+      1284,
+      392
+    ],
+    "source_center": [
+      1269.556,
+      377.844
+    ],
+    "size": [
+      28,
+      27
+    ],
+    "opaque_area": 295
+  },
+  {
+    "name": "part_036",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_036.png",
+    "source_bbox": [
+      1324,
+      363,
+      1352,
+      391
+    ],
+    "source_center": [
+      1337.589,
+      376.492
+    ],
+    "size": [
+      28,
+      28
+    ],
+    "opaque_area": 297
+  },
+  {
+    "name": "part_037",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_037.png",
+    "source_bbox": [
+      1387,
+      359,
+      1429,
+      393
+    ],
+    "source_center": [
+      1407.486,
+      376.039
+    ],
+    "size": [
+      42,
+      34
+    ],
+    "opaque_area": 675
+  },
+  {
+    "name": "part_038",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_038.png",
+    "source_bbox": [
+      83,
+      228,
+      410,
+      700
+    ],
+    "source_center": [
+      246.424,
+      472.754
+    ],
+    "size": [
+      327,
+      472
+    ],
+    "opaque_area": 110231
+  },
+  {
+    "name": "part_039",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_039.png",
+    "source_bbox": [
+      1149,
+      426,
+      1268,
+      558
+    ],
+    "source_center": [
+      1208.36,
+      490.937
+    ],
+    "size": [
+      119,
+      132
+    ],
+    "opaque_area": 10929
+  },
+  {
+    "name": "part_040",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_040.png",
+    "source_bbox": [
+      1295,
+      438,
+      1395,
+      555
+    ],
+    "source_center": [
+      1344.856,
+      495.377
+    ],
+    "size": [
+      100,
+      117
+    ],
+    "opaque_area": 7998
+  },
+  {
+    "name": "part_041",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_041.png",
+    "source_bbox": [
+      1414,
+      446,
+      1504,
+      551
+    ],
+    "source_center": [
+      1459.106,
+      497.717
+    ],
+    "size": [
+      90,
+      105
+    ],
+    "opaque_area": 6519
+  },
+  {
+    "name": "part_042",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_042.png",
+    "source_bbox": [
+      425,
+      478,
+      588,
+      689
+    ],
+    "source_center": [
+      504.727,
+      577.876
+    ],
+    "size": [
+      163,
+      211
+    ],
+    "opaque_area": 14694
+  },
+  {
+    "name": "part_043",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_043.png",
+    "source_bbox": [
+      605,
+      500,
+      746,
+      664
+    ],
+    "source_center": [
+      674.388,
+      579.084
+    ],
+    "size": [
+      141,
+      164
+    ],
+    "opaque_area": 9986
+  },
+  {
+    "name": "part_044",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_044.png",
+    "source_bbox": [
+      796,
+      476,
+      939,
+      703
+    ],
+    "source_center": [
+      870.231,
+      582.333
+    ],
+    "size": [
+      143,
+      227
+    ],
+    "opaque_area": 14990
+  },
+  {
+    "name": "part_045",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_045.png",
+    "source_bbox": [
+      981,
+      492,
+      1138,
+      703
+    ],
+    "source_center": [
+      1058.291,
+      596.036
+    ],
+    "size": [
+      157,
+      211
+    ],
+    "opaque_area": 15368
+  },
+  {
+    "name": "part_046",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_046.png",
+    "source_bbox": [
+      1172,
+      590,
+      1269,
+      707
+    ],
+    "source_center": [
+      1220.282,
+      647.309
+    ],
+    "size": [
+      97,
+      117
+    ],
+    "opaque_area": 7830
+  },
+  {
+    "name": "part_047",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_047.png",
+    "source_bbox": [
+      1302,
+      598,
+      1388,
+      702
+    ],
+    "source_center": [
+      1344.889,
+      649.061
+    ],
+    "size": [
+      86,
+      104
+    ],
+    "opaque_area": 6126
+  },
+  {
+    "name": "part_048",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_048.png",
+    "source_bbox": [
+      1418,
+      605,
+      1498,
+      699
+    ],
+    "source_center": [
+      1458.074,
+      650.978
+    ],
+    "size": [
+      80,
+      94
+    ],
+    "opaque_area": 5068
+  },
+  {
+    "name": "part_049",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_049.png",
+    "source_bbox": [
+      972,
+      715,
+      1016,
+      803
+    ],
+    "source_center": [
+      993.362,
+      753.529
+    ],
+    "size": [
+      44,
+      88
+    ],
+    "opaque_area": 1950
+  },
+  {
+    "name": "part_050",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_050.png",
+    "source_bbox": [
+      1022,
+      727,
+      1060,
+      799
+    ],
+    "source_center": [
+      1040.868,
+      758.755
+    ],
+    "size": [
+      38,
+      72
+    ],
+    "opaque_area": 1356
+  },
+  {
+    "name": "part_051",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_051.png",
+    "source_bbox": [
+      1071,
+      727,
+      1111,
+      799
+    ],
+    "source_center": [
+      1089.776,
+      758.651
+    ],
+    "size": [
+      40,
+      72
+    ],
+    "opaque_area": 1433
+  },
+  {
+    "name": "part_052",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_052.png",
+    "source_bbox": [
+      1118,
+      724,
+      1158,
+      799
+    ],
+    "source_center": [
+      1137.104,
+      757.629
+    ],
+    "size": [
+      40,
+      75
+    ],
+    "opaque_area": 1476
+  },
+  {
+    "name": "part_053",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_053.png",
+    "source_bbox": [
+      358,
+      712,
+      503,
+      934
+    ],
+    "source_center": [
+      427.609,
+      822.765
+    ],
+    "size": [
+      145,
+      222
+    ],
+    "opaque_area": 22105
+  },
+  {
+    "name": "part_054",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_054.png",
+    "source_bbox": [
+      562,
+      712,
+      715,
+      940
+    ],
+    "source_center": [
+      641.762,
+      825.258
+    ],
+    "size": [
+      153,
+      228
+    ],
+    "opaque_area": 22842
+  },
+  {
+    "name": "part_055",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_055.png",
+    "source_bbox": [
+      1220,
+      759,
+      1287,
+      842
+    ],
+    "source_center": [
+      1253.385,
+      800.131
+    ],
+    "size": [
+      67,
+      83
+    ],
+    "opaque_area": 3655
+  },
+  {
+    "name": "part_056",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_056.png",
+    "source_bbox": [
+      1318,
+      761,
+      1383,
+      841
+    ],
+    "source_center": [
+      1350.653,
+      800.763
+    ],
+    "size": [
+      65,
+      80
+    ],
+    "opaque_area": 3330
+  },
+  {
+    "name": "part_057",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_057.png",
+    "source_bbox": [
+      1416,
+      766,
+      1480,
+      841
+    ],
+    "source_center": [
+      1447.734,
+      802.854
+    ],
+    "size": [
+      64,
+      75
+    ],
+    "opaque_area": 3074
+  },
+  {
+    "name": "part_058",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_058.png",
+    "source_bbox": [
+      749,
+      823,
+      936,
+      989
+    ],
+    "source_center": [
+      853.632,
+      907.865
+    ],
+    "size": [
+      187,
+      166
+    ],
+    "opaque_area": 15577
+  },
+  {
+    "name": "part_059",
+    "path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_059.png",
+    "source_bbox": [
+      983,
+      828,
+      1150,
+      1003
+    ],
+    "source_center": [
+      1076.249,
+      916.849
+    ],
+    "size": [
+      167,
+      175
+    ],
+    "opaque_area": 16705
+  }
+]

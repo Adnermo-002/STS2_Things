@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "source": "parts_sheet_candidate_01_alpha.png",
+  "component_count": 26,
+  "selection": "connected components sorted by top then left; semantic names manually verified",
+  "bind_contract": "Visible bind pixels must come from master_candidate_01_alpha.png; these pieces fill hidden overlap only.",
+  "parts": [
+    {
+      "index": 0,
+      "semantic": "hooded_head",
+      "file": "donor_parts/00_hooded_head.png",
+      "sheet_bbox_xywh": [
+        53,
+        38,
+        208,
+        231
+      ],
+      "crop_origin_xy": [
+        41,
+        26
+      ],
+      "alpha_area": 34184,
+      "centroid_xy": [
+        157.784,
+        150.208
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 1,
+      "semantic": "cape_upper",
+      "file": "donor_parts/01_cape_upper.png",
+      "sheet_bbox_xywh": [
+        528,
+        49,
+        236,
+        239
+      ],
+      "crop_origin_xy": [
+        516,
+        37
+      ],
+      "alpha_area": 33909,
+      "centroid_xy": [
+        648.182,
+        167.31
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 2,
+      "semantic": "cape_mid",
+      "file": "donor_parts/02_cape_mid.png",
+      "sheet_bbox_xywh": [
+        791,
+        56,
+        214,
+        256
+      ],
+      "crop_origin_xy": [
+        779,
+        44
+      ],
+      "alpha_area": 39570,
+      "centroid_xy": [
+        886.735,
+        182.614
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 3,
+      "semantic": "cape_tail",
+      "file": "donor_parts/03_cape_tail.png",
+      "sheet_bbox_xywh": [
+        1019,
+        61,
+        199,
+        280
+      ],
+      "crop_origin_xy": [
+        1007,
+        49
+      ],
+      "alpha_area": 29295,
+      "centroid_xy": [
+        1102.893,
+        218.646
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 4,
+      "semantic": "scarf_front",
+      "file": "donor_parts/04_scarf_front.png",
+      "sheet_bbox_xywh": [
+        293,
+        87,
+        192,
+        173
+      ],
+      "crop_origin_xy": [
+        281,
+        75
+      ],
+      "alpha_area": 22055,
+      "centroid_xy": [
+        388.592,
+        169.099
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 5,
+      "semantic": "torso_core",
+      "file": "donor_parts/05_torso_core.png",
+      "sheet_bbox_xywh": [
+        57,
+        313,
+        230,
+        257
+      ],
+      "crop_origin_xy": [
+        45,
+        301
+      ],
+      "alpha_area": 44923,
+      "centroid_xy": [
+        174.349,
+        445.508
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 6,
+      "semantic": "loot_sack",
+      "file": "donor_parts/06_loot_sack.png",
+      "sheet_bbox_xywh": [
+        771,
+        338,
+        174,
+        245
+      ],
+      "crop_origin_xy": [
+        759,
+        326
+      ],
+      "alpha_area": 28680,
+      "centroid_xy": [
+        853.195,
+        479.903
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 7,
+      "semantic": "pelvis_waist_cloth",
+      "file": "donor_parts/07_pelvis_waist_cloth.png",
+      "sheet_bbox_xywh": [
+        328,
+        417,
+        193,
+        137
+      ],
+      "crop_origin_xy": [
+        316,
+        405
+      ],
+      "alpha_area": 21508,
+      "centroid_xy": [
+        421.476,
+        487.1
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 8,
+      "semantic": "sack_knot",
+      "file": "donor_parts/08_sack_knot.png",
+      "sheet_bbox_xywh": [
+        975,
+        422,
+        89,
+        80
+      ],
+      "crop_origin_xy": [
+        963,
+        410
+      ],
+      "alpha_area": 4162,
+      "centroid_xy": [
+        1020.625,
+        459.33
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 9,
+      "semantic": "sack_strap_free",
+      "file": "donor_parts/09_sack_strap_free.png",
+      "sheet_bbox_xywh": [
+        1077,
+        432,
+        126,
+        155
+      ],
+      "crop_origin_xy": [
+        1065,
+        420
+      ],
+      "alpha_area": 6399,
+      "centroid_xy": [
+        1122.897,
+        496.31
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 10,
+      "semantic": "belt_and_pouch",
+      "file": "donor_parts/10_belt_and_pouch.png",
+      "sheet_bbox_xywh": [
+        539,
+        469,
+        214,
+        106
+      ],
+      "crop_origin_xy": [
+        527,
+        457
+      ],
+      "alpha_area": 14753,
+      "centroid_xy": [
+        656.52,
+        512.694
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 11,
+      "semantic": "near_upper_arm",
+      "file": "donor_parts/11_near_upper_arm.png",
+      "sheet_bbox_xywh": [
+        90,
+        602,
+        130,
+        216
+      ],
+      "crop_origin_xy": [
+        78,
+        590
+      ],
+      "alpha_area": 20616,
+      "centroid_xy": [
+        157.13,
+        707.651
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 12,
+      "semantic": "far_upper_arm",
+      "file": "donor_parts/12_far_upper_arm.png",
+      "sheet_bbox_xywh": [
+        651,
+        615,
+        128,
+        195
+      ],
+      "crop_origin_xy": [
+        639,
+        603
+      ],
+      "alpha_area": 17015,
+      "centroid_xy": [
+        714.623,
+        710.65
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 13,
+      "semantic": "far_hand_strap_grip",
+      "file": "donor_parts/13_far_hand_strap_grip.png",
+      "sheet_bbox_xywh": [
+        1013,
+        627,
+        125,
+        188
+      ],
+      "crop_origin_xy": [
+        1001,
+        615
+      ],
+      "alpha_area": 13353,
+      "centroid_xy": [
+        1071.214,
+        729.438
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 14,
+      "semantic": "far_forearm",
+      "file": "donor_parts/14_far_forearm.png",
+      "sheet_bbox_xywh": [
+        810,
+        642,
+        125,
+        166
+      ],
+      "crop_origin_xy": [
+        798,
+        630
+      ],
+      "alpha_area": 11681,
+      "centroid_xy": [
+        872.748,
+        726.919
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 15,
+      "semantic": "near_forearm",
+      "file": "donor_parts/15_near_forearm.png",
+      "sheet_bbox_xywh": [
+        278,
+        645,
+        139,
+        142
+      ],
+      "crop_origin_xy": [
+        266,
+        633
+      ],
+      "alpha_area": 10922,
+      "centroid_xy": [
+        346.779,
+        717.234
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 16,
+      "semantic": "near_dagger_hand",
+      "file": "donor_parts/16_near_dagger_hand.png",
+      "sheet_bbox_xywh": [
+        479,
+        674,
+        111,
+        114
+      ],
+      "crop_origin_xy": [
+        467,
+        662
+      ],
+      "alpha_area": 8941,
+      "centroid_xy": [
+        531.356,
+        738.208
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 17,
+      "semantic": "near_shoulder_plate",
+      "file": "donor_parts/17_near_shoulder_plate.png",
+      "sheet_bbox_xywh": [
+        1038,
+        836,
+        117,
+        90
+      ],
+      "crop_origin_xy": [
+        1026,
+        824
+      ],
+      "alpha_area": 6743,
+      "centroid_xy": [
+        1093.024,
+        880.428
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 18,
+      "semantic": "far_shoulder_plate",
+      "file": "donor_parts/18_far_shoulder_plate.png",
+      "sheet_bbox_xywh": [
+        860,
+        837,
+        95,
+        89
+      ],
+      "crop_origin_xy": [
+        848,
+        825
+      ],
+      "alpha_area": 5623,
+      "centroid_xy": [
+        907.313,
+        880.938
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 19,
+      "semantic": "dagger",
+      "file": "donor_parts/19_dagger.png",
+      "sheet_bbox_xywh": [
+        82,
+        838,
+        266,
+        85
+      ],
+      "crop_origin_xy": [
+        70,
+        826
+      ],
+      "alpha_area": 11098,
+      "centroid_xy": [
+        218.428,
+        883.539
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 20,
+      "semantic": "far_thigh",
+      "file": "donor_parts/20_far_thigh.png",
+      "sheet_bbox_xywh": [
+        671,
+        951,
+        151,
+        222
+      ],
+      "crop_origin_xy": [
+        659,
+        939
+      ],
+      "alpha_area": 20623,
+      "centroid_xy": [
+        739.0,
+        1054.866
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 21,
+      "semantic": "near_thigh",
+      "file": "donor_parts/21_near_thigh.png",
+      "sheet_bbox_xywh": [
+        75,
+        954,
+        184,
+        216
+      ],
+      "crop_origin_xy": [
+        63,
+        942
+      ],
+      "alpha_area": 23511,
+      "centroid_xy": [
+        157.772,
+        1054.394
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 22,
+      "semantic": "far_shin",
+      "file": "donor_parts/22_far_shin.png",
+      "sheet_bbox_xywh": [
+        870,
+        961,
+        106,
+        204
+      ],
+      "crop_origin_xy": [
+        858,
+        949
+      ],
+      "alpha_area": 13724,
+      "centroid_xy": [
+        921.565,
+        1057.422
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 23,
+      "semantic": "near_shin",
+      "file": "donor_parts/23_near_shin.png",
+      "sheet_bbox_xywh": [
+        310,
+        979,
+        103,
+        192
+      ],
+      "crop_origin_xy": [
+        298,
+        967
+      ],
+      "alpha_area": 13646,
+      "centroid_xy": [
+        360.786,
+        1070.1
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 24,
+      "semantic": "far_boot",
+      "file": "donor_parts/24_far_boot.png",
+      "sheet_bbox_xywh": [
+        1013,
+        1021,
+        141,
+        165
+      ],
+      "crop_origin_xy": [
+        1001,
+        1009
+      ],
+      "alpha_area": 15756,
+      "centroid_xy": [
+        1092.175,
+        1106.836
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    },
+    {
+      "index": 25,
+      "semantic": "near_boot",
+      "file": "donor_parts/25_near_boot.png",
+      "sheet_bbox_xywh": [
+        476,
+        1022,
+        140,
+        168
+      ],
+      "crop_origin_xy": [
+        464,
+        1010
+      ],
+      "alpha_area": 15220,
+      "centroid_xy": [
+        553.952,
+        1110.96
+      ],
+      "usage": "hidden_overlap_and_style_donor_only"
+    }
+  ]
+}

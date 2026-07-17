@@ -7,6 +7,7 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Audio;
@@ -14,29 +15,35 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using STS2_Things.Audio;
-using Array = Godot.Collections.Array;
 
 namespace STS2_Things.Hooks;
 
 public static class SfxHooks
 {
-    // 使用 monster.Id.Entry 字符串作为 key，避免 GetHashCode 冲突；
-    // 在战斗结束时清空，防止长时间游戏内存无限增长
-    private static readonly HashSet<string> _deathSfxPlayed = new();
+    private const float OriginFogmogHurtChance = 0.35f;
 
     /// <summary>
-    /// 战斗结束时清理死亡音效记录，防止内存无限增长。
-    /// 由 MonsterRegistrar.OnCombatRoomExit 调用。
+    ///     兼容旧的战斗退出清理调用。死亡音效不再使用跨实例的全局去重状态。
     /// </summary>
     public static void ResetDeathSfx()
     {
-        lock (_deathSfxPlayed)
-        {
-            _deathSfxPlayed.Clear();
-        }
     }
 
-    private static string MapToNativePath(string fmodPath)
+    private static bool CanPlayCombatAudio()
+    {
+        return !NonInteractiveMode.IsActive && !CombatManager.Instance.IsEnding;
+    }
+
+    private static bool CanPlayDeathAudio()
+    {
+        // IsEnding becomes true as soon as no primary enemy remains. Native
+        // Spine death SFX still play in that state, so the Sprite2D fallback must
+        // allow the normal death window but reject bestiary/previews and rooms
+        // that have already completed combat teardown.
+        return !NonInteractiveMode.IsActive && CombatManager.Instance.IsInProgress;
+    }
+
+    private static string? MapToNativePath(string fmodPath)
     {
         var segments = fmodPath.Split('/');
         if (segments.Length < 2) return null;
@@ -57,7 +64,8 @@ public static class SfxHooks
         var files = ListAudioFiles(resDir);
         if (files.Count == 0)
         {
-            var modRoot = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var modRoot = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+                ?? AppContext.BaseDirectory;
             var absDir = Path.Combine(modRoot, "sfx", monsterId);
             if (Directory.Exists(absDir))
                 foreach (var filePath in Directory.GetFiles(absDir))
@@ -105,8 +113,12 @@ public static class SfxHooks
             foreach (var e in entries)
                 if (sfx.IndexOf(e, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
+                    // SfxCmd 的 volume 是线性增益；Godot AudioStreamPlayer 使用 dB。
+                    // 0（以及非法/负值）表示静音，不创建无意义的播放器。
+                    if (!CanPlayCombatAudio() || !float.IsFinite(volume) || volume <= 0f) return false;
                     var nativePath = MapToNativePath(sfx);
-                    if (nativePath != null) NativeSfxPlayer.Play(nativePath);
+                    if (nativePath != null)
+                        NativeSfxPlayer.Play(nativePath, volumeDb: Mathf.LinearToDb(volume));
                     return false;
                 }
 
@@ -123,8 +135,15 @@ public static class SfxHooks
             if (monster == null) return true;
             var entry = monster.Id.Entry.ToLowerInvariant();
             if (!CustomSfxMonsters.Entries.Contains(entry)) return true;
+            if (!CanPlayCombatAudio()) return false;
+
+            // Keep the normal material impact on non-vocal hits. The custom
+            // Origin Fogmog hurt variant replaces it only on a local 35% roll.
+            if (entry == "origin_fogmog" && !NativeSfxPlayer.RollChance(OriginFogmogHurtChance))
+                return true;
+
             var nativePath = MapToNativePathForMonster(entry, "hurt");
-            if (nativePath != null) NativeSfxPlayer.Play(nativePath);
+            if (nativePath != null) NativeSfxPlayer.Play(nativePath, volumeDb: 0f);
             return false;
         }
     }
@@ -138,8 +157,10 @@ public static class SfxHooks
             if (monster == null) return true;
             var entry = monster.Id.Entry.ToLowerInvariant();
             if (!CustomSfxMonsters.Entries.Contains(entry)) return true;
+            if (!CanPlayDeathAudio()) return false;
             var nativePath = MapToNativePathForMonster(entry, "die");
-            if (nativePath != null) NativeSfxPlayer.Play(nativePath);
+            if (nativePath != null)
+                NativeSfxPlayer.Play(nativePath, volumeDb: 0f, allowCombatEnding: true);
             return false;
         }
     }
@@ -154,85 +175,37 @@ public static class SfxHooks
         }
     }
 
-    [HarmonyPatch(typeof(NRunMusicController), nameof(NRunMusicController.PlayCustomMusic))]
-    public static class PlayCustomMusicPatch
-    {
-        private static readonly FieldInfo _proxyField = AccessTools.Field(typeof(NRunMusicController), "_proxy");
-        private static readonly HashSet<string> _loadedBankActs = new();
-
-        [HarmonyPrefix]
-        public static bool Prefix(NRunMusicController __instance, string customMusic)
-        {
-            if (customMusic == null) return true;
-
-            // 非战斗房间不接管背景音乐（例如涅奥房间），交给游戏原生处理
-            var currentRoom = RunManager.Instance.DebugOnlyGetState()?.CurrentRoom;
-            if (currentRoom == null || (currentRoom.RoomType != RoomType.Monster
-                && currentRoom.RoomType != RoomType.Elite
-                && currentRoom.RoomType != RoomType.Boss))
-                return true;
-
-            // res:// → 原生播放
-            if (customMusic.StartsWith("res://", StringComparison.OrdinalIgnoreCase))
-            {
-                NativeSfxPlayer.PlayMusic(customMusic);
-                return false;
-            }
-
-            // event:/music/ → 预加载对应 act bank（每个 act 只加载一次），然后交给 FMOD
-            if (customMusic.StartsWith("event:/music/", StringComparison.OrdinalIgnoreCase))
-            {
-                var actKey = customMusic.Contains("/act1_b1") || customMusic.Contains("/act1_b_") ? "act1_b"
-                    : customMusic.Contains("/act1") ? "act1"
-                    : customMusic.Contains("/act2") ? "act2"
-                    : customMusic.Contains("/act3") ? "act3"
-                    : null;
-
-                if (actKey != null && _loadedBankActs.Add(actKey))
-                {
-                    var proxy = _proxyField?.GetValue(__instance) as Node;
-                    if (proxy != null)
-                    {
-                        var bankPaths = actKey == "act1_b"
-                            ? new[] { "res://banks/desktop/act1_b1.bank" }
-                            : actKey == "act1"
-                                ? new[] { "res://banks/desktop/act1_a1.bank", "res://banks/desktop/act1_a2.bank" }
-                                : actKey == "act2"
-                                    ? new[] { "res://banks/desktop/act2_a1.bank", "res://banks/desktop/act2_a2.bank" }
-                                    : new[] { "res://banks/desktop/act3_a1.bank", "res://banks/desktop/act3_a2.bank" };
-                        var arr = new Array();
-                        foreach (var bp in bankPaths) arr.Add(bp);
-                        proxy.Call("load_act_banks", arr);
-                    }
-                }
-            }
-
-            return true; // FMOD 处理
-        }
-    }
-
     [HarmonyPatch(typeof(NCreature), nameof(NCreature.StartDeathAnim))]
     public static class StartDeathAnimPatch
     {
-        [HarmonyPostfix]
-        public static void Postfix(NCreature __instance, bool shouldRemove)
+        [HarmonyPrefix]
+        public static void Prefix(NCreature __instance, out bool __state)
         {
+            __state = false;
+            var monster = __instance.Entity?.Monster;
+            if (monster == null || !monster.HasDeathSfx || __instance.HasSpineAnimation) return;
+
+            // 原方法在死亡动画仍运行时会提前返回；此时不能重复播放兜底音效。
+            var deathAnimationTask = __instance.DeathAnimationTask;
+            if (deathAnimationTask != null && !deathAnimationTask.IsCompleted) return;
+
+            // The vanilla method only calls SfxCmd.PlayDeath when it created a Spine
+            // animator. Our native Godot Sprite2D scenes intentionally have no Spine
+            // controller, so provide the same lifecycle call for this mod's models only.
+            // SfxCmdPlayDeathPatch below still redirects monsters with bundled audio.
+            __state = monster.GetType().Assembly == typeof(SfxHooks).Assembly && CanPlayDeathAudio();
+        }
+
+        [HarmonyPostfix]
+        public static void Postfix(NCreature __instance, bool __state)
+        {
+            // 有 Spine 时，原方法会调用 SfxCmd.PlayDeath，由上面的 PlayDeath patch
+            // 完成唯一一次替换；这里只为原方法不会播放死亡音效的无 Spine 怪物兜底。
+            if (!__state || __instance.HasSpineAnimation || !CanPlayDeathAudio()) return;
             var entity = __instance.Entity;
             var monster = entity?.Monster;
-            if (monster == null) return;
-            var entry = monster.Id.Entry.ToLowerInvariant();
-            if (!CustomSfxMonsters.Entries.Contains(entry)) return;
-            // 使用 entry 字符串作为 key，避免 GetHashCode 冲突
-            lock (_deathSfxPlayed)
-            {
-                if (!_deathSfxPlayed.Add(entry)) return;
-            }
-
-            if (monster.HasDeathSfx)
-            {
-                var nativePath = MapToNativePathForMonster(entry, "die");
-                if (nativePath != null) NativeSfxPlayer.Play(nativePath);
-            }
+            if (monster == null || !monster.HasDeathSfx) return;
+            SfxCmd.PlayDeath(monster);
         }
     }
 }

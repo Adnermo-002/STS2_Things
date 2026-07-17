@@ -1,0 +1,14 @@
+Use case: style-transfer
+Asset type: Slay the Spire 2 combat-monster master sprite, later used for 2D cutout rigging
+Input images:
+- Image 1 is the existing Thief Raider identity reference: preserve the hooded faceless thief, two yellow eyes, plum scarf/cape, charcoal clothes, brown boots/gloves, small silver armor plates, short dagger, and loot sack.
+- Images 2-5 are shipped Ruby Raider family style and proportion references: match their simplified hand-painted shapes, smooth low-frequency shading, restrained material detail, and stylized anatomy.
+Primary request: Redesign the same Thief Raider so it unmistakably belongs to the Ruby Raider family rather than looking like realistic fantasy concept art.
+Pose: compact asymmetrical combat crouch in a clear left-facing three-quarter side view, head and chest turned toward screen-left, dagger hand extended low toward screen-left, sack shoulder trailing to screen-right. The pelvis, knees, and both feet must also obey the same three-quarter left perspective; no front-facing stance.
+Proportions: stylized game-monster proportions: moderately oversized hood/head and hands, broad simple torso, short sturdy limbs, large readable boots; compact silhouette comparable to Crossbow/Axe Raider. Avoid realistic adult-human proportions and avoid chibi proportions.
+Style: smooth matte hand-painted 2D game sprite, broad soft color blocks, sparse brush texture, subdued highlights, readable at combat scale. Preserve the original muted color family; no global recolor.
+Silhouette: smaller hood than the current draft, compact sack close to the back, cape as 2-3 broad cloth masses, short practical dagger. Keep all limbs visibly separable for later rigging without making them look like detached tubes.
+Background: perfectly flat solid #00ff00 chroma-key background with no shadow, gradient, texture, floor, reflection, or lighting variation. Do not use #00ff00 in the character.
+Framing: one complete character only, generous padding, every part inside frame, no cropped cape, dagger, sack, hands, or feet.
+Constraints: identity-consistent, one coherent light source, one coherent perspective, smooth continuous surfaces, clean silhouette, no text, no labels, no watermark.
+Avoid: front view, symmetrical stance, realistic anatomy, polished high-detail concept art, faceted or polygonal surfaces, plastic 3D render, glossy metal, oversized spherical sack, giant hood, long neck, rapier, skirt-armored Assassin silhouette, disconnected joints, cylindrical tube limbs, extra weapons, extra limbs, duplicate parts, sprite sheet layout.

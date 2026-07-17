@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Rewards;
@@ -22,15 +23,23 @@ public sealed class ThiefRaiderPower : PowerModel
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new GoldVar(50)
+    ];
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new IHoverTip[] { HoverTipFactory.FromPower<WeakPower>() };
 
     public override Task BeforeDeath(Creature target)
     {
+        if (target != Owner)
+            return Task.CompletedTask;
+
         if (base.CombatState.RunState.CurrentRoom is CombatRoom combatRoom)
         {
             foreach (var player in CombatState.Players)
-                combatRoom.AddExtraReward(player, new GoldReward(50, player));
+                combatRoom.AddExtraReward(player, new GoldReward(DynamicVars.Gold.IntValue, player));
         }
         return Task.CompletedTask;
     }

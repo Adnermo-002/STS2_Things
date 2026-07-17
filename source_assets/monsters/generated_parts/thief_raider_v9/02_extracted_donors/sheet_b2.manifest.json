@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "source": "01_generated_sheets/sheet_b2_closed_corrections_alpha.png",
+  "component_count": 13,
+  "logical_part_count": 13,
+  "identity_source": "00_reference/current_master.png",
+  "status": "rejected_as_complete_sheet",
+  "summary": {
+    "donor_only": 13,
+    "rejected": 0
+  },
+  "parts": [
+    {
+      "index": 0,
+      "semantic": "near_upper_arm",
+      "file": "sheet_b2/00_near_upper_arm.png",
+      "source_bbox": [
+        56,
+        69,
+        201,
+        297
+      ],
+      "source_center": [
+        158.144669878537,
+        216.6169844608808
+      ],
+      "alpha_area": 29474,
+      "status": "donor_only_closed_joint_review",
+      "warnings": [
+        "B2 removed the hollow end; registration and extreme rotation remain gated"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 1,
+      "semantic": "near_forearm",
+      "file": "sheet_b2/01_near_forearm.png",
+      "source_bbox": [
+        311,
+        76,
+        157,
+        304
+      ],
+      "source_center": [
+        391.9249586652638,
+        226.71227265895084
+      ],
+      "alpha_area": 26612,
+      "status": "donor_only_closed_joint_review",
+      "warnings": [
+        "B2 removed the hollow cuff; current-master pixels remain the visible surface"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 2,
+      "semantic": "near_dagger_hand",
+      "file": "sheet_b2/02_near_dagger_hand.png",
+      "source_bbox": [
+        515,
+        160,
+        194,
+        173
+      ],
+      "source_center": [
+        611.9661125692621,
+        247.85511811023622
+      ],
+      "alpha_area": 17145,
+      "status": "donor_only_grip_registration_review",
+      "warnings": [
+        "open handle channel must be fitted to the exact master dagger grip"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 3,
+      "semantic": "far_upper_arm",
+      "file": "sheet_b2/03_far_upper_arm.png",
+      "source_bbox": [
+        800,
+        85,
+        217,
+        300
+      ],
+      "source_center": [
+        911.3254096399952,
+        231.2074213610812
+      ],
+      "alpha_area": 33444,
+      "status": "donor_only_closed_joint_review",
+      "warnings": [
+        "B2 removed the hollow end; registration and extreme rotation remain gated"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 4,
+      "semantic": "far_forearm",
+      "file": "sheet_b2/04_far_forearm.png",
+      "source_bbox": [
+        1060,
+        75,
+        210,
+        304
+      ],
+      "source_center": [
+        1166.768162275383,
+        226.4941388307059
+      ],
+      "alpha_area": 27213,
+      "status": "donor_only_closed_joint_review",
+      "warnings": [
+        "B2 removed the hollow cuff; current-master pixels remain the visible surface"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 5,
+      "semantic": "far_strap_hand",
+      "file": "sheet_b2/05_far_strap_hand.png",
+      "source_bbox": [
+        1305,
+        122,
+        182,
+        205
+      ],
+      "source_center": [
+        1397.613560454242,
+        226.83639501224673
+      ],
+      "alpha_area": 17964,
+      "status": "donor_only_grip_registration_review",
+      "warnings": [
+        "open strap channel must stay locked to strap_front under IK"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 6,
+      "semantic": "near_shin",
+      "file": "sheet_b2/06_near_shin.png",
+      "source_bbox": [
+        173,
+        460,
+        164,
+        241
+      ],
+      "source_center": [
+        248.57161987660817,
+        575.594863455928
+      ],
+      "alpha_area": 20909,
+      "status": "donor_only_joint_review",
+      "warnings": [
+        "hidden knee/ankle fill only"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 7,
+      "semantic": "near_thigh",
+      "file": "sheet_b2/07_near_thigh.png",
+      "source_bbox": [
+        393,
+        427,
+        251,
+        269
+      ],
+      "source_center": [
+        514.2779400187917,
+        552.9912897737373
+      ],
+      "alpha_area": 39379,
+      "status": "donor_only_joint_review",
+      "warnings": [
+        "hidden hip/knee volume only"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 8,
+      "semantic": "far_thigh",
+      "file": "sheet_b2/08_far_thigh.png",
+      "source_bbox": [
+        795,
+        420,
+        266,
+        276
+      ],
+      "source_center": [
+        927.7133926024532,
+        548.4720928021299
+      ],
+      "alpha_area": 42068,
+      "status": "donor_only_joint_review",
+      "warnings": [
+        "hidden hip/knee volume only"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 9,
+      "semantic": "far_shin",
+      "file": "sheet_b2/09_far_shin.png",
+      "source_bbox": [
+        1164,
+        460,
+        168,
+        237
+      ],
+      "source_center": [
+        1251.7668799590479,
+        573.4271307908881
+      ],
+      "alpha_area": 19535,
+      "status": "donor_only_joint_review",
+      "warnings": [
+        "hidden knee/ankle fill only"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 10,
+      "semantic": "near_boot",
+      "file": "sheet_b2/10_near_boot.png",
+      "source_bbox": [
+        131,
+        732,
+        212,
+        224
+      ],
+      "source_center": [
+        252.61036062492659,
+        855.0538000704804
+      ],
+      "alpha_area": 25539,
+      "status": "donor_only_closed_boot_review",
+      "warnings": [
+        "B2 closed the shaft; ankle nesting and silhouette remain gated"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 11,
+      "semantic": "dagger",
+      "file": "sheet_b2/11_dagger.png",
+      "source_bbox": [
+        542,
+        725,
+        353,
+        221
+      ],
+      "source_center": [
+        720.0668794227834,
+        839.601359789094
+      ],
+      "alpha_area": 21621,
+      "status": "donor_only_identity_review",
+      "warnings": [
+        "current-master blade remains the visible source"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    },
+    {
+      "index": 12,
+      "semantic": "far_boot",
+      "file": "sheet_b2/12_far_boot.png",
+      "source_bbox": [
+        1176,
+        731,
+        185,
+        228
+      ],
+      "source_center": [
+        1282.414983059355,
+        854.7275693311583
+      ],
+      "alpha_area": 23907,
+      "status": "donor_only_closed_boot_review",
+      "warnings": [
+        "B2 closed the shaft; ankle nesting and silhouette remain gated"
+      ],
+      "allowed_use": "hidden_overlap_donor_only"
+    }
+  ]
+}

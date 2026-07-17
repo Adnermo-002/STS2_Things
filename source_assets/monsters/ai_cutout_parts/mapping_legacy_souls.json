@@ -1,0 +1,1487 @@
+{
+  "schema_version": 1,
+  "coordinate_space": {
+    "origin": "top_left_of_original_monster_png",
+    "x": "right",
+    "y": "down",
+    "units": "source_pixels"
+  },
+  "selection_policy": "Only complete alpha-isolated image-generation components are referenced. The Legacy uses v2 organ/pink-vessel assets and first-sheet olive seaweed assets; Soul Roe uses clean v4 cytoplasm/nucleus/membrane-ring/vein layers with cyan-fringed rear_glow omitted; Soul Roes uses twelve complete circular cells and no original-image rectangle, polygon, or Voronoi fragment.",
+  "entries": [
+    {
+      "monster": "the_legacy",
+      "component": "part_033",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_033.png",
+      "semantic": "seaweed_tall_template",
+      "bone": "SeaweedTallTemplate",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        90,
+        390
+      ],
+      "suggested_center_source_xy": [
+        90,
+        300
+      ],
+      "rotation_deg": -8,
+      "scale_xy": [
+        0.72,
+        0.72
+      ],
+      "z": 2,
+      "instances": [
+        {
+          "semantic": "seaweed_left_edge",
+          "bone": "SeaweedLeftEdge",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            90,
+            390
+          ],
+          "center_source_xy": [
+            90,
+            300
+          ],
+          "rotation_deg": -8,
+          "scale_xy": [
+            0.72,
+            0.72
+          ]
+        },
+        {
+          "semantic": "seaweed_top_core",
+          "bone": "SeaweedTopCore",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            720,
+            220
+          ],
+          "center_source_xy": [
+            720,
+            150
+          ],
+          "rotation_deg": -5,
+          "scale_xy": [
+            0.54,
+            0.54
+          ]
+        },
+        {
+          "semantic": "seaweed_bottom_right",
+          "bone": "SeaweedBottomRight",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            1180,
+            650
+          ],
+          "center_source_xy": [
+            1180,
+            570
+          ],
+          "rotation_deg": 10,
+          "scale_xy": [
+            0.62,
+            0.62
+          ]
+        }
+      ],
+      "notes": "Complete olive three-prong seaweed from the first generated Legacy sheet. Each instance pivots at its buried base; keep these behind the organ cluster and sway only the upper third."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_035",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_035.png",
+      "semantic": "seaweed_fan_template",
+      "bone": "SeaweedFanTemplate",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        315,
+        238
+      ],
+      "suggested_center_source_xy": [
+        315,
+        160
+      ],
+      "rotation_deg": -2,
+      "scale_xy": [
+        0.6,
+        0.6
+      ],
+      "z": 2,
+      "instances": [
+        {
+          "semantic": "seaweed_top_left",
+          "bone": "SeaweedTopLeft",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            315,
+            238
+          ],
+          "center_source_xy": [
+            315,
+            160
+          ],
+          "rotation_deg": -2,
+          "scale_xy": [
+            0.6,
+            0.6
+          ]
+        },
+        {
+          "semantic": "seaweed_top_right",
+          "bone": "SeaweedTopRight",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            930,
+            243
+          ],
+          "center_source_xy": [
+            930,
+            165
+          ],
+          "rotation_deg": 8,
+          "scale_xy": [
+            0.6,
+            0.6
+          ]
+        },
+        {
+          "semantic": "seaweed_bottom_left",
+          "bone": "SeaweedBottomLeft",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            500,
+            685
+          ],
+          "center_source_xy": [
+            500,
+            630
+          ],
+          "rotation_deg": 4,
+          "scale_xy": [
+            0.54,
+            0.54
+          ]
+        }
+      ],
+      "notes": "Complete broad olive fan from the first generated Legacy sheet. Reuse provides perimeter density without rectangular fragments; its lower stem must remain visually pinned."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_036",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_036.png",
+      "semantic": "seaweed_slender_template",
+      "bone": "SeaweedSlenderTemplate",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        520,
+        230
+      ],
+      "suggested_center_source_xy": [
+        520,
+        165
+      ],
+      "rotation_deg": 5,
+      "scale_xy": [
+        0.64,
+        0.64
+      ],
+      "z": 2,
+      "instances": [
+        {
+          "semantic": "seaweed_top_mid",
+          "bone": "SeaweedTopMid",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            520,
+            230
+          ],
+          "center_source_xy": [
+            520,
+            165
+          ],
+          "rotation_deg": 5,
+          "scale_xy": [
+            0.64,
+            0.64
+          ]
+        },
+        {
+          "semantic": "seaweed_far_right",
+          "bone": "SeaweedFarRight",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            1135,
+            320
+          ],
+          "center_source_xy": [
+            1135,
+            250
+          ],
+          "rotation_deg": -5,
+          "scale_xy": [
+            0.68,
+            0.68
+          ]
+        }
+      ],
+      "notes": "Complete narrow olive seaweed. Its two silhouettes fill the upper gaps while remaining fully alpha-isolated and behind the vessels."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_037",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_037.png",
+      "semantic": "seaweed_wide_template",
+      "bone": "SeaweedWideTemplate",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        1280,
+        478
+      ],
+      "suggested_center_source_xy": [
+        1280,
+        400
+      ],
+      "rotation_deg": 8,
+      "scale_xy": [
+        0.56,
+        0.56
+      ],
+      "z": 2,
+      "instances": [
+        {
+          "semantic": "seaweed_right_edge",
+          "bone": "SeaweedRightEdge",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            1280,
+            478
+          ],
+          "center_source_xy": [
+            1280,
+            400
+          ],
+          "rotation_deg": 8,
+          "scale_xy": [
+            0.56,
+            0.56
+          ]
+        },
+        {
+          "semantic": "seaweed_bottom_mid",
+          "bone": "SeaweedBottomMid",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            800,
+            687
+          ],
+          "center_source_xy": [
+            800,
+            640
+          ],
+          "rotation_deg": -4,
+          "scale_xy": [
+            0.52,
+            0.52
+          ]
+        }
+      ],
+      "notes": "Complete wide olive fan from the first sheet. Both copies are perimeter underlays; the bottom copy may clip naturally at the original canvas baseline."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_034",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_034.png",
+      "semantic": "seaweed_low_template",
+      "bone": "SeaweedLowTemplate",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        1010,
+        680
+      ],
+      "suggested_center_source_xy": [
+        1010,
+        620
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.62,
+        0.62
+      ],
+      "z": 2,
+      "instances": [
+        {
+          "semantic": "seaweed_lower_right",
+          "bone": "SeaweedLowerRight",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            1010,
+            680
+          ],
+          "center_source_xy": [
+            1010,
+            620
+          ],
+          "rotation_deg": 0,
+          "scale_xy": [
+            0.62,
+            0.62
+          ]
+        },
+        {
+          "semantic": "seaweed_left_bottom",
+          "bone": "SeaweedLeftBottom",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            185,
+            645
+          ],
+          "center_source_xy": [
+            185,
+            590
+          ],
+          "rotation_deg": -6,
+          "scale_xy": [
+            0.6,
+            0.6
+          ]
+        }
+      ],
+      "notes": "Complete low olive bush used at the lower contour. Keep rigid at the base and do not scale through zero during the heartbeat."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_003",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_003.png",
+      "semantic": "purple_back_vessel_mass",
+      "bone": "TopPurple",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        790,
+        300
+      ],
+      "suggested_center_source_xy": [
+        850,
+        205
+      ],
+      "rotation_deg": 2,
+      "scale_xy": [
+        0.78,
+        0.78
+      ],
+      "z": 10,
+      "notes": "Large complete purple vessel mass from the v2 sheet. It is the rear organ silhouette; bury its lower trunk behind HeartCore so the branch reads as connected."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_001",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_001.png",
+      "semantic": "purple_side_vessel_template",
+      "bone": "PurpleSideTemplate",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        1000,
+        420
+      ],
+      "suggested_center_source_xy": [
+        1075,
+        395
+      ],
+      "rotation_deg": 10,
+      "scale_xy": [
+        0.74,
+        0.74
+      ],
+      "z": 11,
+      "instances": [
+        {
+          "semantic": "purple_right_vessels",
+          "bone": "RightPurpleTubes",
+          "parent_bone": "HeartAnchor",
+          "pivot_source_xy": [
+            1000,
+            420
+          ],
+          "center_source_xy": [
+            1075,
+            395
+          ],
+          "rotation_deg": 10,
+          "scale_xy": [
+            0.74,
+            0.74
+          ]
+        },
+        {
+          "semantic": "purple_lower_right_vessels",
+          "bone": "RightPurpleLower",
+          "parent_bone": "HeartAnchor",
+          "pivot_source_xy": [
+            1070,
+            520
+          ],
+          "center_source_xy": [
+            1125,
+            545
+          ],
+          "rotation_deg": 14,
+          "scale_xy": [
+            0.61,
+            0.61
+          ]
+        }
+      ],
+      "notes": "Complete four-mouth purple vessel is instanced twice. Hide each proximal trunk beneath the neighboring blue/heart mass; exposed tube mouths remain in front of seaweed."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_000",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_000.png",
+      "semantic": "upper_left_branched_organ",
+      "bone": "UpperLeftOrgan",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        520,
+        350
+      ],
+      "suggested_center_source_xy": [
+        395,
+        305
+      ],
+      "rotation_deg": 1,
+      "scale_xy": [
+        0.9,
+        0.9
+      ],
+      "z": 20,
+      "notes": "Complete cyan branched lobe with two tube mouths, painted vein, and barnacles. Keep the lobe rigid; pulse it with small scale changes through HeartAnchor."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_004",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_004.png",
+      "semantic": "left_lobe",
+      "bone": "LeftLobe",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        440,
+        430
+      ],
+      "suggested_center_source_xy": [
+        330,
+        425
+      ],
+      "rotation_deg": -3,
+      "scale_xy": [
+        0.9,
+        0.94
+      ],
+      "z": 21,
+      "notes": "Complete horizontal cyan lobe. Overlap its upper-right end beneath upper_left_branched_organ and its lower edge beneath BottomLobe to avoid black gaps."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_006",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_006.png",
+      "semantic": "bottom_lobe",
+      "bone": "BottomLobe",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        610,
+        520
+      ],
+      "suggested_center_source_xy": [
+        465,
+        555
+      ],
+      "rotation_deg": -1,
+      "scale_xy": [
+        1.03,
+        0.82
+      ],
+      "z": 22,
+      "notes": "Complete long cyan lower lobe. The non-uniform bind scale restores the original broad, low silhouette; animation should remain rigid-body rather than mesh warping."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_011",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_011.png",
+      "semantic": "lower_right_lobe",
+      "bone": "RightLobe",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        680,
+        500
+      ],
+      "suggested_center_source_xy": [
+        760,
+        535
+      ],
+      "rotation_deg": 1,
+      "scale_xy": [
+        0.73,
+        0.62
+      ],
+      "z": 23,
+      "notes": "Complete cyan lower-right lobe with filled hidden anatomy. Tuck its left mass behind HeartCore and its right nub beneath the blue vessel cluster."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_002",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_002.png",
+      "semantic": "heart_core",
+      "bone": "HeartCore",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        690,
+        430
+      ],
+      "suggested_center_source_xy": [
+        700,
+        405
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.97,
+        0.97
+      ],
+      "z": 25,
+      "notes": "Complete central cyan three-lobed organ from v2. This is the visual heartbeat driver; use a restrained two-stage contraction rather than comic uniform bouncing."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_007",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_007.png",
+      "semantic": "blue_upper_vessels",
+      "bone": "RightTubesUpper",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        880,
+        380
+      ],
+      "suggested_center_source_xy": [
+        935,
+        350
+      ],
+      "rotation_deg": -10,
+      "scale_xy": [
+        0.76,
+        0.76
+      ],
+      "z": 24,
+      "notes": "Complete blue three-mouth vessel. Its left/proximal section overlaps behind HeartCore and its open ends remain unobstructed."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_009",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_009.png",
+      "semantic": "blue_right_vessels",
+      "bone": "RightTubes",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        950,
+        420
+      ],
+      "suggested_center_source_xy": [
+        1045,
+        420
+      ],
+      "rotation_deg": 4,
+      "scale_xy": [
+        0.72,
+        0.72
+      ],
+      "z": 25,
+      "notes": "Complete blue four-mouth vessel. It bridges the upper and lower right branches; preserve the painted rims and never crop the junction."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_005",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_005.png",
+      "semantic": "blue_far_right_vessels",
+      "bone": "RightTubesFar",
+      "parent_bone": "RightTubes",
+      "suggested_pivot_source_xy": [
+        1090,
+        400
+      ],
+      "suggested_center_source_xy": [
+        1160,
+        345
+      ],
+      "rotation_deg": -7,
+      "scale_xy": [
+        0.67,
+        0.67
+      ],
+      "z": 23,
+      "notes": "Complete blue Y vessel for the far-right contour. Its left mouth is buried under RightTubes to make a continuous chain."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_013",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_013.png",
+      "semantic": "blue_lower_vessels",
+      "bone": "RightTubesLower",
+      "parent_bone": "RightTubes",
+      "suggested_pivot_source_xy": [
+        960,
+        450
+      ],
+      "suggested_center_source_xy": [
+        990,
+        510
+      ],
+      "rotation_deg": 8,
+      "scale_xy": [
+        0.66,
+        0.66
+      ],
+      "z": 24,
+      "notes": "Complete blue Y vessel at the lower-right. Keep its proximal mouth behind RightTubes; rotate only a few degrees during recoil."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_008",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_008.png",
+      "semantic": "surface_vein_upper_left",
+      "bone": "LeftLobe",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        440,
+        430
+      ],
+      "suggested_center_source_xy": [
+        330,
+        430
+      ],
+      "rotation_deg": 2,
+      "scale_xy": [
+        0.52,
+        0.52
+      ],
+      "z": 32,
+      "notes": "Complete isolated pink branch from v2. It is attached to LeftLobe and must stay wholly on the cyan surface; no free-floating segment across transparent gaps."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_012",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_012.png",
+      "semantic": "surface_vein_core",
+      "bone": "HeartCore",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        690,
+        430
+      ],
+      "suggested_center_source_xy": [
+        705,
+        465
+      ],
+      "rotation_deg": -5,
+      "scale_xy": [
+        0.68,
+        0.68
+      ],
+      "z": 33,
+      "notes": "Complete large pink vessel tree from v2, centered over HeartCore. It follows the core bone so heartbeat motion cannot open a seam."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_010",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_010.png",
+      "semantic": "surface_vein_bottom",
+      "bone": "BottomLobe",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        610,
+        520
+      ],
+      "suggested_center_source_xy": [
+        560,
+        555
+      ],
+      "rotation_deg": 8,
+      "scale_xy": [
+        0.72,
+        0.72
+      ],
+      "z": 34,
+      "notes": "Complete pink branch attached to BottomLobe. Keep its thicker root toward the core overlap and its fine tips within the cyan silhouette."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_016",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_016.png",
+      "semantic": "pink_coral",
+      "bone": "CoralLeft",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        290,
+        545
+      ],
+      "suggested_center_source_xy": [
+        290,
+        470
+      ],
+      "rotation_deg": -2,
+      "scale_xy": [
+        1.06,
+        1.06
+      ],
+      "z": 45,
+      "notes": "Complete pink coral fan. Pivot at its concealed base and use only subtle tip lag; the entire sprite stays above the left lobe."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_017",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_017.png",
+      "semantic": "purple_coral",
+      "bone": "CoralRight",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        785,
+        675
+      ],
+      "suggested_center_source_xy": [
+        785,
+        585
+      ],
+      "rotation_deg": 2,
+      "scale_xy": [
+        1.05,
+        1.05
+      ],
+      "z": 46,
+      "notes": "Complete purple coral fan. Its base is buried behind the lower organ edge while the branches draw above the cyan lobes."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_042",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_042.png",
+      "semantic": "barnacle_cluster_upper",
+      "bone": "UpperLeftOrgan",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        520,
+        350
+      ],
+      "suggested_center_source_xy": [
+        530,
+        330
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.48,
+        0.48
+      ],
+      "z": 52,
+      "notes": "Complete white barnacle cluster; decoration shares UpperLeftOrgan pivot so it cannot drift during a pulse."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_032",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_032.png",
+      "semantic": "barnacle_cluster_core",
+      "bone": "HeartCore",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        690,
+        430
+      ],
+      "suggested_center_source_xy": [
+        810,
+        330
+      ],
+      "rotation_deg": 5,
+      "scale_xy": [
+        0.55,
+        0.55
+      ],
+      "z": 52,
+      "notes": "Complete three-barnacle cluster attached to HeartCore. Use the core pivot, not the ornament center, for animation."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_024",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_024.png",
+      "semantic": "barnacle_single_right",
+      "bone": "RightTubesUpper",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        880,
+        380
+      ],
+      "suggested_center_source_xy": [
+        930,
+        390
+      ],
+      "rotation_deg": -3,
+      "scale_xy": [
+        0.5,
+        0.5
+      ],
+      "z": 52,
+      "notes": "Complete single white barnacle attached to the upper blue vessel."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_037",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_037.png",
+      "semantic": "barnacle_cluster_far_right",
+      "bone": "RightTubes",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        950,
+        420
+      ],
+      "suggested_center_source_xy": [
+        1030,
+        410
+      ],
+      "rotation_deg": 2,
+      "scale_xy": [
+        0.55,
+        0.55
+      ],
+      "z": 52,
+      "notes": "Complete white barnacle cluster attached to RightTubes; it follows the vessel bone during hurt recoil."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_044",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_044.png",
+      "semantic": "teal_barnacle_template",
+      "bone": "TealBarnacleTemplate",
+      "parent_bone": "owning organ bone",
+      "suggested_pivot_source_xy": [
+        690,
+        430
+      ],
+      "suggested_center_source_xy": [
+        665,
+        280
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.6,
+        0.6
+      ],
+      "z": 51,
+      "instances": [
+        {
+          "semantic": "teal_barnacle_top",
+          "bone": "HeartCore",
+          "parent_bone": "HeartAnchor",
+          "pivot_source_xy": [
+            690,
+            430
+          ],
+          "center_source_xy": [
+            665,
+            280
+          ],
+          "rotation_deg": 0,
+          "scale_xy": [
+            0.6,
+            0.6
+          ]
+        },
+        {
+          "semantic": "teal_barnacle_left",
+          "bone": "LeftLobe",
+          "parent_bone": "HeartAnchor",
+          "pivot_source_xy": [
+            440,
+            430
+          ],
+          "center_source_xy": [
+            310,
+            500
+          ],
+          "rotation_deg": 0,
+          "scale_xy": [
+            0.65,
+            0.65
+          ]
+        }
+      ],
+      "notes": "Complete teal barnacle is reused twice. Both instances inherit the owning organ pivot; neither creates a separate floating decoration bone."
+    },
+    {
+      "monster": "the_legacy",
+      "component": "part_034",
+      "component_path": "source_assets/monsters/ai_cutout_parts/the_legacy/part_034.png",
+      "semantic": "teal_barnacle_right",
+      "bone": "RightTubesUpper",
+      "parent_bone": "HeartAnchor",
+      "suggested_pivot_source_xy": [
+        880,
+        380
+      ],
+      "suggested_center_source_xy": [
+        970,
+        330
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.55,
+        0.55
+      ],
+      "z": 51,
+      "notes": "Complete teal barnacle attached to RightTubesUpper. Keep it above the blue surface and below the white barnacle accents."
+    },
+    {
+      "monster": "soul_roe_1",
+      "component": "variant_1_cytoplasm",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_1_cytoplasm.png",
+      "semantic": "cytoplasm_full",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        52,
+        52
+      ],
+      "suggested_center_source_xy": [
+        52,
+        52
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.38,
+        0.38
+      ],
+      "z": 5,
+      "notes": "Clean v4 full cytoplasm disk with no baked nucleus. It provides the amber interior and remains centered on Core."
+    },
+    {
+      "monster": "soul_roe_1",
+      "component": "variant_1_nucleus",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_1_nucleus.png",
+      "semantic": "nucleus",
+      "bone": "Nucleus",
+      "parent_bone": "Core",
+      "suggested_pivot_source_xy": [
+        52,
+        56
+      ],
+      "suggested_center_source_xy": [
+        53,
+        56
+      ],
+      "rotation_deg": -4,
+      "scale_xy": [
+        0.3,
+        0.3
+      ],
+      "z": 15,
+      "notes": "Clean v4 complete nucleus. Slight per-variant center/rotation differences preserve the three original silhouettes without deforming the membrane."
+    },
+    {
+      "monster": "soul_roe_1",
+      "component": "variant_1_membrane_ring",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_1_membrane_ring.png",
+      "semantic": "membrane_ring",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        52,
+        52
+      ],
+      "suggested_center_source_xy": [
+        52,
+        52
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.37,
+        0.37
+      ],
+      "z": 20,
+      "notes": "Clean v4 complete membrane ring. The hollow center prevents double-opacity; keep the ring rigid and pulse it only 1-3 percent."
+    },
+    {
+      "monster": "soul_roe_1",
+      "component": "variant_1_veins_highlight",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_1_veins_highlight.png",
+      "semantic": "veins_and_specular_highlight",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        52,
+        52
+      ],
+      "suggested_center_source_xy": [
+        52,
+        52
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.39,
+        0.39
+      ],
+      "z": 30,
+      "notes": "Clean v4 complete vein/highlight overlay. It contains only the membrane cracks and glints, avoiding a dark duplicate disk."
+    },
+    {
+      "monster": "soul_roe_2",
+      "component": "variant_2_cytoplasm",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_2_cytoplasm.png",
+      "semantic": "cytoplasm_full",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        52,
+        52
+      ],
+      "suggested_center_source_xy": [
+        52,
+        52
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.38,
+        0.38
+      ],
+      "z": 5,
+      "notes": "Clean v4 full cytoplasm disk with no baked nucleus. It provides the amber interior and remains centered on Core."
+    },
+    {
+      "monster": "soul_roe_2",
+      "component": "variant_2_nucleus",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_2_nucleus.png",
+      "semantic": "nucleus",
+      "bone": "Nucleus",
+      "parent_bone": "Core",
+      "suggested_pivot_source_xy": [
+        52,
+        56
+      ],
+      "suggested_center_source_xy": [
+        51,
+        56
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.3,
+        0.3
+      ],
+      "z": 15,
+      "notes": "Clean v4 complete nucleus. Slight per-variant center/rotation differences preserve the three original silhouettes without deforming the membrane."
+    },
+    {
+      "monster": "soul_roe_2",
+      "component": "variant_2_membrane_ring",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_2_membrane_ring.png",
+      "semantic": "membrane_ring",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        52,
+        52
+      ],
+      "suggested_center_source_xy": [
+        52,
+        52
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.37,
+        0.37
+      ],
+      "z": 20,
+      "notes": "Clean v4 complete membrane ring. The hollow center prevents double-opacity; keep the ring rigid and pulse it only 1-3 percent."
+    },
+    {
+      "monster": "soul_roe_2",
+      "component": "variant_2_veins_highlight",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_2_veins_highlight.png",
+      "semantic": "veins_and_specular_highlight",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        52,
+        52
+      ],
+      "suggested_center_source_xy": [
+        52,
+        52
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.39,
+        0.39
+      ],
+      "z": 30,
+      "notes": "Clean v4 complete vein/highlight overlay. It contains only the membrane cracks and glints, avoiding a dark duplicate disk."
+    },
+    {
+      "monster": "soul_roe_3",
+      "component": "variant_3_cytoplasm",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_3_cytoplasm.png",
+      "semantic": "cytoplasm_full",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        52,
+        52
+      ],
+      "suggested_center_source_xy": [
+        52,
+        52
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.38,
+        0.38
+      ],
+      "z": 5,
+      "notes": "Clean v4 full cytoplasm disk with no baked nucleus. It provides the amber interior and remains centered on Core."
+    },
+    {
+      "monster": "soul_roe_3",
+      "component": "variant_3_nucleus",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_3_nucleus.png",
+      "semantic": "nucleus",
+      "bone": "Nucleus",
+      "parent_bone": "Core",
+      "suggested_pivot_source_xy": [
+        52,
+        56
+      ],
+      "suggested_center_source_xy": [
+        54,
+        55
+      ],
+      "rotation_deg": 4,
+      "scale_xy": [
+        0.3,
+        0.3
+      ],
+      "z": 15,
+      "notes": "Clean v4 complete nucleus. Slight per-variant center/rotation differences preserve the three original silhouettes without deforming the membrane."
+    },
+    {
+      "monster": "soul_roe_3",
+      "component": "variant_3_membrane_ring",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_3_membrane_ring.png",
+      "semantic": "membrane_ring",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        52,
+        52
+      ],
+      "suggested_center_source_xy": [
+        52,
+        52
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.37,
+        0.37
+      ],
+      "z": 20,
+      "notes": "Clean v4 complete membrane ring. The hollow center prevents double-opacity; keep the ring rigid and pulse it only 1-3 percent."
+    },
+    {
+      "monster": "soul_roe_3",
+      "component": "variant_3_veins_highlight",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roe_variants/variant_3_veins_highlight.png",
+      "semantic": "veins_and_specular_highlight",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        52,
+        52
+      ],
+      "suggested_center_source_xy": [
+        52,
+        52
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.39,
+        0.39
+      ],
+      "z": 30,
+      "notes": "Clean v4 complete vein/highlight overlay. It contains only the membrane cracks and glints, avoiding a dark duplicate disk."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_000",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_000.png",
+      "semantic": "roe_top",
+      "bone": "RoeTop",
+      "parent_bone": "ClusterTop",
+      "suggested_pivot_source_xy": [
+        137,
+        57
+      ],
+      "suggested_center_source_xy": [
+        137,
+        57
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.463,
+        0.463
+      ],
+      "z": 1,
+      "notes": "Largest rear/top cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_001",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_001.png",
+      "semantic": "roe_top_right",
+      "bone": "RoeTopRight",
+      "parent_bone": "ClusterTop",
+      "suggested_pivot_source_xy": [
+        228,
+        64
+      ],
+      "suggested_center_source_xy": [
+        228,
+        64
+      ],
+      "rotation_deg": 7,
+      "scale_xy": [
+        0.425,
+        0.425
+      ],
+      "z": 2,
+      "notes": "Rear upper-right cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_003",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_003.png",
+      "semantic": "roe_top_left",
+      "bone": "RoeTopLeft",
+      "parent_bone": "ClusterTop",
+      "suggested_pivot_source_xy": [
+        72,
+        92
+      ],
+      "suggested_center_source_xy": [
+        72,
+        92
+      ],
+      "rotation_deg": -8,
+      "scale_xy": [
+        0.427,
+        0.427
+      ],
+      "z": 3,
+      "notes": "Upper-left cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_002",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_002.png",
+      "semantic": "roe_upper_right",
+      "bone": "RoeUpperRight",
+      "parent_bone": "ClusterTop",
+      "suggested_pivot_source_xy": [
+        276,
+        118
+      ],
+      "suggested_center_source_xy": [
+        276,
+        118
+      ],
+      "rotation_deg": 4,
+      "scale_xy": [
+        0.411,
+        0.411
+      ],
+      "z": 4,
+      "notes": "Upper-right bridge cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_005",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_005.png",
+      "semantic": "roe_core",
+      "bone": "RoeCore",
+      "parent_bone": "ClusterMiddle",
+      "suggested_pivot_source_xy": [
+        169,
+        109
+      ],
+      "suggested_center_source_xy": [
+        169,
+        109
+      ],
+      "rotation_deg": -3,
+      "scale_xy": [
+        0.391,
+        0.391
+      ],
+      "z": 5,
+      "notes": "Large central/rear cell that anchors the cluster rhythm. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_004",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_004.png",
+      "semantic": "roe_far_left",
+      "bone": "RoeMiddleFarLeft",
+      "parent_bone": "ClusterMiddle",
+      "suggested_pivot_source_xy": [
+        47,
+        167
+      ],
+      "suggested_center_source_xy": [
+        47,
+        167
+      ],
+      "rotation_deg": 8,
+      "scale_xy": [
+        0.377,
+        0.377
+      ],
+      "z": 6,
+      "notes": "Far-left middle cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_006",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_006.png",
+      "semantic": "roe_middle_left",
+      "bone": "RoeMiddleLeft",
+      "parent_bone": "ClusterMiddle",
+      "suggested_pivot_source_xy": [
+        120,
+        152
+      ],
+      "suggested_center_source_xy": [
+        120,
+        152
+      ],
+      "rotation_deg": -6,
+      "scale_xy": [
+        0.322,
+        0.322
+      ],
+      "z": 7,
+      "notes": "Middle-left foreground cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_007",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_007.png",
+      "semantic": "roe_middle_right",
+      "bone": "RoeMiddleRight",
+      "parent_bone": "ClusterMiddle",
+      "suggested_pivot_source_xy": [
+        214,
+        166
+      ],
+      "suggested_center_source_xy": [
+        214,
+        166
+      ],
+      "rotation_deg": 5,
+      "scale_xy": [
+        0.371,
+        0.371
+      ],
+      "z": 8,
+      "notes": "Middle-right foreground cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_008",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_008.png",
+      "semantic": "roe_far_right",
+      "bone": "RoeFarRight",
+      "parent_bone": "ClusterMiddle",
+      "suggested_pivot_source_xy": [
+        309,
+        190
+      ],
+      "suggested_center_source_xy": [
+        309,
+        190
+      ],
+      "rotation_deg": -4,
+      "scale_xy": [
+        0.471,
+        0.471
+      ],
+      "z": 9,
+      "notes": "Far-right contour cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_009",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_009.png",
+      "semantic": "roe_bottom_left",
+      "bone": "RoeBottomLeft",
+      "parent_bone": "ClusterBottom",
+      "suggested_pivot_source_xy": [
+        113,
+        219
+      ],
+      "suggested_center_source_xy": [
+        113,
+        219
+      ],
+      "rotation_deg": 6,
+      "scale_xy": [
+        0.419,
+        0.419
+      ],
+      "z": 10,
+      "notes": "Bottom-left foreground cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_010",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_010.png",
+      "semantic": "roe_bottom",
+      "bone": "RoeBottom",
+      "parent_bone": "ClusterBottom",
+      "suggested_pivot_source_xy": [
+        169,
+        221
+      ],
+      "suggested_center_source_xy": [
+        169,
+        221
+      ],
+      "rotation_deg": -5,
+      "scale_xy": [
+        0.411,
+        0.411
+      ],
+      "z": 11,
+      "notes": "Bottom-center foreground cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    },
+    {
+      "monster": "soul_roes",
+      "component": "part_011",
+      "component_path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_011.png",
+      "semantic": "roe_bottom_right",
+      "bone": "RoeBottomRight",
+      "parent_bone": "ClusterBottom",
+      "suggested_pivot_source_xy": [
+        256,
+        232
+      ],
+      "suggested_center_source_xy": [
+        256,
+        232
+      ],
+      "rotation_deg": 4,
+      "scale_xy": [
+        0.469,
+        0.469
+      ],
+      "z": 12,
+      "notes": "Bottom-right/frontmost cell. Full circular cell generated independently; uniform scaling keeps its membrane round and its center is also the animation pivot."
+    }
+  ]
+}

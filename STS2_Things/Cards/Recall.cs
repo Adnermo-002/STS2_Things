@@ -11,7 +11,7 @@ using STS2_Things.Powers;
 namespace STS2_Things.Cards;
 
 /// <summary>
-/// 回溯 — Silent Uncommon Skill
+/// 回溯 — Silent Rare Skill
 /// 1费，获得"本回合从弃牌堆抽牌"的Buff
 /// 强化：-1费
 /// </summary>

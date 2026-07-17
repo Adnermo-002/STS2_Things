@@ -37,9 +37,12 @@ public sealed class Surrender : CardModel
         await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue); //回血
 
         var target = cardPlay.Target;
+        var monster = target?.Monster;
         var cardOwner = Owner; // 用闭包捕获
-        if (target?.Monster == null) return;
-        var stateLog = target.Monster.MoveStateMachine.StateLog;
+        if (monster == null) return;
+        var moveStateMachine = monster.MoveStateMachine;
+        if (moveStateMachine == null) return;
+        var stateLog = moveStateMachine.StateLog;
         if (stateLog.Count == 0) return;
         var originalStateId = stateLog.Last().Id;
         var applyWeak = new MoveState(
@@ -56,8 +59,7 @@ public sealed class Surrender : CardModel
             FollowUpStateId = originalStateId,
             MustPerformOnceBeforeTransitioning = true
         };
-        target.Monster.SetMoveImmediate(applyWeak);
-        await Task.CompletedTask;
+        monster.SetMoveImmediate(applyWeak, forceTransition: true);
     }
 
     protected override void OnUpgrade()

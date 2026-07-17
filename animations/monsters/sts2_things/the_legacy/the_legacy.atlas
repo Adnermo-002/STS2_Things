@@ -1,0 +1,257 @@
+the_legacy.png
+size: 1023,1449
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ai_seaweed_left_edge
+  rotate: false
+  xy: 456, 304
+  size: 146, 198
+  orig: 146, 198
+  offset: 0, 0
+  index: -1
+ai_seaweed_top_core
+  rotate: false
+  xy: 668, 1096
+  size: 112, 148
+  orig: 112, 148
+  offset: 0, 0
+  index: -1
+ai_seaweed_bottom_right
+  rotate: false
+  xy: 176, 918
+  size: 140, 166
+  orig: 140, 166
+  offset: 0, 0
+  index: -1
+ai_seaweed_top_left
+  rotate: false
+  xy: 326, 918
+  size: 140, 162
+  orig: 140, 162
+  offset: 0, 0
+  index: -1
+ai_seaweed_top_right
+  rotate: false
+  xy: 820, 728
+  size: 144, 170
+  orig: 144, 170
+  offset: 0, 0
+  index: -1
+ai_seaweed_bottom_left
+  rotate: false
+  xy: 532, 1096
+  size: 126, 150
+  orig: 126, 150
+  offset: 0, 0
+  index: -1
+ai_seaweed_top_mid
+  rotate: false
+  xy: 874, 1096
+  size: 66, 134
+  orig: 66, 134
+  offset: 0, 0
+  index: -1
+ai_seaweed_far_right
+  rotate: false
+  xy: 790, 1096
+  size: 74, 146
+  orig: 74, 146
+  offset: 0, 0
+  index: -1
+ai_seaweed_right_edge
+  rotate: false
+  xy: 10, 918
+  size: 156, 168
+  orig: 156, 168
+  offset: 0, 0
+  index: -1
+ai_seaweed_bottom_mid
+  rotate: false
+  xy: 234, 1096
+  size: 140, 150
+  orig: 140, 150
+  offset: 0, 0
+  index: -1
+ai_seaweed_lower_right
+  rotate: false
+  xy: 240, 1258
+  size: 130, 124
+  orig: 130, 124
+  offset: 0, 0
+  index: -1
+ai_seaweed_left_bottom
+  rotate: false
+  xy: 380, 1258
+  size: 128, 120
+  orig: 128, 120
+  offset: 0, 0
+  index: -1
+ai_purple_back_vessel_mass
+  rotate: false
+  xy: 374, 10
+  size: 356, 234
+  orig: 356, 234
+  offset: 0, 0
+  index: -1
+ai_purple_right_vessels
+  rotate: false
+  xy: 502, 728
+  size: 172, 176
+  orig: 172, 176
+  offset: 0, 0
+  index: -1
+ai_purple_lower_right_vessels
+  rotate: false
+  xy: 384, 1096
+  size: 138, 150
+  orig: 138, 150
+  offset: 0, 0
+  index: -1
+ai_upper_left_branched_organ
+  rotate: false
+  xy: 10, 304
+  size: 436, 214
+  orig: 436, 214
+  offset: 0, 0
+  index: -1
+ai_left_lobe
+  rotate: false
+  xy: 476, 918
+  size: 376, 156
+  orig: 376, 156
+  offset: 0, 0
+  index: -1
+ai_bottom_lobe
+  rotate: false
+  xy: 390, 528
+  size: 558, 186
+  orig: 558, 186
+  offset: 0, 0
+  index: -1
+ai_lower_right_lobe
+  rotate: false
+  xy: 10, 528
+  size: 370, 190
+  orig: 370, 190
+  offset: 0, 0
+  index: -1
+ai_heart_core
+  rotate: false
+  xy: 10, 10
+  size: 354, 284
+  orig: 354, 284
+  offset: 0, 0
+  index: -1
+ai_blue_upper_vessels
+  rotate: false
+  xy: 242, 728
+  size: 250, 178
+  orig: 250, 178
+  offset: 0, 0
+  index: -1
+ai_blue_right_vessels
+  rotate: false
+  xy: 10, 1096
+  size: 214, 152
+  orig: 214, 152
+  offset: 0, 0
+  index: -1
+ai_blue_far_right_vessels
+  rotate: false
+  xy: 518, 1258
+  size: 176, 100
+  orig: 176, 100
+  offset: 0, 0
+  index: -1
+ai_blue_lower_vessels
+  rotate: false
+  xy: 684, 728
+  size: 126, 176
+  orig: 126, 176
+  offset: 0, 0
+  index: -1
+ai_surface_vein_upper_left
+  rotate: false
+  xy: 136, 1392
+  size: 186, 48
+  orig: 186, 48
+  offset: 0, 0
+  index: -1
+ai_surface_vein_core
+  rotate: false
+  xy: 10, 1258
+  size: 220, 124
+  orig: 220, 124
+  offset: 0, 0
+  index: -1
+ai_surface_vein_bottom
+  rotate: false
+  xy: 704, 1258
+  size: 170, 84
+  orig: 170, 84
+  offset: 0, 0
+  index: -1
+ai_pink_coral
+  rotate: false
+  xy: 612, 304
+  size: 206, 194
+  orig: 206, 194
+  offset: 0, 0
+  index: -1
+ai_purple_coral
+  rotate: false
+  xy: 10, 728
+  size: 222, 180
+  orig: 222, 180
+  offset: 0, 0
+  index: -1
+ai_barnacle_cluster_upper
+  rotate: false
+  xy: 884, 1258
+  size: 62, 70
+  orig: 62, 70
+  offset: 0, 0
+  index: -1
+ai_barnacle_cluster_core
+  rotate: false
+  xy: 10, 1392
+  size: 50, 52
+  orig: 50, 52
+  offset: 0, 0
+  index: -1
+ai_barnacle_single_right
+  rotate: false
+  xy: 332, 1392
+  size: 44, 40
+  orig: 44, 40
+  offset: 0, 0
+  index: -1
+ai_barnacle_cluster_far_right
+  rotate: false
+  xy: 386, 1392
+  size: 40, 38
+  orig: 40, 38
+  offset: 0, 0
+  index: -1
+ai_teal_barnacle_top
+  rotate: false
+  xy: 70, 1392
+  size: 56, 50
+  orig: 56, 50
+  offset: 0, 0
+  index: -1
+ai_teal_barnacle_left
+  rotate: false
+  xy: 956, 1258
+  size: 62, 54
+  orig: 62, 54
+  offset: 0, 0
+  index: -1
+ai_teal_barnacle_right
+  rotate: false
+  xy: 436, 1392
+  size: 42, 36
+  orig: 42, 36
+  offset: 0, 0
+  index: -1

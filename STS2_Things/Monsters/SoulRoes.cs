@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Godot;
+using MegaCrit.Sts2.Core.Audio;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -34,8 +36,23 @@ namespace STS2_Things.Monsters;
 /// </summary>
 public sealed class SoulRoes : MonsterModel
 {
-    // 使用 fallback 视觉（PNG 贴图由 MonsterRegistrar 自动注入）
-    protected override string VisualsPath => SceneHelper.GetScenePath("creature_visuals/fallback");
+    protected override string AttackSfx =>
+        "event:/sfx/enemy/enemy_attacks/soul_fysh/soul_fysh_attack";
+    protected override string CastSfx =>
+        "event:/sfx/enemy/enemy_attacks/soul_fysh/soul_fysh_beckon";
+    public override string DeathSfx =>
+        "event:/sfx/enemy/enemy_attacks/soul_fysh/soul_fysh_die";
+    public override DamageSfxType TakeDamageSfxType => DamageSfxType.Magic;
+    public override Vector2 ExtraDeathVfxPadding => new(1.6f, 3.0f);
+
+    // 像原版 Queen 预加载动态随从一样，把 SoulRoe 的全部视觉/意图资源挂到召唤者。
+    public override IEnumerable<string> AssetPaths =>
+        base.AssetPaths
+            .Concat(ModelDb.Monster<SoulRoe>().AssetPaths)
+            .Append(ModelDb.Power<SoulRoesPower>().ResolvedBigIconPath)
+            .Append(ModelDb.Power<IntangiblePower>().ResolvedBigIconPath)
+            .Append(ModelDb.Power<StrengthPower>().ResolvedBigIconPath)
+            .Distinct();
 
     // ========== 血量：低难度 33~42，高难度 36~45 ==========
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(
@@ -150,10 +167,10 @@ public sealed class SoulRoes : MonsterModel
         var spawned = 0;
 
         // 扫描 soulroe找空槽位
-        for (var i = 0; i < 8 && spawned < 2; i++)
+        for (var i = 0; i < SoulRoesEncounter.SoulRoeSlotCount && spawned < 2; i++)
         {
             var slotName = SoulRoesEncounter.GetSoulRoeSlotName(i);
-            if (CombatState.Enemies.Any(c => c.SlotName == slotName))
+            if (CombatState.Enemies.Any(c => c.IsAlive && c.SlotName == slotName))
                 continue; // 槽位已被占用，跳过
 
             // ToMutable() 把模板转为可修改变量实例

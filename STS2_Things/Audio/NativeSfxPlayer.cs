@@ -4,6 +4,8 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using Godot;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
 using FileAccess = Godot.FileAccess;
 
@@ -17,19 +19,53 @@ public static class NativeSfxPlayer
     // 缓存目录到候选文件列表，避免每次播放随机变体都进行IO遍历
     private static readonly Dictionary<string, string[]> _variantCache = new();
     private static readonly object _variantCacheLock = new();
-    private static AudioStreamPlayer _musicPlayer;
-    private static AudioStreamPlayer _seqLooper;
-    private static string[] _seqPaths;
+    // 独立于游戏玩法 RNG 的本地音频变体 RNG。
+    private static readonly RandomNumberGenerator _variantRng = new();
+    private static readonly object _variantRngLock = new();
+    private static AudioStreamPlayer? _musicPlayer;
+    private static AudioStreamPlayer? _seqLooper;
+    private static string[]? _seqPaths;
     private static int _seqIndex;
     private static float _seqVolumeDb;
+
+    static NativeSfxPlayer()
+    {
+        _variantRng.Randomize();
+    }
+
+    /// <summary>
+    /// Rolls a presentation-only probability using the audio RNG. This stream is
+    /// deliberately isolated from combat RNG so SFX variation cannot affect saves
+    /// or multiplayer simulation state.
+    /// </summary>
+    public static bool RollChance(float chance)
+    {
+        if (!float.IsFinite(chance) || chance <= 0f) return false;
+        if (chance >= 1f) return true;
+        lock (_variantRngLock)
+        {
+            return _variantRng.Randf() < chance;
+        }
+    }
+
+    private static bool CanPlayAudio(bool allowCombatEnding = false)
+    {
+        return !NonInteractiveMode.IsActive
+               && (allowCombatEnding || !CombatManager.Instance.IsEnding);
+    }
 
     public static void Preload(string resPath)
     {
         LoadStream(resPath);
     }
 
-    public static void Play(string resPath, string bus = "Master", float volumeDb = 6f)
+    public static void Play(
+        string resPath,
+        string bus = "Master",
+        float volumeDb = 6f,
+        bool allowCombatEnding = false)
     {
+        if (!CanPlayAudio(allowCombatEnding)) return;
         if (!HasAudioExtension(resPath))
         {
             var resolved = ResolveRandomVariant(resPath);
@@ -45,6 +81,7 @@ public static class NativeSfxPlayer
 
     public static void PlayMusic(string resPath, string bus = "Master", float volumeDb = -6f)
     {
+        if (!CanPlayAudio()) return;
         StopMusic();
         var stream = LoadStream(resPath);
         if (stream == null)
@@ -84,10 +121,10 @@ public static class NativeSfxPlayer
     /// <summary>
     ///     依次循环播放多个音频文件
     /// </summary>
-    public static void PlaySequentialLoop(string[] paths, float volumeDb = -10f)
+    public static void PlaySequentialLoop(string[]? paths, float volumeDb = -10f)
     {
         StopSequentialLoop();
-        if (paths == null || paths.Length == 0) return;
+        if (!CanPlayAudio() || paths == null || paths.Length == 0) return;
         _seqPaths = paths;
         _seqIndex = 0;
         _seqVolumeDb = volumeDb;
@@ -109,10 +146,22 @@ public static class NativeSfxPlayer
 
     private static void PlayNextInSequence()
     {
-        if (_seqPaths == null || _seqIndex >= _seqPaths.Length) _seqIndex = 0;
-        var path = _seqPaths[_seqIndex];
+        if (!CanPlayAudio())
+        {
+            StopSequentialLoop();
+            return;
+        }
+        var paths = _seqPaths;
+        if (paths == null || paths.Length == 0)
+        {
+            StopSequentialLoop();
+            return;
+        }
+
+        if (_seqIndex >= paths.Length) _seqIndex = 0;
+        var path = paths[_seqIndex];
         _seqIndex++;
-        if (_seqIndex >= _seqPaths.Length) _seqIndex = 0;
+        if (_seqIndex >= paths.Length) _seqIndex = 0;
 
         var stream = LoadStream(path);
         if (stream == null)
@@ -136,7 +185,7 @@ public static class NativeSfxPlayer
         }
     }
 
-    private static AudioStream LoadStream(string resPath)
+    private static AudioStream? LoadStream(string resPath)
     {
         if (_streamCache.TryGetValue(resPath, out var cached)) return cached;
         try
@@ -155,7 +204,7 @@ public static class NativeSfxPlayer
             if (bytes != null && bytes.Length > 0)
             {
                 var ext = Path.GetExtension(resPath).ToLowerInvariant();
-                AudioStream stream = ext switch
+                AudioStream? stream = ext switch
                 {
                     ".ogg" => AudioStreamOggVorbis.LoadFromBuffer(bytes),
                     ".mp3" => AudioStreamMP3.LoadFromBuffer(bytes),
@@ -179,7 +228,7 @@ public static class NativeSfxPlayer
         }
     }
 
-    private static byte[] ReadBytesFromDisk(string resPath)
+    private static byte[]? ReadBytesFromDisk(string resPath)
     {
         var absPath = ToAbsolutePath(resPath);
         if (File.Exists(absPath)) return File.ReadAllBytes(absPath);
@@ -200,7 +249,7 @@ public static class NativeSfxPlayer
         return null;
     }
 
-    private static AudioStreamWav LoadWavFromBuffer(byte[] bytes)
+    private static AudioStreamWav? LoadWavFromBuffer(byte[] bytes)
     {
         if (bytes.Length < 44) return null;
         var riff = Encoding.ASCII.GetString(bytes, 0, 4);
@@ -208,7 +257,7 @@ public static class NativeSfxPlayer
         if (riff != "RIFF" || wave != "WAVE") return null;
         var stream = new AudioStreamWav();
         var offset = 12;
-        byte[] dataBytes = null;
+        byte[]? dataBytes = null;
         while (offset < bytes.Length - 8)
         {
             var chunkId = Encoding.ASCII.GetString(bytes, offset, 4);
@@ -221,7 +270,8 @@ public static class NativeSfxPlayer
                 if (bitsPerSample == 32) return null;
                 stream.Format = bitsPerSample switch
                 {
-                    8 => AudioStreamWav.FormatEnum.Format8Bits, _ => AudioStreamWav.FormatEnum.Format16Bits
+                    8 => AudioStreamWav.FormatEnum.Format8Bits,
+                    _ => AudioStreamWav.FormatEnum.Format16Bits
                 };
                 stream.MixRate = sampleRate;
                 stream.Stereo = channels == 2;
@@ -272,7 +322,7 @@ public static class NativeSfxPlayer
 
     /// <summary>
     /// 清理所有活跃的音效播放器，防止资源泄漏。
-    /// 由 MonsterRegistrar.OnCombatRoomExit 调用。
+    /// 由独立的 CombatRoomAudioCleanupPatch 在房间退出时调用。
     /// </summary>
     public static void CleanupActivePlayers()
     {
@@ -294,14 +344,15 @@ public static class NativeSfxPlayer
     {
         if (path.StartsWith("res://"))
         {
-            var modRoot = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var modRoot = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+                ?? AppContext.BaseDirectory;
             return Path.GetFullPath(Path.Combine(modRoot, path["res://".Length..]));
         }
 
         return Path.IsPathRooted(path) ? path : Path.GetFullPath(path);
     }
 
-    private static string ResolveRandomVariant(string prefixPath)
+    private static string? ResolveRandomVariant(string prefixPath)
     {
         var lastSlash = prefixPath.LastIndexOf('/');
         if (lastSlash < 0) return null;
@@ -311,14 +362,14 @@ public static class NativeSfxPlayer
 
         // 缓存 key: "dir|prefix"
         var cacheKey = $"{dir}|{filePrefix}";
-        string[] candidates;
         lock (_variantCacheLock)
         {
-            if (_variantCache.TryGetValue(cacheKey, out candidates)) return PickVariant(candidates, filePrefix);
+            if (_variantCache.TryGetValue(cacheKey, out var cachedCandidates))
+                return PickVariant(cachedCandidates, filePrefix);
         }
 
         var list = new List<string>();
-        var da = DirAccess.Open(dir);
+        DirAccess? da = DirAccess.Open(dir);
         if (da != null)
         {
             da.ListDirBegin();
@@ -360,7 +411,7 @@ public static class NativeSfxPlayer
                 }
         }
 
-        candidates = list.ToArray();
+        var candidates = list.ToArray();
         lock (_variantCacheLock)
         {
             _variantCache[cacheKey] = candidates;
@@ -369,7 +420,7 @@ public static class NativeSfxPlayer
         return PickVariant(candidates, filePrefix);
     }
 
-    private static string PickVariant(string[] candidates, string filePrefix)
+    private static string? PickVariant(string[] candidates, string filePrefix)
     {
         if (candidates == null || candidates.Length == 0) return null;
         var exact = Array.Find(candidates, c =>
@@ -378,7 +429,11 @@ public static class NativeSfxPlayer
             var noExt = name[..name.LastIndexOf('.')];
             return noExt.Equals(filePrefix, StringComparison.OrdinalIgnoreCase);
         });
-        return exact ?? candidates[Random.Shared.Next(candidates.Length)];
+        if (exact != null) return exact;
+        lock (_variantRngLock)
+        {
+            return candidates[_variantRng.RandiRange(0, candidates.Length - 1)];
+        }
     }
 
     private static bool HasAudioExtension(string path)

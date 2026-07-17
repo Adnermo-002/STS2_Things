@@ -1,0 +1,55 @@
+﻿{
+    "schema_version":  1,
+    "candidate":  "thief_raider_v9",
+    "status":  "rejected_visual_gate",
+    "shipping_allowed":  false,
+    "steam_install_allowed":  false,
+    "identity_source":  "00_reference/current_master.png",
+    "rejected_sources":  [
+                             "../thief_raider_v8/01_master_candidates/candidate_01_alpha.png",
+                             "../thief_raider_v8/03_clean_parts/donor_bind_candidate_01.png"
+                         ],
+    "visible_ownership":  {
+                              "status":  "pass",
+                              "part_count":  22,
+                              "rgba_exact":  true,
+                              "alpha_iou":  1.0,
+                              "material_boundary_failures":  0,
+                              "audit":  "03_master_ownership/master_ownership.audit.json"
+                          },
+    "generated_sheet_a":  {
+                              "status":  "rejected_as_complete_sheet",
+                              "allowed_use":  "audited_hidden_donor_pixels_only"
+                          },
+    "generated_sheet_b":  {
+                              "status":  "rejected_as_complete_sheet",
+                              "component_count":  13,
+                              "donor_only":  5,
+                              "rejected":  8,
+                              "manifest":  "02_extracted_donors/sheet_b.manifest.json",
+                              "blocking_failures":  [
+                                                        "four hollow arm/cuff sockets",
+                                                        "two hollow boot shafts",
+                                                        "two incorrect closed-fist grips"
+                                                    ]
+                          },
+    "next_gate":  "new_semantic_image_to_image_parts_from_current_master",
+    "visual_gate":  {
+                        "status":  "fail",
+                        "reviewed_on":  "2026-07-16",
+                        "blocking_failures":  [
+                                                  "B2 limbs read as inflated tubes/sausages rather than the compact Raider shapes",
+                                                  "automatic donor alignment produces disconnected caps and unrelated material fragments",
+                                                  "production_visible ownership islands are not rig-ready semantic attachments",
+                                                  "pixel-exact bind reconstruction was incorrectly treated as a quality signal",
+                                                  "no extreme-pose test has passed"
+                                              ],
+                        "rejected_outputs":  [
+                                                 "01_generated_sheets/sheet_a_core_alpha.png",
+                                                 "01_generated_sheets/sheet_b_limbs_alpha.png",
+                                                 "01_generated_sheets/sheet_b2_closed_corrections_alpha.png",
+                                                 "04_production_attachments/underlap_limbs",
+                                                 "04_production_attachments/combined_limb_preview"
+                                             ]
+                    }
+}

@@ -1,0 +1,13 @@
+{
+	"SURRENDER.title": "诈降",
+	"SURRENDER.description": "回复[green]{Heal:diff()}[/green]点生命。\n将敌人的意图变为:施加{WeakPower:diff()}层[gold]虚弱[/gold]。",
+	"REUSE.title": "再利用",
+	"REUSE.description": "每回合你前1次抽到状态牌时，将其变化为[gold]燃料[/gold]。\n并在你的弃牌堆置入1张[gold]煤灰[/gold]。",
+	"SOULFYSH_DISEASE.title": "异鱼症",
+	"SOULFYSH_DISEASE.description": "获得1层[gold]异鱼症[/gold]。\n[gold]奇巧[/gold]时额外将1张本牌的复制与{BeckonCount:diff()}张带[blue]消散[/blue]附魔的[gold]呼唤[/gold]加入你的弃牌堆。",
+	"RECALL.title": "追忆",
+	"RECALL.description": "本回合内，你的抽牌改为优先从[gold]弃牌堆[/gold]抽牌。",
+	"PACK_UP.title": "整顿",
+	"PACK_UP.description": "抽1张牌。\n选择牌库中的1张牌将其丢弃。",
+	"PACK_UP.selectionScreenPrompt": "选择一张牌丢弃。"
+}

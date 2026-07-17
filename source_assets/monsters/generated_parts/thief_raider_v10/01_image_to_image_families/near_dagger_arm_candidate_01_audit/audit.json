@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "input": "01_image_to_image_families/near_dagger_arm_candidate_01_alpha.png",
+  "policy": "automatic checks supplement, never replace, direct visual bind and pose review",
+  "status": "fail",
+  "parts": [
+    {
+      "semantic": "near_upper_arm",
+      "crop": "01_image_to_image_families/near_dagger_arm_candidate_01_audit/near_upper_arm.png",
+      "bbox_in_quadrant": [
+        12,
+        12,
+        287,
+        401
+      ],
+      "visible_pixels": 65797,
+      "components_over_24px": [
+        65797
+      ],
+      "holes": {
+        "count": 0,
+        "area": 0
+      },
+      "materials": {
+        "metal": 20142,
+        "skin": 0,
+        "brown": 160,
+        "dark": 45496
+      },
+      "material_ratios": {
+        "metal": 0.306123,
+        "skin": 0.0,
+        "brown": 0.002432,
+        "dark": 0.69146
+      },
+      "automatic_failures": [
+        "metal baked into cloth upper arm (likely pauldron contamination)"
+      ],
+      "automatic_status": "fail"
+    },
+    {
+      "semantic": "near_forearm",
+      "crop": "01_image_to_image_families/near_dagger_arm_candidate_01_audit/near_forearm.png",
+      "bbox_in_quadrant": [
+        12,
+        12,
+        361,
+        351
+      ],
+      "visible_pixels": 54892,
+      "components_over_24px": [
+        54892
+      ],
+      "holes": {
+        "count": 0,
+        "area": 0
+      },
+      "materials": {
+        "metal": 11640,
+        "skin": 2236,
+        "brown": 21680,
+        "dark": 19351
+      },
+      "material_ratios": {
+        "metal": 0.212053,
+        "skin": 0.040735,
+        "brown": 0.394957,
+        "dark": 0.352529
+      },
+      "automatic_failures": [],
+      "automatic_status": "needs_visual_review"
+    },
+    {
+      "semantic": "near_dagger_hand",
+      "crop": "01_image_to_image_families/near_dagger_arm_candidate_01_audit/near_dagger_hand.png",
+      "bbox_in_quadrant": [
+        12,
+        12,
+        378,
+        252
+      ],
+      "visible_pixels": 46367,
+      "components_over_24px": [
+        46367
+      ],
+      "holes": {
+        "count": 0,
+        "area": 0
+      },
+      "materials": {
+        "metal": 5361,
+        "skin": 15307,
+        "brown": 16471,
+        "dark": 9245
+      },
+      "material_ratios": {
+        "metal": 0.115621,
+        "skin": 0.330127,
+        "brown": 0.355231,
+        "dark": 0.199387
+      },
+      "automatic_failures": [
+        "weapon metal baked into hand attachment"
+      ],
+      "automatic_status": "fail"
+    },
+    {
+      "semantic": "dagger",
+      "crop": "01_image_to_image_families/near_dagger_arm_candidate_01_audit/dagger.png",
+      "bbox_in_quadrant": [
+        12,
+        12,
+        331,
+        239
+      ],
+      "visible_pixels": 26170,
+      "components_over_24px": [
+        26170
+      ],
+      "holes": {
+        "count": 0,
+        "area": 0
+      },
+      "materials": {
+        "metal": 20607,
+        "skin": 0,
+        "brown": 114,
+        "dark": 5453
+      },
+      "material_ratios": {
+        "metal": 0.787428,
+        "skin": 0.0,
+        "brown": 0.004356,
+        "dark": 0.208368
+      },
+      "automatic_failures": [],
+      "automatic_status": "needs_visual_review"
+    }
+  ],
+  "contact": "01_image_to_image_families/near_dagger_arm_candidate_01_audit/contact.png"
+}

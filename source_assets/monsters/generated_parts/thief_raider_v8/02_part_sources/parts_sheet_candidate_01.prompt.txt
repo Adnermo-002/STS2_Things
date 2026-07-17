@@ -1,0 +1,37 @@
+Use case: stylized-concept
+Asset type: production Spine 4.2 cutout source sheet for a Slay the Spire 2 monster
+
+Input image 1 is the exact approved Thief Raider identity and pose. Reproduce that same character,
+same left-facing three-quarter view, same proportions, same matte low-frequency painting, same palette,
+same lighting and the same equipment. Do not redesign the character.
+
+Create one clean square production sheet containing separated semantic pieces with generous spacing.
+Each piece must be a CLOSED, SOLID painted silhouette with a short rounded hidden overlap tab at every
+joint. The overlap tab continues the same cloth/leather/skin material naturally underneath the neighbor.
+Never draw an open sleeve, hollow boot, tube, socket, cutaway, cross-section, rimmed hole, square crop,
+floating fragment, or exposed body stump.
+
+Lay out exactly these non-overlapping pieces, each shown once:
+1 hooded head plus short solid neck overlap; 2 yellow eye glow;
+3 torso/chest garment with solid shoulder and waist overlap zones but no arms;
+4 pelvis/coat tails; 5 belt and small pouch;
+6 near upper arm; 7 near forearm and bracer; 8 near open/glove hand;
+9 far/dagger upper arm; 10 far/dagger forearm and bracer; 11 far dagger grip hand;
+12 near shoulder plate; 13 far shoulder plate; 14 dagger;
+15 near thigh; 16 near shin; 17 near boot;
+18 far thigh; 19 far shin; 20 far boot;
+21 scarf front; 22 scarf rear overlap panel;
+23 cape upper; 24 cape middle; 25 cape tail;
+26 loot sack; 27 sack knot; 28 sack strap.
+
+The limb pieces should look like complete overlapping animation parts, not detached toy cylinders.
+Keep near/far perspective consistent with the assembled source: the far-side limbs are slightly smaller,
+darker and less detailed. Cloth panels must overlap longitudinally so they can become weighted meshes.
+All edges must be clean and fully visible; no piece may touch another piece or the canvas edge.
+
+Scene/backdrop: perfectly flat solid #00ff00 chroma-key background, one uniform color with no shadow,
+gradient, texture, floor, reflection or lighting variation. Do not use #00ff00 in the character.
+
+Avoid: text, labels, numbers, watermark, duplicate parts, missing parts, front-facing redesign, realistic
+human anatomy, chibi proportions, polygon facets, plastic 3D highlights, hollow openings, tubular cuffs,
+empty boot mouths, dismembered anatomy, blood, gore, cast shadows.

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -22,6 +23,9 @@ namespace STS2_Things.Events;
 
 public sealed class Backrooms : EventModel
 {
+    private Player EventOwner => Owner
+        ?? throw new InvalidOperationException("Backrooms event has not been initialized with an owner.");
+
     // 搜索伤害/概率统一以 DynamicVars 为唯一数据源，避免与实例字段不同步
     private int SearchDamage => (int)DynamicVars.HpLoss.BaseValue;
     private int SearchChance => (int)DynamicVars["SearchChance"].BaseValue;
@@ -52,7 +56,7 @@ public sealed class Backrooms : EventModel
         // 扣除生命值
         await CreatureCmd.Damage(
             new ThrowingPlayerChoiceContext(),
-            Owner.Creature,
+            EventOwner.Creature,
             damage,
             ValueProp.Unblockable | ValueProp.Unpowered,
             null, null
@@ -96,7 +100,7 @@ public sealed class Backrooms : EventModel
     private async Task EnchantDissolve()
     {
         var selected = (await CardSelectCmd.FromDeckForEnchantment(
-            Owner, ModelDb.Enchantment<Disperse>(), 1,
+            EventOwner, ModelDb.Enchantment<Disperse>(), 1,
             new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt,
                 (int)DynamicVars["Cards"].BaseValue))).ToList();
 
@@ -116,7 +120,7 @@ public sealed class Backrooms : EventModel
     private async Task TakeAlmondWater()
     {
         var relic = ModelDb.Relic<AlmondWater>().ToMutable();
-        await RelicCmd.Obtain(relic, Owner);
+        await RelicCmd.Obtain(relic, EventOwner);
         SetEventFinished(L10NLookup("BACKROOMS.pages.TAKE_ALMOND_WATER.description"));
     }
 
@@ -124,11 +128,11 @@ public sealed class Backrooms : EventModel
     {
         await CreatureCmd.LoseMaxHp(
             new ThrowingPlayerChoiceContext(),
-            Owner.Creature,
+            EventOwner.Creature,
             DynamicVars["MaxHpLoss"].BaseValue,
             false
         );
-        await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
+        await CreatureCmd.Heal(EventOwner.Creature, DynamicVars.Heal.BaseValue);
         SetEventFinished(L10NLookup("BACKROOMS.pages.REST.description"));
     }
 

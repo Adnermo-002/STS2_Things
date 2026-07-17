@@ -1,0 +1,13 @@
+{
+	"SURRENDER.title": "Surrender",
+	"SURRENDER.description": "Heal [green]{Heal:diff()}[/green] HP.\nChange the enemy's intent to: apply {WeakPower:diff()} [gold]Weak[/gold] stacks.",
+	"REUSE.title": "Reuse",
+	"REUSE.description": "The first [gold]Status[/gold] card you draw each turn is transformed into [gold]Fuel[/gold].\nAdd 1 [gold]Ash[/gold] to your discard pile.",
+	"SOULFYSH_DISEASE.title": "Soulfysh Disease",
+	"SOULFYSH_DISEASE.description": "Gain 1 [gold]Soulfysh Disease[/gold].\nWhen [gold]Sly[/gold], also add 1 copy of this card and {BeckonCount:diff()} [gold]Beckon[/gold] cards with [blue]Disperse[/blue] to your discard pile.",
+	"RECALL.title": "Recall",
+	"RECALL.description": "This turn, your draws prioritize your [gold]discard pile[/gold].",
+	"PACK_UP.title": "Pack Up",
+	"PACK_UP.description": "Draw 1 card.\nChoose 1 card from your deck and discard it.",
+	"PACK_UP.selectionScreenPrompt": "Choose a card to discard."
+}

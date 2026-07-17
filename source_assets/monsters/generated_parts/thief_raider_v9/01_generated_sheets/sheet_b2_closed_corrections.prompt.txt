@@ -1,0 +1,25 @@
+Use case: precise-object-edit
+Asset type: correction pass for the Thief Raider Spine semantic limb sheet
+
+Image 1 is the immutable current-character identity reference.  Image 2 is the
+sheet to edit.
+
+Change only these defects in Image 2:
+
+1. Paint over every visible circular/oval cavity at the ends of the four arm
+   and forearm pieces.  Each end becomes a convex, opaque, softly rounded cloth
+   volume continuing the same sleeve color and light.  No ring, rim, dark hole,
+   socket, tube mouth, flat cut face or opening remains.
+2. Paint over the open shafts of both boots.  Each top becomes a solid leather
+   and dark-cloth overlap volume that can hide under a shin.  No interior or
+   ring is visible.
+3. Replace the left grip-hand fist with the same curved dagger-grip fingers as
+   Image 1, but leave an empty narrow handle channel and do not include a
+   dagger.
+4. Replace the right grip-hand fist with the same curved strap-grip fingers as
+   Image 1, but do not include the strap.
+
+Preserve the exact layout, number of pieces, green background, compact Raider
+proportions, screen-left three-quarter view, original palette, smooth matte
+brushwork, armor, thighs, shins and dagger.  No new pieces, full character,
+labels, shadows, faceting, glossy plastic or front-facing anatomy.

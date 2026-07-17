@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "status": "static_hidden_base_pass_mesh_pose_gate_pending",
+  "identity_sha256": "643a86c7d8b9bb885161ac6abad39f8c3b8af09fcb8ad8e016b90feee73b06fb",
+  "donor_sha256": "3c900428268222bc6dae7b253e612d382501aec51805b32375f6f189f801d3b8",
+  "policy": "donor supplies one continuous far-arm cloth base only where the locked bind pose is fully opaque",
+  "alignment": {
+    "matrix": [
+      [
+        1.001328176,
+        -0.000375507,
+        -0.714466575
+      ],
+      [
+        0.000375507,
+        1.001328176,
+        23.559875363
+      ]
+    ],
+    "scale": 1.001328246,
+    "angle_deg": 0.021486409,
+    "translation_xy": [
+      -0.714467,
+      23.559875
+    ],
+    "target_keypoints": 1213,
+    "candidate_keypoints": 1139,
+    "ratio_matches": 279,
+    "inliers": 225,
+    "inlier_ratio": 0.806452,
+    "alpha_iou_outside_edit": 0.992107902,
+    "rgb_abs_delta_outside_edit": {
+      "mean": 5.857677,
+      "median": 3.666667,
+      "p90": 7.666667
+    }
+  },
+  "mask": {
+    "roi_xy": [
+      [
+        300,
+        115
+      ],
+      [
+        355,
+        112
+      ],
+      [
+        388,
+        138
+      ],
+      [
+        398,
+        182
+      ],
+      [
+        392,
+        218
+      ],
+      [
+        365,
+        242
+      ],
+      [
+        315,
+        242
+      ],
+      [
+        288,
+        216
+      ],
+      [
+        286,
+        172
+      ]
+    ],
+    "raw_pixels": 4790,
+    "hidden_pixels": 4752,
+    "components": [
+      4752
+    ],
+    "hsv_contract": {
+      "s_max": 82,
+      "v_min": 22,
+      "v_max": 130
+    }
+  },
+  "palette_comparison": {
+    "far_arm_donor": {
+      "count": 4752,
+      "mean_rgb": [
+        51.9072,
+        46.5979,
+        53.5147
+      ],
+      "median_rgb": [
+        53.0,
+        48.0,
+        55.0
+      ],
+      "p10_rgb": [
+        32.0,
+        26.0,
+        32.0
+      ],
+      "p90_rgb": [
+        70.0,
+        65.0,
+        73.0
+      ]
+    },
+    "exact_near_arm_master": {
+      "count": 2213,
+      "mean_rgb": [
+        51.9648,
+        49.3895,
+        53.4094
+      ],
+      "median_rgb": [
+        53.0,
+        50.0,
+        55.0
+      ],
+      "p10_rgb": [
+        33.0,
+        30.0,
+        32.0
+      ],
+      "p90_rgb": [
+        70.0,
+        68.0,
+        73.0
+      ]
+    }
+  },
+  "full_bind_rgba_exact": true,
+  "outputs": {
+    "base": "far_arm_cloth_base.png",
+    "bind": "full_bind_preview.png",
+    "contact": "extraction_contact.jpg"
+  },
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "next_gate": "two_dimensional_weighted_mesh_at_raider_motion_angles"
+}

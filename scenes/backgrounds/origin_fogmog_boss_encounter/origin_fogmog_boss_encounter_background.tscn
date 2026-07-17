@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://STS2_Things/Visuals/NThingsCombatBackground.cs" id="1_script"]
+
+[node name="OriginFogmogBossEncounterBackground" type="Control"]
+script = ExtResource("1_script")
+
+[node name="Layer_00" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+
+[node name="Foreground" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0

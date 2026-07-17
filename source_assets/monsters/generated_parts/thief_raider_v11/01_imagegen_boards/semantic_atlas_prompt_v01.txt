@@ -1,0 +1,50 @@
+﻿Use case: stylized-concept
+Asset type: production semantic body-part atlas for a Spine 4.2 / Godot 4.5.1 2D skeletal character
+
+Input images:
+- Image 1 is the locked Thief Raider identity master. Preserve this exact character, costume, colors, materials, face/hood, compact proportions, and three-quarter-left orientation.
+- Image 2 is an original STS2 Raider texture atlas used only as a reference for clean semantic separation, soft hand-painted rendering, and natural hidden joint underlaps. Do not copy its costume or colors.
+
+Primary request:
+Create one clean square production atlas that deconstructs Image 1 into complete, isolated semantic parts ready for skeletal rigging. This is not a redesign and not a pose sheet. Do not draw an assembled full character.
+
+Required isolated parts, each exactly once and with generous empty spacing:
+1. hooded head with black face opening and two yellow eyes;
+2. torso/chest/waist tunic as one compact core;
+3. pink scarf collar;
+4. long pink scarf tail;
+5. near shoulder plate;
+6. near cloth upper arm with a rounded hidden shoulder underlap and a rounded elbow underlap;
+7. near braced forearm, complete behind the bracer with a rounded elbow underlap and wrist underlap;
+8. near dagger hand as a complete hand;
+9. dagger as a separate complete weapon;
+10. far shoulder plate;
+11. far cloth upper arm with natural hidden joint underlaps;
+12. far armored forearm with natural hidden joint underlaps;
+13. far hand as a complete hand;
+14. near thigh;
+15. near lower leg plus boot;
+16. far thigh;
+17. far lower leg plus boot;
+18. hip cloth flap;
+19. belt with buckle;
+20. side pouch;
+21. large back sack;
+22. sack rope/strap;
+23. short rear cape cloth;
+24. any small costume fastener that truly needs independent motion.
+
+Style and identity:
+Exact original muted charcoal, dusty magenta, warm brown leather, and dull silver palette from Image 1. Smooth matte low-frequency hand-painted shading, soft irregular contours, compact stylized Raider anatomy, readable at combat scale. Preserve the left-facing three-quarter view embedded in every asymmetric piece. Keep surfaces smooth; no faceted polygon planes and no photorealistic anatomy.
+
+Rigging geometry:
+Every limb section must be a solid anatomical/costume shape, not a rectangular crop. Extend only the small hidden overlap needed under neighboring parts. Use rounded tapered joint underlaps with continuous cloth/leather shading. Parts must overlap cleanly when reassembled yet retain the exact visible silhouette of Image 1. Hands, weapons, armor plates, scarf, sack, rope, pouch, and cape must remain separate objects.
+
+Scene/backdrop:
+Perfectly flat solid #00FF00 chroma-key background. No floor, shadow, gradient, texture, labels, guides, borders, boxes, panels, or text.
+
+Composition:
+Square atlas, orthographic flat-lay organization, all parts fully inside the canvas with at least 40 pixels of clear chroma space between silhouettes. Keep large pieces near the center and small pieces around the perimeter. No overlap between any parts.
+
+Hard avoid:
+assembled character; front-facing pose; realistic human proportions; new costume details; palette changes; glossy plastic; high-frequency noise; faceted polygon shading; square crop fragments; rectangular texture tiles; empty sleeves; hollow tubes; sausage limbs; ball joints; circular plugs; flat-cut cuffs; floating armor fused into cloth; hands fused to weapons; duplicated or missing parts; captions; watermark.

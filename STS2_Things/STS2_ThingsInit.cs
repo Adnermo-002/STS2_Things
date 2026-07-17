@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Godot;
+using Godot.Bridge;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Events;
@@ -14,89 +14,60 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using STS2_Things.Cards;
+using STS2_Things.Compatibility;
 using STS2_Things.Encounters;
 using STS2_Things.Events;
-using STS2_Things.Monsters;
+using STS2_Things.Hooks;
 using STS2_Things.Relics;
 
 [ModInitializer(nameof(Initialize))]
 public static class STS2_ThingsInit
 {
+    private const string HarmonyId = "Adnermo.STS2_Things";
+    private static bool _initialized;
+
     public static void Initialize()
     {
+        if (_initialized)
+        {
+            Log.Warn("STS2_Things - duplicate initialization ignored.");
+            return;
+        }
+
         try
         {
+            var assembly = Assembly.GetExecutingAssembly();
+            ScriptManagerBridge.LookupScriptsInAssembly(assembly);
+            Sts2VersionCompatibility.InitializeBeforeModelDatabase();
+
             // ---- 卡牌 & 遗物 模型池注册 ----
-            ModHelper.AddModelToPool(typeof(DefectCardPool), typeof(Reuse));
-            ModHelper.AddModelToPool(typeof(EventCardPool), typeof(Surrender));
-            ModHelper.AddModelToPool(typeof(SilentCardPool), typeof(SoulfyshDisease));
-            ModHelper.AddModelToPool(typeof(SilentCardPool), typeof(Recall));
-            ModHelper.AddModelToPool(typeof(SilentCardPool), typeof(PackUp));
-            ModHelper.AddModelToPool(typeof(EventRelicPool), typeof(WhiteFlag));
-            ModHelper.AddModelToPool(typeof(EventRelicPool), typeof(CurseRemover));
-            ModHelper.AddModelToPool(typeof(EventRelicPool), typeof(MagicGlove));
-            ModHelper.AddModelToPool(typeof(EventRelicPool), typeof(AlmondWater));
-            ModHelper.AddModelToPool(typeof(EventRelicPool), typeof(MedusaHair));
+            ModHelper.AddModelToPool<DefectCardPool, Reuse>();
+            ModHelper.AddModelToPool<EventCardPool, Surrender>();
+            ModHelper.AddModelToPool<SilentCardPool, SoulfyshDisease>();
+            ModHelper.AddModelToPool<SilentCardPool, Recall>();
+            ModHelper.AddModelToPool<SilentCardPool, PackUp>();
+            ModHelper.AddModelToPool<EventRelicPool, WhiteFlag>();
+            ModHelper.AddModelToPool<EventRelicPool, CurseRemover>();
+            ModHelper.AddModelToPool<EventRelicPool, MagicGlove>();
+            ModHelper.AddModelToPool<EventRelicPool, AlmondWater>();
+            ModHelper.AddModelToPool<EventRelicPool, MedusaHair>();
 
             // ---- Harmony 初始化 ----
-            var harmony = new Harmony("STS2_ThingsInit");
+            var harmony = new Harmony(HarmonyId);
 
-            // ---- 怪物注册中心（视觉/遭遇/背景全自动） ----
-            MonsterRegistrar.Initialize(harmony);
+            // MonsterModel/EncounterModel 由 V108 ModelDb 自动发现。这里只安装固定 Act
+            // 候选池等原版没有公开注册 API 的窄 Harmony 补丁；视觉、背景和槽位均由
+            // MonsterModel/EncounterModel 的原生路径约定与 Godot 场景负责。
+            harmony.PatchAll(assembly);
 
-            // 每只怪物只需 1 行：贴图路径/边界框/锚点全部自动推断
-            //   贴图 = res://images/monsters/{snake_case}.png
-            //   背景 = res://images/backgrounds/{snake_case}_bg.png
-            //   边界/中心/意图 = 贴图实际长宽 × scale 自动居中
-
-            MonsterRegistrar.AddBoss<OriginFogmog>(
-                typeof(OriginFogmogBossEncounter),
-                0.52f, hasBackground: true, forceSpawn: true,
-                acts: MonsterRegistrar.ActOvergrowth
-            );
-
-            MonsterRegistrar.AddMinion<OriginEyeWithTeeth>(
-                colorMod: new Color(0.7f, 0.2f, 1f)
-            );
-
-            MonsterRegistrar.AddMinion<SoulRoe>();
-
-            MonsterRegistrar.AddMinion<ThiefRaider>(0.45f);
-
-            MonsterRegistrar.AddElite<SoulRoes>(
-                typeof(SoulRoesEncounter),
-                acts: MonsterRegistrar.ActUnderdocks
-            );
-
-            MonsterRegistrar.AddBoss<TheLegacy>(
-                typeof(TheLegacyBossEncounter),
-                0.52f, hasBackground: true, forceSpawn: true,
-                acts: MonsterRegistrar.ActUnderdocks
-            );
-
-            MonsterRegistrar.AddBoss<ScaleBeetle>(
-                typeof(ScaleBeetleBossEncounter),
-                0.52f, hasBackground: true,
-                acts: MonsterRegistrar.ActOvergrowth
-            );
-
-            MonsterRegistrar.AddBoss<BowlbugProgenitor>(
-                typeof(BowlbugProgenitorBossEncounter),
-                0.52f, hasBackground: true, forceSpawn: true,
-                acts: MonsterRegistrar.ActHive
-            );
-
-            MonsterRegistrar.AddEncounter(typeof(RaidParty),
-                MonsterRegistrar.ActOvergrowth);
-
-            harmony.PatchAll();
-
+            _initialized = true;
             Log.Info("STS2_Things - 加载成功!");
         }
         catch (Exception e)
         {
             Log.Error("STS2_Things - 加载失败");
-            Log.Error(e.Message);
+            Log.Error(e.ToString());
+            throw;
         }
     }
 }
@@ -106,27 +77,33 @@ public static class STS2_ThingsInit
 [HarmonyPatch(typeof(Overgrowth), "get_AllEvents")]
 public static class OvergrowthAllEventsPatch
 {
+    [HarmonyPriority(Priority.Last)]
     private static void Postfix(ref IEnumerable<EventModel> __result)
     {
-        __result = __result.Concat([ModelDb.Event<RobberyFakeMerchant>(), ModelDb.Event<Backrooms>()]).Distinct();
+        __result = DeterministicContentOrder.SortBaseThenMods(
+            __result.Concat([ModelDb.Event<RobberyFakeMerchant>(), ModelDb.Event<Backrooms>()]).Distinct());
     }
 }
 
 [HarmonyPatch(typeof(Underdocks), "get_AllEvents")]
 public static class UnderdocksAllEventsPatch
 {
+    [HarmonyPriority(Priority.Last)]
     private static void Postfix(ref IEnumerable<EventModel> __result)
     {
-        __result = __result.Concat([ModelDb.Event<RobberyFakeMerchant>(), ModelDb.Event<Backrooms>()]).Distinct();
+        __result = DeterministicContentOrder.SortBaseThenMods(
+            __result.Concat([ModelDb.Event<RobberyFakeMerchant>(), ModelDb.Event<Backrooms>()]).Distinct());
     }
 }
 
 [HarmonyPatch(typeof(Hive), "get_AllEvents")]
 public static class HiveAllEventsPatch
 {
+    [HarmonyPriority(Priority.Last)]
     private static void Postfix(ref IEnumerable<EventModel> __result)
     {
-        __result = __result.Concat([ModelDb.Event<Medusa>()]).Distinct();
+        __result = DeterministicContentOrder.SortBaseThenMods(
+            __result.Concat([ModelDb.Event<Medusa>()]).Distinct());
     }
 }
 
@@ -153,12 +130,18 @@ public static class NeowCurseOptionsPatch
     private static void AddRelicToList<T>(Neow neow, List<EventOption> list) where T : RelicModel
     {
         var relic = ModelDb.Relic<T>().ToMutable();
-        relic.Owner = neow.Owner;
+        if (neow.Owner is { } owner)
+        {
+            relic.Owner = owner;
+        }
+
         var option = new EventOption(
             neow,
             async () =>
             {
-                await RelicCmd.Obtain(relic, neow.Owner);
+                var currentOwner = neow.Owner
+                    ?? throw new InvalidOperationException("Neow relic option was selected without an event owner.");
+                await RelicCmd.Obtain(relic, currentOwner);
                 var doneMethod = typeof(AncientEventModel)
                     .GetMethod("Done", BindingFlags.NonPublic | BindingFlags.Instance);
                 doneMethod?.Invoke(neow, null);

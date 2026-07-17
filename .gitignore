@@ -1,12 +1,29 @@
-# 默认忽略所有内容
-*
+# Godot and .NET generated state
+.godot/
+**/.godot/
+**/bin/
+**/obj/
+**/__pycache__/
+*.py[cod]
 
-# 只追踪以下文件/目录
-!.gitignore
-!LICENSE
-!README.md
-!STS2_Things/
+# IDE state
+.idea/
+.vs/
+*.user
+*.suo
+*.cs.uid
 
-# STS2_Things 内部忽略
-STS2_Things/bin/
-STS2_Things/obj/
+# Build and packaged artifacts
+build/
+dist/
+*.pck
+*.zip
+*.pdb
+
+# Local logs and temporary files
+*.log
+*.tmp
+*~
+
+# Old local reverse-engineering trees must not be added to this Mod repository.
+Slay the Spire 2_decompiled*/

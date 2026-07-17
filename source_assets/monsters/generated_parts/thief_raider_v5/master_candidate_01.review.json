@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "source": "master_chroma_candidate_01.png",
+  "alpha_asset": "master_candidate_01.png",
+  "reasons": [
+    "The visible silhouette remains too short and wide; its alpha bounding box is 1107x776 (width/height 1.426).",
+    "The head, sack and boots are still oversized relative to the torso and legs.",
+    "The result remains closer to a three-to-four-head mascot proportion than the required compact 4.5-5.5-head Ruby Raider proportion.",
+    "The torso and pelvis still read too frontally compared with the screen-left head and dagger.",
+    "The rendering is improved but still smoother and more product-rendered than the matte shipped Raider references."
+  ],
+  "next_iteration": {
+    "keep": [
+      "identity and costume",
+      "existing color family",
+      "screen-left dagger action line",
+      "matte hand-painted direction"
+    ],
+    "change_only": [
+      "increase torso and leg length by roughly 25-30 percent",
+      "reduce hood, sack and boots by roughly 12-18 percent",
+      "narrow the body silhouette",
+      "turn shoulder line, pelvis and both feet farther toward screen-left",
+      "target alpha-bounds width/height between 1.05 and 1.20, including dagger and cloak"
+    ]
+  }
+}

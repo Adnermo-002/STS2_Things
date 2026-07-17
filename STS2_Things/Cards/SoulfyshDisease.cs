@@ -45,18 +45,20 @@ public sealed class SoulfyshDisease : CardModel
 
         if (cardPlay.Resources.EnergySpent == 0 && cardPlay.Resources.EnergyValue > 0)
         {
+            var combatState = CombatState
+                ?? throw new InvalidOperationException("Soulfysh Disease was played outside combat.");
             _wasPlayedWithSly = true;
             // 奇巧时：复制本牌到弃牌堆 + 放入带消散的Beckon
-            var copy = CombatState.CreateCard<SoulfyshDisease>(Owner);
+            var copy = combatState.CreateCard<SoulfyshDisease>(Owner);
             if (IsUpgraded) copy.UpgradeInternal();
-            await CardPileCmd.Add(copy, PileType.Discard);
+            await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Discard, Owner);
 
-            int beckonCount = IsUpgraded ? 1 : 2;
+            int beckonCount = DynamicVars["BeckonCount"].IntValue;
             for (int i = 0; i < beckonCount; i++)
             {
-                var beckon = CombatState.CreateCard<Beckon>(Owner);
+                var beckon = combatState.CreateCard<Beckon>(Owner);
                 CardCmd.Enchant<Disperse>(beckon, 1);
-                await CardPileCmd.Add(beckon, PileType.Discard);
+                await CardPileCmd.AddGeneratedCardToCombat(beckon, PileType.Discard, Owner);
             }
         }
 

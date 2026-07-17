@@ -1,0 +1,33 @@
+soul_roe_3.png
+size: 399,121
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ai_cytoplasm_full
+  rotate: false
+  xy: 124, 10
+  size: 100, 104
+  orig: 100, 104
+  offset: 0, 0
+  index: -1
+ai_nucleus
+  rotate: false
+  xy: 346, 10
+  size: 48, 50
+  orig: 48, 50
+  offset: 0, 0
+  index: -1
+ai_membrane_ring
+  rotate: false
+  xy: 10, 10
+  size: 104, 106
+  orig: 104, 106
+  offset: 0, 0
+  index: -1
+ai_veins_and_specular_highlight
+  rotate: false
+  xy: 234, 10
+  size: 102, 100
+  orig: 102, 100
+  offset: 0, 0
+  index: -1

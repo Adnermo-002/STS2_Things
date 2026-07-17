@@ -1,0 +1,70 @@
+﻿{
+    "schema_version":  1,
+    "candidate":  "thief_raider_v10",
+    "status":  "rejected_visual_gate",
+    "shipping_allowed":  false,
+    "steam_install_allowed":  false,
+    "identity_source":  "00_reference/current_master.png",
+    "identity_sha256":  "643A86C7D8B9BB885161AC6ABAD39F8C3B8AF09FCB8AD8E016B90FEEE73B06FB",
+    "replaces":  "thief_raider_v9_rejected_visual_gate",
+    "next_gate":  "restart_from_full_character_semantic_part_board_and_review_assembled_bind_before_rigging",
+    "active_family":  {
+                          "name":  "near_dagger_arm",
+                          "guide":  "00_reference/near_dagger_arm_i2i_guide_1536x1024.png",
+                          "prompt":  "01_image_to_image_families/near_dagger_arm_imagegen_prompt.txt",
+                          "formal_assets_touched":  false,
+                          "candidate_01":  {
+                                               "status":  "rejected",
+                                               "chroma":  "01_image_to_image_families/near_dagger_arm_candidate_01_chroma.png",
+                                               "alpha":  "01_image_to_image_families/near_dagger_arm_candidate_01_alpha.png",
+                                               "review":  "01_image_to_image_families/near_dagger_arm_candidate_01_REJECTED.md"
+                                           },
+                          "near_upper_arm_single_candidate_01":  {
+                                                                     "status":  "rejected",
+                                                                     "chroma":  "01_image_to_image_families/near_upper_arm_single_candidate_01_chroma.png",
+                                                                     "alpha":  "01_image_to_image_families/near_upper_arm_single_candidate_01_alpha.png",
+                                                                     "review":  "01_image_to_image_families/near_upper_arm_single_candidate_01_REJECTED.md",
+                                                                     "reason":  "isolated generation produced elongated tube and flat cuffs"
+                                                                 },
+                          "context_reveal":  {
+                                                 "target":  "00_reference/near_upper_arm_context_edit_target.png",
+                                                 "mask":  "00_reference/near_upper_arm_context_edit_mask.png",
+                                                 "prompt":  "01_image_to_image_families/near_upper_arm_context_reveal_prompt.txt",
+                                                 "status":  "static_extraction_pass",
+                                                 "extraction":  "02_semantic_parts/near_upper_arm_context_01/audit.json",
+                                                 "alpha_iou_outside_edit":  0.995682844,
+                                                 "full_bind_rgba_exact":  true
+                                             }
+                      },
+    "motion_blueprint":  {
+                             "status":  "pass",
+                             "root":  "../../../..//build/thief_v10_raider_motion_blueprint",
+                             "report":  "build/thief_v10_raider_motion_blueprint/RAIDER_MOTION_BLUEPRINT.md",
+                             "validation":  "build/thief_v10_raider_motion_blueprint/VALIDATION.md"
+                         },
+    "corrected_near_arm_ownership":  {
+                                         "status":  "pass",
+                                         "manifest":  "00_reference/near_arm_ownership_v2/near_arm_ownership_v2.manifest.json",
+                                         "uncovered":  0,
+                                         "overlap":  0,
+                                         "outside":  0,
+                                         "rgba_exact":  true
+                                     },
+    "weighted_mesh_prototype":  {
+                                    "status":  "rejected_visual_gate",
+                                    "rigid_contact":  "04_pose_stress/near_upper_arm_context_01/contact.jpg",
+                                    "latest_contact":  "05_spine_prototype/near_arm_weighted_mesh_v05/contact.jpg",
+                                    "cloth_pixels":  3879,
+                                    "guide":  "00_reference/near_elbow_fold_i2i_guide.png",
+                                    "prompt":  "01_image_to_image_families/near_elbow_fold_imagegen_prompt.txt",
+                                    "review":  "VISUAL_GATE_REJECTED.md",
+                                    "rejected_versions":  [
+                                                               "near_arm_weighted_mesh_v01",
+                                                               "near_arm_weighted_mesh_v02",
+                                                               "near_arm_weighted_mesh_v03",
+                                                               "near_arm_weighted_mesh_v04",
+                                                               "near_arm_weighted_mesh_v05"
+                                                           ],
+                                    "rejected_attachment":  "01_image_to_image_families/near_elbow_fold_candidate_01_alpha.png"
+                                }
+}

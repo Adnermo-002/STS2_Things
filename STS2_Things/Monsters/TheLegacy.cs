@@ -25,9 +25,9 @@ namespace STS2_Things.Monsters;
 
 /// <summary>
 ///     腐化之遗 — Underdocks Boss
-///     开局: BeatOfDeathPower (玩家出牌扣2血) + HardenedShellPower (HP/3 层)
+///     开局: LegacyBeatOfDeathPower (玩家出牌扣2血) + HardenedShellPower (HP/3 层)
 ///     意图循环:
-///     衰竭 → (回音 or 血弹 随机) → 另一招 → 强化 → 循环
+///     衰竭 → 回音 → 血弹 → 强化 → 循环
 ///     强化阶段:
 ///     第1次: 1层人工制品
 ///     第2次: 1层死亡律动 + 硬化外壳改成HP/4
@@ -37,8 +37,9 @@ namespace STS2_Things.Monsters;
 /// </summary>
 public sealed class TheLegacy : MonsterModel
 {
-    // 对应CustomBgm "act1_boss_vantom" 的FMOD参数
-    private const string _trackName = "vantom_progress";
+    // The encounter lives in Underdocks, so it uses an act1_b track that is
+    // already loaded by the native Act music lifecycle.
+    private const string _trackName = "waterfall_giant_progress";
     private const int BloodDamage = 3;
 
     private const int BloodCount = 4;
@@ -46,14 +47,20 @@ public sealed class TheLegacy : MonsterModel
     // 复用Vantom（暗黑Boss）的原版音效
     protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/vantom/vantom_inky_lance";
     protected override string CastSfx => "event:/sfx/enemy/enemy_attacks/vantom/vantom_buff";
-    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/vantom/vantom_dismember";
+    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/vantom/vantom_die";
+    public override DamageSfxType TakeDamageSfxType => DamageSfxType.Magic;
+    public override Vector2 ExtraDeathVfxPadding => new(1.4f, 1.7f);
 
-    private int _strengthenCount;
-    private int _loopCount; // 循环计数器（第5次强化后开始）
-    private CancellationTokenSource _heartbeatCts;
+    private CancellationTokenSource? _heartbeatCts;
 
-    protected override string VisualsPath =>
-        SceneHelper.GetScenePath("creature_visuals/fallback");
+    public override IEnumerable<string> AssetPaths => base.AssetPaths.Concat(
+    [
+        ModelDb.Power<LegacyBeatOfDeathPower>().ResolvedBigIconPath,
+        ModelDb.Power<DazedPower>().ResolvedBigIconPath,
+        ModelDb.Power<HardenedShellPower>().ResolvedBigIconPath,
+        ModelDb.Power<ArtifactPower>().ResolvedBigIconPath,
+        ModelDb.Power<StrengthPower>().ResolvedBigIconPath
+    ]).Distinct();
 
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(
         AscensionLevel.ToughEnemies, 298, 285);
@@ -67,13 +74,15 @@ public sealed class TheLegacy : MonsterModel
     public override async Task AfterAddedToRoom()
     {
         await base.AfterAddedToRoom();
-        // 初始化专属音乐参数（CustomBgm = act1_boss_vantom）
+        // 初始化专属音乐参数（CustomBgm = act1_b_boss_waterfall_giant）
         NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 1f);
         // 心跳循环：血量越低跳得越快
         _heartbeatCts = new CancellationTokenSource();
         _ = HeartbeatLoop(_heartbeatCts.Token);
+        // 隐藏 Power 保存下一次强化阶段，使进度进入多人 checksum/full-state。
+        await PowerCmd.Apply<LegacyProgressPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
         // 死亡律动: 玩家每出一张牌扣 2 血
-        await PowerCmd.Apply<BeatOfDeathPower>(new ThrowingPlayerChoiceContext(), Creature, 2m, Creature, null);
+        await PowerCmd.Apply<LegacyBeatOfDeathPower>(new ThrowingPlayerChoiceContext(), Creature, 2m, Creature, null);
         // 硬化外壳: 层数 = 最大 HP / 3
         // 注意：HardenedShellPower 的 ShouldScaleInMultiplayer=true，PowerCmd.Apply 会自动缩放。
         // 必须用缩放前的原始 HP（MonsterMaxHpBeforeModification）计算，否则会双重缩放导致层数超过 MaxHp。
@@ -153,18 +162,19 @@ public sealed class TheLegacy : MonsterModel
         SfxCmd.Play(CastSfx);
         await CreatureCmd.TriggerAnim(Creature, "Cast", 0.5f);
 
-        _strengthenCount++;
+        var progress = Creature.GetPower<LegacyProgressPower>()
+            ?? throw new InvalidOperationException("Legacy progress power is missing.");
+        int strengthenStage = progress.NextStage;
 
-        switch (_strengthenCount)
+        switch (strengthenStage)
         {
             case 1:
                 // 第1次强化：1层人工制品
                 await PowerCmd.Apply<ArtifactPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
-                await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
                 break;
             case 2:
                 // 第2次强化：1层死亡律动 + 硬化外壳改成HP/4
-                await PowerCmd.Apply<BeatOfDeathPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
+                await PowerCmd.Apply<LegacyBeatOfDeathPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
                 await SetShellDivisor(4);
                 break;
             case 3:
@@ -174,19 +184,20 @@ public sealed class TheLegacy : MonsterModel
             case 4:
                 // 第4次强化：2点力量 + 1层死亡律动
                 await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Creature, 2m, Creature, null);
-                await PowerCmd.Apply<BeatOfDeathPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
+                await PowerCmd.Apply<LegacyBeatOfDeathPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
                 break;
             default:
                 // 之后循环：第1次循环=2层人工制品+HP/5, 第2次=3层+HP/6, ...
-                _loopCount++;
-                var n = _loopCount;
+                var n = strengthenStage - 4;
                 // 先施死亡律动再施人工制品，避免人工制品抵消死亡律动
-                await PowerCmd.Apply<BeatOfDeathPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
+                await PowerCmd.Apply<LegacyBeatOfDeathPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
                 await PowerCmd.Apply<ArtifactPower>(new ThrowingPlayerChoiceContext(), Creature, n + 1m, Creature, null);
                 await SetShellDivisor(n + 4);
                 await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Creature, 2m, Creature, null);
                 break;
         }
+
+        progress.Advance();
     }
 
     private async Task SetShellDivisor(int divisor)
@@ -194,7 +205,9 @@ public sealed class TheLegacy : MonsterModel
         var shell = Creature.Powers.OfType<HardenedShellPower>().FirstOrDefault();
         if (shell != null)
         {
-            var target = Creature.MaxHp / (decimal)divisor;
+            // PowerCmd.ModifyAmount truncates decimal offsets. Compute the desired
+            // shell as an integer first so every divisor reaches the exact floor.
+            var target = Creature.MaxHp / divisor;
             await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(), shell,
                 target - shell.Amount, Creature, null);
         }
@@ -206,7 +219,7 @@ public sealed class TheLegacy : MonsterModel
     {
         if (creature == Creature)
         {
-            _heartbeatCts?.Cancel();
+            StopHeartbeat();
             // 死亡升调（vantom_progress=5 触发FMOD升调自动化）
             NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 5f);
         }
@@ -215,7 +228,14 @@ public sealed class TheLegacy : MonsterModel
 
     public override void BeforeRemovedFromRoom()
     {
+        StopHeartbeat();
+    }
+
+    private void StopHeartbeat()
+    {
         _heartbeatCts?.Cancel();
+        _heartbeatCts?.Dispose();
+        _heartbeatCts = null;
     }
 
     // ========== 心跳循环（半血后加速） ==========
@@ -233,8 +253,7 @@ public sealed class TheLegacy : MonsterModel
         {
             while (!ct.IsCancellationRequested)
             {
-                // 检查 Creature 是否仍然有效（Creature 为纯C#类，检查 null 和 IsAlive）
-                if (Creature == null || !Creature.IsAlive)
+                if (!Creature.IsAlive)
                     break;
 
                 NativeSfxPlayer.Play(files[index], volumeDb: -10f);

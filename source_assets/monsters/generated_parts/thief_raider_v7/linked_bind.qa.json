@@ -1,0 +1,9 @@
+{
+  "alpha_iou": 1.0,
+  "alpha_area_ratio": 1.0,
+  "centroid_delta_px": 0.0,
+  "visible_rgb_mae_0_255": 0.13687342695175594,
+  "part_count": 26,
+  "hidden_underlap_area": 249698,
+  "pass": true
+}

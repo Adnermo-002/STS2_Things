@@ -1,0 +1,110 @@
+origin_fogmog.png
+size: 1009,1567
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ai_cap_underside_complete
+  rotate: false
+  xy: 10, 1036
+  size: 848, 212
+  orig: 848, 212
+  offset: 0, 0
+  index: -1
+ai_cap_neck_socket
+  rotate: false
+  xy: 620, 1446
+  size: 102, 84
+  orig: 102, 84
+  offset: 0, 0
+  index: -1
+ai_screen_left_foot_complete
+  rotate: false
+  xy: 160, 1446
+  size: 220, 102
+  orig: 220, 102
+  offset: 0, 0
+  index: -1
+ai_screen_right_foot_complete
+  rotate: false
+  xy: 390, 1446
+  size: 220, 102
+  orig: 220, 102
+  offset: 0, 0
+  index: -1
+ai_screen_left_upper_arm
+  rotate: false
+  xy: 452, 1258
+  size: 130, 152
+  orig: 130, 152
+  offset: 0, 0
+  index: -1
+ai_screen_right_upper_arm
+  rotate: false
+  xy: 592, 1258
+  size: 130, 152
+  orig: 130, 152
+  offset: 0, 0
+  index: -1
+ai_screen_left_leg_complete
+  rotate: false
+  xy: 868, 1036
+  size: 136, 178
+  orig: 136, 178
+  offset: 0, 0
+  index: -1
+ai_screen_right_leg_complete
+  rotate: false
+  xy: 10, 1258
+  size: 136, 178
+  orig: 136, 178
+  offset: 0, 0
+  index: -1
+ai_screen_left_forearm_complete
+  rotate: false
+  xy: 156, 1258
+  size: 136, 162
+  orig: 136, 162
+  offset: 0, 0
+  index: -1
+ai_screen_right_forearm_complete
+  rotate: false
+  xy: 302, 1258
+  size: 140, 158
+  orig: 140, 158
+  offset: 0, 0
+  index: -1
+ai_screen_left_hand_complete
+  rotate: false
+  xy: 732, 1258
+  size: 146, 124
+  orig: 146, 124
+  offset: 0, 0
+  index: -1
+ai_screen_right_hand_complete
+  rotate: false
+  xy: 10, 1446
+  size: 140, 116
+  orig: 140, 116
+  offset: 0, 0
+  index: -1
+ai_torso_core_complete
+  rotate: false
+  xy: 10, 10
+  size: 394, 444
+  orig: 394, 444
+  offset: 0, 0
+  index: -1
+ai_face_plate_complete
+  rotate: false
+  xy: 10, 790
+  size: 210, 236
+  orig: 210, 236
+  offset: 0, 0
+  index: -1
+ai_cap_top_complete
+  rotate: false
+  xy: 10, 464
+  size: 896, 316
+  orig: 896, 316
+  offset: 0, 0
+  index: -1

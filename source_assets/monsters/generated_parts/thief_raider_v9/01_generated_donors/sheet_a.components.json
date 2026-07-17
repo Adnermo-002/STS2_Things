@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "source_chroma": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_chroma.png",
+  "source_alpha": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_alpha.png",
+  "source_sha256": "78ADDF1C5FD86E1A7D3A5C8696CDB77E112935090F754C0AB819D25DCF4901C2",
+  "alpha_threshold": 8,
+  "connectivity": 8,
+  "component_count": 12,
+  "components": [
+    {
+      "id": 1,
+      "semantic": "head_scarf_composite",
+      "preliminary_status": "donor-only",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\01_head_scarf_composite.png",
+      "source_bbox": [
+        81,
+        29,
+        309,
+        411
+      ],
+      "crop_bbox": [
+        65,
+        13,
+        341,
+        443
+      ],
+      "alpha_area_px": 93703,
+      "centroid": [
+        246.17777445759475,
+        236.64956298090777
+      ],
+      "mask_holes": 0,
+      "sha256": "B279909FF0C41723831E1F97A3C0FA802E5FAD13E724BA3F864EF2464156CE0B"
+    },
+    {
+      "id": 2,
+      "semantic": "torso_belts_cape_composite",
+      "preliminary_status": "reject",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\02_torso_belts_cape_composite.png",
+      "source_bbox": [
+        504,
+        55,
+        343,
+        407
+      ],
+      "crop_bbox": [
+        488,
+        39,
+        375,
+        439
+      ],
+      "alpha_area_px": 99870,
+      "centroid": [
+        665.6544908380895,
+        249.07161309702613
+      ],
+      "mask_holes": 0,
+      "sha256": "EB31A7446F4B07AC1625B850E92126406B2EFB273B536B3C657AD36855C73F84"
+    },
+    {
+      "id": 3,
+      "semantic": "shoulder_plate_b",
+      "preliminary_status": "donor-only",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\03_shoulder_plate_b.png",
+      "source_bbox": [
+        1153,
+        149,
+        190,
+        151
+      ],
+      "crop_bbox": [
+        1137,
+        133,
+        222,
+        183
+      ],
+      "alpha_area_px": 17692,
+      "centroid": [
+        1236.1183585801493,
+        231.48309970608184
+      ],
+      "mask_holes": 0,
+      "sha256": "6E7BC7BBDAA6B39677CF385C56084F5E40D396FE251378309B889A4862C1896D"
+    },
+    {
+      "id": 4,
+      "semantic": "shoulder_plate_a",
+      "preliminary_status": "donor-only",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\04_shoulder_plate_a.png",
+      "source_bbox": [
+        910,
+        152,
+        194,
+        152
+      ],
+      "crop_bbox": [
+        894,
+        136,
+        226,
+        184
+      ],
+      "alpha_area_px": 18216,
+      "centroid": [
+        994.8687417654809,
+        235.2509881422925
+      ],
+      "mask_holes": 0,
+      "sha256": "DB6A1282BD2D343F51653B5D825CB25D26F45B05CE56CCC1927B34F2BF9CCBEF"
+    },
+    {
+      "id": 5,
+      "semantic": "eye_left_sheet",
+      "preliminary_status": "usable",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\05_eye_left_sheet.png",
+      "source_bbox": [
+        410,
+        325,
+        14,
+        20
+      ],
+      "crop_bbox": [
+        394,
+        309,
+        46,
+        52
+      ],
+      "alpha_area_px": 204,
+      "centroid": [
+        416.2598039215686,
+        334.45588235294116
+      ],
+      "mask_holes": 0,
+      "sha256": "AEB6F1120D443C0C057A40798E7C0C27AB53801508F285F2BAF2EE7023F81BDF"
+    },
+    {
+      "id": 6,
+      "semantic": "eye_right_sheet",
+      "preliminary_status": "usable",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\06_eye_right_sheet.png",
+      "source_bbox": [
+        446,
+        329,
+        16,
+        20
+      ],
+      "crop_bbox": [
+        430,
+        313,
+        48,
+        52
+      ],
+      "alpha_area_px": 249,
+      "centroid": [
+        453.3734939759036,
+        338.3574297188755
+      ],
+      "mask_holes": 0,
+      "sha256": "B4A2DA9265BC3617191644A7828D51F7EABF4B328FEB429071301A77AA781AA7"
+    },
+    {
+      "id": 7,
+      "semantic": "scarf_front_crescent",
+      "preliminary_status": "donor-only",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\07_scarf_front_crescent.png",
+      "source_bbox": [
+        1003,
+        452,
+        241,
+        197
+      ],
+      "crop_bbox": [
+        987,
+        436,
+        273,
+        229
+      ],
+      "alpha_area_px": 26858,
+      "centroid": [
+        1121.220567428699,
+        555.8787698264949
+      ],
+      "mask_holes": 0,
+      "sha256": "F23CF9481328430708AFAAC8F977ECBAEEB0FCC25859CFCD42D447546B3DE7C2"
+    },
+    {
+      "id": 8,
+      "semantic": "pelvis_waist_cloth",
+      "preliminary_status": "reject",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\08_pelvis_waist_cloth.png",
+      "source_bbox": [
+        97,
+        496,
+        295,
+        198
+      ],
+      "crop_bbox": [
+        81,
+        480,
+        327,
+        230
+      ],
+      "alpha_area_px": 44838,
+      "centroid": [
+        242.46266559614614,
+        584.4567554306615
+      ],
+      "mask_holes": 0,
+      "sha256": "181CFCBAE43110AAC385E8EAF6C02A8BA59A3A379FE0548DDF1AD7C3A8DD8DA5"
+    },
+    {
+      "id": 9,
+      "semantic": "belt_pouch_composite",
+      "preliminary_status": "donor-only",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\09_belt_pouch_composite.png",
+      "source_bbox": [
+        499,
+        525,
+        422,
+        208
+      ],
+      "crop_bbox": [
+        483,
+        509,
+        454,
+        240
+      ],
+      "alpha_area_px": 41235,
+      "centroid": [
+        755.8959136655753,
+        625.0766339274887
+      ],
+      "mask_holes": 0,
+      "sha256": "453616225C9ED77D3168355351CCBA88F854AFD662F8CB0059CA6F4C7C6F40B2"
+    },
+    {
+      "id": 10,
+      "semantic": "sack_strap_composite",
+      "preliminary_status": "donor-only",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\10_sack_strap_composite.png",
+      "source_bbox": [
+        938,
+        716,
+        398,
+        351
+      ],
+      "crop_bbox": [
+        922,
+        700,
+        430,
+        383
+      ],
+      "alpha_area_px": 77704,
+      "centroid": [
+        1153.3717697930608,
+        908.5351976732214
+      ],
+      "mask_holes": 1,
+      "sha256": "5F9AF4FDAFDD39EFD3DC385B3146685BFEF0A89F9B50730839C6897C22909EF9"
+    },
+    {
+      "id": 11,
+      "semantic": "arm_a_composite",
+      "preliminary_status": "donor-only",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\11_arm_a_composite.png",
+      "source_bbox": [
+        107,
+        739,
+        239,
+        304
+      ],
+      "crop_bbox": [
+        91,
+        723,
+        271,
+        336
+      ],
+      "alpha_area_px": 35071,
+      "centroid": [
+        226.94870405748338,
+        887.8195945367968
+      ],
+      "mask_holes": 0,
+      "sha256": "448D4885CFD4FEF06FEADA5682951E9603593AA3510C5BE0699AFF7301689FBB"
+    },
+    {
+      "id": 12,
+      "semantic": "arm_b_composite",
+      "preliminary_status": "donor-only",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_a_components\\12_arm_b_composite.png",
+      "source_bbox": [
+        558,
+        747,
+        214,
+        305
+      ],
+      "crop_bbox": [
+        542,
+        731,
+        246,
+        337
+      ],
+      "alpha_area_px": 34349,
+      "centroid": [
+        667.8077964424001,
+        896.1106582433258
+      ],
+      "mask_holes": 0,
+      "sha256": "9933BE4DF21C7CED91F24CA02557A5093FF1D791F6FB2BE24BDF87C25569AF3C"
+    }
+  ]
+}

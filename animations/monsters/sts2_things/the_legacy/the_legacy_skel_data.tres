@@ -1,0 +1,9 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3]
+
+[ext_resource type="SpineAtlasResource" path="res://animations/monsters/sts2_things/the_legacy/the_legacy.spatlas" id="1_atlas"]
+[ext_resource type="SpineSkeletonFileResource" path="res://animations/monsters/sts2_things/the_legacy/the_legacy.spjson" id="2_json"]
+
+[resource]
+atlas_res = ExtResource("1_atlas")
+skeleton_file_res = ExtResource("2_json")
+default_mix = 0.05

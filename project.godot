@@ -1,0 +1,24 @@
+; STS2_Things asset/PCK project for Slay the Spire 2 v0.108.0.
+; The DLL is built from STS2_Things/STS2_Things.csproj and is not embedded in the PCK.
+
+config_version=5
+
+[application]
+
+config/name="STS2_Things"
+config/features=PackedStringArray("4.5", "C#", "Mobile")
+
+[dotnet]
+
+project/assembly_name="STS2_Things"
+
+[editor]
+
+; BackgroundAssets enumerates the mounted layers directory at runtime and expects
+; actual *.tscn names. Binary export would expose *.tscn.remap entries instead,
+; which the game then tries (and fails) to load as scenes.
+export/convert_text_resources_to_binary=false
+
+[rendering]
+
+renderer/rendering_method="mobile"

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dkenw5l8tobay"]
+
+[node name="Encounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="fogmog" type="Marker2D" parent="."]
+position = Vector2(1359, 795)
+
+[node name="illusion1" type="Marker2D" parent="."]
+position = Vector2(992, 733)
+
+[node name="illusion2" type="Marker2D" parent="."]
+position = Vector2(1691, 735)

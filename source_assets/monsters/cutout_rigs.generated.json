@@ -1,0 +1,4009 @@
+{
+  "origin_fogmog": {
+    "source": "origin_fogmog.png",
+    "canvas": [
+      886,
+      954
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": "",
+        "pivot": [
+          0.0,
+          373.0
+        ]
+      },
+      {
+        "name": "Body",
+        "parent": "Root",
+        "pivot": [
+          0.0,
+          143.0
+        ]
+      },
+      {
+        "name": "Face",
+        "parent": "Body",
+        "pivot": [
+          -5.0,
+          -22.0
+        ]
+      },
+      {
+        "name": "CapCenter",
+        "parent": "Face",
+        "pivot": [
+          0.0,
+          -177.0
+        ]
+      },
+      {
+        "name": "CapLeft",
+        "parent": "CapCenter",
+        "pivot": [
+          -183.0,
+          -191.0
+        ]
+      },
+      {
+        "name": "CapRight",
+        "parent": "CapCenter",
+        "pivot": [
+          207.0,
+          -197.0
+        ]
+      },
+      {
+        "name": "LeftArm",
+        "parent": "Body",
+        "pivot": [
+          -121.0,
+          10.0
+        ]
+      },
+      {
+        "name": "LeftForearm",
+        "parent": "LeftArm",
+        "pivot": [
+          -214.0,
+          125.0
+        ]
+      },
+      {
+        "name": "LeftHand",
+        "parent": "LeftForearm",
+        "pivot": [
+          -306.0,
+          223.0
+        ]
+      },
+      {
+        "name": "RightArm",
+        "parent": "Body",
+        "pivot": [
+          125.0,
+          -4.0
+        ]
+      },
+      {
+        "name": "RightForearm",
+        "parent": "RightArm",
+        "pivot": [
+          229.0,
+          108.0
+        ]
+      },
+      {
+        "name": "RightHand",
+        "parent": "RightForearm",
+        "pivot": [
+          317.0,
+          215.0
+        ]
+      },
+      {
+        "name": "LeftLeg",
+        "parent": "Body",
+        "pivot": [
+          -106.0,
+          259.0
+        ]
+      },
+      {
+        "name": "LeftFoot",
+        "parent": "LeftLeg",
+        "pivot": [
+          -125.0,
+          367.0
+        ]
+      },
+      {
+        "name": "RightLeg",
+        "parent": "Body",
+        "pivot": [
+          128.0,
+          259.0
+        ]
+      },
+      {
+        "name": "RightFoot",
+        "parent": "RightLeg",
+        "pivot": [
+          165.0,
+          372.0
+        ]
+      }
+    ],
+    "parts": [
+      {
+        "name": "base",
+        "bone": "Body",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/base.png",
+        "pivot": [
+          0.0,
+          143.0
+        ],
+        "sprite_offset": [
+          297.5,
+          5.0
+        ],
+        "z": 0,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "base"
+      },
+      {
+        "name": "face_features",
+        "bone": "Face",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/face_features.png",
+        "pivot": [
+          -5.0,
+          -22.0
+        ],
+        "sprite_offset": [
+          -17.5,
+          -56.0
+        ],
+        "z": 48,
+        "overlap_pixels": 4,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "cap_left",
+        "bone": "CapLeft",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/cap_left.png",
+        "pivot": [
+          -183.0,
+          -191.0
+        ],
+        "sprite_offset": [
+          -50.0,
+          -74.5
+        ],
+        "z": 45,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "cap"
+      },
+      {
+        "name": "cap_center",
+        "bone": "CapCenter",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/cap_center.png",
+        "pivot": [
+          0.0,
+          -177.0
+        ],
+        "sprite_offset": [
+          44.0,
+          -127.0
+        ],
+        "z": 47,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "cap"
+      },
+      {
+        "name": "cap_right",
+        "bone": "CapRight",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/cap_right.png",
+        "pivot": [
+          207.0,
+          -197.0
+        ],
+        "sprite_offset": [
+          92.5,
+          -89.5
+        ],
+        "z": 44,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "cap"
+      },
+      {
+        "name": "cap_underside",
+        "bone": "CapCenter",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/cap_underside.png",
+        "pivot": [
+          0.0,
+          -177.0
+        ],
+        "sprite_offset": [
+          -76.5,
+          52.5
+        ],
+        "z": 43,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "cap_underlay"
+      },
+      {
+        "name": "left_hand",
+        "bone": "LeftHand",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/left_hand.png",
+        "pivot": [
+          -306.0,
+          223.0
+        ],
+        "sprite_offset": [
+          36.0,
+          19.5
+        ],
+        "z": 34,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "hand"
+      },
+      {
+        "name": "left_forearm",
+        "bone": "LeftForearm",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/left_forearm.png",
+        "pivot": [
+          -214.0,
+          125.0
+        ],
+        "sprite_offset": [
+          4.5,
+          8.5
+        ],
+        "z": 31,
+        "overlap_pixels": 16,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "left_upper_arm",
+        "bone": "LeftArm",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/left_upper_arm.png",
+        "pivot": [
+          -121.0,
+          10.0
+        ],
+        "sprite_offset": [
+          -7.5,
+          29.0
+        ],
+        "z": 30,
+        "overlap_pixels": 20,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "right_hand",
+        "bone": "RightHand",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/right_hand.png",
+        "pivot": [
+          317.0,
+          215.0
+        ],
+        "sprite_offset": [
+          10.0,
+          31.0
+        ],
+        "z": 34,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "hand"
+      },
+      {
+        "name": "right_forearm",
+        "bone": "RightForearm",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/right_forearm.png",
+        "pivot": [
+          229.0,
+          108.0
+        ],
+        "sprite_offset": [
+          39.0,
+          21.5
+        ],
+        "z": 31,
+        "overlap_pixels": 16,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "right_upper_arm",
+        "bone": "RightArm",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/right_upper_arm.png",
+        "pivot": [
+          125.0,
+          -4.0
+        ],
+        "sprite_offset": [
+          42.0,
+          29.0
+        ],
+        "z": 30,
+        "overlap_pixels": 20,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "left_foot",
+        "bone": "LeftFoot",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/left_foot.png",
+        "pivot": [
+          -125.0,
+          367.0
+        ],
+        "sprite_offset": [
+          -5.0,
+          17.5
+        ],
+        "z": 23,
+        "overlap_pixels": 16,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "left_leg",
+        "bone": "LeftLeg",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/left_leg.png",
+        "pivot": [
+          -106.0,
+          259.0
+        ],
+        "sprite_offset": [
+          14.5,
+          18.0
+        ],
+        "z": 21,
+        "overlap_pixels": 18,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "right_foot",
+        "bone": "RightFoot",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/right_foot.png",
+        "pivot": [
+          165.0,
+          372.0
+        ],
+        "sprite_offset": [
+          6.0,
+          23.0
+        ],
+        "z": 23,
+        "overlap_pixels": 16,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "right_leg",
+        "bone": "RightLeg",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/right_leg.png",
+        "pivot": [
+          128.0,
+          259.0
+        ],
+        "sprite_offset": [
+          21.0,
+          17.0
+        ],
+        "z": 21,
+        "overlap_pixels": 18,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "body_core",
+        "bone": "Body",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/body_core.png",
+        "pivot": [
+          0.0,
+          143.0
+        ],
+        "sprite_offset": [
+          36.0,
+          -47.0
+        ],
+        "z": 20,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "core"
+      },
+      {
+        "name": "socket_left_shoulder",
+        "bone": "Body",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/socket_left_shoulder.png",
+        "pivot": [
+          0.0,
+          143.0
+        ],
+        "sprite_offset": [
+          -115.5,
+          -134.5
+        ],
+        "z": 24,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_right_shoulder",
+        "bone": "Body",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/socket_right_shoulder.png",
+        "pivot": [
+          0.0,
+          143.0
+        ],
+        "sprite_offset": [
+          127.5,
+          -149.5
+        ],
+        "z": 24,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_left_hip",
+        "bone": "Body",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/socket_left_hip.png",
+        "pivot": [
+          0.0,
+          143.0
+        ],
+        "sprite_offset": [
+          -100.0,
+          123.0
+        ],
+        "z": 18,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_right_hip",
+        "bone": "Body",
+        "texture": "res://images/monsters/rig_parts/origin_fogmog/socket_right_hip.png",
+        "pivot": [
+          0.0,
+          143.0
+        ],
+        "sprite_offset": [
+          130.0,
+          123.0
+        ],
+        "z": 18,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      }
+    ]
+  },
+  "bowlbug_progenitor": {
+    "source": "bowlbug_progenitor.png",
+    "canvas": [
+      1437,
+      782
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": "",
+        "pivot": [
+          26.5,
+          129.0
+        ]
+      },
+      {
+        "name": "FrontShell",
+        "parent": "Root",
+        "pivot": [
+          -118.5,
+          74.0
+        ]
+      },
+      {
+        "name": "Head",
+        "parent": "FrontShell",
+        "pivot": [
+          -298.5,
+          119.0
+        ]
+      },
+      {
+        "name": "Crest",
+        "parent": "Head",
+        "pivot": [
+          -298.5,
+          -41.0
+        ]
+      },
+      {
+        "name": "MidShell",
+        "parent": "Root",
+        "pivot": [
+          146.5,
+          79.0
+        ]
+      },
+      {
+        "name": "RearShell",
+        "parent": "Root",
+        "pivot": [
+          541.5,
+          109.0
+        ]
+      },
+      {
+        "name": "Mandible",
+        "parent": "Head",
+        "pivot": [
+          -603.5,
+          199.0
+        ]
+      },
+      {
+        "name": "MandibleLower",
+        "parent": "Head",
+        "pivot": [
+          -613.5,
+          255.0
+        ]
+      },
+      {
+        "name": "FrontLeg",
+        "parent": "FrontShell",
+        "pivot": [
+          -143.5,
+          201.0
+        ]
+      },
+      {
+        "name": "FrontLegLower",
+        "parent": "FrontLeg",
+        "pivot": [
+          -238.5,
+          269.0
+        ]
+      },
+      {
+        "name": "FrontFoot",
+        "parent": "FrontLegLower",
+        "pivot": [
+          -292.5,
+          356.0
+        ]
+      },
+      {
+        "name": "MidLegA",
+        "parent": "MidShell",
+        "pivot": [
+          -28.5,
+          204.0
+        ]
+      },
+      {
+        "name": "MidLegALower",
+        "parent": "MidLegA",
+        "pivot": [
+          1.5,
+          280.0
+        ]
+      },
+      {
+        "name": "MidFootA",
+        "parent": "MidLegALower",
+        "pivot": [
+          29.5,
+          356.0
+        ]
+      },
+      {
+        "name": "EggSac",
+        "parent": "Root",
+        "pivot": [
+          341.5,
+          84.0
+        ]
+      },
+      {
+        "name": "MidLegB",
+        "parent": "EggSac",
+        "pivot": [
+          226.5,
+          204.0
+        ]
+      },
+      {
+        "name": "MidLegBLower",
+        "parent": "MidLegB",
+        "pivot": [
+          265.5,
+          290.0
+        ]
+      },
+      {
+        "name": "MidFootB",
+        "parent": "MidLegBLower",
+        "pivot": [
+          301.5,
+          353.0
+        ]
+      },
+      {
+        "name": "RearLegA",
+        "parent": "RearShell",
+        "pivot": [
+          409.5,
+          204.0
+        ]
+      },
+      {
+        "name": "RearLegALower",
+        "parent": "RearLegA",
+        "pivot": [
+          463.5,
+          285.0
+        ]
+      },
+      {
+        "name": "RearFootA",
+        "parent": "RearLegALower",
+        "pivot": [
+          535.5,
+          351.0
+        ]
+      },
+      {
+        "name": "RearLegB",
+        "parent": "RearShell",
+        "pivot": [
+          601.5,
+          204.0
+        ]
+      },
+      {
+        "name": "RearLegBLower",
+        "parent": "RearLegB",
+        "pivot": [
+          645.5,
+          275.0
+        ]
+      },
+      {
+        "name": "RearFootB",
+        "parent": "RearLegBLower",
+        "pivot": [
+          692.5,
+          329.0
+        ]
+      }
+    ],
+    "parts": [
+      {
+        "name": "base",
+        "bone": "Root",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/base.png",
+        "pivot": [
+          26.5,
+          129.0
+        ],
+        "sprite_offset": [
+          -91.5,
+          71.5
+        ],
+        "z": 0,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "base"
+      },
+      {
+        "name": "gem_head_crown",
+        "bone": "Crest",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/gem_head_crown.png",
+        "pivot": [
+          -298.5,
+          -41.0
+        ],
+        "sprite_offset": [
+          -155.5,
+          -142.0
+        ],
+        "z": 50,
+        "overlap_pixels": 2,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "gem_head_brow",
+        "bone": "Head",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/gem_head_brow.png",
+        "pivot": [
+          -298.5,
+          119.0
+        ],
+        "sprite_offset": [
+          -211.5,
+          -161.0
+        ],
+        "z": 50,
+        "overlap_pixels": 2,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "gem_crest_front",
+        "bone": "Crest",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/gem_crest_front.png",
+        "pivot": [
+          -298.5,
+          -41.0
+        ],
+        "sprite_offset": [
+          -84.5,
+          -39.5
+        ],
+        "z": 50,
+        "overlap_pixels": 2,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "gem_crest_mid",
+        "bone": "Crest",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/gem_crest_mid.png",
+        "pivot": [
+          -298.5,
+          -41.0
+        ],
+        "sprite_offset": [
+          205.5,
+          -164.5
+        ],
+        "z": 50,
+        "overlap_pixels": 2,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "gem_front_shell_top",
+        "bone": "FrontShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/gem_front_shell_top.png",
+        "pivot": [
+          -118.5,
+          74.0
+        ],
+        "sprite_offset": [
+          110.5,
+          -373.0
+        ],
+        "z": 50,
+        "overlap_pixels": 2,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "gem_front_shell_low",
+        "bone": "FrontShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/gem_front_shell_low.png",
+        "pivot": [
+          -118.5,
+          74.0
+        ],
+        "sprite_offset": [
+          250.5,
+          -249.5
+        ],
+        "z": 50,
+        "overlap_pixels": 2,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "gem_mid_shell",
+        "bone": "MidShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/gem_mid_shell.png",
+        "pivot": [
+          146.5,
+          79.0
+        ],
+        "sprite_offset": [
+          155.5,
+          -414.0
+        ],
+        "z": 50,
+        "overlap_pixels": 2,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "gem_rear_shell",
+        "bone": "RearShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/gem_rear_shell.png",
+        "pivot": [
+          541.5,
+          109.0
+        ],
+        "sprite_offset": [
+          -67.5,
+          -409.5
+        ],
+        "z": 50,
+        "overlap_pixels": 2,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "gem_tail",
+        "bone": "RearShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/gem_tail.png",
+        "pivot": [
+          541.5,
+          109.0
+        ],
+        "sprite_offset": [
+          146.5,
+          -119.5
+        ],
+        "z": 50,
+        "overlap_pixels": 2,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "mandible_upper",
+        "bone": "Mandible",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/mandible_upper.png",
+        "pivot": [
+          -603.5,
+          199.0
+        ],
+        "sprite_offset": [
+          -41.5,
+          4.5
+        ],
+        "z": 46,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "jaw"
+      },
+      {
+        "name": "mandible_lower",
+        "bone": "MandibleLower",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/mandible_lower.png",
+        "pivot": [
+          -613.5,
+          255.0
+        ],
+        "sprite_offset": [
+          23.5,
+          1.5
+        ],
+        "z": 47,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "jaw"
+      },
+      {
+        "name": "front_foot",
+        "bone": "FrontFoot",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/front_foot.png",
+        "pivot": [
+          -292.5,
+          356.0
+        ],
+        "sprite_offset": [
+          7.0,
+          -9.5
+        ],
+        "z": 36,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "front_leg_lower",
+        "bone": "FrontLegLower",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/front_leg_lower.png",
+        "pivot": [
+          -238.5,
+          269.0
+        ],
+        "sprite_offset": [
+          -19.5,
+          0.5
+        ],
+        "z": 35,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "front_leg",
+        "bone": "FrontLeg",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/front_leg.png",
+        "pivot": [
+          -143.5,
+          201.0
+        ],
+        "sprite_offset": [
+          -47.5,
+          2.5
+        ],
+        "z": 34,
+        "overlap_pixels": 20,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "mid_foot_a",
+        "bone": "MidFootA",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/mid_foot_a.png",
+        "pivot": [
+          29.5,
+          356.0
+        ],
+        "sprite_offset": [
+          -7.0,
+          -8.5
+        ],
+        "z": 35,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "mid_leg_a_lower",
+        "bone": "MidLegALower",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/mid_leg_a_lower.png",
+        "pivot": [
+          1.5,
+          280.0
+        ],
+        "sprite_offset": [
+          0.5,
+          -6.5
+        ],
+        "z": 34,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "mid_leg_a",
+        "bone": "MidLegA",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/mid_leg_a.png",
+        "pivot": [
+          -28.5,
+          204.0
+        ],
+        "sprite_offset": [
+          5.5,
+          8.0
+        ],
+        "z": 33,
+        "overlap_pixels": 20,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "mid_foot_b",
+        "bone": "MidFootB",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/mid_foot_b.png",
+        "pivot": [
+          301.5,
+          353.0
+        ],
+        "sprite_offset": [
+          12.5,
+          -9.5
+        ],
+        "z": 35,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "mid_leg_b_lower",
+        "bone": "MidLegBLower",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/mid_leg_b_lower.png",
+        "pivot": [
+          265.5,
+          290.0
+        ],
+        "sprite_offset": [
+          4.5,
+          -16.0
+        ],
+        "z": 34,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "mid_leg_b",
+        "bone": "MidLegB",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/mid_leg_b.png",
+        "pivot": [
+          226.5,
+          204.0
+        ],
+        "sprite_offset": [
+          -4.5,
+          -6.0
+        ],
+        "z": 33,
+        "overlap_pixels": 20,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "rear_foot_a",
+        "bone": "RearFootA",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/rear_foot_a.png",
+        "pivot": [
+          535.5,
+          351.0
+        ],
+        "sprite_offset": [
+          -14.5,
+          -17.5
+        ],
+        "z": 35,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "rear_leg_a_lower",
+        "bone": "RearLegALower",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/rear_leg_a_lower.png",
+        "pivot": [
+          463.5,
+          285.0
+        ],
+        "sprite_offset": [
+          -5.5,
+          -7.5
+        ],
+        "z": 34,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "rear_leg_a",
+        "bone": "RearLegA",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/rear_leg_a.png",
+        "pivot": [
+          409.5,
+          204.0
+        ],
+        "sprite_offset": [
+          -3.5,
+          -3.5
+        ],
+        "z": 33,
+        "overlap_pixels": 20,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "rear_foot_b",
+        "bone": "RearFootB",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/rear_foot_b.png",
+        "pivot": [
+          692.5,
+          329.0
+        ],
+        "sprite_offset": [
+          -18.5,
+          -14.5
+        ],
+        "z": 35,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "rear_leg_b_lower",
+        "bone": "RearLegBLower",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/rear_leg_b_lower.png",
+        "pivot": [
+          645.5,
+          275.0
+        ],
+        "sprite_offset": [
+          -23.5,
+          -2.0
+        ],
+        "z": 34,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "rear_leg_b",
+        "bone": "RearLegB",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/rear_leg_b.png",
+        "pivot": [
+          601.5,
+          204.0
+        ],
+        "sprite_offset": [
+          -12.5,
+          -5.0
+        ],
+        "z": 33,
+        "overlap_pixels": 20,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "crest",
+        "bone": "Crest",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/crest.png",
+        "pivot": [
+          -298.5,
+          -41.0
+        ],
+        "sprite_offset": [
+          -44.5,
+          -44.0
+        ],
+        "z": 26,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "armor"
+      },
+      {
+        "name": "head",
+        "bone": "Head",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/head.png",
+        "pivot": [
+          -298.5,
+          119.0
+        ],
+        "sprite_offset": [
+          -101.0,
+          9.5
+        ],
+        "z": 30,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "head"
+      },
+      {
+        "name": "front_shell",
+        "bone": "FrontShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/front_shell.png",
+        "pivot": [
+          -118.5,
+          74.0
+        ],
+        "sprite_offset": [
+          90.5,
+          -176.0
+        ],
+        "z": 21,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "armor"
+      },
+      {
+        "name": "mid_shell",
+        "bone": "MidShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/mid_shell.png",
+        "pivot": [
+          146.5,
+          79.0
+        ],
+        "sprite_offset": [
+          106.5,
+          -195.5
+        ],
+        "z": 22,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "armor"
+      },
+      {
+        "name": "egg_sac",
+        "bone": "EggSac",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/egg_sac.png",
+        "pivot": [
+          341.5,
+          84.0
+        ],
+        "sprite_offset": [
+          81.5,
+          -128.0
+        ],
+        "z": 20,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "core"
+      },
+      {
+        "name": "rear_shell",
+        "bone": "RearShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/rear_shell.png",
+        "pivot": [
+          541.5,
+          109.0
+        ],
+        "sprite_offset": [
+          5.5,
+          -156.0
+        ],
+        "z": 23,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "armor"
+      },
+      {
+        "name": "socket_front_leg",
+        "bone": "FrontShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/socket_front_leg.png",
+        "pivot": [
+          -118.5,
+          74.0
+        ],
+        "sprite_offset": [
+          -22.0,
+          128.0
+        ],
+        "z": 31,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_mid_leg_a",
+        "bone": "MidShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/socket_mid_leg_a.png",
+        "pivot": [
+          146.5,
+          79.0
+        ],
+        "sprite_offset": [
+          -177.0,
+          123.0
+        ],
+        "z": 31,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_mid_leg_b",
+        "bone": "EggSac",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/socket_mid_leg_b.png",
+        "pivot": [
+          341.5,
+          84.0
+        ],
+        "sprite_offset": [
+          -117.0,
+          118.0
+        ],
+        "z": 31,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_rear_leg_a",
+        "bone": "RearShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/socket_rear_leg_a.png",
+        "pivot": [
+          541.5,
+          109.0
+        ],
+        "sprite_offset": [
+          -132.0,
+          93.0
+        ],
+        "z": 31,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_rear_leg_b",
+        "bone": "RearShell",
+        "texture": "res://images/monsters/rig_parts/bowlbug_progenitor/socket_rear_leg_b.png",
+        "pivot": [
+          541.5,
+          109.0
+        ],
+        "sprite_offset": [
+          59.5,
+          85.5
+        ],
+        "z": 31,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      }
+    ]
+  },
+  "scale_beetle": {
+    "source": "scale_beetle.png",
+    "canvas": [
+      1127,
+      883
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": "",
+        "pivot": [
+          46.5,
+          208.5
+        ]
+      },
+      {
+        "name": "FrontShell",
+        "parent": "Root",
+        "pivot": [
+          -58.5,
+          113.5
+        ]
+      },
+      {
+        "name": "Head",
+        "parent": "FrontShell",
+        "pivot": [
+          -213.5,
+          158.5
+        ]
+      },
+      {
+        "name": "AntennaFrontBase",
+        "parent": "Head",
+        "pivot": [
+          -437.5,
+          110.5
+        ]
+      },
+      {
+        "name": "AntennaFront1",
+        "parent": "AntennaFrontBase",
+        "pivot": [
+          -426.5,
+          40.5
+        ]
+      },
+      {
+        "name": "AntennaFront2",
+        "parent": "AntennaFront1",
+        "pivot": [
+          -397.5,
+          -67.5
+        ]
+      },
+      {
+        "name": "AntennaFront3",
+        "parent": "AntennaFront2",
+        "pivot": [
+          -342.5,
+          -149.5
+        ]
+      },
+      {
+        "name": "AntennaFront4",
+        "parent": "AntennaFront3",
+        "pivot": [
+          -264.5,
+          -224.5
+        ]
+      },
+      {
+        "name": "AntennaFront5",
+        "parent": "AntennaFront4",
+        "pivot": [
+          -171.5,
+          -278.5
+        ]
+      },
+      {
+        "name": "AntennaFrontTip",
+        "parent": "AntennaFront5",
+        "pivot": [
+          -89.5,
+          -295.5
+        ]
+      },
+      {
+        "name": "AntennaBackBase",
+        "parent": "Head",
+        "pivot": [
+          -462.5,
+          107.5
+        ]
+      },
+      {
+        "name": "AntennaBack1",
+        "parent": "AntennaBackBase",
+        "pivot": [
+          -479.5,
+          44.5
+        ]
+      },
+      {
+        "name": "AntennaBack2",
+        "parent": "AntennaBack1",
+        "pivot": [
+          -480.5,
+          -57.5
+        ]
+      },
+      {
+        "name": "AntennaBack3",
+        "parent": "AntennaBack2",
+        "pivot": [
+          -443.5,
+          -155.5
+        ]
+      },
+      {
+        "name": "AntennaBack4",
+        "parent": "AntennaBack3",
+        "pivot": [
+          -377.5,
+          -241.5
+        ]
+      },
+      {
+        "name": "AntennaBack5",
+        "parent": "AntennaBack4",
+        "pivot": [
+          -303.5,
+          -320.5
+        ]
+      },
+      {
+        "name": "AntennaBackTip",
+        "parent": "AntennaBack5",
+        "pivot": [
+          -233.5,
+          -382.5
+        ]
+      },
+      {
+        "name": "JawUpper",
+        "parent": "Head",
+        "pivot": [
+          -398.5,
+          218.5
+        ]
+      },
+      {
+        "name": "JawLower",
+        "parent": "Head",
+        "pivot": [
+          -383.5,
+          248.5
+        ]
+      },
+      {
+        "name": "ForeClaw",
+        "parent": "FrontShell",
+        "pivot": [
+          -133.5,
+          238.5
+        ]
+      },
+      {
+        "name": "ForeClawLower",
+        "parent": "ForeClaw",
+        "pivot": [
+          -230.5,
+          313.5
+        ]
+      },
+      {
+        "name": "FrontLeg",
+        "parent": "FrontShell",
+        "pivot": [
+          -33.5,
+          238.5
+        ]
+      },
+      {
+        "name": "FrontLegLower",
+        "parent": "FrontLeg",
+        "pivot": [
+          -3.5,
+          302.5
+        ]
+      },
+      {
+        "name": "FrontFoot",
+        "parent": "FrontLegLower",
+        "pivot": [
+          -34.5,
+          362.5
+        ]
+      },
+      {
+        "name": "Core",
+        "parent": "Root",
+        "pivot": [
+          126.5,
+          103.5
+        ]
+      },
+      {
+        "name": "MidLeg",
+        "parent": "Core",
+        "pivot": [
+          56.5,
+          208.5
+        ]
+      },
+      {
+        "name": "MidLegLower",
+        "parent": "MidLeg",
+        "pivot": [
+          92.5,
+          302.5
+        ]
+      },
+      {
+        "name": "MidFoot",
+        "parent": "MidLegLower",
+        "pivot": [
+          126.5,
+          404.5
+        ]
+      },
+      {
+        "name": "RearShell",
+        "parent": "Root",
+        "pivot": [
+          336.5,
+          123.5
+        ]
+      },
+      {
+        "name": "RearLeg",
+        "parent": "RearShell",
+        "pivot": [
+          302.5,
+          183.5
+        ]
+      },
+      {
+        "name": "RearLegLower",
+        "parent": "RearLeg",
+        "pivot": [
+          347.5,
+          293.5
+        ]
+      },
+      {
+        "name": "RearFoot",
+        "parent": "RearLegLower",
+        "pivot": [
+          394.5,
+          400.5
+        ]
+      }
+    ],
+    "parts": [
+      {
+        "name": "base",
+        "bone": "Root",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/base.png",
+        "pivot": [
+          46.5,
+          208.5
+        ],
+        "sprite_offset": [
+          -177.0,
+          -177.0
+        ],
+        "z": 0,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "base"
+      },
+      {
+        "name": "antenna_front_base",
+        "bone": "AntennaFrontBase",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_front_base.png",
+        "pivot": [
+          -437.5,
+          110.5
+        ],
+        "sprite_offset": [
+          -1.5,
+          -19.5
+        ],
+        "z": 60,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_front_1",
+        "bone": "AntennaFront1",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_front_1.png",
+        "pivot": [
+          -426.5,
+          40.5
+        ],
+        "sprite_offset": [
+          5.5,
+          -48.5
+        ],
+        "z": 60,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_front_2",
+        "bone": "AntennaFront2",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_front_2.png",
+        "pivot": [
+          -397.5,
+          -67.5
+        ],
+        "sprite_offset": [
+          3.0,
+          -39.5
+        ],
+        "z": 60,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_front_3",
+        "bone": "AntennaFront3",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_front_3.png",
+        "pivot": [
+          -342.5,
+          -149.5
+        ],
+        "sprite_offset": [
+          8.0,
+          -38.0
+        ],
+        "z": 60,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_front_4",
+        "bone": "AntennaFront4",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_front_4.png",
+        "pivot": [
+          -264.5,
+          -224.5
+        ],
+        "sprite_offset": [
+          13.5,
+          -28.5
+        ],
+        "z": 60,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_front_5",
+        "bone": "AntennaFront5",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_front_5.png",
+        "pivot": [
+          -171.5,
+          -278.5
+        ],
+        "sprite_offset": [
+          20.0,
+          -19.5
+        ],
+        "z": 60,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_front_tip",
+        "bone": "AntennaFrontTip",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_front_tip.png",
+        "pivot": [
+          -89.5,
+          -295.5
+        ],
+        "sprite_offset": [
+          35.0,
+          -19.5
+        ],
+        "z": 60,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_back_base",
+        "bone": "AntennaBackBase",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_back_base.png",
+        "pivot": [
+          -462.5,
+          107.5
+        ],
+        "sprite_offset": [
+          -18.5,
+          -25.5
+        ],
+        "z": 59,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_back_1",
+        "bone": "AntennaBack1",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_back_1.png",
+        "pivot": [
+          -479.5,
+          44.5
+        ],
+        "sprite_offset": [
+          -10.5,
+          -49.5
+        ],
+        "z": 59,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_back_2",
+        "bone": "AntennaBack2",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_back_2.png",
+        "pivot": [
+          -480.5,
+          -57.5
+        ],
+        "sprite_offset": [
+          2.5,
+          -47.5
+        ],
+        "z": 59,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_back_3",
+        "bone": "AntennaBack3",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_back_3.png",
+        "pivot": [
+          -443.5,
+          -155.5
+        ],
+        "sprite_offset": [
+          7.0,
+          -42.5
+        ],
+        "z": 59,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_back_4",
+        "bone": "AntennaBack4",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_back_4.png",
+        "pivot": [
+          -377.5,
+          -241.5
+        ],
+        "sprite_offset": [
+          11.0,
+          -37.5
+        ],
+        "z": 59,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_back_5",
+        "bone": "AntennaBack5",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_back_5.png",
+        "pivot": [
+          -303.5,
+          -320.5
+        ],
+        "sprite_offset": [
+          18.5,
+          -38.5
+        ],
+        "z": 59,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "antenna_back_tip",
+        "bone": "AntennaBackTip",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/antenna_back_tip.png",
+        "pivot": [
+          -233.5,
+          -382.5
+        ],
+        "sprite_offset": [
+          43.5,
+          -25.5
+        ],
+        "z": 59,
+        "overlap_pixels": 3,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "antenna"
+      },
+      {
+        "name": "eye",
+        "bone": "Head",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/eye.png",
+        "pivot": [
+          -213.5,
+          158.5
+        ],
+        "sprite_offset": [
+          -192.0,
+          53.5
+        ],
+        "z": 42,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "jaw_socket_bundle"
+      },
+      {
+        "name": "jaw_upper",
+        "bone": "JawUpper",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/jaw_upper.png",
+        "pivot": [
+          -398.5,
+          218.5
+        ],
+        "sprite_offset": [
+          -38.0,
+          9.0
+        ],
+        "z": 44,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "jaw"
+      },
+      {
+        "name": "jaw_lower",
+        "bone": "JawLower",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/jaw_lower.png",
+        "pivot": [
+          -383.5,
+          248.5
+        ],
+        "sprite_offset": [
+          -7.0,
+          5.0
+        ],
+        "z": 45,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "jaw"
+      },
+      {
+        "name": "fore_claw_tip",
+        "bone": "ForeClawLower",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/fore_claw_tip.png",
+        "pivot": [
+          -230.5,
+          313.5
+        ],
+        "sprite_offset": [
+          -205.5,
+          72.5
+        ],
+        "z": 42,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "fore_claw_lower",
+        "bone": "ForeClawLower",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/fore_claw_lower.png",
+        "pivot": [
+          -230.5,
+          313.5
+        ],
+        "sprite_offset": [
+          -14.5,
+          15.0
+        ],
+        "z": 41,
+        "overlap_pixels": 16,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "fore_claw",
+        "bone": "ForeClaw",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/fore_claw.png",
+        "pivot": [
+          -133.5,
+          238.5
+        ],
+        "sprite_offset": [
+          -3.5,
+          -5.0
+        ],
+        "z": 38,
+        "overlap_pixels": 20,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "front_foot",
+        "bone": "FrontFoot",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/front_foot.png",
+        "pivot": [
+          -34.5,
+          362.5
+        ],
+        "sprite_offset": [
+          21.5,
+          -15.0
+        ],
+        "z": 31,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "front_leg_lower",
+        "bone": "FrontLegLower",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/front_leg_lower.png",
+        "pivot": [
+          -3.5,
+          302.5
+        ],
+        "sprite_offset": [
+          13.5,
+          -16.0
+        ],
+        "z": 30,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "front_leg",
+        "bone": "FrontLeg",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/front_leg.png",
+        "pivot": [
+          -33.5,
+          238.5
+        ],
+        "sprite_offset": [
+          46.0,
+          -7.0
+        ],
+        "z": 28,
+        "overlap_pixels": 18,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "mid_foot",
+        "bone": "MidFoot",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/mid_foot.png",
+        "pivot": [
+          126.5,
+          404.5
+        ],
+        "sprite_offset": [
+          15.5,
+          -3.0
+        ],
+        "z": 36,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "mid_leg_lower",
+        "bone": "MidLegLower",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/mid_leg_lower.png",
+        "pivot": [
+          92.5,
+          302.5
+        ],
+        "sprite_offset": [
+          19.5,
+          1.0
+        ],
+        "z": 35,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "mid_leg",
+        "bone": "MidLeg",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/mid_leg.png",
+        "pivot": [
+          56.5,
+          208.5
+        ],
+        "sprite_offset": [
+          13.0,
+          -15.0
+        ],
+        "z": 33,
+        "overlap_pixels": 18,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "rear_foot",
+        "bone": "RearFoot",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/rear_foot.png",
+        "pivot": [
+          394.5,
+          400.5
+        ],
+        "sprite_offset": [
+          4.5,
+          -14.0
+        ],
+        "z": 37,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "rear_leg_lower",
+        "bone": "RearLegLower",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/rear_leg_lower.png",
+        "pivot": [
+          347.5,
+          293.5
+        ],
+        "sprite_offset": [
+          6.0,
+          -12.5
+        ],
+        "z": 36,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "rear_leg",
+        "bone": "RearLeg",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/rear_leg.png",
+        "pivot": [
+          302.5,
+          183.5
+        ],
+        "sprite_offset": [
+          -7.5,
+          0.5
+        ],
+        "z": 34,
+        "overlap_pixels": 18,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "head",
+        "bone": "Head",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/head.png",
+        "pivot": [
+          -213.5,
+          158.5
+        ],
+        "sprite_offset": [
+          -59.0,
+          -96.5
+        ],
+        "z": 30,
+        "overlap_pixels": 14,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "head"
+      },
+      {
+        "name": "front_shell",
+        "bone": "FrontShell",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/front_shell.png",
+        "pivot": [
+          -58.5,
+          113.5
+        ],
+        "sprite_offset": [
+          130.0,
+          -23.5
+        ],
+        "z": 20,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "armor"
+      },
+      {
+        "name": "core_shell",
+        "bone": "Core",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/core_shell.png",
+        "pivot": [
+          126.5,
+          103.5
+        ],
+        "sprite_offset": [
+          155.5,
+          8.5
+        ],
+        "z": 21,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "armor"
+      },
+      {
+        "name": "rear_shell",
+        "bone": "RearShell",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/rear_shell.png",
+        "pivot": [
+          336.5,
+          123.5
+        ],
+        "sprite_offset": [
+          84.0,
+          17.5
+        ],
+        "z": 19,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "armor"
+      },
+      {
+        "name": "socket_fore_claw",
+        "bone": "FrontShell",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/socket_fore_claw.png",
+        "pivot": [
+          -58.5,
+          113.5
+        ],
+        "sprite_offset": [
+          -69.5,
+          20.5
+        ],
+        "z": 26,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "head_foreclaw_socket_bundle"
+      },
+      {
+        "name": "socket_front_leg",
+        "bone": "FrontShell",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/socket_front_leg.png",
+        "pivot": [
+          -58.5,
+          113.5
+        ],
+        "sprite_offset": [
+          23.0,
+          123.0
+        ],
+        "z": 26,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_mid_leg",
+        "bone": "Core",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/socket_mid_leg.png",
+        "pivot": [
+          126.5,
+          103.5
+        ],
+        "sprite_offset": [
+          -67.0,
+          108.0
+        ],
+        "z": 26,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_rear_leg",
+        "bone": "RearShell",
+        "texture": "res://images/monsters/rig_parts/scale_beetle/socket_rear_leg.png",
+        "pivot": [
+          336.5,
+          123.5
+        ],
+        "sprite_offset": [
+          -32.0,
+          63.0
+        ],
+        "z": 26,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      }
+    ]
+  },
+  "soul_roe_1": {
+    "source": "soul_roe_1.png",
+    "canvas": [
+      104,
+      104
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": "",
+        "pivot": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "Core",
+        "parent": "Root",
+        "pivot": [
+          0.0,
+          4.0
+        ]
+      },
+      {
+        "name": "Nucleus",
+        "parent": "Core",
+        "pivot": [
+          0.0,
+          4.0
+        ]
+      }
+    ],
+    "parts": [
+      {
+        "name": "base",
+        "bone": "Root",
+        "texture": "res://images/monsters/rig_parts/soul_roe_1/base.png",
+        "pivot": [
+          0.0,
+          0.0
+        ],
+        "sprite_offset": [
+          0.0,
+          0.0
+        ],
+        "z": 0,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "base"
+      },
+      {
+        "name": "nucleus",
+        "bone": "Nucleus",
+        "texture": "res://images/monsters/rig_parts/soul_roe_1/nucleus.png",
+        "pivot": [
+          0.0,
+          4.0
+        ],
+        "sprite_offset": [
+          1.0,
+          1.0
+        ],
+        "z": 3,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "nucleus"
+      },
+      {
+        "name": "inner_halo",
+        "bone": "Core",
+        "texture": "res://images/monsters/rig_parts/soul_roe_1/inner_halo.png",
+        "pivot": [
+          0.0,
+          4.0
+        ],
+        "sprite_offset": [
+          1.0,
+          1.0
+        ],
+        "z": 2,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "halo"
+      }
+    ]
+  },
+  "soul_roe_2": {
+    "source": "soul_roe_2.png",
+    "canvas": [
+      104,
+      104
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": "",
+        "pivot": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "Core",
+        "parent": "Root",
+        "pivot": [
+          0.0,
+          4.0
+        ]
+      },
+      {
+        "name": "Nucleus",
+        "parent": "Core",
+        "pivot": [
+          0.0,
+          4.0
+        ]
+      }
+    ],
+    "parts": [
+      {
+        "name": "base",
+        "bone": "Root",
+        "texture": "res://images/monsters/rig_parts/soul_roe_2/base.png",
+        "pivot": [
+          0.0,
+          0.0
+        ],
+        "sprite_offset": [
+          0.0,
+          0.0
+        ],
+        "z": 0,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "base"
+      },
+      {
+        "name": "nucleus",
+        "bone": "Nucleus",
+        "texture": "res://images/monsters/rig_parts/soul_roe_2/nucleus.png",
+        "pivot": [
+          0.0,
+          4.0
+        ],
+        "sprite_offset": [
+          1.0,
+          1.0
+        ],
+        "z": 3,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "nucleus"
+      },
+      {
+        "name": "inner_halo",
+        "bone": "Core",
+        "texture": "res://images/monsters/rig_parts/soul_roe_2/inner_halo.png",
+        "pivot": [
+          0.0,
+          4.0
+        ],
+        "sprite_offset": [
+          1.0,
+          1.0
+        ],
+        "z": 2,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "halo"
+      }
+    ]
+  },
+  "soul_roe_3": {
+    "source": "soul_roe_3.png",
+    "canvas": [
+      104,
+      104
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": "",
+        "pivot": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "Core",
+        "parent": "Root",
+        "pivot": [
+          0.0,
+          4.0
+        ]
+      },
+      {
+        "name": "Nucleus",
+        "parent": "Core",
+        "pivot": [
+          0.0,
+          4.0
+        ]
+      }
+    ],
+    "parts": [
+      {
+        "name": "base",
+        "bone": "Root",
+        "texture": "res://images/monsters/rig_parts/soul_roe_3/base.png",
+        "pivot": [
+          0.0,
+          0.0
+        ],
+        "sprite_offset": [
+          0.0,
+          0.0
+        ],
+        "z": 0,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "base"
+      },
+      {
+        "name": "nucleus",
+        "bone": "Nucleus",
+        "texture": "res://images/monsters/rig_parts/soul_roe_3/nucleus.png",
+        "pivot": [
+          0.0,
+          4.0
+        ],
+        "sprite_offset": [
+          1.0,
+          1.0
+        ],
+        "z": 3,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "nucleus"
+      },
+      {
+        "name": "inner_halo",
+        "bone": "Core",
+        "texture": "res://images/monsters/rig_parts/soul_roe_3/inner_halo.png",
+        "pivot": [
+          0.0,
+          4.0
+        ],
+        "sprite_offset": [
+          1.0,
+          1.0
+        ],
+        "z": 2,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "halo"
+      }
+    ]
+  },
+  "soul_roes": {
+    "source": "soul_roes.png",
+    "canvas": [
+      357,
+      279
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": "",
+        "pivot": [
+          -0.5,
+          0.5
+        ]
+      },
+      {
+        "name": "ClusterBottom",
+        "parent": "Root",
+        "pivot": [
+          1.5,
+          80.5
+        ]
+      },
+      {
+        "name": "RoeBottomRight",
+        "parent": "ClusterBottom",
+        "pivot": [
+          81.5,
+          86.5
+        ]
+      },
+      {
+        "name": "RoeBottom",
+        "parent": "ClusterBottom",
+        "pivot": [
+          -0.5,
+          81.5
+        ]
+      },
+      {
+        "name": "RoeBottomLeft",
+        "parent": "ClusterBottom",
+        "pivot": [
+          -74.5,
+          74.5
+        ]
+      },
+      {
+        "name": "ClusterMiddle",
+        "parent": "Root",
+        "pivot": [
+          -0.5,
+          5.5
+        ]
+      },
+      {
+        "name": "RoeFarRight",
+        "parent": "ClusterMiddle",
+        "pivot": [
+          144.5,
+          43.5
+        ]
+      },
+      {
+        "name": "RoeBottomFarRight",
+        "parent": "ClusterBottom",
+        "pivot": [
+          131.5,
+          35.5
+        ]
+      },
+      {
+        "name": "RoeMiddleLeft",
+        "parent": "ClusterMiddle",
+        "pivot": [
+          -63.5,
+          -1.5
+        ]
+      },
+      {
+        "name": "RoeMiddleFarLeft",
+        "parent": "ClusterMiddle",
+        "pivot": [
+          -140.5,
+          5.5
+        ]
+      },
+      {
+        "name": "RoeCore",
+        "parent": "ClusterMiddle",
+        "pivot": [
+          4.5,
+          -14.5
+        ]
+      },
+      {
+        "name": "RoeMiddleRight",
+        "parent": "ClusterMiddle",
+        "pivot": [
+          91.5,
+          -24.5
+        ]
+      },
+      {
+        "name": "ClusterTop",
+        "parent": "Root",
+        "pivot": [
+          -0.5,
+          -74.5
+        ]
+      },
+      {
+        "name": "RoeTopLeft",
+        "parent": "ClusterTop",
+        "pivot": [
+          -98.5,
+          -67.5
+        ]
+      },
+      {
+        "name": "RoeTop",
+        "parent": "ClusterTop",
+        "pivot": [
+          -33.5,
+          -91.5
+        ]
+      },
+      {
+        "name": "RoeTopRight",
+        "parent": "ClusterTop",
+        "pivot": [
+          41.5,
+          -84.5
+        ]
+      }
+    ],
+    "parts": [
+      {
+        "name": "roe_bottom_right",
+        "bone": "RoeBottomRight",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_bottom_right.png",
+        "pivot": [
+          81.5,
+          86.5
+        ],
+        "sprite_offset": [
+          18.5,
+          -3.5
+        ],
+        "z": 10,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_bottom",
+        "bone": "RoeBottom",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_bottom.png",
+        "pivot": [
+          -0.5,
+          81.5
+        ],
+        "sprite_offset": [
+          1.0,
+          3.5
+        ],
+        "z": 9,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_bottom_left",
+        "bone": "RoeBottomLeft",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_bottom_left.png",
+        "pivot": [
+          -74.5,
+          74.5
+        ],
+        "sprite_offset": [
+          -30.5,
+          10.5
+        ],
+        "z": 8,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_far_right",
+        "bone": "RoeFarRight",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_far_right.png",
+        "pivot": [
+          144.5,
+          43.5
+        ],
+        "sprite_offset": [
+          3.0,
+          15.0
+        ],
+        "z": 7,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_bottom_far_right",
+        "bone": "RoeBottomFarRight",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_bottom_far_right.png",
+        "pivot": [
+          131.5,
+          35.5
+        ],
+        "sprite_offset": [
+          -5.5,
+          -17.5
+        ],
+        "z": 6,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_middle_left",
+        "bone": "RoeMiddleLeft",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_middle_left.png",
+        "pivot": [
+          -63.5,
+          -1.5
+        ],
+        "sprite_offset": [
+          1.0,
+          -2.0
+        ],
+        "z": 5,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_middle_far_left",
+        "bone": "RoeMiddleFarLeft",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_middle_far_left.png",
+        "pivot": [
+          -140.5,
+          5.5
+        ],
+        "sprite_offset": [
+          3.0,
+          16.5
+        ],
+        "z": 4,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_core",
+        "bone": "RoeCore",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_core.png",
+        "pivot": [
+          4.5,
+          -14.5
+        ],
+        "sprite_offset": [
+          4.5,
+          2.5
+        ],
+        "z": 4,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_middle_right",
+        "bone": "RoeMiddleRight",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_middle_right.png",
+        "pivot": [
+          91.5,
+          -24.5
+        ],
+        "sprite_offset": [
+          20.0,
+          -29.0
+        ],
+        "z": 3,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_top_left",
+        "bone": "RoeTopLeft",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_top_left.png",
+        "pivot": [
+          -98.5,
+          -67.5
+        ],
+        "sprite_offset": [
+          -17.0,
+          -12.0
+        ],
+        "z": 2,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_top",
+        "bone": "RoeTop",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_top.png",
+        "pivot": [
+          -33.5,
+          -91.5
+        ],
+        "sprite_offset": [
+          -4.0,
+          1.5
+        ],
+        "z": 1,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      },
+      {
+        "name": "roe_top_right",
+        "bone": "RoeTopRight",
+        "texture": "res://images/monsters/rig_parts/soul_roes/roe_top_right.png",
+        "pivot": [
+          41.5,
+          -84.5
+        ],
+        "sprite_offset": [
+          44.0,
+          -3.0
+        ],
+        "z": 1,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "orb"
+      }
+    ]
+  },
+  "the_legacy": {
+    "source": "the_legacy.png",
+    "canvas": [
+      1358,
+      689
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": "",
+        "pivot": [
+          1.0,
+          215.5
+        ]
+      },
+      {
+        "name": "HeartAnchor",
+        "parent": "Root",
+        "pivot": [
+          11.0,
+          85.5
+        ]
+      },
+      {
+        "name": "CoralLeft",
+        "parent": "HeartAnchor",
+        "pivot": [
+          -379.0,
+          85.5
+        ]
+      },
+      {
+        "name": "CoralRight",
+        "parent": "HeartAnchor",
+        "pivot": [
+          126.0,
+          215.5
+        ]
+      },
+      {
+        "name": "SeaweedLeft",
+        "parent": "Root",
+        "pivot": [
+          -419.0,
+          5.5
+        ]
+      },
+      {
+        "name": "TopPurple",
+        "parent": "HeartAnchor",
+        "pivot": [
+          111.0,
+          -174.5
+        ]
+      },
+      {
+        "name": "TopTubes",
+        "parent": "TopPurple",
+        "pivot": [
+          11.0,
+          -229.5
+        ]
+      },
+      {
+        "name": "LeftTubes",
+        "parent": "HeartAnchor",
+        "pivot": [
+          -329.0,
+          -69.5
+        ]
+      },
+      {
+        "name": "LeftLobe",
+        "parent": "HeartAnchor",
+        "pivot": [
+          -339.0,
+          85.5
+        ]
+      },
+      {
+        "name": "BottomLobe",
+        "parent": "HeartAnchor",
+        "pivot": [
+          -259.0,
+          220.5
+        ]
+      },
+      {
+        "name": "HeartCore",
+        "parent": "HeartAnchor",
+        "pivot": [
+          11.0,
+          85.5
+        ]
+      },
+      {
+        "name": "RightLobe",
+        "parent": "HeartAnchor",
+        "pivot": [
+          251.0,
+          95.5
+        ]
+      },
+      {
+        "name": "RightTubes",
+        "parent": "HeartAnchor",
+        "pivot": [
+          441.0,
+          65.5
+        ]
+      },
+      {
+        "name": "RightPurpleTubes",
+        "parent": "HeartAnchor",
+        "pivot": [
+          551.0,
+          175.5
+        ]
+      }
+    ],
+    "parts": [
+      {
+        "name": "base",
+        "bone": "Root",
+        "texture": "res://images/monsters/rig_parts/the_legacy/base.png",
+        "pivot": [
+          1.0,
+          215.5
+        ],
+        "sprite_offset": [
+          -101.5,
+          -215.5
+        ],
+        "z": 0,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "base"
+      },
+      {
+        "name": "coral_left",
+        "bone": "CoralLeft",
+        "texture": "res://images/monsters/rig_parts/the_legacy/coral_left.png",
+        "pivot": [
+          -379.0,
+          85.5
+        ],
+        "sprite_offset": [
+          4.0,
+          4.0
+        ],
+        "z": 40,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "coral"
+      },
+      {
+        "name": "coral_right",
+        "bone": "CoralRight",
+        "texture": "res://images/monsters/rig_parts/the_legacy/coral_right.png",
+        "pivot": [
+          126.0,
+          215.5
+        ],
+        "sprite_offset": [
+          53.0,
+          11.5
+        ],
+        "z": 41,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "coral"
+      },
+      {
+        "name": "seaweed_left",
+        "bone": "SeaweedLeft",
+        "texture": "res://images/monsters/rig_parts/the_legacy/seaweed_left.png",
+        "pivot": [
+          -419.0,
+          5.5
+        ],
+        "sprite_offset": [
+          11.5,
+          -8.5
+        ],
+        "z": 8,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "vegetation"
+      },
+      {
+        "name": "seaweed_right",
+        "bone": "Root",
+        "texture": "res://images/monsters/rig_parts/the_legacy/seaweed_right.png",
+        "pivot": [
+          1.0,
+          215.5
+        ],
+        "sprite_offset": [
+          262.5,
+          -206.5
+        ],
+        "z": 8,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "vegetation"
+      },
+      {
+        "name": "top_tubes",
+        "bone": "TopTubes",
+        "texture": "res://images/monsters/rig_parts/the_legacy/top_tubes.png",
+        "pivot": [
+          11.0,
+          -229.5
+        ],
+        "sprite_offset": [
+          41.0,
+          -11.5
+        ],
+        "z": 18,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "vessel"
+      },
+      {
+        "name": "top_purple",
+        "bone": "TopPurple",
+        "texture": "res://images/monsters/rig_parts/the_legacy/top_purple.png",
+        "pivot": [
+          111.0,
+          -174.5
+        ],
+        "sprite_offset": [
+          57.5,
+          28.0
+        ],
+        "z": 10,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "organ"
+      },
+      {
+        "name": "left_tubes",
+        "bone": "LeftTubes",
+        "texture": "res://images/monsters/rig_parts/the_legacy/left_tubes.png",
+        "pivot": [
+          -329.0,
+          -69.5
+        ],
+        "sprite_offset": [
+          28.0,
+          14.5
+        ],
+        "z": 20,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "vessel"
+      },
+      {
+        "name": "left_lobe",
+        "bone": "LeftLobe",
+        "texture": "res://images/monsters/rig_parts/the_legacy/left_lobe.png",
+        "pivot": [
+          -339.0,
+          85.5
+        ],
+        "sprite_offset": [
+          25.5,
+          25.5
+        ],
+        "z": 21,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "organ"
+      },
+      {
+        "name": "bottom_lobe",
+        "bone": "BottomLobe",
+        "texture": "res://images/monsters/rig_parts/the_legacy/bottom_lobe.png",
+        "pivot": [
+          -259.0,
+          220.5
+        ],
+        "sprite_offset": [
+          46.5,
+          -7.0
+        ],
+        "z": 22,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "organ"
+      },
+      {
+        "name": "heart_core",
+        "bone": "HeartCore",
+        "texture": "res://images/monsters/rig_parts/the_legacy/heart_core.png",
+        "pivot": [
+          11.0,
+          85.5
+        ],
+        "sprite_offset": [
+          152.0,
+          80.0
+        ],
+        "z": 25,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "organ"
+      },
+      {
+        "name": "right_lobe",
+        "bone": "RightLobe",
+        "texture": "res://images/monsters/rig_parts/the_legacy/right_lobe.png",
+        "pivot": [
+          251.0,
+          95.5
+        ],
+        "sprite_offset": [
+          102.0,
+          18.5
+        ],
+        "z": 23,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "organ"
+      },
+      {
+        "name": "right_tubes",
+        "bone": "RightTubes",
+        "texture": "res://images/monsters/rig_parts/the_legacy/right_tubes.png",
+        "pivot": [
+          441.0,
+          65.5
+        ],
+        "sprite_offset": [
+          90.0,
+          -22.0
+        ],
+        "z": 26,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "vessel"
+      },
+      {
+        "name": "right_purple_tubes",
+        "bone": "RightPurpleTubes",
+        "texture": "res://images/monsters/rig_parts/the_legacy/right_purple_tubes.png",
+        "pivot": [
+          551.0,
+          175.5
+        ],
+        "sprite_offset": [
+          18.0,
+          71.0
+        ],
+        "z": 17,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "vessel"
+      }
+    ]
+  },
+  "thief_raider": {
+    "source": "thief_raider.png",
+    "canvas": [
+      353,
+      534
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": "",
+        "pivot": [
+          13.5,
+          219.0
+        ]
+      },
+      {
+        "name": "Pelvis",
+        "parent": "Root",
+        "pivot": [
+          13.5,
+          18.0
+        ]
+      },
+      {
+        "name": "Torso",
+        "parent": "Pelvis",
+        "pivot": [
+          13.5,
+          -32.0
+        ]
+      },
+      {
+        "name": "DaggerUpperArm",
+        "parent": "Torso",
+        "pivot": [
+          83.5,
+          -97.0
+        ]
+      },
+      {
+        "name": "DaggerForearm",
+        "parent": "DaggerUpperArm",
+        "pivot": [
+          105.5,
+          -32.0
+        ]
+      },
+      {
+        "name": "DaggerHand",
+        "parent": "DaggerForearm",
+        "pivot": [
+          120.5,
+          23.0
+        ]
+      },
+      {
+        "name": "Dagger",
+        "parent": "DaggerHand",
+        "pivot": [
+          133.5,
+          33.0
+        ]
+      },
+      {
+        "name": "GuardArm",
+        "parent": "Torso",
+        "pivot": [
+          -56.5,
+          -132.0
+        ]
+      },
+      {
+        "name": "GuardForearm",
+        "parent": "GuardArm",
+        "pivot": [
+          -71.5,
+          -82.0
+        ]
+      },
+      {
+        "name": "GuardHand",
+        "parent": "GuardForearm",
+        "pivot": [
+          -13.5,
+          -95.0
+        ]
+      },
+      {
+        "name": "Scarf",
+        "parent": "Torso",
+        "pivot": [
+          30.5,
+          -122.0
+        ]
+      },
+      {
+        "name": "Head",
+        "parent": "Torso",
+        "pivot": [
+          13.5,
+          -142.0
+        ]
+      },
+      {
+        "name": "LeftLeg",
+        "parent": "Pelvis",
+        "pivot": [
+          -31.5,
+          53.0
+        ]
+      },
+      {
+        "name": "LeftShin",
+        "parent": "LeftLeg",
+        "pivot": [
+          -41.5,
+          143.0
+        ]
+      },
+      {
+        "name": "LeftFoot",
+        "parent": "LeftShin",
+        "pivot": [
+          -58.5,
+          228.0
+        ]
+      },
+      {
+        "name": "RightLeg",
+        "parent": "Pelvis",
+        "pivot": [
+          43.5,
+          53.0
+        ]
+      },
+      {
+        "name": "RightShin",
+        "parent": "RightLeg",
+        "pivot": [
+          48.5,
+          138.0
+        ]
+      },
+      {
+        "name": "RightFoot",
+        "parent": "RightShin",
+        "pivot": [
+          75.5,
+          218.0
+        ]
+      },
+      {
+        "name": "Bag",
+        "parent": "Torso",
+        "pivot": [
+          -50.5,
+          -122.0
+        ]
+      },
+      {
+        "name": "Cloak",
+        "parent": "Torso",
+        "pivot": [
+          -31.5,
+          -77.0
+        ]
+      },
+      {
+        "name": "CloakLeftTail",
+        "parent": "Cloak",
+        "pivot": [
+          -107.5,
+          33.0
+        ]
+      },
+      {
+        "name": "CloakRightTail",
+        "parent": "Cloak",
+        "pivot": [
+          -26.5,
+          48.0
+        ]
+      }
+    ],
+    "parts": [
+      {
+        "name": "dagger",
+        "bone": "Dagger",
+        "texture": "res://images/monsters/rig_parts/thief_raider/dagger.png",
+        "pivot": [
+          133.5,
+          33.0
+        ],
+        "sprite_offset": [
+          5.0,
+          23.0
+        ],
+        "z": 50,
+        "overlap_pixels": 6,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "weapon"
+      },
+      {
+        "name": "dagger_hand",
+        "bone": "DaggerHand",
+        "texture": "res://images/monsters/rig_parts/thief_raider/dagger_hand.png",
+        "pivot": [
+          120.5,
+          23.0
+        ],
+        "sprite_offset": [
+          -18.0,
+          -1.5
+        ],
+        "z": 48,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "hand"
+      },
+      {
+        "name": "dagger_forearm",
+        "bone": "DaggerForearm",
+        "texture": "res://images/monsters/rig_parts/thief_raider/dagger_forearm.png",
+        "pivot": [
+          105.5,
+          -32.0
+        ],
+        "sprite_offset": [
+          -18.5,
+          13.0
+        ],
+        "z": 46,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "dagger_upper_arm",
+        "bone": "DaggerUpperArm",
+        "texture": "res://images/monsters/rig_parts/thief_raider/dagger_upper_arm.png",
+        "pivot": [
+          83.5,
+          -97.0
+        ],
+        "sprite_offset": [
+          -21.0,
+          10.5
+        ],
+        "z": 43,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "guard_hand",
+        "bone": "GuardHand",
+        "texture": "res://images/monsters/rig_parts/thief_raider/guard_hand.png",
+        "pivot": [
+          -13.5,
+          -95.0
+        ],
+        "sprite_offset": [
+          10.0,
+          1.0
+        ],
+        "z": 46,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "hand"
+      },
+      {
+        "name": "guard_forearm",
+        "bone": "GuardForearm",
+        "texture": "res://images/monsters/rig_parts/thief_raider/guard_forearm.png",
+        "pivot": [
+          -71.5,
+          -82.0
+        ],
+        "sprite_offset": [
+          10.5,
+          3.0
+        ],
+        "z": 44,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "guard_arm",
+        "bone": "GuardArm",
+        "texture": "res://images/monsters/rig_parts/thief_raider/guard_arm.png",
+        "pivot": [
+          -56.5,
+          -132.0
+        ],
+        "sprite_offset": [
+          -7.5,
+          -20.0
+        ],
+        "z": 42,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "scarf",
+        "bone": "Scarf",
+        "texture": "res://images/monsters/rig_parts/thief_raider/scarf.png",
+        "pivot": [
+          30.5,
+          -122.0
+        ],
+        "sprite_offset": [
+          2.5,
+          -3.5
+        ],
+        "z": 40,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "cloth"
+      },
+      {
+        "name": "face_shadow",
+        "bone": "Head",
+        "texture": "res://images/monsters/rig_parts/thief_raider/face_shadow.png",
+        "pivot": [
+          13.5,
+          -142.0
+        ],
+        "sprite_offset": [
+          -2.0,
+          -65.0
+        ],
+        "z": 39,
+        "overlap_pixels": 4,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "accent"
+      },
+      {
+        "name": "head",
+        "bone": "Head",
+        "texture": "res://images/monsters/rig_parts/thief_raider/head.png",
+        "pivot": [
+          13.5,
+          -142.0
+        ],
+        "sprite_offset": [
+          -13.5,
+          -77.5
+        ],
+        "z": 38,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "head"
+      },
+      {
+        "name": "torso",
+        "bone": "Torso",
+        "texture": "res://images/monsters/rig_parts/thief_raider/torso.png",
+        "pivot": [
+          13.5,
+          -32.0
+        ],
+        "sprite_offset": [
+          36.0,
+          -9.5
+        ],
+        "z": 25,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "core"
+      },
+      {
+        "name": "pelvis",
+        "bone": "Pelvis",
+        "texture": "res://images/monsters/rig_parts/thief_raider/pelvis.png",
+        "pivot": [
+          13.5,
+          18.0
+        ],
+        "sprite_offset": [
+          0.0,
+          -3.0
+        ],
+        "z": 24,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "core"
+      },
+      {
+        "name": "left_foot",
+        "bone": "LeftFoot",
+        "texture": "res://images/monsters/rig_parts/thief_raider/left_foot.png",
+        "pivot": [
+          -58.5,
+          228.0
+        ],
+        "sprite_offset": [
+          -13.5,
+          -6.5
+        ],
+        "z": 21,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "left_shin",
+        "bone": "LeftShin",
+        "texture": "res://images/monsters/rig_parts/thief_raider/left_shin.png",
+        "pivot": [
+          -41.5,
+          143.0
+        ],
+        "sprite_offset": [
+          -2.0,
+          -5.5
+        ],
+        "z": 19,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "left_leg",
+        "bone": "LeftLeg",
+        "texture": "res://images/monsters/rig_parts/thief_raider/left_leg.png",
+        "pivot": [
+          -31.5,
+          53.0
+        ],
+        "sprite_offset": [
+          -2.0,
+          8.5
+        ],
+        "z": 17,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "right_foot",
+        "bone": "RightFoot",
+        "texture": "res://images/monsters/rig_parts/thief_raider/right_foot.png",
+        "pivot": [
+          75.5,
+          218.0
+        ],
+        "sprite_offset": [
+          2.5,
+          -17.5
+        ],
+        "z": 22,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "foot"
+      },
+      {
+        "name": "right_shin",
+        "bone": "RightShin",
+        "texture": "res://images/monsters/rig_parts/thief_raider/right_shin.png",
+        "pivot": [
+          48.5,
+          138.0
+        ],
+        "sprite_offset": [
+          13.0,
+          -7.5
+        ],
+        "z": 20,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "right_leg",
+        "bone": "RightLeg",
+        "texture": "res://images/monsters/rig_parts/thief_raider/right_leg.png",
+        "pivot": [
+          43.5,
+          53.0
+        ],
+        "sprite_offset": [
+          72.0,
+          4.5
+        ],
+        "z": 18,
+        "overlap_pixels": 12,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "limb"
+      },
+      {
+        "name": "bag",
+        "bone": "Bag",
+        "texture": "res://images/monsters/rig_parts/thief_raider/bag.png",
+        "pivot": [
+          -50.5,
+          -122.0
+        ],
+        "sprite_offset": [
+          -21.0,
+          1.0
+        ],
+        "z": 5,
+        "overlap_pixels": 8,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "prop"
+      },
+      {
+        "name": "cloak_left_tail",
+        "bone": "CloakLeftTail",
+        "texture": "res://images/monsters/rig_parts/thief_raider/cloak_left_tail.png",
+        "pivot": [
+          -107.5,
+          33.0
+        ],
+        "sprite_offset": [
+          -16.0,
+          0.0
+        ],
+        "z": 9,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "cloth"
+      },
+      {
+        "name": "cloak_right_tail",
+        "bone": "CloakRightTail",
+        "texture": "res://images/monsters/rig_parts/thief_raider/cloak_right_tail.png",
+        "pivot": [
+          -26.5,
+          48.0
+        ],
+        "sprite_offset": [
+          44.0,
+          -112.5
+        ],
+        "z": 10,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "cloth"
+      },
+      {
+        "name": "cloak",
+        "bone": "Cloak",
+        "texture": "res://images/monsters/rig_parts/thief_raider/cloak.png",
+        "pivot": [
+          -31.5,
+          -77.0
+        ],
+        "sprite_offset": [
+          -120.0,
+          -29.5
+        ],
+        "z": 6,
+        "overlap_pixels": 10,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": false,
+        "semantic": "cloth"
+      },
+      {
+        "name": "socket_guard_shoulder",
+        "bone": "Torso",
+        "texture": "res://images/monsters/rig_parts/thief_raider/socket_guard_shoulder.png",
+        "pivot": [
+          13.5,
+          -32.0
+        ],
+        "sprite_offset": [
+          -73.0,
+          -97.0
+        ],
+        "z": 39,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_dagger_shoulder",
+        "bone": "Torso",
+        "texture": "res://images/monsters/rig_parts/thief_raider/socket_dagger_shoulder.png",
+        "pivot": [
+          13.5,
+          -32.0
+        ],
+        "sprite_offset": [
+          61.5,
+          -72.0
+        ],
+        "z": 39,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_left_hip",
+        "bone": "Pelvis",
+        "texture": "res://images/monsters/rig_parts/thief_raider/socket_left_hip.png",
+        "pivot": [
+          13.5,
+          18.0
+        ],
+        "sprite_offset": [
+          -42.0,
+          28.0
+        ],
+        "z": 15,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      },
+      {
+        "name": "socket_right_hip",
+        "bone": "Pelvis",
+        "texture": "res://images/monsters/rig_parts/thief_raider/socket_right_hip.png",
+        "pivot": [
+          13.5,
+          18.0
+        ],
+        "sprite_offset": [
+          30.5,
+          30.5
+        ],
+        "z": 15,
+        "overlap_pixels": 0,
+        "atlas_bleed_pixels": 2,
+        "is_underlay": true,
+        "semantic": "socket"
+      }
+    ]
+  }
+}

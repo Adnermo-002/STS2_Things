@@ -1,0 +1,22 @@
+{
+	"MAGIC_GLOVE.title": "断袖",
+	"MAGIC_GLOVE.description": "拾起时，从你的[gold]牌组[/gold]中选择[blue]{Cards}[/blue]张牌，[gold]变化[/gold]为一张[gold]亮剑[/gold]和一张[gold]妙计[/gold]，然后失去[red]{HpLoss}[/red]点最大生命。",
+	"MAGIC_GLOVE.eventDescription": "从你的[gold]牌组[/gold]中选择[blue]{Cards}[/blue]张牌，[gold]变化[/gold]为一张[gold]亮剑[/gold]和一张[gold]妙计[/gold]，然后失去[red]{HpLoss}[/red]点最大生命。",
+	"MAGIC_GLOVE.flavor": "[red]只是里面藏了把剑[/red]。",
+	"WHITE_FLAG.title": "白旗",
+	"WHITE_FLAG.description": "将[blue]1[/blue]张[gold]诈降[/gold]和[blue]1[/blue]张[red]羞耻[/red]加入你的[gold]牌组[/gold]。",
+	"WHITE_FLAG.eventDescription": "将[blue]1[/blue]张[gold]诈降[/gold]和[blue]1[/blue]张[red]羞耻[/red]加入你的[gold]牌组[/gold]。",
+	"WHITE_FLAG.flavor": "[red]我投降!...[/red]",
+	"CURSE_REMOVER.title": "黄符",
+	"CURSE_REMOVER.description": "拾取时，失去[blue]{HpLoss}[/blue]点生命，本局游戏内你获得的前[blue]{Cards}[/blue]张[red]诅咒[/red]获得[blue]消散[/blue]。",
+	"CURSE_REMOVER.flavor": "回应的只有[red]千年前[/red]的自己...",
+	"ENERGY_BOTTLE.title": "金币能量转换器",
+	"ENERGY_BOTTLE.description": "每场战斗开始时，获得 {Energy} 点能量，并失去{Gold}点金币。",
+	"ENERGY_BOTTLE.flavor": "蕴含着无尽的力量",
+	"ALMOND_WATER.title": "杏仁水",
+	"ALMOND_WATER.description": "在普通|[gold]精英[/gold]|[red]Boss[/red]战斗开始时，获得[blue]{NormalRegen}[/blue]|[blue]{EliteRegen}[/blue]|[blue]{BossRegen}[/blue]层[green]再生[/green]。",
+	"ALMOND_WATER.flavor": "[green][sine]这瓶水正在疗愈你的神志。[/sine][/green]",
+	"MEDUSA_HAIR.title": "美杜莎之发",
+	"MEDUSA_HAIR.description": "战斗开始时，将一张[blue]0[/blue]费的[gold]岩石铠甲[/gold][green]+[/green]和[gold]巨石[/gold][green]+[/green]加入你的手牌。",
+	"MEDUSA_HAIR.flavor": "一缕来自蛇发女妖的头发，触感冰凉如石。"
+}

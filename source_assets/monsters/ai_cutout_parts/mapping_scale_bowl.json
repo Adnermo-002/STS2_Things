@@ -1,0 +1,1959 @@
+{
+  "schema_version": 1,
+  "coordinate_space": {
+    "origin": "top_left_of_original_monster_png",
+    "x": "right",
+    "y": "down",
+    "units": "source_pixels"
+  },
+  "selection_policy": "Only complete alpha-isolated image-generation components are selected. Repeated visual elements use one best source component plus instances; no rectangular crops from the original art are referenced.",
+  "entries": [
+    {
+      "monster": "scale_beetle",
+      "component": "part_000",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_000.png",
+      "semantic": "rear_abdomen_shell",
+      "bone": "RearShell",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        900,
+        565
+      ],
+      "suggested_center_source_xy": [
+        820,
+        550
+      ],
+      "z": 18,
+      "notes": "Largest complete golden shell plate; place at the rear and keep rigid. Its open left rim overlaps beneath core_shell to hide the seam.",
+      "scale_xy": [
+        1.35,
+        1.15
+      ]
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_002",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_002.png",
+      "semantic": "core_shell",
+      "bone": "Core",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        690,
+        545
+      ],
+      "suggested_center_source_xy": [
+        640,
+        540
+      ],
+      "z": 20,
+      "notes": "Medium complete shell plate. Tuck its right edge beneath rear_abdomen_shell and its left rim beneath front_thorax_shell; do not deform the rigid carapace.",
+      "scale_xy": [
+        1.12,
+        1.12
+      ]
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_003",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_003.png",
+      "semantic": "front_thorax_shell",
+      "bone": "FrontShell",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        505,
+        555
+      ],
+      "suggested_center_source_xy": [
+        450,
+        535
+      ],
+      "z": 22,
+      "notes": "Narrow forward shell with two complete socket rims. Use it as the shoulder/thorax transition and overlap the head rear plate by 10-16 source pixels.",
+      "scale_xy": [
+        1.08,
+        1.08
+      ]
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_001",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_001.png",
+      "semantic": "head_complete",
+      "bone": "Head",
+      "parent_bone": "FrontShell",
+      "suggested_pivot_source_xy": [
+        405,
+        600
+      ],
+      "suggested_center_source_xy": [
+        250,
+        565
+      ],
+      "z": 30,
+      "notes": "Complete generated head, including eye and horns. Rotate only around the concealed neck seam at the rear; never split or rectangular-crop this component.",
+      "scale_xy": [
+        1.15,
+        1.15
+      ]
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_009",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_009.png",
+      "semantic": "mandible_upper",
+      "bone": "JawUpper",
+      "parent_bone": "Head",
+      "suggested_pivot_source_xy": [
+        86,
+        671
+      ],
+      "suggested_center_source_xy": [
+        55,
+        650
+      ],
+      "z": 50,
+      "notes": "Smaller upward golden mandible. Align its circular root under the head cheek; use a short snap rather than translation for attack."
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_017",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_017.png",
+      "semantic": "mandible_lower",
+      "bone": "JawLower",
+      "parent_bone": "Head",
+      "suggested_pivot_source_xy": [
+        184,
+        673
+      ],
+      "suggested_center_source_xy": [
+        143,
+        706
+      ],
+      "z": 51,
+      "notes": "Larger lower golden mandible. Its root ring must remain underneath the cheek/socket cover while the tip stays in front of the upper mandible."
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_010",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_010.png",
+      "semantic": "fore_claw_proximal",
+      "bone": "ForeClaw",
+      "parent_bone": "FrontShell",
+      "suggested_pivot_source_xy": [
+        430,
+        680
+      ],
+      "suggested_center_source_xy": [
+        332,
+        720
+      ],
+      "z": 35,
+      "notes": "Complete thorned olive proximal claw segment. Keep the shell-side ring underneath the socket overlay and rotate at the root only.",
+      "rotation_deg": 36,
+      "scale_xy": [
+        1.09,
+        1.09
+      ]
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_011",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_011.png",
+      "semantic": "fore_claw_distal_foot",
+      "bone": "ForeClawLower",
+      "parent_bone": "ForeClaw",
+      "suggested_pivot_source_xy": [
+        333,
+        755
+      ],
+      "suggested_center_source_xy": [
+        157,
+        795
+      ],
+      "z": 36,
+      "notes": "Complete dark distal claw/foot with a clean root ring. The ring overlaps beneath the proximal segment by 6-10 source pixels to prevent a transparent gap.",
+      "rotation_deg": -14,
+      "scale_xy": [
+        1.3,
+        1.3
+      ]
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_004",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_004.png",
+      "semantic": "walking_leg_upper_template",
+      "bone": "WalkingLegUpperTemplate",
+      "parent_bone": "owning shell bone",
+      "suggested_pivot_source_xy": [
+        530,
+        680
+      ],
+      "suggested_center_source_xy": [
+        545,
+        712
+      ],
+      "z": 31,
+      "instances": [
+        {
+          "semantic": "front_leg_upper",
+          "bone": "FrontLeg",
+          "parent_bone": "FrontShell",
+          "pivot_source_xy": [
+            530,
+            680
+          ],
+          "center_source_xy": [
+            544,
+            722
+          ],
+          "rotation_deg": 92,
+          "scale_xy": [
+            0.78,
+            0.78
+          ]
+        },
+        {
+          "semantic": "mid_leg_upper",
+          "bone": "MidLeg",
+          "parent_bone": "Core",
+          "pivot_source_xy": [
+            620,
+            650
+          ],
+          "center_source_xy": [
+            634,
+            700
+          ],
+          "rotation_deg": 95,
+          "scale_xy": [
+            0.92,
+            0.92
+          ]
+        },
+        {
+          "semantic": "rear_leg_upper",
+          "bone": "RearLeg",
+          "parent_bone": "RearShell",
+          "pivot_source_xy": [
+            866,
+            625
+          ],
+          "center_source_xy": [
+            883,
+            682
+          ],
+          "rotation_deg": 94,
+          "scale_xy": [
+            1.05,
+            1.05
+          ]
+        }
+      ],
+      "notes": "One clean generated upper-leg component is intentionally instanced three times; the near-duplicates part_026-part_029 are rejected because they bake multiple joints into one sprite."
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_012",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_012.png",
+      "semantic": "walking_leg_lower_foot_template",
+      "bone": "WalkingLegLowerTemplate",
+      "parent_bone": "matching walking-leg upper bone",
+      "suggested_pivot_source_xy": [
+        560,
+        744
+      ],
+      "suggested_center_source_xy": [
+        542,
+        790
+      ],
+      "z": 32,
+      "instances": [
+        {
+          "semantic": "front_leg_lower_foot",
+          "bone": "FrontLegLower",
+          "parent_bone": "FrontLeg",
+          "pivot_source_xy": [
+            560,
+            744
+          ],
+          "center_source_xy": [
+            562,
+            805
+          ],
+          "rotation_deg": 20,
+          "scale_xy": [
+            0.85,
+            0.85
+          ]
+        },
+        {
+          "semantic": "mid_leg_lower_foot",
+          "bone": "MidLegLower",
+          "parent_bone": "MidLeg",
+          "pivot_source_xy": [
+            656,
+            744
+          ],
+          "center_source_xy": [
+            688,
+            800
+          ],
+          "rotation_deg": -8,
+          "scale_xy": [
+            0.9,
+            0.9
+          ]
+        },
+        {
+          "semantic": "rear_leg_lower_foot",
+          "bone": "RearLegLower",
+          "parent_bone": "RearLeg",
+          "pivot_source_xy": [
+            911,
+            735
+          ],
+          "center_source_xy": [
+            951,
+            794
+          ],
+          "rotation_deg": -12,
+          "scale_xy": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "notes": "Use the complete lower segment and its painted foot as a rigid distal element. Instance it for all three walking legs with the listed perspective scales."
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_005",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_005.png",
+      "semantic": "limb_root_socket_overlay_template",
+      "bone": "LimbRootSocketTemplate",
+      "parent_bone": "owning shell bone",
+      "suggested_pivot_source_xy": [
+        430,
+        680
+      ],
+      "suggested_center_source_xy": [
+        430,
+        680
+      ],
+      "z": 38,
+      "instances": [
+        {
+          "semantic": "fore_claw_socket",
+          "bone": "FrontShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            430,
+            680
+          ],
+          "center_source_xy": [
+            430,
+            680
+          ],
+          "scale_xy": [
+            0.9,
+            0.9
+          ]
+        },
+        {
+          "semantic": "front_leg_socket",
+          "bone": "FrontShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            530,
+            680
+          ],
+          "center_source_xy": [
+            530,
+            680
+          ],
+          "scale_xy": [
+            0.74,
+            0.74
+          ]
+        },
+        {
+          "semantic": "mid_leg_socket",
+          "bone": "Core",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            620,
+            650
+          ],
+          "center_source_xy": [
+            620,
+            650
+          ],
+          "scale_xy": [
+            0.82,
+            0.82
+          ]
+        },
+        {
+          "semantic": "rear_leg_socket",
+          "bone": "RearShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            866,
+            625
+          ],
+          "center_source_xy": [
+            866,
+            625
+          ],
+          "scale_xy": [
+            0.88,
+            0.88
+          ]
+        }
+      ],
+      "notes": "Single best large olive socket ring. Keep each instance shell-attached and above the limb root to mask rotation seams."
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_007",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_007.png",
+      "semantic": "limb_joint_cap_template",
+      "bone": "LimbJointCapTemplate",
+      "parent_bone": "matching proximal limb bone",
+      "suggested_pivot_source_xy": [
+        333,
+        755
+      ],
+      "suggested_center_source_xy": [
+        333,
+        755
+      ],
+      "z": 37,
+      "instances": [
+        {
+          "semantic": "fore_claw_joint_cap",
+          "bone": "ForeClaw",
+          "parent_bone": "FrontShell",
+          "pivot_source_xy": [
+            333,
+            755
+          ],
+          "center_source_xy": [
+            333,
+            755
+          ],
+          "scale_xy": [
+            0.72,
+            0.72
+          ]
+        },
+        {
+          "semantic": "front_knee_cap",
+          "bone": "FrontLeg",
+          "parent_bone": "FrontShell",
+          "pivot_source_xy": [
+            560,
+            744
+          ],
+          "center_source_xy": [
+            560,
+            744
+          ],
+          "scale_xy": [
+            0.6,
+            0.6
+          ]
+        },
+        {
+          "semantic": "mid_knee_cap",
+          "bone": "MidLeg",
+          "parent_bone": "Core",
+          "pivot_source_xy": [
+            656,
+            744
+          ],
+          "center_source_xy": [
+            656,
+            744
+          ],
+          "scale_xy": [
+            0.68,
+            0.68
+          ]
+        },
+        {
+          "semantic": "rear_knee_cap",
+          "bone": "RearLeg",
+          "parent_bone": "RearShell",
+          "pivot_source_xy": [
+            911,
+            735
+          ],
+          "center_source_xy": [
+            911,
+            735
+          ],
+          "scale_xy": [
+            0.74,
+            0.74
+          ]
+        }
+      ],
+      "notes": "Small clean ring selected over the many duplicate rings. Parent it to the proximal element so it covers the distal root throughout motion."
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_020",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_020.png",
+      "semantic": "antenna_capsule_template",
+      "bone": "AntennaCapsuleTemplate",
+      "parent_bone": "Head or previous antenna segment",
+      "suggested_pivot_source_xy": [
+        126,
+        552
+      ],
+      "suggested_center_source_xy": [
+        124,
+        530
+      ],
+      "z": 44,
+      "instances": [
+        {
+          "semantic": "antenna_back_base",
+          "bone": "AntennaBackBase",
+          "parent_bone": "Head",
+          "pivot_source_xy": [
+            101,
+            549
+          ],
+          "center_source_xy": [
+            94,
+            518
+          ],
+          "rotation_deg": -90,
+          "scale_xy": [
+            0.5,
+            0.5
+          ],
+          "z": 28
+        },
+        {
+          "semantic": "antenna_back_1",
+          "bone": "AntennaBack1",
+          "parent_bone": "AntennaBackBase",
+          "pivot_source_xy": [
+            84,
+            486
+          ],
+          "center_source_xy": [
+            77,
+            438
+          ],
+          "rotation_deg": -90,
+          "scale_xy": [
+            0.67,
+            0.67
+          ],
+          "z": 28
+        },
+        {
+          "semantic": "antenna_back_2",
+          "bone": "AntennaBack2",
+          "parent_bone": "AntennaBack1",
+          "pivot_source_xy": [
+            83,
+            384
+          ],
+          "center_source_xy": [
+            84,
+            345
+          ],
+          "rotation_deg": -82,
+          "scale_xy": [
+            0.72,
+            0.72
+          ],
+          "z": 28
+        },
+        {
+          "semantic": "antenna_back_3",
+          "bone": "AntennaBack3",
+          "parent_bone": "AntennaBack2",
+          "pivot_source_xy": [
+            120,
+            286
+          ],
+          "center_source_xy": [
+            128,
+            242
+          ],
+          "rotation_deg": -63,
+          "scale_xy": [
+            0.8,
+            0.8
+          ],
+          "z": 28
+        },
+        {
+          "semantic": "antenna_back_4",
+          "bone": "AntennaBack4",
+          "parent_bone": "AntennaBack3",
+          "pivot_source_xy": [
+            186,
+            200
+          ],
+          "center_source_xy": [
+            193,
+            157
+          ],
+          "rotation_deg": -47,
+          "scale_xy": [
+            0.85,
+            0.85
+          ],
+          "z": 28
+        },
+        {
+          "semantic": "antenna_back_5",
+          "bone": "AntennaBack5",
+          "parent_bone": "AntennaBack4",
+          "pivot_source_xy": [
+            260,
+            121
+          ],
+          "center_source_xy": [
+            273,
+            84
+          ],
+          "rotation_deg": -31,
+          "scale_xy": [
+            0.92,
+            0.92
+          ],
+          "z": 28
+        },
+        {
+          "semantic": "antenna_back_tip",
+          "bone": "AntennaBackTip",
+          "parent_bone": "AntennaBack5",
+          "pivot_source_xy": [
+            330,
+            59
+          ],
+          "center_source_xy": [
+            366,
+            40
+          ],
+          "rotation_deg": -12,
+          "scale_xy": [
+            1.0,
+            1.0
+          ],
+          "z": 28
+        },
+        {
+          "semantic": "antenna_front_base",
+          "bone": "AntennaFrontBase",
+          "parent_bone": "Head",
+          "pivot_source_xy": [
+            126,
+            552
+          ],
+          "center_source_xy": [
+            124,
+            530
+          ],
+          "rotation_deg": -90,
+          "scale_xy": [
+            0.52,
+            0.52
+          ],
+          "z": 44
+        },
+        {
+          "semantic": "antenna_front_1",
+          "bone": "AntennaFront1",
+          "parent_bone": "AntennaFrontBase",
+          "pivot_source_xy": [
+            137,
+            482
+          ],
+          "center_source_xy": [
+            143,
+            440
+          ],
+          "rotation_deg": -78,
+          "scale_xy": [
+            0.68,
+            0.68
+          ],
+          "z": 44
+        },
+        {
+          "semantic": "antenna_front_2",
+          "bone": "AntennaFront2",
+          "parent_bone": "AntennaFront1",
+          "pivot_source_xy": [
+            166,
+            374
+          ],
+          "center_source_xy": [
+            176,
+            353
+          ],
+          "rotation_deg": -58,
+          "scale_xy": [
+            0.74,
+            0.74
+          ],
+          "z": 44
+        },
+        {
+          "semantic": "antenna_front_3",
+          "bone": "AntennaFront3",
+          "parent_bone": "AntennaFront2",
+          "pivot_source_xy": [
+            221,
+            292
+          ],
+          "center_source_xy": [
+            223,
+            276
+          ],
+          "rotation_deg": -45,
+          "scale_xy": [
+            0.8,
+            0.8
+          ],
+          "z": 44
+        },
+        {
+          "semantic": "antenna_front_4",
+          "bone": "AntennaFront4",
+          "parent_bone": "AntennaFront3",
+          "pivot_source_xy": [
+            299,
+            217
+          ],
+          "center_source_xy": [
+            321,
+            202
+          ],
+          "rotation_deg": -30,
+          "scale_xy": [
+            0.88,
+            0.88
+          ],
+          "z": 44
+        },
+        {
+          "semantic": "antenna_front_5",
+          "bone": "AntennaFront5",
+          "parent_bone": "AntennaFront4",
+          "pivot_source_xy": [
+            392,
+            163
+          ],
+          "center_source_xy": [
+            401,
+            150
+          ],
+          "rotation_deg": -15,
+          "scale_xy": [
+            0.94,
+            0.94
+          ],
+          "z": 44
+        },
+        {
+          "semantic": "antenna_front_tip",
+          "bone": "AntennaFrontTip",
+          "parent_bone": "AntennaFront5",
+          "pivot_source_xy": [
+            474,
+            146
+          ],
+          "center_source_xy": [
+            496,
+            127
+          ],
+          "rotation_deg": 0,
+          "scale_xy": [
+            0.95,
+            0.95
+          ],
+          "z": 44
+        }
+      ],
+      "notes": "Best clean white capsule is reused with perspective scale for both complete antenna chains. This preserves a stable contour and avoids mixing the near-duplicate oval variants."
+    },
+    {
+      "monster": "scale_beetle",
+      "component": "part_019",
+      "component_path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_019.png",
+      "semantic": "antenna_connector_template",
+      "bone": "AntennaConnectorTemplate",
+      "parent_bone": "preceding antenna segment",
+      "suggested_pivot_source_xy": [
+        137,
+        482
+      ],
+      "suggested_center_source_xy": [
+        137,
+        482
+      ],
+      "z": 43,
+      "instances": [
+        {
+          "semantic": "antenna_back_joint_1",
+          "bone": "AntennaBackBase",
+          "parent_bone": "Head",
+          "pivot_source_xy": [
+            84,
+            486
+          ],
+          "center_source_xy": [
+            84,
+            486
+          ],
+          "rotation_deg": -90,
+          "scale_xy": [
+            0.5,
+            0.5
+          ],
+          "z": 27
+        },
+        {
+          "semantic": "antenna_back_joint_2",
+          "bone": "AntennaBack1",
+          "parent_bone": "AntennaBackBase",
+          "pivot_source_xy": [
+            83,
+            384
+          ],
+          "center_source_xy": [
+            83,
+            384
+          ],
+          "rotation_deg": -82,
+          "scale_xy": [
+            0.54,
+            0.54
+          ],
+          "z": 27
+        },
+        {
+          "semantic": "antenna_back_joint_3",
+          "bone": "AntennaBack2",
+          "parent_bone": "AntennaBack1",
+          "pivot_source_xy": [
+            120,
+            286
+          ],
+          "center_source_xy": [
+            120,
+            286
+          ],
+          "rotation_deg": -63,
+          "scale_xy": [
+            0.58,
+            0.58
+          ],
+          "z": 27
+        },
+        {
+          "semantic": "antenna_back_joint_4",
+          "bone": "AntennaBack3",
+          "parent_bone": "AntennaBack2",
+          "pivot_source_xy": [
+            186,
+            200
+          ],
+          "center_source_xy": [
+            186,
+            200
+          ],
+          "rotation_deg": -47,
+          "scale_xy": [
+            0.62,
+            0.62
+          ],
+          "z": 27
+        },
+        {
+          "semantic": "antenna_back_joint_5",
+          "bone": "AntennaBack4",
+          "parent_bone": "AntennaBack3",
+          "pivot_source_xy": [
+            260,
+            121
+          ],
+          "center_source_xy": [
+            260,
+            121
+          ],
+          "rotation_deg": -31,
+          "scale_xy": [
+            0.66,
+            0.66
+          ],
+          "z": 27
+        },
+        {
+          "semantic": "antenna_back_joint_tip",
+          "bone": "AntennaBack5",
+          "parent_bone": "AntennaBack4",
+          "pivot_source_xy": [
+            330,
+            59
+          ],
+          "center_source_xy": [
+            330,
+            59
+          ],
+          "rotation_deg": -12,
+          "scale_xy": [
+            0.7,
+            0.7
+          ],
+          "z": 27
+        },
+        {
+          "semantic": "antenna_front_joint_1",
+          "bone": "AntennaFrontBase",
+          "parent_bone": "Head",
+          "pivot_source_xy": [
+            137,
+            482
+          ],
+          "center_source_xy": [
+            137,
+            482
+          ],
+          "rotation_deg": -78,
+          "scale_xy": [
+            0.5,
+            0.5
+          ],
+          "z": 43
+        },
+        {
+          "semantic": "antenna_front_joint_2",
+          "bone": "AntennaFront1",
+          "parent_bone": "AntennaFrontBase",
+          "pivot_source_xy": [
+            166,
+            374
+          ],
+          "center_source_xy": [
+            166,
+            374
+          ],
+          "rotation_deg": -58,
+          "scale_xy": [
+            0.54,
+            0.54
+          ],
+          "z": 43
+        },
+        {
+          "semantic": "antenna_front_joint_3",
+          "bone": "AntennaFront2",
+          "parent_bone": "AntennaFront1",
+          "pivot_source_xy": [
+            221,
+            292
+          ],
+          "center_source_xy": [
+            221,
+            292
+          ],
+          "rotation_deg": -45,
+          "scale_xy": [
+            0.58,
+            0.58
+          ],
+          "z": 43
+        },
+        {
+          "semantic": "antenna_front_joint_4",
+          "bone": "AntennaFront3",
+          "parent_bone": "AntennaFront2",
+          "pivot_source_xy": [
+            299,
+            217
+          ],
+          "center_source_xy": [
+            299,
+            217
+          ],
+          "rotation_deg": -30,
+          "scale_xy": [
+            0.62,
+            0.62
+          ],
+          "z": 43
+        },
+        {
+          "semantic": "antenna_front_joint_5",
+          "bone": "AntennaFront4",
+          "parent_bone": "AntennaFront3",
+          "pivot_source_xy": [
+            392,
+            163
+          ],
+          "center_source_xy": [
+            392,
+            163
+          ],
+          "rotation_deg": -15,
+          "scale_xy": [
+            0.66,
+            0.66
+          ],
+          "z": 43
+        },
+        {
+          "semantic": "antenna_front_joint_tip",
+          "bone": "AntennaFront5",
+          "parent_bone": "AntennaFront4",
+          "pivot_source_xy": [
+            474,
+            146
+          ],
+          "center_source_xy": [
+            474,
+            146
+          ],
+          "rotation_deg": 0,
+          "scale_xy": [
+            0.7,
+            0.7
+          ],
+          "z": 43
+        }
+      ],
+      "notes": "One gray connector is instanced at every capsule joint and drawn directly behind the capsules. Duplicate connector components part_021/024/025/031/032/034/035/038/040/050/051 are deliberately omitted."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_014",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_014.png",
+      "semantic": "membrane_front",
+      "bone": "FrontMembrane",
+      "parent_bone": "FrontShell",
+      "suggested_pivot_source_xy": [
+        520,
+        500
+      ],
+      "suggested_center_source_xy": [
+        473,
+        489
+      ],
+      "z": 10,
+      "notes": "Complete magenta front membrane plate; keep it behind head, crest and green shell plates, with its root hidden beneath front_shell."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_015",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_015.png",
+      "semantic": "membrane_front_mid",
+      "bone": "FrontMidMembrane",
+      "parent_bone": "FrontShell",
+      "suggested_pivot_source_xy": [
+        645,
+        500
+      ],
+      "suggested_center_source_xy": [
+        585,
+        478
+      ],
+      "z": 11,
+      "notes": "Second complete magenta plate; overlap the previous membrane and place beneath the leading green carapace."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_016",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_016.png",
+      "semantic": "membrane_mid",
+      "bone": "MidMembrane",
+      "parent_bone": "MidShell",
+      "suggested_pivot_source_xy": [
+        800,
+        500
+      ],
+      "suggested_center_source_xy": [
+        725,
+        470
+      ],
+      "z": 12,
+      "notes": "Third complete membrane plate. A small overlap under mid_shell is required so shell rocking never reveals background."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_017",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_017.png",
+      "semantic": "membrane_rear",
+      "bone": "RearMembrane",
+      "parent_bone": "RearShell",
+      "suggested_pivot_source_xy": [
+        1010,
+        500
+      ],
+      "suggested_center_source_xy": [
+        910,
+        445
+      ],
+      "z": 13,
+      "notes": "Rear complete magenta membrane. It sits behind the egg sac and both rear shell panels; keep its lower arc visible between leg sockets."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_027",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_027.png",
+      "semantic": "egg_sac_complete",
+      "bone": "EggSac",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        1060,
+        475
+      ],
+      "suggested_center_source_xy": [
+        1130,
+        350
+      ],
+      "z": 15,
+      "notes": "Complete orange egg cluster. Preserve the rendered eggs as one organic mass and animate only restrained breathing/weight transfer, never per-egg random motion."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_010",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_010.png",
+      "semantic": "front_shell_with_two_gems",
+      "bone": "FrontShell",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        600,
+        465
+      ],
+      "suggested_center_source_xy": [
+        660,
+        278
+      ],
+      "z": 22,
+      "notes": "Broad complete green plate with two integrated teal gems; align those gems near source (695,82) and (638,181). Do not add duplicate gem overlays there."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_009",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_009.png",
+      "semantic": "mid_shell",
+      "bone": "MidShell",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        865,
+        470
+      ],
+      "suggested_center_source_xy": [
+        865,
+        282
+      ],
+      "z": 23,
+      "notes": "Tall complete gemless middle plate. Its forward rim overlaps under front_shell; use large_gem_template for the exposed mid gem."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_012",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_012.png",
+      "semantic": "rear_upper_shell_with_gem",
+      "bone": "RearShell",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        1260,
+        500
+      ],
+      "suggested_center_source_xy": [
+        1195,
+        275
+      ],
+      "z": 21,
+      "notes": "Complete curved rear-upper plate with one integrated teal gem; align the embedded gem near source (1205,95) and overlap its lower edge over the egg sac."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_011",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_011.png",
+      "semantic": "tail_shell",
+      "bone": "RearShell",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        1260,
+        500
+      ],
+      "suggested_center_source_xy": [
+        1352,
+        393
+      ],
+      "z": 20,
+      "notes": "Narrow complete gemless tail plate. Place behind rear_upper_shell and add the small tail gem from small_gem_template at the exposed outer edge."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_007",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_007.png",
+      "semantic": "head_shell_complete",
+      "bone": "Head",
+      "parent_bone": "FrontShell",
+      "suggested_pivot_source_xy": [
+        420,
+        510
+      ],
+      "suggested_center_source_xy": [
+        275,
+        487
+      ],
+      "z": 40,
+      "notes": "Complete green head shell. Its rear edge overlaps crest/membrane roots; eye, mandibles and small gems remain separate foreground attachments."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_000",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_000.png",
+      "semantic": "main_eye",
+      "bone": "Head",
+      "parent_bone": "FrontShell",
+      "suggested_pivot_source_xy": [
+        145,
+        552
+      ],
+      "suggested_center_source_xy": [
+        145,
+        552
+      ],
+      "z": 55,
+      "notes": "Complete isolated eye. Parent it rigidly to Head; a tiny eyelid/squash accent is acceptable, but never translate it independently across the face."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_008",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_008.png",
+      "semantic": "mandible_upper",
+      "bone": "Mandible",
+      "parent_bone": "Head",
+      "suggested_pivot_source_xy": [
+        101,
+        601
+      ],
+      "suggested_center_source_xy": [
+        48,
+        615
+      ],
+      "z": 52,
+      "notes": "Smaller upper orange mandible; conceal the circular root beneath the head lip and animate a firm pincer arc."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_013",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_013.png",
+      "semantic": "mandible_lower",
+      "bone": "MandibleLower",
+      "parent_bone": "Head",
+      "suggested_pivot_source_xy": [
+        104,
+        648
+      ],
+      "suggested_center_source_xy": [
+        132,
+        661
+      ],
+      "z": 53,
+      "notes": "Larger lower orange mandible. Keep the tip in front of the upper mandible and use opposing rotation around the cheek attachment."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_001",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_001.png",
+      "semantic": "crest_leaf_01_back",
+      "bone": "CrestLeaf01",
+      "parent_bone": "Crest",
+      "suggested_pivot_source_xy": [
+        292,
+        307
+      ],
+      "suggested_center_source_xy": [
+        288,
+        188
+      ],
+      "z": 25,
+      "notes": "Tall complete rear crest leaf. Root is buried behind head shell; use only low-amplitude delayed rotation."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_002",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_002.png",
+      "semantic": "crest_leaf_02",
+      "bone": "CrestLeaf02",
+      "parent_bone": "Crest",
+      "suggested_pivot_source_xy": [
+        340,
+        338
+      ],
+      "suggested_center_source_xy": [
+        340,
+        215
+      ],
+      "z": 26,
+      "notes": "Second complete crest leaf; overlap leaf_01 and leaf_03 by painted edges so wind-up motion cannot open black seams."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_003",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_003.png",
+      "semantic": "crest_leaf_03",
+      "bone": "CrestLeaf03",
+      "parent_bone": "Crest",
+      "suggested_pivot_source_xy": [
+        394,
+        369
+      ],
+      "suggested_center_source_xy": [
+        397,
+        232
+      ],
+      "z": 27,
+      "notes": "Third complete crest leaf; this is the visual rhythm leader for the crest follow-through."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_004",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_004.png",
+      "semantic": "crest_leaf_04",
+      "bone": "CrestLeaf04",
+      "parent_bone": "Crest",
+      "suggested_pivot_source_xy": [
+        448,
+        404
+      ],
+      "suggested_center_source_xy": [
+        450,
+        264
+      ],
+      "z": 28,
+      "notes": "Fourth complete crest leaf; preserve its pointed silhouette and keep it behind the head brow."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_005",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_005.png",
+      "semantic": "crest_leaf_05",
+      "bone": "CrestLeaf05",
+      "parent_bone": "Crest",
+      "suggested_pivot_source_xy": [
+        500,
+        430
+      ],
+      "suggested_center_source_xy": [
+        493,
+        310
+      ],
+      "z": 29,
+      "notes": "Fifth complete crest leaf; smaller perspective scale makes the crest taper naturally into the thorax."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_006",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_006.png",
+      "semantic": "crest_leaf_06_front",
+      "bone": "CrestLeaf06",
+      "parent_bone": "Crest",
+      "suggested_pivot_source_xy": [
+        525,
+        446
+      ],
+      "suggested_center_source_xy": [
+        518,
+        345
+      ],
+      "z": 30,
+      "notes": "Smallest complete front crest leaf; tuck most of its root beneath head/front-shell art and let it lag the larger leaves by one short beat."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_018",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_018.png",
+      "semantic": "large_gem_template",
+      "bone": "GemTemplateLarge",
+      "parent_bone": "owning shell bone",
+      "suggested_pivot_source_xy": [
+        855,
+        218
+      ],
+      "suggested_center_source_xy": [
+        855,
+        218
+      ],
+      "z": 50,
+      "instances": [
+        {
+          "semantic": "gem_mid_shell",
+          "bone": "MidShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            855,
+            218
+          ],
+          "center_source_xy": [
+            855,
+            218
+          ],
+          "scale_xy": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "semantic": "gem_rear_crown",
+          "bone": "RearShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            1034,
+            52
+          ],
+          "center_source_xy": [
+            1034,
+            52
+          ],
+          "scale_xy": [
+            1.1,
+            1.1
+          ]
+        }
+      ],
+      "notes": "Best large teal gem reused twice. Gems already painted into part_010 and part_012 are not duplicated."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_028",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_028.png",
+      "semantic": "small_gem_template",
+      "bone": "GemTemplateSmall",
+      "parent_bone": "Head, Crest, or RearShell",
+      "suggested_pivot_source_xy": [
+        258,
+        213
+      ],
+      "suggested_center_source_xy": [
+        258,
+        213
+      ],
+      "z": 51,
+      "instances": [
+        {
+          "semantic": "gem_head_crown",
+          "bone": "Crest",
+          "parent_bone": "Head",
+          "pivot_source_xy": [
+            258,
+            213
+          ],
+          "center_source_xy": [
+            258,
+            213
+          ],
+          "scale_xy": [
+            0.86,
+            0.86
+          ]
+        },
+        {
+          "semantic": "gem_head_brow",
+          "bone": "Head",
+          "parent_bone": "FrontShell",
+          "pivot_source_xy": [
+            205,
+            350
+          ],
+          "center_source_xy": [
+            205,
+            350
+          ],
+          "scale_xy": [
+            0.7,
+            0.7
+          ]
+        },
+        {
+          "semantic": "gem_crest_front",
+          "bone": "Crest",
+          "parent_bone": "Head",
+          "pivot_source_xy": [
+            339,
+            302
+          ],
+          "center_source_xy": [
+            339,
+            302
+          ],
+          "scale_xy": [
+            0.92,
+            0.92
+          ]
+        },
+        {
+          "semantic": "gem_tail",
+          "bone": "RearShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            1415,
+            374
+          ],
+          "center_source_xy": [
+            1415,
+            374
+          ],
+          "scale_xy": [
+            0.66,
+            0.66
+          ]
+        }
+      ],
+      "notes": "One high-quality small gem is scaled for the remaining crest/head/tail placements. Duplicate gem components part_019-part_021 and part_029-part_038 are intentionally omitted."
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_025",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_025.png",
+      "semantic": "walking_leg_upper_root_template",
+      "bone": "WalkingLegUpperTemplate",
+      "parent_bone": "owning body shell bone",
+      "suggested_pivot_source_xy": [
+        575,
+        592
+      ],
+      "suggested_center_source_xy": [
+        528,
+        625
+      ],
+      "z": 31,
+      "notes": "Best complete green socket/upper-leg component selected once and instanced for all five legs. Near-duplicate root assemblies part_022-part_024 and part_026 are omitted; shell-side overlap is hidden by the socket template.",
+      "instances": [
+        {
+          "semantic": "front_leg_upper_root",
+          "bone": "FrontLeg",
+          "parent_bone": "FrontShell",
+          "pivot_source_xy": [
+            575,
+            592
+          ],
+          "center_source_xy": [
+            528,
+            625
+          ],
+          "rotation_deg": 135,
+          "scale_xy": [
+            0.82,
+            0.82
+          ]
+        },
+        {
+          "semantic": "mid_leg_a_upper_root",
+          "bone": "MidLegA",
+          "parent_bone": "MidShell",
+          "pivot_source_xy": [
+            690,
+            595
+          ],
+          "center_source_xy": [
+            705,
+            633
+          ],
+          "rotation_deg": 72,
+          "scale_xy": [
+            0.72,
+            0.72
+          ]
+        },
+        {
+          "semantic": "mid_leg_b_upper_root",
+          "bone": "MidLegB",
+          "parent_bone": "EggSac",
+          "pivot_source_xy": [
+            945,
+            595
+          ],
+          "center_source_xy": [
+            965,
+            638
+          ],
+          "rotation_deg": 66,
+          "scale_xy": [
+            0.92,
+            0.92
+          ]
+        },
+        {
+          "semantic": "rear_leg_a_upper_root",
+          "bone": "RearLegA",
+          "parent_bone": "RearShell",
+          "pivot_source_xy": [
+            1128,
+            595
+          ],
+          "center_source_xy": [
+            1155,
+            635
+          ],
+          "rotation_deg": 56,
+          "scale_xy": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "semantic": "rear_leg_b_upper_root",
+          "bone": "RearLegB",
+          "parent_bone": "RearShell",
+          "pivot_source_xy": [
+            1320,
+            595
+          ],
+          "center_source_xy": [
+            1342,
+            630
+          ],
+          "rotation_deg": 52,
+          "scale_xy": [
+            0.88,
+            0.88
+          ]
+        }
+      ]
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_041",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_041.png",
+      "semantic": "walking_leg_middle_template",
+      "bone": "WalkingLegMiddleTemplate",
+      "parent_bone": "matching upper-leg bone",
+      "suggested_pivot_source_xy": [
+        480,
+        660
+      ],
+      "suggested_center_source_xy": [
+        453,
+        704
+      ],
+      "z": 33,
+      "notes": "Best clean straight middle segment selected once. Near-duplicates part_039, part_040, part_042 and part_043 are omitted; instance scale/rotation preserves each leg silhouette.",
+      "instances": [
+        {
+          "semantic": "front_leg_middle",
+          "bone": "FrontLegLower",
+          "parent_bone": "FrontLeg",
+          "pivot_source_xy": [
+            480,
+            660
+          ],
+          "center_source_xy": [
+            453,
+            704
+          ],
+          "rotation_deg": 122,
+          "scale_xy": [
+            0.94,
+            0.94
+          ]
+        },
+        {
+          "semantic": "mid_leg_a_middle",
+          "bone": "MidLegALower",
+          "parent_bone": "MidLegA",
+          "pivot_source_xy": [
+            720,
+            671
+          ],
+          "center_source_xy": [
+            734,
+            709
+          ],
+          "rotation_deg": 69,
+          "scale_xy": [
+            0.9,
+            0.9
+          ]
+        },
+        {
+          "semantic": "mid_leg_b_middle",
+          "bone": "MidLegBLower",
+          "parent_bone": "MidLegB",
+          "pivot_source_xy": [
+            984,
+            681
+          ],
+          "center_source_xy": [
+            1002,
+            712
+          ],
+          "rotation_deg": 61,
+          "scale_xy": [
+            0.94,
+            0.94
+          ]
+        },
+        {
+          "semantic": "rear_leg_a_middle",
+          "bone": "RearLegALower",
+          "parent_bone": "RearLegA",
+          "pivot_source_xy": [
+            1182,
+            676
+          ],
+          "center_source_xy": [
+            1218,
+            709
+          ],
+          "rotation_deg": 43,
+          "scale_xy": [
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "semantic": "rear_leg_b_middle",
+          "bone": "RearLegBLower",
+          "parent_bone": "RearLegB",
+          "pivot_source_xy": [
+            1364,
+            666
+          ],
+          "center_source_xy": [
+            1388,
+            693
+          ],
+          "rotation_deg": 48,
+          "scale_xy": [
+            0.88,
+            0.88
+          ]
+        }
+      ]
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_046",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_046.png",
+      "semantic": "walking_leg_distal_foot_template",
+      "bone": "WalkingLegFootTemplate",
+      "parent_bone": "matching middle-leg bone",
+      "suggested_pivot_source_xy": [
+        426,
+        747
+      ],
+      "suggested_center_source_xy": [
+        413,
+        752
+      ],
+      "z": 35,
+      "notes": "Best complete bent distal/foot component selected once. Near-duplicates part_044, part_045, part_047 and part_048 are omitted; pin its upper knuckle to each middle segment.",
+      "instances": [
+        {
+          "semantic": "front_leg_distal_foot",
+          "bone": "FrontFoot",
+          "parent_bone": "FrontLegLower",
+          "pivot_source_xy": [
+            426,
+            747
+          ],
+          "center_source_xy": [
+            413,
+            752
+          ],
+          "rotation_deg": 82,
+          "scale_xy": [
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "semantic": "mid_leg_a_distal_foot",
+          "bone": "MidFootA",
+          "parent_bone": "MidLegALower",
+          "pivot_source_xy": [
+            748,
+            747
+          ],
+          "center_source_xy": [
+            756,
+            752
+          ],
+          "rotation_deg": 71,
+          "scale_xy": [
+            0.92,
+            0.92
+          ]
+        },
+        {
+          "semantic": "mid_leg_b_distal_foot",
+          "bone": "MidFootB",
+          "parent_bone": "MidLegBLower",
+          "pivot_source_xy": [
+            1020,
+            744
+          ],
+          "center_source_xy": [
+            1037,
+            749
+          ],
+          "rotation_deg": 67,
+          "scale_xy": [
+            0.95,
+            0.95
+          ]
+        },
+        {
+          "semantic": "rear_leg_a_distal_foot",
+          "bone": "RearFootA",
+          "parent_bone": "RearLegALower",
+          "pivot_source_xy": [
+            1254,
+            742
+          ],
+          "center_source_xy": [
+            1266,
+            747
+          ],
+          "rotation_deg": 62,
+          "scale_xy": [
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "semantic": "rear_leg_b_distal_foot",
+          "bone": "RearFootB",
+          "parent_bone": "RearLegBLower",
+          "pivot_source_xy": [
+            1411,
+            720
+          ],
+          "center_source_xy": [
+            1416,
+            728
+          ],
+          "rotation_deg": 59,
+          "scale_xy": [
+            0.84,
+            0.84
+          ]
+        }
+      ]
+    },
+    {
+      "monster": "bowlbug_progenitor",
+      "component": "part_050",
+      "component_path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_050.png",
+      "semantic": "walking_leg_socket_overlay_template",
+      "bone": "WalkingLegSocketTemplate",
+      "parent_bone": "owning body shell bone",
+      "suggested_pivot_source_xy": [
+        575,
+        592
+      ],
+      "suggested_center_source_xy": [
+        575,
+        592
+      ],
+      "z": 38,
+      "notes": "Best complete root ring selected once and kept shell-attached for all five instances. Duplicate rings part_049 and part_051-part_053 are omitted.",
+      "instances": [
+        {
+          "semantic": "socket_front_leg",
+          "bone": "FrontShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            575,
+            592
+          ],
+          "center_source_xy": [
+            575,
+            592
+          ],
+          "scale_xy": [
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "semantic": "socket_mid_leg_a",
+          "bone": "MidShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            690,
+            595
+          ],
+          "center_source_xy": [
+            690,
+            595
+          ],
+          "scale_xy": [
+            0.88,
+            0.88
+          ]
+        },
+        {
+          "semantic": "socket_mid_leg_b",
+          "bone": "EggSac",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            945,
+            595
+          ],
+          "center_source_xy": [
+            945,
+            595
+          ],
+          "scale_xy": [
+            0.92,
+            0.92
+          ]
+        },
+        {
+          "semantic": "socket_rear_leg_a",
+          "bone": "RearShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            1128,
+            595
+          ],
+          "center_source_xy": [
+            1128,
+            595
+          ],
+          "scale_xy": [
+            0.94,
+            0.94
+          ]
+        },
+        {
+          "semantic": "socket_rear_leg_b",
+          "bone": "RearShell",
+          "parent_bone": "Root",
+          "pivot_source_xy": [
+            1320,
+            595
+          ],
+          "center_source_xy": [
+            1320,
+            595
+          ],
+          "scale_xy": [
+            0.84,
+            0.84
+          ]
+        }
+      ]
+    }
+  ]
+}

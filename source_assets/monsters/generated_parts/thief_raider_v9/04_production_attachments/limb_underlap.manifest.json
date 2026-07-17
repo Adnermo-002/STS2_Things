@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "identity_source": "00_reference/current_master.png",
+  "donor_manifest": "02_extracted_donors/sheet_b2.manifest.json",
+  "policy": "B2 contributes hidden local joint texture only; visible pixels remain current-master-owned",
+  "part_count": 10,
+  "total_hidden_pixels": 7549,
+  "hidden_to_master_area_ratio": 0.080974,
+  "hidden_area_gate": {
+    "minimum": 0.04,
+    "maximum": 0.18
+  },
+  "status": "limb_underlap_area_pass_extreme_pose_pending",
+  "parts": [
+    {
+      "index": 0,
+      "semantic": "near_upper_arm",
+      "bone": "NearUpperArm",
+      "pivot_source_xy": [
+        169,
+        232
+      ],
+      "donor": "02_extracted_donors/sheet_b2/00_near_upper_arm.png",
+      "donor_status": "donor_only_closed_joint_review",
+      "alignment": {
+        "angle_deg": -1.8793,
+        "scale": 0.464771,
+        "coverage": 0.899015,
+        "iou": 0.4871,
+        "outside_ratio": 0.29898,
+        "score": 3.27924
+      },
+      "underlap_file": "underlap_limbs/00_near_upper_arm_underlap.png",
+      "underlap_bbox": [
+        125,
+        216,
+        59,
+        80
+      ],
+      "hidden_pixel_count": 1041,
+      "combined_preview_file": "combined_limb_preview/00_near_upper_arm.png",
+      "combined_bbox": [
+        125,
+        216,
+        89,
+        80
+      ],
+      "combined_pixel_count": 3501,
+      "underlap_sha256": "5b5b34a85802d31605b4eaefbb604abe9d8d5da00c961fab0587144abc1c5e82",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    },
+    {
+      "index": 1,
+      "semantic": "near_forearm",
+      "bone": "NearForearm",
+      "pivot_source_xy": [
+        138,
+        282
+      ],
+      "donor": "02_extracted_donors/sheet_b2/01_near_forearm.png",
+      "donor_status": "donor_only_closed_joint_review",
+      "alignment": {
+        "angle_deg": 193.7185,
+        "scale": 0.294182,
+        "coverage": 0.496324,
+        "iou": 0.410542,
+        "outside_ratio": 0.027368,
+        "score": 2.298211
+      },
+      "underlap_file": "underlap_limbs/01_near_forearm_underlap.png",
+      "underlap_bbox": [
+        105,
+        315,
+        27,
+        28
+      ],
+      "hidden_pixel_count": 497,
+      "combined_preview_file": "combined_limb_preview/01_near_forearm.png",
+      "combined_bbox": [
+        105,
+        262,
+        71,
+        81
+      ],
+      "combined_pixel_count": 3086,
+      "underlap_sha256": "a00fab412fd32d400e4923065c1da82e460fc7551543f09f25c981a7900f7271",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    },
+    {
+      "index": 2,
+      "semantic": "near_thigh",
+      "bone": "NearThigh",
+      "pivot_source_xy": [
+        221,
+        279
+      ],
+      "donor": "02_extracted_donors/sheet_b2/07_near_thigh.png",
+      "donor_status": "donor_only_joint_review",
+      "alignment": {
+        "angle_deg": 11.0928,
+        "scale": 0.372835,
+        "coverage": 0.947795,
+        "iou": 0.778303,
+        "outside_ratio": 0.035101,
+        "score": 4.414534
+      },
+      "underlap_file": "underlap_limbs/02_near_thigh_underlap.png",
+      "underlap_bbox": [
+        200,
+        273,
+        31,
+        87
+      ],
+      "hidden_pixel_count": 381,
+      "combined_preview_file": "combined_limb_preview/02_near_thigh.png",
+      "combined_bbox": [
+        175,
+        254,
+        71,
+        106
+      ],
+      "combined_pixel_count": 4573,
+      "underlap_sha256": "058999c5618799795dbafa03af86788998123b2bc675d7903e9344f7d0776674",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    },
+    {
+      "index": 3,
+      "semantic": "near_shin",
+      "bone": "NearShin",
+      "pivot_source_xy": [
+        215,
+        344
+      ],
+      "donor": "02_extracted_donors/sheet_b2/06_near_shin.png",
+      "donor_status": "donor_only_joint_review",
+      "alignment": {
+        "angle_deg": 13.1129,
+        "scale": 0.396486,
+        "coverage": 0.79489,
+        "iou": 0.578662,
+        "outside_ratio": 0.111752,
+        "score": 3.426603
+      },
+      "underlap_file": "underlap_limbs/03_near_shin_underlap.png",
+      "underlap_bbox": [
+        200,
+        329,
+        39,
+        62
+      ],
+      "hidden_pixel_count": 619,
+      "combined_preview_file": "combined_limb_preview/03_near_shin.png",
+      "combined_bbox": [
+        198,
+        320,
+        66,
+        71
+      ],
+      "combined_pixel_count": 2624,
+      "underlap_sha256": "0c157542ed3375dcc88694a8759ee5c87a15a81b266396364d854bca797faaab",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    },
+    {
+      "index": 4,
+      "semantic": "near_boot",
+      "bone": "NearFoot",
+      "pivot_source_xy": [
+        225,
+        390
+      ],
+      "donor": "02_extracted_donors/sheet_b2/10_near_boot.png",
+      "donor_status": "donor_only_closed_boot_review",
+      "alignment": {
+        "angle_deg": 87.7409,
+        "scale": 0.418164,
+        "coverage": 0.919235,
+        "iou": 0.552792,
+        "outside_ratio": 0.204439,
+        "score": 3.637634
+      },
+      "underlap_file": "underlap_limbs/04_near_boot_underlap.png",
+      "underlap_bbox": [
+        217,
+        363,
+        23,
+        14
+      ],
+      "hidden_pixel_count": 243,
+      "combined_preview_file": "combined_limb_preview/04_near_boot.png",
+      "combined_bbox": [
+        188,
+        363,
+        81,
+        49
+      ],
+      "combined_pixel_count": 2361,
+      "underlap_sha256": "940b5c76caaac8bd182ce0175f87c744201c2e386a77bd688be2fa6d4b33ead1",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    },
+    {
+      "index": 5,
+      "semantic": "far_upper_arm",
+      "bone": "FarUpperArm",
+      "pivot_source_xy": [
+        334,
+        170
+      ],
+      "donor": "02_extracted_donors/sheet_b2/03_far_upper_arm.png",
+      "donor_status": "donor_only_closed_joint_review",
+      "alignment": {
+        "angle_deg": 177.7531,
+        "scale": 0.249927,
+        "coverage": 0.949749,
+        "iou": 0.77956,
+        "outside_ratio": 0.0,
+        "score": 4.493461
+      },
+      "underlap_file": "underlap_limbs/05_far_upper_arm_underlap.png",
+      "underlap_bbox": [
+        317,
+        153,
+        48,
+        66
+      ],
+      "hidden_pixel_count": 1791,
+      "combined_preview_file": "combined_limb_preview/05_far_upper_arm.png",
+      "combined_bbox": [
+        317,
+        153,
+        48,
+        66
+      ],
+      "combined_pixel_count": 1791,
+      "underlap_sha256": "67dfbb86d84b5c7ff43516cf01fa45da70699feb4a885d181084e78a3b5b7059",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    },
+    {
+      "index": 6,
+      "semantic": "far_forearm",
+      "bone": "FarForearm",
+      "pivot_source_xy": [
+        350,
+        204
+      ],
+      "donor": "02_extracted_donors/sheet_b2/04_far_forearm.png",
+      "donor_status": "donor_only_closed_joint_review",
+      "alignment": {
+        "angle_deg": -83.5299,
+        "scale": 0.385541,
+        "coverage": 0.734487,
+        "iou": 0.580387,
+        "outside_ratio": 0.054883,
+        "score": 3.33152
+      },
+      "underlap_file": "underlap_limbs/06_far_forearm_underlap.png",
+      "underlap_bbox": [
+        279,
+        176,
+        48,
+        25
+      ],
+      "hidden_pixel_count": 728,
+      "combined_preview_file": "combined_limb_preview/06_far_forearm.png",
+      "combined_bbox": [
+        279,
+        168,
+        106,
+        60
+      ],
+      "combined_pixel_count": 4014,
+      "underlap_sha256": "4956d7f861c0c3e5d5e93d17fed26007640b6faad049a0ad1f932cb1c6dd551b",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    },
+    {
+      "index": 7,
+      "semantic": "far_thigh",
+      "bone": "FarThigh",
+      "pivot_source_xy": [
+        354,
+        282
+      ],
+      "donor": "02_extracted_donors/sheet_b2/08_far_thigh.png",
+      "donor_status": "donor_only_joint_review",
+      "alignment": {
+        "angle_deg": -86.7183,
+        "scale": 0.398496,
+        "coverage": 0.929056,
+        "iou": 0.512297,
+        "outside_ratio": 0.220775,
+        "score": 3.57859
+      },
+      "underlap_file": "underlap_limbs/07_far_thigh_underlap.png",
+      "underlap_bbox": [
+        336,
+        264,
+        62,
+        97
+      ],
+      "hidden_pixel_count": 1689,
+      "combined_preview_file": "combined_limb_preview/07_far_thigh.png",
+      "combined_bbox": [
+        327,
+        264,
+        71,
+        97
+      ],
+      "combined_pixel_count": 3798,
+      "underlap_sha256": "86f0c3025309a63139d7e3ed03a1fb5ce3e8e6c32e0efa856960ad41daba661c",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    },
+    {
+      "index": 8,
+      "semantic": "far_shin",
+      "bone": "FarShin",
+      "pivot_source_xy": [
+        382,
+        345
+      ],
+      "donor": "02_extracted_donors/sheet_b2/09_far_shin.png",
+      "donor_status": "donor_only_joint_review",
+      "alignment": {
+        "angle_deg": -192.8443,
+        "scale": 0.400658,
+        "coverage": 0.653423,
+        "iou": 0.530421,
+        "outside_ratio": 0.036601,
+        "score": 3.009412
+      },
+      "underlap_file": "underlap_limbs/08_far_shin_underlap.png",
+      "underlap_bbox": [
+        367,
+        330,
+        48,
+        60
+      ],
+      "hidden_pixel_count": 341,
+      "combined_preview_file": "combined_limb_preview/08_far_shin.png",
+      "combined_bbox": [
+        359,
+        312,
+        85,
+        78
+      ],
+      "combined_pixel_count": 3120,
+      "underlap_sha256": "c16a84948992dac3e79c1b10cdc1547168bfc811fa7b36dd67cb61113604edba",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    },
+    {
+      "index": 9,
+      "semantic": "far_boot",
+      "bone": "FarFoot",
+      "pivot_source_xy": [
+        401,
+        385
+      ],
+      "donor": "02_extracted_donors/sheet_b2/12_far_boot.png",
+      "donor_status": "donor_only_closed_boot_review",
+      "alignment": {
+        "angle_deg": -97.0592,
+        "scale": 0.305106,
+        "coverage": 0.907233,
+        "iou": 0.72125,
+        "outside_ratio": 0.004948,
+        "score": 4.247293
+      },
+      "underlap_file": "underlap_limbs/09_far_boot_underlap.png",
+      "underlap_bbox": [
+        391,
+        362,
+        25,
+        14
+      ],
+      "hidden_pixel_count": 219,
+      "combined_preview_file": "combined_limb_preview/09_far_boot.png",
+      "combined_bbox": [
+        387,
+        362,
+        56,
+        47
+      ],
+      "combined_pixel_count": 1621,
+      "underlap_sha256": "345f9b1adc8aaa1cd5c3df813398bd651c207f1e2b09e2703afee53abe14f7b7",
+      "status": "local_generated_texture_underlap_extreme_pose_pending"
+    }
+  ]
+}

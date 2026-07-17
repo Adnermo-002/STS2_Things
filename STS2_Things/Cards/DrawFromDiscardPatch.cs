@@ -4,10 +4,13 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Audio.Debug;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Random;
@@ -34,7 +37,7 @@ public static class DrawFromDiscardPatch
                 typeof(Player),
                 typeof(bool)
             },
-            null);
+            null) ?? throw new MissingMethodException(typeof(CardPileCmd).FullName, "Draw");
     }
 
     /// <summary>
@@ -44,8 +47,7 @@ public static class DrawFromDiscardPatch
     private static bool Prefix(PlayerChoiceContext choiceContext, decimal count, Player player,
         bool fromHandDraw, ref Task<IEnumerable<CardModel>> __result)
     {
-        var power = player.Creature.Powers.FirstOrDefault(p => p is RecallPower);
-        if (power == null)
+        if (player.Creature.GetPower<RecallPower>() == null)
             return true; // 正常抽牌
 
         var discardPile = PileType.Discard.GetPile(player);
@@ -59,41 +61,53 @@ public static class DrawFromDiscardPatch
     private static async Task<IEnumerable<CardModel>> DrawFromDiscardThenFallback(
         PlayerChoiceContext choiceContext, decimal count, Player player, bool fromHandDraw)
     {
-        var combatState = player.Creature.CombatState;
-        if (combatState == null || !combatState.IsLiveCombat())
+        if (CombatManager.Instance.IsOverOrEnding)
             return Array.Empty<CardModel>();
+
+        var combatState = player.Creature.CombatState;
+        if (combatState == null)
+            return Array.Empty<CardModel>();
+        if (!Hook.ShouldDraw(combatState, player, fromHandDraw, out var modifier))
+        {
+            if (modifier != null)
+                await Hook.AfterPreventingDraw(combatState, modifier);
+            return Array.Empty<CardModel>();
+        }
 
         CardPile hand = PileType.Hand.GetPile(player);
         CardPile discardPile = PileType.Discard.GetPile(player);
-        int drawsRequested = count > 0m ? (int)count : 0;
+        CardPile drawPile = PileType.Draw.GetPile(player);
+        int drawsRequested = count > 0m ? (int)Math.Ceiling(count) : 0;
         var result = new List<CardModel>();
 
         for (int i = 0; i < drawsRequested; i++)
         {
-            if (hand.Cards.Count >= CardPile.MaxCardsInHand)
+            if (CombatManager.Instance.IsOverOrEnding ||
+                hand.Cards.Count >= CardPile.MaxCardsInHand)
                 break;
 
+            CardModel? card;
             if (discardPile.Cards.Count > 0)
             {
                 // 优先从弃牌堆随机抽一张
-                var card = discardPile.Cards.ElementAtOrDefault(
-                    player.RunState.Rng.CombatCardGeneration.NextInt(discardPile.Cards.Count));
-                if (card == null) continue;
-
-                result.Add(card);
-                await CardPileCmd.Add(card, hand);
+                card = player.RunState.Rng.CombatCardSelection.NextItem(discardPile.Cards);
             }
             else
             {
-                // 弃牌堆已空，回退到正常抽牌堆抽剩余的牌
-                int remaining = drawsRequested - i;
-                if (remaining > 0)
-                {
-                    var fallback = await CardPileCmd.Draw(choiceContext, remaining, player, fromHandDraw);
-                    result.AddRange(fallback);
-                }
-                break;
+                // 本次调用已经通过 ShouldDraw；直接继续从抽牌堆顶部抽取，
+                // 避免递归调用原方法导致 ShouldDraw/AfterPreventingDraw 重复触发。
+                card = drawPile.Cards.FirstOrDefault();
             }
+
+            if (card == null)
+                break;
+
+            result.Add(card);
+            await CardPileCmd.Add(card, hand);
+            CombatManager.Instance.History.CardDrawn(combatState, card, fromHandDraw);
+            await Hook.AfterCardDrawn(combatState, choiceContext, card, fromHandDraw);
+            card.InvokeDrawn();
+            NDebugAudioManager.Instance?.Play("card_deal.mp3", 0.25f, PitchVariance.Small);
         }
 
         return result;

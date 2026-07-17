@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bvxn4cf5fj6hu"]
+
+[ext_resource type="Texture2D" uid="uid://b27o35g34l2v3" path="res://images/packed/card_portraits/event/surrender.png" id="1_1ebca"]
+
+[resource]
+atlas = ExtResource("1_1ebca")
+region = Rect2(0, 0, 606, 852)

@@ -12,23 +12,19 @@ namespace STS2_Things.Encounters;
 /// </summary>
 public sealed class RaidParty : EncounterModel
 {
-    private static readonly MonsterModel[] _raiderPool =
-    {
+    // ModelDb 尚未初始化时不能在静态字段初始化器中查询模型。
+    private static IReadOnlyList<MonsterModel> RaiderPool =>
+    [
         ModelDb.Monster<AxeRubyRaider>(),
         ModelDb.Monster<AssassinRubyRaider>(),
         ModelDb.Monster<BruteRubyRaider>(),
         ModelDb.Monster<CrossbowRubyRaider>(),
         ModelDb.Monster<TrackerRubyRaider>()
-    };
+    ];
 
     public override RoomType RoomType => RoomType.Elite;
 
     public override bool HasScene => true;
-
-    public override IEnumerable<string> ExtraAssetPaths => new[]
-    {
-        "res://images/monsters/thief_raider.png"
-    };
 
     public override IReadOnlyList<string> Slots => new[]
     {
@@ -36,18 +32,19 @@ public sealed class RaidParty : EncounterModel
     };
 
     public override IEnumerable<MonsterModel> AllPossibleMonsters =>
-        _raiderPool.Append(ModelDb.Monster<ThiefRaider>());
+        RaiderPool.Append(ModelDb.Monster<ThiefRaider>());
 
     protected override IReadOnlyList<(MonsterModel, string?)> GenerateMonsters()
     {
         var list = new List<(MonsterModel, string?)>();
+        var raiderPool = RaiderPool;
 
         // 先加劫掠者（让 ThiefRaider 能给他们上虚弱）
         var picked = new HashSet<MonsterModel>();
         for (var i = 0; i < 3; i++)
         {
-            var candidates = _raiderPool.Where(r => !picked.Contains(r)).ToList();
-            var raider = Rng.NextItem(candidates);
+            var candidates = raiderPool.Where(r => !picked.Contains(r)).ToList();
+            var raider = candidates[Rng.NextInt(candidates.Count)];
             picked.Add(raider);
             list.Add((raider.ToMutable(), $"raider_{i + 1}"));
         }

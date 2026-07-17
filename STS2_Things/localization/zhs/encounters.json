@@ -1,0 +1,19 @@
+{
+  "ORIGIN_FOGMOG_BOSS_ENCOUNTER.title": "始源雾菇",
+  "ORIGIN_FOGMOG_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]的幻象淹没……",
+
+  "SOUL_ROES_ENCOUNTER.title": "灵魂鱼子团",
+  "SOUL_ROES_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]吞噬殆尽。",
+
+  "THE_LEGACY_BOSS_ENCOUNTER.title": "腐化之遗",
+  "THE_LEGACY_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]的死亡律动彻底吞噬……",
+
+  "SCALE_BEETLE_BOSS_ENCOUNTER.title": "放缩巨甲虫",
+  "SCALE_BEETLE_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]碾成了碎片……",
+
+  "RAID_PARTY.title": "劫掠队",
+  "RAID_PARTY.loss": "{character}被[gold]{encounter}[/gold]洗劫了……",
+
+  "BOWLBUG_PROGENITOR_BOSS_ENCOUNTER.title": "盛碗虫族母",
+  "BOWLBUG_PROGENITOR_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]的虫群淹没……"
+}

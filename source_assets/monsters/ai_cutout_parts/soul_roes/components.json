@@ -1,0 +1,420 @@
+[
+  {
+    "name": "part_000",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_000.png",
+    "source_bbox": [
+      132,
+      47,
+      367,
+      289
+    ],
+    "source_center": [
+      248.996,
+      167.432
+    ],
+    "size": [
+      235,
+      242
+    ],
+    "opaque_area": 41745
+  },
+  {
+    "name": "part_001",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_001.png",
+    "source_bbox": [
+      476,
+      54,
+      714,
+      291
+    ],
+    "source_center": [
+      594.398,
+      171.927
+    ],
+    "size": [
+      238,
+      237
+    ],
+    "opaque_area": 41434
+  },
+  {
+    "name": "part_002",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_002.png",
+    "source_bbox": [
+      818,
+      47,
+      1064,
+      291
+    ],
+    "source_center": [
+      940.961,
+      168.849
+    ],
+    "size": [
+      246,
+      244
+    ],
+    "opaque_area": 44003
+  },
+  {
+    "name": "part_003",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_003.png",
+    "source_bbox": [
+      1169,
+      79,
+      1378,
+      290
+    ],
+    "source_center": [
+      1273.208,
+      184.176
+    ],
+    "size": [
+      209,
+      211
+    ],
+    "opaque_area": 31883
+  },
+  {
+    "name": "part_004",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_004.png",
+    "source_bbox": [
+      129,
+      326,
+      365,
+      565
+    ],
+    "source_center": [
+      246.9,
+      445.189
+    ],
+    "size": [
+      236,
+      239
+    ],
+    "opaque_area": 41478
+  },
+  {
+    "name": "part_005",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_005.png",
+    "source_bbox": [
+      451,
+      309,
+      722,
+      578
+    ],
+    "source_center": [
+      586.241,
+      443.084
+    ],
+    "size": [
+      271,
+      269
+    ],
+    "opaque_area": 53767
+  },
+  {
+    "name": "part_006",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_006.png",
+    "source_bbox": [
+      793,
+      312,
+      1070,
+      582
+    ],
+    "source_center": [
+      930.885,
+      447.072
+    ],
+    "size": [
+      277,
+      270
+    ],
+    "opaque_area": 55573
+  },
+  {
+    "name": "part_007",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_007.png",
+    "source_bbox": [
+      1155,
+      347,
+      1377,
+      577
+    ],
+    "source_center": [
+      1265.863,
+      461.834
+    ],
+    "size": [
+      222,
+      230
+    ],
+    "opaque_area": 37377
+  },
+  {
+    "name": "part_008",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_008.png",
+    "source_bbox": [
+      144,
+      621,
+      340,
+      821
+    ],
+    "source_center": [
+      241.576,
+      720.5
+    ],
+    "size": [
+      196,
+      200
+    ],
+    "opaque_area": 28392
+  },
+  {
+    "name": "part_009",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_009.png",
+    "source_bbox": [
+      460,
+      598,
+      686,
+      826
+    ],
+    "source_center": [
+      572.843,
+      711.177
+    ],
+    "size": [
+      226,
+      228
+    ],
+    "opaque_area": 37860
+  },
+  {
+    "name": "part_010",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_010.png",
+    "source_bbox": [
+      832,
+      601,
+      1054,
+      826
+    ],
+    "source_center": [
+      942.807,
+      713.617
+    ],
+    "size": [
+      222,
+      225
+    ],
+    "opaque_area": 36518
+  },
+  {
+    "name": "part_011",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_011.png",
+    "source_bbox": [
+      1186,
+      638,
+      1381,
+      829
+    ],
+    "source_center": [
+      1283.373,
+      733.442
+    ],
+    "size": [
+      195,
+      191
+    ],
+    "opaque_area": 27036
+  },
+  {
+    "name": "part_012",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_012.png",
+    "source_bbox": [
+      108,
+      893,
+      225,
+      970
+    ],
+    "source_center": [
+      166.107,
+      930.73
+    ],
+    "size": [
+      117,
+      77
+    ],
+    "opaque_area": 5890
+  },
+  {
+    "name": "part_013",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_013.png",
+    "source_bbox": [
+      238,
+      891,
+      358,
+      970
+    ],
+    "source_center": [
+      297.493,
+      930.045
+    ],
+    "size": [
+      120,
+      79
+    ],
+    "opaque_area": 6155
+  },
+  {
+    "name": "part_014",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_014.png",
+    "source_bbox": [
+      373,
+      888,
+      496,
+      971
+    ],
+    "source_center": [
+      434.183,
+      928.866
+    ],
+    "size": [
+      123,
+      83
+    ],
+    "opaque_area": 6743
+  },
+  {
+    "name": "part_015",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_015.png",
+    "source_bbox": [
+      506,
+      887,
+      633,
+      974
+    ],
+    "source_center": [
+      569.58,
+      930.166
+    ],
+    "size": [
+      127,
+      87
+    ],
+    "opaque_area": 7250
+  },
+  {
+    "name": "part_016",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_016.png",
+    "source_bbox": [
+      642,
+      892,
+      758,
+      971
+    ],
+    "source_center": [
+      699.651,
+      931.143
+    ],
+    "size": [
+      116,
+      79
+    ],
+    "opaque_area": 6011
+  },
+  {
+    "name": "part_017",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_017.png",
+    "source_bbox": [
+      770,
+      892,
+      886,
+      972
+    ],
+    "source_center": [
+      827.81,
+      931.476
+    ],
+    "size": [
+      116,
+      80
+    ],
+    "opaque_area": 6039
+  },
+  {
+    "name": "part_018",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_018.png",
+    "source_bbox": [
+      899,
+      892,
+      1018,
+      973
+    ],
+    "source_center": [
+      957.904,
+      931.676
+    ],
+    "size": [
+      119,
+      81
+    ],
+    "opaque_area": 6375
+  },
+  {
+    "name": "part_019",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_019.png",
+    "source_bbox": [
+      1030,
+      892,
+      1150,
+      973
+    ],
+    "source_center": [
+      1089.541,
+      931.721
+    ],
+    "size": [
+      120,
+      81
+    ],
+    "opaque_area": 6423
+  },
+  {
+    "name": "part_020",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_020.png",
+    "source_bbox": [
+      1168,
+      893,
+      1281,
+      971
+    ],
+    "source_center": [
+      1224.276,
+      931.261
+    ],
+    "size": [
+      113,
+      78
+    ],
+    "opaque_area": 5807
+  },
+  {
+    "name": "part_021",
+    "path": "source_assets/monsters/ai_cutout_parts/soul_roes/part_021.png",
+    "source_bbox": [
+      1301,
+      896,
+      1406,
+      968
+    ],
+    "source_center": [
+      1353.03,
+      931.617
+    ],
+    "size": [
+      105,
+      72
+    ],
+    "opaque_area": 4843
+  }
+]

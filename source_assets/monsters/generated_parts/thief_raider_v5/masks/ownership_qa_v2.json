@@ -1,0 +1,711 @@
+{
+  "schema": "sts2-visible-pixel-ownership-manual-qa/v2",
+  "status": "pass",
+  "master": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v5\\approved_master.png",
+  "skeleton_spec": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v5\\skeleton_spec.json",
+  "master_size": [
+    768,
+    896
+  ],
+  "master_visible_pixels": 195732,
+  "ownership_visible_pixels": 195732,
+  "invariants": {
+    "every_master_alpha_pixel_has_exactly_one_index": true,
+    "transparent_pixels_are_background": true,
+    "all_34_source_parts_have_visible_pixels": true,
+    "source_part_names_equal_skeleton_spec": true,
+    "z_is_exactly_0_through_33": true,
+    "visible_rgba_repainted": false
+  },
+  "issues": {
+    "missing_visible_pixels": 0,
+    "transparent_labeled_pixels": 0,
+    "invalid_label_pixels": 0,
+    "empty_parts": []
+  },
+  "construction": {
+    "cloak_cleanup": {
+      "v1_rear_cloak_pixels": 38482,
+      "plum_cloak_pixels": 36121,
+      "repaired_gray_body_pixels": 2361
+    },
+    "cover_pixels": {
+      "far_knee_cover": 4462,
+      "near_knee_cover": 4187,
+      "far_elbow_cover": 2502,
+      "near_elbow_cover": 3376
+    },
+    "grip_pixels_recovered_from_v1_hand": 41,
+    "scarf_back_pixels_after_refine": 2895,
+    "waist_cloth_pixels": 17062,
+    "semantic_color_cleanup": {
+      "plum_pixels_recovered_to_scarf_back": 2474,
+      "plum_pixels_recovered_to_scarf_front": 4699,
+      "plum_pixels_recovered_to_cloak": 37768,
+      "brown_pixels_removed_from_cloak": 79,
+      "belt_tail_pixels_recovered": 452,
+      "tan_pixels_recovered_to_front_strap": 0,
+      "fist_pixels_rebuilt": 3713,
+      "pinch_pixels": 766
+    }
+  },
+  "parts": [
+    {
+      "z": 0,
+      "id": 1,
+      "name": "cloak_tail_far",
+      "visible_pixels": 28630,
+      "bbox_xyxy": [
+        497,
+        366,
+        694,
+        655
+      ]
+    },
+    {
+      "z": 1,
+      "id": 2,
+      "name": "cloak_tail_near",
+      "visible_pixels": 7237,
+      "bbox_xyxy": [
+        247,
+        473,
+        477,
+        632
+      ]
+    },
+    {
+      "z": 2,
+      "id": 3,
+      "name": "upper_back_cloak",
+      "visible_pixels": 3147,
+      "bbox_xyxy": [
+        495,
+        319,
+        629,
+        408
+      ]
+    },
+    {
+      "z": 3,
+      "id": 4,
+      "name": "loot_sack",
+      "visible_pixels": 16266,
+      "bbox_xyxy": [
+        480,
+        191,
+        629,
+        383
+      ]
+    },
+    {
+      "z": 4,
+      "id": 5,
+      "name": "bag_knot",
+      "visible_pixels": 4070,
+      "bbox_xyxy": [
+        430,
+        118,
+        531,
+        195
+      ]
+    },
+    {
+      "z": 5,
+      "id": 6,
+      "name": "sack_strap_back",
+      "visible_pixels": 707,
+      "bbox_xyxy": [
+        405,
+        159,
+        469,
+        195
+      ]
+    },
+    {
+      "z": 6,
+      "id": 7,
+      "name": "far_thigh",
+      "visible_pixels": 4816,
+      "bbox_xyxy": [
+        424,
+        416,
+        534,
+        576
+      ]
+    },
+    {
+      "z": 7,
+      "id": 8,
+      "name": "far_shin",
+      "visible_pixels": 4767,
+      "bbox_xyxy": [
+        448,
+        543,
+        579,
+        690
+      ]
+    },
+    {
+      "z": 8,
+      "id": 9,
+      "name": "far_foot",
+      "visible_pixels": 4229,
+      "bbox_xyxy": [
+        501,
+        680,
+        582,
+        760
+      ]
+    },
+    {
+      "z": 9,
+      "id": 10,
+      "name": "far_knee_cover",
+      "visible_pixels": 4461,
+      "bbox_xyxy": [
+        463,
+        550,
+        548,
+        626
+      ]
+    },
+    {
+      "z": 10,
+      "id": 11,
+      "name": "scarf_back",
+      "visible_pixels": 2895,
+      "bbox_xyxy": [
+        345,
+        157,
+        415,
+        253
+      ]
+    },
+    {
+      "z": 11,
+      "id": 12,
+      "name": "far_upper_arm",
+      "visible_pixels": 2154,
+      "bbox_xyxy": [
+        409,
+        221,
+        513,
+        298
+      ]
+    },
+    {
+      "z": 12,
+      "id": 13,
+      "name": "far_shoulder_plate",
+      "visible_pixels": 4805,
+      "bbox_xyxy": [
+        405,
+        174,
+        492,
+        251
+      ]
+    },
+    {
+      "z": 13,
+      "id": 14,
+      "name": "torso_core",
+      "visible_pixels": 3654,
+      "bbox_xyxy": [
+        304,
+        298,
+        467,
+        376
+      ]
+    },
+    {
+      "z": 14,
+      "id": 15,
+      "name": "near_thigh",
+      "visible_pixels": 3932,
+      "bbox_xyxy": [
+        250,
+        460,
+        367,
+        570
+      ]
+    },
+    {
+      "z": 15,
+      "id": 16,
+      "name": "near_shin",
+      "visible_pixels": 4157,
+      "bbox_xyxy": [
+        262,
+        548,
+        348,
+        692
+      ]
+    },
+    {
+      "z": 16,
+      "id": 17,
+      "name": "near_foot",
+      "visible_pixels": 4681,
+      "bbox_xyxy": [
+        233,
+        678,
+        350,
+        746
+      ]
+    },
+    {
+      "z": 17,
+      "id": 18,
+      "name": "near_knee_cover",
+      "visible_pixels": 4187,
+      "bbox_xyxy": [
+        258,
+        549,
+        340,
+        617
+      ]
+    },
+    {
+      "z": 18,
+      "id": 19,
+      "name": "pelvis_skirt",
+      "visible_pixels": 4630,
+      "bbox_xyxy": [
+        275,
+        376,
+        493,
+        443
+      ]
+    },
+    {
+      "z": 19,
+      "id": 20,
+      "name": "waist_cloth_front",
+      "visible_pixels": 16644,
+      "bbox_xyxy": [
+        259,
+        430,
+        531,
+        548
+      ]
+    },
+    {
+      "z": 20,
+      "id": 21,
+      "name": "sack_strap_front",
+      "visible_pixels": 1505,
+      "bbox_xyxy": [
+        383,
+        195,
+        428,
+        342
+      ]
+    },
+    {
+      "z": 21,
+      "id": 22,
+      "name": "far_forearm",
+      "visible_pixels": 2571,
+      "bbox_xyxy": [
+        442,
+        274,
+        536,
+        344
+      ]
+    },
+    {
+      "z": 22,
+      "id": 23,
+      "name": "far_elbow_cover",
+      "visible_pixels": 2492,
+      "bbox_xyxy": [
+        451,
+        271,
+        527,
+        317
+      ]
+    },
+    {
+      "z": 23,
+      "id": 24,
+      "name": "strap_grip",
+      "visible_pixels": 766,
+      "bbox_xyxy": [
+        384,
+        240,
+        426,
+        315
+      ]
+    },
+    {
+      "z": 24,
+      "id": 25,
+      "name": "far_strap_hand",
+      "visible_pixels": 3713,
+      "bbox_xyxy": [
+        377,
+        238,
+        452,
+        311
+      ]
+    },
+    {
+      "z": 25,
+      "id": 26,
+      "name": "belt_and_pouch",
+      "visible_pixels": 12270,
+      "bbox_xyxy": [
+        315,
+        335,
+        504,
+        444
+      ]
+    },
+    {
+      "z": 26,
+      "id": 27,
+      "name": "hooded_head",
+      "visible_pixels": 18490,
+      "bbox_xyxy": [
+        226,
+        96,
+        383,
+        268
+      ]
+    },
+    {
+      "z": 27,
+      "id": 28,
+      "name": "scarf_front",
+      "visible_pixels": 6483,
+      "bbox_xyxy": [
+        246,
+        246,
+        386,
+        318
+      ]
+    },
+    {
+      "z": 28,
+      "id": 29,
+      "name": "near_upper_arm",
+      "visible_pixels": 4144,
+      "bbox_xyxy": [
+        224,
+        302,
+        307,
+        397
+      ]
+    },
+    {
+      "z": 29,
+      "id": 30,
+      "name": "near_shoulder_plate",
+      "visible_pixels": 1337,
+      "bbox_xyxy": [
+        237,
+        267,
+        287,
+        323
+      ]
+    },
+    {
+      "z": 30,
+      "id": 31,
+      "name": "near_forearm",
+      "visible_pixels": 1769,
+      "bbox_xyxy": [
+        185,
+        366,
+        275,
+        476
+      ]
+    },
+    {
+      "z": 31,
+      "id": 32,
+      "name": "near_elbow_cover",
+      "visible_pixels": 3376,
+      "bbox_xyxy": [
+        189,
+        374,
+        255,
+        451
+      ]
+    },
+    {
+      "z": 32,
+      "id": 33,
+      "name": "near_dagger_hand",
+      "visible_pixels": 3566,
+      "bbox_xyxy": [
+        147,
+        444,
+        230,
+        527
+      ]
+    },
+    {
+      "z": 33,
+      "id": 34,
+      "name": "dagger",
+      "visible_pixels": 3181,
+      "bbox_xyxy": [
+        79,
+        466,
+        250,
+        572
+      ]
+    }
+  ],
+  "boundary_review": {
+    "state": "v2_refined_requires_bind_motion_review",
+    "uncertainty_overlay": "ownership_uncertainty_v2.png",
+    "unique_visible_pixels_in_review_bands": 14078,
+    "boundaries": [
+      {
+        "parts": [
+          "hooded_head",
+          "scarf_back"
+        ],
+        "reason": "refined rear-scarf emergence",
+        "shared_boundary_pixels": 263,
+        "review_band_pixels": 805,
+        "review_bbox_xyxy": [
+          342,
+          154,
+          386,
+          250
+        ]
+      },
+      {
+        "parts": [
+          "scarf_back",
+          "sack_strap_back"
+        ],
+        "reason": "refined scarf/back-strap contact",
+        "shared_boundary_pixels": 61,
+        "review_band_pixels": 203,
+        "review_bbox_xyxy": [
+          402,
+          170,
+          418,
+          197
+        ]
+      },
+      {
+        "parts": [
+          "sack_strap_front",
+          "strap_grip"
+        ],
+        "reason": "two-anchor front/grip split",
+        "shared_boundary_pixels": 84,
+        "review_band_pixels": 276,
+        "review_bbox_xyxy": [
+          382,
+          312,
+          428,
+          318
+        ]
+      },
+      {
+        "parts": [
+          "strap_grip",
+          "far_strap_hand"
+        ],
+        "reason": "finger-over/under grip seam",
+        "shared_boundary_pixels": 220,
+        "review_band_pixels": 675,
+        "review_bbox_xyxy": [
+          382,
+          237,
+          428,
+          314
+        ]
+      },
+      {
+        "parts": [
+          "torso_core",
+          "belt_and_pouch"
+        ],
+        "reason": "tightened belt/tunic boundary",
+        "shared_boundary_pixels": 436,
+        "review_band_pixels": 1303,
+        "review_bbox_xyxy": [
+          315,
+          333,
+          470,
+          377
+        ]
+      },
+      {
+        "parts": [
+          "pelvis_skirt",
+          "waist_cloth_front"
+        ],
+        "reason": "hidden V-shaped waist seam",
+        "shared_boundary_pixels": 361,
+        "review_band_pixels": 1122,
+        "review_bbox_xyxy": [
+          291,
+          427,
+          496,
+          446
+        ]
+      },
+      {
+        "parts": [
+          "waist_cloth_front",
+          "near_thigh"
+        ],
+        "reason": "near hip cloth/thigh root",
+        "shared_boundary_pixels": 423,
+        "review_band_pixels": 1260,
+        "review_bbox_xyxy": [
+          256,
+          457,
+          370,
+          521
+        ]
+      },
+      {
+        "parts": [
+          "waist_cloth_front",
+          "far_thigh"
+        ],
+        "reason": "far hip cloth/thigh root",
+        "shared_boundary_pixels": 765,
+        "review_band_pixels": 2362,
+        "review_bbox_xyxy": [
+          421,
+          440,
+          534,
+          551
+        ]
+      },
+      {
+        "parts": [
+          "near_shin",
+          "near_foot"
+        ],
+        "reason": "paint-direction ankle seam",
+        "shared_boundary_pixels": 148,
+        "review_band_pixels": 449,
+        "review_bbox_xyxy": [
+          284,
+          675,
+          348,
+          695
+        ]
+      },
+      {
+        "parts": [
+          "far_shin",
+          "far_foot"
+        ],
+        "reason": "paint-direction ankle seam",
+        "shared_boundary_pixels": 127,
+        "review_band_pixels": 384,
+        "review_bbox_xyxy": [
+          522,
+          677,
+          580,
+          693
+        ]
+      },
+      {
+        "parts": [
+          "near_forearm",
+          "near_elbow_cover"
+        ],
+        "reason": "near elbow cover edge",
+        "shared_boundary_pixels": 297,
+        "review_band_pixels": 892,
+        "review_bbox_xyxy": [
+          187,
+          371,
+          258,
+          454
+        ]
+      },
+      {
+        "parts": [
+          "far_forearm",
+          "far_elbow_cover"
+        ],
+        "reason": "far elbow cover edge",
+        "shared_boundary_pixels": 348,
+        "review_band_pixels": 1065,
+        "review_bbox_xyxy": [
+          451,
+          272,
+          530,
+          320
+        ]
+      },
+      {
+        "parts": [
+          "near_shin",
+          "near_knee_cover"
+        ],
+        "reason": "near knee cover edge",
+        "shared_boundary_pixels": 361,
+        "review_band_pixels": 1128,
+        "review_bbox_xyxy": [
+          262,
+          547,
+          341,
+          620
+        ]
+      },
+      {
+        "parts": [
+          "far_shin",
+          "far_knee_cover"
+        ],
+        "reason": "far knee cover edge",
+        "shared_boundary_pixels": 393,
+        "review_band_pixels": 1238,
+        "review_bbox_xyxy": [
+          460,
+          547,
+          550,
+          629
+        ]
+      },
+      {
+        "parts": [
+          "upper_back_cloak",
+          "cloak_tail_far"
+        ],
+        "reason": "upper/far cloak carrier seam",
+        "shared_boundary_pixels": 318,
+        "review_band_pixels": 961,
+        "review_bbox_xyxy": [
+          495,
+          363,
+          618,
+          411
+        ]
+      }
+    ],
+    "note": "Review bands quantify the inspection envelope around intentional rig seams; they are not a count of known wrong pixels."
+  },
+  "files": {
+    "ownership": "ownership_v2.png",
+    "contract": "ownership_contract_v2.json",
+    "preview": "ownership_preview_v2.png",
+    "legend": "ownership_legend_v2.png",
+    "uncertainty": "ownership_uncertainty_v2.png",
+    "builder": "build_ownership_v2.py"
+  },
+  "hashes": {
+    "approved_master_sha256": "0C04AF438E522E1918A9DF37178828A9731EBE025333C284E8778FAA9DF6E88D",
+    "skeleton_spec_sha256": "5258D744394CFCDC1F5E2932747ADD8F73462B7898CA3E8678310CEFD15959E7",
+    "ownership_sha256": "340021F1589196F98A2ECD2764D9C11E693881662194465BA65B39E8C93D8AB0",
+    "contract_sha256": "41B2AFCD0BE6F457697D426E9AFB7061EC8387C6D44DA4C3EB82EBBC3819A615",
+    "preview_sha256": "97EEA480E74935AD5D386C7ACD102D06CDE43CDE2EC230822C8CDA2F66B98449",
+    "legend_sha256": "8CD2FD0022289D59764D8E6F48230C809D51E2756B71D9139C0124824CDFCABA"
+  }
+}

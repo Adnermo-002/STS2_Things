@@ -1,0 +1,8 @@
+﻿{
+    "candidate":  "thief_raider_v12",
+    "status":  "rejected",
+    "promotable":  false,
+    "steam_install_allowed":  false,
+    "reason":  "visual gate failed: identity drift, pasted accessories, joint tearing, invalid death",
+    "superseded_by":  "thief_raider_v13"
+}

@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "master": "master_candidate_01_alpha.png",
+  "part_count": 26,
+  "visible_pixel_source": "master_only",
+  "underlap_method": "nearest same-attachment master pixel, restricted to bind-covered regions",
+  "draw_order": [
+    "cape_back",
+    "loot_sack",
+    "sack_knot",
+    "sack_strap",
+    "body_underpaint",
+    "pelvis_waist_cloth",
+    "far_thigh",
+    "far_shin",
+    "far_boot",
+    "near_thigh",
+    "near_shin",
+    "near_boot",
+    "far_upper_arm",
+    "near_upper_arm",
+    "torso_core",
+    "far_shoulder_plate",
+    "far_forearm",
+    "hooded_head",
+    "eye_glow",
+    "near_shoulder_plate",
+    "near_forearm",
+    "dagger",
+    "near_dagger_hand",
+    "belt_and_pouch",
+    "far_hand_strap_grip",
+    "scarf_front"
+  ],
+  "parts": [
+    {
+      "index": 0,
+      "semantic": "cape_back",
+      "file": "linked_parts/00_cape_back.png",
+      "canvas_origin_xy": [
+        531,
+        238
+      ],
+      "visible_alpha_area": 52224,
+      "hidden_underlap_area": 78517,
+      "draw_order": 0
+    },
+    {
+      "index": 1,
+      "semantic": "loot_sack",
+      "file": "linked_parts/01_loot_sack.png",
+      "canvas_origin_xy": [
+        790,
+        353
+      ],
+      "visible_alpha_area": 17222,
+      "hidden_underlap_area": 13072,
+      "draw_order": 1
+    },
+    {
+      "index": 2,
+      "semantic": "sack_knot",
+      "file": "linked_parts/02_sack_knot.png",
+      "canvas_origin_xy": [
+        770,
+        302
+      ],
+      "visible_alpha_area": 9294,
+      "hidden_underlap_area": 0,
+      "draw_order": 2
+    },
+    {
+      "index": 3,
+      "semantic": "sack_strap",
+      "file": "linked_parts/03_sack_strap.png",
+      "canvas_origin_xy": [
+        654,
+        330
+      ],
+      "visible_alpha_area": 4279,
+      "hidden_underlap_area": 926,
+      "draw_order": 3
+    },
+    {
+      "index": 4,
+      "semantic": "body_underpaint",
+      "file": "linked_parts/04_body_underpaint.png",
+      "canvas_origin_xy": [
+        477,
+        424
+      ],
+      "visible_alpha_area": 107357,
+      "hidden_underlap_area": 0,
+      "draw_order": 4
+    },
+    {
+      "index": 5,
+      "semantic": "pelvis_waist_cloth",
+      "file": "linked_parts/05_pelvis_waist_cloth.png",
+      "canvas_origin_xy": [
+        477,
+        647
+      ],
+      "visible_alpha_area": 12023,
+      "hidden_underlap_area": 39415,
+      "draw_order": 5
+    },
+    {
+      "index": 6,
+      "semantic": "far_thigh",
+      "file": "linked_parts/06_far_thigh.png",
+      "canvas_origin_xy": [
+        664,
+        640
+      ],
+      "visible_alpha_area": 17545,
+      "hidden_underlap_area": 5086,
+      "draw_order": 6
+    },
+    {
+      "index": 7,
+      "semantic": "far_shin",
+      "file": "linked_parts/07_far_shin.png",
+      "canvas_origin_xy": [
+        787,
+        806
+      ],
+      "visible_alpha_area": 16473,
+      "hidden_underlap_area": 3410,
+      "draw_order": 7
+    },
+    {
+      "index": 8,
+      "semantic": "far_boot",
+      "file": "linked_parts/08_far_boot.png",
+      "canvas_origin_xy": [
+        831,
+        897
+      ],
+      "visible_alpha_area": 13459,
+      "hidden_underlap_area": 0,
+      "draw_order": 8
+    },
+    {
+      "index": 9,
+      "semantic": "near_thigh",
+      "file": "linked_parts/09_near_thigh.png",
+      "canvas_origin_xy": [
+        423,
+        641
+      ],
+      "visible_alpha_area": 29614,
+      "hidden_underlap_area": 5924,
+      "draw_order": 9
+    },
+    {
+      "index": 10,
+      "semantic": "near_shin",
+      "file": "linked_parts/10_near_shin.png",
+      "canvas_origin_xy": [
+        450,
+        811
+      ],
+      "visible_alpha_area": 12009,
+      "hidden_underlap_area": 2719,
+      "draw_order": 10
+    },
+    {
+      "index": 11,
+      "semantic": "near_boot",
+      "file": "linked_parts/11_near_boot.png",
+      "canvas_origin_xy": [
+        446,
+        888
+      ],
+      "visible_alpha_area": 17176,
+      "hidden_underlap_area": 0,
+      "draw_order": 11
+    },
+    {
+      "index": 12,
+      "semantic": "far_upper_arm",
+      "file": "linked_parts/12_far_upper_arm.png",
+      "canvas_origin_xy": [
+        696,
+        385
+      ],
+      "visible_alpha_area": 10311,
+      "hidden_underlap_area": 10078,
+      "draw_order": 12
+    },
+    {
+      "index": 13,
+      "semantic": "near_upper_arm",
+      "file": "linked_parts/13_near_upper_arm.png",
+      "canvas_origin_xy": [
+        354,
+        501
+      ],
+      "visible_alpha_area": 10220,
+      "hidden_underlap_area": 14498,
+      "draw_order": 13
+    },
+    {
+      "index": 14,
+      "semantic": "torso_core",
+      "file": "linked_parts/14_torso_core.png",
+      "canvas_origin_xy": [
+        467,
+        424
+      ],
+      "visible_alpha_area": 20279,
+      "hidden_underlap_area": 59797,
+      "draw_order": 14
+    },
+    {
+      "index": 15,
+      "semantic": "far_shoulder_plate",
+      "file": "linked_parts/15_far_shoulder_plate.png",
+      "canvas_origin_xy": [
+        719,
+        391
+      ],
+      "visible_alpha_area": 5623,
+      "hidden_underlap_area": 0,
+      "draw_order": 15
+    },
+    {
+      "index": 16,
+      "semantic": "far_forearm",
+      "file": "linked_parts/16_far_forearm.png",
+      "canvas_origin_xy": [
+        685,
+        478
+      ],
+      "visible_alpha_area": 17059,
+      "hidden_underlap_area": 3128,
+      "draw_order": 16
+    },
+    {
+      "index": 17,
+      "semantic": "hooded_head",
+      "file": "linked_parts/17_hooded_head.png",
+      "canvas_origin_xy": [
+        364,
+        238
+      ],
+      "visible_alpha_area": 58443,
+      "hidden_underlap_area": 8293,
+      "draw_order": 17
+    },
+    {
+      "index": 18,
+      "semantic": "eye_glow",
+      "file": "linked_parts/18_eye_glow.png",
+      "canvas_origin_xy": [
+        429,
+        439
+      ],
+      "visible_alpha_area": 257,
+      "hidden_underlap_area": 0,
+      "draw_order": 18
+    },
+    {
+      "index": 19,
+      "semantic": "near_shoulder_plate",
+      "file": "linked_parts/19_near_shoulder_plate.png",
+      "canvas_origin_xy": [
+        388,
+        524
+      ],
+      "visible_alpha_area": 3934,
+      "hidden_underlap_area": 0,
+      "draw_order": 19
+    },
+    {
+      "index": 20,
+      "semantic": "near_forearm",
+      "file": "linked_parts/20_near_forearm.png",
+      "canvas_origin_xy": [
+        280,
+        649
+      ],
+      "visible_alpha_area": 12245,
+      "hidden_underlap_area": 1478,
+      "draw_order": 20
+    },
+    {
+      "index": 21,
+      "semantic": "dagger",
+      "file": "linked_parts/21_dagger.png",
+      "canvas_origin_xy": [
+        81,
+        780
+      ],
+      "visible_alpha_area": 9303,
+      "hidden_underlap_area": 3357,
+      "draw_order": 21
+    },
+    {
+      "index": 22,
+      "semantic": "near_dagger_hand",
+      "file": "linked_parts/22_near_dagger_hand.png",
+      "canvas_origin_xy": [
+        225,
+        771
+      ],
+      "visible_alpha_area": 13843,
+      "hidden_underlap_area": 0,
+      "draw_order": 22
+    },
+    {
+      "index": 23,
+      "semantic": "belt_and_pouch",
+      "file": "linked_parts/23_belt_and_pouch.png",
+      "canvas_origin_xy": [
+        545,
+        622
+      ],
+      "visible_alpha_area": 20873,
+      "hidden_underlap_area": 0,
+      "draw_order": 23
+    },
+    {
+      "index": 24,
+      "semantic": "far_hand_strap_grip",
+      "file": "linked_parts/24_far_hand_strap_grip.png",
+      "canvas_origin_xy": [
+        616,
+        416
+      ],
+      "visible_alpha_area": 21876,
+      "hidden_underlap_area": 0,
+      "draw_order": 24
+    },
+    {
+      "index": 25,
+      "semantic": "scarf_front",
+      "file": "linked_parts/25_scarf_front.png",
+      "canvas_origin_xy": [
+        409,
+        330
+      ],
+      "visible_alpha_area": 19546,
+      "hidden_underlap_area": 0,
+      "draw_order": 25
+    }
+  ],
+  "bind_qa": {
+    "alpha_iou": 1.0,
+    "alpha_area_ratio": 1.0,
+    "centroid_delta_px": 0.0,
+    "visible_rgb_mae_0_255": 0.13687342695175594,
+    "part_count": 26,
+    "hidden_underlap_area": 249698,
+    "pass": true
+  },
+  "status": "linked_cutout_draft_requires_extreme_pose_review"
+}

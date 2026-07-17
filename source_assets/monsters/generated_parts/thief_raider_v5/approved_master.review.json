@@ -1,0 +1,35 @@
+{
+  "status": "rejected",
+  "source_candidate": "master_chroma_candidate_03.png",
+  "highres_alpha": "approved_master_highres.png",
+  "production_master": "approved_master.png",
+  "production_canvas": [
+    768,
+    896
+  ],
+  "alpha_bbox": [
+    79,
+    95,
+    695,
+    761
+  ],
+  "alpha_bbox_wh": [
+    616,
+    666
+  ],
+  "alpha_bbox_width_height_ratio": 0.9249,
+  "edge_green_audit": {
+    "partial_edge_pixels": 9883,
+    "green_edge_pixels": 33,
+    "green_edge_ratio": 0.003339
+  },
+  "rejection_reasons": [
+    "rendering is substantially more detailed and realistic than the shipped Ruby Raider family",
+    "surface treatment reads as polished fantasy character art instead of restrained in-game painted shapes",
+    "visible ownership cutouts are fragmented surface islands rather than animation-ready anatomical pieces",
+    "separately generated donor sheets do not guarantee identical perspective, scale, lighting, or contour continuity",
+    "the proposed 40-bone / 34-slot topology over-segments the character and increases seam and draw-order failure risk",
+    "the asset was marked approved without an in-game animation and UI-overlap review"
+  ],
+  "next_stage": "blocked; do not map, rig, package, or install this candidate"
+}

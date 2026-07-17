@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -76,11 +77,17 @@ public sealed class ScaleDownPower : PowerModel
         }
     }
 
+#if STS2_V107_1
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props,
         Creature? dealer, CardModel? cardSource)
+#else
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props,
+        Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
+#endif
     {
         if (Owner != dealer || !props.IsPoweredAttack())
             return 1m;
-        return (100m - DynamicVars["PercentPerStack"].BaseValue * Amount) / 100m;
+        return Math.Max(0m,
+            (100m - DynamicVars["PercentPerStack"].BaseValue * Amount) / 100m);
     }
 }

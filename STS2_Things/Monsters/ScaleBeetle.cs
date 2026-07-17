@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Godot;
 using MegaCrit.Sts2.Core.Audio;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Ascension;
@@ -29,15 +31,21 @@ public sealed class ScaleBeetle : MonsterModel
     private const string _trackName = "vantom_progress";
     private const int MoltBlock = 14;
 
-    protected override string VisualsPath =>
-        SceneHelper.GetScenePath("creature_visuals/fallback");
-
-    // 复用KaiserCrab（重甲巨型Boss）的原版音效
-    protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_attack_slam";
-    protected override string CastSfx => "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_scoop";
-    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_die";
+    // Match the creature's beetle body and scale-changing cast to its vanilla kin.
+    protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/shrinker_beetle/shrinker_beetle_attack";
+    protected override string CastSfx => "event:/sfx/enemy/enemy_attacks/shrinker_beetle/shrinker_beetle_cast";
+    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/shrinker_beetle/shrinker_beetle_die";
+    public override DamageSfxType TakeDamageSfxType => DamageSfxType.Insect;
+    public override Vector2 ExtraDeathVfxPadding => new(2.3f, 2.1f);
 
     public override bool CanChangeScale => true;
+
+    public override IEnumerable<string> AssetPaths => base.AssetPaths.Concat(
+    [
+        ModelDb.Power<ScaleBeetlePower>().ResolvedBigIconPath,
+        ModelDb.Power<ScaleUpPower>().ResolvedBigIconPath,
+        ModelDb.Power<ScaleDownPower>().ResolvedBigIconPath
+    ]).Distinct();
 
     public override async Task AfterAddedToRoom()
     {
@@ -84,11 +92,11 @@ public sealed class ScaleBeetle : MonsterModel
         var biteMove = new MoveState("BITE_MOVE", BiteMove,
             new SingleAttackIntent(BiteDamage));
 
-        // 触角鞭打 ×2
+        // 触角鞭打 ×3
         var whipMove = new MoveState("WHIP_MOVE", WhipMove,
             new MultiAttackIntent(WhipDamage, 3));
 
-        // 蜕壳: 26 防御 + ScaleUp 再叠一层
+        // 蜕壳: 14 防御 + ScaleUp 再叠 15 层
         var moltMove = new MoveState("MOLT_MOVE", MoltMove,
             new DefendIntent(), new BuffIntent());
 
@@ -143,7 +151,7 @@ public sealed class ScaleBeetle : MonsterModel
         SfxCmd.Play(CastSfx);
         await CreatureCmd.TriggerAnim(Creature, "Cast", 0.5f);
 
-        await CreatureCmd.GainBlock(Creature, MoltBlock, ValueProp.Unpowered, null);
+        await CreatureCmd.GainBlock(Creature, MoltBlock, ValueProp.Move, null);
         await PowerCmd.Apply<ScaleUpPower>(new ThrowingPlayerChoiceContext(),
             Creature, 15m, Creature, null);
     }

@@ -1,0 +1,484 @@
+{
+  "schema_version": 1,
+  "asset": "thief_raider_v9_sheet_b",
+  "verdict": "reject_as_complete_sheet",
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "formal_animation_modified": false,
+  "source_generated": "C:\\Users\\adner\\.codex\\generated_images\\019f5afb-1b58-7441-967a-79eb6687c915\\exec-b20e2005-7db5-49a8-8874-b8460bd6db2c.png",
+  "copied_chroma": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_chroma.png",
+  "alpha": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_alpha.png",
+  "identity_master": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\00_reference\\current_master.png",
+  "sha256": {
+    "source_generated": "35BB1E560778A00BCF72A664BF19823C6848B82FCDAA3A2CB431B6EB152B5F15",
+    "copied_chroma": "35BB1E560778A00BCF72A664BF19823C6848B82FCDAA3A2CB431B6EB152B5F15",
+    "alpha": "06AD22A4A6895F956DB167772DF55E25F23B51787393B1ADD71589DB81686BB0",
+    "identity_master": "643A86C7D8B9BB885161AC6ABAD39F8C3B8AF09FCB8AD8E016B90FEEE73B06FB"
+  },
+  "alpha_extraction": {
+    "result": "pass",
+    "key_color": "#03F902",
+    "size": [
+      1536,
+      1024
+    ],
+    "connected_components": 13,
+    "threshold": 8,
+    "connectivity": 8
+  },
+  "gates": {
+    "chroma_and_alpha": "pass",
+    "semantic_isolation": "partial_fail",
+    "solid_joint_ends": "fail",
+    "identity_fidelity": "fail",
+    "near_far_perspective": "fail",
+    "required_piece_coverage": "fail"
+  },
+  "status_counts": {
+    "usable": 1,
+    "donor-only": 6,
+    "reject": 6
+  },
+  "architecture_alignment": {
+    "target_attachment_count": 29,
+    "required_joint_underlap_px": [
+      10,
+      18
+    ],
+    "prohibited_composites": [
+      "whole arm composite",
+      "hand + dagger"
+    ],
+    "weighted_mesh_targets": [
+      "cape_back",
+      "scarf_front",
+      "pelvis_tunic"
+    ]
+  },
+  "missing_or_unusable_required_semantics": [
+    "near_upper_arm",
+    "far_upper_arm",
+    "near_forearm",
+    "far_forearm",
+    "near_dagger_hand",
+    "far_strap_hand",
+    "near_thigh",
+    "far_thigh",
+    "near_shin",
+    "far_shin",
+    "near_boot",
+    "far_boot"
+  ],
+  "sheet_level_findings": [
+    "Six limb/boot components use painted hollow sockets instead of closed solid underlaps.",
+    "Both hands are generic fists and do not grip their required dagger or strap.",
+    "Near/far pairs are near-duplicates with weak ownership and perspective asymmetry.",
+    "Only the dagger is semantically isolated and geometrically coherent enough to continue as a candidate donor.",
+    "Cloth is smoother and more volumetric than current_master; leather and metal highlights are brighter and more polished."
+  ],
+  "components": [
+    {
+      "id": 1,
+      "semantic": "upper_arm_a_hollow_cuff",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\01_upper_arm_a_hollow_cuff.png",
+      "source_bbox": [
+        64,
+        85,
+        190,
+        274
+      ],
+      "crop_bbox": [
+        48,
+        69,
+        222,
+        306
+      ],
+      "alpha_area_px": 28434,
+      "centroid": [
+        158.8049166490821,
+        220.3518323134276
+      ],
+      "mask_holes": 0,
+      "sha256": "8B63D8978F4F513515D15803520263138E5C18BE3730DE5AAB7D500FF79E293C",
+      "status": "reject",
+      "reasons": [
+        "painted hollow sleeve/cuff opening",
+        "tube-like limb with no solid elbow underlap",
+        "neutral donor view does not preserve current_master joint ownership"
+      ],
+      "production_use": "discard from reconstruction"
+    },
+    {
+      "id": 2,
+      "semantic": "forearm_b_bracer_hollow_cuff",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\02_forearm_b_bracer_hollow_cuff.png",
+      "source_bbox": [
+        1066,
+        87,
+        198,
+        285
+      ],
+      "crop_bbox": [
+        1050,
+        71,
+        230,
+        317
+      ],
+      "alpha_area_px": 27012,
+      "centroid": [
+        1166.5619354361024,
+        229.52580334666075
+      ],
+      "mask_holes": 0,
+      "sha256": "F9EC8F1C6A5EEA471D2838B001D3943290E8D8D54EA36B4749CC759C33D6CEB0",
+      "status": "reject",
+      "reasons": [
+        "painted hollow wrist cuff opening",
+        "forearm and rigid bracer are fused while the wrist end remains an open tube",
+        "brighter polished metal drifts from current_master"
+      ],
+      "production_use": "discard from reconstruction"
+    },
+    {
+      "id": 3,
+      "semantic": "forearm_a_bracer_hollow_cuff",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\03_forearm_a_bracer_hollow_cuff.png",
+      "source_bbox": [
+        318,
+        91,
+        143,
+        281
+      ],
+      "crop_bbox": [
+        302,
+        75,
+        175,
+        313
+      ],
+      "alpha_area_px": 26350,
+      "centroid": [
+        392.44853889943073,
+        229.6815559772296
+      ],
+      "mask_holes": 0,
+      "sha256": "A07513D0CCCD94DEDBEC1CCEA5EB064AE4BF647B0F5D235C513D501BE7DBE3B2",
+      "status": "reject",
+      "reasons": [
+        "painted hollow wrist cuff opening",
+        "forearm and rigid bracer are fused while the wrist end remains an open tube",
+        "near/far ownership is ambiguous against component 02"
+      ],
+      "production_use": "discard from reconstruction"
+    },
+    {
+      "id": 4,
+      "semantic": "upper_arm_b_hollow_cuff",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\04_upper_arm_b_hollow_cuff.png",
+      "source_bbox": [
+        810,
+        94,
+        202,
+        286
+      ],
+      "crop_bbox": [
+        794,
+        78,
+        234,
+        318
+      ],
+      "alpha_area_px": 33661,
+      "centroid": [
+        912.43335016785,
+        233.0723686164998
+      ],
+      "mask_holes": 0,
+      "sha256": "2DC28007F5E1B425872162648B998FCFA62293835BA486BB83EFDFEC1913130E",
+      "status": "reject",
+      "reasons": [
+        "painted hollow sleeve/cuff opening",
+        "bent tube silhouette lacks a closed elbow overlap zone",
+        "near/far pair duplicates volume instead of master asymmetry"
+      ],
+      "production_use": "discard from reconstruction"
+    },
+    {
+      "id": 5,
+      "semantic": "closed_fist_b",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\05_closed_fist_b.png",
+      "source_bbox": [
+        1328,
+        142,
+        150,
+        192
+      ],
+      "crop_bbox": [
+        1312,
+        126,
+        182,
+        224
+      ],
+      "alpha_area_px": 17813,
+      "centroid": [
+        1400.0676472239377,
+        238.33430640543423
+      ],
+      "mask_holes": 0,
+      "sha256": "A9B580511DA070DF9B7C4D97B5BAB839D889CDC5C31CFED8A341CC68599E5C5A",
+      "status": "donor-only",
+      "reasons": [
+        "solid isolated hand paint",
+        "generic closed fist does not grip the sack strap",
+        "finger pose and wrist angle do not match far_strap_hand identity"
+      ],
+      "production_use": "visual/material donor after complete geometry rebuild"
+    },
+    {
+      "id": 6,
+      "semantic": "closed_fist_a",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\06_closed_fist_a.png",
+      "source_bbox": [
+        534,
+        180,
+        169,
+        153
+      ],
+      "crop_bbox": [
+        518,
+        164,
+        201,
+        185
+      ],
+      "alpha_area_px": 16493,
+      "centroid": [
+        617.5684229673195,
+        253.74607409203904
+      ],
+      "mask_holes": 0,
+      "sha256": "058DB0B9D57AFA63007AFA014BED708C8211F8287F9F3A66579454946982532B",
+      "status": "donor-only",
+      "reasons": [
+        "solid isolated hand paint",
+        "generic closed fist does not provide a dagger grip or handle channel",
+        "finger pose and wrist angle do not match near_dagger_hand identity"
+      ],
+      "production_use": "visual/material donor after complete geometry rebuild"
+    },
+    {
+      "id": 7,
+      "semantic": "bent_thigh_b",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\07_bent_thigh_b.png",
+      "source_bbox": [
+        803,
+        428,
+        251,
+        260
+      ],
+      "crop_bbox": [
+        787,
+        412,
+        283,
+        292
+      ],
+      "alpha_area_px": 42214,
+      "centroid": [
+        927.9602975316246,
+        548.156156725257
+      ],
+      "mask_holes": 0,
+      "sha256": "E028CD0D58150B959725E379C6C2910825CB150DEB820269A9606CD128939BC5",
+      "status": "donor-only",
+      "reasons": [
+        "closed opaque cloth volume",
+        "ambiguous bent-limb ownership and capsule ends rather than defined hip/knee overlaps",
+        "near/far silhouette is almost duplicated by component 08"
+      ],
+      "production_use": "visual/material donor after complete geometry rebuild"
+    },
+    {
+      "id": 8,
+      "semantic": "bent_thigh_a",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\08_bent_thigh_a.png",
+      "source_bbox": [
+        400,
+        434,
+        237,
+        254
+      ],
+      "crop_bbox": [
+        384,
+        418,
+        269,
+        286
+      ],
+      "alpha_area_px": 39651,
+      "centroid": [
+        514.2198179112759,
+        552.5314115659125
+      ],
+      "mask_holes": 0,
+      "sha256": "A541E97701A11558778CA38402612DB3EB8D1450D764A51DA88B71DE17AA489F",
+      "status": "donor-only",
+      "reasons": [
+        "closed opaque cloth volume",
+        "ambiguous bent-limb ownership and capsule ends rather than defined hip/knee overlaps",
+        "near/far silhouette is almost duplicated by component 07"
+      ],
+      "production_use": "visual/material donor after complete geometry rebuild"
+    },
+    {
+      "id": 9,
+      "semantic": "wrapped_shin_b",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\09_wrapped_shin_b.png",
+      "source_bbox": [
+        1171,
+        470,
+        155,
+        218
+      ],
+      "crop_bbox": [
+        1155,
+        454,
+        187,
+        250
+      ],
+      "alpha_area_px": 19693,
+      "centroid": [
+        1252.3941502056568,
+        573.9383537297517
+      ],
+      "mask_holes": 0,
+      "sha256": "EBE94EB27D3775FDCAAEE9C2655F493D3D1A53E8E8B1E75E2BB3C9E731634881",
+      "status": "donor-only",
+      "reasons": [
+        "solid donor surface with no alpha hole",
+        "dark cloth cap and leather-wrapped shin are fused",
+        "blunt ankle end and near/far perspective do not match the master leg chain"
+      ],
+      "production_use": "visual/material donor after complete geometry rebuild"
+    },
+    {
+      "id": 10,
+      "semantic": "wrapped_shin_a",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\10_wrapped_shin_a.png",
+      "source_bbox": [
+        181,
+        471,
+        152,
+        222
+      ],
+      "crop_bbox": [
+        165,
+        455,
+        184,
+        254
+      ],
+      "alpha_area_px": 20990,
+      "centroid": [
+        249.39309194854692,
+        576.0981896141019
+      ],
+      "mask_holes": 0,
+      "sha256": "FF387F2289E1CA988F490F3D577A6751C49E8CCAFE38F621A898BF1B45A2F06F",
+      "status": "donor-only",
+      "reasons": [
+        "solid donor surface with no alpha hole",
+        "dark cloth cap and leather-wrapped shin are fused",
+        "blunt ankle end and near/far perspective do not match the master leg chain"
+      ],
+      "production_use": "visual/material donor after complete geometry rebuild"
+    },
+    {
+      "id": 11,
+      "semantic": "dagger",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\11_dagger.png",
+      "source_bbox": [
+        549,
+        732,
+        339,
+        206
+      ],
+      "crop_bbox": [
+        533,
+        716,
+        371,
+        238
+      ],
+      "alpha_area_px": 21892,
+      "centroid": [
+        720.4401151105427,
+        839.2163804129362
+      ],
+      "mask_holes": 0,
+      "sha256": "81EA1098AC898CDE54EE1863C13CA48285FB1469F5E7B3DD1A3F4A518F48444C",
+      "status": "usable",
+      "reasons": [
+        "single complete dagger semantic",
+        "clear leftward blade and intact guard/handle",
+        "requires scale, angle, matte value and visible-pixel replacement against current_master before bind approval"
+      ],
+      "production_use": "candidate donor for bind reconstruction only"
+    },
+    {
+      "id": 12,
+      "semantic": "boot_a_hollow_cuff",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\12_boot_a_hollow_cuff.png",
+      "source_bbox": [
+        139,
+        738,
+        196,
+        210
+      ],
+      "crop_bbox": [
+        123,
+        722,
+        228,
+        242
+      ],
+      "alpha_area_px": 26509,
+      "centroid": [
+        252.4548266626429,
+        852.4736127352975
+      ],
+      "mask_holes": 0,
+      "sha256": "A1CBCFB8B8211691C726E12905715EE26F09469D243C5E5E416F51115FA3F44A",
+      "status": "reject",
+      "reasons": [
+        "painted hollow boot shaft",
+        "open rim is a visible socket instead of a closed shin underlap",
+        "boot is too upright and generic for current_master crouched near/far pose"
+      ],
+      "production_use": "discard from reconstruction"
+    },
+    {
+      "id": 13,
+      "semantic": "boot_b_hollow_cuff",
+      "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\monsters\\generated_parts\\thief_raider_v9\\01_generated_donors\\sheet_b_components\\13_boot_b_hollow_cuff.png",
+      "source_bbox": [
+        1185,
+        744,
+        171,
+        207
+      ],
+      "crop_bbox": [
+        1169,
+        728,
+        203,
+        239
+      ],
+      "alpha_area_px": 24877,
+      "centroid": [
+        1283.9014752582707,
+        852.3199742734253
+      ],
+      "mask_holes": 0,
+      "sha256": "0AE08582EA176F2F7DFF4498667DA819A122BA1553E922CF5534F9230F7D39F2",
+      "status": "reject",
+      "reasons": [
+        "painted hollow boot shaft",
+        "open rim is a visible socket instead of a closed shin underlap",
+        "duplicates component 12 rather than preserving far-side size and perspective"
+      ],
+      "production_use": "discard from reconstruction"
+    }
+  ]
+}

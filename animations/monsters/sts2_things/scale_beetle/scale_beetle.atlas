@@ -1,0 +1,341 @@
+scale_beetle.png
+size: 1021,1553
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ai_rear_abdomen_shell
+  rotate: false
+  xy: 10, 10
+  size: 704, 426
+  orig: 704, 426
+  offset: 0, 0
+  index: -1
+ai_core_shell
+  rotate: false
+  xy: 394, 446
+  size: 446, 342
+  orig: 446, 342
+  offset: 0, 0
+  index: -1
+ai_front_thorax_shell
+  rotate: false
+  xy: 10, 836
+  size: 232, 290
+  orig: 232, 290
+  offset: 0, 0
+  index: -1
+ai_head_complete
+  rotate: false
+  xy: 10, 446
+  size: 374, 380
+  orig: 374, 380
+  offset: 0, 0
+  index: -1
+ai_mandible_upper
+  rotate: false
+  xy: 644, 1136
+  size: 170, 96
+  orig: 170, 96
+  offset: 0, 0
+  index: -1
+ai_mandible_lower
+  rotate: false
+  xy: 172, 1304
+  size: 164, 90
+  orig: 164, 90
+  offset: 0, 0
+  index: -1
+ai_fore_claw_proximal
+  rotate: false
+  xy: 608, 836
+  size: 258, 166
+  orig: 258, 166
+  offset: 0, 0
+  index: -1
+ai_fore_claw_distal_foot
+  rotate: false
+  xy: 252, 836
+  size: 248, 202
+  orig: 248, 202
+  offset: 0, 0
+  index: -1
+ai_front_leg_upper
+  rotate: false
+  xy: 540, 1136
+  size: 94, 112
+  orig: 94, 112
+  offset: 0, 0
+  index: -1
+ai_mid_leg_upper
+  rotate: false
+  xy: 428, 1136
+  size: 102, 138
+  orig: 102, 138
+  offset: 0, 0
+  index: -1
+ai_rear_leg_upper
+  rotate: false
+  xy: 164, 1136
+  size: 118, 154
+  orig: 118, 154
+  offset: 0, 0
+  index: -1
+ai_front_leg_lower_foot
+  rotate: false
+  xy: 510, 836
+  size: 88, 170
+  orig: 88, 170
+  offset: 0, 0
+  index: -1
+ai_mid_leg_lower_foot
+  rotate: false
+  xy: 292, 1136
+  size: 126, 150
+  orig: 126, 150
+  offset: 0, 0
+  index: -1
+ai_rear_leg_lower_foot
+  rotate: false
+  xy: 10, 1136
+  size: 144, 158
+  orig: 144, 158
+  offset: 0, 0
+  index: -1
+ai_fore_claw_socket
+  rotate: false
+  xy: 776, 1304
+  size: 80, 82
+  orig: 80, 82
+  offset: 0, 0
+  index: -1
+ai_front_leg_socket
+  rotate: false
+  xy: 280, 1410
+  size: 66, 68
+  orig: 66, 68
+  offset: 0, 0
+  index: -1
+ai_mid_leg_socket
+  rotate: false
+  xy: 194, 1410
+  size: 76, 76
+  orig: 76, 76
+  offset: 0, 0
+  index: -1
+ai_rear_leg_socket
+  rotate: false
+  xy: 932, 1304
+  size: 78, 80
+  orig: 78, 80
+  offset: 0, 0
+  index: -1
+ai_fore_claw_joint_cap
+  rotate: false
+  xy: 248, 1498
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+ai_front_knee_cap
+  rotate: false
+  xy: 362, 1498
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+ai_mid_knee_cap
+  rotate: false
+  xy: 306, 1498
+  size: 46, 46
+  orig: 46, 46
+  offset: 0, 0
+  index: -1
+ai_rear_knee_cap
+  rotate: false
+  xy: 10, 1498
+  size: 48, 50
+  orig: 48, 50
+  offset: 0, 0
+  index: -1
+ai_antenna_back_base
+  rotate: false
+  xy: 724, 1410
+  size: 46, 60
+  orig: 46, 60
+  offset: 0, 0
+  index: -1
+ai_antenna_back_1
+  rotate: false
+  xy: 10, 1410
+  size: 60, 78
+  orig: 60, 78
+  offset: 0, 0
+  index: -1
+ai_antenna_back_2
+  rotate: false
+  xy: 706, 1304
+  size: 60, 86
+  orig: 60, 86
+  offset: 0, 0
+  index: -1
+ai_antenna_back_3
+  rotate: false
+  xy: 10, 1304
+  size: 60, 96
+  orig: 60, 96
+  offset: 0, 0
+  index: -1
+ai_antenna_back_4
+  rotate: false
+  xy: 920, 1136
+  size: 68, 96
+  orig: 68, 96
+  offset: 0, 0
+  index: -1
+ai_antenna_back_5
+  rotate: false
+  xy: 824, 1136
+  size: 86, 96
+  orig: 86, 96
+  offset: 0, 0
+  index: -1
+ai_antenna_back_tip
+  rotate: false
+  xy: 346, 1304
+  size: 102, 90
+  orig: 102, 90
+  offset: 0, 0
+  index: -1
+ai_antenna_front_base
+  rotate: false
+  xy: 536, 1410
+  size: 48, 62
+  orig: 48, 62
+  offset: 0, 0
+  index: -1
+ai_antenna_front_1
+  rotate: false
+  xy: 866, 1304
+  size: 56, 82
+  orig: 56, 82
+  offset: 0, 0
+  index: -1
+ai_antenna_front_2
+  rotate: false
+  xy: 638, 1304
+  size: 58, 90
+  orig: 58, 90
+  offset: 0, 0
+  index: -1
+ai_antenna_front_3
+  rotate: false
+  xy: 562, 1304
+  size: 66, 90
+  orig: 66, 90
+  offset: 0, 0
+  index: -1
+ai_antenna_front_4
+  rotate: false
+  xy: 80, 1304
+  size: 82, 94
+  orig: 82, 94
+  offset: 0, 0
+  index: -1
+ai_antenna_front_5
+  rotate: false
+  xy: 458, 1304
+  size: 94, 90
+  orig: 94, 90
+  offset: 0, 0
+  index: -1
+ai_antenna_front_tip
+  rotate: false
+  xy: 80, 1410
+  size: 104, 76
+  orig: 104, 76
+  offset: 0, 0
+  index: -1
+ai_antenna_back_joint_1
+  rotate: false
+  xy: 826, 1410
+  size: 28, 60
+  orig: 28, 60
+  offset: 0, 0
+  index: -1
+ai_antenna_back_joint_2
+  rotate: false
+  xy: 490, 1410
+  size: 36, 64
+  orig: 36, 64
+  offset: 0, 0
+  index: -1
+ai_antenna_back_joint_3
+  rotate: false
+  xy: 356, 1410
+  size: 52, 66
+  orig: 52, 66
+  offset: 0, 0
+  index: -1
+ai_antenna_back_joint_4
+  rotate: false
+  xy: 418, 1410
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: -1
+ai_antenna_back_joint_5
+  rotate: false
+  xy: 864, 1410
+  size: 72, 58
+  orig: 72, 58
+  offset: 0, 0
+  index: -1
+ai_antenna_back_joint_tip
+  rotate: false
+  xy: 68, 1498
+  size: 82, 48
+  orig: 82, 48
+  offset: 0, 0
+  index: -1
+ai_antenna_front_joint_1
+  rotate: false
+  xy: 780, 1410
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: -1
+ai_antenna_front_joint_2
+  rotate: false
+  xy: 664, 1410
+  size: 50, 60
+  orig: 50, 60
+  offset: 0, 0
+  index: -1
+ai_antenna_front_joint_3
+  rotate: false
+  xy: 594, 1410
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+ai_antenna_front_joint_4
+  rotate: false
+  xy: 946, 1410
+  size: 70, 56
+  orig: 70, 56
+  offset: 0, 0
+  index: -1
+ai_antenna_front_joint_5
+  rotate: false
+  xy: 160, 1498
+  size: 78, 48
+  orig: 78, 48
+  offset: 0, 0
+  index: -1
+ai_antenna_front_joint_tip
+  rotate: false
+  xy: 414, 1498
+  size: 82, 38
+  orig: 82, 38
+  offset: 0, 0
+  index: -1

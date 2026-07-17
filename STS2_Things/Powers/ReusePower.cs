@@ -34,7 +34,8 @@ public sealed class ReusePower : PowerModel
         // 2. 抽到的是状态牌（Status）
         if (card.Owner.Creature == Owner && card.Type == CardType.Status)
         {
-            var currentAmount = Amount;
+            var player = Owner.Player;
+            if (player == null) return;
             // 检查：本回合这张 Power 触发了多少次
             var num = CombatManager.Instance.History.Entries
                 .OfType<CardDrawnEntry>()
@@ -47,10 +48,10 @@ public sealed class ReusePower : PowerModel
             {
                 Flash();
                 await CardPileCmd.RemoveFromCombat(card);
-                var fuelCard = CombatState.CreateCard<Fuel>(Owner.Player);
-                var sootCard = CombatState.CreateCard<Soot>(Owner.Player);
-                await CardPileCmd.Add(fuelCard, PileType.Hand);
-                await CardPileCmd.Add(sootCard, PileType.Discard);
+                var fuelCard = CombatState.CreateCard<Fuel>(player);
+                var sootCard = CombatState.CreateCard<Soot>(player);
+                await CardPileCmd.AddGeneratedCardToCombat(fuelCard, PileType.Hand, player);
+                await CardPileCmd.AddGeneratedCardToCombat(sootCard, PileType.Discard, player);
             }
         }
     }

@@ -1,0 +1,16 @@
+Use case: precise-object-edit
+Asset type: full-character torso and pelvis occlusion-reveal plate for a Spine 4.2 skeletal character
+
+Image 1 is the exact 1536x1024 edit target: the locked Thief Raider master enlarged exactly two times and centered on a flat green background. Image 2 is a binary edit map in identical coordinates; white marks the central torso and pelvis occlusion region. Image 3 is the original locked identity master.
+
+Return the same complete character on the same canvas, at the same pixel scale, placement, crouched three-quarter-left pose, compact Raider proportions, silhouette, palette, lighting, matte low-frequency paint, and camera. Preserve all pixels outside the white edit region as closely as image generation permits.
+
+Inside the white region, temporarily remove the pink scarf fabric crossing the chest, both arms and their armor where they cover the torso, the rope/strap across the chest, the belt, buckle, belt tail, side pouch, and the foreground cape edge. Reveal the compact underlying charcoal tunic as one solid continuous torso from the concealed neck/shoulder line to the waist, plus a distinct continuous lower pelvis-tunic section down to the two hip openings. Keep the existing crouch and the original short, broad stylized Raider body.
+
+The revealed torso is clothing, not exposed anatomy. It uses the exact original charcoal-purple cloth palette and soft broad matte shading. It has natural filled surfaces behind every removed accessory, enough concealed overlap for torso-to-pelvis bending, and a gently irregular hand-painted hem. The upper torso and lower pelvis remain visually separable by a subtle cloth fold at the waist, not by a hole or hard socket.
+
+Keep the hooded head, black face, yellow eyes, legs, boots, dagger, hands, sack, knot, outer cape silhouette, and all content outside the white region in their original locations. Where an arm crosses the white region it may be temporarily absent so the hidden tunic is visible; do not redesign the arm elsewhere.
+
+No front-facing body, realistic adult anatomy, long torso, new strap, new pouch, new armor, bare skin, ribs, muscles, hollow neck, open armholes, circular sockets, flat-cut body stump, mannequin, separate floating torso, T-pose, palette shift, global relight, glossy plastic, faceted polygons, high-frequency texture, text, labels, mask marks, UI, logo, signature, or watermark.
+
+Background: perfectly flat uniform #00FF00 with no gradient, texture, floor, cast shadow, reflection, or green inside the character.

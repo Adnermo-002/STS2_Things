@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://be2inr24ds2uf"]
+
+[node name="Encounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="raider_1" type="Marker2D" parent="."]
+position = Vector2(1260, 620)
+
+[node name="raider_2" type="Marker2D" parent="."]
+position = Vector2(1501, 620)
+
+[node name="raider_4" type="Marker2D" parent="."]
+position = Vector2(1732, 620)
+
+[node name="raider_5" type="Marker2D" parent="."]
+position = Vector2(1624, 762)
+
+[node name="raider_3" type="Marker2D" parent="."]
+position = Vector2(1382, 760)
+
+[node name="thief_raider" type="Marker2D" parent="."]
+position = Vector2(1742, 762)

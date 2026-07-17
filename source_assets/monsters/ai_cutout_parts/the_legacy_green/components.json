@@ -1,0 +1,781 @@
+[
+  {
+    "name": "part_000",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_000.png",
+    "source_bbox": [
+      64,
+      16,
+      307,
+      175
+    ],
+    "source_center": [
+      180.375,
+      100.726
+    ],
+    "size": [
+      243,
+      159
+    ],
+    "opaque_area": 18215
+  },
+  {
+    "name": "part_001",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_001.png",
+    "source_bbox": [
+      278,
+      21,
+      577,
+      181
+    ],
+    "source_center": [
+      430.562,
+      95.865
+    ],
+    "size": [
+      299,
+      160
+    ],
+    "opaque_area": 22776
+  },
+  {
+    "name": "part_002",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_002.png",
+    "source_bbox": [
+      573,
+      21,
+      701,
+      179
+    ],
+    "source_center": [
+      628.437,
+      102.813
+    ],
+    "size": [
+      128,
+      158
+    ],
+    "opaque_area": 10361
+  },
+  {
+    "name": "part_003",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_003.png",
+    "source_bbox": [
+      774,
+      13,
+      1018,
+      187
+    ],
+    "source_center": [
+      892.693,
+      100.279
+    ],
+    "size": [
+      244,
+      174
+    ],
+    "opaque_area": 19286
+  },
+  {
+    "name": "part_004",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_004.png",
+    "source_bbox": [
+      1046,
+      13,
+      1268,
+      179
+    ],
+    "source_center": [
+      1151.711,
+      99.862
+    ],
+    "size": [
+      222,
+      166
+    ],
+    "opaque_area": 14899
+  },
+  {
+    "name": "part_005",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_005.png",
+    "source_bbox": [
+      1271,
+      21,
+      1505,
+      178
+    ],
+    "source_center": [
+      1391.303,
+      95.861
+    ],
+    "size": [
+      234,
+      157
+    ],
+    "opaque_area": 15945
+  },
+  {
+    "name": "part_006",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_006.png",
+    "source_bbox": [
+      670,
+      167,
+      838,
+      278
+    ],
+    "source_center": [
+      745.737,
+      215.226
+    ],
+    "size": [
+      168,
+      111
+    ],
+    "opaque_area": 2526
+  },
+  {
+    "name": "part_007",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_007.png",
+    "source_bbox": [
+      763,
+      165,
+      1083,
+      347
+    ],
+    "source_center": [
+      913.589,
+      240.758
+    ],
+    "size": [
+      320,
+      182
+    ],
+    "opaque_area": 6385
+  },
+  {
+    "name": "part_008",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_008.png",
+    "source_bbox": [
+      39,
+      167,
+      430,
+      367
+    ],
+    "source_center": [
+      230.008,
+      270.697
+    ],
+    "size": [
+      391,
+      200
+    ],
+    "opaque_area": 56794
+  },
+  {
+    "name": "part_009",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_009.png",
+    "source_bbox": [
+      1292,
+      193,
+      1491,
+      426
+    ],
+    "source_center": [
+      1386.403,
+      299.176
+    ],
+    "size": [
+      199,
+      233
+    ],
+    "opaque_area": 25373
+  },
+  {
+    "name": "part_010",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_010.png",
+    "source_bbox": [
+      966,
+      194,
+      1260,
+      435
+    ],
+    "source_center": [
+      1124.125,
+      325.006
+    ],
+    "size": [
+      294,
+      241
+    ],
+    "opaque_area": 48285
+  },
+  {
+    "name": "part_011",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_011.png",
+    "source_bbox": [
+      899,
+      379,
+      926,
+      406
+    ],
+    "source_center": [
+      912.116,
+      392.496
+    ],
+    "size": [
+      27,
+      27
+    ],
+    "opaque_area": 284
+  },
+  {
+    "name": "part_012",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_012.png",
+    "source_bbox": [
+      449,
+      181,
+      836,
+      620
+    ],
+    "source_center": [
+      625.479,
+      411.06
+    ],
+    "size": [
+      387,
+      439
+    ],
+    "opaque_area": 105972
+  },
+  {
+    "name": "part_013",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_013.png",
+    "source_bbox": [
+      863,
+      390,
+      905,
+      429
+    ],
+    "source_center": [
+      883.713,
+      409.262
+    ],
+    "size": [
+      42,
+      39
+    ],
+    "opaque_area": 816
+  },
+  {
+    "name": "part_014",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_014.png",
+    "source_bbox": [
+      924,
+      413,
+      980,
+      466
+    ],
+    "source_center": [
+      951.789,
+      440.353
+    ],
+    "size": [
+      56,
+      53
+    ],
+    "opaque_area": 1580
+  },
+  {
+    "name": "part_015",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_015.png",
+    "source_bbox": [
+      33,
+      363,
+      427,
+      551
+    ],
+    "source_center": [
+      233.909,
+      456.338
+    ],
+    "size": [
+      394,
+      188
+    ],
+    "opaque_area": 54876
+  },
+  {
+    "name": "part_016",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_016.png",
+    "source_bbox": [
+      1007,
+      457,
+      1061,
+      510
+    ],
+    "source_center": [
+      1033.274,
+      484.908
+    ],
+    "size": [
+      54,
+      53
+    ],
+    "opaque_area": 1530
+  },
+  {
+    "name": "part_017",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_017.png",
+    "source_bbox": [
+      1094,
+      460,
+      1171,
+      521
+    ],
+    "source_center": [
+      1127.592,
+      491.182
+    ],
+    "size": [
+      77,
+      61
+    ],
+    "opaque_area": 2050
+  },
+  {
+    "name": "part_018",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_018.png",
+    "source_bbox": [
+      1156,
+      522,
+      1214,
+      575
+    ],
+    "source_center": [
+      1184.151,
+      549.211
+    ],
+    "size": [
+      58,
+      53
+    ],
+    "opaque_area": 1680
+  },
+  {
+    "name": "part_019",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_019.png",
+    "source_bbox": [
+      1243,
+      433,
+      1336,
+      601
+    ],
+    "source_center": [
+      1293.974,
+      518.927
+    ],
+    "size": [
+      93,
+      168
+    ],
+    "opaque_area": 8890
+  },
+  {
+    "name": "part_020",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_020.png",
+    "source_bbox": [
+      1371,
+      433,
+      1469,
+      583
+    ],
+    "source_center": [
+      1426.166,
+      512.077
+    ],
+    "size": [
+      98,
+      150
+    ],
+    "opaque_area": 8527
+  },
+  {
+    "name": "part_021",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_021.png",
+    "source_bbox": [
+      403,
+      536,
+      481,
+      603
+    ],
+    "source_center": [
+      442.443,
+      571.297
+    ],
+    "size": [
+      78,
+      67
+    ],
+    "opaque_area": 2259
+  },
+  {
+    "name": "part_022",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_022.png",
+    "source_bbox": [
+      27,
+      537,
+      257,
+      713
+    ],
+    "source_center": [
+      133.073,
+      631.665
+    ],
+    "size": [
+      230,
+      176
+    ],
+    "opaque_area": 22642
+  },
+  {
+    "name": "part_023",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_023.png",
+    "source_bbox": [
+      301,
+      603,
+      335,
+      643
+    ],
+    "source_center": [
+      316.939,
+      622.847
+    ],
+    "size": [
+      34,
+      40
+    ],
+    "opaque_area": 635
+  },
+  {
+    "name": "part_024",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_024.png",
+    "source_bbox": [
+      324,
+      578,
+      374,
+      644
+    ],
+    "source_center": [
+      348.22,
+      611.93
+    ],
+    "size": [
+      50,
+      66
+    ],
+    "opaque_area": 1596
+  },
+  {
+    "name": "part_025",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_025.png",
+    "source_bbox": [
+      522,
+      597,
+      561,
+      643
+    ],
+    "source_center": [
+      541.069,
+      619.462
+    ],
+    "size": [
+      39,
+      46
+    ],
+    "opaque_area": 682
+  },
+  {
+    "name": "part_026",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_026.png",
+    "source_bbox": [
+      542,
+      625,
+      570,
+      652
+    ],
+    "source_center": [
+      555.629,
+      638.284
+    ],
+    "size": [
+      28,
+      27
+    ],
+    "opaque_area": 299
+  },
+  {
+    "name": "part_027",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_027.png",
+    "source_bbox": [
+      680,
+      503,
+      1166,
+      758
+    ],
+    "source_center": [
+      925.973,
+      636.536
+    ],
+    "size": [
+      486,
+      255
+    ],
+    "opaque_area": 82355
+  },
+  {
+    "name": "part_028",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_028.png",
+    "source_bbox": [
+      253,
+      648,
+      311,
+      702
+    ],
+    "source_center": [
+      281.433,
+      675.849
+    ],
+    "size": [
+      58,
+      54
+    ],
+    "opaque_area": 1724
+  },
+  {
+    "name": "part_029",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_029.png",
+    "source_bbox": [
+      586,
+      642,
+      645,
+      712
+    ],
+    "source_center": [
+      614.018,
+      678.878
+    ],
+    "size": [
+      59,
+      70
+    ],
+    "opaque_area": 1956
+  },
+  {
+    "name": "part_030",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_030.png",
+    "source_bbox": [
+      313,
+      622,
+      584,
+      864
+    ],
+    "source_center": [
+      447.875,
+      758.568
+    ],
+    "size": [
+      271,
+      242
+    ],
+    "opaque_area": 32647
+  },
+  {
+    "name": "part_031",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_031.png",
+    "source_bbox": [
+      1141,
+      597,
+      1300,
+      855
+    ],
+    "source_center": [
+      1229.516,
+      753.49
+    ],
+    "size": [
+      159,
+      258
+    ],
+    "opaque_area": 13389
+  },
+  {
+    "name": "part_032",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_032.png",
+    "source_bbox": [
+      1322,
+      595,
+      1515,
+      858
+    ],
+    "source_center": [
+      1413.082,
+      757.993
+    ],
+    "size": [
+      193,
+      263
+    ],
+    "opaque_area": 15823
+  },
+  {
+    "name": "part_033",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_033.png",
+    "source_bbox": [
+      32,
+      723,
+      224,
+      984
+    ],
+    "source_center": [
+      123.212,
+      880.374
+    ],
+    "size": [
+      192,
+      261
+    ],
+    "opaque_area": 16205
+  },
+  {
+    "name": "part_034",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_034.png",
+    "source_bbox": [
+      206,
+      793,
+      409,
+      985
+    ],
+    "source_center": [
+      298.449,
+      907.202
+    ],
+    "size": [
+      203,
+      192
+    ],
+    "opaque_area": 10927
+  },
+  {
+    "name": "part_035",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_035.png",
+    "source_bbox": [
+      547,
+      731,
+      771,
+      990
+    ],
+    "source_center": [
+      668.272,
+      894.095
+    ],
+    "size": [
+      224,
+      259
+    ],
+    "opaque_area": 20535
+  },
+  {
+    "name": "part_036",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_036.png",
+    "source_bbox": [
+      805,
+      783,
+      903,
+      988
+    ],
+    "source_center": [
+      849.548,
+      894.522
+    ],
+    "size": [
+      98,
+      205
+    ],
+    "opaque_area": 6959
+  },
+  {
+    "name": "part_037",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_037.png",
+    "source_bbox": [
+      936,
+      723,
+      1182,
+      992
+    ],
+    "source_center": [
+      1059.201,
+      899.485
+    ],
+    "size": [
+      246,
+      269
+    ],
+    "opaque_area": 25425
+  },
+  {
+    "name": "part_038",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_038.png",
+    "source_bbox": [
+      1218,
+      864,
+      1322,
+      991
+    ],
+    "source_center": [
+      1269.297,
+      932.684
+    ],
+    "size": [
+      104,
+      127
+    ],
+    "opaque_area": 5057
+  },
+  {
+    "name": "part_039",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_039.png",
+    "source_bbox": [
+      1323,
+      873,
+      1467,
+      989
+    ],
+    "source_center": [
+      1398.07,
+      935.414
+    ],
+    "size": [
+      144,
+      116
+    ],
+    "opaque_area": 6236
+  },
+  {
+    "name": "part_040",
+    "path": "source_assets/monsters/ai_cutout_parts/the_legacy_green/part_040.png",
+    "source_bbox": [
+      404,
+      903,
+      525,
+      988
+    ],
+    "source_center": [
+      470.545,
+      955.244
+    ],
+    "size": [
+      121,
+      85
+    ],
+    "opaque_area": 3601
+  }
+]

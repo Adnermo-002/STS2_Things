@@ -1,0 +1,320 @@
+bowlbug_progenitor.png
+size: 511,2621
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ai_membrane_front
+  rotate: false
+  xy: 286, 1296
+  size: 156, 218
+  orig: 156, 218
+  offset: 0, 0
+  index: -1
+ai_membrane_front_mid
+  rotate: false
+  xy: 128, 1296
+  size: 148, 226
+  orig: 148, 226
+  offset: 0, 0
+  index: -1
+ai_membrane_mid
+  rotate: false
+  xy: 10, 1296
+  size: 108, 228
+  orig: 108, 228
+  offset: 0, 0
+  index: -1
+ai_membrane_rear
+  rotate: false
+  xy: 310, 1054
+  size: 120, 228
+  orig: 120, 228
+  offset: 0, 0
+  index: -1
+ai_egg_sac_complete
+  rotate: false
+  xy: 10, 1054
+  size: 290, 232
+  orig: 290, 232
+  offset: 0, 0
+  index: -1
+ai_front_shell_with_two_gems
+  rotate: false
+  xy: 10, 10
+  size: 226, 390
+  orig: 226, 390
+  offset: 0, 0
+  index: -1
+ai_mid_shell
+  rotate: false
+  xy: 246, 10
+  size: 166, 370
+  orig: 166, 370
+  offset: 0, 0
+  index: -1
+ai_rear_upper_shell_with_gem
+  rotate: false
+  xy: 152, 410
+  size: 198, 308
+  orig: 198, 308
+  offset: 0, 0
+  index: -1
+ai_tail_shell
+  rotate: false
+  xy: 10, 410
+  size: 132, 356
+  orig: 132, 356
+  offset: 0, 0
+  index: -1
+ai_head_shell_complete
+  rotate: false
+  xy: 10, 776
+  size: 260, 268
+  orig: 260, 268
+  offset: 0, 0
+  index: -1
+ai_main_eye
+  rotate: false
+  xy: 172, 2150
+  size: 94, 98
+  orig: 94, 98
+  offset: 0, 0
+  index: -1
+ai_mandible_upper
+  rotate: false
+  xy: 10, 2028
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+ai_mandible_lower
+  rotate: false
+  xy: 276, 2150
+  size: 142, 96
+  orig: 142, 96
+  offset: 0, 0
+  index: -1
+ai_crest_leaf_01_back
+  rotate: false
+  xy: 106, 1534
+  size: 76, 166
+  orig: 76, 166
+  offset: 0, 0
+  index: -1
+ai_crest_leaf_02
+  rotate: false
+  xy: 192, 1534
+  size: 76, 166
+  orig: 76, 166
+  offset: 0, 0
+  index: -1
+ai_crest_leaf_03
+  rotate: false
+  xy: 10, 1534
+  size: 86, 166
+  orig: 86, 166
+  offset: 0, 0
+  index: -1
+ai_crest_leaf_04
+  rotate: false
+  xy: 10, 1710
+  size: 76, 156
+  orig: 76, 156
+  offset: 0, 0
+  index: -1
+ai_crest_leaf_05
+  rotate: false
+  xy: 96, 1710
+  size: 66, 150
+  orig: 66, 150
+  offset: 0, 0
+  index: -1
+ai_crest_leaf_06_front
+  rotate: false
+  xy: 154, 1876
+  size: 62, 142
+  orig: 62, 142
+  offset: 0, 0
+  index: -1
+ai_gem_mid_shell
+  rotate: false
+  xy: 160, 2258
+  size: 90, 94
+  orig: 90, 94
+  offset: 0, 0
+  index: -1
+ai_gem_rear_crown
+  rotate: false
+  xy: 132, 2028
+  size: 104, 106
+  orig: 104, 106
+  offset: 0, 0
+  index: -1
+ai_gem_head_crown
+  rotate: false
+  xy: 92, 2546
+  size: 68, 68
+  orig: 68, 68
+  offset: 0, 0
+  index: -1
+ai_gem_head_brow
+  rotate: false
+  xy: 298, 2546
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+ai_gem_crest_front
+  rotate: false
+  xy: 10, 2546
+  size: 72, 70
+  orig: 72, 70
+  offset: 0, 0
+  index: -1
+ai_gem_tail
+  rotate: false
+  xy: 364, 2546
+  size: 54, 54
+  orig: 54, 54
+  offset: 0, 0
+  index: -1
+ai_front_leg_upper_root
+  rotate: false
+  xy: 10, 1876
+  size: 134, 142
+  orig: 134, 142
+  offset: 0, 0
+  index: -1
+ai_mid_leg_a_upper_root
+  rotate: false
+  xy: 324, 1876
+  size: 134, 118
+  orig: 134, 118
+  offset: 0, 0
+  index: -1
+ai_mid_leg_b_upper_root
+  rotate: false
+  xy: 172, 1710
+  size: 168, 148
+  orig: 168, 148
+  offset: 0, 0
+  index: -1
+ai_rear_leg_a_upper_root
+  rotate: false
+  xy: 278, 1534
+  size: 174, 156
+  orig: 174, 156
+  offset: 0, 0
+  index: -1
+ai_rear_leg_b_upper_root
+  rotate: false
+  xy: 350, 1710
+  size: 156, 142
+  orig: 156, 142
+  offset: 0, 0
+  index: -1
+ai_front_leg_middle
+  rotate: false
+  xy: 226, 1876
+  size: 88, 122
+  orig: 88, 122
+  offset: 0, 0
+  index: -1
+ai_mid_leg_a_middle
+  rotate: false
+  xy: 236, 2458
+  size: 120, 76
+  orig: 120, 76
+  offset: 0, 0
+  index: -1
+ai_mid_leg_b_middle
+  rotate: false
+  xy: 366, 2458
+  size: 126, 70
+  orig: 126, 70
+  offset: 0, 0
+  index: -1
+ai_rear_leg_a_middle
+  rotate: false
+  xy: 10, 2458
+  size: 126, 78
+  orig: 126, 78
+  offset: 0, 0
+  index: -1
+ai_rear_leg_b_middle
+  rotate: false
+  xy: 170, 2546
+  size: 118, 66
+  orig: 118, 66
+  offset: 0, 0
+  index: -1
+ai_front_leg_distal_foot
+  rotate: false
+  xy: 202, 2364
+  size: 144, 82
+  orig: 144, 82
+  offset: 0, 0
+  index: -1
+ai_mid_leg_a_distal_foot
+  rotate: false
+  xy: 260, 2258
+  size: 148, 90
+  orig: 148, 90
+  offset: 0, 0
+  index: -1
+ai_mid_leg_b_distal_foot
+  rotate: false
+  xy: 10, 2150
+  size: 152, 98
+  orig: 152, 98
+  offset: 0, 0
+  index: -1
+ai_rear_leg_a_distal_foot
+  rotate: false
+  xy: 246, 2028
+  size: 154, 104
+  orig: 154, 104
+  offset: 0, 0
+  index: -1
+ai_rear_leg_b_distal_foot
+  rotate: false
+  xy: 10, 2258
+  size: 140, 96
+  orig: 140, 96
+  offset: 0, 0
+  index: -1
+ai_socket_front_leg
+  rotate: false
+  xy: 10, 2364
+  size: 86, 84
+  orig: 86, 84
+  offset: 0, 0
+  index: -1
+ai_socket_mid_leg_a
+  rotate: false
+  xy: 356, 2364
+  size: 82, 80
+  orig: 82, 80
+  offset: 0, 0
+  index: -1
+ai_socket_mid_leg_b
+  rotate: false
+  xy: 106, 2364
+  size: 86, 84
+  orig: 86, 84
+  offset: 0, 0
+  index: -1
+ai_socket_rear_leg_a
+  rotate: false
+  xy: 418, 2258
+  size: 88, 84
+  orig: 88, 84
+  offset: 0, 0
+  index: -1
+ai_socket_rear_leg_b
+  rotate: false
+  xy: 146, 2458
+  size: 80, 78
+  orig: 80, 78
+  offset: 0, 0
+  index: -1

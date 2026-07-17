@@ -1,0 +1,990 @@
+[
+  {
+    "name": "part_000",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_000.png",
+    "source_bbox": [
+      19,
+      17,
+      539,
+      384
+    ],
+    "source_center": [
+      269.795,
+      200.098
+    ],
+    "size": [
+      520,
+      367
+    ],
+    "opaque_area": 138219
+  },
+  {
+    "name": "part_001",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_001.png",
+    "source_bbox": [
+      1149,
+      17,
+      1472,
+      346
+    ],
+    "source_center": [
+      1326.622,
+      203.805
+    ],
+    "size": [
+      323,
+      329
+    ],
+    "opaque_area": 61012
+  },
+  {
+    "name": "part_002",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_002.png",
+    "source_bbox": [
+      538,
+      72,
+      935,
+      375
+    ],
+    "source_center": [
+      729.694,
+      220.111
+    ],
+    "size": [
+      397,
+      303
+    ],
+    "opaque_area": 84514
+  },
+  {
+    "name": "part_003",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_003.png",
+    "source_bbox": [
+      921,
+      103,
+      1135,
+      369
+    ],
+    "source_center": [
+      1027.24,
+      230.45
+    ],
+    "size": [
+      214,
+      266
+    ],
+    "opaque_area": 32771
+  },
+  {
+    "name": "part_004",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_004.png",
+    "source_bbox": [
+      687,
+      398,
+      829,
+      514
+    ],
+    "source_center": [
+      759.367,
+      455.543
+    ],
+    "size": [
+      142,
+      116
+    ],
+    "opaque_area": 8044
+  },
+  {
+    "name": "part_005",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_005.png",
+    "source_bbox": [
+      1070,
+      405,
+      1155,
+      490
+    ],
+    "source_center": [
+      1111.748,
+      447.025
+    ],
+    "size": [
+      85,
+      85
+    ],
+    "opaque_area": 4706
+  },
+  {
+    "name": "part_006",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_006.png",
+    "source_bbox": [
+      1200,
+      400,
+      1280,
+      480
+    ],
+    "source_center": [
+      1239.546,
+      439.536
+    ],
+    "size": [
+      80,
+      80
+    ],
+    "opaque_area": 4062
+  },
+  {
+    "name": "part_007",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_007.png",
+    "source_bbox": [
+      1321,
+      408,
+      1381,
+      467
+    ],
+    "source_center": [
+      1350.5,
+      436.874
+    ],
+    "size": [
+      60,
+      59
+    ],
+    "opaque_area": 2096
+  },
+  {
+    "name": "part_008",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_008.png",
+    "source_bbox": [
+      1412,
+      409,
+      1464,
+      462
+    ],
+    "source_center": [
+      1437.473,
+      434.772
+    ],
+    "size": [
+      52,
+      53
+    ],
+    "opaque_area": 1590
+  },
+  {
+    "name": "part_009",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_009.png",
+    "source_bbox": [
+      63,
+      414,
+      235,
+      511
+    ],
+    "source_center": [
+      150.583,
+      459.046
+    ],
+    "size": [
+      172,
+      97
+    ],
+    "opaque_area": 8880
+  },
+  {
+    "name": "part_010",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_010.png",
+    "source_bbox": [
+      493,
+      388,
+      650,
+      613
+    ],
+    "source_center": [
+      573.876,
+      500.642
+    ],
+    "size": [
+      157,
+      225
+    ],
+    "opaque_area": 16551
+  },
+  {
+    "name": "part_011",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_011.png",
+    "source_bbox": [
+      238,
+      486,
+      442,
+      598
+    ],
+    "source_center": [
+      345.575,
+      534.664
+    ],
+    "size": [
+      204,
+      112
+    ],
+    "opaque_area": 10216
+  },
+  {
+    "name": "part_012",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_012.png",
+    "source_bbox": [
+      819,
+      455,
+      935,
+      624
+    ],
+    "source_center": [
+      862.982,
+      544.744
+    ],
+    "size": [
+      116,
+      169
+    ],
+    "opaque_area": 6795
+  },
+  {
+    "name": "part_013",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_013.png",
+    "source_bbox": [
+      1078,
+      502,
+      1154,
+      578
+    ],
+    "source_center": [
+      1115.463,
+      539.706
+    ],
+    "size": [
+      76,
+      76
+    ],
+    "opaque_area": 3684
+  },
+  {
+    "name": "part_014",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_014.png",
+    "source_bbox": [
+      1208,
+      495,
+      1279,
+      566
+    ],
+    "source_center": [
+      1243.104,
+      530.126
+    ],
+    "size": [
+      71,
+      71
+    ],
+    "opaque_area": 3061
+  },
+  {
+    "name": "part_015",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_015.png",
+    "source_bbox": [
+      1327,
+      499,
+      1381,
+      554
+    ],
+    "source_center": [
+      1353.773,
+      525.938
+    ],
+    "size": [
+      54,
+      55
+    ],
+    "opaque_area": 1685
+  },
+  {
+    "name": "part_016",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_016.png",
+    "source_bbox": [
+      1418,
+      499,
+      1469,
+      549
+    ],
+    "source_center": [
+      1442.919,
+      523.468
+    ],
+    "size": [
+      51,
+      50
+    ],
+    "opaque_area": 1418
+  },
+  {
+    "name": "part_017",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_017.png",
+    "source_bbox": [
+      49,
+      535,
+      214,
+      626
+    ],
+    "source_center": [
+      135.616,
+      583.004
+    ],
+    "size": [
+      165,
+      91
+    ],
+    "opaque_area": 7993
+  },
+  {
+    "name": "part_018",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_018.png",
+    "source_bbox": [
+      1157,
+      611,
+      1265,
+      684
+    ],
+    "source_center": [
+      1210.663,
+      646.993
+    ],
+    "size": [
+      108,
+      73
+    ],
+    "opaque_area": 4886
+  },
+  {
+    "name": "part_019",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_019.png",
+    "source_bbox": [
+      1282,
+      624,
+      1392,
+      670
+    ],
+    "source_center": [
+      1334.793,
+      646.157
+    ],
+    "size": [
+      110,
+      46
+    ],
+    "opaque_area": 2556
+  },
+  {
+    "name": "part_020",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_020.png",
+    "source_bbox": [
+      1046,
+      610,
+      1156,
+      691
+    ],
+    "source_center": [
+      1100.693,
+      650.197
+    ],
+    "size": [
+      110,
+      81
+    ],
+    "opaque_area": 5292
+  },
+  {
+    "name": "part_021",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_021.png",
+    "source_bbox": [
+      1400,
+      627,
+      1505,
+      672
+    ],
+    "source_center": [
+      1450.035,
+      648.996
+    ],
+    "size": [
+      105,
+      45
+    ],
+    "opaque_area": 2284
+  },
+  {
+    "name": "part_022",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_022.png",
+    "source_bbox": [
+      1033,
+      690,
+      1142,
+      770
+    ],
+    "source_center": [
+      1087.067,
+      729.323
+    ],
+    "size": [
+      109,
+      80
+    ],
+    "opaque_area": 5251
+  },
+  {
+    "name": "part_023",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_023.png",
+    "source_bbox": [
+      1153,
+      683,
+      1262,
+      755
+    ],
+    "source_center": [
+      1206.97,
+      718.661
+    ],
+    "size": [
+      109,
+      72
+    ],
+    "opaque_area": 5001
+  },
+  {
+    "name": "part_024",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_024.png",
+    "source_bbox": [
+      1283,
+      689,
+      1385,
+      733
+    ],
+    "source_center": [
+      1332.16,
+      710.193
+    ],
+    "size": [
+      102,
+      44
+    ],
+    "opaque_area": 2233
+  },
+  {
+    "name": "part_025",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_025.png",
+    "source_bbox": [
+      1397,
+      690,
+      1498,
+      733
+    ],
+    "source_center": [
+      1445.814,
+      711.285
+    ],
+    "size": [
+      101,
+      43
+    ],
+    "opaque_area": 2148
+  },
+  {
+    "name": "part_026",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_026.png",
+    "source_bbox": [
+      97,
+      649,
+      229,
+      901
+    ],
+    "source_center": [
+      173.492,
+      757.145
+    ],
+    "size": [
+      132,
+      252
+    ],
+    "opaque_area": 13867
+  },
+  {
+    "name": "part_027",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_027.png",
+    "source_bbox": [
+      326,
+      643,
+      466,
+      902
+    ],
+    "source_center": [
+      408.383,
+      753.835
+    ],
+    "size": [
+      140,
+      259
+    ],
+    "opaque_area": 14473
+  },
+  {
+    "name": "part_028",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_028.png",
+    "source_bbox": [
+      561,
+      653,
+      725,
+      907
+    ],
+    "source_center": [
+      655.189,
+      761.146
+    ],
+    "size": [
+      164,
+      254
+    ],
+    "opaque_area": 14648
+  },
+  {
+    "name": "part_029",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_029.png",
+    "source_bbox": [
+      800,
+      656,
+      922,
+      914
+    ],
+    "source_center": [
+      867.384,
+      764.043
+    ],
+    "size": [
+      122,
+      258
+    ],
+    "opaque_area": 13063
+  },
+  {
+    "name": "part_030",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_030.png",
+    "source_bbox": [
+      1149,
+      756,
+      1258,
+      827
+    ],
+    "source_center": [
+      1203.105,
+      790.907
+    ],
+    "size": [
+      109,
+      71
+    ],
+    "opaque_area": 4869
+  },
+  {
+    "name": "part_031",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_031.png",
+    "source_bbox": [
+      1282,
+      757,
+      1379,
+      798
+    ],
+    "source_center": [
+      1328.757,
+      776.79
+    ],
+    "size": [
+      97,
+      41
+    ],
+    "opaque_area": 1993
+  },
+  {
+    "name": "part_032",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_032.png",
+    "source_bbox": [
+      1397,
+      756,
+      1489,
+      796
+    ],
+    "source_center": [
+      1441.112,
+      775.887
+    ],
+    "size": [
+      92,
+      40
+    ],
+    "opaque_area": 1811
+  },
+  {
+    "name": "part_033",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_033.png",
+    "source_bbox": [
+      1022,
+      768,
+      1130,
+      846
+    ],
+    "source_center": [
+      1075.326,
+      806.282
+    ],
+    "size": [
+      108,
+      78
+    ],
+    "opaque_area": 5066
+  },
+  {
+    "name": "part_034",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_034.png",
+    "source_bbox": [
+      1283,
+      817,
+      1371,
+      856
+    ],
+    "source_center": [
+      1325.407,
+      835.979
+    ],
+    "size": [
+      88,
+      39
+    ],
+    "opaque_area": 1675
+  },
+  {
+    "name": "part_035",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_035.png",
+    "source_bbox": [
+      1394,
+      812,
+      1477,
+      850
+    ],
+    "source_center": [
+      1433.873,
+      831.085
+    ],
+    "size": [
+      83,
+      38
+    ],
+    "opaque_area": 1515
+  },
+  {
+    "name": "part_036",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_036.png",
+    "source_bbox": [
+      1020,
+      845,
+      1122,
+      915
+    ],
+    "source_center": [
+      1070.652,
+      880.03
+    ],
+    "size": [
+      102,
+      70
+    ],
+    "opaque_area": 4380
+  },
+  {
+    "name": "part_037",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_037.png",
+    "source_bbox": [
+      1141,
+      831,
+      1247,
+      898
+    ],
+    "source_center": [
+      1193.795,
+      864.232
+    ],
+    "size": [
+      106,
+      67
+    ],
+    "opaque_area": 4577
+  },
+  {
+    "name": "part_038",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_038.png",
+    "source_bbox": [
+      1385,
+      866,
+      1462,
+      903
+    ],
+    "source_center": [
+      1421.841,
+      884.076
+    ],
+    "size": [
+      77,
+      37
+    ],
+    "opaque_area": 1349
+  },
+  {
+    "name": "part_039",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_039.png",
+    "source_bbox": [
+      1128,
+      902,
+      1221,
+      963
+    ],
+    "source_center": [
+      1174.102,
+      932.387
+    ],
+    "size": [
+      93,
+      61
+    ],
+    "opaque_area": 3474
+  },
+  {
+    "name": "part_040",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_040.png",
+    "source_bbox": [
+      1281,
+      874,
+      1363,
+      911
+    ],
+    "source_center": [
+      1320.367,
+      892.268
+    ],
+    "size": [
+      82,
+      37
+    ],
+    "opaque_area": 1475
+  },
+  {
+    "name": "part_041",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_041.png",
+    "source_bbox": [
+      98,
+      917,
+      163,
+      983
+    ],
+    "source_center": [
+      130.201,
+      949.345
+    ],
+    "size": [
+      65,
+      66
+    ],
+    "opaque_area": 2584
+  },
+  {
+    "name": "part_042",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_042.png",
+    "source_bbox": [
+      180,
+      921,
+      234,
+      975
+    ],
+    "source_center": [
+      206.8,
+      947.539
+    ],
+    "size": [
+      54,
+      54
+    ],
+    "opaque_area": 1682
+  },
+  {
+    "name": "part_043",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_043.png",
+    "source_bbox": [
+      336,
+      918,
+      400,
+      983
+    ],
+    "source_center": [
+      367.651,
+      950.01
+    ],
+    "size": [
+      64,
+      65
+    ],
+    "opaque_area": 2538
+  },
+  {
+    "name": "part_044",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_044.png",
+    "source_bbox": [
+      421,
+      922,
+      474,
+      976
+    ],
+    "source_center": [
+      446.868,
+      948.475
+    ],
+    "size": [
+      53,
+      54
+    ],
+    "opaque_area": 1624
+  },
+  {
+    "name": "part_045",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_045.png",
+    "source_bbox": [
+      607,
+      917,
+      671,
+      983
+    ],
+    "source_center": [
+      638.689,
+      949.663
+    ],
+    "size": [
+      64,
+      66
+    ],
+    "opaque_area": 2561
+  },
+  {
+    "name": "part_046",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_046.png",
+    "source_bbox": [
+      688,
+      921,
+      740,
+      974
+    ],
+    "source_center": [
+      713.571,
+      947.123
+    ],
+    "size": [
+      52,
+      53
+    ],
+    "opaque_area": 1595
+  },
+  {
+    "name": "part_047",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_047.png",
+    "source_bbox": [
+      842,
+      923,
+      897,
+      978
+    ],
+    "source_center": [
+      869.144,
+      950.281
+    ],
+    "size": [
+      55,
+      55
+    ],
+    "opaque_area": 1763
+  },
+  {
+    "name": "part_048",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_048.png",
+    "source_bbox": [
+      909,
+      926,
+      957,
+      974
+    ],
+    "source_center": [
+      932.719,
+      949.563
+    ],
+    "size": [
+      48,
+      48
+    ],
+    "opaque_area": 1257
+  },
+  {
+    "name": "part_049",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_049.png",
+    "source_bbox": [
+      1020,
+      917,
+      1113,
+      980
+    ],
+    "source_center": [
+      1065.785,
+      948.452
+    ],
+    "size": [
+      93,
+      63
+    ],
+    "opaque_area": 3472
+  },
+  {
+    "name": "part_050",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_050.png",
+    "source_bbox": [
+      1269,
+      928,
+      1347,
+      963
+    ],
+    "source_center": [
+      1306.385,
+      944.743
+    ],
+    "size": [
+      78,
+      35
+    ],
+    "opaque_area": 1287
+  },
+  {
+    "name": "part_051",
+    "path": "source_assets/monsters/ai_cutout_parts/scale_beetle/part_051.png",
+    "source_bbox": [
+      1370,
+      922,
+      1445,
+      957
+    ],
+    "source_center": [
+      1406.012,
+      939.114
+    ],
+    "size": [
+      75,
+      35
+    ],
+    "opaque_area": 1204
+  }
+]

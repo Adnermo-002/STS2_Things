@@ -14,7 +14,7 @@ using static MegaCrit.Sts2.Core.Entities.Cards.PileType;
 
 namespace STS2_Things.Relics;
 
-public class CurseRemover : RelicModel
+public sealed class CurseRemover : RelicModel
 {
     private int _timesUsed;
 
@@ -67,9 +67,9 @@ public class CurseRemover : RelicModel
     }
 
     // 给诅咒附上 Disperse（虚无）
-    public override async Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? source)
+    public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? source)
     {
-        if (IsUsedUp) return;
+        if (IsUsedUp) return Task.CompletedTask;
 
         var pile = card.Pile;
         if (pile != null && pile.Type == Deck && card.Owner == Owner && card.Type == CardType.Curse)
@@ -77,5 +77,6 @@ public class CurseRemover : RelicModel
             CardCmd.Enchant<Disperse>(card, 1m);
             TimesUsed++;
         }
+        return Task.CompletedTask;
     }
 }

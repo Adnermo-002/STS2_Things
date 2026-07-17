@@ -1,0 +1,572 @@
+[
+  {
+    "name": "hooded_head",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/hooded_head.png",
+    "grid": [
+      0,
+      0
+    ],
+    "source_bbox": [
+      83,
+      98,
+      310,
+      404
+    ],
+    "size": [
+      227,
+      306
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "scarf",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/scarf.png",
+    "grid": [
+      0,
+      1
+    ],
+    "source_bbox": [
+      367,
+      126,
+      602,
+      400
+    ],
+    "size": [
+      235,
+      274
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "torso_harness",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/torso_harness.png",
+    "grid": [
+      0,
+      2
+    ],
+    "source_bbox": [
+      669,
+      108,
+      883,
+      417
+    ],
+    "size": [
+      214,
+      309
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "pelvis_skirt",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/pelvis_skirt.png",
+    "grid": [
+      0,
+      3
+    ],
+    "source_bbox": [
+      940,
+      124,
+      1186,
+      411
+    ],
+    "size": [
+      246,
+      287
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "upper_back_cloak",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/upper_back_cloak.png",
+    "grid": [
+      1,
+      0
+    ],
+    "source_bbox": [
+      53,
+      476,
+      311,
+      806
+    ],
+    "size": [
+      258,
+      330
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "cloak_tail_near",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/cloak_tail_near.png",
+    "grid": [
+      1,
+      1
+    ],
+    "source_bbox": [
+      363,
+      458,
+      611,
+      828
+    ],
+    "size": [
+      248,
+      370
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "cloak_tail_far",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/cloak_tail_far.png",
+    "grid": [
+      1,
+      2
+    ],
+    "source_bbox": [
+      671,
+      456,
+      886,
+      830
+    ],
+    "size": [
+      215,
+      374
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "loot_sack",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/loot_sack.png",
+    "grid": [
+      1,
+      3
+    ],
+    "source_bbox": [
+      958,
+      470,
+      1192,
+      809
+    ],
+    "size": [
+      234,
+      339
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "sack_strap_and_pouch",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/sack_strap_and_pouch.png",
+    "grid": [
+      2,
+      0
+    ],
+    "source_bbox": [
+      97,
+      842,
+      310,
+      1168
+    ],
+    "size": [
+      213,
+      326
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "belt_and_pouch",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/belt_and_pouch.png",
+    "grid": [
+      2,
+      1
+    ],
+    "source_bbox": [
+      353,
+      967,
+      621,
+      1132
+    ],
+    "size": [
+      268,
+      165
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "near_shoulder_pauldron",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/near_shoulder_pauldron.png",
+    "grid": [
+      2,
+      2
+    ],
+    "source_bbox": [
+      689,
+      931,
+      889,
+      1136
+    ],
+    "size": [
+      200,
+      205
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "far_shoulder_pauldron",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_shoulder_pauldron.png",
+    "grid": [
+      2,
+      3
+    ],
+    "source_bbox": [
+      972,
+      937,
+      1162,
+      1134
+    ],
+    "size": [
+      190,
+      197
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/body_sheet.png"
+  },
+  {
+    "name": "near_upper_arm",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/near_upper_arm.png",
+    "grid": [
+      0,
+      0
+    ],
+    "source_bbox": [
+      78,
+      51,
+      292,
+      313
+    ],
+    "size": [
+      214,
+      262
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "near_forearm_bracer",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/near_forearm_bracer.png",
+    "grid": [
+      0,
+      1
+    ],
+    "source_bbox": [
+      369,
+      82,
+      604,
+      298
+    ],
+    "size": [
+      235,
+      216
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "near_dagger_hand",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/near_dagger_hand.png",
+    "grid": [
+      0,
+      2
+    ],
+    "source_bbox": [
+      680,
+      85,
+      883,
+      288
+    ],
+    "size": [
+      203,
+      203
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "dagger",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/dagger.png",
+    "grid": [
+      0,
+      3
+    ],
+    "source_bbox": [
+      959,
+      50,
+      1179,
+      311
+    ],
+    "size": [
+      220,
+      261
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "far_upper_arm",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_upper_arm.png",
+    "grid": [
+      1,
+      0
+    ],
+    "source_bbox": [
+      62,
+      313,
+      274,
+      609
+    ],
+    "size": [
+      212,
+      296
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "far_forearm_bracer",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_forearm_bracer.png",
+    "grid": [
+      1,
+      1
+    ],
+    "source_bbox": [
+      359,
+      392,
+      593,
+      592
+    ],
+    "size": [
+      234,
+      200
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "far_strap_hand",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_strap_hand.png",
+    "grid": [
+      1,
+      2
+    ],
+    "source_bbox": [
+      681,
+      398,
+      894,
+      561
+    ],
+    "size": [
+      213,
+      163
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "far_elbow_connector",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_elbow_connector.png",
+    "grid": [
+      1,
+      3
+    ],
+    "source_bbox": [
+      1021,
+      423,
+      1141,
+      553
+    ],
+    "size": [
+      120,
+      130
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "near_thigh",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/near_thigh.png",
+    "grid": [
+      2,
+      0
+    ],
+    "source_bbox": [
+      65,
+      635,
+      282,
+      940
+    ],
+    "size": [
+      217,
+      305
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "near_knee_plate",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/near_knee_plate.png",
+    "grid": [
+      2,
+      1
+    ],
+    "source_bbox": [
+      406,
+      679,
+      540,
+      849
+    ],
+    "size": [
+      134,
+      170
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "near_shin",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/near_shin.png",
+    "grid": [
+      2,
+      2
+    ],
+    "source_bbox": [
+      694,
+      643,
+      940,
+      885
+    ],
+    "size": [
+      246,
+      242
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "near_boot",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/near_boot.png",
+    "grid": [
+      2,
+      3
+    ],
+    "source_bbox": [
+      940,
+      643,
+      1147,
+      887
+    ],
+    "size": [
+      207,
+      244
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "far_thigh",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_thigh.png",
+    "grid": [
+      3,
+      0
+    ],
+    "source_bbox": [
+      56,
+      940,
+      266,
+      1188
+    ],
+    "size": [
+      210,
+      248
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "far_knee_plate",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_knee_plate.png",
+    "grid": [
+      3,
+      1
+    ],
+    "source_bbox": [
+      390,
+      973,
+      517,
+      1140
+    ],
+    "size": [
+      127,
+      167
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "far_shin",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_shin.png",
+    "grid": [
+      3,
+      2
+    ],
+    "source_bbox": [
+      685,
+      940,
+      799,
+      1178
+    ],
+    "size": [
+      114,
+      238
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "far_boot",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_boot.png",
+    "grid": [
+      3,
+      3
+    ],
+    "source_bbox": [
+      968,
+      950,
+      1175,
+      1193
+    ],
+    "size": [
+      207,
+      243
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/limbs_sheet.png"
+  },
+  {
+    "name": "near_upper_arm_sleeve",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/near_upper_arm_sleeve.png",
+    "grid": [
+      0,
+      0
+    ],
+    "source_bbox": [
+      201,
+      147,
+      652,
+      880
+    ],
+    "size": [
+      451,
+      733
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/upper_arms_sheet.png"
+  },
+  {
+    "name": "far_upper_arm_sleeve",
+    "path": "source_assets/monsters/ai_cutout_parts/thief_raider_v2/far_upper_arm_sleeve.png",
+    "grid": [
+      0,
+      1
+    ],
+    "source_bbox": [
+      833,
+      156,
+      1269,
+      877
+    ],
+    "size": [
+      436,
+      721
+    ],
+    "source_sheet": "source_assets/monsters/generated_parts/thief_raider_v2/upper_arms_sheet.png"
+  }
+]

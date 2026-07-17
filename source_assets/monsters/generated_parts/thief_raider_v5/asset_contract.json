@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "lifecycle_status": "rejected_do_not_build",
+  "character": "thief_raider",
+  "identity_reference": "source_assets/monsters/thief_raider.png",
+  "master_reference": "source_assets/monsters/generated_parts/thief_raider_v5/approved_master.png",
+  "direction": "screen_left_three_quarter",
+  "master_rule": "The approved master is 4.5-5.5 heads tall, compact but not chibi, and consistently screen-left three-quarter from hood through shoulders, pelvis, knees, and both feet.",
+  "bind_pose_rule": "Every component is extracted from the approved master and keeps its exact perspective, foreshortening, lighting direction, palette, and bind orientation; independently redesigned neutral/front-facing replacement parts are invalid.",
+  "visible_pixel_rule": "Every visible attachment pixel must be copied byte-for-byte from approved_master.png through the ownership map. Generated sheets are permitted only as hidden-underlap donors beneath approved visible pixels.",
+  "render_rule": "Soft hand-painted 2D game art matching the shipped Ruby Raider family; restrained values and brush texture; no faceted geometry, glossy 3D render, plastic toy surface, outline-heavy cartoon, or photoreal anatomy.",
+  "joint_rule": "Visible pixels come from masks of the approved master. Only hidden joint underlaps are outpainted by 12-20 source pixels. Joint covers hide the seam. No visible hollow pipe sockets or circular plugs.",
+  "background": "#00FF00 flat chroma key",
+  "sheets": {
+    "body_sheet": {
+      "grid": [4, 4],
+      "parts": [
+        "hooded_head",
+        "scarf_back",
+        "scarf_front",
+        "torso_core",
+        "pelvis_skirt",
+        "waist_cloth_front",
+        "upper_back_cloak",
+        "cloak_tail_near",
+        "cloak_tail_far",
+        "loot_sack",
+        "bag_knot",
+        "sack_strap_back",
+        "sack_strap_front",
+        "belt_and_pouch",
+        "near_shoulder_plate",
+        "far_shoulder_plate"
+      ]
+    },
+    "limbs_sheet": {
+      "grid": [4, 4],
+      "parts": [
+        "near_upper_arm",
+        "near_forearm",
+        "near_dagger_hand",
+        "dagger",
+        "far_upper_arm",
+        "far_forearm",
+        "far_strap_hand",
+        "strap_grip",
+        "near_thigh",
+        "near_shin",
+        "near_foot",
+        "near_knee_cover",
+        "far_thigh",
+        "far_shin",
+        "far_foot",
+        "far_knee_cover"
+      ]
+    }
+  },
+  "required_bind_qa": {
+    "alpha_iou_min": 0.93,
+    "alpha_area_ratio_min": 0.97,
+    "alpha_area_ratio_max": 1.03,
+    "centroid_distance_px_max": 2.0,
+    "visible_joint_gap_px_max": 0,
+    "manual_checks": [
+      "three-quarter left silhouette matches master",
+      "near/far arm and leg depth is unambiguous",
+      "strap is behind the shoulder and in front of the chest where appropriate",
+      "scarf and cloak front/back pieces never cross the face or UI incorrectly",
+      "no exposed connector plugs at bind or action extrema"
+    ]
+  }
+}

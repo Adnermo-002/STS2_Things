@@ -1,0 +1,1 @@
+{"source_path":"res://animations/monsters/sts2_things/thief_raider/thief_raider.atlas","atlas_data":"thief_raider.png\nsize: 519,379\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nai_intact_character_recovery\n  rotate: false\n  xy: 10, 10\n  size: 504, 364\n  orig: 504, 364\n  offset: 0, 0\n  index: -1\n","normal_texture_prefix":"n","specular_texture_prefix":"s"}

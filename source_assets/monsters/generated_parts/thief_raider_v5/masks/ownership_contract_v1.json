@@ -1,0 +1,196 @@
+{
+  "version": 1,
+  "schema": "sts2-visible-pixel-ownership/v1",
+  "character": "thief_raider_v5",
+  "approved_master": "../approved_master.png",
+  "label_mode": "index",
+  "background": 0,
+  "map_alpha_zero_is_background": true,
+  "draw_order": [
+    "rear_cloak",
+    "far_leg_thigh",
+    "far_leg_shin",
+    "far_foot",
+    "near_leg_thigh",
+    "near_leg_shin",
+    "near_foot",
+    "loot_sack",
+    "scarf_back",
+    "strap_back",
+    "torso",
+    "pelvis_skirt",
+    "far_upper_arm",
+    "far_shoulder_plate",
+    "far_forearm",
+    "far_hand",
+    "near_upper_arm",
+    "near_shoulder_plate",
+    "near_forearm",
+    "dagger",
+    "near_hand",
+    "belt_pouch",
+    "hood_head",
+    "scarf_front",
+    "strap_front_grip",
+    "bag_knot"
+  ],
+  "parts": [
+    {
+      "name": "rear_cloak",
+      "label": 1,
+      "z": 0,
+      "filename": "rear_cloak.png"
+    },
+    {
+      "name": "loot_sack",
+      "label": 2,
+      "z": 7,
+      "filename": "loot_sack.png"
+    },
+    {
+      "name": "bag_knot",
+      "label": 3,
+      "z": 25,
+      "filename": "bag_knot.png"
+    },
+    {
+      "name": "strap_back",
+      "label": 4,
+      "z": 9,
+      "filename": "strap_back.png"
+    },
+    {
+      "name": "far_leg_thigh",
+      "label": 5,
+      "z": 1,
+      "filename": "far_leg_thigh.png"
+    },
+    {
+      "name": "far_leg_shin",
+      "label": 6,
+      "z": 2,
+      "filename": "far_leg_shin.png"
+    },
+    {
+      "name": "far_foot",
+      "label": 7,
+      "z": 3,
+      "filename": "far_foot.png"
+    },
+    {
+      "name": "near_leg_thigh",
+      "label": 8,
+      "z": 4,
+      "filename": "near_leg_thigh.png"
+    },
+    {
+      "name": "near_leg_shin",
+      "label": 9,
+      "z": 5,
+      "filename": "near_leg_shin.png"
+    },
+    {
+      "name": "near_foot",
+      "label": 10,
+      "z": 6,
+      "filename": "near_foot.png"
+    },
+    {
+      "name": "torso",
+      "label": 11,
+      "z": 10,
+      "filename": "torso.png"
+    },
+    {
+      "name": "pelvis_skirt",
+      "label": 12,
+      "z": 11,
+      "filename": "pelvis_skirt.png"
+    },
+    {
+      "name": "belt_pouch",
+      "label": 13,
+      "z": 21,
+      "filename": "belt_pouch.png"
+    },
+    {
+      "name": "near_upper_arm",
+      "label": 14,
+      "z": 16,
+      "filename": "near_upper_arm.png"
+    },
+    {
+      "name": "near_shoulder_plate",
+      "label": 15,
+      "z": 17,
+      "filename": "near_shoulder_plate.png"
+    },
+    {
+      "name": "near_forearm",
+      "label": 16,
+      "z": 18,
+      "filename": "near_forearm.png"
+    },
+    {
+      "name": "near_hand",
+      "label": 17,
+      "z": 20,
+      "filename": "near_hand.png"
+    },
+    {
+      "name": "far_upper_arm",
+      "label": 18,
+      "z": 12,
+      "filename": "far_upper_arm.png"
+    },
+    {
+      "name": "far_shoulder_plate",
+      "label": 19,
+      "z": 13,
+      "filename": "far_shoulder_plate.png"
+    },
+    {
+      "name": "far_forearm",
+      "label": 20,
+      "z": 14,
+      "filename": "far_forearm.png"
+    },
+    {
+      "name": "far_hand",
+      "label": 21,
+      "z": 15,
+      "filename": "far_hand.png"
+    },
+    {
+      "name": "hood_head",
+      "label": 22,
+      "z": 22,
+      "filename": "hood_head.png"
+    },
+    {
+      "name": "scarf_back",
+      "label": 23,
+      "z": 8,
+      "filename": "scarf_back.png"
+    },
+    {
+      "name": "scarf_front",
+      "label": 24,
+      "z": 23,
+      "filename": "scarf_front.png"
+    },
+    {
+      "name": "strap_front_grip",
+      "label": 25,
+      "z": 24,
+      "filename": "strap_front_grip.png"
+    },
+    {
+      "name": "dagger",
+      "label": 26,
+      "z": 19,
+      "filename": "dagger.png"
+    }
+  ],
+  "visible_payload_rule": "Every label selects byte-exact pixels from approved_master.png; the ownership map never supplies RGBA artwork."
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "draw_order_safe_continuous_base_pass",
+  "source_pixels": 2635,
+  "kept_pixels": 2595,
+  "removed_before_z19_or_outside": 40,
+  "back_pixels": 0,
+  "front_pixels": 2595,
+  "elbow_overlay_pixels": 1226,
+  "shoulder_overlay_pixels": 232,
+  "components": [
+    2595
+  ],
+  "insert_before_z": 19,
+  "bind_mismatch_pixels": 0,
+  "bind_exact_rgba": true,
+  "output": "near_arm_cloth_base.png",
+  "next_gate": "full_character_two_dimensional_mesh_pose_review"
+}

@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "boards": {
+    "body": {
+      "source": "01_imagegen_boards/body_semantic_meshes_v02_alpha.png",
+      "component_count": 6,
+      "parts": [
+        {
+          "semantic": "hooded_head_donor",
+          "file": "hooded_head_donor.png",
+          "source_bbox_xywh": [
+            125,
+            67,
+            343,
+            377
+          ],
+          "foreground_area": 77593,
+          "centroid_xy": [
+            296.0028868583506,
+            255.2201358369956
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "torso_pelvis_donor",
+          "file": "torso_pelvis_donor.png",
+          "source_bbox_xywh": [
+            585,
+            67,
+            356,
+            394
+          ],
+          "foreground_area": 91233,
+          "centroid_xy": [
+            768.2577576096369,
+            261.4979009788125
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "near_full_arm_donor",
+          "file": "near_full_arm_donor.png",
+          "source_bbox_xywh": [
+            1017,
+            96,
+            395,
+            371
+          ],
+          "foreground_area": 47094,
+          "centroid_xy": [
+            1234.592665732365,
+            284.11882617743237
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "far_full_arm_donor",
+          "file": "far_full_arm_donor.png",
+          "source_bbox_xywh": [
+            165,
+            547,
+            294,
+            248
+          ],
+          "foreground_area": 37474,
+          "centroid_xy": [
+            319.17337353898705,
+            659.1506644606927
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "near_full_leg_donor",
+          "file": "near_full_leg_donor.png",
+          "source_bbox_xywh": [
+            612,
+            528,
+            281,
+            403
+          ],
+          "foreground_area": 56273,
+          "centroid_xy": [
+            746.6523910223375,
+            715.475983153555
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "far_full_leg_donor",
+          "file": "far_full_leg_donor.png",
+          "source_bbox_xywh": [
+            1015,
+            530,
+            324,
+            390
+          ],
+          "foreground_area": 55372,
+          "centroid_xy": [
+            1180.983999133136,
+            712.2059344072817
+          ],
+          "status": "donor_only"
+        }
+      ]
+    },
+    "accessory": {
+      "source": "01_imagegen_boards/accessory_semantic_meshes_v01_alpha.png",
+      "component_count": 13,
+      "parts": [
+        {
+          "semantic": "scarf_front_donor",
+          "file": "scarf_front_donor.png",
+          "source_bbox_xywh": [
+            98,
+            62,
+            288,
+            319
+          ],
+          "foreground_area": 37245,
+          "centroid_xy": [
+            237.38236004832862,
+            225.4988857564774
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "scarf_back_donor",
+          "file": "scarf_back_donor.png",
+          "source_bbox_xywh": [
+            453,
+            101,
+            201,
+            279
+          ],
+          "foreground_area": 17484,
+          "centroid_xy": [
+            557.3964767787692,
+            239.76887439945094
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "cape_large_donor",
+          "file": "cape_large_donor.png",
+          "source_bbox_xywh": [
+            742,
+            36,
+            393,
+            427
+          ],
+          "foreground_area": 78356,
+          "centroid_xy": [
+            921.7893715860943,
+            271.4109959671244
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "cape_far_donor",
+          "file": "cape_far_donor.png",
+          "source_bbox_xywh": [
+            1207,
+            88,
+            217,
+            365
+          ],
+          "foreground_area": 27322,
+          "centroid_xy": [
+            1298.4678281238562,
+            281.60493375301957
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "loot_sack_donor",
+          "file": "loot_sack_donor.png",
+          "source_bbox_xywh": [
+            97,
+            410,
+            248,
+            289
+          ],
+          "foreground_area": 39662,
+          "centroid_xy": [
+            220.4318995512077,
+            571.2639554233272
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "rope_back_donor",
+          "file": "rope_back_donor.png",
+          "source_bbox_xywh": [
+            405,
+            477,
+            245,
+            203
+          ],
+          "foreground_area": 8955,
+          "centroid_xy": [
+            537.3983249581239,
+            550.8837520938024
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "rope_front_with_hand_rejected",
+          "file": "rope_front_with_hand_rejected.png",
+          "source_bbox_xywh": [
+            703,
+            499,
+            359,
+            208
+          ],
+          "foreground_area": 16686,
+          "centroid_xy": [
+            864.7505693395661,
+            598.1446721802708
+          ],
+          "status": "rejected_embedded_hand"
+        },
+        {
+          "semantic": "dagger_donor",
+          "file": "dagger_donor.png",
+          "source_bbox_xywh": [
+            1125,
+            532,
+            318,
+            133
+          ],
+          "foreground_area": 14700,
+          "centroid_xy": [
+            1287.519523809524,
+            602.235306122449
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "shoulder_near_donor",
+          "file": "shoulder_near_donor.png",
+          "source_bbox_xywh": [
+            49,
+            720,
+            243,
+            225
+          ],
+          "foreground_area": 26677,
+          "centroid_xy": [
+            182.48015144131648,
+            834.3486149117217
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "shoulder_far_donor",
+          "file": "shoulder_far_donor.png",
+          "source_bbox_xywh": [
+            386,
+            719,
+            248,
+            231
+          ],
+          "foreground_area": 28025,
+          "centroid_xy": [
+            496.4807493309545,
+            837.2203746654773
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "forearm_near_donor",
+          "file": "forearm_near_donor.png",
+          "source_bbox_xywh": [
+            655,
+            730,
+            151,
+            223
+          ],
+          "foreground_area": 17339,
+          "centroid_xy": [
+            728.8435895957091,
+            838.3014014649057
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "forearm_far_donor",
+          "file": "forearm_far_donor.png",
+          "source_bbox_xywh": [
+            884,
+            730,
+            150,
+            222
+          ],
+          "foreground_area": 16875,
+          "centroid_xy": [
+            956.8578962962963,
+            838.0516148148148
+          ],
+          "status": "donor_only"
+        },
+        {
+          "semantic": "belt_pouch_donor",
+          "file": "belt_pouch_donor.png",
+          "source_bbox_xywh": [
+            1094,
+            750,
+            380,
+            217
+          ],
+          "foreground_area": 38961,
+          "centroid_xy": [
+            1297.706424373091,
+            838.9562126228793
+          ],
+          "status": "donor_only"
+        }
+      ]
+    }
+  },
+  "status": "donor_review_required"
+}

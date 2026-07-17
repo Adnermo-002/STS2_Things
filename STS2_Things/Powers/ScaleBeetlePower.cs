@@ -37,7 +37,7 @@ public sealed class ScaleBeetlePower : PowerModel
         {
             Flash();
             await PowerCmd.Apply<ScaleDownPower>(
-                new ThrowingPlayerChoiceContext(),
+                choiceContext,
                 target,
                 DynamicVars["ScaleDownAmount"].BaseValue,
                 Owner,

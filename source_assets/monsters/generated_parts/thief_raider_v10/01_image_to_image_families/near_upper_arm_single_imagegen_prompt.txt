@@ -1,0 +1,12 @@
+﻿Use case: precise-object-edit
+Asset type: one isolated 2D skeletal-animation sprite attachment
+
+Image 1 is the locked full Thief Raider identity master. Image 2 is the exact current-master visible-pixel crop of the near upper-arm dark cloth sleeve after removing one misowned white pauldron remnant.
+
+Generate exactly one isolated near upper-arm sleeve for this same character. It is the compact dark charcoal blue-gray cloth segment between the near shoulder plate and the near forearm bracer, kept at the same left-facing three-quarter bind angle and stout compact proportions as the master.
+
+Preserve Image 2's visible silhouette, low-frequency shading, color values, matte hand-painted texture, light direction, and asymmetric folds as closely as image generation permits. Complete only the concealed geometry: add a short broad tapered cloth overlap at the shoulder that hides under the separate pauldron, and a shorter narrow tapered cloth overlap at the elbow that hides under the separate bracer. Both continuations must flow from the sleeve as one coherent cloth form. Ends are soft asymmetric folded cloth, never circular closures.
+
+The output must contain the sleeve only. No shoulder armor, no silver or white metal, no forearm bracer, no hand, no weapon, no torso, no full character, and no extra parts. No hollow socket, open cuff, ring, round cap, plug, bulb, ball, tube, sausage, flat guillotine cut, rectangular crop edge, detached island, black or green contamination, glossy 3D render, plastic sheen, polygon facets, redesign, recolor, text, labels, arrows, frame, logo, signature, or watermark.
+
+Put the one sprite on a perfectly flat uniform #00FF00 chroma-key background with generous padding. No background gradient, texture, shadow, floor, reflection, or #00FF00 inside the sprite.

@@ -1,0 +1,11 @@
+﻿{
+    "status":  "rejected",
+    "source":  "candidate_01_chroma.png",
+    "rejection_reasons":  [
+                              "still reads as polished fantasy character art rather than a shipped Ruby Raider sprite",
+                              "body is broad and near-frontal through the torso, pelvis, knees, and boots",
+                              "loot sack is still an oversized sphere and dominates the silhouette",
+                              "metal, leather, and cloth retain too much high-frequency material rendering",
+                              "not approved for segmentation, rigging, packaging, or installation"
+                          ]
+}

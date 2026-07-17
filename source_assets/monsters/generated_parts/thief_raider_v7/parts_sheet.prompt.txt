@@ -1,0 +1,19 @@
+Use case: precise-object-edit
+Asset type: production 2D cutout-animation source atlas for the exact Thief Raider in Image 1
+Primary request: deconstruct the exact same character into a clean set of large, isolated, animation-ready body-part paintings. This is not a redesign and not a new pose. Every part must preserve Image 1's style, palette, material softness, left-facing three-quarter perspective, lighting direction, proportions, and identity.
+Layout: one square atlas on a perfectly flat solid #00ff00 chroma-key background. Arrange parts in clean rows with generous empty spacing; no overlap, no touching, no labels, no text, no cast shadows.
+Required unique pieces, each exactly once:
+1 hooded head with black face opening and both yellow eyes;
+2 scarf front; 3 scarf back/cape upper; 4 cape middle; 5 cape lower tail;
+6 torso with chest cloth; 7 pelvis/waist cloth; 8 belt with pouch;
+9 loot sack; 10 sack knot; 11 sack shoulder strap;
+12 near upper arm; 13 near forearm bracer; 14 near glove/hand gripping an empty dagger handle socket;
+15 far upper arm; 16 far forearm bracer; 17 far glove/hand gripping sack strap;
+18 near thigh; 19 near shin; 20 near boot;
+21 far thigh; 22 far shin; 23 far boot;
+24 near shoulder plate; 25 far shoulder plate; 26 short dagger as its own complete piece.
+Rigging construction: include 12-18% natural painted overlap under every shoulder, elbow, wrist, hip, knee, ankle, scarf, cape, strap, and sack connection. Overlap extensions must continue the actual cloth/leather/anatomy and remain hidden in bind pose. Limbs must be tapered organic cloth volumes, never hollow cylinders, plugs, rings, ball joints, or severed stumps. Every rotating piece must include enough hidden pixels that a 25-degree rotation exposes no transparent crack.
+Perspective: keep near/far asymmetry. Near-side pieces are slightly larger and more detailed; far-side pieces are narrower and darker. All feet, knees, elbows, hands, armor plates, dagger, sack, and cape must point consistently with the same left-facing three-quarter view.
+Style: smooth matte hand-painted shapes, low-frequency soft shading, restrained highlights, sparse texture, no polygon facets, no plastic 3D look.
+Framing: all 26 pieces entirely inside the canvas with at least 24 px visual separation at output scale; prioritize large readable pieces over decorative micro-parts.
+Avoid: assembled full character, duplicate heads or limbs, full-body pose, generic tubes, sockets, floating joint caps, front-facing parts, mirror-symmetric near/far limbs, inconsistent perspective, altered costume, altered color palette, extra weapons, extra pouches, text, labels, watermark, shadows, gradient background.

@@ -29,7 +29,7 @@ public sealed class PackUp : CardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         // 抽1张牌
-        await CardPileCmd.Draw(choiceContext, 1m, Owner, fromHandDraw: true);
+        await CardPileCmd.Draw(choiceContext, 1m, Owner);
 
         // 从抽牌堆选择1张牌丢弃
         var drawPile = PileType.Draw.GetPile(Owner);

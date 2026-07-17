@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "status": "full_character_body_bend_visual_review_required",
+  "pivot_xy_source": [
+    292.0,
+    270.0
+  ],
+  "cases": [
+    {
+      "name": "bind",
+      "torso_deg": 0.0,
+      "x": 0.0,
+      "y": 0.0,
+      "alpha_bounds": [
+        118,
+        104,
+        616,
+        462
+      ],
+      "bind_mismatch_pixels": 0
+    },
+    {
+      "name": "idle_inhale",
+      "torso_deg": 0.45,
+      "x": 0.0,
+      "y": -0.5,
+      "alpha_bounds": [
+        117,
+        103,
+        616,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "idle_exhale",
+      "torso_deg": -0.35,
+      "x": 0.0,
+      "y": 0.35,
+      "alpha_bounds": [
+        118,
+        104,
+        617,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "attack_windup",
+      "torso_deg": 4.0,
+      "x": 2.0,
+      "y": -1.0,
+      "alpha_bounds": [
+        112,
+        99,
+        613,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "attack_contact",
+      "torso_deg": -7.0,
+      "x": -4.0,
+      "y": 1.0,
+      "alpha_bounds": [
+        130,
+        112,
+        620,
+        472
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "attack_recoil",
+      "torso_deg": -2.5,
+      "x": -1.0,
+      "y": 0.5,
+      "alpha_bounds": [
+        122,
+        106,
+        619,
+        462
+      ],
+      "bind_mismatch_pixels": null
+    },
+    {
+      "name": "hurt_recoil",
+      "torso_deg": 8.0,
+      "x": 3.0,
+      "y": 3.0,
+      "alpha_bounds": [
+        107,
+        101,
+        607,
+        467
+      ],
+      "bind_mismatch_pixels": null
+    }
+  ],
+  "feet_static": true,
+  "bind_exact_rgba": true,
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "next_gate": "waist_seam_review_then_combine_with_arm_topology"
+}

@@ -1,0 +1,5 @@
+﻿Use case: stylized-concept
+Asset: Thief Raider v9 Spine semantic parts, Sheet A
+Identity source: ../00_reference/current_master.png
+Requirement: preserve exact compact left-facing character identity; isolate core parts; closed rounded joint ends; green chroma background; no full-body redesign, hollow sockets, labels, or shadows.
+Result: donor-only pending component audit. Visible bind pixels remain sourced from current_master.png.

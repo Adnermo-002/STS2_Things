@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-07-15",
+  "status": "provisional_style_and_bind_pass_not_shipping",
+  "master": {
+    "file": "master_candidate_01_alpha.png",
+    "sha256": "9EAD5511A09A46E3C7C13F855A2F2CF0BC836F494E205B7FDA72479B876E74E8",
+    "canvas": [1254, 1254],
+    "alpha_bbox_xyxy": [85, 242, 1193, 1034],
+    "alpha_bbox_aspect": 1.398989898989899,
+    "alpha_area": 425130,
+    "visual_notes": [
+      "Left-facing three-quarter crouch is clear; pelvis, knees and boots no longer read as a front-facing realistic adult.",
+      "Surface language is smoother and lower-frequency than v5/v6; no polygonal body construction or plastic tube joints are visible in the master.",
+      "Identity remains the hooded yellow-eyed thief with short dagger, muted-plum cloth and loot sack.",
+      "The full silhouette is still slightly wider than the preferred Ruby Raider target because dagger and cape both extend laterally; verify only at combat scale."
+    ]
+  },
+  "generated_sheet": {
+    "file": "parts_sheet_candidate_01_alpha.png",
+    "semantic_components": 26,
+    "usage": "hidden_overlap_and_style_donor_only",
+    "direct_assembly_status": "rejected",
+    "direct_assembly_reason": "Independent donor geometry does not reproduce the master bind pose and exposes hollow openings when assembled directly."
+  },
+  "linked_cutout": {
+    "parts": 26,
+    "visible_pixel_source": "master_only",
+    "bind_qa": {
+      "alpha_iou": 1.0,
+      "alpha_area_ratio": 1.0,
+      "centroid_delta_px": 0.0,
+      "visible_rgb_mae_0_255": 0.13687342695175594,
+      "hidden_underlap_area": 249698,
+      "pass": true
+    }
+  },
+  "extreme_pose_gate": {
+    "status": "concerns",
+    "contact_sheet": "extreme_pose_qa/extreme_pose_contact.jpg",
+    "remaining_issues": [
+      "Full-resolution attack and arm-limit poses still expose small dark underpaint seams around the near shoulder/armpit.",
+      "The cape is currently one rigid QA attachment; production needs a weighted mesh and delayed bone chain rather than whole-cape rotation.",
+      "Death and revive silhouettes have not yet passed the same extreme-pose inspection.",
+      "No v7 Spine resource, scene, PCK or Steam install is approved from this candidate yet."
+    ]
+  },
+  "shipping_decision": "keep_current_intact_sprite_recovery_until_extreme_pose_and_runtime_gates_pass"
+}

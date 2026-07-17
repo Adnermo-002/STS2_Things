@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "source": "02_part_sources/three_quarter_core_replacements_alpha.png",
+  "part_count": 4,
+  "status": "three_quarter_core_draft",
+  "parts": [
+    {
+      "index": 0,
+      "semantic": "torso_three_quarter",
+      "file": "core_replacements/00_torso_three_quarter.png",
+      "source_bbox": [
+        206,
+        137,
+        390,
+        477
+      ],
+      "alpha_area": 124668
+    },
+    {
+      "index": 1,
+      "semantic": "rear_scarf_ribbon",
+      "file": "core_replacements/01_rear_scarf_ribbon.png",
+      "source_bbox": [
+        801,
+        134,
+        274,
+        604
+      ],
+      "alpha_area": 53947
+    },
+    {
+      "index": 2,
+      "semantic": "pelvis_three_quarter",
+      "file": "core_replacements/02_pelvis_three_quarter.png",
+      "source_bbox": [
+        137,
+        706,
+        450,
+        346
+      ],
+      "alpha_area": 105157
+    },
+    {
+      "index": 3,
+      "semantic": "belt_three_quarter",
+      "file": "core_replacements/03_belt_three_quarter.png",
+      "source_bbox": [
+        718,
+        833,
+        414,
+        210
+      ],
+      "alpha_area": 47783
+    }
+  ]
+}

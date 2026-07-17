@@ -1,0 +1,482 @@
+{
+  "schema_version": 1,
+  "source": "01_imagegen_boards/semantic_parts_candidate_v01_chroma.png",
+  "source_sha256": "5c08d6d715da580f0435836ecdbe546ca985229caad15c757997cbde971c8fc5",
+  "status": "donor_board_only_focused_regeneration_required",
+  "verdict_counts": {
+    "donor": 16,
+    "inspect": 3,
+    "reject": 10
+  },
+  "parts": [
+    {
+      "name": "hooded_head",
+      "ids": [
+        1
+      ],
+      "verdict": "donor",
+      "note": "Identity-preserving hood; face cavity is intentional.",
+      "file": "00_hooded_head.png",
+      "source_bbox": [
+        79,
+        12,
+        297,
+        269
+      ],
+      "opaque_pixels": 32300
+    },
+    {
+      "name": "torso_fused_arms",
+      "ids": [
+        2
+      ],
+      "verdict": "reject",
+      "note": "Both sleeves are fused into the torso and the neck is a hollow port.",
+      "file": "01_torso_fused_arms.png",
+      "source_bbox": [
+        789,
+        29,
+        1076,
+        271
+      ],
+      "opaque_pixels": 40880
+    },
+    {
+      "name": "scarf_tube_back",
+      "ids": [
+        3
+      ],
+      "verdict": "reject",
+      "note": "Closed hollow tube instead of separate front/back cloth attachments.",
+      "file": "02_scarf_tube_back.png",
+      "source_bbox": [
+        560,
+        54,
+        770,
+        269
+      ],
+      "opaque_pixels": 27712
+    },
+    {
+      "name": "scarf_tube_front",
+      "ids": [
+        4
+      ],
+      "verdict": "reject",
+      "note": "Closed hollow tube instead of separate front/back cloth attachments.",
+      "file": "03_scarf_tube_front.png",
+      "source_bbox": [
+        363,
+        77,
+        566,
+        234
+      ],
+      "opaque_pixels": 17960
+    },
+    {
+      "name": "pelvis_tunic_ring",
+      "ids": [
+        5
+      ],
+      "verdict": "inspect",
+      "note": "Useful painted donor, but upper opening and hidden waist volume need replacement.",
+      "file": "04_pelvis_tunic_ring.png",
+      "source_bbox": [
+        1084,
+        101,
+        1319,
+        256
+      ],
+      "opaque_pixels": 21851
+    },
+    {
+      "name": "eye_glow",
+      "ids": [
+        6,
+        7
+      ],
+      "verdict": "donor",
+      "note": "Two disconnected eye sprites grouped as one attachment.",
+      "file": "05_eye_glow.png",
+      "source_bbox": [
+        292,
+        196,
+        356,
+        234
+      ],
+      "opaque_pixels": 448
+    },
+    {
+      "name": "shoulder_plate_far",
+      "ids": [
+        8
+      ],
+      "verdict": "donor",
+      "note": "Clean solid armor attachment.",
+      "file": "06_shoulder_plate_far.png",
+      "source_bbox": [
+        1246,
+        247,
+        1393,
+        367
+      ],
+      "opaque_pixels": 8105
+    },
+    {
+      "name": "shoulder_plate_near",
+      "ids": [
+        9
+      ],
+      "verdict": "donor",
+      "note": "Clean solid armor attachment.",
+      "file": "07_shoulder_plate_near.png",
+      "source_bbox": [
+        1103,
+        260,
+        1243,
+        379
+      ],
+      "opaque_pixels": 7348
+    },
+    {
+      "name": "plain_arm_bent",
+      "ids": [
+        10
+      ],
+      "verdict": "inspect",
+      "note": "Potential cloth donor; joint ends and role remain ambiguous.",
+      "file": "08_plain_arm_bent.png",
+      "source_bbox": [
+        77,
+        268,
+        192,
+        476
+      ],
+      "opaque_pixels": 11786
+    },
+    {
+      "name": "arm_bracer_composite_a",
+      "ids": [
+        11
+      ],
+      "verdict": "reject",
+      "note": "Cloth, leather and plate are fused; no independent elbow/wrist chain.",
+      "file": "09_arm_bracer_composite_a.png",
+      "source_bbox": [
+        258,
+        272,
+        383,
+        491
+      ],
+      "opaque_pixels": 12767
+    },
+    {
+      "name": "arm_bracer_composite_b",
+      "ids": [
+        12
+      ],
+      "verdict": "reject",
+      "note": "Cloth, leather and plate are fused; no independent elbow/wrist chain.",
+      "file": "10_arm_bracer_composite_b.png",
+      "source_bbox": [
+        571,
+        274,
+        714,
+        491
+      ],
+      "opaque_pixels": 12909
+    },
+    {
+      "name": "arm_bracer_composite_c",
+      "ids": [
+        13
+      ],
+      "verdict": "reject",
+      "note": "Cloth, leather and plate are fused; no independent elbow/wrist chain.",
+      "file": "11_arm_bracer_composite_c.png",
+      "source_bbox": [
+        396,
+        278,
+        553,
+        492
+      ],
+      "opaque_pixels": 13914
+    },
+    {
+      "name": "rope_hand_composite",
+      "ids": [
+        14
+      ],
+      "verdict": "inspect",
+      "note": "Good hand identity donor; rope and cuff must be separated before rigging.",
+      "file": "12_rope_hand_composite.png",
+      "source_bbox": [
+        928,
+        288,
+        1056,
+        469
+      ],
+      "opaque_pixels": 10269
+    },
+    {
+      "name": "dagger_hand_composite",
+      "ids": [
+        15
+      ],
+      "verdict": "reject",
+      "note": "Hand, dagger and cuff are fused although a separate dagger exists.",
+      "file": "13_dagger_hand_composite.png",
+      "source_bbox": [
+        689,
+        305,
+        914,
+        481
+      ],
+      "opaque_pixels": 11778
+    },
+    {
+      "name": "forearm_plate_near",
+      "ids": [
+        16
+      ],
+      "verdict": "donor",
+      "note": "Clean solid armor attachment.",
+      "file": "14_forearm_plate_near.png",
+      "source_bbox": [
+        1120,
+        386,
+        1206,
+        507
+      ],
+      "opaque_pixels": 5023
+    },
+    {
+      "name": "forearm_plate_far",
+      "ids": [
+        17
+      ],
+      "verdict": "donor",
+      "note": "Clean solid armor attachment.",
+      "file": "15_forearm_plate_far.png",
+      "source_bbox": [
+        1258,
+        386,
+        1345,
+        507
+      ],
+      "opaque_pixels": 5037
+    },
+    {
+      "name": "leg_boot_composite_a",
+      "ids": [
+        18
+      ],
+      "verdict": "reject",
+      "note": "Thigh, shin and boot form one rigid sticker.",
+      "file": "16_leg_boot_composite_a.png",
+      "source_bbox": [
+        61,
+        489,
+        246,
+        817
+      ],
+      "opaque_pixels": 30190
+    },
+    {
+      "name": "leg_composite_b",
+      "ids": [
+        19
+      ],
+      "verdict": "reject",
+      "note": "Thigh and shin are fused and the ankle end is ambiguous.",
+      "file": "17_leg_composite_b.png",
+      "source_bbox": [
+        280,
+        499,
+        438,
+        773
+      ],
+      "opaque_pixels": 22997
+    },
+    {
+      "name": "loot_sack",
+      "ids": [
+        20
+      ],
+      "verdict": "donor",
+      "note": "Clean accessory attachment.",
+      "file": "18_loot_sack.png",
+      "source_bbox": [
+        1042,
+        511,
+        1277,
+        802
+      ],
+      "opaque_pixels": 40305
+    },
+    {
+      "name": "leg_boot_composite_c",
+      "ids": [
+        21
+      ],
+      "verdict": "reject",
+      "note": "Lower leg and boot are fused; knee/ankle cannot articulate.",
+      "file": "19_leg_boot_composite_c.png",
+      "source_bbox": [
+        492,
+        512,
+        619,
+        763
+      ],
+      "opaque_pixels": 18053
+    },
+    {
+      "name": "pouch",
+      "ids": [
+        22
+      ],
+      "verdict": "donor",
+      "note": "Clean accessory attachment.",
+      "file": "20_pouch.png",
+      "source_bbox": [
+        872,
+        512,
+        1007,
+        646
+      ],
+      "opaque_pixels": 10651
+    },
+    {
+      "name": "sack_rope",
+      "ids": [
+        23
+      ],
+      "verdict": "donor",
+      "note": "Clean rope donor; split into front/back paths at rig stage.",
+      "file": "21_sack_rope.png",
+      "source_bbox": [
+        1262,
+        515,
+        1451,
+        966
+      ],
+      "opaque_pixels": 26499
+    },
+    {
+      "name": "belt",
+      "ids": [
+        24
+      ],
+      "verdict": "donor",
+      "note": "Clean accessory attachment.",
+      "file": "22_belt.png",
+      "source_bbox": [
+        678,
+        529,
+        877,
+        672
+      ],
+      "opaque_pixels": 10534
+    },
+    {
+      "name": "cape_tail_near",
+      "ids": [
+        25
+      ],
+      "verdict": "donor",
+      "note": "Clean cloth attachment with intentional tears.",
+      "file": "23_cape_tail_near.png",
+      "source_bbox": [
+        632,
+        631,
+        907,
+        960
+      ],
+      "opaque_pixels": 43452
+    },
+    {
+      "name": "cape_tail_far",
+      "ids": [
+        26
+      ],
+      "verdict": "donor",
+      "note": "Clean cloth attachment with intentional tears.",
+      "file": "24_cape_tail_far.png",
+      "source_bbox": [
+        878,
+        655,
+        1081,
+        992
+      ],
+      "opaque_pixels": 23958
+    },
+    {
+      "name": "boot_near",
+      "ids": [
+        27
+      ],
+      "verdict": "donor",
+      "note": "Solid boot; ankle underlap still needs checkerboard verification.",
+      "file": "25_boot_near.png",
+      "source_bbox": [
+        461,
+        762,
+        616,
+        950
+      ],
+      "opaque_pixels": 13289
+    },
+    {
+      "name": "boot_far",
+      "ids": [
+        28
+      ],
+      "verdict": "donor",
+      "note": "Solid boot; ankle underlap still needs checkerboard verification.",
+      "file": "26_boot_far.png",
+      "source_bbox": [
+        283,
+        766,
+        434,
+        945
+      ],
+      "opaque_pixels": 13196
+    },
+    {
+      "name": "sack_knot",
+      "ids": [
+        29
+      ],
+      "verdict": "donor",
+      "note": "Clean accessory attachment.",
+      "file": "27_sack_knot.png",
+      "source_bbox": [
+        1092,
+        798,
+        1223,
+        946
+      ],
+      "opaque_pixels": 7167
+    },
+    {
+      "name": "dagger",
+      "ids": [
+        30
+      ],
+      "verdict": "donor",
+      "note": "Clean weapon attachment.",
+      "file": "28_dagger.png",
+      "source_bbox": [
+        54,
+        842,
+        280,
+        930
+      ],
+      "opaque_pixels": 7242
+    }
+  ],
+  "production_rig_allowed": false,
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "next_gate": "focused_solid_torso_arm_leg_generation"
+}

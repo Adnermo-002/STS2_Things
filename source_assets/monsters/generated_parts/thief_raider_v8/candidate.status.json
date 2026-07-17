@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "candidate": "thief_raider_v8",
+  "status": "rejected_donor_bind",
+  "donor_bind": "rejected",
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "required_gates": [
+    "master_combat_scale",
+    "same_source_solid_parts",
+    "joint_extreme_pose",
+    "spine_runtime",
+    "attack",
+    "hurt",
+    "die",
+    "combat_layering",
+    "multiplayer_visual_determinism"
+  ],
+  "replaces": "thief_raider_v7_rejected",
+  "rejection": {
+    "artifact": "03_clean_parts/donor_bind_candidate_01.png",
+    "comparison": "03_clean_parts/donor_bind_candidate_01_compare.png",
+    "audit": "build/thief_v8_donor_brutal_audit.md",
+    "alpha_iou_to_master_guide": 0.6881424452744341,
+    "reason": "Frankenstein assembly: inconsistent view, detached joints, floating belt/accessories, hollow footwear, realistic proportions, and alpha IoU 0.6881 below the 0.995 bind gate.",
+    "disposition": "evidence_only_do_not_rig"
+  },
+  "successor": "thief_raider_v9_current_master_semantic_parts"
+}

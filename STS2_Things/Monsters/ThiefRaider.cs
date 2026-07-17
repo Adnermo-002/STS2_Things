@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
+using Godot;
+using MegaCrit.Sts2.Core.Audio;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Ascension;
@@ -25,37 +26,30 @@ namespace STS2_Things.Monsters;
 /// <summary>
 ///     劫掠者窃贼 — 普通敌人
 ///     登场自带劫掠者Buff（死亡+50金）
-///     状态机: 隐匿 → 准备 → 反击 → 逃离（生成2个随机劫掠者）
+///     状态机: 隐匿 → 准备 → 反击 → 逃离（生成1个随机劫掠者）
 /// </summary>
 public sealed class ThiefRaider : MonsterModel
 {
-    private static readonly Type[] _raiderTypes =
-    {
-        typeof(AxeRubyRaider),
-        typeof(AssassinRubyRaider),
-        typeof(BruteRubyRaider),
-        typeof(CrossbowRubyRaider),
-        typeof(TrackerRubyRaider)
-    };
+    protected override string AttackSfx =>
+        "event:/sfx/enemy/enemy_attacks/axe_ruby_raider/axe_ruby_raider_attack";
+    protected override string CastSfx =>
+        "event:/sfx/enemy/enemy_attacks/tracker_ruby_raider/tracker_ruby_raider_buff";
+    public override string DeathSfx =>
+        "event:/sfx/enemy/enemy_attacks/axe_ruby_raider/axe_ruby_raider_die";
+    public override DamageSfxType TakeDamageSfxType => DamageSfxType.Armor;
+    public override Vector2 ExtraDeathVfxPadding => new(1.5f, 1.8f);
 
-    // 缓存 CreatureCmd.Add<T>(ICombatState, string) 泛型方法定义，避免每次召唤都反射查找
-    private static readonly MethodInfo AddCreatureMethod;
-
-    // 固定召唤顺序计数器
-    private int _nextRaiderIndex;
-    private bool _hasEscaped;
-
-    static ThiefRaider()
-    {
-        AddCreatureMethod = typeof(CreatureCmd).GetMethods()
-            .FirstOrDefault(m => m.Name == "Add" && m.IsGenericMethod
-                && m.GetParameters().Length == 2
-                && m.GetParameters()[0].ParameterType == typeof(ICombatState)
-                && m.GetParameters()[1].ParameterType == typeof(string));
-    }
-
-    protected override string VisualsPath =>
-        SceneHelper.GetScenePath("creature_visuals/fallback");
+    // 逃离动作可生成任一种劫掠者；预加载完整候选集，而不是依赖本次初始随机抽到的三只。
+    public override IEnumerable<string> AssetPaths => base.AssetPaths.Concat(
+    [
+        .. ModelDb.Monster<AxeRubyRaider>().AssetPaths,
+        .. ModelDb.Monster<AssassinRubyRaider>().AssetPaths,
+        .. ModelDb.Monster<BruteRubyRaider>().AssetPaths,
+        .. ModelDb.Monster<CrossbowRubyRaider>().AssetPaths,
+        .. ModelDb.Monster<TrackerRubyRaider>().AssetPaths,
+        ModelDb.Power<ThiefRaiderPower>().ResolvedBigIconPath,
+        ModelDb.Power<WeakPower>().ResolvedBigIconPath
+    ]).Distinct();
 
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(
         AscensionLevel.ToughEnemies, 17, 15);
@@ -64,8 +58,6 @@ public sealed class ThiefRaider : MonsterModel
 
     private int RetaliateDamage => AscensionHelper.GetValueIfAscension(
         AscensionLevel.DeadlyEnemies, 5, 4);
-
-    private int PlayerCount => CombatState?.Players.Count ?? 1;
 
     // ========== 入场 ==========
     public override async Task AfterAddedToRoom()
@@ -123,7 +115,7 @@ public sealed class ThiefRaider : MonsterModel
     {
         SfxCmd.Play(CastSfx);
         await CreatureCmd.TriggerAnim(Creature, "Cast", 0.5f);
-        await CreatureCmd.GainBlock(Creature, 8 * PlayerCount, ValueProp.Move, null);
+        await CreatureCmd.GainBlock(Creature, 8, ValueProp.Move, null);
     }
 
     private async Task RetaliateMove(IReadOnlyList<Creature> targets)
@@ -135,26 +127,30 @@ public sealed class ThiefRaider : MonsterModel
             .WithAttackerAnim("Attack", 0.5f)
             .WithAttackerFx(null, AttackSfx)
             .Execute(null);
-        await CreatureCmd.GainBlock(Creature, 6 * PlayerCount, ValueProp.Move, null);
+        await CreatureCmd.GainBlock(Creature, 6, ValueProp.Move, null);
     }
 
     private async Task EscapeMove(IReadOnlyList<Creature> targets)
     {
-        if (_hasEscaped) return; // 防止 Escape 失败时重复召唤
-        _hasEscaped = true;
-
-        // 固定顺序召唤1只劫掠者
-        var raiderType = _raiderTypes[_nextRaiderIndex % _raiderTypes.Length];
-        _nextRaiderIndex++;
-
-        var slotName = CombatState.Encounter.Slots
-            .FirstOrDefault(s => s.StartsWith("raider_") && CombatState.Enemies.All(c => c.SlotName != s),
-                null);
-        if (slotName != null && AddCreatureMethod != null)
+        var combatState = CombatState;
+        var encounter = combatState?.Encounter;
+        var slotName = encounter?.Slots.FirstOrDefault(
+            s => s != null && s.StartsWith("raider_", StringComparison.Ordinal) &&
+                 combatState!.Enemies.All(c => !c.IsAlive || c.SlotName != s),
+            null);
+        if (slotName != null && combatState != null)
         {
-            // 使用静态缓存的泛型方法定义，避免每次召唤都反射查找
-            var mi = AddCreatureMethod.MakeGenericMethod(raiderType);
-            await (Task)mi.Invoke(null, new object[] { CombatState, slotName })!;
+            // 使用同步的怪物 AI RNG；旧实现的实例计数器每只怪都从 0 开始，
+            // 实际上永远只会召唤 AxeRubyRaider。
+            MonsterModel raider = RunRng.MonsterAi.NextInt(5) switch
+            {
+                0 => ModelDb.Monster<AxeRubyRaider>(),
+                1 => ModelDb.Monster<AssassinRubyRaider>(),
+                2 => ModelDb.Monster<BruteRubyRaider>(),
+                3 => ModelDb.Monster<CrossbowRubyRaider>(),
+                _ => ModelDb.Monster<TrackerRubyRaider>()
+            };
+            await CreatureCmd.Add(raider.ToMutable(), combatState, CombatSide.Enemy, slotName);
         }
 
         // 逃离

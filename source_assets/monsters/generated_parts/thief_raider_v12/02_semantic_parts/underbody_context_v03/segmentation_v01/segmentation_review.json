@@ -1,0 +1,368 @@
+{
+  "schema_version": 1,
+  "source_sha256": "0c0033ec9ec8be9f1cbbc2f933fa47822cdfc5a6a169f1efdc988a9aa7d6e17e",
+  "status": "semantic_segmentation_visual_review_required",
+  "parts": [
+    {
+      "name": "hooded_head",
+      "a": [
+        630,
+        250
+      ],
+      "b": [
+        650,
+        390
+      ],
+      "underlap": 26,
+      "index": 0,
+      "visible_file": "00_hooded_head_visible.png",
+      "attachment_file": "00_hooded_head_attachment.png",
+      "source_bbox": [
+        497,
+        133,
+        799,
+        486
+      ],
+      "visible_pixels": 56782,
+      "attachment_pixels": 66353,
+      "underlap_pixels": 9571,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 26
+    },
+    {
+      "name": "torso",
+      "a": [
+        760,
+        330
+      ],
+      "b": [
+        795,
+        595
+      ],
+      "underlap": 60,
+      "index": 1,
+      "visible_file": "01_torso_visible.png",
+      "attachment_file": "01_torso_attachment.png",
+      "source_bbox": [
+        573,
+        188,
+        939,
+        678
+      ],
+      "visible_pixels": 21015,
+      "attachment_pixels": 75489,
+      "underlap_pixels": 54474,
+      "hidden_fill_pixels": 9140,
+      "underlap_px": 60
+    },
+    {
+      "name": "pelvis",
+      "a": [
+        760,
+        575
+      ],
+      "b": [
+        825,
+        650
+      ],
+      "underlap": 55,
+      "index": 2,
+      "visible_file": "02_pelvis_visible.png",
+      "attachment_file": "02_pelvis_attachment.png",
+      "source_bbox": [
+        625,
+        451,
+        930,
+        736
+      ],
+      "visible_pixels": 10844,
+      "attachment_pixels": 37248,
+      "underlap_pixels": 26404,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 55
+    },
+    {
+      "name": "near_upper_arm",
+      "a": [
+        655,
+        395
+      ],
+      "b": [
+        570,
+        545
+      ],
+      "underlap": 48,
+      "index": 3,
+      "visible_file": "03_near_upper_arm_visible.png",
+      "attachment_file": "03_near_upper_arm_attachment.png",
+      "source_bbox": [
+        492,
+        375,
+        772,
+        621
+      ],
+      "visible_pixels": 15058,
+      "attachment_pixels": 22969,
+      "underlap_pixels": 7911,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 48
+    },
+    {
+      "name": "near_forearm",
+      "a": [
+        570,
+        545
+      ],
+      "b": [
+        465,
+        690
+      ],
+      "underlap": 42,
+      "index": 4,
+      "visible_file": "04_near_forearm_visible.png",
+      "attachment_file": "04_near_forearm_attachment.png",
+      "source_bbox": [
+        400,
+        474,
+        646,
+        759
+      ],
+      "visible_pixels": 14949,
+      "attachment_pixels": 21863,
+      "underlap_pixels": 6914,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 42
+    },
+    {
+      "name": "near_hand",
+      "a": [
+        465,
+        690
+      ],
+      "b": [
+        430,
+        735
+      ],
+      "underlap": 18,
+      "index": 5,
+      "visible_file": "05_near_hand_visible.png",
+      "attachment_file": "05_near_hand_attachment.png",
+      "source_bbox": [
+        381,
+        641,
+        524,
+        786
+      ],
+      "visible_pixels": 6847,
+      "attachment_pixels": 8273,
+      "underlap_pixels": 1426,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 18
+    },
+    {
+      "name": "far_upper_arm",
+      "a": [
+        820,
+        300
+      ],
+      "b": [
+        950,
+        405
+      ],
+      "underlap": 42,
+      "index": 6,
+      "visible_file": "06_far_upper_arm_visible.png",
+      "attachment_file": "06_far_upper_arm_attachment.png",
+      "source_bbox": [
+        743,
+        222,
+        1019,
+        530
+      ],
+      "visible_pixels": 18705,
+      "attachment_pixels": 31657,
+      "underlap_pixels": 12952,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 42
+    },
+    {
+      "name": "far_forearm",
+      "a": [
+        950,
+        405
+      ],
+      "b": [
+        855,
+        465
+      ],
+      "underlap": 40,
+      "index": 7,
+      "visible_file": "07_far_forearm_visible.png",
+      "attachment_file": "07_far_forearm_attachment.png",
+      "source_bbox": [
+        765,
+        338,
+        1018,
+        587
+      ],
+      "visible_pixels": 18149,
+      "attachment_pixels": 35682,
+      "underlap_pixels": 17533,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 40
+    },
+    {
+      "name": "far_hand",
+      "a": [
+        855,
+        465
+      ],
+      "b": [
+        800,
+        445
+      ],
+      "underlap": 18,
+      "index": 8,
+      "visible_file": "08_far_hand_visible.png",
+      "attachment_file": "08_far_hand_attachment.png",
+      "source_bbox": [
+        724,
+        366,
+        888,
+        535
+      ],
+      "visible_pixels": 9140,
+      "attachment_pixels": 16411,
+      "underlap_pixels": 7271,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 18
+    },
+    {
+      "name": "near_thigh",
+      "a": [
+        730,
+        620
+      ],
+      "b": [
+        655,
+        715
+      ],
+      "underlap": 42,
+      "index": 9,
+      "visible_file": "09_near_thigh_visible.png",
+      "attachment_file": "09_near_thigh_attachment.png",
+      "source_bbox": [
+        565,
+        503,
+        819,
+        784
+      ],
+      "visible_pixels": 22317,
+      "attachment_pixels": 34388,
+      "underlap_pixels": 12071,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 42
+    },
+    {
+      "name": "near_boot",
+      "a": [
+        655,
+        715
+      ],
+      "b": [
+        690,
+        830
+      ],
+      "underlap": 34,
+      "index": 10,
+      "visible_file": "10_near_boot_visible.png",
+      "attachment_file": "10_near_boot_attachment.png",
+      "source_bbox": [
+        578,
+        670,
+        774,
+        887
+      ],
+      "visible_pixels": 16671,
+      "attachment_pixels": 21486,
+      "underlap_pixels": 4815,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 34
+    },
+    {
+      "name": "far_thigh",
+      "a": [
+        865,
+        620
+      ],
+      "b": [
+        980,
+        715
+      ],
+      "underlap": 42,
+      "index": 11,
+      "visible_file": "11_far_thigh_visible.png",
+      "attachment_file": "11_far_thigh_attachment.png",
+      "source_bbox": [
+        779,
+        528,
+        1069,
+        788
+      ],
+      "visible_pixels": 27046,
+      "attachment_pixels": 35086,
+      "underlap_pixels": 8040,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 42
+    },
+    {
+      "name": "far_boot",
+      "a": [
+        980,
+        715
+      ],
+      "b": [
+        1070,
+        820
+      ],
+      "underlap": 34,
+      "index": 12,
+      "visible_file": "12_far_boot_visible.png",
+      "attachment_file": "12_far_boot_attachment.png",
+      "source_bbox": [
+        901,
+        640,
+        1143,
+        878
+      ],
+      "visible_pixels": 18116,
+      "attachment_pixels": 22294,
+      "underlap_pixels": 4178,
+      "hidden_fill_pixels": 0,
+      "underlap_px": 34
+    }
+  ],
+  "draw_order": [
+    "far_boot",
+    "far_thigh",
+    "near_boot",
+    "near_thigh",
+    "far_upper_arm",
+    "near_upper_arm",
+    "pelvis",
+    "torso",
+    "far_forearm",
+    "far_hand",
+    "near_forearm",
+    "near_hand",
+    "hooded_head"
+  ],
+  "foreground_pixels": 255639,
+  "uncovered_pixels": 0,
+  "bind_mismatch_pixels": 0,
+  "bind_exact_rgba": true,
+  "production_rig_allowed": false,
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "next_gate": "ownership_and_joint_underlap_visual_review"
+}

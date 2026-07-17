@@ -1,0 +1,89 @@
+soul_roes.png
+size: 489,355
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ai_roe_top
+  rotate: false
+  xy: 10, 10
+  size: 114, 118
+  orig: 114, 118
+  offset: 0, 0
+  index: -1
+ai_roe_top_right
+  rotate: false
+  xy: 258, 10
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+ai_roe_top_left
+  rotate: false
+  xy: 10, 252
+  size: 98, 98
+  orig: 98, 98
+  offset: 0, 0
+  index: -1
+ai_roe_upper_right
+  rotate: false
+  xy: 376, 10
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+ai_roe_core
+  rotate: false
+  xy: 134, 10
+  size: 114, 114
+  orig: 114, 114
+  offset: 0, 0
+  index: -1
+ai_roe_far_left
+  rotate: false
+  xy: 118, 252
+  size: 96, 98
+  orig: 96, 98
+  offset: 0, 0
+  index: -1
+ai_roe_middle_left
+  rotate: false
+  xy: 224, 252
+  size: 98, 94
+  orig: 98, 94
+  offset: 0, 0
+  index: -1
+ai_roe_middle_right
+  rotate: false
+  xy: 332, 252
+  size: 90, 94
+  orig: 90, 94
+  offset: 0, 0
+  index: -1
+ai_roe_far_right
+  rotate: false
+  xy: 122, 138
+  size: 100, 102
+  orig: 100, 102
+  offset: 0, 0
+  index: -1
+ai_roe_bottom_left
+  rotate: false
+  xy: 10, 138
+  size: 102, 104
+  orig: 102, 104
+  offset: 0, 0
+  index: -1
+ai_roe_bottom
+  rotate: false
+  xy: 232, 138
+  size: 98, 100
+  orig: 98, 100
+  offset: 0, 0
+  index: -1
+ai_roe_bottom_right
+  rotate: false
+  xy: 340, 138
+  size: 100, 98
+  orig: 100, 98
+  offset: 0, 0
+  index: -1

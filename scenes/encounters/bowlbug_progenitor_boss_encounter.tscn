@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://brb2wwkpkng5d"]
+
+[node name="Encounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="bowlbug_16" type="Marker2D" parent="."]
+position = Vector2(1229, 982)
+
+[node name="bowlbug_15" type="Marker2D" parent="."]
+position = Vector2(1159, 733)
+
+[node name="bowlbug_14" type="Marker2D" parent="."]
+position = Vector2(1759, 835)
+
+[node name="bowlbug_13" type="Marker2D" parent="."]
+position = Vector2(1252, 841)
+
+[node name="bowlbug_12" type="Marker2D" parent="."]
+position = Vector2(1461, 848)
+
+[node name="bowlbug_11" type="Marker2D" parent="."]
+position = Vector2(1026, 689)
+
+[node name="bowlbug_10" type="Marker2D" parent="."]
+position = Vector2(1078, 944)
+
+[node name="bowlbug_9" type="Marker2D" parent="."]
+position = Vector2(1872, 896)
+
+[node name="bowlbug_8" type="Marker2D" parent="."]
+position = Vector2(1731, 1000)
+
+[node name="bowlbug_7" type="Marker2D" parent="."]
+position = Vector2(1621, 915)
+
+[node name="bowlbug_5" type="Marker2D" parent="."]
+position = Vector2(1378, 934)
+
+[node name="bowlbug_6" type="Marker2D" parent="."]
+position = Vector2(1048, 824)
+
+[node name="bowlbug_4" type="Marker2D" parent="."]
+position = Vector2(1876, 740)
+
+[node name="bowlbug_3" type="Marker2D" parent="."]
+position = Vector2(1612, 788)
+
+[node name="bowlbug_2" type="Marker2D" parent="."]
+position = Vector2(1352, 748)
+
+[node name="bowlbug_1" type="Marker2D" parent="."]
+position = Vector2(1190, 603)
+
+[node name="bowlbug_progenitor" type="Marker2D" parent="."]
+position = Vector2(1613, 623)

@@ -1,0 +1,19 @@
+{
+  "ORIGIN_FOGMOG_BOSS_ENCOUNTER.title": "Origin Fogmog",
+  "ORIGIN_FOGMOG_BOSS_ENCOUNTER.loss": "{character} is overwhelmed by the illusions of [gold]{encounter}[/gold]...",
+
+  "SOUL_ROES_ENCOUNTER.title": "Soul Roes",
+  "SOUL_ROES_ENCOUNTER.loss": "{character} is devoured by [gold]{encounter}[/gold].",
+
+  "THE_LEGACY_BOSS_ENCOUNTER.title": "The Legacy",
+  "THE_LEGACY_BOSS_ENCOUNTER.loss": "{character} is completely consumed by the deathly rhythm of [gold]{encounter}[/gold]...",
+
+  "SCALE_BEETLE_BOSS_ENCOUNTER.title": "Scale Beetle",
+  "SCALE_BEETLE_BOSS_ENCOUNTER.loss": "{character} is crushed into pieces by [gold]{encounter}[/gold]...",
+
+  "RAID_PARTY.title": "Raid Party",
+  "RAID_PARTY.loss": "{character} is looted by [gold]{encounter}[/gold]...",
+
+  "BOWLBUG_PROGENITOR_BOSS_ENCOUNTER.title": "Bowlbug Progenitor",
+  "BOWLBUG_PROGENITOR_BOSS_ENCOUNTER.loss": "{character} is swarmed under [gold]{encounter}[/gold]..."
+}

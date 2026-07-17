@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ccesbjd3sb07t"]
+
+[node name="Encounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="soul_roes" type="Marker2D" parent="."]
+position = Vector2(1528, 660)
+
+[node name="soul_roe_1" type="Marker2D" parent="."]
+position = Vector2(1217, 661)
+
+[node name="soul_roe_2" type="Marker2D" parent="."]
+position = Vector2(1341, 577)
+
+[node name="soul_roe_3" type="Marker2D" parent="."]
+position = Vector2(1526, 520)
+
+[node name="soul_roe_4" type="Marker2D" parent="."]
+position = Vector2(1702, 570)
+
+[node name="soul_roe_5" type="Marker2D" parent="."]
+position = Vector2(1826, 663)
+
+[node name="soul_roe_6" type="Marker2D" parent="."]
+position = Vector2(1713, 764)
+
+[node name="soul_roe_7" type="Marker2D" parent="."]
+position = Vector2(1533, 833)
+
+[node name="soul_roe_8" type="Marker2D" parent="."]
+position = Vector2(1345, 783)

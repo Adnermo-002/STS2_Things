@@ -1,0 +1,581 @@
+{
+  "status": "rejected",
+  "reason": "assembled bind pose and animations visibly detach limbs, expose sockets, drift from the source silhouette, and read as toy-like parts",
+  "entries": [
+    {
+      "monster": "thief_raider",
+      "component": "upper_back_cloak",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/upper_back_cloak.png",
+      "semantic": "smooth_left_facing_upper_back_cloak",
+      "bone": "Cloak",
+      "parent_bone": "Torso",
+      "suggested_pivot_source_xy": [
+        335,
+        170
+      ],
+      "suggested_center_source_xy": [
+        382,
+        228
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.55,
+        0.55
+      ],
+      "z": 1,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "cloak_tail_far",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/cloak_tail_far.png",
+      "semantic": "smooth_left_facing_cloak_tail_far",
+      "bone": "CloakFarTail",
+      "parent_bone": "Cloak",
+      "suggested_pivot_source_xy": [
+        380,
+        180
+      ],
+      "suggested_center_source_xy": [
+        444,
+        292
+      ],
+      "rotation_deg": -5,
+      "scale_xy": [
+        0.52,
+        0.52
+      ],
+      "z": 2,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "cloak_tail_near",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/cloak_tail_near.png",
+      "semantic": "smooth_left_facing_cloak_tail_near",
+      "bone": "CloakNearTail",
+      "parent_bone": "Cloak",
+      "suggested_pivot_source_xy": [
+        285,
+        240
+      ],
+      "suggested_center_source_xy": [
+        322,
+        300
+      ],
+      "rotation_deg": 3,
+      "scale_xy": [
+        0.44,
+        0.44
+      ],
+      "z": 3,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "loot_sack",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/loot_sack.png",
+      "semantic": "smooth_left_facing_loot_sack",
+      "bone": "Bag",
+      "parent_bone": "Torso",
+      "suggested_pivot_source_xy": [
+        345,
+        125
+      ],
+      "suggested_center_source_xy": [
+        429,
+        194
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.45,
+        0.45
+      ],
+      "z": 4,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "sack_strap",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/sack_strap.png",
+      "semantic": "smooth_left_facing_sack_strap",
+      "bone": "BagStrap",
+      "parent_bone": "Torso",
+      "suggested_pivot_source_xy": [
+        300,
+        140
+      ],
+      "suggested_center_source_xy": [
+        312,
+        178
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.42,
+        0.42
+      ],
+      "z": 5,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "far_boot",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/far_boot.png",
+      "semantic": "smooth_left_facing_far_boot",
+      "bone": "FarShinFoot",
+      "parent_bone": "FarLeg",
+      "suggested_pivot_source_xy": [
+        380,
+        325
+      ],
+      "suggested_center_source_xy": [
+        401,
+        365
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.34,
+        0.39
+      ],
+      "z": 5,
+      "notes": "Thief Raider v4 smooth boot; overlaps the matching shin and shares its lower-leg bone so the knee-to-foot chain stays continuous."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "far_thigh",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/far_thigh.png",
+      "semantic": "smooth_left_facing_far_thigh",
+      "bone": "FarLeg",
+      "parent_bone": "Pelvis",
+      "suggested_pivot_source_xy": [
+        350,
+        280
+      ],
+      "suggested_center_source_xy": [
+        363,
+        312
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.34,
+        0.34
+      ],
+      "z": 6,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "near_boot",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/near_boot.png",
+      "semantic": "smooth_left_facing_near_boot",
+      "bone": "NearShinFoot",
+      "parent_bone": "NearLeg",
+      "suggested_pivot_source_xy": [
+        225,
+        325
+      ],
+      "suggested_center_source_xy": [
+        215,
+        365
+      ],
+      "rotation_deg": -4,
+      "scale_xy": [
+        0.31,
+        0.37
+      ],
+      "z": 9,
+      "notes": "Thief Raider v4 smooth boot; overlaps the matching shin and shares its lower-leg bone so the knee-to-foot chain stays continuous."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "near_thigh",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/near_thigh.png",
+      "semantic": "smooth_left_facing_near_thigh",
+      "bone": "NearLeg",
+      "parent_bone": "Pelvis",
+      "suggested_pivot_source_xy": [
+        240,
+        280
+      ],
+      "suggested_center_source_xy": [
+        216,
+        307
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.34,
+        0.34
+      ],
+      "z": 10,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "pelvis_skirt",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/pelvis_skirt.png",
+      "semantic": "smooth_left_facing_pelvis_skirt",
+      "bone": "Pelvis",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        291,
+        286
+      ],
+      "suggested_center_source_xy": [
+        291,
+        286
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.42,
+        0.42
+      ],
+      "z": 16,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "torso_core",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/torso_core.png",
+      "semantic": "smooth_left_facing_torso_core",
+      "bone": "Torso",
+      "parent_bone": "Pelvis",
+      "suggested_pivot_source_xy": [
+        294,
+        270
+      ],
+      "suggested_center_source_xy": [
+        294,
+        231
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.52,
+        0.52
+      ],
+      "z": 20,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "far_upper_arm",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/far_upper_arm.png",
+      "semantic": "smooth_left_facing_far_upper_arm",
+      "bone": "FarArm",
+      "parent_bone": "Torso",
+      "suggested_pivot_source_xy": [
+        322,
+        160
+      ],
+      "suggested_center_source_xy": [
+        349,
+        183
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        -0.2,
+        0.2
+      ],
+      "z": 23,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "far_forearm_bracer",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/far_forearm_bracer.png",
+      "semantic": "smooth_left_facing_far_forearm_bracer",
+      "bone": "FarForearm",
+      "parent_bone": "FarArm",
+      "suggested_pivot_source_xy": [
+        345,
+        190
+      ],
+      "suggested_center_source_xy": [
+        337,
+        209
+      ],
+      "rotation_deg": 27,
+      "scale_xy": [
+        0.22,
+        0.22
+      ],
+      "z": 24,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "far_strap_hand",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/far_strap_hand.png",
+      "semantic": "smooth_left_facing_far_strap_hand",
+      "bone": "FarHand",
+      "parent_bone": "FarForearm",
+      "suggested_pivot_source_xy": [
+        300,
+        190
+      ],
+      "suggested_center_source_xy": [
+        296,
+        193
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.2,
+        0.2
+      ],
+      "z": 25,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "belt_and_pouch",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/belt_and_pouch.png",
+      "semantic": "smooth_left_facing_belt_and_pouch",
+      "bone": "Pelvis",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        291,
+        286
+      ],
+      "suggested_center_source_xy": [
+        315,
+        266
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.4,
+        0.4
+      ],
+      "z": 27,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "near_upper_arm",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/near_upper_arm.png",
+      "semantic": "smooth_left_facing_near_upper_arm",
+      "bone": "NearArm",
+      "parent_bone": "Torso",
+      "suggested_pivot_source_xy": [
+        175,
+        220
+      ],
+      "suggested_center_source_xy": [
+        175,
+        251
+      ],
+      "rotation_deg": -7,
+      "scale_xy": [
+        0.25,
+        0.25
+      ],
+      "z": 30,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "near_forearm_bracer",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/near_forearm_bracer.png",
+      "semantic": "smooth_left_facing_near_forearm_bracer",
+      "bone": "NearForearm",
+      "parent_bone": "NearArm",
+      "suggested_pivot_source_xy": [
+        150,
+        270
+      ],
+      "suggested_center_source_xy": [
+        143,
+        292
+      ],
+      "rotation_deg": -17,
+      "scale_xy": [
+        0.24,
+        0.24
+      ],
+      "z": 31,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "near_dagger_hand",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/near_dagger_hand.png",
+      "semantic": "smooth_left_facing_near_dagger_hand",
+      "bone": "NearHand",
+      "parent_bone": "NearForearm",
+      "suggested_pivot_source_xy": [
+        120,
+        320
+      ],
+      "suggested_center_source_xy": [
+        110,
+        337
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.2,
+        0.2
+      ],
+      "z": 32,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "near_shoulder_plate",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/near_shoulder_plate.png",
+      "semantic": "smooth_left_facing_near_shoulder_plate",
+      "bone": "NearArm",
+      "parent_bone": "Torso",
+      "suggested_pivot_source_xy": [
+        175,
+        220
+      ],
+      "suggested_center_source_xy": [
+        175,
+        218
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.13,
+        0.13
+      ],
+      "z": 35,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "far_shoulder_plate",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/far_shoulder_plate.png",
+      "semantic": "smooth_left_facing_far_shoulder_plate",
+      "bone": "FarArm",
+      "parent_bone": "Torso",
+      "suggested_pivot_source_xy": [
+        322,
+        160
+      ],
+      "suggested_center_source_xy": [
+        325,
+        158
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.25,
+        0.25
+      ],
+      "z": 35,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "hooded_head",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/hooded_head.png",
+      "semantic": "smooth_left_facing_hooded_head",
+      "bone": "Head",
+      "parent_bone": "Torso",
+      "suggested_pivot_source_xy": [
+        235,
+        190
+      ],
+      "suggested_center_source_xy": [
+        205,
+        138
+      ],
+      "rotation_deg": -6,
+      "scale_xy": [
+        0.45,
+        0.45
+      ],
+      "z": 40,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "scarf",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/scarf.png",
+      "semantic": "smooth_left_facing_scarf",
+      "bone": "Scarf",
+      "parent_bone": "Torso",
+      "suggested_pivot_source_xy": [
+        230,
+        180
+      ],
+      "suggested_center_source_xy": [
+        220,
+        190
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.43,
+        0.48
+      ],
+      "z": 39,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "dagger",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/dagger.png",
+      "semantic": "smooth_left_facing_dagger",
+      "bone": "Dagger",
+      "parent_bone": "NearHand",
+      "suggested_pivot_source_xy": [
+        108,
+        336
+      ],
+      "suggested_center_source_xy": [
+        86,
+        351
+      ],
+      "rotation_deg": 2,
+      "scale_xy": [
+        0.46,
+        0.46
+      ],
+      "z": 50,
+      "notes": "Thief Raider v4: facet-free smooth Raider-family repaint, compact left-facing bind pose aligned to the generated master; keep joints overlapped and scarf below the hood."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "near_shin",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/near_shin.png",
+      "semantic": "smooth_left_facing_near_shin",
+      "bone": "NearShinFoot",
+      "parent_bone": "NearLeg",
+      "suggested_pivot_source_xy": [
+        225,
+        325
+      ],
+      "suggested_center_source_xy": [
+        225,
+        342
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.28,
+        0.28
+      ],
+      "z": 8,
+      "notes": "Thief Raider v4 smooth wrapped shin; overlaps both thigh and boot and shares the lower-leg bone with the boot."
+    },
+    {
+      "monster": "thief_raider",
+      "component": "far_shin",
+      "component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_v4/far_shin.png",
+      "semantic": "smooth_left_facing_far_shin",
+      "bone": "FarShinFoot",
+      "parent_bone": "FarLeg",
+      "suggested_pivot_source_xy": [
+        380,
+        325
+      ],
+      "suggested_center_source_xy": [
+        389,
+        343
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        -0.29,
+        0.29
+      ],
+      "z": 4,
+      "notes": "Thief Raider v4 smooth wrapped shin; overlaps both thigh and boot and shares the lower-leg bone with the boot."
+    }
+  ]
+}

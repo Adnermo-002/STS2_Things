@@ -1,0 +1,1028 @@
+[
+  {
+    "name": "part_000",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_000.png",
+    "source_bbox": [
+      334,
+      36,
+      429,
+      136
+    ],
+    "source_center": [
+      380.924,
+      85.651
+    ],
+    "size": [
+      95,
+      100
+    ],
+    "opaque_area": 6272
+  },
+  {
+    "name": "part_001",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_001.png",
+    "source_bbox": [
+      428,
+      29,
+      506,
+      197
+    ],
+    "source_center": [
+      471.221,
+      116.266
+    ],
+    "size": [
+      78,
+      168
+    ],
+    "opaque_area": 5600
+  },
+  {
+    "name": "part_002",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_002.png",
+    "source_bbox": [
+      501,
+      27,
+      579,
+      195
+    ],
+    "source_center": [
+      544.486,
+      112.3
+    ],
+    "size": [
+      78,
+      168
+    ],
+    "opaque_area": 5504
+  },
+  {
+    "name": "part_003",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_003.png",
+    "source_bbox": [
+      579,
+      29,
+      666,
+      196
+    ],
+    "source_center": [
+      627.14,
+      122.595
+    ],
+    "size": [
+      87,
+      167
+    ],
+    "opaque_area": 7136
+  },
+  {
+    "name": "part_004",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_004.png",
+    "source_bbox": [
+      672,
+      37,
+      749,
+      194
+    ],
+    "source_center": [
+      712.291,
+      120.718
+    ],
+    "size": [
+      77,
+      157
+    ],
+    "opaque_area": 6563
+  },
+  {
+    "name": "part_005",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_005.png",
+    "source_bbox": [
+      749,
+      41,
+      816,
+      193
+    ],
+    "source_center": [
+      783.607,
+      121.504
+    ],
+    "size": [
+      67,
+      152
+    ],
+    "opaque_area": 5395
+  },
+  {
+    "name": "part_006",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_006.png",
+    "source_bbox": [
+      813,
+      46,
+      876,
+      189
+    ],
+    "source_center": [
+      845.513,
+      120.588
+    ],
+    "size": [
+      63,
+      143
+    ],
+    "opaque_area": 4485
+  },
+  {
+    "name": "part_007",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_007.png",
+    "source_bbox": [
+      35,
+      28,
+      296,
+      297
+    ],
+    "source_center": [
+      170.478,
+      170.676
+    ],
+    "size": [
+      261,
+      269
+    ],
+    "opaque_area": 41903
+  },
+  {
+    "name": "part_008",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_008.png",
+    "source_bbox": [
+      293,
+      157,
+      407,
+      271
+    ],
+    "source_center": [
+      342.394,
+      201.948
+    ],
+    "size": [
+      114,
+      114
+    ],
+    "opaque_area": 4993
+  },
+  {
+    "name": "part_009",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_009.png",
+    "source_bbox": [
+      999,
+      31,
+      1167,
+      402
+    ],
+    "source_center": [
+      1094.089,
+      205.153
+    ],
+    "size": [
+      168,
+      371
+    ],
+    "opaque_area": 32289
+  },
+  {
+    "name": "part_010",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_010.png",
+    "source_bbox": [
+      1138,
+      8,
+      1366,
+      399
+    ],
+    "source_center": [
+      1262.748,
+      196.959
+    ],
+    "size": [
+      228,
+      391
+    ],
+    "opaque_area": 48168
+  },
+  {
+    "name": "part_011",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_011.png",
+    "source_bbox": [
+      893,
+      55,
+      1026,
+      412
+    ],
+    "source_center": [
+      952.076,
+      227.474
+    ],
+    "size": [
+      133,
+      357
+    ],
+    "opaque_area": 31975
+  },
+  {
+    "name": "part_012",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_012.png",
+    "source_bbox": [
+      1323,
+      84,
+      1522,
+      393
+    ],
+    "source_center": [
+      1433.786,
+      230.894
+    ],
+    "size": [
+      199,
+      309
+    ],
+    "opaque_area": 30416
+  },
+  {
+    "name": "part_013",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_013.png",
+    "source_bbox": [
+      251,
+      256,
+      395,
+      353
+    ],
+    "source_center": [
+      322.564,
+      308.437
+    ],
+    "size": [
+      144,
+      97
+    ],
+    "opaque_area": 6139
+  },
+  {
+    "name": "part_014",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_014.png",
+    "source_bbox": [
+      391,
+      211,
+      548,
+      431
+    ],
+    "source_center": [
+      466.977,
+      322.086
+    ],
+    "size": [
+      157,
+      220
+    ],
+    "opaque_area": 19325
+  },
+  {
+    "name": "part_015",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_015.png",
+    "source_bbox": [
+      524,
+      201,
+      673,
+      428
+    ],
+    "source_center": [
+      593.17,
+      320.136
+    ],
+    "size": [
+      149,
+      227
+    ],
+    "opaque_area": 15546
+  },
+  {
+    "name": "part_016",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_016.png",
+    "source_bbox": [
+      642,
+      200,
+      752,
+      430
+    ],
+    "source_center": [
+      698.074,
+      328.389
+    ],
+    "size": [
+      110,
+      230
+    ],
+    "opaque_area": 14897
+  },
+  {
+    "name": "part_017",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_017.png",
+    "source_bbox": [
+      754,
+      203,
+      876,
+      432
+    ],
+    "source_center": [
+      812.261,
+      325.309
+    ],
+    "size": [
+      122,
+      229
+    ],
+    "opaque_area": 19011
+  },
+  {
+    "name": "part_018",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_018.png",
+    "source_bbox": [
+      1098,
+      415,
+      1190,
+      510
+    ],
+    "source_center": [
+      1143.208,
+      461.923
+    ],
+    "size": [
+      92,
+      95
+    ],
+    "opaque_area": 5643
+  },
+  {
+    "name": "part_019",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_019.png",
+    "source_bbox": [
+      1209,
+      419,
+      1292,
+      506
+    ],
+    "source_center": [
+      1250.008,
+      461.776
+    ],
+    "size": [
+      83,
+      87
+    ],
+    "opaque_area": 4652
+  },
+  {
+    "name": "part_020",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_020.png",
+    "source_bbox": [
+      1310,
+      418,
+      1395,
+      504
+    ],
+    "source_center": [
+      1351.834,
+      460.413
+    ],
+    "size": [
+      85,
+      86
+    ],
+    "opaque_area": 4658
+  },
+  {
+    "name": "part_021",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_021.png",
+    "source_bbox": [
+      1412,
+      428,
+      1482,
+      498
+    ],
+    "source_center": [
+      1446.011,
+      462.73
+    ],
+    "size": [
+      70,
+      70
+    ],
+    "opaque_area": 2962
+  },
+  {
+    "name": "part_022",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_022.png",
+    "source_bbox": [
+      12,
+      453,
+      153,
+      583
+    ],
+    "source_center": [
+      88.927,
+      517.195
+    ],
+    "size": [
+      141,
+      130
+    ],
+    "opaque_area": 9986
+  },
+  {
+    "name": "part_023",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_023.png",
+    "source_bbox": [
+      149,
+      478,
+      259,
+      593
+    ],
+    "source_center": [
+      206.454,
+      532.633
+    ],
+    "size": [
+      110,
+      115
+    ],
+    "opaque_area": 6586
+  },
+  {
+    "name": "part_024",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_024.png",
+    "source_bbox": [
+      274,
+      441,
+      414,
+      596
+    ],
+    "source_center": [
+      341.513,
+      517.894
+    ],
+    "size": [
+      140,
+      155
+    ],
+    "opaque_area": 15080
+  },
+  {
+    "name": "part_025",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_025.png",
+    "source_bbox": [
+      425,
+      437,
+      583,
+      607
+    ],
+    "source_center": [
+      503.468,
+      518.595
+    ],
+    "size": [
+      158,
+      170
+    ],
+    "opaque_area": 18157
+  },
+  {
+    "name": "part_026",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_026.png",
+    "source_bbox": [
+      605,
+      439,
+      759,
+      617
+    ],
+    "source_center": [
+      682.038,
+      522.284
+    ],
+    "size": [
+      154,
+      178
+    ],
+    "opaque_area": 17936
+  },
+  {
+    "name": "part_027",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_027.png",
+    "source_bbox": [
+      778,
+      424,
+      1070,
+      657
+    ],
+    "source_center": [
+      933.848,
+      543.882
+    ],
+    "size": [
+      292,
+      233
+    ],
+    "opaque_area": 48527
+  },
+  {
+    "name": "part_028",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_028.png",
+    "source_bbox": [
+      1102,
+      518,
+      1176,
+      591
+    ],
+    "source_center": [
+      1138.373,
+      553.867
+    ],
+    "size": [
+      74,
+      73
+    ],
+    "opaque_area": 3340
+  },
+  {
+    "name": "part_029",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_029.png",
+    "source_bbox": [
+      1208,
+      524,
+      1278,
+      592
+    ],
+    "source_center": [
+      1242.325,
+      557.34
+    ],
+    "size": [
+      70,
+      68
+    ],
+    "opaque_area": 2873
+  },
+  {
+    "name": "part_030",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_030.png",
+    "source_bbox": [
+      1299,
+      528,
+      1361,
+      589
+    ],
+    "source_center": [
+      1329.905,
+      557.819
+    ],
+    "size": [
+      62,
+      61
+    ],
+    "opaque_area": 2225
+  },
+  {
+    "name": "part_031",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_031.png",
+    "source_bbox": [
+      1382,
+      532,
+      1437,
+      587
+    ],
+    "source_center": [
+      1409.263,
+      559.168
+    ],
+    "size": [
+      55,
+      55
+    ],
+    "opaque_area": 1676
+  },
+  {
+    "name": "part_032",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_032.png",
+    "source_bbox": [
+      1448,
+      534,
+      1497,
+      584
+    ],
+    "source_center": [
+      1471.913,
+      558.622
+    ],
+    "size": [
+      49,
+      50
+    ],
+    "opaque_area": 1338
+  },
+  {
+    "name": "part_033",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_033.png",
+    "source_bbox": [
+      1102,
+      597,
+      1161,
+      655
+    ],
+    "source_center": [
+      1131.477,
+      625.556
+    ],
+    "size": [
+      59,
+      58
+    ],
+    "opaque_area": 1987
+  },
+  {
+    "name": "part_034",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_034.png",
+    "source_bbox": [
+      1180,
+      597,
+      1238,
+      656
+    ],
+    "source_center": [
+      1208.373,
+      625.948
+    ],
+    "size": [
+      58,
+      59
+    ],
+    "opaque_area": 1977
+  },
+  {
+    "name": "part_035",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_035.png",
+    "source_bbox": [
+      1265,
+      600,
+      1321,
+      655
+    ],
+    "source_center": [
+      1292.629,
+      626.885
+    ],
+    "size": [
+      56,
+      55
+    ],
+    "opaque_area": 1734
+  },
+  {
+    "name": "part_036",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_036.png",
+    "source_bbox": [
+      1338,
+      603,
+      1388,
+      654
+    ],
+    "source_center": [
+      1362.415,
+      628.083
+    ],
+    "size": [
+      50,
+      51
+    ],
+    "opaque_area": 1388
+  },
+  {
+    "name": "part_037",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_037.png",
+    "source_bbox": [
+      1410,
+      607,
+      1458,
+      655
+    ],
+    "source_center": [
+      1433.489,
+      630.495
+    ],
+    "size": [
+      48,
+      48
+    ],
+    "opaque_area": 1229
+  },
+  {
+    "name": "part_038",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_038.png",
+    "source_bbox": [
+      1471,
+      610,
+      1513,
+      653
+    ],
+    "source_center": [
+      1491.655,
+      631.092
+    ],
+    "size": [
+      42,
+      43
+    ],
+    "opaque_area": 916
+  },
+  {
+    "name": "part_039",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_039.png",
+    "source_bbox": [
+      109,
+      664,
+      222,
+      775
+    ],
+    "source_center": [
+      164.836,
+      718.883
+    ],
+    "size": [
+      113,
+      111
+    ],
+    "opaque_area": 6020
+  },
+  {
+    "name": "part_040",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_040.png",
+    "source_bbox": [
+      326,
+      670,
+      434,
+      778
+    ],
+    "source_center": [
+      379.479,
+      723.299
+    ],
+    "size": [
+      108,
+      108
+    ],
+    "opaque_area": 5759
+  },
+  {
+    "name": "part_041",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_041.png",
+    "source_bbox": [
+      540,
+      668,
+      639,
+      784
+    ],
+    "source_center": [
+      588.467,
+      723.985
+    ],
+    "size": [
+      99,
+      116
+    ],
+    "opaque_area": 5597
+  },
+  {
+    "name": "part_042",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_042.png",
+    "source_bbox": [
+      757,
+      671,
+      855,
+      778
+    ],
+    "source_center": [
+      805.699,
+      722.922
+    ],
+    "size": [
+      98,
+      107
+    ],
+    "opaque_area": 5050
+  },
+  {
+    "name": "part_043",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_043.png",
+    "source_bbox": [
+      982,
+      660,
+      1084,
+      779
+    ],
+    "source_center": [
+      1032.366,
+      717.302
+    ],
+    "size": [
+      102,
+      119
+    ],
+    "opaque_area": 5770
+  },
+  {
+    "name": "part_044",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_044.png",
+    "source_bbox": [
+      95,
+      778,
+      199,
+      916
+    ],
+    "source_center": [
+      152.884,
+      846.044
+    ],
+    "size": [
+      104,
+      138
+    ],
+    "opaque_area": 4941
+  },
+  {
+    "name": "part_045",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_045.png",
+    "source_bbox": [
+      325,
+      782,
+      419,
+      919
+    ],
+    "source_center": [
+      375.069,
+      848.017
+    ],
+    "size": [
+      94,
+      137
+    ],
+    "opaque_area": 4523
+  },
+  {
+    "name": "part_046",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_046.png",
+    "source_bbox": [
+      537,
+      789,
+      628,
+      930
+    ],
+    "source_center": [
+      586.011,
+      856.171
+    ],
+    "size": [
+      91,
+      141
+    ],
+    "opaque_area": 4278
+  },
+  {
+    "name": "part_047",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_047.png",
+    "source_bbox": [
+      754,
+      781,
+      844,
+      922
+    ],
+    "source_center": [
+      801.547,
+      846.828
+    ],
+    "size": [
+      90,
+      141
+    ],
+    "opaque_area": 4335
+  },
+  {
+    "name": "part_048",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_048.png",
+    "source_bbox": [
+      977,
+      788,
+      1069,
+      938
+    ],
+    "source_center": [
+      1025.24,
+      859.337
+    ],
+    "size": [
+      92,
+      150
+    ],
+    "opaque_area": 4620
+  },
+  {
+    "name": "part_049",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_049.png",
+    "source_bbox": [
+      114,
+      920,
+      200,
+      1005
+    ],
+    "source_center": [
+      157.362,
+      963.097
+    ],
+    "size": [
+      86,
+      85
+    ],
+    "opaque_area": 4540
+  },
+  {
+    "name": "part_050",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_050.png",
+    "source_bbox": [
+      331,
+      920,
+      420,
+      1006
+    ],
+    "source_center": [
+      376.372,
+      964.763
+    ],
+    "size": [
+      89,
+      86
+    ],
+    "opaque_area": 4863
+  },
+  {
+    "name": "part_051",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_051.png",
+    "source_bbox": [
+      542,
+      929,
+      619,
+      1009
+    ],
+    "source_center": [
+      581.476,
+      969.898
+    ],
+    "size": [
+      77,
+      80
+    ],
+    "opaque_area": 3747
+  },
+  {
+    "name": "part_052",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_052.png",
+    "source_bbox": [
+      754,
+      923,
+      835,
+      1010
+    ],
+    "source_center": [
+      795.731,
+      966.743
+    ],
+    "size": [
+      81,
+      87
+    ],
+    "opaque_area": 4283
+  },
+  {
+    "name": "part_053",
+    "path": "source_assets/monsters/ai_cutout_parts/bowlbug_progenitor/part_053.png",
+    "source_bbox": [
+      992,
+      929,
+      1065,
+      1010
+    ],
+    "source_center": [
+      1029.306,
+      969.517
+    ],
+    "size": [
+      73,
+      81
+    ],
+    "opaque_area": 3585
+  }
+]

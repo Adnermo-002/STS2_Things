@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "status": "semantic_attachments_pass_body_bend_gate_pending",
+  "identity_sha256": "643a86c7d8b9bb885161ac6abad39f8c3b8af09fcb8ad8e016b90feee73b06fb",
+  "donor_sha256": "07fc7f6e6f0d26b803eafe354a35bfc5a0c9a3f1890ed2d1b88e6afc9fcf03f0",
+  "alignment": {
+    "matrix": [
+      [
+        0.989470464,
+        0.000319462,
+        12.540977043
+      ],
+      [
+        -0.000319462,
+        0.989470464,
+        38.426635682
+      ]
+    ],
+    "scale": 0.989470516,
+    "angle_deg": -0.018498611,
+    "translation_xy": [
+      12.540977,
+      38.426636
+    ],
+    "target_keypoints": 681,
+    "candidate_keypoints": 765,
+    "ratio_matches": 134,
+    "inliers": 94,
+    "inlier_ratio": 0.701493,
+    "alpha_iou_outside_edit": 0.976030134,
+    "rgb_abs_delta_outside_edit": {
+      "mean": 6.672112,
+      "median": 5.666667,
+      "p90": 9.333333
+    }
+  },
+  "parts": {
+    "torso_core": {
+      "visible_pixels": 2686,
+      "generated_hidden_pixels": 6534,
+      "front_hidden_pixels": 6534,
+      "back_hidden_pixels": 0,
+      "discarded_partial_or_unowned_pixels": 0,
+      "distance_limit": 22.0,
+      "roi_xy": [
+        [
+          175,
+          165
+        ],
+        [
+          350,
+          150
+        ],
+        [
+          385,
+          220
+        ],
+        [
+          360,
+          295
+        ],
+        [
+          205,
+          305
+        ],
+        [
+          155,
+          250
+        ]
+      ],
+      "front_file": "torso_core_attachment.png",
+      "back_file": "torso_core_underpaint_back.png"
+    },
+    "pelvis_tunic": {
+      "visible_pixels": 2650,
+      "generated_hidden_pixels": 6719,
+      "front_hidden_pixels": 3631,
+      "back_hidden_pixels": 3088,
+      "discarded_partial_or_unowned_pixels": 0,
+      "distance_limit": 22.0,
+      "roi_xy": [
+        [
+          175,
+          230
+        ],
+        [
+          385,
+          220
+        ],
+        [
+          390,
+          325
+        ],
+        [
+          310,
+          350
+        ],
+        [
+          190,
+          330
+        ]
+      ],
+      "front_file": "pelvis_tunic_attachment.png",
+      "back_file": "pelvis_tunic_underpaint_back.png"
+    }
+  },
+  "bind_mismatch_pixels": 0,
+  "full_bind_rgba_exact": true,
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "next_gate": "full_character_torso_pelvis_hierarchy_bend_review"
+}

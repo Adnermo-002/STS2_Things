@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Godot;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Audio;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
@@ -24,7 +25,15 @@ public sealed class OriginEyeWithTeeth : MonsterModel
     private const int _distractAmount = 2;
     private const int HealAmountPerPlayer = 6;
 
-    protected override string VisualsPath => SceneHelper.GetScenePath("creature_visuals/eye_with_teeth"); //直接用原版
+    protected override string AttackSfx =>
+        "event:/sfx/enemy/enemy_attacks/eye_with_teeth/eye_with_teeth_attack";
+    // EyeWithTeeth has no death event in the V108 SFX bank. The Obscura
+    // hologram event is the native illusion-disappearance equivalent.
+    public override string DeathSfx =>
+        "event:/sfx/enemy/enemy_attacks/obscura/obscura_hologram_die";
+
+    protected override string VisualsPath => SceneHelper.GetScenePath("creature_visuals/eye_with_teeth");
+
     public override int MinInitialHp => 9;
 
     public override int MaxInitialHp => MinInitialHp;
@@ -41,9 +50,9 @@ public sealed class OriginEyeWithTeeth : MonsterModel
 
     /// <summary>
     /// 施加IllusionPower并设置复活后跳转眩晕意图。
-    /// AfterAddedToRoom在Encounter生成时调用，动态召唤时需手动调用。
+    /// CreatureCmd.Add 会调用 AfterAddedToRoom，因此动态召唤无需重复施加。
     /// </summary>
-    public async Task ApplyIllusionPower()
+    private async Task ApplyIllusionPower()
     {
         await PowerCmd.Apply<IllusionPower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
         var illusion = Creature.GetPower<IllusionPower>();
@@ -74,12 +83,15 @@ public sealed class OriginEyeWithTeeth : MonsterModel
 
     private async Task HealBossMove(IReadOnlyList<Creature> targets)
     {
-        var boss = Creature.CombatState.GetTeammatesOf(Creature)
+        var combatState = Creature.CombatState;
+        if (combatState == null) return;
+        var boss = combatState.GetTeammatesOf(Creature)
             .FirstOrDefault(c => c.IsPrimaryEnemy);
         if (boss == null) return;
 
+        await CreatureCmd.TriggerAnim(Creature, "Attack", 0.45f);
         // 多人游戏时回血按玩家数 scaling，与 OriginFogmog 的 HealMove 保持一致
-        var healAmount = HealAmountPerPlayer * Creature.CombatState.Players.Count;
+        var healAmount = HealAmountPerPlayer * combatState.Players.Count;
         await CreatureCmd.Heal(boss, healAmount);
     }
 
@@ -89,6 +101,16 @@ public sealed class OriginEyeWithTeeth : MonsterModel
         await CreatureCmd.TriggerAnim(Creature, "Attack", 0.7f);
         VfxCmd.PlayOnCreatureCenters(targets, "vfx/vfx_attack_slash");
         await CardPileCmd.AddToCombatAndPreview<Dazed>(targets, PileType.Discard, _distractAmount, null);
+    }
+
+    public override void SetupSkins(MegaSprite spine, MegaSkeleton skeleton)
+    {
+        base.SetupSkins(spine, skeleton);
+        if (spine.BoundObject is CanvasItem visuals)
+            // Preserve the shipped hand-painted value range.  The old saturated
+            // Preserve the shipped Eye atlas palette exactly.  Illusion identity
+            // comes from its native powers/VFX rather than a destructive tint.
+            visuals.Modulate = Colors.White;
     }
 
     public override CreatureAnimator GenerateAnimator(MegaSprite controller)
@@ -106,16 +128,21 @@ public sealed class OriginEyeWithTeeth : MonsterModel
 }
 
 /// <summary>
-/// 修复IllusionPower复活意图被非可转换状态（如眩晕）阻断的bug：
-/// 当SetMoveImmediate传入REVIVE_MOVE时，强制forceTransition=true，
-/// 确保怪物在任何状态下被杀都能正常切换到复活意图。
+/// 保证两个一次性强制状态不会被已有的 MustPerformOnce 状态静默吞掉。
 /// </summary>
 [HarmonyPatch(typeof(MonsterModel), nameof(MonsterModel.SetMoveImmediate))]
-public static class IllusionReviveForceTransitionPatch
+public static class RequiredMonsterMoveTransitionPatch
 {
-    static void Prefix(MoveState state, ref bool forceTransition)
+    private static void Prefix(MonsterModel __instance, MoveState state, ref bool forceTransition)
     {
-        if (state.StateId == "REVIVE_MOVE")
+        if (__instance is OriginEyeWithTeeth && state.StateId == "REVIVE_MOVE")
+            forceTransition = true;
+
+        // Fogmog 跨半血时 OriginPower 只触发一次；如果当前正被其他来源眩晕，
+        // 普通 SetMoveImmediate 会拒绝新的 STUNNED 并永久跳过幻象阶段。
+        if (__instance is OriginFogmog
+            && state.StateId == MonsterModel.stunnedMoveId
+            && state.FollowUpStateId == OriginFogmog.SwipeMoveId)
             forceTransition = true;
     }
 }

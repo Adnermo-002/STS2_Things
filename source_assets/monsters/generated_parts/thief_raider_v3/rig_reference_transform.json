@@ -1,0 +1,23 @@
+{
+  "highres_canvas": [
+    1254,
+    1254
+  ],
+  "highres_bbox": [
+    86,
+    255,
+    1134,
+    981
+  ],
+  "target_canvas": [
+    534,
+    420
+  ],
+  "fit_scale": 0.49427480916030536,
+  "paste": [
+    8,
+    53
+  ],
+  "mapped_parts": 23,
+  "style": "smooth_official_raider_family"
+}

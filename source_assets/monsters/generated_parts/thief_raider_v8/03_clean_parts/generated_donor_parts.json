@@ -1,0 +1,469 @@
+{
+  "schema_version": 1,
+  "source": "02_part_sources/parts_sheet_candidate_01_revision_alpha.png",
+  "component_count": 28,
+  "logical_part_count": 27,
+  "unmanifested_png_count": 0,
+  "status": "generated_donor_only_not_bind_approved",
+  "parts": [
+    {
+      "index": 0,
+      "semantic": "eye_glow",
+      "file": "generated_donor_parts/00_eye_glow.png",
+      "source_bbox": [
+        305,
+        128,
+        60,
+        34
+      ],
+      "source_center": [
+        334.44912280701755,
+        144.47894736842105
+      ],
+      "alpha_area": 570,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 1,
+      "semantic": "hooded_head",
+      "file": "generated_donor_parts/01_hooded_head.png",
+      "source_bbox": [
+        59,
+        30,
+        198,
+        238
+      ],
+      "source_center": [
+        158.42261353104726,
+        144.59838292160686
+      ],
+      "alpha_area": 31291,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 2,
+      "semantic": "torso_core",
+      "file": "generated_donor_parts/02_torso_core.png",
+      "source_bbox": [
+        417,
+        31,
+        203,
+        250
+      ],
+      "source_center": [
+        520.7346457356286,
+        156.4896514926002
+      ],
+      "alpha_area": 35609,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 3,
+      "semantic": "pelvis_coat",
+      "file": "generated_donor_parts/03_pelvis_coat.png",
+      "source_bbox": [
+        674,
+        73,
+        230,
+        175
+      ],
+      "source_center": [
+        789.1627592932969,
+        162.34284856896357
+      ],
+      "alpha_area": 26659,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 4,
+      "semantic": "belt_pouch",
+      "file": "generated_donor_parts/04_belt_pouch.png",
+      "source_bbox": [
+        945,
+        106,
+        214,
+        109
+      ],
+      "source_center": [
+        1055.1869029275808,
+        154.95562403697997
+      ],
+      "alpha_area": 12980,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 5,
+      "semantic": "near_upper_arm",
+      "file": "generated_donor_parts/05_near_upper_arm.png",
+      "source_bbox": [
+        78,
+        293,
+        141,
+        237
+      ],
+      "source_center": [
+        142.65147910633016,
+        400.9576954902772
+      ],
+      "alpha_area": 19336,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 6,
+      "semantic": "near_forearm_hand_donor",
+      "file": "generated_donor_parts/06_near_forearm_hand_donor.png",
+      "source_bbox": [
+        255,
+        296,
+        152,
+        262
+      ],
+      "source_center": [
+        333.34824753236006,
+        422.72049175483187
+      ],
+      "alpha_area": 16919,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 7,
+      "semantic": "far_upper_arm",
+      "file": "generated_donor_parts/07_far_upper_arm.png",
+      "source_bbox": [
+        482,
+        307,
+        158,
+        235
+      ],
+      "source_center": [
+        559.5448057496105,
+        420.6010453837262
+      ],
+      "alpha_area": 19897,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 8,
+      "semantic": "far_forearm",
+      "file": "generated_donor_parts/08_far_forearm.png",
+      "source_bbox": [
+        682,
+        339,
+        145,
+        197
+      ],
+      "source_center": [
+        754.2237678855325,
+        434.55365659777425
+      ],
+      "alpha_area": 12580,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 9,
+      "semantic": "far_hand",
+      "file": "generated_donor_parts/09_far_hand.png",
+      "source_bbox": [
+        863,
+        429,
+        106,
+        94
+      ],
+      "source_center": [
+        916.9446568057172,
+        475.6787435599136
+      ],
+      "alpha_area": 6017,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 10,
+      "semantic": "near_shoulder_plate",
+      "file": "generated_donor_parts/10_near_shoulder_plate.png",
+      "source_bbox": [
+        1025,
+        302,
+        149,
+        111
+      ],
+      "source_center": [
+        1099.5329353859042,
+        358.15928369462773
+      ],
+      "alpha_area": 9549,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 11,
+      "semantic": "far_shoulder_plate",
+      "file": "generated_donor_parts/11_far_shoulder_plate.png",
+      "source_bbox": [
+        1034,
+        437,
+        128,
+        108
+      ],
+      "source_center": [
+        1100.1668756268807,
+        492.1853059177533
+      ],
+      "alpha_area": 7976,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 12,
+      "semantic": "dagger",
+      "file": "generated_donor_parts/12_dagger.png",
+      "source_bbox": [
+        62,
+        590,
+        70,
+        220
+      ],
+      "source_center": [
+        92.16410950661853,
+        696.2406738868833
+      ],
+      "alpha_area": 6648,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 13,
+      "semantic": "near_thigh",
+      "file": "generated_donor_parts/13_near_thigh.png",
+      "source_bbox": [
+        202,
+        594,
+        153,
+        204
+      ],
+      "source_center": [
+        275.99867950481433,
+        691.6748280605227
+      ],
+      "alpha_area": 18175,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 14,
+      "semantic": "near_shin",
+      "file": "generated_donor_parts/14_near_shin.png",
+      "source_bbox": [
+        439,
+        598,
+        98,
+        201
+      ],
+      "source_center": [
+        484.3049063612444,
+        693.3917350255379
+      ],
+      "alpha_area": 12922,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 15,
+      "semantic": "near_boot",
+      "file": "generated_donor_parts/15_near_boot.png",
+      "source_bbox": [
+        572,
+        640,
+        140,
+        153
+      ],
+      "source_center": [
+        649.5727703364913,
+        720.0110258085593
+      ],
+      "alpha_area": 12244,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 16,
+      "semantic": "far_thigh",
+      "file": "generated_donor_parts/16_far_thigh.png",
+      "source_bbox": [
+        777,
+        589,
+        120,
+        224
+      ],
+      "source_center": [
+        836.0913222893367,
+        695.508342802464
+      ],
+      "alpha_area": 16721,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 17,
+      "semantic": "far_shin",
+      "file": "generated_donor_parts/17_far_shin.png",
+      "source_bbox": [
+        935,
+        604,
+        98,
+        197
+      ],
+      "source_center": [
+        983.9635824338799,
+        697.1683282524511
+      ],
+      "alpha_area": 12137,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 18,
+      "semantic": "far_boot",
+      "file": "generated_donor_parts/18_far_boot.png",
+      "source_bbox": [
+        1062,
+        659,
+        130,
+        149
+      ],
+      "source_center": [
+        1133.2095558904352,
+        736.2207251130219
+      ],
+      "alpha_area": 11281,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 19,
+      "semantic": "scarf_front",
+      "file": "generated_donor_parts/19_scarf_front.png",
+      "source_bbox": [
+        44,
+        834,
+        230,
+        143
+      ],
+      "source_center": [
+        150.90749730312837,
+        903.1977885652643
+      ],
+      "alpha_area": 18540,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 20,
+      "semantic": "scarf_rear",
+      "file": "generated_donor_parts/20_scarf_rear.png",
+      "source_bbox": [
+        352,
+        837,
+        116,
+        204
+      ],
+      "source_center": [
+        400.90711361310133,
+        928.1219720232003
+      ],
+      "alpha_area": 11724,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 21,
+      "semantic": "cape_upper",
+      "file": "generated_donor_parts/21_cape_upper.png",
+      "source_bbox": [
+        539,
+        836,
+        259,
+        310
+      ],
+      "source_center": [
+        673.9214044793865,
+        977.2019121108442
+      ],
+      "alpha_area": 41211,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 22,
+      "semantic": "cape_middle",
+      "file": "generated_donor_parts/22_cape_middle.png",
+      "source_bbox": [
+        829,
+        844,
+        208,
+        373
+      ],
+      "source_center": [
+        920.4716617312857,
+        1035.2295066914583
+      ],
+      "alpha_area": 43563,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 23,
+      "semantic": "cape_tail",
+      "file": "generated_donor_parts/23_cape_tail.png",
+      "source_bbox": [
+        1059,
+        873,
+        162,
+        335
+      ],
+      "source_center": [
+        1130.5777741151262,
+        1030.5425851909845
+      ],
+      "alpha_area": 24269,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 24,
+      "semantic": "loot_sack",
+      "file": "generated_donor_parts/24_loot_sack.png",
+      "source_bbox": [
+        55,
+        996,
+        181,
+        213
+      ],
+      "source_center": [
+        145.56494661921707,
+        1115.8364683951872
+      ],
+      "alpha_area": 23604,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 25,
+      "semantic": "sack_knot",
+      "file": "generated_donor_parts/25_sack_knot.png",
+      "source_bbox": [
+        306,
+        1053,
+        124,
+        142
+      ],
+      "source_center": [
+        367.8831630386495,
+        1128.5057752110174
+      ],
+      "alpha_area": 9004,
+      "approval": "donor_only_requires_joint_review"
+    },
+    {
+      "index": 26,
+      "semantic": "sack_strap",
+      "file": "generated_donor_parts/26_sack_strap.png",
+      "source_bbox": [
+        480,
+        1106,
+        221,
+        104
+      ],
+      "source_center": [
+        571.9650641982681,
+        1153.8621976709464
+      ],
+      "alpha_area": 6698,
+      "approval": "donor_only_requires_joint_review"
+    }
+  ]
+}

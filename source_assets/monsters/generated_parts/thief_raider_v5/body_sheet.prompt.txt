@@ -1,0 +1,12 @@
+Use case: stylized-concept
+Asset type: production-ready 2D skeletal-animation cutout body sheet
+Input image 1: exact Thief Raider identity, costume, palette, screen-left three-quarter crouched bind pose, and silhouette master.
+Input images 2-5: shipped Ruby Raider family references for their soft hand-painted 2D rendering, restrained detail, simplified anatomy, material treatment, and in-game visual density.
+Primary request: Create one clean 4x4 hidden-underlap donor sheet containing exactly sixteen isolated complete parts of the same Thief Raider: hooded head; scarf back; scarf front; torso core; pelvis skirt; front waist cloth; upper back cloak; near cloak tail; far cloak tail; loot sack; bag knot; sack strap back segment; sack strap front segment; belt with pouch; near shoulder plate; far shoulder plate.
+Pose/perspective: Every part must retain the master character's exact screen-left three-quarter perspective, foreshortening, lighting direction, proportions, and bind-pose orientation. Do not redesign parts into front-facing or neutral orthographic pieces.
+Joint/overlap engineering: Parts that meet another part include clean hidden underlap margins so they can rotate without opening gaps. The sack strap is deliberately split into back and front segments for correct draw order.
+Production rule: this sheet supplies only pixels hidden beneath the approved master cutouts. Do not reinterpret visible surfaces; approved_master.png remains the byte-exact visible payload.
+Style/medium: Soft hand-painted 2D game sprite matching the Ruby Raider references. Broad painted value shapes, subtle brush texture, simplified readable forms, restrained highlights.
+Scene/background: perfectly flat uniform #00FF00 chroma-key background, with generous empty spacing between cells.
+Constraints: exactly one part per grid cell, no overlap between cells, no labels, no text, no cast shadows, no floor, no repeated full character, no missing pieces.
+Avoid: glossy 3D render, plastic toy finish, faceted or low-poly shading, photoreal anatomy, chibi exaggeration, front-facing view, hollow pipe sockets, visible connector plugs, black background, gradients, watermark.

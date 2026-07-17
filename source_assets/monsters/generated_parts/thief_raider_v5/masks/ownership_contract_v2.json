@@ -1,0 +1,355 @@
+{
+  "version": 2,
+  "schema": "sts2-visible-pixel-ownership/v2",
+  "character": "thief_raider_v5",
+  "approved_master": "../approved_master.png",
+  "skeleton_spec": "../skeleton_spec.json",
+  "label_mode": "index",
+  "background": 0,
+  "map_alpha_zero_is_background": true,
+  "draw_order": [
+    "cloak_tail_far",
+    "cloak_tail_near",
+    "upper_back_cloak",
+    "loot_sack",
+    "bag_knot",
+    "sack_strap_back",
+    "far_thigh",
+    "far_shin",
+    "far_foot",
+    "far_knee_cover",
+    "scarf_back",
+    "far_upper_arm",
+    "far_shoulder_plate",
+    "torso_core",
+    "near_thigh",
+    "near_shin",
+    "near_foot",
+    "near_knee_cover",
+    "pelvis_skirt",
+    "waist_cloth_front",
+    "sack_strap_front",
+    "far_forearm",
+    "far_elbow_cover",
+    "strap_grip",
+    "far_strap_hand",
+    "belt_and_pouch",
+    "hooded_head",
+    "scarf_front",
+    "near_upper_arm",
+    "near_shoulder_plate",
+    "near_forearm",
+    "near_elbow_cover",
+    "near_dagger_hand",
+    "dagger"
+  ],
+  "parts": [
+    {
+      "name": "cloak_tail_far",
+      "label": 1,
+      "z": 0,
+      "filename": "cloak_tail_far.png",
+      "bone": "CloakFarTail",
+      "slot": "cloak_tail_far",
+      "joint_cover": false
+    },
+    {
+      "name": "cloak_tail_near",
+      "label": 2,
+      "z": 1,
+      "filename": "cloak_tail_near.png",
+      "bone": "CloakNearTail",
+      "slot": "cloak_tail_near",
+      "joint_cover": false
+    },
+    {
+      "name": "upper_back_cloak",
+      "label": 3,
+      "z": 2,
+      "filename": "upper_back_cloak.png",
+      "bone": "CloakUpper",
+      "slot": "upper_back_cloak",
+      "joint_cover": false
+    },
+    {
+      "name": "loot_sack",
+      "label": 4,
+      "z": 3,
+      "filename": "loot_sack.png",
+      "bone": "LootSack",
+      "slot": "loot_sack",
+      "joint_cover": false
+    },
+    {
+      "name": "bag_knot",
+      "label": 5,
+      "z": 4,
+      "filename": "bag_knot.png",
+      "bone": "BagKnot",
+      "slot": "bag_knot",
+      "joint_cover": false
+    },
+    {
+      "name": "sack_strap_back",
+      "label": 6,
+      "z": 5,
+      "filename": "sack_strap_back.png",
+      "bone": "StrapBack",
+      "slot": "sack_strap_back",
+      "joint_cover": false
+    },
+    {
+      "name": "far_thigh",
+      "label": 7,
+      "z": 6,
+      "filename": "far_thigh.png",
+      "bone": "FarLeg",
+      "slot": "far_thigh",
+      "joint_cover": false
+    },
+    {
+      "name": "far_shin",
+      "label": 8,
+      "z": 7,
+      "filename": "far_shin.png",
+      "bone": "FarShin",
+      "slot": "far_shin",
+      "joint_cover": false
+    },
+    {
+      "name": "far_foot",
+      "label": 9,
+      "z": 8,
+      "filename": "far_foot.png",
+      "bone": "FarFoot",
+      "slot": "far_foot",
+      "joint_cover": false
+    },
+    {
+      "name": "far_knee_cover",
+      "label": 10,
+      "z": 9,
+      "filename": "far_knee_cover.png",
+      "bone": "FarKneeCover",
+      "slot": "far_knee_cover",
+      "joint_cover": true
+    },
+    {
+      "name": "scarf_back",
+      "label": 11,
+      "z": 10,
+      "filename": "scarf_back.png",
+      "bone": "ScarfBack",
+      "slot": "scarf_back",
+      "joint_cover": false
+    },
+    {
+      "name": "far_upper_arm",
+      "label": 12,
+      "z": 11,
+      "filename": "far_upper_arm.png",
+      "bone": "FarArm",
+      "slot": "far_upper_arm",
+      "joint_cover": false
+    },
+    {
+      "name": "far_shoulder_plate",
+      "label": 13,
+      "z": 12,
+      "filename": "far_shoulder_plate.png",
+      "bone": "FarShoulderCover",
+      "slot": "far_shoulder_plate",
+      "joint_cover": true
+    },
+    {
+      "name": "torso_core",
+      "label": 14,
+      "z": 13,
+      "filename": "torso_core.png",
+      "bone": "Torso",
+      "slot": "torso_core",
+      "joint_cover": false
+    },
+    {
+      "name": "near_thigh",
+      "label": 15,
+      "z": 14,
+      "filename": "near_thigh.png",
+      "bone": "NearLeg",
+      "slot": "near_thigh",
+      "joint_cover": false
+    },
+    {
+      "name": "near_shin",
+      "label": 16,
+      "z": 15,
+      "filename": "near_shin.png",
+      "bone": "NearShin",
+      "slot": "near_shin",
+      "joint_cover": false
+    },
+    {
+      "name": "near_foot",
+      "label": 17,
+      "z": 16,
+      "filename": "near_foot.png",
+      "bone": "NearFoot",
+      "slot": "near_foot",
+      "joint_cover": false
+    },
+    {
+      "name": "near_knee_cover",
+      "label": 18,
+      "z": 17,
+      "filename": "near_knee_cover.png",
+      "bone": "NearKneeCover",
+      "slot": "near_knee_cover",
+      "joint_cover": true
+    },
+    {
+      "name": "pelvis_skirt",
+      "label": 19,
+      "z": 18,
+      "filename": "pelvis_skirt.png",
+      "bone": "Pelvis",
+      "slot": "pelvis_skirt",
+      "joint_cover": false
+    },
+    {
+      "name": "waist_cloth_front",
+      "label": 20,
+      "z": 19,
+      "filename": "waist_cloth_front.png",
+      "bone": "WaistCloth",
+      "slot": "waist_cloth_front",
+      "joint_cover": false
+    },
+    {
+      "name": "sack_strap_front",
+      "label": 21,
+      "z": 20,
+      "filename": "sack_strap_front.png",
+      "bone": "StrapFront",
+      "slot": "sack_strap_front",
+      "joint_cover": false
+    },
+    {
+      "name": "far_forearm",
+      "label": 22,
+      "z": 21,
+      "filename": "far_forearm.png",
+      "bone": "FarForearm",
+      "slot": "far_forearm",
+      "joint_cover": false
+    },
+    {
+      "name": "far_elbow_cover",
+      "label": 23,
+      "z": 22,
+      "filename": "far_elbow_cover.png",
+      "bone": "FarElbowCover",
+      "slot": "far_elbow_cover",
+      "joint_cover": true
+    },
+    {
+      "name": "strap_grip",
+      "label": 24,
+      "z": 23,
+      "filename": "strap_grip.png",
+      "bone": "StrapGrip",
+      "slot": "strap_grip",
+      "joint_cover": true
+    },
+    {
+      "name": "far_strap_hand",
+      "label": 25,
+      "z": 24,
+      "filename": "far_strap_hand.png",
+      "bone": "FarHand",
+      "slot": "far_strap_hand",
+      "joint_cover": false
+    },
+    {
+      "name": "belt_and_pouch",
+      "label": 26,
+      "z": 25,
+      "filename": "belt_and_pouch.png",
+      "bone": "Belt",
+      "slot": "belt_and_pouch",
+      "joint_cover": false
+    },
+    {
+      "name": "hooded_head",
+      "label": 27,
+      "z": 26,
+      "filename": "hooded_head.png",
+      "bone": "Head",
+      "slot": "hooded_head",
+      "joint_cover": false
+    },
+    {
+      "name": "scarf_front",
+      "label": 28,
+      "z": 27,
+      "filename": "scarf_front.png",
+      "bone": "ScarfFront",
+      "slot": "scarf_front",
+      "joint_cover": true
+    },
+    {
+      "name": "near_upper_arm",
+      "label": 29,
+      "z": 28,
+      "filename": "near_upper_arm.png",
+      "bone": "NearArm",
+      "slot": "near_upper_arm",
+      "joint_cover": false
+    },
+    {
+      "name": "near_shoulder_plate",
+      "label": 30,
+      "z": 29,
+      "filename": "near_shoulder_plate.png",
+      "bone": "NearShoulderCover",
+      "slot": "near_shoulder_plate",
+      "joint_cover": true
+    },
+    {
+      "name": "near_forearm",
+      "label": 31,
+      "z": 30,
+      "filename": "near_forearm.png",
+      "bone": "NearForearm",
+      "slot": "near_forearm",
+      "joint_cover": false
+    },
+    {
+      "name": "near_elbow_cover",
+      "label": 32,
+      "z": 31,
+      "filename": "near_elbow_cover.png",
+      "bone": "NearElbowCover",
+      "slot": "near_elbow_cover",
+      "joint_cover": true
+    },
+    {
+      "name": "near_dagger_hand",
+      "label": 33,
+      "z": 32,
+      "filename": "near_dagger_hand.png",
+      "bone": "NearHand",
+      "slot": "near_dagger_hand",
+      "joint_cover": false
+    },
+    {
+      "name": "dagger",
+      "label": 34,
+      "z": 33,
+      "filename": "dagger.png",
+      "bone": "Dagger",
+      "slot": "dagger",
+      "joint_cover": false
+    }
+  ],
+  "visible_payload_rule": "Every label extracts byte-exact approved_master.png pixels; the ownership map contains indices only."
+}

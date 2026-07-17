@@ -1,0 +1,213 @@
+{
+  "spine_version": "4.2.0",
+  "source_manifest": "source_assets/monsters/ai_cutout_rigs.generated.json",
+  "rigs": [
+    {
+      "key": "origin_fogmog",
+      "bones": 16,
+      "slots": 15,
+      "atlas_size": [
+        1009,
+        1567
+      ],
+      "animations": [
+        "idle_loop",
+        "attack",
+        "cast",
+        "hurt",
+        "die",
+        "summon",
+        "power_up",
+        "revive"
+      ],
+      "spjson": "animations/monsters/sts2_things/origin_fogmog/origin_fogmog.spjson",
+      "spatlas": "animations/monsters/sts2_things/origin_fogmog/origin_fogmog.spatlas",
+      "tres": "animations/monsters/sts2_things/origin_fogmog/origin_fogmog_skel_data.tres",
+      "scene": "scenes/creature_visuals/origin_fogmog.tscn"
+    },
+    {
+      "key": "bowlbug_progenitor",
+      "bones": 34,
+      "slots": 45,
+      "atlas_size": [
+        511,
+        2621
+      ],
+      "animations": [
+        "idle_loop",
+        "attack",
+        "cast",
+        "hurt",
+        "die",
+        "summon",
+        "power_up",
+        "revive"
+      ],
+      "spjson": "animations/monsters/sts2_things/bowlbug_progenitor/bowlbug_progenitor.spjson",
+      "spatlas": "animations/monsters/sts2_things/bowlbug_progenitor/bowlbug_progenitor.spatlas",
+      "tres": "animations/monsters/sts2_things/bowlbug_progenitor/bowlbug_progenitor_skel_data.tres",
+      "scene": "scenes/creature_visuals/bowlbug_progenitor.tscn"
+    },
+    {
+      "key": "scale_beetle",
+      "bones": 29,
+      "slots": 48,
+      "atlas_size": [
+        1021,
+        1553
+      ],
+      "animations": [
+        "idle_loop",
+        "attack",
+        "cast",
+        "hurt",
+        "die",
+        "summon",
+        "power_up",
+        "revive"
+      ],
+      "spjson": "animations/monsters/sts2_things/scale_beetle/scale_beetle.spjson",
+      "spatlas": "animations/monsters/sts2_things/scale_beetle/scale_beetle.spatlas",
+      "tres": "animations/monsters/sts2_things/scale_beetle/scale_beetle_skel_data.tres",
+      "scene": "scenes/creature_visuals/scale_beetle.tscn"
+    },
+    {
+      "key": "soul_roe_1",
+      "bones": 3,
+      "slots": 4,
+      "atlas_size": [
+        397,
+        119
+      ],
+      "animations": [
+        "idle_loop",
+        "attack",
+        "cast",
+        "hurt",
+        "die",
+        "summon",
+        "power_up",
+        "revive"
+      ],
+      "spjson": "animations/monsters/sts2_things/soul_roe_1/soul_roe_1.spjson",
+      "spatlas": "animations/monsters/sts2_things/soul_roe_1/soul_roe_1.spatlas",
+      "tres": "animations/monsters/sts2_things/soul_roe_1/soul_roe_1_skel_data.tres",
+      "scene": "scenes/creature_visuals/soul_roe.tscn"
+    },
+    {
+      "key": "soul_roe_2",
+      "bones": 3,
+      "slots": 4,
+      "atlas_size": [
+        395,
+        119
+      ],
+      "animations": [
+        "idle_loop",
+        "attack",
+        "cast",
+        "hurt",
+        "die",
+        "summon",
+        "power_up",
+        "revive"
+      ],
+      "spjson": "animations/monsters/sts2_things/soul_roe_2/soul_roe_2.spjson",
+      "spatlas": "animations/monsters/sts2_things/soul_roe_2/soul_roe_2.spatlas",
+      "tres": "animations/monsters/sts2_things/soul_roe_2/soul_roe_2_skel_data.tres",
+      "scene": "scenes/creature_visuals/soul_roe_2.tscn"
+    },
+    {
+      "key": "soul_roe_3",
+      "bones": 3,
+      "slots": 4,
+      "atlas_size": [
+        399,
+        121
+      ],
+      "animations": [
+        "idle_loop",
+        "attack",
+        "cast",
+        "hurt",
+        "die",
+        "summon",
+        "power_up",
+        "revive"
+      ],
+      "spjson": "animations/monsters/sts2_things/soul_roe_3/soul_roe_3.spjson",
+      "spatlas": "animations/monsters/sts2_things/soul_roe_3/soul_roe_3.spatlas",
+      "tres": "animations/monsters/sts2_things/soul_roe_3/soul_roe_3_skel_data.tres",
+      "scene": "scenes/creature_visuals/soul_roe_3.tscn"
+    },
+    {
+      "key": "soul_roes",
+      "bones": 16,
+      "slots": 12,
+      "atlas_size": [
+        489,
+        355
+      ],
+      "animations": [
+        "idle_loop",
+        "attack",
+        "cast",
+        "hurt",
+        "die",
+        "summon",
+        "power_up",
+        "revive"
+      ],
+      "spjson": "animations/monsters/sts2_things/soul_roes/soul_roes.spjson",
+      "spatlas": "animations/monsters/sts2_things/soul_roes/soul_roes.spatlas",
+      "tres": "animations/monsters/sts2_things/soul_roes/soul_roes_skel_data.tres",
+      "scene": "scenes/creature_visuals/soul_roes.tscn"
+    },
+    {
+      "key": "the_legacy",
+      "bones": 28,
+      "slots": 36,
+      "atlas_size": [
+        1023,
+        1449
+      ],
+      "animations": [
+        "idle_loop",
+        "attack",
+        "cast",
+        "hurt",
+        "die",
+        "summon",
+        "power_up",
+        "revive"
+      ],
+      "spjson": "animations/monsters/sts2_things/the_legacy/the_legacy.spjson",
+      "spatlas": "animations/monsters/sts2_things/the_legacy/the_legacy.spatlas",
+      "tres": "animations/monsters/sts2_things/the_legacy/the_legacy_skel_data.tres",
+      "scene": "scenes/creature_visuals/the_legacy.tscn"
+    },
+    {
+      "key": "thief_raider",
+      "bones": 1,
+      "slots": 1,
+      "atlas_size": [
+        519,
+        379
+      ],
+      "animations": [
+        "idle_loop",
+        "attack",
+        "cast",
+        "hurt",
+        "die",
+        "summon",
+        "power_up",
+        "revive"
+      ],
+      "spjson": "animations/monsters/sts2_things/thief_raider/thief_raider.spjson",
+      "spatlas": "animations/monsters/sts2_things/thief_raider/thief_raider.spatlas",
+      "tres": "animations/monsters/sts2_things/thief_raider/thief_raider_skel_data.tres",
+      "scene": "scenes/creature_visuals/thief_raider.tscn"
+    }
+  ]
+}

@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Godot;
+using MegaCrit.Sts2.Core.Audio;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -26,18 +30,37 @@ namespace STS2_Things.Monsters;
 public sealed class SoulRoe : MonsterModel
 {
     private const int _damage = 6;
+    protected override string AttackSfx =>
+        "event:/sfx/enemy/enemy_attacks/soul_fysh/soul_fysh_attack";
+    protected override string CastSfx =>
+        "event:/sfx/enemy/enemy_attacks/soul_fysh/soul_fysh_beckon";
+    public override string DeathSfx =>
+        "event:/sfx/enemy/enemy_attacks/soul_fysh/soul_fysh_die";
+    public override DamageSfxType TakeDamageSfxType => DamageSfxType.Magic;
+    public override Vector2 ExtraDeathVfxPadding => new(2.2f, 5.0f);
+
+    private static readonly string[] _visualVariants =
+    [
+        SceneHelper.GetScenePath("creature_visuals/soul_roe"),
+        SceneHelper.GetScenePath("creature_visuals/soul_roe_2"),
+        SceneHelper.GetScenePath("creature_visuals/soul_roe_3")
+    ];
     private int _startMovePhase;
 
     // ========== 可配置属性（必须在 ToMutable() 后设置） ==========
 
     private bool _startStunned;
 
-    // 使用 fallback 视觉（PNG 贴图由 MonsterRegistrar 自动注入）
-    protected override string VisualsPath => SceneHelper.GetScenePath("creature_visuals/fallback");
+    // 变体选择只依赖同步的起始阶段；所有变体都进入 AssetPaths，避免动态召唤时临时加载。
+    protected override string VisualsPath =>
+        _visualVariants[Math.Abs(_startMovePhase % _visualVariants.Length)];
+
+    public override IEnumerable<string> AssetPaths =>
+        base.AssetPaths.Concat(_visualVariants).Distinct();
 
     // ========== 血量 ==========
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(
-        AscensionLevel.ToughEnemies, 4, 6);
+        AscensionLevel.ToughEnemies, 6, 4);
 
     public override int MaxInitialHp => AscensionHelper.GetValueIfAscension(
         AscensionLevel.ToughEnemies, 8, 6);

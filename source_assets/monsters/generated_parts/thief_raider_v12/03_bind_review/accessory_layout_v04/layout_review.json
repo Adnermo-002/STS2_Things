@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "status": "accessory_bind_visual_review_required",
+  "placements": {
+    "cape_far": {
+      "file": "24_cape_tail_far.png",
+      "anchor": [
+        24,
+        18
+      ],
+      "target": [
+        850,
+        310
+      ],
+      "angle": -7.0,
+      "scale": 0.95
+    },
+    "cape_near": {
+      "file": "23_cape_tail_near.png",
+      "anchor": [
+        30,
+        18
+      ],
+      "target": [
+        900,
+        345
+      ],
+      "angle": -1.0,
+      "scale": 1.02
+    },
+    "loot_sack": {
+      "file": "18_loot_sack.png",
+      "anchor": [
+        118,
+        22
+      ],
+      "target": [
+        1030,
+        300
+      ],
+      "angle": 3.0,
+      "scale": 1.0
+    },
+    "sack_rope": {
+      "file": "21_sack_rope.png",
+      "anchor": [
+        95,
+        20
+      ],
+      "target": [
+        900,
+        265
+      ],
+      "angle": -18.0,
+      "scale": 0.58
+    },
+    "dagger": {
+      "file": "28_dagger.png",
+      "anchor": [
+        174,
+        44
+      ],
+      "target": [
+        444,
+        728
+      ],
+      "angle": 7.0,
+      "scale": 1.02
+    },
+    "scarf": {
+      "file": "03_scarf_tube_front.png",
+      "anchor": [
+        101,
+        78
+      ],
+      "target": [
+        642,
+        416
+      ],
+      "angle": -4.0,
+      "scale": 0.9
+    },
+    "shoulder_far": {
+      "file": "06_shoulder_plate_far.png",
+      "anchor": [
+        72,
+        58
+      ],
+      "target": [
+        850,
+        326
+      ],
+      "angle": 23.0,
+      "scale": 0.82
+    },
+    "shoulder_near": {
+      "file": "07_shoulder_plate_near.png",
+      "anchor": [
+        68,
+        58
+      ],
+      "target": [
+        606,
+        440
+      ],
+      "angle": 18.0,
+      "scale": 0.74
+    },
+    "forearm_near": {
+      "file": "14_forearm_plate_near.png",
+      "anchor": [
+        43,
+        61
+      ],
+      "target": [
+        525,
+        603
+      ],
+      "angle": 36.0,
+      "scale": 0.82
+    },
+    "forearm_far": {
+      "file": "15_forearm_plate_far.png",
+      "anchor": [
+        43,
+        61
+      ],
+      "target": [
+        922,
+        433
+      ],
+      "angle": 56.0,
+      "scale": 0.78
+    },
+    "belt": {
+      "file": "22_belt.png",
+      "anchor": [
+        100,
+        70
+      ],
+      "target": [
+        792,
+        598
+      ],
+      "angle": 0.0,
+      "scale": 1.02
+    },
+    "pouch": {
+      "file": "20_pouch.png",
+      "anchor": [
+        68,
+        67
+      ],
+      "target": [
+        908,
+        603
+      ],
+      "angle": 2.0,
+      "scale": 0.82
+    }
+  },
+  "background_order": [
+    "cape_far",
+    "loot_sack",
+    "cape_near",
+    "scarf_back",
+    "belt_back",
+    "dagger"
+  ],
+  "foreground_order": [
+    "belt_front",
+    "pouch",
+    "sack_rope",
+    "shoulder_far",
+    "shoulder_near",
+    "forearm_far",
+    "forearm_near",
+    "far_hand_retop",
+    "scarf_front"
+  ],
+  "shipping_allowed": false,
+  "steam_install_allowed": false,
+  "next_gate": "placement_scale_draw_order_review"
+}

@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace STS2_Things.Relics;
 
-public class EnergyBottle : RelicModel
+public sealed class EnergyBottle : RelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
 
@@ -23,7 +23,7 @@ public class EnergyBottle : RelicModel
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants,
         ICombatState combatState)
     {
-        if (side == Owner.Creature.Side)
+        if (side == Owner.Creature.Side && combatState.RoundNumber == 1)
         {
             Flash();
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);

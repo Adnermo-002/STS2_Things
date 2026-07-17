@@ -1,0 +1,11 @@
+Use case: precise-object-edit
+Asset type: approved master character sprite for a 2D skeletal-animation pipeline
+Input image 1: identity reference for the Thief Raider. Preserve the hooded black face with two yellow eyes, muted plum scarf and torn cloak, dark clothing, small silver armor plates, brown loot sack and straps, belt pouch, boots, and short dagger.
+Input images 2-5: shipped Ruby Raider family references. Match their in-game hand-painted rendering, simplified anatomy, restrained material detail, matte values, and visual density.
+Primary request: Redraw the same Thief Raider as a production-ready monster master sprite. Correct the proportions to a compact 4.5-5.5-head-tall Raider: slightly shorter and more hunched than the Axe or Crossbow Raider, but not squat, chibi, childlike, realistic-human, or wide like a mascot. Preserve a stealthy crouch with a readable grounded stance.
+Pose/perspective: The entire figure is a consistent three-quarter view facing screen-left. Hood, chest, shoulder line, pelvis, knees, both boots, sack, and dagger all agree on that left-facing perspective. The dagger hand reaches down and toward screen-left; the other hand grips the sack strap near the upper chest. Do not leave the torso, pelvis, or feet front-facing.
+Style/medium: Soft hand-painted 2D game sprite matching the Ruby Raider references. Broad matte painted value shapes, slightly irregular organic edges, subtle brush texture, low saturation, restrained highlights, readable at combat scale. Preserve the identity reference's existing color family; do not recolor it.
+Composition: full body, centered, generous clear padding, no cropping, single character only.
+Scene/background: perfectly flat uniform #00FF00 chroma-key background for removal; no floor plane or cast shadow.
+Constraints: preserve costume identity and palette; coherent silhouette; weapon and all limbs fully visible; no text, label, watermark, extra props, or extra characters.
+Avoid: glossy 3D render, plastic toy finish, smooth mobile-game figurine, faceted or low-poly shading, photoreal anatomy, three-head chibi proportions, oversized round head/bag/boots, front-facing stance, disconnected joints, hollow pipe sockets, gradients or texture in the green background.

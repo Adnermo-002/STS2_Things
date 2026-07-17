@@ -11,7 +11,7 @@ using STS2_Things.Cards;
 
 namespace STS2_Things.Relics;
 
-public class WhiteFlag : RelicModel
+public sealed class WhiteFlag : RelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
 

@@ -1,0 +1,16 @@
+﻿Use case: precise-object-edit
+Asset type: full-character occlusion-reveal plate for 2D skeletal animation
+
+Image 1 is the clean 1536x1024 edit target: the locked Thief Raider master enlarged exactly two times and centered on a flat green background. Image 2 is a binary edit map at the identical canvas coordinates: white marks only the near shoulder-pauldron overlap and the near elbow/bracer overlap. Image 3 is the original locked master for identity.
+
+Return the same complete character on the same 1536x1024 canvas, at the same scale, location, crouched left-facing three-quarter pose, silhouette, proportions, colors, lighting, matte low-frequency paint, and layer order. Preserve every pixel outside the two white map regions as closely as image generation permits.
+
+Inside the first white region only, temporarily remove the near silver shoulder pauldron and reveal the compact dark charcoal cloth upper-arm sleeve continuing naturally underneath it toward the true shoulder pivot. Do not reveal skin or a hollow armhole.
+
+Inside the second white region only, temporarily remove the proximal overlapping rim of the near forearm bracer/sleeve and reveal only a short dark-cloth elbow continuation from the existing upper-arm sleeve beneath it. Keep the remainder of the forearm, hand, dagger, and all other parts unchanged.
+
+The revealed upper arm must remain bent, stout, asymmetric, and fully in-context. It follows the exact existing shoulder-to-elbow axis. The newly exposed cloth is a short concealed continuation, not a longer limb redesign. Use the original charcoal blue-gray palette and the same soft matte broad shading.
+
+Do not output an isolated limb. Do not change the head, scarf, torso, cape, bag, belt, legs, far arm, hand, dagger, character scale, pose, camera, or placement. No new armor. No tube, sausage, round cap, plug, hollow socket, open cuff, flat cut, extra joint, realistic long anatomy, glossy 3D shading, plastic sheen, polygons, recolor, global relight, text, labels, mask marks, red marks, frames, UI, shadow, logo, signature, or watermark.
+
+Background: perfectly flat uniform #00FF00, with no gradient, texture, floor, cast shadow, reflection, or green inside the character.

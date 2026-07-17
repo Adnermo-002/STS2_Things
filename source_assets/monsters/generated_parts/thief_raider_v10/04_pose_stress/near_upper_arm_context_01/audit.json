@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "visual_review_required",
+  "upper_attachment": "02_semantic_parts/near_upper_arm_context_01/near_upper_arm_attachment.png",
+  "ownership_manifest": "00_reference/near_arm_ownership_v2/near_arm_ownership_v2.manifest.json",
+  "cases": [
+    {
+      "name": "bind",
+      "shoulder_deg": 0.0,
+      "elbow_deg": 0.0,
+      "alpha_bbox": [
+        18,
+        201,
+        213,
+        388
+      ]
+    },
+    {
+      "name": "shoulder_back_45",
+      "shoulder_deg": -45.0,
+      "elbow_deg": 0.0,
+      "alpha_bbox": [
+        0,
+        201,
+        197,
+        295
+      ]
+    },
+    {
+      "name": "shoulder_forward_45",
+      "shoulder_deg": 45.0,
+      "elbow_deg": 0.0,
+      "alpha_bbox": [
+        156,
+        201,
+        232,
+        420
+      ]
+    },
+    {
+      "name": "elbow_open_55",
+      "shoulder_deg": 0.0,
+      "elbow_deg": -55.0,
+      "alpha_bbox": [
+        0,
+        201,
+        213,
+        326
+      ]
+    },
+    {
+      "name": "elbow_close_75",
+      "shoulder_deg": 0.0,
+      "elbow_deg": 75.0,
+      "alpha_bbox": [
+        120,
+        201,
+        213,
+        420
+      ]
+    },
+    {
+      "name": "elbow_close_110",
+      "shoulder_deg": 0.0,
+      "elbow_deg": 110.0,
+      "alpha_bbox": [
+        114,
+        201,
+        279,
+        363
+      ]
+    }
+  ],
+  "contact": "contact.jpg",
+  "policy": "local joint stress only; torso underpaint and production Spine constraints remain pending",
+  "shipping_allowed": false,
+  "steam_install_allowed": false
+}
