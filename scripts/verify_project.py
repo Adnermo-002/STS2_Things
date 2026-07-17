@@ -93,6 +93,8 @@ def main() -> int:
         )
     if "source_assets/**" not in export_preset:
         fail(errors, "editable monster source art must be excluded from the shipping PCK")
+    if not (ROOT / "source_assets" / ".gdignore").is_file():
+        fail(errors, "source_assets/.gdignore must prevent Godot from importing build-time art")
 
     forbidden_patterns = {
         r"\bRandom\.Shared\b": "Random.Shared",
@@ -1312,6 +1314,9 @@ def main() -> int:
         else set()
     )
     for required_exclude in (
+        "tools/**",
+        "manifests/**",
+        "source_assets/**",
         "addons/spine/**",
         "animations/monsters/sts2_things/**",
         "images/monsters/ai_rig_parts/**",

@@ -24,6 +24,7 @@ dist/
 *.log
 *.tmp
 *~
+source_assets/**/*.import
 
 # Old local reverse-engineering trees must not be added to this Mod repository.
 Slay the Spire 2_decompiled*/

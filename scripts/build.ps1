@@ -281,6 +281,15 @@ if ($ExportPck) {
     }
     Assert-GodotLogClean $exportLog
 
+    $forbiddenPackEntries = Select-String -LiteralPath $exportLog `
+        -Pattern 'res://(tools|manifests|source_assets|docs|scripts|build|dist)/|res://STS2_Things\.json' `
+        -CaseSensitive:$false
+    if ($forbiddenPackEntries) {
+        $preview = ($forbiddenPackEntries | Select-Object -First 12 | ForEach-Object Line) `
+            -join [Environment]::NewLine
+        throw "PCK contains build-time or manifest files:`n$preview"
+    }
+
     # BackgroundAssets enumerates layer filenames from the mounted PCK. A normal
     # binary text-resource export exposes *.tscn.remap entries, which are not valid
     # scene paths when enumerated literally. Mount the finished pack in an isolated
