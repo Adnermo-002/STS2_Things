@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 namespace STS2_Things.Hooks;
 
 /// <summary>
-///     V108 的 ModHelper 按 Mod 初始化顺序追加池内容，而联机只校验 Mod 集合、
+///     V109 的 ModHelper 按 Mod 初始化顺序追加池内容，而联机只校验 Mod 集合、
 ///     不要求两端加载顺序相同。保留原版前缀顺序，仅用官方 ContentSorter 对原版池的
 ///     Mod 后缀排序，避免随机奖励把同一 RNG 索引映射到不同模型。
 /// </summary>

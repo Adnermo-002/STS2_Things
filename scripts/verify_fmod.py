@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate FMOD literals and custom encounter music against the shipped V108 banks."""
+"""Validate FMOD literals and custom encounter music against the target shipped banks."""
 
 from __future__ import annotations
 

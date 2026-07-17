@@ -14,6 +14,8 @@ internal static class Sts2VersionCompatibility
         // and bit width unchanged while enabling save/clone serialization.
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(CurseRemover));
 #endif
+        // V109 folds SavedProperty discovery into ModelIdSerializationCache.Init(),
+        // which deterministically scans every model after ModelDb.Init().
     }
 
     public static void SetCreatureNodeVisible(Creature creature, bool visible)

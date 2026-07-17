@@ -218,7 +218,7 @@ public sealed class OriginFogmog : MonsterModel
             .WithAttackerFx(null, AttackSfx)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(null);
-        // Enemy move block is scaled exactly once by V108 MultiplayerScalingModel.
+        // Enemy move block is scaled exactly once by V109 MultiplayerScalingModel.
         await CreatureCmd.GainBlock(Creature, BlockAmount, ValueProp.Move, null);
     }
 

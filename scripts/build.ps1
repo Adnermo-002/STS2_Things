@@ -3,8 +3,8 @@ param(
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
 
-    [ValidateSet('v107.1', 'v108')]
-    [string]$TargetVersion = 'v108',
+    [ValidateSet('v107.1', 'v109')]
+    [string]$TargetVersion = 'v109',
 
     [string]$PythonExe = $env:STS2_PYTHON,
 
@@ -115,7 +115,7 @@ if ([string]::IsNullOrWhiteSpace($DataDir)) {
         $DataDir = $env:STS2_DATA_DIR_V107_1
     }
     else {
-        $DataDir = $env:STS2_DATA_DIR_V108
+        $DataDir = $env:STS2_DATA_DIR_V109
     }
 }
 if ([string]::IsNullOrWhiteSpace($DataDir)) {
@@ -128,9 +128,9 @@ if ([string]::IsNullOrWhiteSpace($SourceRoot)) {
         $SourceRoot = $env:STS2_SOURCE_ROOT_V107_1
     }
     else {
-        $SourceRoot = $env:STS2_SOURCE_ROOT_V108
+        $SourceRoot = $env:STS2_SOURCE_ROOT_V109
         if ([string]::IsNullOrWhiteSpace($SourceRoot)) {
-            $SourceRoot = Join-Path (Split-Path $Root -Parent) 'STS2-V108'
+            $SourceRoot = Join-Path (Split-Path $Root -Parent) 'STS2-V109'
         }
     }
 }
@@ -152,7 +152,7 @@ $dataGameRoot = Split-Path $DataDir -Parent
 $releaseInfoPath = Join-Path $dataGameRoot 'release_info.json'
 if (Test-Path -LiteralPath $releaseInfoPath) {
     $releaseInfo = Get-Content -Raw -LiteralPath $releaseInfoPath | ConvertFrom-Json
-    $expectedRelease = if ($TargetVersion -eq 'v107.1') { 'v0.107.1' } else { 'v0.108.0' }
+    $expectedRelease = if ($TargetVersion -eq 'v107.1') { 'v0.107.1' } else { 'v0.109.0' }
     if ($releaseInfo.version -ne $expectedRelease) {
         throw "Target $TargetVersion expects $expectedRelease, but '$GameDir' contains $($releaseInfo.version). Pass the matching -DataDir."
     }

@@ -36,7 +36,7 @@ def main() -> int:
     root_manifest = json.loads((ROOT / "STS2_Things.json").read_text(encoding="utf-8"))
     target_manifest_paths = {
         "v107.1": ROOT / "manifests" / "v107.1" / "STS2_Things.json",
-        "v108": ROOT / "manifests" / "v108" / "STS2_Things.json",
+        "v109": ROOT / "manifests" / "v109" / "STS2_Things.json",
     }
     target_manifests: dict[str, dict] = {}
     for target, path in target_manifest_paths.items():
@@ -51,7 +51,7 @@ def main() -> int:
         node = project_root.find(f".//{name}")
         return node.text.strip() if node is not None and node.text else None
 
-    expected_min_versions = {"v107.1": "v0.107.1", "v108": "v0.108.0"}
+    expected_min_versions = {"v107.1": "v0.107.1", "v109": "v0.109.0"}
     for target, manifest in target_manifests.items():
         if manifest.get("version") != project_value("Version"):
             fail(errors, f"{target} manifest and assembly versions differ")
@@ -61,8 +61,8 @@ def main() -> int:
             fail(errors, f"{target} manifest must set affects_gameplay=true")
         if manifest.get("dependencies"):
             fail(errors, f"{target} native build must not declare third-party dependencies")
-    if target_manifests.get("v108") != root_manifest:
-        fail(errors, "root development manifest must match manifests/v108")
+    if target_manifests.get("v109") != root_manifest:
+        fail(errors, "root development manifest must match manifests/v109")
     if project_value("Nullable") != "enable":
         fail(errors, "Nullable must be enable")
     if project_value("TreatWarningsAsErrors") != "true":
@@ -71,7 +71,7 @@ def main() -> int:
     for required in (
         "Sts2TargetVersion",
         "STS2_V107_1",
-        "STS2_V108",
+        "STS2_V109",
         "Unsupported Sts2TargetVersion",
         '<Compile Remove="tools\\**\\*.cs" />',
     ):
@@ -1502,7 +1502,7 @@ def main() -> int:
                 fail(errors, f"{relative} does not preload visible custom power icon: {power_type}")
 
     # Stateful monster-chain regressions. These assertions intentionally pin the
-    # V108 lifecycle details that previously produced lost summons or skipped phases.
+    # V109 lifecycle details that previously produced lost summons or skipped phases.
     require_snippets(
         "Powers/SoulRoesPower.cs",
         [
@@ -1561,7 +1561,7 @@ def main() -> int:
         "alive-only Bowlbug summon-slot contract",
     )
 
-    # V108 MultiplayerScalingModel scales enemy ValueProp.Move block. Supplying an
+    # V109 MultiplayerScalingModel scales enemy ValueProp.Move block. Supplying an
     # already player-count-scaled amount would multiply it a second time, while
     # ValueProp.Unpowered would skip the native 3/4-player act scaling entirely.
     for relative in (
@@ -1596,7 +1596,7 @@ def main() -> int:
     )
 
     # Sprite2D creature scenes do not create a CreatureAnimator, so vanilla never
-    # reaches SfxCmd.PlayDeath. Keep the narrow mod-only fallback and verified V108
+    # reaches SfxCmd.PlayDeath. Keep the narrow mod-only fallback and verified V109
     # event reuse explicit; invented event names fail silently at runtime.
     require_snippets(
         "Audio/SfxHooks.cs",
@@ -1643,11 +1643,11 @@ def main() -> int:
             + re.escape(f'"event:/sfx/enemy/enemy_attacks/{event_suffix}"'),
             text,
         ):
-            fail(errors, f"{relative} lacks its verified explicit V108 DeathSfx event")
+            fail(errors, f"{relative} lacks its verified explicit V109 DeathSfx event")
     for invalid_event in ("kaiser_crab/kaiser_crab_die", "soul_fysh/soul_fysh_summon"):
         for path in sorted((SOURCE / "Monsters").glob("*.cs")):
             if invalid_event in path.read_text(encoding="utf-8"):
-                fail(errors, f"{path.relative_to(ROOT)} references nonexistent V108 event {invalid_event}")
+                fail(errors, f"{path.relative_to(ROOT)} references nonexistent V109 event {invalid_event}")
 
     require_snippets(
         "Monsters/BowlbugProgenitor.cs",

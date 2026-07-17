@@ -47,7 +47,8 @@ try
     harmony.PatchAll(modAssembly);
 
     var savedCache = gameAssembly.GetType("MegaCrit.Sts2.Core.Saves.Runs.SavedPropertiesTypeCache");
-    if (savedCache?.GetMethod("Init", BindingFlags.Public | BindingFlags.Static) == null)
+    if (savedCache != null &&
+        savedCache.GetMethod("Init", BindingFlags.Public | BindingFlags.Static) == null)
     {
         var compatibilityType = modAssembly.GetType(
             "STS2_Things.Compatibility.Sts2VersionCompatibility", throwOnError: true)!;
@@ -62,6 +63,34 @@ try
         if (properties?.Any(property => property.Name == "TimesUsed") != true)
             throw new InvalidOperationException("V107.1 SavedProperty cache is missing CurseRemover.TimesUsed.");
         Console.WriteLine("V107.1 SavedProperty bridge: PASS");
+    }
+    else if (savedCache == null)
+    {
+        var modelIdCache = gameAssembly.GetType(
+            "MegaCrit.Sts2.Core.Multiplayer.Serialization.ModelIdSerializationCache",
+            throwOnError: true)!;
+        foreach (var member in new[]
+                 {
+                     "Init",
+                     "CacheSavedPropertiesForTypeDebug",
+                     "GetJsonPropertiesForType",
+                     "GetNetIdForPropertyName"
+                 })
+        {
+            if (modelIdCache.GetMethod(member, BindingFlags.Public | BindingFlags.Static) == null)
+                throw new InvalidOperationException($"V109 unified serialization cache is missing {member}.");
+        }
+
+        var curseRemover = modAssembly.GetType("STS2_Things.Relics.CurseRemover", throwOnError: true)!;
+        var timesUsed = curseRemover.GetProperty(
+            "TimesUsed", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (timesUsed?.CustomAttributes.Any(attribute =>
+                attribute.AttributeType.FullName ==
+                "MegaCrit.Sts2.Core.Saves.Runs.SavedPropertyAttribute") != true)
+        {
+            throw new InvalidOperationException("V109 CurseRemover.TimesUsed is missing SavedProperty metadata.");
+        }
+        Console.WriteLine("V109 unified SavedProperty cache contract: PASS");
     }
 
     Console.WriteLine($"Harmony target probe: PASS ({modAssembly.GetName().Version})");

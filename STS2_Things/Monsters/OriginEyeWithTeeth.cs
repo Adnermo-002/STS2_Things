@@ -27,7 +27,7 @@ public sealed class OriginEyeWithTeeth : MonsterModel
 
     protected override string AttackSfx =>
         "event:/sfx/enemy/enemy_attacks/eye_with_teeth/eye_with_teeth_attack";
-    // EyeWithTeeth has no death event in the V108 SFX bank. The Obscura
+    // EyeWithTeeth has no death event in the V109 SFX bank. The Obscura
     // hologram event is the native illusion-disappearance equivalent.
     public override string DeathSfx =>
         "event:/sfx/enemy/enemy_attacks/obscura/obscura_hologram_die";

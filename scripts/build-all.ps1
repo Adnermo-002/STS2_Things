@@ -9,11 +9,11 @@ param(
 
     [string]$DataDirV1071 = $env:STS2_DATA_DIR_V107_1,
 
-    [string]$DataDirV108 = $env:STS2_DATA_DIR_V108,
+    [string]$DataDirV109 = $env:STS2_DATA_DIR_V109,
 
     [string]$SourceRootV1071 = $env:STS2_SOURCE_ROOT_V107_1,
 
-    [string]$SourceRootV108 = $env:STS2_SOURCE_ROOT_V108,
+    [string]$SourceRootV109 = $env:STS2_SOURCE_ROOT_V109,
 
     [string]$GodotExe = $env:GODOT_4_5_1_MONO,
 
@@ -67,12 +67,12 @@ if ([string]::IsNullOrWhiteSpace($DataDirV1071)) {
 
 if ($SkipPck) {
     Invoke-VersionBuild 'v107.1' $DataDirV1071 $SourceRootV1071 $true ''
-    Invoke-VersionBuild 'v108' $DataDirV108 $SourceRootV108 $true ''
+    Invoke-VersionBuild 'v109' $DataDirV109 $SourceRootV109 $true ''
 }
 else {
-    Invoke-VersionBuild 'v108' $DataDirV108 $SourceRootV108 $false ''
-    $sharedPck = Join-Path (Split-Path $PSScriptRoot -Parent) 'build\v108\STS2_Things.pck'
+    Invoke-VersionBuild 'v109' $DataDirV109 $SourceRootV109 $false ''
+    $sharedPck = Join-Path (Split-Path $PSScriptRoot -Parent) 'build\v109\STS2_Things.pck'
     Invoke-VersionBuild 'v107.1' $DataDirV1071 $SourceRootV1071 $false $sharedPck
 }
 
-Write-Host 'Dual-version artifacts are under build\v107.1 and build\v108.'
+Write-Host 'Dual-version artifacts are under build\v107.1 and build\v109.'

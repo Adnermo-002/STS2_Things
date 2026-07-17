@@ -55,7 +55,7 @@ public static class STS2_ThingsInit
             // ---- Harmony 初始化 ----
             var harmony = new Harmony(HarmonyId);
 
-            // MonsterModel/EncounterModel 由 V108 ModelDb 自动发现。这里只安装固定 Act
+            // MonsterModel/EncounterModel 由 V109 ModelDb 自动发现。这里只安装固定 Act
             // 候选池等原版没有公开注册 API 的窄 Harmony 补丁；视觉、背景和槽位均由
             // MonsterModel/EncounterModel 的原生路径约定与 Godot 场景负责。
             harmony.PatchAll(assembly);
