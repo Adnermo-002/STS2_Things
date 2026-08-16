@@ -25,6 +25,7 @@
   <ItemGroup>
     <Compile Remove="tools\**\*.cs" />
     <Compile Remove="bootstrap\**\*.cs" />
+    <Compile Remove="bridges\**\*.cs" />
     <Compile Remove="build\**\*.cs" />
     <Compile Remove=".tmp\**\*.cs" />
     <Compile Remove="tmp\**\*.cs" />

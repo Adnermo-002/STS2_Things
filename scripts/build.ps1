@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
@@ -13,6 +13,8 @@ param(
     [string]$DataDir = $env:STS2_DATA_DIR,
 
     [string]$SourceRoot = $env:STS2_SOURCE_ROOT,
+
+    [string]$BaseLibRef = $env:STS2_BASELIB_REF,
 
     [string]$GodotExe = $env:GODOT_4_5_1_MONO,
 
@@ -409,6 +411,34 @@ if (-not (Test-Path -LiteralPath $dll)) {
 Copy-Item -LiteralPath $dll -Destination (Join-Path $BuildDir 'STS2_Things.dll') -Force
 Copy-Item -LiteralPath $Manifest -Destination (Join-Path $BuildDir 'STS2_Things.json') -Force
 
+# 可选 BaseLib 配置页桥（sidecar；BaseLib 不是前置依赖）。
+$bridgeProject = Join-Path $Root 'bridges\STS2_Things.BaseLibBridge\STS2_Things.BaseLibBridge.csproj'
+$bridgeRef = $BaseLibRef
+if ([string]::IsNullOrWhiteSpace($bridgeRef)) {
+    $bridgeRef = 'D:\Steam\steamapps\workshop\content\2868840\3737335127\BaseLib\BaseLib.dll'
+}
+$bridgeOut = Join-Path $BuildDir 'STS2_Things.BaseLibBridge.dll'
+if (Test-Path -LiteralPath $bridgeProject) {
+    if (Test-Path -LiteralPath $bridgeRef) {
+        Write-Host 'Building the optional BaseLib config bridge...'
+        & dotnet build $bridgeProject -c $Configuration --nologo `
+            "/p:BaseLibRef=$bridgeRef" `
+            "/p:Sts2DataDir=$DataDir"
+        if ($LASTEXITCODE -ne 0) {
+            throw "BaseLib config bridge build failed with exit code $LASTEXITCODE"
+        }
+        $bridgeDll = Join-Path $Root "bridges\STS2_Things.BaseLibBridge\.godot\mono\temp\bin\$Configuration\STS2_Things.BaseLibBridge.dll"
+        if (-not (Test-Path -LiteralPath $bridgeDll)) {
+            throw "BaseLib config bridge DLL was not produced: $bridgeDll"
+        }
+        Copy-Item -LiteralPath $bridgeDll -Destination $bridgeOut -Force
+        Write-Host "BaseLib config bridge: $bridgeOut"
+    }
+    else {
+        Write-Warning "BaseLib config bridge skipped: BaseLib.dll not found at '$bridgeRef'. Pass -BaseLibRef or set STS2_BASELIB_REF."
+    }
+}
+
 $harmonyProbe = Join-Path $PSScriptRoot 'verify-harmony-targets.ps1'
 if (Test-Path -LiteralPath $harmonyProbe -PathType Leaf) {
     $dependencyDataDir = Join-Path $GameDir 'data_sts2_windows_x86_64'
@@ -463,6 +493,13 @@ if ($Install) {
             throw "Required artifact not found: $source"
         }
         Copy-Item -LiteralPath $source -Destination (Join-Path $installDir $name) -Force
+    }
+
+    # 可选 BaseLib 配置页桥：与三件套一起安装（无 BaseLib 时不会被加载）。
+    $bridgeSource = Join-Path $BuildDir 'STS2_Things.BaseLibBridge.dll'
+    if (Test-Path -LiteralPath $bridgeSource) {
+        Copy-Item -LiteralPath $bridgeSource `
+            -Destination (Join-Path $installDir 'STS2_Things.BaseLibBridge.dll') -Force
     }
     Write-Host "Installed to $installDir"
 }

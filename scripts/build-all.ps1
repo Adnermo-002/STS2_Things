@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
@@ -14,6 +14,10 @@ param(
     [string]$SourceRootV1071 = $env:STS2_SOURCE_ROOT_V107_1,
 
     [string]$SourceRootV111 = $env:STS2_SOURCE_ROOT_V111,
+
+    [string]$BaseLibRef = $env:STS2_BASELIB_REF,
+
+    [string]$RitsuLibRef = $env:STS2_RITSULIB_REF,
 
     [string]$GodotExe = $env:GODOT_4_5_1_MONO,
 
@@ -52,6 +56,9 @@ function Invoke-VersionBuild(
     }
     if (-not [string]::IsNullOrWhiteSpace($SourceRoot)) {
         $arguments.SourceRoot = $SourceRoot
+    }
+    if (-not [string]::IsNullOrWhiteSpace($BaseLibRef)) {
+        $arguments.BaseLibRef = $BaseLibRef
     }
     if (-not [string]::IsNullOrWhiteSpace($GodotExe)) {
         $arguments.GodotExe = $GodotExe
@@ -126,6 +133,22 @@ function Invoke-VersionBuild(
         & $modelIdProbeScript @modelIdProbeArguments
         if ($LASTEXITCODE -ne 0) {
             throw "$TargetVersion ModelId namespace probe failed with exit code $LASTEXITCODE"
+        }
+
+        $configProbeScript = Join-Path $PSScriptRoot 'test-things-config.ps1'
+        $configProbeArguments = @{
+            TargetVersion = $TargetVersion
+            DataDir = $DataDir
+            RuntimeDependencyDir = $DataDirV111
+            ImplementationDll = Join-Path (Split-Path $PSScriptRoot -Parent) "build\$TargetVersion\STS2_Things.dll"
+            Pck = Join-Path (Split-Path $PSScriptRoot -Parent) "build\$TargetVersion\STS2_Things.pck"
+        }
+        if (-not [string]::IsNullOrWhiteSpace($GodotExe)) {
+            $configProbeArguments.GodotExe = $GodotExe
+        }
+        & $configProbeScript @configProbeArguments
+        if ($LASTEXITCODE -ne 0) {
+            throw "$TargetVersion config probe failed with exit code $LASTEXITCODE"
         }
 
         $gravetideProbeScript = Join-Path $PSScriptRoot 'test-gravetide-slug.ps1'
@@ -210,6 +233,50 @@ else {
     & $unifiedBuild @unifiedArguments
     if ($LASTEXITCODE -ne 0) {
         throw "Unified package build failed with exit code $LASTEXITCODE"
+    }
+
+    # 可选配置页集成探针（真实 Workshop BaseLib/RitsuLib DLL；两库不是前置依赖）。
+    if (-not $SkipBehaviorProbe) {
+        $baseLibDll = $BaseLibRef
+        if ([string]::IsNullOrWhiteSpace($baseLibDll)) {
+            $baseLibDll = 'D:\Steam\steamapps\workshop\content\2868840\3737335127\BaseLib\BaseLib.dll'
+        }
+        $bridgeDll = Join-Path (Split-Path $PSScriptRoot -Parent) 'build\v111\STS2_Things.BaseLibBridge.dll'
+        if ((Test-Path -LiteralPath $baseLibDll -PathType Leaf) -and
+            (Test-Path -LiteralPath $bridgeDll -PathType Leaf)) {
+            Write-Host 'Running the BaseLib config bridge probe...'
+            & (Join-Path $PSScriptRoot 'test-baselib-bridge.ps1') `
+                -DataDir $DataDirV111 `
+                -ImplementationDll (Join-Path (Split-Path $PSScriptRoot -Parent) 'build\v111\STS2_Things.dll') `
+                -RuntimeDependencyDir $DataDirV111 `
+                -BaseLibDll $baseLibDll `
+                -BridgeDll $bridgeDll
+            if ($LASTEXITCODE -ne 0) {
+                throw "BaseLib config bridge probe failed with exit code $LASTEXITCODE"
+            }
+        }
+        else {
+            Write-Warning "BaseLib config bridge probe skipped: BaseLib.dll or the bridge DLL is missing."
+        }
+
+        $ritsuLibDll = $RitsuLibRef
+        if ([string]::IsNullOrWhiteSpace($ritsuLibDll)) {
+            $ritsuLibDll = 'D:\Steam\steamapps\workshop\content\2868840\3747602295\lib\0.111.0\STS2-RitsuLib.dll'
+        }
+        if (Test-Path -LiteralPath $ritsuLibDll -PathType Leaf) {
+            Write-Host 'Running the RitsuLib interop probe...'
+            & (Join-Path $PSScriptRoot 'test-ritsulib-interop.ps1') `
+                -DataDir $DataDirV111 `
+                -ImplementationDll (Join-Path (Split-Path $PSScriptRoot -Parent) 'build\v111\STS2_Things.dll') `
+                -RuntimeDependencyDir $DataDirV111 `
+                -RitsuLibDll $ritsuLibDll
+            if ($LASTEXITCODE -ne 0) {
+                throw "RitsuLib interop probe failed with exit code $LASTEXITCODE"
+            }
+        }
+        else {
+            Write-Warning "RitsuLib interop probe skipped: STS2-RitsuLib.dll was not found at '$ritsuLibDll'."
+        }
     }
 }
 

@@ -18,6 +18,11 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "STS2_Things"
 BOOTSTRAP = ROOT / "bootstrap"
 
+# 可选配置页集成层：字符串/反射接入外部模组配置框架，豁免其源码扫描规则
+# （禁依赖扫描与旧类名扫描），但仍禁止编译期引用（见 verify_config_contract）。
+CONFIG_DIR = SOURCE / "Config"
+CONFIG_PATHS = {p.resolve() for p in CONFIG_DIR.rglob("*.cs")} if CONFIG_DIR.is_dir() else set()
+
 
 # ModelDb derives IDs from the concrete class name, not the namespace, assembly,
 # or manifest. Keep this table explicit so generic names cannot quietly return.
@@ -77,8 +82,90 @@ def fail(errors: list[str], message: str) -> None:
     errors.append(message)
 
 
+# 可配置项（ThingsModConfig 键常量）与 BaseLib 桥属性/RitsuLib schema/本地化键的
+# 一致性合同。键常量表是单一来源：桥属性名、互操作 schema 与 settings_ui 标签
+# 都必须与它逐字一致，防止三套入口悄悄分叉。
+def verify_config_contract(errors: list[str]) -> None:
+    config_path = SOURCE / "Config" / "ThingsModConfig.cs"
+    provider_path = SOURCE / "Config" / "RitsuLibInteropProvider.cs"
+    integration_path = SOURCE / "Config" / "LibraryIntegration.cs"
+    for path, label in (
+        (config_path, "config model"),
+        (provider_path, "RitsuLib interop provider"),
+        (integration_path, "library integration"),
+    ):
+        if not path.is_file():
+            fail(errors, f"config contract: {label} source is missing: {path.relative_to(ROOT)}")
+
+    config_text = config_path.read_text(encoding="utf-8")
+    # 键常量表 = Entries 列表中引用的常量名（不含 SchemaVersion/槽位等辅助常量）。
+    entries_region = config_text[config_text.index("public static readonly IReadOnlyList<Entry> Entries"):]
+    entries_region = entries_region[: entries_region.index("];")]
+    key_names = set(re.findall(r"new\((\w+),", entries_region))
+    # 键名与其字符串值必须一致（桥属性名 = JSON 键 = 常量名）。
+    for name in key_names:
+        if not re.search(rf'public const string {re.escape(name)} = "{re.escape(name)}";', config_text):
+            fail(errors, f"config contract: key constant {name} must equal its JSON key string")
+
+    # 1) BaseLib 桥属性名必须与键常量完全一致（且不允许缺失/多余）。
+    bridge_path = ROOT / "bridges" / "STS2_Things.BaseLibBridge" / "ThingsBaseLibConfig.cs"
+    if bridge_path.is_file():
+        bridge_text = bridge_path.read_text(encoding="utf-8")
+        bridge_props = set(re.findall(
+            r"public static bool (\w+) \{[^}]*\}",
+            bridge_text,
+        ))
+        if bridge_props != key_names:
+            fail(
+                errors,
+                "config contract: BaseLib bridge properties differ from ThingsModConfig keys: "
+                + ", ".join(sorted(bridge_props ^ key_values)),
+            )
+    else:
+        fail(errors, "config contract: BaseLib bridge source is missing")
+
+    # 2) RitsuLib 互操作提供器必须引用全部键常量（门控一致性）。
+    provider_text = provider_path.read_text(encoding="utf-8") if provider_path.is_file() else ""
+    missing_in_provider = key_names - set(re.findall(r"ThingsModConfig\.(\w+)", provider_text))
+    if missing_in_provider:
+        fail(errors, "config contract: RitsuLib provider misses keys: " + ", ".join(sorted(missing_in_provider)))
+
+    # 3) BaseLib 标签本地化：每个键与区段标题都必须在 settings_ui 表中给出
+    #    STS2_THINGS-<SLUG>.title（eng 与 zhs）。
+    section_names = {"Bosses", "Other Encounters", "Events", "Merchant Bargain", "Neow Starting Relics"}
+    label_names = key_names | section_names
+    label_keys = {"STS2_THINGS-" + slugify_class_name(name) + ".title" for name in label_names}
+    for language in ("eng", "zhs"):
+        loc_path = SOURCE / "localization" / language / "settings_ui.json"
+        if not loc_path.is_file():
+            fail(errors, f"config contract: {language} settings_ui localization is missing")
+            continue
+        try:
+            loc = json.loads(loc_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exception:
+            fail(errors, f"config contract: {language} settings_ui is invalid JSON: {exception}")
+            continue
+        missing_labels = label_keys - set(loc)
+        if missing_labels:
+            fail(
+                errors,
+                f"config contract: {language} settings_ui misses labels: "
+                + ", ".join(sorted(missing_labels)),
+            )
+
+    # 4) 主 csproj 必须排除桥目录；PCK 导出必须排除 bridges/**。
+    project_text = (ROOT / "STS2_Things.csproj").read_text(encoding="utf-8")
+    if 'bridges\\**\\*.cs' not in project_text:
+        fail(errors, "config contract: main csproj must exclude bridges\\**\\*.cs")
+    export_preset = (ROOT / "export_presets.cfg").read_text(encoding="utf-8")
+    if "bridges/**" not in export_preset:
+        fail(errors, "config contract: PCK export must exclude bridges/**")
+
+
+
 def slugify_class_name(name: str) -> str:
-    return re.sub(r"(?<!^)(?=[A-Z])", "_", name).upper()
+    # 与游戏 StringHelper.Slugify 一致：仅在小写后接大写处断词，再大写并压缩空白。
+    return re.sub(r"(?<=[a-z])(?=[A-Z])", "_", name).upper().replace(" ", "_")
 
 
 def audit_model_id_namespace(errors: list[str], pck: Path | None) -> None:
@@ -151,6 +238,10 @@ def audit_model_id_namespace(errors: list[str], pck: Path | None) -> None:
     ]
     for path in sorted([*source_paths, *probe_paths]):
         text = path.read_text(encoding="utf-8")
+        # 配置集成层（Config/）只含 UI 标签与键字符串，不是模型源码；显示名
+        # （如 Backrooms/Medusa）天然包含旧类名词形，跳过旧类名扫描。
+        if path.resolve() in CONFIG_PATHS:
+            continue
         for legacy_class in legacy_class_names:
             # CacheMode.Reuse is an unrelated Godot enum member, so only reject
             # standalone class-symbol use rather than a dotted API member.
@@ -207,6 +298,7 @@ def main() -> int:
     errors: list[str] = []
 
     audit_model_id_namespace(errors, args.pck)
+    verify_config_contract(errors)
 
     def source_text(relative: str) -> str:
         return (SOURCE / relative).read_text(encoding="utf-8")
@@ -327,11 +419,19 @@ def main() -> int:
         r"\bMonsterRegistrar\b": "legacy global MonsterRegistrar",
         r"creature_visuals/fallback": "fallback creature visuals",
     }
+    # 可选配置页集成层（Config/）用字符串与反射接入 BaseLib/RitsuLib，允许在注释与
+    # 常量中提到两库；但绝不允许编译期引用（using/类型引用）。主目录的禁令不变。
+    config_using_pattern = re.compile(
+        r"^\s*using\s+(STS2RitsuLib|BaseLib)(\.|;|\s)", re.MULTILINE)
     for path in sorted([*SOURCE.rglob("*.cs"), *BOOTSTRAP.rglob("*.cs")]):
         text = path.read_text(encoding="utf-8")
         for pattern, label in forbidden_patterns.items():
+            if path.resolve() in CONFIG_PATHS and pattern in (r"\bRitsuLib\b", r"\bBaseLib\b"):
+                continue
             if re.search(pattern, text):
                 fail(errors, f"{path.relative_to(ROOT)} contains forbidden {label}")
+        if path.resolve() in CONFIG_PATHS and config_using_pattern.search(text):
+            fail(errors, f"{path.relative_to(ROOT)} must not compile-reference BaseLib/RitsuLib")
 
     bootstrap_project_path = BOOTSTRAP / "STS2_Things.Bootstrap.csproj"
     bootstrap_source_path = BOOTSTRAP / "UnifiedBootstrap.cs"
@@ -560,7 +660,13 @@ def main() -> int:
 
     init_text = source_text("STS2_ThingsInit.cs")
     cutting_registration = "ModelDb.Event<CuttingItClose>()"
-    for act_name in ("Overgrowth", "Underdocks", "Hive"):
+    # 事件目录：Overgrowth/Underdocks 共用同一目录函数（两幕补丁各自追加），
+    # Hive 使用独立目录函数；确定性追加合同在目录内实现。
+    for act_name, catalog_call in (
+        ("Overgrowth", "ThingsEventCatalog.AddOvergrowthAndUnderdocksEvents(__result)"),
+        ("Underdocks", "ThingsEventCatalog.AddOvergrowthAndUnderdocksEvents(__result)"),
+        ("Hive", "ThingsEventCatalog.AddHiveEvents(__result)"),
+    ):
         event_patch = re.search(
             rf'\[HarmonyPatch\(typeof\({act_name}\), "get_AllEvents"\)\]'
             r"(?P<body>.*?)(?=\n\[HarmonyPatch|\Z)",
@@ -570,28 +676,23 @@ def main() -> int:
         if event_patch is None:
             fail(errors, f"{act_name} event registration patch is missing")
             continue
-        occurrence_count = event_patch.group("body").count(cutting_registration)
-        expected_count = 0 if act_name == "Hive" else 1
-        if occurrence_count != expected_count:
+        body = event_patch.group("body")
+        if catalog_call not in body:
+            fail(errors, f"{act_name} event patch must call {catalog_call}")
+        if "HarmonyPriority(Priority.Last)" not in body:
+            fail(errors, f"{act_name} event patch is missing HarmonyPriority(Priority.Last)")
+    if init_text.count(cutting_registration) != 1:
+        fail(errors, "Cutting It Close must be registered exactly once in the shared event catalog")
+    catalog_region = init_text[init_text.index("ThingsEventCatalog"):]
+    for deterministic_contract in (
+        "DeterministicContentOrder.SortBaseThenMods(",
+        ".Distinct()",
+    ):
+        if deterministic_contract not in catalog_region:
             fail(
                 errors,
-                f"Cutting It Close registration count in {act_name} is "
-                f"{occurrence_count}; expected {expected_count}",
+                f"event catalog is missing deterministic append contract {deterministic_contract!r}",
             )
-        if expected_count == 1:
-            for deterministic_contract in (
-                "HarmonyPriority(Priority.Last)",
-                "DeterministicContentOrder.SortBaseThenMods(",
-                ".Distinct()",
-            ):
-                if deterministic_contract not in event_patch.group("body"):
-                    fail(
-                        errors,
-                        f"{act_name} Cutting It Close registration is missing "
-                        f"deterministic append contract {deterministic_contract!r}",
-                    )
-    if init_text.count(cutting_registration) != 2:
-        fail(errors, "Cutting It Close must be registered exactly once in both Act 1 event pools")
 
     cutting_event_keys = {
         "CUTTING_IT_CLOSE.title",

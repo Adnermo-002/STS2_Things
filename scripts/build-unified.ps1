@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
@@ -12,6 +12,8 @@ param(
 
     [Parameter(Mandatory)]
     [string]$DataDirV111,
+
+    [string]$BaseLibRef = $env:STS2_BASELIB_REF,
 
     [switch]$Install
 )
@@ -69,6 +71,17 @@ Copy-Item -LiteralPath $BootstrapDll -Destination (Join-Path $BuildDir 'STS2_Thi
 Copy-Item -LiteralPath $SharedPck -Destination (Join-Path $BuildDir 'STS2_Things.pck') -Force
 Copy-Item -LiteralPath $Manifest -Destination (Join-Path $BuildDir 'STS2_Things.json') -Force
 
+# 可选 BaseLib 配置页桥：随统一包发布（无 BaseLib 时不会被加载）。
+$bridgeSource = Join-Path $Root 'build\v111\STS2_Things.BaseLibBridge.dll'
+if (Test-Path -LiteralPath $bridgeSource) {
+    Copy-Item -LiteralPath $bridgeSource `
+        -Destination (Join-Path $BuildDir 'STS2_Things.BaseLibBridge.dll') -Force
+    Write-Host 'BaseLib config bridge: copied into the unified package.'
+}
+else {
+    Write-Warning 'BaseLib config bridge is missing from build\v111; the unified package ships without it.'
+}
+
 $packageProbe = Join-Path $PSScriptRoot 'verify-unified-package.ps1'
 & $packageProbe `
     -DataDirV1071 $DataDirV1071 `
@@ -117,6 +130,11 @@ if ($Install) {
     foreach ($name in 'STS2_Things.json', 'STS2_Things.dll', 'STS2_Things.pck') {
         Copy-Item -LiteralPath (Join-Path $BuildDir $name) `
             -Destination (Join-Path $installDir $name) -Force
+    }
+    $bridgeSource = Join-Path $BuildDir 'STS2_Things.BaseLibBridge.dll'
+    if (Test-Path -LiteralPath $bridgeSource) {
+        Copy-Item -LiteralPath $bridgeSource `
+            -Destination (Join-Path $installDir 'STS2_Things.BaseLibBridge.dll') -Force
     }
     Write-Host "Installed unified package to $installDir"
 }

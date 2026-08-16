@@ -15,6 +15,16 @@
 - 卡牌、遗物、能力与附魔扩展（含战士卡“对撞”与附魔“分裂”）
 - 自定义贴图、背景、场景、音效及中英文本地化
 
+## 配置
+
+遭遇战（含 Boss 启用/强制）、事件、商人猜拳与涅奥起始遗物都可独立开关（详见
+[docs/CONFIGURATION.md](docs/CONFIGURATION.md)）：
+
+- 已安装 **BaseLib** 或 **RitsuLib** 时，游戏内出现本模组的配置页（两者都不是前置依赖，
+  可选的运行时集成；配置写入同一份 `user://mod_configs/STS2_Things.cfg`）。
+- 未安装两者时直接编辑该 JSON 文件即可。
+- 同一幕的 Boss 槽位最多一个“强制遭遇”项，冲突自动裁决。
+
 ## 怪物视觉
 
 - 九个自制怪物场景均使用单一完整 PNG 的 `Sprite2D`。
@@ -87,6 +97,7 @@ V111 单目标诊断构建：
 - `docs/UNIFIED_PACKAGE.md`：统一订阅包架构、V107.1 桥接与验证门禁
 - `docs/MIGRATION_V110.md`：V110 API 漂移、验证证据与发布工件哈希
 - `docs/MIGRATION_V111.md`：V110.1→V111.0 差异、迁移决策与验证证据
+- `docs/CONFIGURATION.md`：配置键表、冲突规则与三套配置入口
 
 ## License
 

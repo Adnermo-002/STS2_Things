@@ -1,0 +1,39 @@
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>13.0</LangVersion>
+    <AssemblyName>STS2_Things.BaseLibBridge</AssemblyName>
+    <RootNamespace>STS2_Things.BaseLibBridge</RootNamespace>
+    <Version>1.10.0</Version>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <!-- BaseLib.dll 引用路径：-BaseLibRef 或环境变量，缺省探测本机 Workshop 订阅目录。 -->
+    <BaseLibRef Condition="'$(BaseLibRef)' == '' and '$(BASELIB_REF)' != ''">$(BASELIB_REF)</BaseLibRef>
+    <BaseLibRef Condition="'$(BaseLibRef)' == ''">D:\Steam\steamapps\workshop\content\2868840\3737335127\BaseLib\BaseLib.dll</BaseLibRef>
+    <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64</Sts2DataDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BaseLib">
+      <HintPath>$(BaseLibRef)</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="sts2">
+      <HintPath>$(Sts2DataDir)\sts2.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(Sts2DataDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="ValidateBaseLibBridgeInputs" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(BaseLibRef)')"
+           Text="BaseLib.dll was not found at '$(BaseLibRef)'. Pass -BaseLibRef or set BASELIB_REF to build the optional config bridge." />
+    <Error Condition="!Exists('$(Sts2DataDir)\sts2.dll')"
+           Text="STS2 assembly not found at '$(Sts2DataDir)\sts2.dll'." />
+  </Target>
+</Project>

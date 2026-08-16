@@ -1,4 +1,4 @@
-﻿#if STS2_V111
+#if STS2_V111
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Rooms;
+using STS2_Things.Config;
 
 namespace STS2_Things.Features.MerchantBargain;
 
@@ -37,7 +38,8 @@ internal static class MerchantBargainManager
         out Task<bool> result)
     {
         result = Task.FromResult(false);
-        if (ignoreCost || inventory is null || entry is MerchantCardRemovalEntry ||
+        if (!ThingsModConfig.IsEnabled(ThingsModConfig.FeatureMerchantBargainEnabled) ||
+            ignoreCost || inventory is null || entry is MerchantCardRemovalEntry ||
             TryGetPriceOverride(entry, out _))
         {
             return false;
@@ -83,7 +85,8 @@ internal static class MerchantBargainManager
 
     internal static bool TryGetPriceOverride(MerchantEntry entry, out int price)
     {
-        if (PriceOverrides.TryGetValue(entry, out PriceOverride? priceOverride))
+        if (ThingsModConfig.IsEnabled(ThingsModConfig.FeatureMerchantBargainEnabled) &&
+            PriceOverrides.TryGetValue(entry, out PriceOverride? priceOverride))
         {
             price = priceOverride.Price;
             return true;

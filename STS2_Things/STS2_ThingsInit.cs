@@ -15,6 +15,7 @@ using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using STS2_Things.Cards;
 using STS2_Things.Compatibility;
+using STS2_Things.Config;
 using STS2_Things.Encounters;
 using STS2_Things.Events;
 using STS2_Things.Hooks;
@@ -41,6 +42,11 @@ public static class STS2_ThingsInit
             ScriptManagerBridge.LookupScriptsInAssembly(assembly);
             Sts2VersionCompatibility.InitializeBeforeModelDatabase();
 
+            // 可配置门控：读取 user://mod_configs/STS2_Things.cfg（缺失时生成默认值），
+            // 并尝试接入外部模组配置页框架（可选，非前置依赖）。
+            ThingsModConfig.Load();
+            LibraryIntegration.Initialize();
+
             // ---- 卡牌 & 遗物 模型池注册 ----
             ModHelper.AddModelToPool<IroncladCardPool, ThingsCollision>();
             ModHelper.AddModelToPool<DefectCardPool, ThingsReuse>();
@@ -53,9 +59,12 @@ public static class STS2_ThingsInit
             ModHelper.AddModelToPool<EventRelicPool, ThingsMagicGlove>();
             ModHelper.AddModelToPool<EventRelicPool, ThingsAlmondWater>();
             ModHelper.AddModelToPool<EventRelicPool, ThingsMedusaHair>();
-            ModHelper.SubscribeForRunStateHooks(
-                "Adnermo.STS2_Things.QuirkyHopperRewardPolicy",
-                static _ => [ModelDb.Modifier<QuirkyHopperRewardPolicy>()]);
+            if (ThingsModConfig.IsEnabled(ThingsModConfig.EncounterQuirkyHopperEnabled))
+            {
+                ModHelper.SubscribeForRunStateHooks(
+                    "Adnermo.STS2_Things.QuirkyHopperRewardPolicy",
+                    static _ => [ModelDb.Modifier<QuirkyHopperRewardPolicy>()]);
+            }
 
             // ---- Harmony 初始化 ----
             var harmony = new Harmony(HarmonyId);
@@ -77,7 +86,36 @@ public static class STS2_ThingsInit
     }
 }
 
-// ==================== 事件注册（非怪物，保持原样） ====================
+// ==================== 事件注册 ====================
+
+/// <summary>事件目录：按 Act 分组并受 ThingsModConfig 启用门控。</summary>
+internal static class ThingsEventCatalog
+{
+    public static IEnumerable<EventModel> AddOvergrowthAndUnderdocksEvents(IEnumerable<EventModel> source)
+    {
+        return Add(source,
+            (ThingsModConfig.EventRobberyFakeMerchantEnabled, ModelDb.Event<RobberyFakeMerchant>()),
+            (ThingsModConfig.EventBackroomsEnabled, ModelDb.Event<ThingsBackrooms>()),
+            (ThingsModConfig.EventCuttingItCloseEnabled, ModelDb.Event<CuttingItClose>()));
+    }
+
+    public static IEnumerable<EventModel> AddHiveEvents(IEnumerable<EventModel> source)
+    {
+        return Add(source,
+            (ThingsModConfig.EventMedusaEnabled, ModelDb.Event<ThingsMedusa>()));
+    }
+
+    private static IEnumerable<EventModel> Add(
+        IEnumerable<EventModel> source,
+        params (string EnabledKey, EventModel Event)[] candidates)
+    {
+        return DeterministicContentOrder.SortBaseThenMods(
+            source.Concat(candidates
+                    .Where(candidate => ThingsModConfig.IsEnabled(candidate.EnabledKey))
+                    .Select(candidate => candidate.Event))
+                .Distinct());
+    }
+}
 
 [HarmonyPatch(typeof(Overgrowth), "get_AllEvents")]
 public static class OvergrowthAllEventsPatch
@@ -85,12 +123,7 @@ public static class OvergrowthAllEventsPatch
     [HarmonyPriority(Priority.Last)]
     private static void Postfix(ref IEnumerable<EventModel> __result)
     {
-        __result = DeterministicContentOrder.SortBaseThenMods(
-            __result.Concat([
-                ModelDb.Event<RobberyFakeMerchant>(),
-                ModelDb.Event<ThingsBackrooms>(),
-                ModelDb.Event<CuttingItClose>()
-            ]).Distinct());
+        __result = ThingsEventCatalog.AddOvergrowthAndUnderdocksEvents(__result);
     }
 }
 
@@ -100,12 +133,7 @@ public static class UnderdocksAllEventsPatch
     [HarmonyPriority(Priority.Last)]
     private static void Postfix(ref IEnumerable<EventModel> __result)
     {
-        __result = DeterministicContentOrder.SortBaseThenMods(
-            __result.Concat([
-                ModelDb.Event<RobberyFakeMerchant>(),
-                ModelDb.Event<ThingsBackrooms>(),
-                ModelDb.Event<CuttingItClose>()
-            ]).Distinct());
+        __result = ThingsEventCatalog.AddOvergrowthAndUnderdocksEvents(__result);
     }
 }
 
@@ -115,8 +143,7 @@ public static class HiveAllEventsPatch
     [HarmonyPriority(Priority.Last)]
     private static void Postfix(ref IEnumerable<EventModel> __result)
     {
-        __result = DeterministicContentOrder.SortBaseThenMods(
-            __result.Concat([ModelDb.Event<ThingsMedusa>()]).Distinct());
+        __result = ThingsEventCatalog.AddHiveEvents(__result);
     }
 }
 
@@ -134,9 +161,12 @@ public static class NeowCurseOptionsPatch
     private static void Postfix(Neow __instance, ref IEnumerable<EventOption> __result)
     {
         var list = __result.ToList();
-        AddRelicToList<ThingsCurseRemover>(__instance, list);
-        AddRelicToList<ThingsWhiteFlag>(__instance, list);
-        AddRelicToList<ThingsMagicGlove>(__instance, list);
+        if (ThingsModConfig.IsEnabled(ThingsModConfig.NeowRelicCurseRemoverEnabled))
+            AddRelicToList<ThingsCurseRemover>(__instance, list);
+        if (ThingsModConfig.IsEnabled(ThingsModConfig.NeowRelicWhiteFlagEnabled))
+            AddRelicToList<ThingsWhiteFlag>(__instance, list);
+        if (ThingsModConfig.IsEnabled(ThingsModConfig.NeowRelicMagicGloveEnabled))
+            AddRelicToList<ThingsMagicGlove>(__instance, list);
         __result = list;
     }
 
