@@ -57,7 +57,9 @@ Mod 用到的公开 API 直接编译通过（0 警告、0 错误），无需反�
 - V111 商人议价探针通过：20 金币边界、第五次触发、胜负/异常状态、18 张手势资源和购买补丁目标均成立。
 - V111 PCK 导出、挂载和资源合同通过；V107.1 复用同一 PCK 字节序列。
 - 统一包探针在两版各加载相同数量的具体 `AbstractModel`，模型集合完全一致，嵌入 DLL 哈希与独立构件一致。
+- 引导构建确定性验证通过（连续两次构建字节一致）。
 - 严格 manifest/artifact 校验为 0 error、0 warning。
+- 统一包已安装到当前游戏 `mods/STS2_Things`，可直接在 v0.111.0 上启动验证。
 
 ## 当前工件
 
@@ -66,5 +68,5 @@ Mod 用到的公开 API 直接编译通过（0 警告、0 错误），无需反�
 | `build/v107.1/STS2_Things.dll` | `A672AE1B33E7ECCDA4C569BF21A867F74A00EBADAA987C242319ABD865E10F24` |
 | `build/v111/STS2_Things.dll` | `119098B60177E0E206ED9C4EB479444182870C59578A2E5D306562100344F790` |
 | 两版及统一包 `STS2_Things.pck` | `E7CCA65DC00E437E6D8966A6D8CFAC57E6A918BF0BED0EE61BF5375536DB4020` |
-| `build/unified/STS2_Things.dll` | `2F4C44462A1BFFED3B4999510A7B1866C2FF59AE6C448EA981D9C34190214D91` |
+| `build/unified/STS2_Things.dll` | `9E77D1A5F2E6D3F7460551534C80026BE744A69F945179D96A10B953F25DE39B` |
 | `build/unified/STS2_Things.json` | `DA66CDB27B8BC3AF3BB4C0E50FC343EC04B9AD8F601E9B5517750008C109C062` |
