@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Assemble a supersampled Gravetide Slug Spine atlas from repaint outputs.
 
 This script does not draw the monster. It crops/scales the accepted repaint
@@ -23,7 +23,7 @@ from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_VANILLA_ATLAS = (
-    ROOT.parent / "STS2-V110/animations/monsters/corpse_slug/corpse_slug.png"
+    ROOT.parent / "STS2-V111/animations/monsters/corpse_slug/corpse_slug.png"
 )
 DEFAULT_SOURCE = ROOT / "source_assets/monsters/gravetide_slug/imagegen"
 DEFAULT_OUTPUT = (
@@ -31,7 +31,7 @@ DEFAULT_OUTPUT = (
     / "STS2_Things/animations/monsters/gravetide_slug/gravetide_slug.png"
 )
 DEFAULT_ATLAS_TEMPLATE = (
-    ROOT.parent / "STS2-V110/animations/monsters/corpse_slug/corpse_slug.atlas"
+    ROOT.parent / "STS2-V111/animations/monsters/corpse_slug/corpse_slug.atlas"
 )
 RESOURCE_ATLAS_PATH = (
     "res://STS2_Things/animations/monsters/gravetide_slug/gravetide_slug.atlas"

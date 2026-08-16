@@ -3,9 +3,9 @@
     <TargetFramework>net9.0</TargetFramework>
     <LangVersion>13.0</LangVersion>
     <!-- Build with /p:Sts2TargetVersion=v107.1 for the stable implementation. -->
-    <Sts2TargetVersion Condition="'$(Sts2TargetVersion)' == ''">v110</Sts2TargetVersion>
+    <Sts2TargetVersion Condition="'$(Sts2TargetVersion)' == ''">v111</Sts2TargetVersion>
     <AssemblyName>STS2_Things</AssemblyName>
-    <Version>1.9.5</Version>
+    <Version>1.10.0</Version>
     <RootNamespace>STS2_Things</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -13,7 +13,7 @@
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 
     <DefineConstants Condition="'$(Sts2TargetVersion)' == 'v107.1'">$(DefineConstants);STS2_V107_1</DefineConstants>
-    <DefineConstants Condition="'$(Sts2TargetVersion)' == 'v110'">$(DefineConstants);STS2_V110</DefineConstants>
+    <DefineConstants Condition="'$(Sts2TargetVersion)' == 'v111'">$(DefineConstants);STS2_V111</DefineConstants>
 
     <!-- Override with /p:Sts2GameDir=... or the STS2_GAME_DIR environment variable. -->
     <Sts2GameDir Condition="'$(Sts2GameDir)' == '' and '$(STS2_GAME_DIR)' != ''">$(STS2_GAME_DIR)</Sts2GameDir>
@@ -42,8 +42,8 @@
   </ItemGroup>
 
   <Target Name="ValidateSts2References" BeforeTargets="ResolveReferences">
-    <Error Condition="'$(Sts2TargetVersion)' != 'v107.1' and '$(Sts2TargetVersion)' != 'v110'"
-           Text="Unsupported Sts2TargetVersion '$(Sts2TargetVersion)'. Use v107.1 or v110." />
+    <Error Condition="'$(Sts2TargetVersion)' != 'v107.1' and '$(Sts2TargetVersion)' != 'v111'"
+           Text="Unsupported Sts2TargetVersion '$(Sts2TargetVersion)'. Use v107.1 or v111." />
     <Error Condition="!Exists('$(Sts2DataDir)\sts2.dll')"
            Text="STS2 $(Sts2TargetVersion) assembly not found at '$(Sts2DataDir)\sts2.dll'. Set Sts2DataDir, Sts2GameDir, or STS2_GAME_DIR." />
     <Error Condition="!Exists('$(Sts2DataDir)\0Harmony.dll')"

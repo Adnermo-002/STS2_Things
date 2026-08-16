@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.Loader;
 using HarmonyLib;
 
@@ -54,11 +54,11 @@ try
     {
         throw new InvalidOperationException(
             expectsMerchantBargain
-                ? "V110 implementation is missing MerchantBargainManager."
+                ? "V111 implementation is missing MerchantBargainManager."
                 : "V107.1 implementation unexpectedly contains MerchantBargainManager.");
     }
     Console.WriteLine(expectsMerchantBargain
-        ? "V110 merchant bargain conditional contract: PASS"
+        ? "V111 merchant bargain conditional contract: PASS"
         : "V107.1 merchant bargain exclusion contract: PASS");
     if (savedCache != null &&
         savedCache.GetMethod("Init", BindingFlags.Public | BindingFlags.Static) == null)
@@ -91,7 +91,7 @@ try
                  })
         {
             if (modelIdCache.GetMethod(member, BindingFlags.Public | BindingFlags.Static) == null)
-                throw new InvalidOperationException($"V110 unified serialization cache is missing {member}.");
+                throw new InvalidOperationException($"V111 unified serialization cache is missing {member}.");
         }
 
         var curseRemover = modAssembly.GetType("STS2_Things.Relics.ThingsCurseRemover", throwOnError: true)!;
@@ -101,9 +101,9 @@ try
                 attribute.AttributeType.FullName ==
                 "MegaCrit.Sts2.Core.Saves.Runs.SavedPropertyAttribute") != true)
         {
-            throw new InvalidOperationException("V110 ThingsCurseRemover.TimesUsed is missing SavedProperty metadata.");
+            throw new InvalidOperationException("V111 ThingsCurseRemover.TimesUsed is missing SavedProperty metadata.");
         }
-        Console.WriteLine("V110 unified SavedProperty cache contract: PASS");
+        Console.WriteLine("V111 unified SavedProperty cache contract: PASS");
     }
 
     Console.WriteLine($"Harmony target probe: PASS ({modAssembly.GetName().Version})");

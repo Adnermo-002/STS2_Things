@@ -1,4 +1,4 @@
-#if STS2_V110
+﻿#if STS2_V111
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Players;

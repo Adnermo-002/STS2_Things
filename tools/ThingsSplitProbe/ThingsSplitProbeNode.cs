@@ -444,17 +444,22 @@ public partial class ThingsSplitProbeNode : Node
 
     private static void VerifyStarCostLifecycle()
     {
-        VerifyFixedStarCost<Comet>(canonicalCost: 5, splitCost: 2);
-        VerifyFixedStarCost<SevenStars>(canonicalCost: 7, splitCost: 3);
-        VerifyFixedStarCost<Alignment>(canonicalCost: 3, splitCost: 1);
+        // Canonical star costs drift between game versions (v0.111.0 lowered
+        // Alignment from 3 to 2). Derive both expectations from the current
+        // vanilla model instead of hardcoding balance numbers.
+        VerifyFixedStarCost<Comet>();
+        VerifyFixedStarCost<SevenStars>();
+        VerifyFixedStarCost<Alignment>();
     }
 
-    private static void VerifyFixedStarCost<TCard>(int canonicalCost, int splitCost)
+    private static void VerifyFixedStarCost<TCard>()
         where TCard : CardModel
     {
         TCard card = MutableCard<TCard>();
-        Assert(card.BaseStarCost == canonicalCost,
-            $"{typeof(TCard).Name} fixture star cost is {card.BaseStarCost}, expected {canonicalCost}.");
+        int canonicalCost = card.BaseStarCost;
+        Assert(canonicalCost > 0,
+            $"{typeof(TCard).Name} has no positive canonical star cost to split.");
+        int splitCost = canonicalCost / 2;
 
         CardCmd.Enchant<ThingsSplit>(card, 1m);
         Assert(card.BaseStarCost == splitCost,

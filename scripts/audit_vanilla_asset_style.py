@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Inventory vanilla STS2 asset families and render reference contact sheets."""
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from PIL import Image, ImageDraw, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_VANILLA = ROOT.parent / "STS2-V110"
+DEFAULT_VANILLA = ROOT.parent / "STS2-V111"
 BACKGROUND_FOLDERS = (
     "ceremonial_beast_boss",
     "kaiser_crab_boss",

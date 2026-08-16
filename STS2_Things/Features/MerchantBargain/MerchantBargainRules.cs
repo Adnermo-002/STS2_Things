@@ -1,4 +1,4 @@
-#if STS2_V110
+﻿#if STS2_V111
 using MegaCrit.Sts2.Core.Entities.TreasureRelicPicking;
 
 namespace STS2_Things.Features.MerchantBargain;

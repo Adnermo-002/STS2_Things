@@ -13,9 +13,9 @@ public static class UnifiedBootstrap
 {
     private const string ModId = "STS2_Things";
     private const string V1071Target = "v107.1";
-    private const string V110Target = "v110";
+    private const string V111Target = "v111";
     private const string V1071Resource = "STS2_Things.Implementations.v107.1.dll";
-    private const string V110Resource = "STS2_Things.Implementations.v110.dll";
+    private const string V111Resource = "STS2_Things.Implementations.v111.dll";
     private const string ImplementationAssemblyName = "STS2_Things";
     private const string LegacyHarmonyId = "Adnermo.STS2_Things.UnifiedBootstrap.V1071";
 
@@ -41,8 +41,8 @@ public static class UnifiedBootstrap
             SelectedTarget = DetectTarget(_gameAssembly);
             _implementationAssembly = LoadImplementation(SelectedTarget);
 
-            if (SelectedTarget == V110Target)
-                AssociateV110Implementation(_gameAssembly, _implementationAssembly);
+            if (SelectedTarget == V111Target)
+                AssociateV111Implementation(_gameAssembly, _implementationAssembly);
             else
                 InstallV1071RegistrationBridge(_gameAssembly);
 
@@ -59,7 +59,7 @@ public static class UnifiedBootstrap
         return DetectTarget(gameAssembly) switch
         {
             V1071Target => V1071Resource,
-            V110Target => V110Resource,
+            V111Target => V111Resource,
             _ => throw new InvalidOperationException("Unsupported STS2 target.")
         };
     }
@@ -80,16 +80,28 @@ public static class UnifiedBootstrap
             return V1071Target;
         if (parameterCounts.SequenceEqual([6]) &&
             gameAssembly.GetType("MegaCrit.Sts2.Core.Combat.CombatId") is not null)
-            return V110Target;
+        {
+            // v0.110.x and v0.111.x both carry the six-parameter damage hook and
+            // CombatId. v0.111.0 reworked the connection layer and introduced
+            // the handshake manager; its presence identifies the v111 target.
+            if (gameAssembly.GetType(
+                    "MegaCrit.Sts2.Core.Multiplayer.Connection.HandshakeManager") is not null)
+                return V111Target;
+
+            throw new NotSupportedException(
+                "STS2_Things 1.10.0 supports STS2 v0.107.1 and v0.111.x; " +
+                "detected a v0.110.x assembly. Update the game to v0.111.x or " +
+                "install the previous mod release that supports v0.110.x.");
+        }
 
         throw new NotSupportedException(
-            "STS2_Things 1.9.5 supports STS2 v0.107.1 and v0.110.x. " +
+            "STS2_Things 1.10.0 supports STS2 v0.107.1 and v0.111.x. " +
             $"Detected ModifyDamageMultiplicative parameter counts: {string.Join(", ", parameterCounts)}.");
     }
 
     private static Assembly LoadImplementation(string target)
     {
-        var resourceName = target == V1071Target ? V1071Resource : V110Resource;
+        var resourceName = target == V1071Target ? V1071Resource : V111Resource;
         var bootstrapAssembly = typeof(UnifiedBootstrap).Assembly;
         using var stream = bootstrapAssembly.GetManifestResourceStream(resourceName)
             ?? throw new MissingManifestResourceException(
@@ -109,7 +121,7 @@ public static class UnifiedBootstrap
         return implementation;
     }
 
-    private static void AssociateV110Implementation(
+    private static void AssociateV111Implementation(
         Assembly gameAssembly,
         Assembly implementationAssembly)
     {

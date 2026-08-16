@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
     [string]$DataDir,
@@ -45,7 +45,7 @@ if (Test-Path -LiteralPath (Join-Path $portableDotnet 'dotnet.exe') -PathType Le
     $env:DOTNET_ROLL_FORWARD = 'Major'
 }
 
-Write-Host 'Building Merchant Bargain behavior probe for v110...'
+Write-Host 'Building Merchant Bargain behavior probe for v111...'
 & dotnet build $ProbeProject -t:Rebuild -c Debug --nologo `
     "/p:Sts2DataDir=$DataDir" `
     "/p:RuntimeDependencyDir=$RuntimeDependencyDir" `
@@ -54,12 +54,12 @@ if ($LASTEXITCODE -ne 0) {
     throw "Merchant Bargain probe build failed with exit code $LASTEXITCODE"
 }
 
-$logPath = Join-Path $ProbeRoot 'probe-v110.log'
+$logPath = Join-Path $ProbeRoot 'probe-v111.log'
 if (Test-Path -LiteralPath $logPath -PathType Leaf) {
     Remove-Item -LiteralPath $logPath -Force
 }
 
-Write-Host 'Running Merchant Bargain behavior probe for v110...'
+Write-Host 'Running Merchant Bargain behavior probe for v111...'
 & $GodotExe --headless --path $ProbeRoot --log-file $logPath
 if ($LASTEXITCODE -ne 0) {
     throw "Merchant Bargain behavior probe failed with exit code $LASTEXITCODE"
@@ -80,4 +80,4 @@ if ($logText.IndexOf('Merchant bargain behavior probe: PASS', [StringComparison]
     throw 'Merchant Bargain probe did not report PASS.'
 }
 
-Write-Host 'Merchant Bargain behavior probe passed for v110.'
+Write-Host 'Merchant Bargain behavior probe passed for v111.'

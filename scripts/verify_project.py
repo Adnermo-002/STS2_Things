@@ -220,7 +220,7 @@ def main() -> int:
     root_manifest = json.loads((ROOT / "STS2_Things.json").read_text(encoding="utf-8"))
     target_manifest_paths = {
         "v107.1": ROOT / "manifests" / "v107.1" / "STS2_Things.json",
-        "v110": ROOT / "manifests" / "v110" / "STS2_Things.json",
+        "v111": ROOT / "manifests" / "v111" / "STS2_Things.json",
     }
     target_manifests: dict[str, dict] = {}
     for target, path in target_manifest_paths.items():
@@ -239,7 +239,7 @@ def main() -> int:
     if not isinstance(release_version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", release_version):
         fail(errors, "unified manifest version must be a three-part semantic version")
         release_version = ""
-    expected_min_versions = {"v107.1": "v0.107.1", "v110": "v0.110.0"}
+    expected_min_versions = {"v107.1": "v0.107.1", "v111": "v0.111.0"}
     if project_value("Version") != release_version:
         fail(errors, f"implementation version must be {release_version}")
     for target, manifest in target_manifests.items():
@@ -271,7 +271,7 @@ def main() -> int:
     for required in (
         "Sts2TargetVersion",
         "STS2_V107_1",
-        "STS2_V110",
+        "STS2_V111",
         "<AssemblyName>STS2_Things</AssemblyName>",
         "Unsupported Sts2TargetVersion",
         '<Compile Remove="tools\\**\\*.cs" />',
@@ -351,9 +351,9 @@ def main() -> int:
         bootstrap_project_text = bootstrap_project_path.read_text(encoding="utf-8")
         for required in (
             "STS2_Things.Implementations.v107.1.dll",
-            "STS2_Things.Implementations.v110.dll",
+            "STS2_Things.Implementations.v111.dll",
             "ImplementationV1071",
-            "ImplementationV110",
+            "ImplementationV111",
         ):
             if required not in bootstrap_project_text:
                 fail(errors, f"bootstrap embedding contract missing {required!r}")
@@ -422,7 +422,7 @@ def main() -> int:
         "build-unified.ps1",
         "build\\unified",
         "DataDirV1071",
-        "DataDirV110",
+        "DataDirV111",
         "test-gravetide-slug.ps1",
         "test-merchant-bargain.ps1",
         "test-quirky-hopper.ps1",
@@ -437,7 +437,7 @@ def main() -> int:
         "STS2_Things.Bootstrap.csproj",
         "verify-unified-package.ps1",
         "build\\v107.1\\STS2_Things.dll",
-        "build\\v110\\STS2_Things.dll",
+        "build\\v111\\STS2_Things.dll",
         "build\\unified",
     ):
         if required not in unified_build_text:
@@ -1949,7 +1949,7 @@ def main() -> int:
                     f"got {image.mode} {image.size}",
                 )
     gravetide_power = ROOT / "images/powers/gravetide_digestion_power.png"
-    vanilla_power = ROOT.parent / "STS2-V110/images/powers/ravenous_power.png"
+    vanilla_power = ROOT.parent / "STS2-V111/images/powers/ravenous_power.png"
     if gravetide_power.is_file() and vanilla_power.is_file():
         if hashlib.sha256(gravetide_power.read_bytes()).digest() == hashlib.sha256(vanilla_power.read_bytes()).digest():
             fail(errors, "Gravetide digestion Power icon still reuses the vanilla Ravenous texture")

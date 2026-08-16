@@ -7,11 +7,12 @@
 | 实现目标 | 游戏分支 | 编译常量 | 内部程序集 |
 |---|---|---|---|
 | `v107.1` | 兼容正式版 | `STS2_V107_1` | 内嵌资源 `v107.1.dll` |
-| `v110` | 当前正式版 | `STS2_V110` | 内嵌资源 `v110.dll` |
+| `v111` | 当前正式版 | `STS2_V111` | 内嵌资源 `v111.dll` |
 
 对外文件 `STS2_Things.dll` 的内部程序集名是 `STS2_Things.Bootstrap`。两套实现内部名均为
 `STS2_Things`，但每个进程只加载一套，因此不会发生程序集身份冲突。引导层以
-`AbstractModel.ModifyDamageMultiplicative` 的五/六参数签名及 V110 的 `CombatId` 类型识别游戏版本，只加载对应的
+`AbstractModel.ModifyDamageMultiplicative` 的五/六参数签名、V110/V111 的 `CombatId` 类型以及
+v0.111.0 新增的连接握手类型 `HandshakeManager` 识别游戏版本，只加载对应的
 内嵌实现。`STS2_Things.pck` 只包含 Godot 4.5.1 资源，两版共用同一字节序列。
 
 ## 已隔离的 API 差异
@@ -62,8 +63,8 @@
 ## 发布合同
 
 - 正式发布目录只使用 `build/unified/STS2_Things.json|dll|pck`。
-- 统一 manifest 为 `1.9.5`，`min_game_version` 为 `v0.107.1`。
-- `build/v107.1` 与 `build/v110` 是可独立加载的诊断/回退构件，不直接上传到同一 Workshop 条目。
+- 统一 manifest 为 `1.10.0`，`min_game_version` 为 `v0.107.1`。
+- `build/v107.1` 与 `build/v111` 是可独立加载的诊断/回退构件，不直接上传到同一 Workshop 条目。
 - Workshop 中仍只有标准三件套；两个实现 DLL 是引导 DLL 的嵌入资源，不作为 loose DLL 发布。
 - 联机双方必须使用相同游戏版本；同版本玩家会选择相同实现，并使用完全相同的统一包哈希。
 - 游戏程序集只作为本地编译引用，不提交到 Git。
@@ -73,10 +74,10 @@
 ```powershell
 .\scripts\build-all.ps1 `
   -DataDirV1071 D:\path\to\v107.1\data_sts2_windows_x86_64 `
-  -DataDirV110 D:\path\to\v110\data_sts2_windows_x86_64 `
+  -DataDirV111 D:\path\to\v111\data_sts2_windows_x86_64 `
   -Install
 ```
 
 该入口执行：源码审计、双实现严格编译、双 Harmony 目标探针、每版怪癖草蜢、分裂附魔、对撞卡牌、
-抢劫者与灵潮巨蛞蝓行为探针、V110 商人议价探针、PCK 挂载检查、统一引导编译、两版资源选择、
+抢劫者与灵潮巨蛞蝓行为探针、V111 商人议价探针、PCK 挂载检查、统一引导编译、两版资源选择、
 嵌入字节哈希、关键模型存在性与两版完整模型集合一致性、V107.1 Mod 归属桥和最终三件套严格校验。

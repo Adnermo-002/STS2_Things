@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Reflection;
 using System.Runtime.Loader;
 using Godot;
@@ -979,7 +979,7 @@ public partial class GravetideSlugProbeNode : Node
                     binder: null,
                     args: [state],
                     culture: null)
-                ?? throw new InvalidOperationException("Could not create the V110 combat turn state.");
+                ?? throw new InvalidOperationException("Could not create the V111 combat turn state.");
             turnState.GetType().GetProperty("IsInProgress")!.SetValue(turnState, true);
             turnState.GetType().GetProperty("IsStarting")!.SetValue(turnState, false);
             turnStateField.SetValue(manager, turnState);

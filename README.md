@@ -3,9 +3,9 @@
 同时支持以下 Slay the Spire 2 分支的原生 Mod 工程：
 
 - 兼容正式版：`v0.107.1`
-- 当前正式版：`v0.110.1`
+- 当前正式版：`v0.111.0`
 
-当前 Mod 版本：`1.9.5`。Steam/GitHub 正式产物是同一套统一订阅包，运行时会按游戏 API 自动选择内嵌的 V107.1 或 V110 实现。
+当前 Mod 版本：`1.10.0`。Steam/GitHub 正式产物是同一套统一订阅包，运行时会按游戏 API 自动选择内嵌的 V107.1 或 V111 实现。
 
 ## 内容
 
@@ -30,7 +30,7 @@
 - Godot：`4.5.1 Mono`
 - .NET：`9.0`
 - C#：`13`
-- V110 基线：`v0.110.1` / commit `db5d3552`
+- V111 基线：`v0.111.0` / commit `41cef1ea`
 
 工程仅使用游戏原生 API、Godot、Harmony 与官方工具链，不依赖 RitsuLib 或 BaseLib。
 
@@ -41,7 +41,7 @@
 ```powershell
 .\scripts\build-all.ps1 `
   -DataDirV1071 "D:\path\to\v0.107.1\data_sts2_windows_x86_64" `
-  -DataDirV110 "D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64"
+  -DataDirV111 "D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64"
 ```
 
 它会依次编译两套实现、导出一次共用 PCK、构建引导 DLL，并对两套真实游戏程序集执行选择、类型加载、Harmony 与保存缓存探针。追加 `-Install` 可安装统一包。
@@ -55,10 +55,10 @@
   -SourceRoot "D:\path\to\STS2-V107.1"
 ```
 
-V110 单目标诊断构建：
+V111 单目标诊断构建：
 
 ```powershell
-.\scripts\build.ps1 -TargetVersion v110
+.\scripts\build.ps1 -TargetVersion v111
 ```
 
 发布工件位于：
@@ -68,7 +68,7 @@ V110 单目标诊断构建：
 版本专用诊断/回退构件位于：
 
 - `build/v107.1/STS2_Things.json|dll|pck`
-- `build/v110/STS2_Things.json|dll|pck`
+- `build/v111/STS2_Things.json|dll|pck`
 
 统一 manifest 的最低版本为 `v0.107.1`。所有订阅玩家下载完全相同的三件套；引导 DLL 只加载当前游戏对应的实现。多人游戏中的所有玩家仍必须使用相同游戏版本和相同 Mod 构建。
 
@@ -86,6 +86,7 @@ V110 单目标诊断构建：
 - `docs/DUAL_VERSION_SUPPORT.md`：双版本 API 差异与发布合同
 - `docs/UNIFIED_PACKAGE.md`：统一订阅包架构、V107.1 桥接与验证门禁
 - `docs/MIGRATION_V110.md`：V110 API 漂移、验证证据与发布工件哈希
+- `docs/MIGRATION_V111.md`：V110.1→V111.0 差异、迁移决策与验证证据
 
 ## License
 

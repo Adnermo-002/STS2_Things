@@ -1,4 +1,4 @@
-#if STS2_V110
+﻿#if STS2_V111
 using System;
 using System.Collections.Generic;
 using System.Linq;

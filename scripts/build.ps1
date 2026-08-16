@@ -3,8 +3,8 @@ param(
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
 
-    [ValidateSet('v107.1', 'v110')]
-    [string]$TargetVersion = 'v110',
+    [ValidateSet('v107.1', 'v111')]
+    [string]$TargetVersion = 'v111',
 
     [string]$PythonExe = $env:STS2_PYTHON,
 
@@ -115,7 +115,7 @@ if ([string]::IsNullOrWhiteSpace($DataDir)) {
         $DataDir = $env:STS2_DATA_DIR_V107_1
     }
     else {
-        $DataDir = $env:STS2_DATA_DIR_V110
+        $DataDir = $env:STS2_DATA_DIR_V111
     }
 }
 if ([string]::IsNullOrWhiteSpace($DataDir)) {
@@ -128,9 +128,9 @@ if ([string]::IsNullOrWhiteSpace($SourceRoot)) {
         $SourceRoot = $env:STS2_SOURCE_ROOT_V107_1
     }
     else {
-        $SourceRoot = $env:STS2_SOURCE_ROOT_V110
+        $SourceRoot = $env:STS2_SOURCE_ROOT_V111
         if ([string]::IsNullOrWhiteSpace($SourceRoot)) {
-            $SourceRoot = Join-Path (Split-Path $Root -Parent) 'STS2-V110'
+            $SourceRoot = Join-Path (Split-Path $Root -Parent) 'STS2-V111'
         }
     }
 }
@@ -156,10 +156,10 @@ if (Test-Path -LiteralPath $releaseInfoPath) {
         $releaseInfo.version -eq 'v0.107.1'
     }
     else {
-        $releaseInfo.version -match '^v0\.110\.\d+$'
+        $releaseInfo.version -match '^v0\.111\.\d+$'
     }
     if (-not $releaseMatchesTarget) {
-        $expectedRelease = if ($TargetVersion -eq 'v107.1') { 'v0.107.1' } else { 'v0.110.x' }
+        $expectedRelease = if ($TargetVersion -eq 'v107.1') { 'v0.107.1' } else { 'v0.111.x' }
         throw "Target $TargetVersion expects $expectedRelease, but '$GameDir' contains $($releaseInfo.version). Pass the matching -DataDir."
     }
 }

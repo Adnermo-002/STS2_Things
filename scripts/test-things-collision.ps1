@@ -1,7 +1,7 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('v107.1', 'v110')]
+    [ValidateSet('v107.1', 'v111')]
     [string]$TargetVersion,
 
     [Parameter(Mandatory = $true)]

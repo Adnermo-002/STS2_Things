@@ -4,7 +4,7 @@
     <LangVersion>13.0</LangVersion>
     <AssemblyName>STS2_Things.Bootstrap</AssemblyName>
     <RootNamespace>STS2_Things.Bootstrap</RootNamespace>
-    <Version>1.9.5</Version>
+    <Version>1.10.0</Version>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -24,8 +24,8 @@
 
     <EmbeddedResource Include="$(ImplementationV1071)"
                       LogicalName="STS2_Things.Implementations.v107.1.dll" />
-    <EmbeddedResource Include="$(ImplementationV110)"
-                      LogicalName="STS2_Things.Implementations.v110.dll" />
+    <EmbeddedResource Include="$(ImplementationV111)"
+                      LogicalName="STS2_Things.Implementations.v111.dll" />
   </ItemGroup>
 
   <Target Name="ValidateUnifiedInputs" BeforeTargets="PrepareForBuild;ResolveReferences">
@@ -35,7 +35,7 @@
            Text="Harmony was not found at '$(Sts2DataDir)\0Harmony.dll'." />
     <Error Condition="!Exists('$(ImplementationV1071)')"
            Text="V107.1 implementation was not found at '$(ImplementationV1071)'." />
-    <Error Condition="!Exists('$(ImplementationV110)')"
-           Text="V110 implementation was not found at '$(ImplementationV110)'." />
+    <Error Condition="!Exists('$(ImplementationV111)')"
+           Text="V111 implementation was not found at '$(ImplementationV111)'." />
   </Target>
 </Project>
