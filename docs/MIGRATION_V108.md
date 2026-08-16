@@ -48,7 +48,7 @@
   叠在同一 Marker2D；Soul Roes 的父体死亡补位波仍只让存活鱼子占槽。
 - Origin Eye 通过 `IllusionPower` 间接获得的原生 `MinionPower` 图标已加入
   Origin Fogmog 的 `AssetPaths`，动态生成时不再触发 power icon cache miss。
-- Origin Fogmog、Thief Raider、Bowlbug Progenitor 与 Scale Beetle 的敌方招式格挡
+- Origin Fogmog、Bowlbug Progenitor 与 Scale Beetle 的敌方招式格挡
   移除手工玩家数预乘，统一把基础值与 `ValueProp.Move` 交给 V108 原生多人缩放。
   Bowlbug 的 `20`/`16` 与 Scale Beetle Molt 的 `14` 均只缩放一次。
 - The Legacy 的硬化外壳先用整数除法得到 HP/divisor 目标层数，再调用
@@ -78,7 +78,7 @@
 - Steam 安装目录中的 manifest、DLL、PCK 成功加载；日志确认
   `Version=1.3.2.0`、`Loaded 1 mods (1 total)`，未出现本 Mod 的 Harmony、资源、
   脚本或本地化异常。
-- 六个自定义遭遇已经从单人游戏的涅奥遗物选择阶段通过原版 `fight` 命令
+- 五个自定义遭遇已经从单人游戏的涅奥遗物选择阶段通过原版 `fight` 命令
   进入并覆盖核心链路实测；Soul Roes 的精确 8 只与同批范围伤害死亡补位
   边界也已通过；Origin Fogmog 首回合半血竞态的双 Eye 结果也已通过，逐项证据见
   `docs/MONSTER_PIPELINE_V108.md`。

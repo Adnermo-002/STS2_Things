@@ -1,0 +1,85 @@
+quirkyhopper.png
+size:1269,269
+filter:Linear,Linear
+scale:0.332
+antennae 1
+bounds:1109,177,45,100
+rotate:90
+antennae 2
+bounds:1163,86,51,89
+back leg 2
+bounds:969,185,37,138
+rotate:90
+back wing 1
+bounds:715,134,61,220
+rotate:90
+back wing 2
+bounds:969,224,43,223
+offsets:0,0,44,223
+rotate:90
+back wing 3
+bounds:715,103,29,197
+rotate:90
+bod 1
+bounds:931,54,58,124
+rotate:90
+bod 2
+bounds:1205,47,39,32
+bod 3
+bounds:1216,81,45,38
+offsets:1,0,47,38
+bod 4
+bounds:1211,184,48,39
+bottom arm 1
+bounds:1216,121,61,42
+rotate:90
+bottom arm 2
+bounds:1189,30,14,54
+bottom foot
+bounds:1217,12,48,17
+bottom hand
+bounds:1057,89,30,23
+bottom leg 1
+bounds:937,114,69,136
+offsets:0,0,69,137
+rotate:90
+cape 1
+bounds:1194,225,73,42
+offsets:2,0,75,42
+cape 2
+bounds:1075,115,86,60
+extend-o-tenna
+bounds:2,259,679,8
+head
+bounds:1071,2,61,82
+pincer 1
+bounds:1075,177,6,16
+rotate:90
+pincer 2
+bounds:931,2,11,16
+rotate:90
+puff1
+bounds:841,4,97,88
+rotate:90
+shadow
+bounds:715,197,252,70
+offsets:0,0,253,71
+top arm 1
+bounds:1134,33,53,51
+top arm 2
+bounds:1134,10,21,53
+rotate:90
+top foot
+bounds:1205,31,49,14
+top hand
+bounds:1189,2,26,26
+top leg 1
+bounds:715,9,92,124
+rotate:90
+top leg 2
+bounds:931,15,37,138
+rotate:90
+wing_blur_1
+bounds:2,8,360,249
+wing_blur_2
+bounds:364,17,349,240

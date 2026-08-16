@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://j5y4edwgisj3"]
+
+[ext_resource type="Texture2D" uid="uid://c7x6a8mliht2x" path="res://images/atlases/relic_outline_atlas.sprites/things_almond_water_outline.png" id="1_xkdsd"]
+
+[resource]
+atlas = ExtResource("1_xkdsd")
+region = Rect2(0, 0, 256, 256)

@@ -18,6 +18,7 @@ using STS2_Things.Compatibility;
 using STS2_Things.Encounters;
 using STS2_Things.Events;
 using STS2_Things.Hooks;
+using STS2_Things.Modifiers;
 using STS2_Things.Relics;
 
 [ModInitializer(nameof(Initialize))]
@@ -41,16 +42,20 @@ public static class STS2_ThingsInit
             Sts2VersionCompatibility.InitializeBeforeModelDatabase();
 
             // ---- 卡牌 & 遗物 模型池注册 ----
-            ModHelper.AddModelToPool<DefectCardPool, Reuse>();
-            ModHelper.AddModelToPool<EventCardPool, Surrender>();
+            ModHelper.AddModelToPool<IroncladCardPool, ThingsCollision>();
+            ModHelper.AddModelToPool<DefectCardPool, ThingsReuse>();
+            ModHelper.AddModelToPool<EventCardPool, ThingsSurrender>();
             ModHelper.AddModelToPool<SilentCardPool, SoulfyshDisease>();
-            ModHelper.AddModelToPool<SilentCardPool, Recall>();
-            ModHelper.AddModelToPool<SilentCardPool, PackUp>();
-            ModHelper.AddModelToPool<EventRelicPool, WhiteFlag>();
-            ModHelper.AddModelToPool<EventRelicPool, CurseRemover>();
-            ModHelper.AddModelToPool<EventRelicPool, MagicGlove>();
-            ModHelper.AddModelToPool<EventRelicPool, AlmondWater>();
-            ModHelper.AddModelToPool<EventRelicPool, MedusaHair>();
+            ModHelper.AddModelToPool<SilentCardPool, ThingsRecall>();
+            ModHelper.AddModelToPool<SilentCardPool, ThingsPackUp>();
+            ModHelper.AddModelToPool<EventRelicPool, ThingsWhiteFlag>();
+            ModHelper.AddModelToPool<EventRelicPool, ThingsCurseRemover>();
+            ModHelper.AddModelToPool<EventRelicPool, ThingsMagicGlove>();
+            ModHelper.AddModelToPool<EventRelicPool, ThingsAlmondWater>();
+            ModHelper.AddModelToPool<EventRelicPool, ThingsMedusaHair>();
+            ModHelper.SubscribeForRunStateHooks(
+                "Adnermo.STS2_Things.QuirkyHopperRewardPolicy",
+                static _ => [ModelDb.Modifier<QuirkyHopperRewardPolicy>()]);
 
             // ---- Harmony 初始化 ----
             var harmony = new Harmony(HarmonyId);
@@ -81,7 +86,11 @@ public static class OvergrowthAllEventsPatch
     private static void Postfix(ref IEnumerable<EventModel> __result)
     {
         __result = DeterministicContentOrder.SortBaseThenMods(
-            __result.Concat([ModelDb.Event<RobberyFakeMerchant>(), ModelDb.Event<Backrooms>()]).Distinct());
+            __result.Concat([
+                ModelDb.Event<RobberyFakeMerchant>(),
+                ModelDb.Event<ThingsBackrooms>(),
+                ModelDb.Event<CuttingItClose>()
+            ]).Distinct());
     }
 }
 
@@ -92,7 +101,11 @@ public static class UnderdocksAllEventsPatch
     private static void Postfix(ref IEnumerable<EventModel> __result)
     {
         __result = DeterministicContentOrder.SortBaseThenMods(
-            __result.Concat([ModelDb.Event<RobberyFakeMerchant>(), ModelDb.Event<Backrooms>()]).Distinct());
+            __result.Concat([
+                ModelDb.Event<RobberyFakeMerchant>(),
+                ModelDb.Event<ThingsBackrooms>(),
+                ModelDb.Event<CuttingItClose>()
+            ]).Distinct());
     }
 }
 
@@ -103,7 +116,7 @@ public static class HiveAllEventsPatch
     private static void Postfix(ref IEnumerable<EventModel> __result)
     {
         __result = DeterministicContentOrder.SortBaseThenMods(
-            __result.Concat([ModelDb.Event<Medusa>()]).Distinct());
+            __result.Concat([ModelDb.Event<ThingsMedusa>()]).Distinct());
     }
 }
 
@@ -121,9 +134,9 @@ public static class NeowCurseOptionsPatch
     private static void Postfix(Neow __instance, ref IEnumerable<EventOption> __result)
     {
         var list = __result.ToList();
-        AddRelicToList<CurseRemover>(__instance, list);
-        AddRelicToList<WhiteFlag>(__instance, list);
-        AddRelicToList<MagicGlove>(__instance, list);
+        AddRelicToList<ThingsCurseRemover>(__instance, list);
+        AddRelicToList<ThingsWhiteFlag>(__instance, list);
+        AddRelicToList<ThingsMagicGlove>(__instance, list);
         __result = list;
     }
 
@@ -162,7 +175,7 @@ public static class RelicExclusionPatch
 {
     private static void Prefix(ref IReadOnlyList<RelicModel> relics)
     {
-        var hasMagicGlove = relics.Any(r => r is MagicGlove);
+        var hasMagicGlove = relics.Any(r => r is ThingsMagicGlove);
         var hasShears = relics.Any(r => r.Id.Entry == "PRECARIOUS_SHEARS");
 
         if (!hasMagicGlove || !hasShears) return;
@@ -170,6 +183,6 @@ public static class RelicExclusionPatch
         relics = relics
             .Where(r => r.Id.Entry != "PRECARIOUS_SHEARS")
             .ToList();
-        Log.Info("[Things] Removed PrecariousShears (conflicts with MagicGlove).");
+        Log.Info("[Things] Removed PrecariousShears (conflicts with ThingsMagicGlove).");
     }
 }

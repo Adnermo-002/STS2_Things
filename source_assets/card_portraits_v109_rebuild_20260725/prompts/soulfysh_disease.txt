@@ -1,0 +1,11 @@
+Use case: stylized-concept.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Primary request: Create a new original card illustration for the Things Mod card Soulfysh Disease. Preserve only the semantic idea from Image 1: an eerie aquatic infection creates a delayed spectral call and unwanted copies. Do not copy Image 1's jar, pose, exact organ layout, background, or rendering.
+Input images: Image 1 is semantic reference only; Image 2 establishes V109 background flow; Image 3 establishes V109 subject language; Image 4 establishes V109 spectral effect language.
+Scene/backdrop: 2-5 broad deep-ocean indigo, teal, and violet current bands flowing around a central infected host. The color masses curve like water pressure and a slow whirlpool, not jagged lightning across the whole backdrop.
+Subject: an original squat blue-green Soulfysh host with broad cheek fins, half-lidded amber eyes, and a translucent forehead chamber. Inside the chamber is one stylized pale pink heart-shaped infection core surrounded by small amber egg clusters and violet coral-like lesions. It is uncanny and graphic, not anatomical gore. Two ghostly amber roe spheres and one fading cyan call ribbon spiral away toward a small violet discard hollow.
+Composition: close frontal icon composition, slightly asymmetric, with the sickly glowing chamber as the single brightest focus. Cropped hanging kelp-like fins or spectral tendrils can frame the outer edges, but do not add extra creatures.
+Lighting/mood: submerged, afflicted, and quietly threatening; cyan rim light with muted chartreuse disease accents.
+Materials/textures: 3-6 large graphic value regions, selective dark contour, glassy translucent chamber, rounded wet poison/liquid shapes, sparse highlights.
+Constraints: raw artwork only; no words, letters, numbers, card UI, frame, logo, watermark, copied composition, or collage. Background flows; subject anchors; effect directs.
+Avoid: realistic surgery, gore, human anatomy, 3D render, photorealism, all-angular background, dense texture noise, literal labels, excessive bubbles, or an effect that hides the infection core.

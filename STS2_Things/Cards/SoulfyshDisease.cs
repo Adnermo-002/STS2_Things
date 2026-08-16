@@ -31,7 +31,7 @@ public sealed class SoulfyshDisease : CardModel
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new IHoverTip[] { HoverTipFactory.FromPower<SoulfyshDiseasePower>() }
-            .Concat(HoverTipFactory.FromEnchantment<Disperse>())
+            .Concat(HoverTipFactory.FromEnchantment<ThingsDisperse>())
             .Concat(new[] { HoverTipFactory.FromCard<Beckon>() });
 
     public SoulfyshDisease()
@@ -57,7 +57,7 @@ public sealed class SoulfyshDisease : CardModel
             for (int i = 0; i < beckonCount; i++)
             {
                 var beckon = combatState.CreateCard<Beckon>(Owner);
-                CardCmd.Enchant<Disperse>(beckon, 1);
+                CardCmd.Enchant<ThingsDisperse>(beckon, 1);
                 await CardPileCmd.AddGeneratedCardToCombat(beckon, PileType.Discard, Owner);
             }
         }

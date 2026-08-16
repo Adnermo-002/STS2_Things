@@ -74,7 +74,7 @@ public sealed class RobberyFakeMerchant : EventModel
     private async Task TakeGolds()
     {
         await PlayerCmd.GainGold((int)DynamicVars["GoldsCount"].BaseValue, EventOwner);
-        SetEventFinished(L10NLookup("ROBBERY_FAKE_MERCHANT.pages.INITIAL.options.TAKEGOLDS.description"));
+        SetEventFinished(L10NLookup("ROBBERY_FAKE_MERCHANT.pages.TAKEGOLDS.description"));
     }
 
     private async Task TakeRelics()

@@ -14,19 +14,11 @@
     "rotation": "rotation_deg is baked clockwise in source/image space around the attachment registration"
   },
   "mapping_files": [
-    "source_assets/monsters/ai_cutout_parts/mapping_fog_thief.json",
+    "source_assets/monsters/ai_cutout_parts/mapping_fog.json",
     "source_assets/monsters/ai_cutout_parts/mapping_legacy_souls.json",
     "source_assets/monsters/ai_cutout_parts/mapping_scale_bowl.json"
   ],
-  "bind_qa_configuration": {
-    "thief_raider": {
-      "reference_path": "source_assets/monsters/thief_raider.png",
-      "alpha_iou_min": 0.93,
-      "alpha_area_ratio_min": 0.97,
-      "alpha_area_ratio_max": 1.03,
-      "centroid_delta_max_px": 2.0
-    }
-  },
+  "bind_qa_configuration": {},
   "reference_setup_anchors": {
     "manifest": "source_assets/monsters/cutout_rigs.generated.json",
     "policy": "reuse only Root and otherwise unmapped attachment-free control bone pivots; never reuse legacy part textures"
@@ -11488,144 +11480,12 @@
         "bones": "build/ai_cutout_rig_previews/ai_the_legacy_bones.png",
         "comparison": "build/ai_cutout_rig_previews/ai_the_legacy_comparison.png"
       }
-    },
-    "thief_raider": {
-      "status": "pass",
-      "source_image": "source_assets/monsters/thief_raider.png",
-      "canvas": [
-        534,
-        420
-      ],
-      "mapped_parts": 1,
-      "written_parts": 1,
-      "bones": 1,
-      "source_components": {
-        "whole_character": 1
-      },
-      "warnings": [],
-      "notices": [
-        {
-          "code": "attachment_pivot_does_not_redefine_shared_bone",
-          "bone": "Root",
-          "canonical_pivot_source_xy": [
-            267.0,
-            210.0
-          ],
-          "ignored_candidate_pivot_source_xy": [
-            267.0,
-            233.0
-          ],
-          "canonical_semantic": "",
-          "attachment_semantic": "intact_character_recovery"
-        }
-      ],
-      "errors": [],
-      "bind_qa": {
-        "status": "pass",
-        "reference_path": "source_assets/monsters/thief_raider.png",
-        "thresholds": {
-          "alpha_iou_min": 0.93,
-          "alpha_area_ratio_min": 0.97,
-          "alpha_area_ratio_max": 1.03,
-          "centroid_delta_max_px": 2.0
-        },
-        "metrics": {
-          "alpha_threshold": 2,
-          "reference_alpha_area_px": 92544,
-          "rebuilt_alpha_area_px": 92544,
-          "alpha_intersection_px": 92544,
-          "alpha_union_px": 92544,
-          "alpha_iou": 1.0,
-          "alpha_area_ratio": 1.0,
-          "reference_centroid_xy": [
-            300.0493,
-            241.3059
-          ],
-          "rebuilt_centroid_xy": [
-            300.0493,
-            241.3059
-          ],
-          "centroid_delta_px": 0.0
-        },
-        "failures": []
-      },
-      "parts": [
-        {
-          "name": "ai_intact_character_recovery",
-          "semantic": "intact_character_recovery",
-          "bone": "Root",
-          "parent_bone": "",
-          "z": 0,
-          "source_component": "whole_character",
-          "source_component_path": "source_assets/monsters/ai_cutout_parts/thief_raider_recovery/whole_character.png",
-          "output": "images/monsters/ai_rig_parts/thief_raider/ai_intact_character_recovery.png",
-          "source_size": [
-            534,
-            420
-          ],
-          "output_size": [
-            504,
-            364
-          ],
-          "alpha_bbox": [
-            3,
-            3,
-            501,
-            361
-          ],
-          "opaque_pixels": 89409,
-          "alpha_boundary_clear": true,
-          "center_source_xy": [
-            267.0,
-            233.0
-          ],
-          "registration_source_xy": [
-            267.0,
-            233.0
-          ],
-          "registration_output_xy": [
-            252.0,
-            182.0
-          ],
-          "authored_pivot_source_xy": [
-            267.0,
-            233.0
-          ],
-          "local_pivot_xy": [
-            267.0,
-            233.0
-          ],
-          "local_child_joint_xy": null,
-          "transformed_child_joint_offset_xy": null,
-          "transformed_child_joint_source_xy": null,
-          "registration_mode": "local_pivot",
-          "canonical_bone_pivot_source_xy": [
-            267.0,
-            210.0
-          ],
-          "sprite_offset": [
-            0.0,
-            23.0
-          ],
-          "rotation_deg_clockwise": 0.0,
-          "scale_xy": [
-            1.0,
-            1.0
-          ],
-          "sha256": "eb69e0eb64229b37f40b4fe9712656679a41cee1ea27ba46ae05c1d3b4dba085"
-        }
-      ],
-      "previews": {
-        "bind": "build/ai_cutout_rig_previews/ai_thief_raider_bind.png",
-        "bones": "build/ai_cutout_rig_previews/ai_thief_raider_bones.png",
-        "comparison": "build/ai_cutout_rig_previews/ai_thief_raider_comparison.png"
-      }
     }
   },
   "summary": {
-    "monsters": 9,
-    "parts": 169,
-    "bones": 133,
+    "monsters": 8,
+    "parts": 168,
+    "bones": 132,
     "warnings": 22,
     "errors": 0,
     "status": "warning"

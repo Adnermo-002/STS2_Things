@@ -1,0 +1,10 @@
+Use case: stylized-concept.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Style priority: Images 1-3 are formal V109 card-art references and control the rendering language: flat matte opaque color shapes, 2-4 value steps, selective dark contour, broad flowing backgrounds, and one readable focal motif. Do not copy their subjects or effects. Image 4 is semantic reference only. Image 5 locks the translucent amber Soul Roe family.
+Primary request: Create a new original card illustration for Soulfysh Disease. Show a diseased aquatic host whose infection creates a delayed spectral call and unwanted copies. Do not copy Image 4's jar, exact organ layout, background, or rendering.
+Background: exactly 3-5 broad deep-ocean indigo, teal, and violet current bands, curved like slow water pressure and a small whirlpool. No all-angular lightning field, brush strokes, or texture noise.
+Subject: an original squat blue-green Soulfysh host with broad cheek fins, half-lidded amber eyes, and a simple translucent forehead chamber. Inside is one stylized pale pink heart-shaped infection core surrounded by a restrained cluster of amber roe spheres and two violet coral-like lesions. Keep it uncanny and graphic, not gore. One cyan call ribbon and two small amber roe spheres spiral away toward a violet discard hollow.
+Composition: close frontal asymmetric icon crop. The infected chamber is the single brightest focus, with clean layered shapes and a few dark contour gaps. No extra creatures.
+Color/value: matte teal body, dark blue shadows, muted chartreuse disease spots, pale pink core, amber roe, one cyan highlight. No glossy photorealism, soft airbrushing, or painterly microtexture.
+Constraints: raw artwork only; no words, letters, numbers, card UI, frame, logo, watermark, copied composition, or collage. Background flows; subject anchors; effect directs.
+Avoid: realistic surgery, gore, human anatomy, 3D render, photorealism, dense texture noise, literal labels, excessive bubbles, all-angular background, or an effect hiding the infection core.

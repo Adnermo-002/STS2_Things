@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fog"]
+blend_mode = 0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_additive"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_fog_sprite"]
+offsets = PackedFloat32Array(0, 0.52, 1)
+colors = PackedColorArray(1, 1, 1, 0.42, 1, 1, 1, 0.18, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fog"]
+gradient = SubResource("Gradient_fog_sprite")
+width = 256
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_dot_sprite"]
+offsets = PackedFloat32Array(0, 0.42, 1)
+colors = PackedColorArray(1, 1, 1, 0.8, 1, 1, 1, 0.28, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dot"]
+gradient = SubResource("Gradient_dot_sprite")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_fog_alpha"]
+offsets = PackedFloat32Array(0, 0.22, 0.82, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.26, 1, 1, 1, 0.18, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_mote_alpha"]
+offsets = PackedFloat32Array(0, 0.2, 0.75, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.45, 1, 1, 1, 0.32, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_bubble_alpha"]
+offsets = PackedFloat32Array(0, 0.12, 0.72, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.5, 1, 1, 1, 0.28, 1, 1, 1, 0)
+
+[node name="GravetideSlugAtmosphere" type="Control"]
+mouse_filter = 2
+
+[node name="LowTideMist" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_fog")
+position = Vector2(0, 430)
+amount = 3
+texture = SubResource("GradientTexture2D_fog")
+lifetime = 90.0
+preprocess = 90.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1500, 115)
+gravity = Vector2(1.2, 0)
+scale_amount_min = 5.5
+scale_amount_max = 8.0
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
+color = Color(0.10588235, 0.16862745, 0.23529412, 0.18)
+color_ramp = SubResource("Gradient_fog_alpha")
+anim_offset_max = 1.0
+
+[node name="SaltMotes" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_additive")
+position = Vector2(0, -40)
+amount = 10
+texture = SubResource("GradientTexture2D_dot")
+lifetime = 18.0
+preprocess = 18.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1450, 520)
+spread = 180.0
+gravity = Vector2(-0.6, -1.4)
+initial_velocity_min = 1.0
+initial_velocity_max = 4.0
+damping_min = 0.8
+damping_max = 2.0
+scale_amount_min = 0.22
+scale_amount_max = 0.54
+color = Color(0.3372549, 0.4, 0.4862745, 0.2)
+color_ramp = SubResource("Gradient_mote_alpha")
+
+[node name="TideBubbles" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_additive")
+position = Vector2(60, 480)
+amount = 5
+texture = SubResource("GradientTexture2D_dot")
+lifetime = 9.0
+preprocess = 9.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1320, 95)
+direction = Vector2(0, -1)
+spread = 12.0
+gravity = Vector2(0, -3.5)
+initial_velocity_min = 3.0
+initial_velocity_max = 9.0
+scale_amount_min = 0.35
+scale_amount_max = 0.82
+color = Color(0.19607843, 0.34117647, 0.4392157, 0.14)
+color_ramp = SubResource("Gradient_bubble_alpha")

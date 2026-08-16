@@ -185,29 +185,6 @@
       "spatlas": "animations/monsters/sts2_things/the_legacy/the_legacy.spatlas",
       "tres": "animations/monsters/sts2_things/the_legacy/the_legacy_skel_data.tres",
       "scene": "scenes/creature_visuals/the_legacy.tscn"
-    },
-    {
-      "key": "thief_raider",
-      "bones": 1,
-      "slots": 1,
-      "atlas_size": [
-        519,
-        379
-      ],
-      "animations": [
-        "idle_loop",
-        "attack",
-        "cast",
-        "hurt",
-        "die",
-        "summon",
-        "power_up",
-        "revive"
-      ],
-      "spjson": "animations/monsters/sts2_things/thief_raider/thief_raider.spjson",
-      "spatlas": "animations/monsters/sts2_things/thief_raider/thief_raider.spatlas",
-      "tres": "animations/monsters/sts2_things/thief_raider/thief_raider_skel_data.tres",
-      "scene": "scenes/creature_visuals/thief_raider.tscn"
     }
   ]
 }

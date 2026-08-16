@@ -1,0 +1,376 @@
+{
+  "schema_version": 1,
+  "coordinate_space": {
+    "origin": "top_left_of_original_monster_png",
+    "x": "right",
+    "y": "down",
+    "units": "source_pixels",
+    "rotation_preview": "rotation_deg values reproduce the checked Pillow QA composite; negative scale_x denotes a horizontal mirror instance."
+  },
+  "entries": [
+    {
+      "monster": "origin_fogmog",
+      "component": "part_000",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_000.png",
+      "semantic": "cap_underside_complete",
+      "bone": "CapUnder",
+      "parent_bone": "Body",
+      "suggested_pivot_source_xy": [
+        443,
+        352
+      ],
+      "suggested_center_source_xy": [
+        443,
+        285
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        2.35,
+        1.08
+      ],
+      "z": 5,
+      "notes": "Complete gill/underside component. Keep it behind cap_top and behind the face plate; the broad upper rim must overlap the top cap by 14-22 source pixels so no bright crescent gap opens during cap settle."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_027",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_027.png",
+      "semantic": "cap_neck_socket",
+      "bone": "CapNeck",
+      "parent_bone": "Body",
+      "suggested_pivot_source_xy": [
+        443,
+        375
+      ],
+      "suggested_center_source_xy": [
+        443,
+        375
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.65,
+        0.6
+      ],
+      "z": 7,
+      "notes": "Complete wooden collar used only as a recessed cap-to-trunk connector. It remains behind face_plate and torso_complete; never expose more than the upper rim."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_003",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog_supplement/part_003.png",
+      "semantic": "screen_left_foot_complete",
+      "bone": "LeftFoot",
+      "parent_bone": "LeftLeg",
+      "suggested_pivot_source_xy": [
+        351,
+        881
+      ],
+      "suggested_center_source_xy": [
+        299,
+        911
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.78,
+        0.4
+      ],
+      "z": 12,
+      "notes": "Independent two-claw foot. Its upper socket and the leg ankle occupy the same joint center; draw behind the leg so the painted ankle collar reads as one continuous joint."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_004",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog_supplement/part_004.png",
+      "semantic": "screen_right_foot_complete",
+      "bone": "RightFoot",
+      "parent_bone": "RightLeg",
+      "suggested_pivot_source_xy": [
+        571,
+        881
+      ],
+      "suggested_center_source_xy": [
+        616,
+        911
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.78,
+        0.4
+      ],
+      "z": 12,
+      "notes": "Independent three-claw foot. Center its ankle opening under the leg end and preserve 18-24 source pixels of overlap during foot rotation."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_043",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_043.png",
+      "semantic": "upper_arm_template",
+      "bone": "UpperArmTemplate",
+      "parent_bone": "Body",
+      "suggested_pivot_source_xy": [
+        320,
+        500
+      ],
+      "suggested_center_source_xy": [
+        271,
+        556
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.9,
+        0.9
+      ],
+      "z": 14,
+      "instances": [
+        {
+          "semantic": "screen_left_upper_arm",
+          "bone": "LeftArm",
+          "parent_bone": "Body",
+          "pivot_source_xy": [
+            320,
+            500
+          ],
+          "center_source_xy": [
+            271,
+            556
+          ],
+          "rotation_deg": 0,
+          "scale_xy": [
+            0.9,
+            0.9
+          ],
+          "z": 14,
+          "notes": "Root is buried in the screen-left torso shoulder collar; the distal socket meets LeftForearm at (230,613)."
+        },
+        {
+          "semantic": "screen_right_upper_arm",
+          "bone": "RightArm",
+          "parent_bone": "Body",
+          "pivot_source_xy": [
+            595,
+            500
+          ],
+          "center_source_xy": [
+            644,
+            556
+          ],
+          "rotation_deg": 0,
+          "scale_xy": [
+            -0.9,
+            0.9
+          ],
+          "z": 14,
+          "notes": "Mirrored clean instance; the root overlaps the screen-right torso collar and the distal socket meets RightForearm at (685,613)."
+        }
+      ],
+      "notes": "The original clean hollow-ended branch segment remains the upper-arm template. Both instances are moved to the supplement torso shoulder collars and overlap the new isolated forearms at their elbow sockets."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_001",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog_supplement/part_001.png",
+      "semantic": "screen_left_leg_complete",
+      "bone": "LeftLeg",
+      "parent_bone": "Body",
+      "suggested_pivot_source_xy": [
+        363,
+        735
+      ],
+      "suggested_center_source_xy": [
+        353,
+        812
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.8,
+        0.48
+      ],
+      "z": 16,
+      "notes": "Independent screen-left leg. Push its upper socket well beneath torso_core_complete; align its lower ankle opening concentrically with LeftFoot at (351,881)."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_002",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog_supplement/part_002.png",
+      "semantic": "screen_right_leg_complete",
+      "bone": "RightLeg",
+      "parent_bone": "Body",
+      "suggested_pivot_source_xy": [
+        547,
+        735
+      ],
+      "suggested_center_source_xy": [
+        557,
+        812
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.8,
+        0.48
+      ],
+      "z": 16,
+      "notes": "Independent screen-right leg. The hip opening stays beneath the torso stump and the lower collar meets RightFoot at (571,881) without a transparent interval."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_007",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog_supplement/part_007.png",
+      "semantic": "screen_left_forearm_complete",
+      "bone": "LeftForearm",
+      "parent_bone": "LeftArm",
+      "suggested_pivot_source_xy": [
+        230,
+        613
+      ],
+      "suggested_center_source_xy": [
+        181,
+        677
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.65,
+        0.48
+      ],
+      "z": 16,
+      "notes": "Independent screen-left forearm. Its proximal collar overlaps the upper-arm distal socket and its wrist collar terminates at (171,740); neither end uses an original-image patch."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_008",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog_supplement/part_008.png",
+      "semantic": "screen_right_forearm_complete",
+      "bone": "RightForearm",
+      "parent_bone": "RightArm",
+      "suggested_pivot_source_xy": [
+        685,
+        613
+      ],
+      "suggested_center_source_xy": [
+        739,
+        671
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.65,
+        0.5
+      ],
+      "z": 16,
+      "notes": "Independent screen-right forearm. Its root overlaps the upper-arm distal socket and the distal collar meets RightHand at (770,733); the five-pixel inward nesting keeps the whole arm alpha-connected to the torso."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_006",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog_supplement/part_006.png",
+      "semantic": "screen_left_hand_complete",
+      "bone": "LeftHand",
+      "parent_bone": "LeftForearm",
+      "suggested_pivot_source_xy": [
+        171,
+        740
+      ],
+      "suggested_center_source_xy": [
+        119,
+        783
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.55,
+        0.36
+      ],
+      "z": 18,
+      "notes": "Independent three-claw hand. The wrist opening is concentric with the forearm end and overlaps it by 12-16 source pixels; rotate on LeftHand instead of translating the whole arm."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_005",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog_supplement/part_005.png",
+      "semantic": "screen_right_hand_complete",
+      "bone": "RightHand",
+      "parent_bone": "RightForearm",
+      "suggested_pivot_source_xy": [
+        770,
+        733
+      ],
+      "suggested_center_source_xy": [
+        823,
+        769
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        0.55,
+        0.38
+      ],
+      "z": 18,
+      "notes": "Independent four-claw hand. Its wrist is nested into the forearm collar; maintain the overlap during attack follow-through so no hollow interval appears."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_000",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog_supplement/part_000.png",
+      "semantic": "torso_core_complete",
+      "bone": "Body",
+      "parent_bone": "Root",
+      "suggested_pivot_source_xy": [
+        443,
+        610
+      ],
+      "suggested_center_source_xy": [
+        443,
+        610
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        1.15,
+        1.1
+      ],
+      "z": 20,
+      "notes": "Supplement torso core with separate shoulder/hip collars and no baked long legs or hands. Keep it rigid; it draws above limb roots so the four proximal attachments remain covered by the painted socket rims."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_026",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_026.png",
+      "semantic": "face_plate_complete",
+      "bone": "Face",
+      "parent_bone": "Body",
+      "suggested_pivot_source_xy": [
+        443,
+        370
+      ],
+      "suggested_center_source_xy": [
+        432,
+        405
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        1.18,
+        1.18
+      ],
+      "z": 22,
+      "notes": "Complete facial bark plate with both eyes, mouth cavity, and green accents. Its upper edge tucks under cap_underside; its lower bark rim overlaps torso_complete by at least 18 source pixels."
+    },
+    {
+      "monster": "origin_fogmog",
+      "component": "part_008",
+      "component_path": "source_assets/monsters/ai_cutout_parts/origin_fogmog/part_008.png",
+      "semantic": "cap_top_complete",
+      "bone": "CapTop",
+      "parent_bone": "CapUnder",
+      "suggested_pivot_source_xy": [
+        443,
+        300
+      ],
+      "suggested_center_source_xy": [
+        443,
+        153
+      ],
+      "rotation_deg": 0,
+      "scale_xy": [
+        1.75,
+        1.34
+      ],
+      "z": 30,
+      "notes": "Complete red cap including all spikes and green growths. Keep it as one rigid silhouette; its painted lower red lip is the frontmost cap seam and covers the tan underside edge."
+    }
+  ]
+}

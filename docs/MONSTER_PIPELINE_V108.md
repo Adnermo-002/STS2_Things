@@ -82,7 +82,6 @@ PCK 内生成 `.tscn.remap`；V108 `BackgroundAssets` 枚举背景目录后会�
 - 召唤者按原版 Queen 模式通过 `AssetPaths` 预加载全部潜在随从：
   - Origin Fogmog → Origin Eye With Teeth
   - Soul Roes → Soul Roe 三种视觉
-  - Thief Raider → 五种 Ruby Raider
   - Bowlbug Progenitor → 四种 Bowlbug
 - Origin Eye 的 `IllusionPower` 会原生追加 `MinionPower`；两者的图标都由
   Origin Fogmog 的战斗资源集显式预加载，避免动态召唤时出现 cache miss。
@@ -100,7 +99,7 @@ PCK 内生成 `.tscn.remap`；V108 `BackgroundAssets` 枚举背景目录后会�
 - 房间退出音频清理拆到独立 `CombatRoomAudioCleanupPatch`，不再属于注册层。
 - 候选池只含 canonical 模型，最终顺序稳定；不使用 unordered collection、进程随机哈希或 Godot 全局 RNG 决定玩法。
 - 动态召唤继续使用 Encounter RNG / Monster AI RNG、原生 `CreatureCmd.Add` 和同步槽位。
-- Origin Fogmog、Thief Raider、Bowlbug Progenitor 与 Scale Beetle 的敌方招式格挡
+- Origin Fogmog、Bowlbug Progenitor 与 Scale Beetle 的敌方招式格挡
   只传基础值并保留 `ValueProp.Move`，由 V108 `MultiplayerScalingModel` 缩放一次；
   不再手工预乘玩家数。Bowlbug 的基础格挡为 `20`/`16`，Scale Beetle 的 Molt
   基础格挡为 `14`。
@@ -112,8 +111,8 @@ PCK 内生成 `.tscn.remap`；V108 `BackgroundAssets` 枚举背景目录后会�
 `scripts/verify_project.py` 现在额外检查：
 
 - 禁止 `MonsterRegistrar` 和 fallback 视觉；
-- 9 个自有怪物视觉场景及四个必需 unique node；
-- 6 个 Encounter 的 Slots 与 Marker2D 精确一致；
+- 8 个自有怪物视觉场景及四个必需 unique node；
+- 5 个 Encounter 的 Slots 与 Marker2D 精确一致；
 - 4 个 Boss 的原生背景目录与层；
 - 所有 `MoveState` 的 eng/zhs 图鉴键及陈旧键；
 - Act Encounter catalog 完整性；
@@ -135,7 +134,6 @@ PCK 内生成 `.tscn.remap`；V108 `BackgroundAssets` 枚举背景目录后会�
 | 遭遇 | 已验证结果 | 状态 |
 |---|---|---|
 | Origin Fogmog | `235` HP；开场 `ILLUSION_MOVE` 执行前使用 `damage 118 1`，在 `117` HP 精确触发二阶段并进入 `STUNNED`，同一眩晕回合一次生成两只 `9/9` `OriginEyeWithTeeth`，`kill all` 明确列出两只 Eye；正常路径则先生成 1 只、半血后再生成第 2 只；Eye 死亡进入 `REVIVE_MOVE` 后恢复为 `9/9`，复活等待期间保留原槽位；再次击杀令玩家能量由 `3/3` 变为 `4/3` | 通过 |
-| Raid Party | 生成三名 Ruby Raider 与 Thief Raider；连续推进得到 `STEALTH → PREPARE → RETALIATE → ESCAPE`；Thief 逃离后在可用槽位生成新的 Ruby Raider | 通过 |
 | Scale Beetle | 自定义背景正常显示，Boss 为 `200/200`；击杀后进入标准胜利流程 | 通过 |
 | Soul Roes | 父体死亡补 6 只、存活至第 4 回合后的精确 8 只，以及范围伤害同批死亡后的 6 只补位波均通过 | 通过 |
 | The Legacy | 自定义背景正常显示，Boss 为 `285` HP；初始死亡律动 `2`、硬化外壳 `95`；状态按 `EXHAUST → ECHO → BLOOD → STRENGTHEN` 推进；首次强化获得 Artifact `1` | 通过 |

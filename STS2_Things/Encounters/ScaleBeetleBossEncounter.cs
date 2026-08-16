@@ -26,14 +26,14 @@ public sealed class ScaleBeetleBossEncounter : ModBossEncounter
 
     public override IEnumerable<MonsterModel> AllPossibleMonsters => new MonsterModel[]
     {
-        ModelDb.Monster<ScaleBeetle>()
+        ModelDb.Monster<ThingsScaleBeetle>()
     };
 
     protected override IReadOnlyList<(MonsterModel, string?)> GenerateMonsters()
     {
         return new (MonsterModel, string?)[]
         {
-            (ModelDb.Monster<ScaleBeetle>().ToMutable(), "scale_beetle")
+            (ModelDb.Monster<ThingsScaleBeetle>().ToMutable(), "scale_beetle")
         };
     }
 }

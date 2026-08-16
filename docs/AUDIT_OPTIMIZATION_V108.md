@@ -37,7 +37,7 @@
 
 6. **敌方招式格挡被重复按玩家数缩放**
    - V108 `MultiplayerScalingModel` 会自动缩放带 `ValueProp.Move` 的敌方招式格挡；
-     Origin Fogmog、Thief Raider、Bowlbug Progenitor 与 Scale Beetle 不再先手工预乘玩家数。
+     Origin Fogmog、Bowlbug Progenitor 与 Scale Beetle 不再先手工预乘玩家数。
    - Bowlbug Progenitor 的基础格挡固定为 `20`/`16`，Scale Beetle Molt 固定为 `14`，
      然后只走一次原生多人缩放；`verify_project.py` 同时禁止再次引入“玩家数 × 基础值”。
 
@@ -46,13 +46,11 @@
 - 删除始源雾菇动态召唤后对 `IllusionPower` 的重复施加。
 - `REVIVE_MOVE` Harmony Prefix 只作用于 `OriginEyeWithTeeth`，不再改变所有原版/其他 Mod 怪物。
 - 劫掠者召唤删除反射和永远从 0 开始的实例计数器，改用同步 `MonsterAi` RNG 和原生 `CreatureCmd.Add`。
-- `ThiefRaiderPower.BeforeDeath` 现在只在能力拥有者死亡时发放奖励；金币值改为 DynamicVar。
 - `ScaleDownPower` 的伤害倍率下限钳制为 0，避免层数超过 100 后出现负伤害。
 - `SoulfyshDisease` 与 `ReusePower` 生成卡牌改走 `AddGeneratedCardToCombat`，进入标准生成卡历史。
 - `SoulfyshDisease` 使用 `BeckonCount.IntValue`，移除重复的升级数值分支。
 - `Reuse` 将真实 `PlayerChoiceContext` 继续传给 Power 应用；`ScaleBeetlePower` 同样传递 Hook 收到的 context。
 - `PackUp` 的普通抽牌不再错误标记为回合初始手牌抽取。
-- `EnergyBottle` 按本地化描述只在战斗第一回合触发，不再每回合触发。
 - `Surrender` 强制切换目标意图，避免不可转换状态令卡牌静默失效。
 - 假商人战斗的 HP 修改改走 `CreatureCmd.SetMaxAndCurrentHp`。
 - 初始化失败记录完整异常后重新抛出；增加重复初始化保护并移除未启用的全局强制 Boss Patch。
@@ -62,8 +60,8 @@
   `CreatureCmd.Stun` 会替换待执行招式；现在先检查同步的 `NextMove.StateId`，
   在强制 `STUNNED` 回调中一次生成 2 只 Eye，保留被打断的开场召唤与二阶段召唤。
 - Origin Eye 的槽位合同与死亡补位怪不同：0 HP 但等待 `IllusionPower` 复活的 Eye
-  仍占用原槽，避免新 Eye 与复活 Eye 重叠；Soul Roes、Thief Raider 与 Bowlbug
-  的补位逻辑则只让存活实体占槽，AOE 中 0 HP 待处理实体不会阻塞补位。
+  仍占用原槽，避免新 Eye 与复活 Eye 重叠；Soul Roes 与 Bowlbug 的补位逻辑则只让
+  存活实体占槽，AOE 中 0 HP 待处理实体不会阻塞补位。
 - 补齐 Origin Eye 经 `IllusionPower` 间接获得的 `MinionPower` 图标预加载，清除动态
   召唤阶段的 `images/powers/minion_power.png` cache miss。
 - The Legacy 修改硬化外壳时先执行整数 `MaxHp / divisor`，再将整数目标差值传给
@@ -143,7 +141,6 @@
   `STUNNED`，同一眩晕回合生成两只 `9/9` Eye；`kill all` 明确列出两只
   `ORIGIN_EYE_WITH_TEETH`。正常路径仍是开场 1 只、之后半血再生成第 2 只；
   Eye 复活与死亡回能也通过。
-- Raid Party：四段状态机、逃离及 Ruby Raider 动态补位通过。
 - Scale Beetle：自定义背景、`200/200` HP 与标准胜利流程通过。
 - Soul Roes：招式按 `BECKON_STR → MULTI6 → MULTI4_INT → SPAWN` 推进；
   第 4 回合先生成 2 只后杀死父体，补位波令 `kill all` 精确列出 8 只；另一局

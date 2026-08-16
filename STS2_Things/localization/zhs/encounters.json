@@ -11,9 +11,15 @@
   "SCALE_BEETLE_BOSS_ENCOUNTER.title": "放缩巨甲虫",
   "SCALE_BEETLE_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]碾成了碎片……",
 
-  "RAID_PARTY.title": "劫掠队",
-  "RAID_PARTY.loss": "{character}被[gold]{encounter}[/gold]洗劫了……",
-
   "BOWLBUG_PROGENITOR_BOSS_ENCOUNTER.title": "盛碗虫族母",
-  "BOWLBUG_PROGENITOR_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]的虫群淹没……"
+  "BOWLBUG_PROGENITOR_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]的虫群淹没……",
+
+  "QUIRKY_HOPPER_WEAK.title": "怪癖草蜢",
+  "QUIRKY_HOPPER_WEAK.loss": "一只[gold]{encounter}[/gold]带着战利品逃走了。",
+
+  "GRAVETIDE_SLUG_BOSS_ENCOUNTER.title": "墓潮蛞蝓",
+  "GRAVETIDE_SLUG_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]卷起的尸潮吞没了……",
+
+  "LIVING_ROCK_BOSS_ENCOUNTER.title": "活体巨岩",
+  "LIVING_ROCK_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]碾碎了。"
 }

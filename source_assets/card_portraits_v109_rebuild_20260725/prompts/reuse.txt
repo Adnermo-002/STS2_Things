@@ -1,0 +1,11 @@
+Use case: stylized-concept.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Primary request: Create a new original card illustration for the Things Mod card Reuse. Preserve only the gameplay idea from Image 1: Defect transforms a status card into fuel while ash falls into the discard pile. Do not reuse Image 1's green creature, fireball, exact composition, or rendering.
+Input images: Image 1 is semantic reference only; Image 2 locks canonical Defect anatomy and costume; Images 3-5 establish V109 background, subject, and effect language.
+Scene/backdrop: 2-5 broad curved blue, cyan, deep navy, and electric-yellow current bands. A cyan energy loop should carry the eye from a dark discarded-card silhouette through the transformation and toward a small ash spiral.
+Subject: canonical Defect in a tight left-side crop: tan-gold rounded shell head with a large cyan circular eye and a smaller cyan sensor above it, dark seams, wrapped teal cowl, dark graphite joints. One visible hand is exactly a mechanical three-pronged claw around a hollow hub; no human fingers. Keep the eye and claw readable before the energy.
+Action/composition: a blank charcoal-black status card enters the cyan loop from lower left. At center it changes into one compact electric-yellow fuel cell/core with a bright cyan ring. Small gray ash flakes curve down into a dark blue-violet discard hollow at lower right. The conversion core is the only brightest focal point.
+Lighting/mood: efficient machine transmutation, precise and energetic, no smoke wall.
+Materials/textures: 3-6 large flat value regions, layered shell plates over dark joints, rounded cyan energy rings, a few crisp technical highlights, no microtexture.
+Constraints: raw artwork only; no words, letters, numbers, card UI, frame, logo, watermark, copied composition, or collage. Background flows; subject anchors; effect directs.
+Avoid: humanoid robot hands, five fingers, mitten hands, human eye, flat visor, humanoid boots, generic blue robot, fireball explosion, photorealism, 3D render, all-angular background, dense debris, or effect clutter hiding the claw.

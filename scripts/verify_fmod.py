@@ -228,6 +228,13 @@ def main() -> int:
                     continue
                 encounter = class_name.group(1)
                 track = bgm.group(1)
+                if track.startswith("res://"):
+                    resource = root / track.removeprefix("res://")
+                    if not resource.is_file():
+                        errors.append(
+                            f"{encounter} references missing native music resource: {track}"
+                        )
+                    continue
                 acts = acts_by_encounter.get(encounter, set())
                 if not acts:
                     errors.append(f"custom BGM encounter is not registered to an Act: {encounter}")

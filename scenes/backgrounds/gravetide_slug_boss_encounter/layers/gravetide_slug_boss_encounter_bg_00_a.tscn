@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://images/backgrounds/gravetide_slug/gravetide_slug_far.png" id="1_far"]
+
+[node name="GravetideSlugFarBackground" type="Control"]
+mouse_filter = 2
+
+[node name="OpaqueFallback" type="ColorRect" parent="."]
+offset_left = -1384.0
+offset_top = -648.0
+offset_right = 1384.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.05490196, 0.05882353, 0.10980392, 1)
+
+[node name="FarEnvironmentArt" type="TextureRect" parent="."]
+offset_left = -1384.0
+offset_top = -648.0
+offset_right = 1384.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("1_far")
+expand_mode = 1
+metadata/asset_contract = "res://images/backgrounds/gravetide_slug/gravetide_slug_far.png"

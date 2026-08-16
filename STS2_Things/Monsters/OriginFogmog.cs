@@ -44,7 +44,7 @@ public sealed class OriginFogmog : MonsterModel
     public override IEnumerable<string> AssetPaths =>
         base.AssetPaths
             .Concat(ModelDb.Monster<OriginEyeWithTeeth>().AssetPaths)
-            .Append(ModelDb.Power<OriginPower>().ResolvedBigIconPath)
+            .Append(ModelDb.Power<ThingsOriginPower>().ResolvedBigIconPath)
             .Append(ModelDb.Power<OriginGainEnergyPower>().ResolvedBigIconPath)
             .Append(ModelDb.Power<IllusionPower>().ResolvedBigIconPath)
             .Append(ModelDb.Power<MinionPower>().ResolvedBigIconPath)
@@ -77,10 +77,10 @@ public sealed class OriginFogmog : MonsterModel
         await base.AfterAddedToRoom();
         // 初始化专属音乐参数（CustomBgm = act1_boss_the_kin）
         NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 1f);
-        // OriginPower 的 Amount 是半血阈值，ShouldScaleInMultiplayer=true 会自动按玩家数缩放。
+        // ThingsOriginPower 的 Amount 是半血阈值，ShouldScaleInMultiplayer=true 会自动按玩家数缩放。
         // 必须用缩放前的原始 HP 计算，避免双重缩放导致阈值错误。
         var baseHp = Creature.MonsterMaxHpBeforeModification ?? Creature.MaxHp;
-        await PowerCmd.Apply<OriginPower>(new ThrowingPlayerChoiceContext(), Creature, baseHp / 2m, Creature,
+        await PowerCmd.Apply<ThingsOriginPower>(new ThrowingPlayerChoiceContext(), Creature, baseHp / 2m, Creature,
             null);
     }
 
@@ -97,7 +97,7 @@ public sealed class OriginFogmog : MonsterModel
 
     /// <summary>
     /// 触发二阶段转场（音乐+音效），幂等。
-    /// 仅在 OriginPower 已成功安装带召唤回调的强制 STUNNED→SWIPE_MOVE 链后调用。
+    /// 仅在 ThingsOriginPower 已成功安装带召唤回调的强制 STUNNED→SWIPE_MOVE 链后调用。
     /// </summary>
     public void OnPhaseTransition()
     {
@@ -152,7 +152,7 @@ public sealed class OriginFogmog : MonsterModel
     }
 
 
-    // OriginPower passes one of these native move delegates to CreatureCmd.Stun so
+    // ThingsOriginPower passes one of these native move delegates to CreatureCmd.Stun so
     // the phase-two summon is performed during the stunned turn, rather than one
     // full enemy turn after the stun has already ended.
     public Task PerformIllusionMove(IReadOnlyList<Creature> targets)
@@ -218,7 +218,7 @@ public sealed class OriginFogmog : MonsterModel
             .WithAttackerFx(null, AttackSfx)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(null);
-        // Enemy move block is scaled exactly once by V109 MultiplayerScalingModel.
+        // Enemy move block is scaled exactly once by V110 MultiplayerScalingModel.
         await CreatureCmd.GainBlock(Creature, BlockAmount, ValueProp.Move, null);
     }
 

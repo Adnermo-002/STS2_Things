@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
@@ -18,12 +19,194 @@ SOURCE = ROOT / "STS2_Things"
 BOOTSTRAP = ROOT / "bootstrap"
 
 
+# ModelDb derives IDs from the concrete class name, not the namespace, assembly,
+# or manifest. Keep this table explicit so generic names cannot quietly return.
+MODEL_ID_NAMESPACE_EXPECTATIONS = (
+    ("Cards/ThingsRecall.cs", "ThingsRecall", "CardModel", "CARD", "RECALL", "THINGS_RECALL", "cards", "title"),
+    ("Cards/ThingsReuse.cs", "ThingsReuse", "CardModel", "CARD", "REUSE", "THINGS_REUSE", "cards", "title"),
+    ("Cards/ThingsSurrender.cs", "ThingsSurrender", "CardModel", "CARD", "SURRENDER", "THINGS_SURRENDER", "cards", "title"),
+    ("Cards/ThingsPackUp.cs", "ThingsPackUp", "CardModel", "CARD", "PACK_UP", "THINGS_PACK_UP", "cards", "title"),
+    ("Enchantments/ThingsDisperse.cs", "ThingsDisperse", "EnchantmentModel", "ENCHANTMENT", "DISPERSE", "THINGS_DISPERSE", "enchantments", "title"),
+    ("Events/ThingsBackrooms.cs", "ThingsBackrooms", "EventModel", "EVENT", "BACKROOMS", "THINGS_BACKROOMS", "events", "title"),
+    ("Events/ThingsMedusa.cs", "ThingsMedusa", "EventModel", "EVENT", "MEDUSA", "THINGS_MEDUSA", "events", "title"),
+    ("Relics/ThingsAlmondWater.cs", "ThingsAlmondWater", "RelicModel", "RELIC", "ALMOND_WATER", "THINGS_ALMOND_WATER", "relics", "title"),
+    ("Relics/ThingsCurseRemover.cs", "ThingsCurseRemover", "RelicModel", "RELIC", "CURSE_REMOVER", "THINGS_CURSE_REMOVER", "relics", "title"),
+    ("Relics/ThingsMagicGlove.cs", "ThingsMagicGlove", "RelicModel", "RELIC", "MAGIC_GLOVE", "THINGS_MAGIC_GLOVE", "relics", "title"),
+    ("Relics/ThingsMedusaHair.cs", "ThingsMedusaHair", "RelicModel", "RELIC", "MEDUSA_HAIR", "THINGS_MEDUSA_HAIR", "relics", "title"),
+    ("Relics/ThingsWhiteFlag.cs", "ThingsWhiteFlag", "RelicModel", "RELIC", "WHITE_FLAG", "THINGS_WHITE_FLAG", "relics", "title"),
+    ("Powers/ThingsDazedPower.cs", "ThingsDazedPower", "PowerModel", "POWER", "DAZED_POWER", "THINGS_DAZED_POWER", "powers", "title"),
+    ("Powers/ThingsOriginPower.cs", "ThingsOriginPower", "PowerModel", "POWER", "ORIGIN_POWER", "THINGS_ORIGIN_POWER", "powers", "title"),
+    ("Powers/ThingsQuirkPower.cs", "ThingsQuirkPower", "PowerModel", "POWER", "QUIRK_POWER", "THINGS_QUIRK_POWER", "powers", "title"),
+    ("Powers/ThingsRecallPower.cs", "ThingsRecallPower", "PowerModel", "POWER", "RECALL_POWER", "THINGS_RECALL_POWER", "powers", "title"),
+    ("Powers/ThingsReusePower.cs", "ThingsReusePower", "PowerModel", "POWER", "REUSE_POWER", "THINGS_REUSE_POWER", "powers", "title"),
+    ("Powers/ThingsScaleBeetlePower.cs", "ThingsScaleBeetlePower", "PowerModel", "POWER", "SCALE_BEETLE_POWER", "THINGS_SCALE_BEETLE_POWER", "powers", "title"),
+    ("Powers/ThingsScaleDownPower.cs", "ThingsScaleDownPower", "PowerModel", "POWER", "SCALE_DOWN_POWER", "THINGS_SCALE_DOWN_POWER", "powers", "title"),
+    ("Powers/ThingsScaleUpPower.cs", "ThingsScaleUpPower", "PowerModel", "POWER", "SCALE_UP_POWER", "THINGS_SCALE_UP_POWER", "powers", "title"),
+    ("Monsters/ThingsScaleBeetle.cs", "ThingsScaleBeetle", "MonsterModel", "MONSTER", "SCALE_BEETLE", "THINGS_SCALE_BEETLE", "monsters", "name"),
+    ("Monsters/ThingsTheLegacy.cs", "ThingsTheLegacy", "MonsterModel", "MONSTER", "THE_LEGACY", "THINGS_THE_LEGACY", "monsters", "name"),
+)
+
+MODEL_RESOURCE_RENAMES = (
+    ("images/packed/card_portraits/defect/reuse.png", "images/packed/card_portraits/defect/things_reuse.png"),
+    ("images/packed/card_portraits/event/surrender.png", "images/packed/card_portraits/event/things_surrender.png"),
+    ("images/packed/card_portraits/silent/pack_up.png", "images/packed/card_portraits/silent/things_pack_up.png"),
+    ("images/packed/card_portraits/silent/recall.png", "images/packed/card_portraits/silent/things_recall.png"),
+    ("images/atlases/card_atlas.sprites/event/surrender.tres", "images/atlases/card_atlas.sprites/event/things_surrender.tres"),
+    ("images/enchantments/disperse.png", "images/enchantments/things_disperse.png"),
+    ("images/events/backrooms.png", "images/events/things_backrooms.png"),
+    ("images/events/medusa.png", "images/events/things_medusa.png"),
+    ("images/relics/almond_water.png", "images/relics/things_almond_water.png"),
+    ("images/relics/curse_remover.png", "images/relics/things_curse_remover.png"),
+    ("images/relics/magic_glove.png", "images/relics/things_magic_glove.png"),
+    ("images/relics/medusa_hair.png", "images/relics/things_medusa_hair.png"),
+    ("images/relics/white_flag.png", "images/relics/things_white_flag.png"),
+    ("images/powers/dazed_power.png", "images/powers/things_dazed_power.png"),
+    ("images/powers/origin_power.png", "images/powers/things_origin_power.png"),
+    ("images/powers/quirk_power.png", "images/powers/things_quirk_power.png"),
+    ("images/powers/recall_power.png", "images/powers/things_recall_power.png"),
+    ("images/powers/reuse_power.png", "images/powers/things_reuse_power.png"),
+    ("images/powers/scale_beetle_power.png", "images/powers/things_scale_beetle_power.png"),
+    ("images/powers/scale_down_power.png", "images/powers/things_scale_down_power.png"),
+    ("images/powers/scale_up_power.png", "images/powers/things_scale_up_power.png"),
+    ("scenes/creature_visuals/scale_beetle.tscn", "scenes/creature_visuals/things_scale_beetle.tscn"),
+    ("scenes/creature_visuals/the_legacy.tscn", "scenes/creature_visuals/things_the_legacy.tscn"),
+)
+
+
 def fail(errors: list[str], message: str) -> None:
     errors.append(message)
 
 
+def slugify_class_name(name: str) -> str:
+    return re.sub(r"(?<!^)(?=[A-Z])", "_", name).upper()
+
+
+def audit_model_id_namespace(errors: list[str], pck: Path | None) -> None:
+    localization_root = SOURCE / "localization"
+    legacy_class_names: list[str] = []
+
+    for (
+        relative,
+        type_name,
+        base_type,
+        category,
+        legacy_entry,
+        entry,
+        table,
+        suffix,
+    ) in MODEL_ID_NAMESPACE_EXPECTATIONS:
+        path = SOURCE / relative
+        if not path.is_file():
+            fail(errors, f"namespaced model source is missing: {relative}")
+            continue
+        text = path.read_text(encoding="utf-8")
+        if re.search(
+            rf"public\s+sealed\s+class\s+{re.escape(type_name)}\s*:\s*{base_type}\b",
+            text,
+        ) is None:
+            fail(errors, f"{relative} does not declare {type_name} : {base_type}")
+        if not type_name.startswith("Things"):
+            fail(errors, f"{relative} model type lacks the Things token: {type_name}")
+        if slugify_class_name(type_name) != entry:
+            fail(
+                errors,
+                f"{type_name} derives {slugify_class_name(type_name)}, expected {entry}",
+            )
+        expected_category = base_type.removesuffix("Model").upper()
+        if category != expected_category:
+            fail(errors, f"{type_name} category contract is {category}, expected {expected_category}")
+        legacy_class_names.append(type_name.removeprefix("Things"))
+
+        for language in ("eng", "zhs"):
+            table_path = localization_root / language / f"{table}.json"
+            if not table_path.is_file():
+                fail(errors, f"missing {language} localization table: {table_path.relative_to(ROOT)}")
+                continue
+            values = json.loads(table_path.read_text(encoding="utf-8"))
+            expected_key = f"{entry}.{suffix}"
+            if not values.get(expected_key):
+                fail(errors, f"{table_path.relative_to(ROOT)} missing non-empty {expected_key}")
+            stale_keys = sorted(key for key in values if key.startswith(f"{legacy_entry}."))
+            if stale_keys:
+                fail(
+                    errors,
+                    f"{table_path.relative_to(ROOT)} retains legacy keys: {stale_keys}",
+                )
+
+    for legacy_relative, namespaced_relative in MODEL_RESOURCE_RENAMES:
+        legacy_path = ROOT / legacy_relative
+        namespaced_path = ROOT / namespaced_relative
+        if legacy_path.exists():
+            fail(errors, f"legacy ModelId resource remains: {legacy_relative}")
+        if not namespaced_path.is_file():
+            fail(errors, f"namespaced ModelId resource is missing: {namespaced_relative}")
+
+    # Historical docs and art prompts retain original display names intentionally.
+    # Runtime source and probe sources must not refer to the retired class symbols.
+    source_paths = list(SOURCE.rglob("*.cs"))
+    probe_paths = [
+        path
+        for path in (ROOT / "tools").rglob("*.cs")
+        if "ThingsModelIdProbe" not in path.parts
+    ]
+    for path in sorted([*source_paths, *probe_paths]):
+        text = path.read_text(encoding="utf-8")
+        for legacy_class in legacy_class_names:
+            # CacheMode.Reuse is an unrelated Godot enum member, so only reject
+            # standalone class-symbol use rather than a dotted API member.
+            if re.search(rf"(?<!\.)\b{re.escape(legacy_class)}\b", text):
+                fail(errors, f"{path.relative_to(ROOT)} still uses legacy model type {legacy_class}")
+
+    if pck is None:
+        return
+    if not pck.is_file():
+        fail(errors, f"final PCK is missing: {pck}")
+        return
+
+    payload = pck.read_bytes()
+    for (
+        _relative,
+        _type_name,
+        _base_type,
+        category,
+        legacy_entry,
+        entry,
+        _table,
+        suffix,
+    ) in MODEL_ID_NAMESPACE_EXPECTATIONS:
+        legacy_model_id = f"{category}.{legacy_entry}".encode("ascii")
+        legacy_localization_key = f'"{legacy_entry}.'.encode("ascii")
+        expected_localization_key = f'"{entry}.{suffix}"'.encode("ascii")
+        if legacy_model_id in payload:
+            fail(errors, f"final PCK retains legacy ModelId {legacy_model_id.decode('ascii')}")
+        if legacy_localization_key in payload:
+            fail(errors, f"final PCK retains legacy localization entry {legacy_entry}")
+        if expected_localization_key not in payload:
+            fail(errors, f"final PCK is missing localization entry {entry}.{suffix}")
+    for legacy_relative, namespaced_relative in MODEL_RESOURCE_RENAMES:
+        legacy_bytes = legacy_relative.encode("utf-8")
+        namespaced_bytes = namespaced_relative.encode("utf-8")
+        if legacy_bytes in payload:
+            fail(errors, f"final PCK retains legacy ModelId resource {legacy_relative}")
+        if namespaced_bytes not in payload:
+            fail(errors, f"final PCK is missing namespaced ModelId resource {namespaced_relative}")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--pck",
+        type=Path,
+        help="scan the final exported PCK for retired ModelId entries and resources",
+    )
+    return parser.parse_args()
+
+
 def main() -> int:
+    args = parse_args()
     errors: list[str] = []
+
+    audit_model_id_namespace(errors, args.pck)
 
     def source_text(relative: str) -> str:
         return (SOURCE / relative).read_text(encoding="utf-8")
@@ -37,7 +220,7 @@ def main() -> int:
     root_manifest = json.loads((ROOT / "STS2_Things.json").read_text(encoding="utf-8"))
     target_manifest_paths = {
         "v107.1": ROOT / "manifests" / "v107.1" / "STS2_Things.json",
-        "v109": ROOT / "manifests" / "v109" / "STS2_Things.json",
+        "v110": ROOT / "manifests" / "v110" / "STS2_Things.json",
     }
     target_manifests: dict[str, dict] = {}
     for target, path in target_manifest_paths.items():
@@ -52,7 +235,13 @@ def main() -> int:
         node = project_root.find(f".//{name}")
         return node.text.strip() if node is not None and node.text else None
 
-    expected_min_versions = {"v107.1": "v0.107.1", "v109": "v0.109.0"}
+    release_version = root_manifest.get("version")
+    if not isinstance(release_version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", release_version):
+        fail(errors, "unified manifest version must be a three-part semantic version")
+        release_version = ""
+    expected_min_versions = {"v107.1": "v0.107.1", "v110": "v0.110.0"}
+    if project_value("Version") != release_version:
+        fail(errors, f"implementation version must be {release_version}")
     for target, manifest in target_manifests.items():
         if manifest.get("version") != project_value("Version"):
             fail(errors, f"{target} manifest and assembly versions differ")
@@ -82,11 +271,13 @@ def main() -> int:
     for required in (
         "Sts2TargetVersion",
         "STS2_V107_1",
-        "STS2_V109",
+        "STS2_V110",
         "<AssemblyName>STS2_Things</AssemblyName>",
         "Unsupported Sts2TargetVersion",
         '<Compile Remove="tools\\**\\*.cs" />',
         '<Compile Remove="bootstrap\\**\\*.cs" />',
+        '<Compile Remove=".tmp\\**\\*.cs" />',
+        '<Compile Remove="tmp\\**\\*.cs" />',
     ):
         if required not in project_text:
             fail(errors, f"dual-version project contract missing {required!r}")
@@ -108,6 +299,21 @@ def main() -> int:
         fail(errors, "editable monster source art must be excluded from the shipping PCK")
     if "bootstrap/**" not in export_preset:
         fail(errors, "bootstrap build outputs must be excluded from the shipping PCK")
+    if "dotnet/include_scripts_content=false" not in export_preset:
+        fail(errors, "PCK export must strip C# source content")
+    if "**/*.cs," in export_preset:
+        fail(
+            errors,
+            "PCK export must retain empty C# path placeholders for ScriptPath resolution",
+        )
+    if '<Compile Remove="STS2_Things\\Cards\\ThingsCollision.cs" />' in project_text:
+        fail(errors, "published Things Collision is still excluded from compilation")
+    if "images/packed/card_portraits/ironclad/things_collision.png" in export_preset:
+        fail(errors, "published Things Collision card art is still excluded from the PCK")
+    if "output/**" not in export_preset:
+        fail(errors, "ImageGen working outputs must stay excluded from the shipping PCK")
+    if not (ROOT / "output" / ".gdignore").is_file():
+        fail(errors, "output/.gdignore must prevent Godot from importing ImageGen iterations")
     if not (ROOT / "source_assets" / ".gdignore").is_file():
         fail(errors, "source_assets/.gdignore must prevent Godot from importing build-time art")
 
@@ -145,9 +351,9 @@ def main() -> int:
         bootstrap_project_text = bootstrap_project_path.read_text(encoding="utf-8")
         for required in (
             "STS2_Things.Implementations.v107.1.dll",
-            "STS2_Things.Implementations.v109.dll",
+            "STS2_Things.Implementations.v110.dll",
             "ImplementationV1071",
-            "ImplementationV109",
+            "ImplementationV110",
         ):
             if required not in bootstrap_project_text:
                 fail(errors, f"bootstrap embedding contract missing {required!r}")
@@ -156,7 +362,9 @@ def main() -> int:
     else:
         bootstrap_text = bootstrap_source_path.read_text(encoding="utf-8")
         for required in (
+            f"STS2_Things {release_version} supports",
             "ModifyDamageMultiplicative",
+            "MegaCrit.Sts2.Core.Combat.CombatId",
             "AssociateAssemblyWithMod",
             "AppendV1071ImplementationTypes",
             "PromoteV1071ImplementationAssembly",
@@ -168,35 +376,60 @@ def main() -> int:
     compatibility_text = source_text("Compatibility/Sts2VersionCompatibility.cs")
     for snippet in (
         "#if STS2_V107_1",
-        "SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(CurseRemover));",
+        "SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(ThingsCurseRemover));",
         "creature.GetCreatureNode()",
         "creature.SetNodeVisible(visible);",
     ):
         if snippet not in compatibility_text:
             fail(errors, f"dual-version compatibility bridge missing {snippet!r}")
-    injection_count = sum(
-        path.read_text(encoding="utf-8").count(
-            "SavedPropertiesTypeCache.InjectTypeIntoCache"
+    injection_sites: dict[str, set[str]] = {}
+    for path in SOURCE.rglob("*.cs"):
+        injected_types = set(
+            re.findall(
+                r"SavedPropertiesTypeCache\.InjectTypeIntoCache\(typeof\((\w+)\)\);",
+                path.read_text(encoding="utf-8"),
+            )
         )
-        for path in SOURCE.rglob("*.cs")
-    )
-    if injection_count != 1:
-        fail(errors, "V107.1 SavedProperty injection must exist only in the guarded bridge")
+        if injected_types:
+            injection_sites[path.relative_to(SOURCE).as_posix()] = injected_types
+    expected_injection_sites = {
+        "Compatibility/Sts2VersionCompatibility.cs": {"ThingsCurseRemover"},
+        "Enchantments/ThingsSplit.cs": {"ThingsSplit"},
+    }
+    if injection_sites != expected_injection_sites:
+        fail(
+            errors,
+            "V107.1 SavedProperty injection sites differ: "
+            f"expected {expected_injection_sites}, got {injection_sites}",
+        )
 
     build_text = (ROOT / "scripts" / "build.ps1").read_text(encoding="utf-8")
     for required in (
+        "build_quirky_hopper_texture.py",
         "build_static_monster_scenes.py",
         "Sts2TargetVersion=$TargetVersion",
         "manifests\\$TargetVersion\\STS2_Things.json",
         "verify-harmony-targets.ps1",
         ".godot\\mono\\temp\\bin\\$Configuration\\STS2_Things.dll",
         "ReusePck",
+        "--pck $Pck",
     ):
         if required not in build_text:
             fail(errors, f"target-aware build script missing {required!r}")
 
     build_all_text = (ROOT / "scripts" / "build-all.ps1").read_text(encoding="utf-8")
-    for required in ("build-unified.ps1", "build\\unified", "DataDirV1071", "DataDirV109"):
+    for required in (
+        "build-unified.ps1",
+        "build\\unified",
+        "DataDirV1071",
+        "DataDirV110",
+        "test-gravetide-slug.ps1",
+        "test-merchant-bargain.ps1",
+        "test-quirky-hopper.ps1",
+        "test-things-collision.ps1",
+        "test-things-split.ps1",
+        "test-model-id-namespace.ps1",
+    ):
         if required not in build_all_text:
             fail(errors, f"unified build orchestration missing {required!r}")
     unified_build_text = (ROOT / "scripts" / "build-unified.ps1").read_text(encoding="utf-8")
@@ -204,7 +437,7 @@ def main() -> int:
         "STS2_Things.Bootstrap.csproj",
         "verify-unified-package.ps1",
         "build\\v107.1\\STS2_Things.dll",
-        "build\\v109\\STS2_Things.dll",
+        "build\\v110\\STS2_Things.dll",
         "build\\unified",
     ):
         if required not in unified_build_text:
@@ -219,6 +452,225 @@ def main() -> int:
 
     localization = SOURCE / "localization"
 
+    if "ModHelper.AddModelToPool<IroncladCardPool, ThingsCollision>();" not in source_text(
+        "STS2_ThingsInit.cs"
+    ):
+        fail(errors, "Things Collision is not registered in the Ironclad card pool")
+
+    require_snippets(
+        "Cards/ThingsCollision.cs",
+        [
+            "public sealed class ThingsCollision : CardModel",
+            "CardRarity.Uncommon",
+            "CardKeyword.Exhaust",
+            "new DamageVar(10m, ValueProp.Move)",
+            "new DynamicVar(StrengthLossKey, 2m)",
+            "#if STS2_V107_1",
+            ".FromCard(this, cardPlay)",
+            "Owner.Creature, -strengthLoss",
+            "cardPlay.Target, -strengthLoss",
+            "DynamicVars.Damage.UpgradeValueBy(4m)",
+        ],
+        "Things Collision gameplay and dual-version contract",
+    )
+
+    card_portraits = {
+        "ThingsReuse": ROOT / "images/packed/card_portraits/defect/things_reuse.png",
+        "Things Collision": ROOT / "images/packed/card_portraits/ironclad/things_collision.png",
+        "ThingsPackUp": ROOT / "images/packed/card_portraits/silent/things_pack_up.png",
+        "ThingsRecall": ROOT / "images/packed/card_portraits/silent/things_recall.png",
+        "Soulfysh Disease": ROOT / "images/packed/card_portraits/silent/soulfysh_disease.png",
+    }
+    for card_name, portrait_path in card_portraits.items():
+        if not portrait_path.is_file():
+            fail(errors, f"{card_name} shipping portrait is missing")
+            continue
+        with Image.open(portrait_path) as image:
+            if image.size != (1000, 760) or image.mode not in {"RGB", "RGBA"}:
+                fail(
+                    errors,
+                    f"{card_name} portrait must be RGB/RGBA 1000x760, "
+                    f"got {image.mode} {image.size}",
+                )
+    for language in ("eng", "zhs"):
+        cards_table = json.loads(
+            (localization / language / "cards.json").read_text(encoding="utf-8")
+        )
+        for key in ("THINGS_COLLISION.title", "THINGS_COLLISION.description"):
+            if not cards_table.get(key):
+                fail(errors, f"{language}/cards.json missing {key}")
+
+    require_snippets(
+        "Events/CuttingItClose.cs",
+        [
+            "public sealed class CuttingItClose : EventModel",
+            "public override bool IsAllowed(IRunState runState)",
+            "runState.Players.All(player => player.Deck.Cards.Any(card => IsSplitCandidate(split, card)))",
+            "ModelDb.Enchantment<ThingsSplit>()",
+            "CardSelectCmd.FromDeckForEnchantment(",
+            "card => card is not null && IsSplitCandidate(split, card)",
+            "card.Type is CardType.Attack or CardType.Skill",
+            "EventOwner.RunState.CloneCard(selected)",
+            "CardCmd.Enchant<ThingsSplit>(copy, 1m);",
+            "await CardPileCmd.RemoveFromDeck(selected);",
+            "await CardPileCmd.Add(copies, PileType.Deck);",
+            "CardSelectCmd.FromDeckForRemoval(",
+            "FinishWithoutCard();",
+            'L10NLookup("CUTTING_IT_CLOSE.pages.ABORTED.description")',
+            "RunManager.Instance.EventSynchronizer.Events",
+            "mutableEvents.Any(mutableEvent =>",
+            "ShouldPrepareScreens(",
+            "NOverlayStack.Instance?.Clear();",
+            "NCapstoneContainer.Instance?.Close();",
+            "NMapScreen.Instance?.Close(animateOut: false);",
+        ],
+        "native synchronized split/remove event flow and console screen cleanup",
+    )
+    cutting_source = source_text("Events/CuttingItClose.cs")
+    if cutting_source.count("if (selected is null)") != 2:
+        fail(
+            errors,
+            "Cutting It Close must close safely when either deck selector returns no card",
+        )
+    require_snippets(
+        "Enchantments/ThingsSplit.cs",
+        [
+            "public sealed class ThingsSplit : EnchantmentModel",
+            "#if STS2_V107_1",
+            "SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(ThingsSplit));",
+            "[SavedProperty]",
+            "public string SplitState",
+            "return base.CanEnchant(card) && HasFixedEnergyCost(card) && !card.HasStarCostX;",
+            'private const string SerializedStateVersion = "2";',
+            "private int? _unsplitStarCost;",
+            "nameof(CardModel.BaseStarCost)",
+            '[HarmonyPatch(typeof(CardModel), "UpgradeStarCostBy")]',
+            "private static decimal SplitDynamicValue(decimal value)",
+            "return decimal.Ceiling(value / 2m);",
+            "private static int SplitEnergyCost(int value)",
+            "return value < 0 ? value : value / 2;",
+            "state.UnsplitDynamicValues.GetValueOrDefault(",
+            '[HarmonyPatch(typeof(TheScythe), "CurrentDamage", MethodType.Setter)]',
+            "nameof(CardModel.ClearEnchantmentInternal)",
+            "nameof(CardModel.FromSerializable)",
+            "[HarmonyFinalizer]",
+        ],
+        "split rounding and permanent-card mutation contract",
+    )
+
+    init_text = source_text("STS2_ThingsInit.cs")
+    cutting_registration = "ModelDb.Event<CuttingItClose>()"
+    for act_name in ("Overgrowth", "Underdocks", "Hive"):
+        event_patch = re.search(
+            rf'\[HarmonyPatch\(typeof\({act_name}\), "get_AllEvents"\)\]'
+            r"(?P<body>.*?)(?=\n\[HarmonyPatch|\Z)",
+            init_text,
+            re.DOTALL,
+        )
+        if event_patch is None:
+            fail(errors, f"{act_name} event registration patch is missing")
+            continue
+        occurrence_count = event_patch.group("body").count(cutting_registration)
+        expected_count = 0 if act_name == "Hive" else 1
+        if occurrence_count != expected_count:
+            fail(
+                errors,
+                f"Cutting It Close registration count in {act_name} is "
+                f"{occurrence_count}; expected {expected_count}",
+            )
+        if expected_count == 1:
+            for deterministic_contract in (
+                "HarmonyPriority(Priority.Last)",
+                "DeterministicContentOrder.SortBaseThenMods(",
+                ".Distinct()",
+            ):
+                if deterministic_contract not in event_patch.group("body"):
+                    fail(
+                        errors,
+                        f"{act_name} Cutting It Close registration is missing "
+                        f"deterministic append contract {deterministic_contract!r}",
+                    )
+    if init_text.count(cutting_registration) != 2:
+        fail(errors, "Cutting It Close must be registered exactly once in both Act 1 event pools")
+
+    cutting_event_keys = {
+        "CUTTING_IT_CLOSE.title",
+        "CUTTING_IT_CLOSE.pages.INITIAL.description",
+        "CUTTING_IT_CLOSE.pages.INITIAL.options.IMPROVISE.title",
+        "CUTTING_IT_CLOSE.pages.INITIAL.options.IMPROVISE.description",
+        "CUTTING_IT_CLOSE.pages.INITIAL.options.THROW.title",
+        "CUTTING_IT_CLOSE.pages.INITIAL.options.THROW.description",
+        "CUTTING_IT_CLOSE.pages.IMPROVISE.selectionScreenPrompt",
+        "CUTTING_IT_CLOSE.pages.THROW.selectionScreenPrompt",
+        "CUTTING_IT_CLOSE.pages.ABORTED.description",
+        "CUTTING_IT_CLOSE.pages.IMPROVISE.description",
+        "CUTTING_IT_CLOSE.pages.THROW.description",
+    }
+    expected_event_titles = {"eng": "Cutting It Close", "zhs": "命悬一线"}
+    split_localization_phrases = {
+        "eng": ("rounded down", "rounded up"),
+        "zhs": ("向下取整", "向上取整"),
+    }
+    for lang in ("eng", "zhs"):
+        events_table = json.loads(
+            (localization / lang / "events.json").read_text(encoding="utf-8")
+        )
+        enchantments_table = json.loads(
+            (localization / lang / "enchantments.json").read_text(encoding="utf-8")
+        )
+        missing_event_keys = cutting_event_keys - events_table.keys()
+        if missing_event_keys:
+            fail(
+                errors,
+                f"{lang}/events.json is missing Cutting It Close keys: "
+                f"{sorted(missing_event_keys)}",
+            )
+        empty_event_keys = sorted(
+            key for key in cutting_event_keys if not events_table.get(key)
+        )
+        if empty_event_keys:
+            fail(
+                errors,
+                f"{lang}/events.json has empty Cutting It Close values: "
+                f"{empty_event_keys}",
+            )
+        if events_table.get("CUTTING_IT_CLOSE.title") != expected_event_titles[lang]:
+            fail(errors, f"{lang}/events.json has the wrong Cutting It Close title")
+        improvise_description = events_table.get(
+            "CUTTING_IT_CLOSE.pages.INITIAL.options.IMPROVISE.description", ""
+        )
+        if (
+            "{Enchantment}" not in improvise_description
+            or "[blue]2[/blue]" not in improvise_description
+        ):
+            fail(errors, f"{lang} improvise option must describe two Split-enchanted copies")
+        selection_prompt = events_table.get(
+            "CUTTING_IT_CLOSE.pages.IMPROVISE.selectionScreenPrompt", ""
+        )
+        required_card_type_terms = {
+            "eng": ("Attack", "Skill"),
+            "zhs": ("攻击牌", "技能牌"),
+        }[lang]
+        if any(
+            term not in improvise_description or term not in selection_prompt
+            for term in required_card_type_terms
+        ):
+            fail(
+                errors,
+                f"{lang} improvise option and prompt must limit selection to Attack or Skill cards",
+            )
+
+        for key in ("THINGS_SPLIT.title", "THINGS_SPLIT.description"):
+            if not enchantments_table.get(key):
+                fail(errors, f"{lang}/enchantments.json is missing non-empty {key}")
+        split_description = enchantments_table.get("THINGS_SPLIT.description", "")
+        for phrase in split_localization_phrases[lang]:
+            if phrase not in split_description:
+                fail(
+                    errors,
+                    f"{lang}/THINGS_SPLIT.description does not explain {phrase!r}",
+                )
+
     # Shipping creature scenes use the reviewed full-texture PNGs. The local
     # Spine/cutout pipeline remains available as source material, but none of it
     # is referenced by the runtime scenes or exported into the PCK.
@@ -227,15 +679,12 @@ def main() -> int:
         "bowlbug_progenitor": (
             "bowlbug_progenitor.tscn", 45, 34, "BowlbugProgenitor", 0.92
         ),
-        "scale_beetle": ("scale_beetle.tscn", 48, 29, "ScaleBeetle", 1.37),
+        "scale_beetle": ("things_scale_beetle.tscn", 48, 29, "ThingsScaleBeetle", 1.37),
         "soul_roe_1": ("soul_roe.tscn", 4, 3, "SoulRoe", 0.58),
         "soul_roe_2": ("soul_roe_2.tscn", 4, 3, "SoulRoe", 0.58),
         "soul_roe_3": ("soul_roe_3.tscn", 4, 3, "SoulRoe", 0.58),
         "soul_roes": ("soul_roes.tscn", 12, 16, "SoulRoes", 0.78),
-        "the_legacy": ("the_legacy.tscn", 36, 28, "TheLegacy", 0.92),
-        # Coherence-first recovery: the rejected v4 semantic sheet is kept out
-        # of the shipping rig until a replacement master passes visual review.
-        "thief_raider": ("thief_raider.tscn", 1, 1, "ThiefRaider", 0.72),
+        "the_legacy": ("things_the_legacy.tscn", 36, 28, "ThingsTheLegacy", 0.92),
     }
     expected_total_parts = sum(spec[1] for spec in rig_specs.values())
     expected_total_bones = sum(spec[2] for spec in rig_specs.values())
@@ -307,24 +756,6 @@ def main() -> int:
                 re.MULTILINE,
             ):
                 fail(errors, f"{path.relative_to(ROOT)} lacks unique %{node_name}")
-        if rig_key == "thief_raider":
-            for profile_value in (
-                "position = Vector2(0, -95)",
-                "scale = Vector2(0.47, 0.47)",
-                "offset_left = -130",
-                "offset_top = -180",
-                "offset_right = 130",
-                "offset_bottom = 12",
-                "position = Vector2(0, -85)",
-                "position = Vector2(0, -204)",
-            ):
-                if profile_value not in text:
-                    fail(
-                        errors,
-                        f"{path.relative_to(ROOT)} lost Thief Raider profile "
-                        f"{profile_value!r}",
-                    )
-
     # Every self-owned shipping monster texture is an exact RGBA mirror of its
     # editable source.  No edge, grain, brightness, outline or palette pass may
     # alter even transparent-canvas pixels.
@@ -332,7 +763,7 @@ def main() -> int:
     shipping_monsters = ROOT / "images" / "monsters"
     source_names = {path.name for path in source_monsters.glob("*.png")}
     shipping_names = {path.name for path in shipping_monsters.glob("*.png")}
-    expected_textures = {
+    expected_source_textures = {
         "bowlbug_progenitor.png",
         "origin_fogmog.png",
         "scale_beetle.png",
@@ -341,12 +772,25 @@ def main() -> int:
         "soul_roe_3.png",
         "soul_roes.png",
         "the_legacy.png",
-        "thief_raider.png",
     }
-    if source_names != expected_textures:
-        fail(errors, f"monster source-art set differs: {sorted(source_names ^ expected_textures)}")
-    if shipping_names != expected_textures:
-        fail(errors, f"shipping monster-texture set differs: {sorted(shipping_names ^ expected_textures)}")
+    expected_shipping_textures = expected_source_textures | {
+        # Derived from the final native Corpse Slug death-animation frame;
+        # its reproducible source is the Spine render/crop pipeline rather
+        # than a second editable master under source_assets/monsters.
+        "gravetide_slug_corpse.png",
+    }
+    if source_names != expected_source_textures:
+        fail(
+            errors,
+            f"monster source-art set differs: "
+            f"{sorted(source_names ^ expected_source_textures)}",
+        )
+    if shipping_names != expected_shipping_textures:
+        fail(
+            errors,
+            f"shipping monster-texture set differs: "
+            f"{sorted(shipping_names ^ expected_shipping_textures)}",
+        )
     for name in sorted(source_names & shipping_names):
         source_path = source_monsters / name
         shipping_path = shipping_monsters / name
@@ -510,7 +954,6 @@ def main() -> int:
             "RightTubesFar": "RightTubes",
             "RightTubesLower": "RightTubes",
         },
-        "thief_raider": {},
     }
 
     total_ai_parts = 0
@@ -1041,12 +1484,6 @@ def main() -> int:
             )
         durations: dict[str, float] = {}
         non_root_times: dict[str, list[float]] = {}
-        recovery_parts = ai_cutout_manifest.get(rig_key, {}).get("parts", [])
-        is_intact_recovery = (
-            rig_key == "thief_raider"
-            and len(recovery_parts) == 1
-            and recovery_parts[0].get("semantic") == "intact_character_recovery"
-        )
         for animation_name in required_spine_animations:
             animation = animations.get(animation_name)
             duration = animation_duration(animation)
@@ -1069,14 +1506,14 @@ def main() -> int:
                 for time in collect_frame_times(timelines)
             ]
             non_root_times[animation_name] = action_times
-            if not action_times and not is_intact_recovery:
+            if not action_times:
                 fail(
                     errors,
                     f"{spjson_path.relative_to(ROOT)} animation "
                     f"{animation_name!r} only contains its duration sentinel",
                 )
 
-        if not is_intact_recovery and not any(
+        if not any(
             0.45 - 1e-6 <= value <= 0.50 + 1e-6
             for value in non_root_times.get("attack", [])
         ):
@@ -1085,21 +1522,20 @@ def main() -> int:
                 f"{spjson_path.relative_to(ROOT)} attack lacks a 0.45-0.50s "
                 "contact keyframe",
             )
-        if not is_intact_recovery:
-            for animation_name, release_time in (
-                ("cast", 0.50),
-                ("power_up", 0.50),
-                ("summon", 0.75),
+        for animation_name, release_time in (
+            ("cast", 0.50),
+            ("power_up", 0.50),
+            ("summon", 0.75),
+        ):
+            if not any(
+                abs(value - release_time) <= 1e-6
+                for value in non_root_times.get(animation_name, [])
             ):
-                if not any(
-                    abs(value - release_time) <= 1e-6
-                    for value in non_root_times.get(animation_name, [])
-                ):
-                    fail(
-                        errors,
-                        f"{spjson_path.relative_to(ROOT)} {animation_name} lacks its "
-                        f"{release_time:.2f}s release keyframe",
-                    )
+                fail(
+                    errors,
+                    f"{spjson_path.relative_to(ROOT)} {animation_name} lacks its "
+                    f"{release_time:.2f}s release keyframe",
+                )
         if abs(durations.get("die", 0.0) - expected_death) > 1e-6:
             fail(
                 errors,
@@ -1110,46 +1546,6 @@ def main() -> int:
             durations.get("hurt", 0.0) - 0.34
         ) > 1e-6:
             fail(errors, "Origin Fogmog Spine hurt must remain a short 0.34s")
-
-        if rig_key == "thief_raider" and not is_intact_recovery:
-            animated_bones = {
-                bone_name
-                for animation in animations.values()
-                if isinstance(animation, dict)
-                for bone_name in animation.get("bones", {})
-            }
-            required_thief_bones = {
-                "NearArm", "NearForearm", "NearHand", "Dagger",
-                "FarArm", "FarForearm", "FarHand",
-                "Cloak", "CloakFarTail", "CloakNearTail",
-                "NearShinFoot", "FarShinFoot",
-            }
-            missing_thief_bones = required_thief_bones - animated_bones
-            if missing_thief_bones:
-                fail(
-                    errors,
-                    "Thief Raider animation profile omits AI rig bones: "
-                    f"{sorted(missing_thief_bones)}",
-                )
-            legacy_thief_bones = {
-                "DaggerUpperArm", "DaggerForearm", "DaggerHand", "GuardArm",
-                "CloakLeftTail", "CloakRightTail", "LeftLeg", "RightLeg",
-            }
-            if animated_bones & legacy_thief_bones:
-                fail(
-                    errors,
-                    "Thief Raider animation profile still targets legacy bones: "
-                    f"{sorted(animated_bones & legacy_thief_bones)}",
-                )
-            for action in ("attack", "die", "revive"):
-                action_data = animations.get(action, {})
-                action_bones = set(
-                    action_data.get("bones", {})
-                    if isinstance(action_data, dict)
-                    else {}
-                )
-                if not {"NearShinFoot", "FarShinFoot"} <= action_bones:
-                    fail(errors, f"Thief Raider {action} does not articulate both boots")
 
         if rig_key == "the_legacy":
             idle_bones = animations.get("idle_loop", {}).get("bones", {})
@@ -1322,11 +1718,10 @@ def main() -> int:
     static_models = (
         "OriginFogmog",
         "BowlbugProgenitor",
-        "ScaleBeetle",
+        "ThingsScaleBeetle",
         "SoulRoe",
         "SoulRoes",
-        "TheLegacy",
-        "ThiefRaider",
+        "ThingsTheLegacy",
     )
     for model_name in static_models:
         relative = f"Monsters/{model_name}.cs"
@@ -1344,11 +1739,10 @@ def main() -> int:
     death_padding_contracts = {
         "Monsters/OriginFogmog.cs": "new(1.45f, 1.75f)",
         "Monsters/BowlbugProgenitor.cs": "new(1.35f, 1.8f)",
-        "Monsters/ScaleBeetle.cs": "new(2.3f, 2.1f)",
+        "Monsters/ThingsScaleBeetle.cs": "new(2.3f, 2.1f)",
         "Monsters/SoulRoe.cs": "new(2.2f, 5.0f)",
         "Monsters/SoulRoes.cs": "new(1.6f, 3.0f)",
-        "Monsters/TheLegacy.cs": "new(1.4f, 1.7f)",
-        "Monsters/ThiefRaider.cs": "new(1.5f, 1.8f)",
+        "Monsters/ThingsTheLegacy.cs": "new(1.4f, 1.7f)",
     }
     for relative, value in death_padding_contracts.items():
         require_snippets(
@@ -1417,7 +1811,6 @@ def main() -> int:
         "soul_roes_encounter.tscn": {"soul_roes", *(f"soul_roe_{i}" for i in range(1, 9))},
         "the_legacy_boss_encounter.tscn": {"the_legacy"},
         "scale_beetle_boss_encounter.tscn": {"scale_beetle"},
-        "raid_party.tscn": {"thief_raider", *(f"raider_{i}" for i in range(1, 6))},
         "bowlbug_progenitor_boss_encounter.tscn": {
             "bowlbug_progenitor",
             *(f"bowlbug_{i}" for i in range(1, 17)),
@@ -1447,6 +1840,7 @@ def main() -> int:
 
     # Native custom background contract used by EncounterModel.CreateBackground/BackgroundAssets.
     boss_backgrounds = {
+        "gravetide_slug_boss_encounter",
         "origin_fogmog_boss_encounter",
         "scale_beetle_boss_encounter",
         "the_legacy_boss_encounter",
@@ -1463,6 +1857,123 @@ def main() -> int:
             fail(errors, f"{main_scene.relative_to(ROOT)} does not use NThingsCombatBackground")
         if not bg_layers:
             fail(errors, f"native background layers missing for {slug}")
+
+    gravetide_background = ROOT / "scenes/backgrounds/gravetide_slug_boss_encounter"
+    gravetide_main = gravetide_background / "gravetide_slug_boss_encounter_background.tscn"
+    gravetide_expected_layers = {
+        "gravetide_slug_boss_encounter_bg_00_a.tscn",
+        "gravetide_slug_boss_encounter_bg_01_a.tscn",
+        "gravetide_slug_boss_encounter_bg_02_a.tscn",
+        "gravetide_slug_boss_encounter_bg_03_a.tscn",
+        "gravetide_slug_boss_encounter_fg_a.tscn",
+    }
+    gravetide_layer_dir = gravetide_background / "layers"
+    if gravetide_layer_dir.is_dir():
+        gravetide_actual_layers = {path.name for path in gravetide_layer_dir.iterdir()}
+        if gravetide_actual_layers != gravetide_expected_layers:
+            fail(
+                errors,
+                "Gravetide native layer set differs: "
+                f"missing={sorted(gravetide_expected_layers - gravetide_actual_layers)} "
+                f"extra={sorted(gravetide_actual_layers - gravetide_expected_layers)}",
+            )
+    if gravetide_main.is_file():
+        gravetide_main_text = gravetide_main.read_text(encoding="utf-8")
+        if "NGravetideSlugCombatBackground" in gravetide_main_text:
+            fail(errors, "Gravetide background still uses manual _Ready layer assembly")
+        for container in ("Layer_00", "Layer_01", "Layer_02", "Layer_03", "Foreground"):
+            if f'[node name="{container}"' not in gravetide_main_text:
+                fail(errors, f"Gravetide native background is missing {container}")
+
+    gravetide_water_material = (
+        ROOT / "materials/backgrounds/gravetide_slug_water_reflection.tres"
+    )
+    if not gravetide_water_material.is_file():
+        fail(errors, "Gravetide water reflection material is missing")
+    elif "hint_screen_texture" not in gravetide_water_material.read_text(encoding="utf-8"):
+        fail(errors, "Gravetide water material does not implement background reflection")
+
+    gravetide_art_contract = {
+        "gravetide_slug_far.png": False,
+        "gravetide_slug_water.png": True,
+    }
+    for art_name, expects_transparency in gravetide_art_contract.items():
+        art_path = ROOT / "images/backgrounds/gravetide_slug" / art_name
+        if not art_path.is_file():
+            fail(errors, f"Gravetide background art is missing: {art_path.relative_to(ROOT)}")
+            continue
+        with Image.open(art_path) as image:
+            image.load()
+            if image.mode != "RGBA" or image.size != (2768, 1296):
+                fail(
+                    errors,
+                    f"{art_path.relative_to(ROOT)} must be RGBA (2768, 1296), "
+                    f"got {image.mode} {image.size}",
+                )
+                continue
+            alpha_extrema = image.getchannel("A").getextrema()
+            if expects_transparency and alpha_extrema == (255, 255):
+                fail(errors, f"{art_path.relative_to(ROOT)} must retain transparent padding")
+            if expects_transparency and image.getchannel("A").getbbox() is None:
+                fail(errors, f"{art_path.relative_to(ROOT)} is fully transparent")
+            if not expects_transparency and alpha_extrema != (255, 255):
+                fail(errors, f"{art_path.relative_to(ROOT)} must be an opaque base layer")
+
+    gravetide_ui_contract = {
+        ROOT / "images/map/gravetide_slug_boss_icon.png": (352, 300),
+        ROOT / "images/map/gravetide_slug_boss_icon_outline.png": (352, 300),
+        ROOT / "images/ui/run_history/gravetide_slug_boss_encounter.png": (88, 88),
+        ROOT / "images/ui/run_history/gravetide_slug_boss_encounter_outline.png": (88, 88),
+        ROOT / "images/powers/gravetide_digestion_power.png": (256, 256),
+        ROOT / "images/powers/gravetide_digestion_power_packed.png": (64, 64),
+    }
+    for ui_path, expected_size in gravetide_ui_contract.items():
+        if not ui_path.is_file():
+            fail(errors, f"Gravetide UI asset is missing: {ui_path.relative_to(ROOT)}")
+            continue
+        with Image.open(ui_path) as image:
+            if image.mode != "RGBA" or image.size != expected_size:
+                fail(
+                    errors,
+                    f"{ui_path.relative_to(ROOT)} must be RGBA {expected_size}, "
+                    f"got {image.mode} {image.size}",
+                )
+
+    gravetide_atlas = ROOT / "STS2_Things/animations/monsters/gravetide_slug/gravetide_slug.png"
+    if gravetide_atlas.is_file():
+        with Image.open(gravetide_atlas) as image:
+            if image.mode != "RGBA" or image.size != (3132, 608):
+                fail(
+                    errors,
+                    "Gravetide Spine atlas must be RGBA (3132, 608) after 4x supersampling, "
+                    f"got {image.mode} {image.size}",
+                )
+    gravetide_power = ROOT / "images/powers/gravetide_digestion_power.png"
+    vanilla_power = ROOT.parent / "STS2-V110/images/powers/ravenous_power.png"
+    if gravetide_power.is_file() and vanilla_power.is_file():
+        if hashlib.sha256(gravetide_power.read_bytes()).digest() == hashlib.sha256(vanilla_power.read_bytes()).digest():
+            fail(errors, "Gravetide digestion Power icon still reuses the vanilla Ravenous texture")
+
+    gravetide_music = ROOT / "music/gravetide_slug/gravetide_slug_boss_theme.wav"
+    gravetide_sfx = ROOT / "sfx/gravetide_slug"
+    if not gravetide_music.is_file():
+        fail(errors, "Gravetide dedicated boss theme is missing")
+    expected_sfx_prefixes = {
+        "gravetide_slug_attack_light": 3,
+        "gravetide_slug_attack": 2,
+        "gravetide_slug_hurt": 4,
+        "gravetide_slug_die": 2,
+        "gravetide_slug_devour": 2,
+        "gravetide_slug_devour_end": 2,
+    }
+    for prefix, expected_count in expected_sfx_prefixes.items():
+        actual_count = len(list(gravetide_sfx.glob(f"{prefix}-*.wav")))
+        if actual_count != expected_count:
+            fail(
+                errors,
+                f"Gravetide SFX variant count for {prefix} is {actual_count}, "
+                f"expected {expected_count}",
+            )
 
     # Native background foregrounds rely on tree ordering. Explicit z-index values
     # raise them above the creature containers and obscure the monsters.
@@ -1515,8 +2026,9 @@ def main() -> int:
     catalog = SOURCE / "Hooks" / "MonsterContentPatches.cs"
     catalog_text = catalog.read_text(encoding="utf-8") if catalog.is_file() else ""
     for encounter_type in (
+        "GravetideSlugBossEncounter",
         "OriginFogmogBossEncounter",
-        "RaidParty",
+        "QuirkyHopperWeak",
         "ScaleBeetleBossEncounter",
         "SoulRoesEncounter",
         "TheLegacyBossEncounter",
@@ -1525,14 +2037,219 @@ def main() -> int:
         if f"ModelDb.Encounter<{encounter_type}>()" not in catalog_text:
             fail(errors, f"Act encounter catalog is missing {encounter_type}")
 
+    overgrowth_catalog = re.search(
+        r"AddOvergrowthEncounters\(.*?\)\s*\{(?P<body>.*?)\n\s*\}",
+        catalog_text,
+        re.DOTALL,
+    )
+    underdocks_catalog = re.search(
+        r"AddUnderdocksEncounters\(.*?\)\s*\{(?P<body>.*?)\n\s*\}",
+        catalog_text,
+        re.DOTALL,
+    )
+    hive_catalog = re.search(
+        r"AddHiveEncounters\(.*?\)\s*\{(?P<body>.*?)\n\s*\}",
+        catalog_text,
+        re.DOTALL,
+    )
+    quirky_registration = "ModelDb.Encounter<QuirkyHopperWeak>()"
+    if overgrowth_catalog and quirky_registration in overgrowth_catalog.group("body"):
+        fail(errors, "Quirky Hopper is incorrectly registered in Act 1 Overgrowth")
+    if underdocks_catalog and quirky_registration in underdocks_catalog.group("body"):
+        fail(errors, "Quirky Hopper is incorrectly registered outside Act 2 Hive")
+    if not hive_catalog or quirky_registration not in hive_catalog.group("body"):
+        fail(errors, "Quirky Hopper is not registered in the Act 2 Hive encounter catalog")
+    for boss_catalog_name in (
+        "AddOvergrowthBosses",
+        "AddUnderdocksBosses",
+        "AddHiveBosses",
+    ):
+        boss_catalog = re.search(
+            rf"{boss_catalog_name}\(.*?\)\s*\{{(?P<body>.*?)\n\s*\}}",
+            catalog_text,
+            re.DOTALL,
+        )
+        if boss_catalog and quirky_registration in boss_catalog.group("body"):
+            fail(errors, f"Quirky Hopper is incorrectly registered in {boss_catalog_name}")
+    require_snippets(
+        "Encounters/QuirkyHopperWeak.cs",
+        [
+            "public override RoomType RoomType => RoomType.Monster;",
+            "public override bool IsWeak => true;",
+        ],
+        "Act 2 weak hallway encounter classification",
+    )
+
+    gravetide_registration = "ModelDb.Encounter<GravetideSlugBossEncounter>()"
+    if not underdocks_catalog or gravetide_registration not in underdocks_catalog.group("body"):
+        fail(errors, "Gravetide Slug is not registered in the Underdocks encounter catalog")
+    for wrong_catalog_name, wrong_catalog in (
+        ("Overgrowth", overgrowth_catalog),
+        ("Hive", hive_catalog),
+    ):
+        if wrong_catalog and gravetide_registration in wrong_catalog.group("body"):
+            fail(errors, f"Gravetide Slug is incorrectly registered in {wrong_catalog_name}")
+    underdocks_boss_catalog = re.search(
+        r"AddUnderdocksBosses\(.*?\)\s*\{(?P<body>.*?)\n\s*\}",
+        catalog_text,
+        re.DOTALL,
+    )
+    if (
+        not underdocks_boss_catalog
+        or gravetide_registration not in underdocks_boss_catalog.group("body")
+    ):
+        fail(errors, "Gravetide Slug is not registered in the Underdocks boss pool")
+
+    require_snippets(
+        "Encounters/GravetideSlugBossEncounter.cs",
+        [
+            "public const int CorpseSlugSlotCount = 6;",
+            "private static readonly int[] OpeningSlotIndices = [0, 5];",
+            "GetVacantCorpseSlugSlots(ICombatState combatState)",
+            "public override RoomType RoomType => RoomType.Boss;",
+            "[BossSlot, .. Enumerable.Range(0, CorpseSlugSlotCount)",
+            "ModelDb.Monster<GravetideSlug>()",
+            "ModelDb.Monster<GravetideCorpseSlug>()",
+            "ModelDb.Monster<GravetideSlugCorpse>()",
+        ],
+        "one-boss/six-slot/two-attendant Gravetide encounter contract",
+    )
+    require_snippets(
+        "Monsters/GravetideCorpseSlug.cs",
+        [
+            "public override int MinInitialHp => 7;",
+            "public override int MaxInitialHp => 12;",
+            "PowerCmd.Apply<GravetideMinionPower>",
+            "PowerCmd.Apply<RavenousPower>",
+            "CreatureCmd.Add<GravetideSlugCorpse>",
+            "CombatState, Creature.SlotName",
+        ],
+        "7-12-HP, same-slot corpse replacement contract",
+    )
+    require_snippets(
+        "Powers/GravetideRavenousPowerPatch.cs",
+        [
+            "[HarmonyPatch(typeof(RavenousPower), nameof(RavenousPower.AfterDeath))]",
+            "__instance.Owner.Monster is not GravetideCorpseSlug",
+            "GravetideSlugBase.DevourStartTrigger",
+            "PowerCmd.Apply<StrengthPower>",
+        ],
+        "native Ravenous compatibility contract",
+    )
+    require_snippets(
+        "Monsters/GravetideSlugCorpse.cs",
+        [
+            "public override int MinInitialHp => 6;",
+            "public override int MaxInitialHp => 6;",
+            "PowerCmd.Apply<GravetideMinionPower>",
+            "[SavedProperty]",
+            "public bool DelayDigestionUntilNextEnemyTurn",
+            'new AnimState("die")',
+        ],
+        "native-scaled 6-base-HP final-death-pose corpse contract",
+    )
+    require_snippets(
+        "Monsters/GravetideSlug.cs",
+        [
+            "decimal.Ceiling(Creature.MaxHp * 0.05m)",
+            "PowerCmd.Apply<GravetideDigestionPower>",
+            "ModelDb.Monster<GravetideCorpseSlug>().AssetPaths",
+            "GoopAndCreateCorpseMove",
+            "DelayDigestionUntilNextEnemyTurn = true;",
+            "CreatureCmd.Add(corpse, CombatState, slotName: slot)",
+            "CreatureCmd.Add<GravetideCorpseSlug>",
+            "new MoveState(\n            \"GROW_MOVE\"",
+            "new DefendIntent(), new BuffIntent()",
+            "summon.FollowUpState = growth;",
+            "growth.FollowUpState = whipSlap;",
+            "PowerCmd.Apply<StrengthPower>",
+            "CreatureCmd.GainBlock(Creature, 10m, ValueProp.Move, null)",
+        ],
+        "Gravetide digestion, corpse, summon, and Growth contract",
+    )
+    require_snippets(
+        "Powers/GravetideDigestionPower.cs",
+        [
+            "public override PowerStackType StackType => PowerStackType.None;",
+            "side != CombatSide.Enemy || Owner.IsDead",
+            "creature.IsAlive && creature.Monster is GravetideSlugCorpse",
+            "DelayDigestionUntilNextEnemyTurn",
+            "foreach (Creature deferredCorpse in allCorpses)",
+            "CorpseGatherDuration = 0.45f",
+            "CorpseGatherOffset = new(-70f, 10f)",
+            "GatherCorpseVisuals(corpses);",
+            "await Cmd.CustomScaledWait(CorpseGatherDuration, CorpseGatherDuration);",
+            '"global_position"',
+            "bossNode.GlobalPosition + CorpseGatherOffset",
+            "RemoveCreatureWithoutDeathOrEscape(corpse)",
+            "DevourDownDuration = 0.5f",
+            "DevourUpDuration = 0.5f",
+            "await CreatureCmd.Heal(Owner, Amount);",
+            "PowerCmd.Apply<StrengthPower>",
+            "choiceContext, Owner, 1m, Owner, null",
+        ],
+        "stackless single-trigger clear-all/heal/Strength Digestion contract",
+    )
+    digestion_source = source_text("Powers/GravetideDigestionPower.cs")
+    gather_call_index = digestion_source.index("GatherCorpseVisuals(corpses);")
+    gather_wait_index = digestion_source.index(
+        "await Cmd.CustomScaledWait(CorpseGatherDuration, CorpseGatherDuration);"
+    )
+    devour_start_index = digestion_source.index("GravetideSlugBase.DevourStartTrigger")
+    if not gather_call_index < gather_wait_index < devour_start_index:
+        fail(
+            errors,
+            "Digestion must gather corpse visuals before waiting, then start the devour animation",
+        )
+    if "corpse.SlotName =" in digestion_source:
+        fail(errors, "Digestion corpse gather must not mutate encounter slot state")
+    require_snippets(
+        "Powers/GravetideMinionPower.cs",
+        [
+            "protected override bool IsVisibleInternal => false;",
+            "public override bool OwnerIsSecondaryEnemy => true;",
+            "public override bool ShouldOwnerDeathTriggerFatal() => false;",
+        ],
+        "non-blocking attendant/corpse combat-end contract",
+    )
+    require_snippets(
+        "Compatibility/Sts2VersionCompatibility.cs",
+        [
+            "RemoveCreatureWithoutDeathOrEscape(Creature creature)",
+            "creature.RemoveAllPowersInternalExcept();",
+            "CombatManager.Instance.RemoveCreature(creature);",
+            "combatState.RemoveCreature(creature);",
+        ],
+        "dual-version corpse consumption without death or escape hooks",
+    )
+
+    require_snippets(
+        "Monsters/QuirkyHopper.cs",
+        [
+            "await quirk.ResolveEscape();",
+            "await CreatureCmd.Escape(Creature);",
+        ],
+        "Quirky Hopper escape-loss contract",
+    )
+    require_snippets(
+        "Powers/ThingsQuirkPower.cs",
+        [
+            "public void RecordTheft()",
+            "history?.MarkLootStolen();",
+            "public async Task ResolveEscape()",
+            "history.MarkLootReturned();",
+        ],
+        "Quirky Hopper killed/escaped reward-header split",
+    )
+
     # Dynamic summons must preload every possible model through the summoner AssetPaths.
     dynamic_preload_contracts = {
+        "Monsters/GravetideSlug.cs": [
+            "ModelDb.Monster<GravetideCorpseSlug>().AssetPaths",
+            "ModelDb.Monster<GravetideSlugCorpse>().AssetPaths",
+        ],
         "Monsters/OriginFogmog.cs": ["ModelDb.Monster<OriginEyeWithTeeth>().AssetPaths"],
         "Monsters/SoulRoes.cs": ["ModelDb.Monster<SoulRoe>().AssetPaths"],
-        "Monsters/ThiefRaider.cs": [
-            f"ModelDb.Monster<{name}>().AssetPaths"
-            for name in ("AxeRubyRaider", "AssassinRubyRaider", "BruteRubyRaider", "CrossbowRubyRaider", "TrackerRubyRaider")
-        ],
         "Monsters/BowlbugProgenitor.cs": [
             f"ModelDb.Monster<{name}>().AssetPaths"
             for name in ("BowlbugEgg", "BowlbugNectar", "BowlbugRock", "BowlbugSilk")
@@ -1548,14 +2265,19 @@ def main() -> int:
     # Mod textures are not part of the vanilla common set, so each owning monster
     # must contribute every visible custom power icon to the combat-room asset set.
     power_icon_preload_contracts = {
+        "Monsters/GravetideSlug.cs": [
+            "GravetideDigestionPower", "RavenousPower", "StrengthPower"
+        ],
         "Monsters/OriginFogmog.cs": [
-            "OriginPower", "OriginGainEnergyPower", "IllusionPower", "MinionPower", "StrengthPower"
+            "ThingsOriginPower", "OriginGainEnergyPower", "IllusionPower", "MinionPower", "StrengthPower"
         ],
         "Monsters/SoulRoes.cs": ["SoulRoesPower", "IntangiblePower", "StrengthPower"],
-        "Monsters/ThiefRaider.cs": ["ThiefRaiderPower", "WeakPower"],
-        "Monsters/ScaleBeetle.cs": ["ScaleBeetlePower", "ScaleUpPower", "ScaleDownPower"],
-        "Monsters/TheLegacy.cs": [
-            "LegacyBeatOfDeathPower", "DazedPower", "HardenedShellPower",
+        "Monsters/ThingsScaleBeetle.cs": ["ThingsScaleBeetlePower", "ThingsScaleUpPower", "ThingsScaleDownPower"],
+        "Monsters/QuirkyHopper.cs": [
+            "ThingsQuirkPower", "QuirkyFlutterPower", "EscapeArtistPower"
+        ],
+        "Monsters/ThingsTheLegacy.cs": [
+            "LegacyBeatOfDeathPower", "ThingsDazedPower", "HardenedShellPower",
             "ArtifactPower", "StrengthPower"
         ],
         "Monsters/BowlbugProgenitor.cs": [
@@ -1570,8 +2292,163 @@ def main() -> int:
             if snippet not in text:
                 fail(errors, f"{relative} does not preload visible custom power icon: {power_type}")
 
+    require_snippets(
+        "Monsters/QuirkyHopper.cs",
+        [
+            'SceneHelper.GetScenePath("creature_visuals/quirky_hopper")',
+            "AscensionLevel.ToughEnemies, 72, 68",
+            "AscensionLevel.DeadlyEnemies, 22, 20",
+            "AscensionLevel.DeadlyEnemies, 27, 25",
+            "AscensionLevel.DeadlyEnemies, 20, 18",
+            "new CardDebuffIntent()",
+            "card.Type == CardType.Curse",
+            'entry.StartsWith("STRIKE_", StringComparison.Ordinal)',
+            'entry.StartsWith("DEFEND_", StringComparison.Ordinal)',
+            "card.Rarity == CardRarity.Common",
+            "card.Rarity == CardRarity.Uncommon",
+            "card.Rarity == CardRarity.Rare",
+            "RunRng.CombatCardGeneration.NextItem",
+            "RunRng.CombatPotionGeneration.NextItem",
+            "player.DiscardPotionInternal(potion);",
+            "loot.Card?.DeckVersion,",
+            "loot.Potion);",
+            "potionState.RecordTheft();",
+            "cardState.RecordTheft();",
+            "Creature.GetPowerInstances<ThingsQuirkPower>().ToList()",
+            "await quirk.ResolveEscape();",
+            "await CreatureCmd.Escape(Creature);",
+        ],
+        "Quirky Hopper priority theft/kill-return contract",
+    )
+    quirky_hopper_text = source_text("Monsters/QuirkyHopper.cs")
+    if not re.search(
+        r"PowerCmd\.Apply<QuirkyFlutterPower>\(\s*"
+        r"new ThrowingPlayerChoiceContext\(\),\s*Creature,\s*3m,",
+        quirky_hopper_text,
+    ):
+        fail(errors, "Quirky Hopper Flutter must apply exactly three base stacks")
+    theft_priority_markers = (
+        "card => card.Type == CardType.Curse",
+        "IsStarterStrikeOrDefend,",
+        "card => card.Rarity == CardRarity.Common",
+        "card => card.Rarity == CardRarity.Uncommon",
+        "card => card.Rarity == CardRarity.Rare",
+    )
+    theft_priority_positions = [quirky_hopper_text.index(marker) for marker in theft_priority_markers]
+    if theft_priority_positions != sorted(theft_priority_positions):
+        fail(
+            errors,
+            "Quirky Hopper theft tiers must be Curse, starter Strike/Defend, Common, Uncommon, Rare",
+        )
+    for forbidden in ("MarkLootStolen", "MarkLootReturned", "QuirkTint", ".Modulate"):
+        if forbidden in quirky_hopper_text:
+            fail(errors, f"Quirky Hopper still contains obsolete loot/tint behavior: {forbidden}")
+    if quirky_hopper_text.index("await quirk.ResolveEscape();") > quirky_hopper_text.index(
+        "await CreatureCmd.Escape(Creature);"
+    ):
+        fail(errors, "Quirky Hopper commits stolen loot after it has already escaped")
+    if quirky_hopper_text.index("ConfigurePotionState(") > quirky_hopper_text.index(
+        "ConfigureCardState("
+    ):
+        fail(errors, "Quirky Hopper applies visible loot state before hidden potion state")
+
+    require_snippets(
+        "Powers/ThingsQuirkPower.cs",
+        [
+            "private const int PotionStateOffset = 500_000_000;",
+            "protected override bool IsVisibleInternal => !IsPotionState;",
+            "PotionModel? potion = _stolenPotion",
+            "public int ConfigureCardState(Player player, CardModel? deckCard, PotionModel? potion)",
+            "if (!IsMutable || _resolved)",
+            "? RestoreStolenPotion()",
+            ": ResolveStolenDeckCard()?.Pile?.Type == PileType.Deck;",
+            "await CardPileCmd.RemoveFromDeck(stolenCard, showPreview: false);",
+            "player.AddPotionInternal(potion, state.PotionSlotIndex)",
+            "room.AddExtraReward(player, new PotionReward(potion, player));",
+            "if (!IsPotionState || _stolenPotion != null)",
+            "return _stolenPotion;",
+        ],
+        "Quirk Power synchronized card/potion resolution contract",
+    )
+    quirk_power_text = source_text("Powers/ThingsQuirkPower.cs")
+    for forbidden in (
+        "PileType.Hand",
+        "CombatState.CloneCard",
+        "TryModifyRewardsLate",
+        "PotionFactory",
+        "MarkLootReturned(history.StolenLoot)",
+        "ReturnStolenItem",
+        "MarkEscapeOutcome",
+    ):
+        if forbidden in quirk_power_text:
+            fail(errors, f"Quirk Power still contains obsolete return/reward behavior: {forbidden}")
+
+    require_snippets(
+        "Modifiers/QuirkyHopperRewardPolicy.cs",
+        [
+            "class QuirkyHopperRewardPolicy : ModifierModel",
+            "public override bool TryModifyRewardsLate(",
+            "combatRoom.ExtraRewards.TryGetValue(",
+            "List<PotionReward> returnedPotionRewards",
+            "if (returnedPotionRewards.Count == 0)",
+            "ReferenceEquals(returned, reward)",
+            "rewards.Remove(reward)",
+        ],
+        "Quirky Hopper exact-potion reward policy",
+    )
+    require_snippets(
+        "STS2_ThingsInit.cs",
+        [
+            "ModHelper.SubscribeForRunStateHooks(",
+            '"Adnermo.STS2_Things.QuirkyHopperRewardPolicy"',
+            "static _ => [ModelDb.Modifier<QuirkyHopperRewardPolicy>()]",
+        ],
+        "Quirky Hopper exact-return reward policy subscription",
+    )
+    init_text = source_text("STS2_ThingsInit.cs")
+    if "ModelDb.Power<ThingsQuirkPower>()" in init_text:
+        fail(errors, "canonical ThingsQuirkPower is still registered as a global run hook")
+    quirk_localization_contracts = {
+        "eng": ("deck", "potion belt", "hand", "killed", "escapes"),
+        "zhs": ("\u724c\u5e93", "\u836f\u6c34\u680f", "\u624b\u724c", "\u51fb\u6740", "\u9003\u8dd1"),
+    }
+    for lang, (
+        card_destination,
+        potion_destination,
+        forbidden_destination,
+        killed_outcome,
+        escaped_outcome,
+    ) in quirk_localization_contracts.items():
+        table = json.loads((localization / lang / "powers.json").read_text(encoding="utf-8"))
+        for key in ("THINGS_QUIRK_POWER.description", "THINGS_QUIRK_POWER.smartDescription"):
+            value = table.get(key, "")
+            if card_destination not in value or potion_destination not in value:
+                fail(errors, f"{lang}/{key} does not describe both stolen-item destinations")
+            if killed_outcome not in value or escaped_outcome not in value:
+                fail(errors, f"{lang}/{key} does not distinguish kill-return from escape-loss")
+            if forbidden_destination in value:
+                fail(errors, f"{lang}/{key} still returns the stolen card to the hand")
+    card_state_max = ((3 * 8193 + 8192) * 8193) + 8192 + 1
+    potion_state_max = 500_000_000 + ((3 * 33 + 32) * 8193) + 8192 + 1
+    if card_state_max >= 500_000_000:
+        fail(errors, "Quirk card-state encoding overlaps the hidden potion-state range")
+    if potion_state_max > 999_999_999:
+        fail(errors, "Quirk potion-state encoding exceeds PowerModel.Amount's clamp")
+
+    require_snippets(
+        "Powers/QuirkyFlutterPower.cs",
+        [
+            "#if STS2_V107_1",
+            "public override decimal ModifyDamageMultiplicative(",
+            "await PowerCmd.Decrement(this);",
+            "await CreatureCmd.Stun(Owner, StunnedMove, nextState);",
+            "hopper.IsHovering = false;",
+        ],
+        "dual-version native Flutter behavior contract",
+    )
+
     # Stateful monster-chain regressions. These assertions intentionally pin the
-    # V109 lifecycle details that previously produced lost summons or skipped phases.
+    # V110 lifecycle details that previously produced lost summons or skipped phases.
     require_snippets(
         "Powers/SoulRoesPower.cs",
         [
@@ -1584,7 +2461,7 @@ def main() -> int:
         "eight-slot/alive-only Soul Roes death-wave contract",
     )
     require_snippets(
-        "Powers/OriginPower.cs",
+        "Powers/ThingsOriginPower.cs",
         [
             "target != Owner || Owner.CurrentHp > Amount",
             "result.UnblockedDamage <= 0",
@@ -1620,24 +2497,18 @@ def main() -> int:
         "alive-only Soul Roe summon-slot contract",
     )
     require_snippets(
-        "Monsters/ThiefRaider.cs",
-        ["combatState!.Enemies.All(c => !c.IsAlive || c.SlotName != s)"],
-        "alive-only replacement-raider slot contract",
-    )
-    require_snippets(
         "Monsters/BowlbugProgenitor.cs",
         ["enemy => !enemy.IsAlive || enemy.SlotName != candidate"],
         "alive-only Bowlbug summon-slot contract",
     )
 
-    # V109 MultiplayerScalingModel scales enemy ValueProp.Move block. Supplying an
+    # V110 MultiplayerScalingModel scales enemy ValueProp.Move block. Supplying an
     # already player-count-scaled amount would multiply it a second time, while
     # ValueProp.Unpowered would skip the native 3/4-player act scaling entirely.
     for relative in (
         "Monsters/OriginFogmog.cs",
-        "Monsters/ThiefRaider.cs",
         "Monsters/BowlbugProgenitor.cs",
-        "Monsters/ScaleBeetle.cs",
+        "Monsters/ThingsScaleBeetle.cs",
     ):
         text = source_text(relative)
         if re.search(
@@ -1654,18 +2525,18 @@ def main() -> int:
         "native multiplayer enemy-block scaling contract",
     )
     require_snippets(
-        "Monsters/ScaleBeetle.cs",
+        "Monsters/ThingsScaleBeetle.cs",
         ["GainBlock(Creature, MoltBlock, ValueProp.Move"],
         "native multiplayer Scale Beetle move-block scaling contract",
     )
     require_snippets(
-        "Monsters/TheLegacy.cs",
+        "Monsters/ThingsTheLegacy.cs",
         ["var target = Creature.MaxHp / divisor;"],
         "integer Hardened Shell divisor contract",
     )
 
     # Sprite2D creature scenes do not create a CreatureAnimator, so vanilla never
-    # reaches SfxCmd.PlayDeath. Keep the narrow mod-only fallback and verified V109
+    # reaches SfxCmd.PlayDeath. Keep the narrow mod-only fallback and verified V110
     # event reuse explicit; invented event names fail silently at runtime.
     require_snippets(
         "Audio/SfxHooks.cs",
@@ -1688,6 +2559,16 @@ def main() -> int:
         ],
         "presentation-only audio probability contract",
     )
+    require_snippets(
+        "Audio/CustomMusicHooks.cs",
+        [
+            "StartAfterCombatSetup = true;",
+            "nameof(NRunMusicController.UpdateTrack)",
+            "!CombatManager.Instance.IsInProgress",
+            'NativeSfxPlayer.PlayMusic(CustomMusicPlayPatch.GravetideTheme, "Master", -2f);',
+        ],
+        "Gravetide post-combat-setup music routing contract",
+    )
     if not re.search(
         r'if \(entry == "origin_fogmog" && '
         r'!NativeSfxPlayer\.RollChance\(OriginFogmogHurtChance\)\)\s*'
@@ -1700,9 +2581,8 @@ def main() -> int:
         "Monsters/OriginFogmog.cs": "origin_fogmog/origin_fogmog_die",
         "Monsters/SoulRoe.cs": "soul_fysh/soul_fysh_die",
         "Monsters/SoulRoes.cs": "soul_fysh/soul_fysh_die",
-        "Monsters/ThiefRaider.cs": "axe_ruby_raider/axe_ruby_raider_die",
-        "Monsters/TheLegacy.cs": "vantom/vantom_die",
-        "Monsters/ScaleBeetle.cs": "shrinker_beetle/shrinker_beetle_die",
+        "Monsters/ThingsTheLegacy.cs": "vantom/vantom_die",
+        "Monsters/ThingsScaleBeetle.cs": "shrinker_beetle/shrinker_beetle_die",
         "Monsters/BowlbugProgenitor.cs": "egg_layer/egg_layer_die",
     }
     for relative, event_suffix in verified_death_sfx.items():
@@ -1712,11 +2592,11 @@ def main() -> int:
             + re.escape(f'"event:/sfx/enemy/enemy_attacks/{event_suffix}"'),
             text,
         ):
-            fail(errors, f"{relative} lacks its verified explicit V109 DeathSfx event")
+            fail(errors, f"{relative} lacks its verified explicit V110 DeathSfx event")
     for invalid_event in ("kaiser_crab/kaiser_crab_die", "soul_fysh/soul_fysh_summon"):
         for path in sorted((SOURCE / "Monsters").glob("*.cs")):
             if invalid_event in path.read_text(encoding="utf-8"):
-                fail(errors, f"{path.relative_to(ROOT)} references nonexistent V109 event {invalid_event}")
+                fail(errors, f"{path.relative_to(ROOT)} references nonexistent V110 event {invalid_event}")
 
     require_snippets(
         "Monsters/BowlbugProgenitor.cs",
@@ -1728,7 +2608,7 @@ def main() -> int:
         "Bowlbug Progenitor insect egg-layer sound palette",
     )
     require_snippets(
-        "Monsters/ScaleBeetle.cs",
+        "Monsters/ThingsScaleBeetle.cs",
         [
             "shrinker_beetle/shrinker_beetle_attack",
             "shrinker_beetle/shrinker_beetle_cast",
@@ -1738,7 +2618,7 @@ def main() -> int:
     )
     if "soul_fysh/" in source_text("Monsters/BowlbugProgenitor.cs"):
         fail(errors, "Bowlbug Progenitor still reuses the spectral Soul Fysh sound palette")
-    if "kaiser_crab/" in source_text("Monsters/ScaleBeetle.cs"):
+    if "kaiser_crab/" in source_text("Monsters/ThingsScaleBeetle.cs"):
         fail(errors, "Scale Beetle still reuses the oversized Kaiser Crab sound palette")
 
     verified_damage_sfx = {
@@ -1746,9 +2626,8 @@ def main() -> int:
         "Monsters/OriginEyeWithTeeth.cs": "Magic",
         "Monsters/SoulRoe.cs": "Magic",
         "Monsters/SoulRoes.cs": "Magic",
-        "Monsters/ThiefRaider.cs": "Armor",
-        "Monsters/TheLegacy.cs": "Magic",
-        "Monsters/ScaleBeetle.cs": "Insect",
+        "Monsters/ThingsTheLegacy.cs": "Magic",
+        "Monsters/ThingsScaleBeetle.cs": "Insect",
         "Monsters/BowlbugProgenitor.cs": "Insect",
     }
     for relative, damage_type in verified_damage_sfx.items():
@@ -1779,15 +2658,189 @@ def main() -> int:
                 fail(errors, f"{lang}/{name} has placeholder values: {placeholders}")
 
     required_assets = [
+        ROOT / "images/events/cutting_it_close.png",
+        ROOT / "images/enchantments/things_split.png",
         ROOT / "images/map/scale_beetle_boss_icon.png",
         ROOT / "images/map/scale_beetle_boss_icon_outline.png",
-        ROOT / "images/atlases/relic_atlas.sprites/almond_water.tres",
+        ROOT / "images/atlases/relic_atlas.sprites/things_almond_water.tres",
+        ROOT / "images/atlases/power_atlas.sprites/things_quirk_power.tres",
+        ROOT / "images/atlases/power_atlas.sprites/quirky_flutter_power.tres",
+        ROOT / "images/powers/things_quirk_power.png",
+        ROOT / "images/powers/things_quirk_power_packed.png",
+        ROOT / "images/powers/quirky_flutter_power.png",
+        ROOT / "images/powers/quirky_flutter_power_packed.png",
+        ROOT / "STS2_Things/animations/monsters/quirky_hopper/quirkyhopper.atlas",
+        ROOT / "STS2_Things/animations/monsters/quirky_hopper/quirkyhopper.png",
+        ROOT / "STS2_Things/animations/monsters/quirky_hopper/quirky_hopper_bow.png",
+        ROOT / "STS2_Things/animations/monsters/quirky_hopper/quirkyhopper.skel",
+        ROOT / "STS2_Things/animations/monsters/quirky_hopper/quirkyhopper.spatlas",
+        ROOT / "STS2_Things/animations/monsters/quirky_hopper/quirkyhopper.spskel",
+        ROOT / "STS2_Things/animations/monsters/quirky_hopper/quirky_hopper_skel_data.tres",
+        ROOT / "scenes/creature_visuals/quirky_hopper.tscn",
+        ROOT / "scripts/build_quirky_hopper_texture.py",
+        ROOT / "source_assets/monsters/quirky_hopper_bow/bow_transparent_full.png",
+        ROOT / "source_assets/monsters/quirky_hopper_bow/thievinghopper_source.png",
+        ROOT / "STS2_Things/Visuals/NQuirkyHopperVisuals.cs",
         ROOT / "STS2_Things/Visuals/NThingsStaticCreatureVisuals.cs",
         ROOT / "STS2_Things/Visuals/NThingsCombatBackground.cs",
     ]
     for path in required_assets:
         if not path.is_file():
             fail(errors, f"required asset missing: {path.relative_to(ROOT)}")
+
+    cutting_event_art = ROOT / "images" / "events" / "cutting_it_close.png"
+    if cutting_event_art.is_file():
+        with Image.open(cutting_event_art) as image:
+            image.load()
+            if image.mode != "RGBA" or image.size != (3440, 1616):
+                fail(
+                    errors,
+                    f"{cutting_event_art.relative_to(ROOT)} must be RGBA (3440, 1616), "
+                    f"got {image.mode} {image.size}",
+                )
+            elif image.getchannel("A").getextrema() != (255, 255):
+                fail(errors, "Cutting It Close event art must be fully opaque RGBA")
+
+    split_icon = ROOT / "images" / "enchantments" / "things_split.png"
+    if split_icon.is_file():
+        with Image.open(split_icon) as image:
+            image.load()
+            if image.mode != "RGBA" or image.size != (64, 64):
+                fail(
+                    errors,
+                    f"{split_icon.relative_to(ROOT)} must be RGBA (64, 64), "
+                    f"got {image.mode} {image.size}",
+                )
+            elif image.getchannel("A").getextrema() == (255, 255):
+                fail(errors, "Things Split enchantment icon must retain transparent padding")
+            elif image.getchannel("A").getbbox() is None:
+                fail(errors, "Things Split enchantment icon is fully transparent")
+
+    power_icon_sizes = {
+        "things_quirk_power.png": (256, 256),
+        "things_quirk_power_packed.png": (64, 64),
+        "quirky_flutter_power.png": (256, 256),
+        "quirky_flutter_power_packed.png": (64, 64),
+    }
+    for name, expected_size in power_icon_sizes.items():
+        path = ROOT / "images" / "powers" / name
+        if not path.is_file():
+            continue
+        with Image.open(path) as image:
+            if image.mode != "RGBA" or image.size != expected_size:
+                fail(
+                    errors,
+                    f"{path.relative_to(ROOT)} must be RGBA {expected_size}, "
+                    f"got {image.mode} {image.size}",
+                )
+            if image.getbbox() is None:
+                fail(errors, f"{path.relative_to(ROOT)} is fully transparent")
+
+    quirky_texture = ROOT / "STS2_Things/animations/monsters/quirky_hopper/quirkyhopper.png"
+    if quirky_texture.is_file():
+        with Image.open(quirky_texture) as image:
+            rgba = image.convert("RGBA")
+            if rgba.size != (1269, 269):
+                fail(errors, f"Quirky Hopper atlas must be 1269x269, got {rgba.size}")
+
+            color_regions = {
+                "blue bod 1": ((931, 54, 1055, 112), "blue"),
+                "orange bod 2": ((1205, 47, 1244, 79), "orange"),
+                "blue bod 3": ((1216, 81, 1261, 119), "blue"),
+                "orange bod 4": ((1211, 184, 1259, 223), "orange"),
+            }
+            for label, (box, expected_family) in color_regions.items():
+                opaque = [
+                    pixel
+                    for pixel in rgba.crop(box).get_flattened_data()
+                    if pixel[3] >= 128
+                ]
+                if not opaque:
+                    fail(errors, f"Quirky Hopper {label} region is empty")
+                    continue
+                mean_red = sum(pixel[0] for pixel in opaque) / len(opaque)
+                mean_green = sum(pixel[1] for pixel in opaque) / len(opaque)
+                mean_blue = sum(pixel[2] for pixel in opaque) / len(opaque)
+                if expected_family == "blue" and not (
+                    mean_blue > mean_red * 1.45 and mean_blue > mean_green * 1.15
+                ):
+                    fail(errors, f"Quirky Hopper {label} is not distinctly blue")
+                if expected_family == "orange" and not (
+                    mean_red > mean_blue * 1.65 and mean_red > mean_green * 1.15
+                ):
+                    fail(errors, f"Quirky Hopper {label} is not distinctly orange")
+
+            native_texture_path = (
+                ROOT
+                / "source_assets/monsters/quirky_hopper_bow/thievinghopper_source.png"
+            )
+            if native_texture_path.is_file():
+                native_digest = hashlib.sha256(native_texture_path.read_bytes()).hexdigest()
+                if native_digest != (
+                    "af9800cc5b70ea7f6efa8f0fa346169ce03d62d4a1ff0c7748128e3df9b07636"
+                ):
+                    fail(errors, "Quirky Hopper native texture source hash changed")
+                with Image.open(native_texture_path) as native_texture_source:
+                    native_head = native_texture_source.convert("RGBA").crop(
+                        (1071, 2, 1132, 84)
+                    )
+                if rgba.crop((1071, 2, 1132, 84)).tobytes() != native_head.tobytes():
+                    fail(errors, "Quirky Hopper atlas still paints the bow over its face")
+
+    quirky_bow = (
+        ROOT
+        / "STS2_Things/animations/monsters/quirky_hopper/quirky_hopper_bow.png"
+    )
+    if quirky_bow.is_file():
+        with Image.open(quirky_bow) as image:
+            bow = image.convert("RGBA")
+            if bow.size != (141, 91):
+                fail(errors, f"Quirky Hopper rear bow must be 141x91, got {bow.size}")
+            pink_pixels = sum(
+                1
+                for red, green, blue, alpha in bow.get_flattened_data()
+                if alpha >= 128
+                and red >= 160
+                and red > green * 1.6
+                and blue > green * 1.1
+            )
+            if pink_pixels < 5_000:
+                fail(errors, "Quirky Hopper rear bow lacks a visible pink silhouette")
+
+    quirky_scene_text = (ROOT / "scenes/creature_visuals/quirky_hopper.tscn").read_text(
+        encoding="utf-8"
+    )
+    for snippet in (
+        'path="res://STS2_Things/animations/monsters/quirky_hopper/quirky_hopper_bow.png"',
+        '[node name="BowBoneNode" type="SpineBoneNode" parent="Visuals"]',
+        'bone_name = "head"',
+        'show_behind_parent = true',
+        '[node name="Bow" type="Sprite2D" parent="Visuals/BowBoneNode"]',
+        'position = Vector2(-45, 90)',
+    ):
+        if snippet not in quirky_scene_text:
+            fail(errors, f"Quirky Hopper rear-bow scene contract missing {snippet!r}")
+
+    quirky_asset_root = ROOT / "STS2_Things/animations/monsters/quirky_hopper"
+    quirky_atlas = quirky_asset_root / "quirkyhopper.atlas"
+    quirky_spatlas = quirky_asset_root / "quirkyhopper.spatlas"
+    if quirky_atlas.is_file() and quirky_spatlas.is_file():
+        imported_atlas = json.loads(quirky_spatlas.read_text(encoding="utf-8"))
+        if imported_atlas.get("atlas_data") != quirky_atlas.read_text(encoding="utf-8"):
+            fail(errors, "Quirky Hopper .spatlas payload differs from its source atlas")
+        if imported_atlas.get("source_path") != (
+            "res://STS2_Things/animations/monsters/quirky_hopper/quirkyhopper.atlas"
+        ):
+            fail(errors, "Quirky Hopper .spatlas source_path is incorrect")
+    quirky_skel = quirky_asset_root / "quirkyhopper.skel"
+    quirky_spskel = quirky_asset_root / "quirkyhopper.spskel"
+    if quirky_skel.is_file() and quirky_spskel.is_file():
+        if quirky_skel.read_bytes() != quirky_spskel.read_bytes():
+            fail(errors, "Quirky Hopper imported skeleton differs from its source skeleton")
+    native_flutter_sha256 = "06335e7ae5f46500c6d6f5e4fa9ba8136b7d0cb0e263af22dee8f8a0a54265eb"
+    flutter_alias = ROOT / "images" / "powers" / "quirky_flutter_power.png"
+    if flutter_alias.is_file() and hashlib.sha256(flutter_alias.read_bytes()).hexdigest() != native_flutter_sha256:
+        fail(errors, "Quirky Flutter big icon is not the byte-exact native Flutter icon")
 
     for icon_name in ("origin_fogmog", "scale_beetle", "the_legacy", "bowlbug_progenitor"):
         icon = ROOT / "images" / "map" / f"{icon_name}_boss_icon.png"

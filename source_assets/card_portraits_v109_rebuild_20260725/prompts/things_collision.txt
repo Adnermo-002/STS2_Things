@@ -1,0 +1,12 @@
+Use case: stylized-concept.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Primary request: Completely repaint a new original card illustration for the Things Mod card Collision. Preserve only the semantic idea from Image 1: a heavy Ironclad body-check colliding with the Origin Fogmog. Do not copy Image 1's exact pose, rendering, background, or outlines.
+Input images: Image 1 is a semantic/action reference only; Image 2 is the Origin Fogmog identity reference; Image 3 is the canonical Ironclad identity reference; Images 4-5 are V109 background/effect language references.
+Scene/backdrop: deep wine-red base with 2-5 broad smooth flowing arcs and S-bands in burnt orange, vermilion, and dark plum, wrapping around the impact path. The background must flow in curved masses; reserve only a few hard shards at the collision point.
+Subject: canonical Ironclad with fully enclosed bronze-gold helmet, narrow red-orange eye slits, pale hair plume, dark brown underlayer, broad bronze-gold shoulder armor, green-gray glove if visible, and layered heavy armor. Origin Fogmog is a giant asymmetrical tan wooden mushroom creature with a red-brown cap, bright green slime spots, three dark vertical face openings, short horns, and clawed branch arms. Preserve distinct layered construction and selective near-black contour.
+Composition/framing: medium-close dynamic crop, Ironclad enters from the left and Fogmog from the right, both cropped by the frame, one dominant diagonal toward a single central collision contact. The contact point is the brightest focal point. Subject silhouettes remain readable at thumbnail size.
+Lighting/mood: violent impact with one hot yellow-orange collision flash and controlled highlights, no diffuse fog.
+Color palette: wine red, burnt orange, bronze-gold, dark brown, tan wood, acid green accents, one hot cream-white focal flash.
+Materials/textures: 3-6 large flat value regions per subject, curved shadow bands plus a few hard force planes, minimal wood grain and armor seams, no microtexture.
+Constraints: raw artwork only; no text, logo, watermark, card UI, collage, copied character, or copied pose. Background flows; subject anchors; effect directs.
+Avoid: photorealism, 3D render, smooth airbrushed gradients, all-angular background, generic human helmet, human face, extra characters, tiny scenery, excessive particles, cluttered effects.

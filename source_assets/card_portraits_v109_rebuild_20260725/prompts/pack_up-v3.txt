@@ -1,0 +1,10 @@
+Use case: identity-preserve style transfer.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Edit target priority: Image 1 is the exact scene and geometry to preserve. Keep its camera, crop, small Silent figure at upper left, exact body pose, horn and mask silhouette, scroll path, foreground roll size, and all relative positions. This is a repaint of Image 1, not a redesigned scene. Image 2 confirms Silent identity. Images 3-5 provide formal V109 rendering language only.
+Primary request: Improve Image 1's visual style while preserving the original action: Silent pulls or casts the long rolled sheet away as part of sorting and discarding cards.
+Silent lock: preserve the deep-green hood and cloak, elongated pale skull mask, matched pair of segmented beige horns, bandaged limbs, and exact current pose. Do not enlarge Silent, reveal a human face, alter the horn count, or introduce a new hand pose.
+Scroll lock: preserve the large rolled parchment dominating the lower-right foreground, its spiral opening, the long curling paper path, and the exact perspective toward Silent. Keep it blank with no writing.
+V109 repaint: reduce dense facets and texture into 3-5 large matte value regions per subject. Use selective near-black contours and only a few clean paper folds and cloth seams. Preserve depth through overlapping shapes, not microtexture.
+Background: replace the jagged full-frame lightning field with 3-5 broad flowing deep-navy, teal, violet, and muted-lime bands that follow the scroll's curve from foreground to Silent. Edges may be crisp but must turn smoothly. Add at most one small lime separation glint near Silent's hand.
+Constraints: change visual style and background language only; preserve Image 1's geometry and action. Raw artwork only; no text, card UI, frame, logo, watermark, collage, new cards, or new characters.
+Avoid: changed composition, changed scroll shape, enlarged character, missing horns, extra fingers, painterly texture, dense low-poly facets, radial streaks, photorealism, or 3D render.

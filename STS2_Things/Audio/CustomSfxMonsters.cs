@@ -11,7 +11,8 @@ public static class CustomSfxMonsters
     /// <summary>怪物 Entry（ModelId.Entry 小写），路径自动拼接</summary>
     public static readonly HashSet<string> Entries = new()
     {
-        "origin_fogmog"
+        "origin_fogmog",
+        "gravetide_slug"
         // origin_eye_with_teeth 用原版 EyeWithTeeth 音效，不走自定义音频拦截
         // 加新怪物音效：在这里加一行，格式 "怪物entry小写",
     };

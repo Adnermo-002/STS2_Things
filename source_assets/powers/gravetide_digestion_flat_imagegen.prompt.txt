@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: original 2D dark-fantasy roguelike deckbuilder Power/Buff icon, designed to remain instantly readable at 64x64
+Primary request: one centered, extremely simple stomach silhouette consuming one short bone. The stomach is a compact curled deep-navy shape with a single muted-teal inner plane. The bone is the only bright bone-white focal point and is half drawn into the stomach opening.
+Style/medium: bold hand-painted pictogram, broad matte shapes, thick near-black outer contour, deliberately simple and graphic rather than illustrative
+Composition/framing: one isolated symbol centered in a square, approximately 65 percent canvas coverage, generous clear padding, strong closed silhouette
+Color palette: exactly three flat subject colors: deep navy, muted teal-blue, and bone white, plus near-black outline; no other subject colors
+Scene/backdrop: perfectly flat solid #FF00FF chroma-key background for removal; one uniform color with no shadows, gradients, texture, floor, reflections, or lighting variation
+Constraints: original design; one stomach; one bone; one broad highlight plane at most; clear at thumbnail size; crisp edges; no #FF00FF in the subject; no text, letters, numbers, frame, border, logo, signature, or watermark
+Avoid: creature portrait, slug body, face, ring of teeth, extra teeth, extra bones, skull, bubbles, droplets, particles, shield, crown, gem, gold, purple, red, rainbow, detailed anatomy, veins, cracks, surface texture, micro-detail, painterly noise, gradients, glow, cast shadow, contact shadow, 3D render, photorealism, anime

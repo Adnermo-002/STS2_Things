@@ -1,0 +1,9 @@
+Use case: identity-preserve style transfer.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Edit target priority: Image 1 is the exact scene and geometry to preserve. Keep its centered round fish-host head, helmet/chamber silhouette, broad side fins, half-lidded eyes, mouth, exposed pink infection core, yellow nodules, violet lesions, hanging weed shapes, crop, and all relative positions. This is a repaint of Image 1, not a redesigned creature. Images 2-4 provide formal V109 rendering language only. Image 5 confirms the translucent amber Soul Roe motif.
+Primary request: Improve Image 1's visual style while preserving the original diseased Soulfysh portrait and infection arrangement.
+Creature lock: preserve the exact blue-green fish face, chamber proportions, eye expression, fin placement, pink core location and shape, yellow nodules, violet coral lesions, and outer hanging weeds. Do not replace the host, move the organ cluster, add creatures, or change the face.
+V109 repaint: simplify the host and chamber into 3-5 large matte value regions with selective dark contour, rounded liquid shapes, a few cyan rim highlights, and restrained transparent overlap. Remove dense neon outlining and small facet noise while keeping the infection readable.
+Background: replace the jagged lightning field with 3-5 broad indigo, deep-blue, teal, and muted-chartreuse current bands that flow behind and around the round host. Keep one small cyan highlight on the chamber and a few rounded droplets only.
+Constraints: change visual style and background language only; preserve Image 1's geometry and infection layout. Raw artwork only; no text, card UI, frame, logo, watermark, collage, or new creature.
+Avoid: changed fish proportions, moved organs, realistic gore, added anatomy, painterly texture, dense facets, all-angular background, excessive bubbles, photorealism, or 3D render.

@@ -1,0 +1,54 @@
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>13.0</LangVersion>
+    <AssemblyName>ThingsModelIdProbe</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64</Sts2DataDir>
+    <RuntimeDependencyDir Condition="'$(RuntimeDependencyDir)' == ''">D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64</RuntimeDependencyDir>
+    <ImplementationDll Condition="'$(ImplementationDll)' == ''">$(MSBuildProjectDirectory)\..\..\build\v110\STS2_Things.dll</ImplementationDll>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**\*.cs" />
+    <Reference Include="sts2">
+      <HintPath>$(Sts2DataDir)\sts2.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(Sts2DataDir)\0Harmony.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="STS2_Things">
+      <HintPath>$(ImplementationDll)</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\System.IO.Hashing.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\JetBrains.Annotations.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\MonoMod.Backports.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\MonoMod.ILHelpers.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Sentry.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Sentry.Godot.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SharpGen.Runtime.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SharpGen.Runtime.COM.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SmartFormat.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SmartFormat.ZString.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Steamworks.NET.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Vortice.DirectX.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Vortice.DXGI.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Vortice.Mathematics.dll" />
+  </ItemGroup>
+
+  <Target Name="ValidateProbeReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(Sts2DataDir)\sts2.dll')" Text="Missing sts2.dll under $(Sts2DataDir)." />
+    <Error Condition="!Exists('$(ImplementationDll)')" Text="Missing implementation DLL at $(ImplementationDll)." />
+  </Target>
+
+  <Target Name="CopyProbeRuntimeDependencies" AfterTargets="Build">
+    <Copy SourceFiles="@(ProbeRuntimeDependency)"
+          DestinationFolder="$(TargetDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
+</Project>

@@ -27,7 +27,7 @@ public sealed class OriginEyeWithTeeth : MonsterModel
 
     protected override string AttackSfx =>
         "event:/sfx/enemy/enemy_attacks/eye_with_teeth/eye_with_teeth_attack";
-    // EyeWithTeeth has no death event in the V109 SFX bank. The Obscura
+    // EyeWithTeeth has no death event in the V110 SFX bank. The Obscura
     // hologram event is the native illusion-disappearance equivalent.
     public override string DeathSfx =>
         "event:/sfx/enemy/enemy_attacks/obscura/obscura_hologram_die";
@@ -138,7 +138,7 @@ public static class RequiredMonsterMoveTransitionPatch
         if (__instance is OriginEyeWithTeeth && state.StateId == "REVIVE_MOVE")
             forceTransition = true;
 
-        // Fogmog 跨半血时 OriginPower 只触发一次；如果当前正被其他来源眩晕，
+        // Fogmog 跨半血时 ThingsOriginPower 只触发一次；如果当前正被其他来源眩晕，
         // 普通 SetMoveImmediate 会拒绝新的 STUNNED 并永久跳过幻象阶段。
         if (__instance is OriginFogmog
             && state.StateId == MonsterModel.stunnedMoveId

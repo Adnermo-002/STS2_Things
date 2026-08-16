@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bsvim4ycbsve"]
+
+[ext_resource type="Texture2D" uid="uid://h6wumkge75jt" path="res://images/relics/things_magic_glove.png" id="1_ms0md"]
+
+[resource]
+atlas = ExtResource("1_ms0md")
+region = Rect2(0, 0, 256, 256)

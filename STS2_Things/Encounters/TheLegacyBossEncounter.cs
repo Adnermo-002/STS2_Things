@@ -28,14 +28,14 @@ public sealed class TheLegacyBossEncounter : ModBossEncounter
 
     public override IEnumerable<MonsterModel> AllPossibleMonsters => new MonsterModel[]
     {
-        ModelDb.Monster<TheLegacy>()
+        ModelDb.Monster<ThingsTheLegacy>()
     };
 
     protected override IReadOnlyList<(MonsterModel, string?)> GenerateMonsters()
     {
         return new (MonsterModel, string?)[]
         {
-            (ModelDb.Monster<TheLegacy>().ToMutable(), "the_legacy")
+            (ModelDb.Monster<ThingsTheLegacy>().ToMutable(), "the_legacy")
         };
     }
 }

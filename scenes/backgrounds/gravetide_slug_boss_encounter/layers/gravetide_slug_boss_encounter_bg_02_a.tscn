@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Material" path="res://materials/backgrounds/gravetide_slug_water_reflection.tres" id="1_water_material"]
+[ext_resource type="Texture2D" path="res://images/backgrounds/gravetide_slug/gravetide_slug_water.png" id="2_water"]
+
+[node name="GravetideSlugTideSurface" type="Control"]
+mouse_filter = 2
+
+[node name="WaterSurfaceArt" type="TextureRect" parent="."]
+modulate = Color(0.76, 0.8, 0.94, 0.22)
+offset_left = -1384.0
+offset_top = -648.0
+offset_right = 1384.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("2_water")
+expand_mode = 1
+metadata/asset_contract = "res://images/backgrounds/gravetide_slug/gravetide_slug_water.png"
+
+[node name="WaterReflection" type="ColorRect" parent="."]
+material = ExtResource("1_water_material")
+offset_left = -1384.0
+offset_top = -648.0
+offset_right = 1384.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.72, 0.78, 0.92, 0.38)

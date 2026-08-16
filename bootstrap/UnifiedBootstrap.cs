@@ -13,9 +13,9 @@ public static class UnifiedBootstrap
 {
     private const string ModId = "STS2_Things";
     private const string V1071Target = "v107.1";
-    private const string V109Target = "v109";
+    private const string V110Target = "v110";
     private const string V1071Resource = "STS2_Things.Implementations.v107.1.dll";
-    private const string V109Resource = "STS2_Things.Implementations.v109.dll";
+    private const string V110Resource = "STS2_Things.Implementations.v110.dll";
     private const string ImplementationAssemblyName = "STS2_Things";
     private const string LegacyHarmonyId = "Adnermo.STS2_Things.UnifiedBootstrap.V1071";
 
@@ -41,8 +41,8 @@ public static class UnifiedBootstrap
             SelectedTarget = DetectTarget(_gameAssembly);
             _implementationAssembly = LoadImplementation(SelectedTarget);
 
-            if (SelectedTarget == V109Target)
-                AssociateV109Implementation(_gameAssembly, _implementationAssembly);
+            if (SelectedTarget == V110Target)
+                AssociateV110Implementation(_gameAssembly, _implementationAssembly);
             else
                 InstallV1071RegistrationBridge(_gameAssembly);
 
@@ -59,7 +59,7 @@ public static class UnifiedBootstrap
         return DetectTarget(gameAssembly) switch
         {
             V1071Target => V1071Resource,
-            V109Target => V109Resource,
+            V110Target => V110Resource,
             _ => throw new InvalidOperationException("Unsupported STS2 target.")
         };
     }
@@ -78,17 +78,18 @@ public static class UnifiedBootstrap
 
         if (parameterCounts.SequenceEqual([5]))
             return V1071Target;
-        if (parameterCounts.SequenceEqual([6]))
-            return V109Target;
+        if (parameterCounts.SequenceEqual([6]) &&
+            gameAssembly.GetType("MegaCrit.Sts2.Core.Combat.CombatId") is not null)
+            return V110Target;
 
         throw new NotSupportedException(
-            "STS2_Things 1.7.0 supports STS2 v0.107.1 and v0.109.0. " +
+            "STS2_Things 1.9.5 supports STS2 v0.107.1 and v0.110.x. " +
             $"Detected ModifyDamageMultiplicative parameter counts: {string.Join(", ", parameterCounts)}.");
     }
 
     private static Assembly LoadImplementation(string target)
     {
-        var resourceName = target == V1071Target ? V1071Resource : V109Resource;
+        var resourceName = target == V1071Target ? V1071Resource : V110Resource;
         var bootstrapAssembly = typeof(UnifiedBootstrap).Assembly;
         using var stream = bootstrapAssembly.GetManifestResourceStream(resourceName)
             ?? throw new MissingManifestResourceException(
@@ -108,7 +109,7 @@ public static class UnifiedBootstrap
         return implementation;
     }
 
-    private static void AssociateV109Implementation(
+    private static void AssociateV110Implementation(
         Assembly gameAssembly,
         Assembly implementationAssembly)
     {

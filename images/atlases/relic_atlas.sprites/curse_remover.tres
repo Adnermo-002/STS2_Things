@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dno5fyudmanx8"]
-
-[ext_resource type="Texture2D" uid="uid://si1ydldtbvmo" path="res://images/relics/curse_remover.png" id="1_7qsfa"]
-
-[resource]
-atlas = ExtResource("1_7qsfa")
-region = Rect2(0, 0, 256, 256)

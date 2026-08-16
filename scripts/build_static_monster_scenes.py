@@ -21,7 +21,6 @@ TEXTURE_KEYS = {
     "soul_roe_3": "soul_roe_3",
     "soul_roes": "soul_roes",
     "the_legacy": "the_legacy",
-    "thief_raider": "thief_raider",
 }
 
 

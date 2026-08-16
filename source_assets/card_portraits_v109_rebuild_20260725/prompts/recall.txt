@@ -1,0 +1,11 @@
+Use case: stylized-concept.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Primary request: Create a new original card illustration for the Things Mod card Recall. Preserve only the gameplay idea from Image 1: Silent draws again from the discard pile. Do not reuse Image 1's centered portrait, pose, blue burst, or linework.
+Input images: Image 1 is semantic reference only; Image 2 locks canonical Silent anatomy and costume; Images 3-5 establish V109 background, subject, and effect language.
+Scene/backdrop: a deep indigo and blue-green field built from 2-5 large flowing spiral bands. The spiral should visibly pull from a lower dark discard hollow toward the upper action, with limited pale lime and cyan accents.
+Subject: canonical Silent in a medium close three-quarter crop at the right edge: deep-green layered hood and cloak, pale elongated skull mask, lime eye glow, one matched pair of segmented beige horns. A visible pale bandaged hand has exactly five separated digits, reaching toward the returning card. Preserve fabric overlap and the mask's dark eye cavities.
+Action/composition: one blank dark card emerges from a low left discard vortex, rides a luminous curved ribbon, and reaches Silent's open hand. Add only two faint trailing blank card silhouettes to show the direction of return. Put one electric cyan focal glint on the returning card, not a wide explosion.
+Lighting/mood: quiet occult retrieval, compact and decisive, with no haze.
+Materials/textures: 3-6 large flat value regions, selective near-black contour, curved fabric shadows, thin cool highlights, no text printed on the cards.
+Constraints: raw artwork only; no words, letters, numbers, card UI, frame, logo, watermark, copied composition, or collage. Background flows; subject anchors; effect directs.
+Avoid: human face, smooth animal mask, single horn, extra fingers, mechanical limbs, broad sword, photorealism, 3D render, microtexture, all-angular backdrop, dense scenery, particles that obscure the hand or card.

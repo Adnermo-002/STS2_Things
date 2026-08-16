@@ -1,0 +1,10 @@
+Use case: stylized-concept.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Style priority: Images 1-3 are formal V109 Silent card-art references and control the rendering language: flat matte opaque shapes, 2-4 value steps, selective dark contour, hard readable subject edges, and broad flowing background bands. Do not copy their characters, poses, or effects. Image 4 is semantic reference only. Image 5 locks canonical Silent anatomy.
+Primary request: Create a new original card illustration for Recall. Silent draws a blank card back out of the discard pile, reversing the normal flow of the deck. Do not reuse Image 4's centered portrait, pose, blue burst, or linework.
+Background: exactly 3-5 broad indigo, blue-green, and muted lime spiral bands. The bands curve from a low dark discard hollow toward the upper action; the background must be smooth large color masses, not brushwork or dense lightning.
+Subject: canonical Silent in a medium-close crop at the right edge: deep-green layered hood and cloak, elongated pale skull mask, lime eye glow, a matched pair of segmented beige horns, and one pale bandaged hand with exactly five separated digits reaching toward the returning card. Preserve the cloth overlap and dark eye cavities.
+Action/composition: one blank dark card rises from a low left discard hollow, rides a single cyan-green curved ribbon, and reaches Silent's open hand. Add at most two faint blank card silhouettes behind it. One small cyan glint on the returning card is the only brightest point.
+Color/value: matte navy shadows, teal midtones, lime accent, one pale card highlight. No gradients, glossy lighting, or texture noise.
+Constraints: raw artwork only; no words, letters, numbers, card UI, frame, logo, watermark, copied composition, or collage. Background flows; subject anchors; effect directs.
+Avoid: human face, smooth animal mask, single horn, extra fingers, mechanical limbs, broad sword, photorealism, 3D render, microtexture, all-angular backdrop, dense scenery, or particles obscuring the hand.

@@ -1,5 +1,7 @@
 {
-  "DISPERSE.title": "消散",
-  "DISPERSE.description": "这张牌获得[gold]虚无[/gold]。",
-  "DISPERSE.smartDescription": "这张牌获得[gold]虚无[/gold]。"
+  "THINGS_DISPERSE.title": "消散",
+  "THINGS_DISPERSE.description": "这张牌获得[gold]虚无[/gold]。",
+  "THINGS_DISPERSE.smartDescription": "这张牌获得[gold]虚无[/gold]。"
+  ,"THINGS_SPLIT.title": "分裂"
+  ,"THINGS_SPLIT.description": "这张牌的费用减半并向下取整。其所有数值减半并向上取整。"
 }

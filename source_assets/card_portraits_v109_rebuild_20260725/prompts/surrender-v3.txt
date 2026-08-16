@@ -1,0 +1,10 @@
+Use case: identity-preserve style transfer.
+Asset type: raw portrait event-card illustration for Slay the Spire 2 V109, preserving the existing 606x852 atlas composition, no card frame.
+Edit target priority: Image 1 is the exact scene and geometry to preserve. Keep its kneeling hooded masked figure, exact crouched pose, hand placements, brass mask, cloak spread on the ground, flagpole angle, torn white flag shape, portrait crop, and relative scale. This is a repaint of Image 1, not a redesigned event. Images 2-4 provide formal V109 rendering language only.
+Primary request: Improve Image 1's visual style while preserving the original white-flag surrender scene.
+Figure lock: preserve the exact hooded scavenger/automaton silhouette, brass multi-lens mask, weathered arms, hands, brown legs, boots, and black cloak. Do not replace the figure, change the pose, add characters, or alter the flagpole grip.
+Flag lock: preserve the exact wooden pole diagonal and one torn white flag occupying the upper-right area. Keep the cloth blank, with no writing or symbol.
+V109 repaint: simplify figure, mask, pole, and flag into 3-5 large matte value regions per motif, with selective dark contour, a few cloth folds, and restrained material seams. Preserve depth through overlaps, not dense shading.
+Background: replace the soft gradient cloudscape with 3-5 broad midnight-blue, muted-violet, and plum cloud bands that flow behind the flagpole. Add one thin muted-green recovery ribbon curling behind the kneeling figure and one very faint violet broken intent arc in the distance without changing the scene.
+Constraints: change visual style and background language only; preserve Image 1's geometry and pose. Raw artwork only; no text, card UI, frame, logo, watermark, collage, new character, or new flag.
+Avoid: changed pose, altered flag, extra fingers, extra limbs, generic knight, painterly texture, dense facets, gradient-heavy sky, photorealism, or 3D render.

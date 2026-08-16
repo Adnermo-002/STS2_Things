@@ -349,50 +349,8 @@ RIGS: tuple[Rig, ...] = (
         ),
         virtual_bones=(VirtualBone("HeartAnchor", (690, 430)),),
     ),
-
-    # Thief Raider: real arm/leg chains with small opaque socket underlays.
-    Rig(
-        "thief_raider", "thief_raider.png", "Torso", (190, 235),
-        (
-            Piece("dagger", "Dagger", (310, 300), (polygon((285, 270), (353, 265), (353, 420), (300, 382)),), 50, 6, semantic="weapon"),
-            Piece("dagger_hand", "DaggerHand", (297, 290), (polygon((265, 255), (325, 250), (330, 320), (275, 325)),), 48, 8, semantic="hand"),
-            Piece("dagger_forearm", "DaggerForearm", (282, 235), (polygon((245, 195), (320, 195), (330, 285), (270, 300), (245, 250)),), 46, 10, semantic="limb"),
-            Piece("dagger_upper_arm", "DaggerUpperArm", (260, 170), (polygon((215, 120), (300, 125), (315, 225), (255, 255), (225, 215)),), 43, 12, semantic="limb"),
-            Piece("guard_hand", "GuardHand", (163, 172), (polygon((140, 135), (195, 135), (205, 195), (155, 210)),), 46, 8, semantic="hand"),
-            Piece("guard_forearm", "GuardForearm", (105, 185), (polygon((55, 145), (155, 145), (175, 225), (80, 230)),), 44, 10, semantic="limb"),
-            Piece("guard_arm", "GuardArm", (120, 135), (polygon((70, 85), (160, 85), (175, 165), (95, 185), (55, 145)),), 42, 12, semantic="limb"),
-            Piece("scarf", "Scarf", (207, 145), (polygon((145, 85), (285, 85), (290, 185), (180, 200), (135, 150)),), 40, 8, semantic="cloth"),
-            Piece("face_shadow", "Head", (190, 125), (polygon((135, 35), (245, 35), (250, 125), (130, 130)),), 39, 4, semantic="accent"),
-            Piece("head", "Head", (190, 125), (polygon((115, 0), (280, 0), (285, 165), (110, 170)),), 38, 8, semantic="head"),
-            Piece("torso", "Torso", (190, 235), (polygon((205, 180), (275, 180), (275, 255), (205, 255)),), 25, 8, semantic="core"),
-            Piece("pelvis", "Pelvis", (190, 285), (polygon((95, 210), (280, 205), (290, 350), (90, 355)),), 24, 8, semantic="core"),
-            Piece("left_foot", "LeftFoot", (118, 495), (polygon((70, 455), (170, 450), (180, 534), (65, 534)),), 21, 8, semantic="foot"),
-            Piece("left_shin", "LeftShin", (135, 410), (polygon((85, 360), (180, 355), (175, 495), (90, 500)),), 19, 10, semantic="limb"),
-            Piece("left_leg", "LeftLeg", (145, 320), (polygon((80, 270), (205, 260), (205, 410), (90, 415)),), 17, 12, semantic="limb"),
-            Piece("right_foot", "RightFoot", (252, 485), (polygon((190, 445), (305, 440), (315, 515), (200, 520)),), 22, 8, semantic="foot"),
-            Piece("right_shin", "RightShin", (225, 405), (polygon((180, 350), (285, 345), (295, 485), (195, 490)),), 20, 10, semantic="limb"),
-            Piece("right_leg", "RightLeg", (220, 320), (polygon((165, 255), (305, 250), (310, 405), (180, 410)),), 18, 12, semantic="limb"),
-            Piece("bag", "Bag", (126, 145), (polygon((30, 15), (160, 15), (185, 225), (25, 250)),), 5, 8, semantic="prop"),
-            Piece("cloak_left_tail", "CloakLeftTail", (69, 300), (polygon((0, 190), (110, 180), (130, 420), (0, 425)),), 9, 10, semantic="cloth"),
-            Piece("cloak_right_tail", "CloakRightTail", (150, 315), (polygon((85, 200), (205, 195), (220, 420), (110, 430)),), 10, 10, semantic="cloth"),
-            Piece("cloak", "Cloak", (145, 190), (polygon((0, 65), (220, 65), (230, 330), (0, 345)),), 6, 10, semantic="cloth"),
-            Piece("socket_guard_shoulder", "Torso", (190, 235), (ellipse(88, 110, 145, 165),), 39, 0, underlay=True, semantic="socket"),
-            Piece("socket_dagger_shoulder", "Torso", (190, 235), (ellipse(230, 135, 285, 190),), 39, 0, underlay=True, semantic="socket"),
-            Piece("socket_left_hip", "Pelvis", (190, 285), (ellipse(120, 285, 175, 340),), 15, 0, underlay=True, semantic="socket"),
-            Piece("socket_right_hip", "Pelvis", (190, 285), (ellipse(190, 285, 250, 345),), 15, 0, underlay=True, semantic="socket"),
-        ),
-        parents=(
-            ("Pelvis", "Root"), ("Torso", "Pelvis"), ("Head", "Torso"), ("Scarf", "Torso"),
-            ("Bag", "Torso"), ("Cloak", "Torso"), ("CloakLeftTail", "Cloak"), ("CloakRightTail", "Cloak"),
-            ("GuardArm", "Torso"), ("GuardForearm", "GuardArm"), ("GuardHand", "GuardForearm"),
-            ("DaggerUpperArm", "Torso"), ("DaggerForearm", "DaggerUpperArm"),
-            ("DaggerHand", "DaggerForearm"), ("Dagger", "DaggerHand"),
-            ("LeftLeg", "Pelvis"), ("LeftShin", "LeftLeg"), ("LeftFoot", "LeftShin"),
-            ("RightLeg", "Pelvis"), ("RightShin", "RightLeg"), ("RightFoot", "RightShin"),
-        ),
-        virtual_bones=(VirtualBone("Root", (190, 486)),),
-    ),
 )
+
 
 def draw_shapes(size: tuple[int, int], shapes: Iterable[Shape]) -> Image.Image:
     mask = Image.new("L", size, 0)

@@ -1,4 +1,7 @@
 using System.Reflection;
+using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
+using System.Reflection.PortableExecutable;
 using System.Resources;
 using System.Runtime.Loader;
 using System.Security.Cryptography;
@@ -36,10 +39,35 @@ if (!File.Exists(gamePath) ||
 var expectedResource = expectedTarget switch
 {
     "v107.1" => "STS2_Things.Implementations.v107.1.dll",
-    "v109" => "STS2_Things.Implementations.v109.dll",
+    "v110" => "STS2_Things.Implementations.v110.dll",
     _ => throw new ArgumentOutOfRangeException(nameof(expectedTarget), expectedTarget, null)
 };
 const string expectedAssemblyName = "STS2_Things";
+const int minimumReasonableModelCount = 50;
+const int maximumReasonableModelCount = 80;
+string[] requiredModelNames =
+[
+    "STS2_Things.Cards.ThingsCollision",
+    "STS2_Things.Enchantments.ThingsDisperse",
+    "STS2_Things.Enchantments.ThingsSplit",
+    "STS2_Things.Events.ThingsBackrooms",
+    "STS2_Things.Events.CuttingItClose",
+    "STS2_Things.Events.ThingsMedusa",
+    "STS2_Things.Events.RobberyFakeMerchant",
+    "STS2_Things.Encounters.GravetideSlugBossEncounter",
+    "STS2_Things.Encounters.OriginFogmogBossEncounter",
+    "STS2_Things.Encounters.QuirkyHopperWeak",
+    "STS2_Things.Modifiers.QuirkyHopperRewardPolicy",
+    "STS2_Things.Monsters.GravetideCorpseSlug",
+    "STS2_Things.Monsters.GravetideSlug",
+    "STS2_Things.Monsters.GravetideSlugCorpse",
+    "STS2_Things.Monsters.OriginFogmog",
+    "STS2_Things.Monsters.QuirkyHopper",
+    "STS2_Things.Monsters.ThingsTheLegacy",
+    "STS2_Things.Powers.GravetideDigestionPower",
+    "STS2_Things.Powers.GravetideMinionPower",
+    "STS2_Things.Powers.ThingsQuirkPower"
+];
 
 try
 {
@@ -66,7 +94,7 @@ try
     var expectedResources = new[]
     {
         "STS2_Things.Implementations.v107.1.dll",
-        "STS2_Things.Implementations.v109.dll"
+        "STS2_Things.Implementations.v110.dll"
     };
     if (!resources.SequenceEqual(expectedResources, StringComparer.Ordinal))
     {
@@ -104,10 +132,52 @@ try
 
     var abstractModel = gameAssembly.GetType(
         "MegaCrit.Sts2.Core.Models.AbstractModel", throwOnError: true)!;
-    var modelCount = implementationTypes.Count(type =>
-        type != abstractModel && !type.IsAbstract && abstractModel.IsAssignableFrom(type));
-    if (modelCount == 0)
-        throw new InvalidOperationException("Selected implementation exposes no AbstractModel types.");
+    var modelNames = implementationTypes
+        .Where(type =>
+            type != abstractModel &&
+            !type.IsAbstract &&
+            abstractModel.IsAssignableFrom(type))
+        .Select(type => type.FullName ?? type.Name)
+        .ToHashSet(StringComparer.Ordinal);
+    var modelCount = modelNames.Count;
+    if (modelCount is < minimumReasonableModelCount or > maximumReasonableModelCount)
+    {
+        throw new InvalidOperationException(
+            $"Selected implementation exposes {modelCount} AbstractModel types; " +
+            $"expected a total between {minimumReasonableModelCount} and " +
+            $"{maximumReasonableModelCount}.");
+    }
+
+    var missingRequiredModels = requiredModelNames
+        .Where(required => !modelNames.Contains(required))
+        .Order(StringComparer.Ordinal)
+        .ToArray();
+    if (missingRequiredModels.Length > 0)
+    {
+        throw new InvalidOperationException(
+            "Selected implementation is missing required models: " +
+            string.Join(", ", missingRequiredModels));
+    }
+
+    var embeddedModelNames = expectedResources.ToDictionary(
+        resource => resource,
+        resource => ReadEmbeddedModelNames(bootstrapAssembly, resource),
+        StringComparer.Ordinal);
+    if (!embeddedModelNames[expectedResource].SetEquals(modelNames))
+    {
+        throw new InvalidOperationException(
+            $"Runtime and metadata model sets differ for {expectedResource}: " +
+            DescribeSetDifference(modelNames, embeddedModelNames[expectedResource]));
+    }
+
+    var v1071Models = embeddedModelNames["STS2_Things.Implementations.v107.1.dll"];
+    var v110Models = embeddedModelNames["STS2_Things.Implementations.v110.dll"];
+    if (!v1071Models.SetEquals(v110Models))
+    {
+        throw new InvalidOperationException(
+            "V107.1 and V110 implementation model sets differ: " +
+            DescribeSetDifference(v1071Models, v110Models));
+    }
 
     var modManager = gameAssembly.GetType(
         "MegaCrit.Sts2.Core.Modding.ModManager", throwOnError: true)!;
@@ -137,7 +207,7 @@ try
     else
     {
         if (savedPropertiesTypeCache is not null)
-            throw new InvalidOperationException("V109 still exposes SavedPropertiesTypeCache.");
+            throw new InvalidOperationException("V110 still exposes SavedPropertiesTypeCache.");
         if (modManager.GetMethod(
                 "AssociateAssemblyWithMod",
                 BindingFlags.Public | BindingFlags.Static,
@@ -177,6 +247,97 @@ static Type[] GetLoadableTypes(Assembly assembly)
             "Implementation type loading failed:\n" + string.Join("\n", loaderMessages),
             exception);
     }
+}
+
+static HashSet<string> ReadEmbeddedModelNames(Assembly assembly, string resourceName)
+{
+    using var resourceStream = assembly.GetManifestResourceStream(resourceName)
+        ?? throw new MissingManifestResourceException(resourceName);
+    using var assemblyBytes = new MemoryStream();
+    resourceStream.CopyTo(assemblyBytes);
+    assemblyBytes.Position = 0;
+
+    using var peReader = new PEReader(assemblyBytes, PEStreamOptions.LeaveOpen);
+    var metadata = peReader.GetMetadataReader();
+    var modelMemo = new Dictionary<TypeDefinitionHandle, bool>();
+    var modelNames = new HashSet<string>(StringComparer.Ordinal);
+
+    foreach (var handle in metadata.TypeDefinitions)
+    {
+        var definition = metadata.GetTypeDefinition(handle);
+        if ((definition.Attributes & TypeAttributes.Abstract) != 0)
+            continue;
+        if (!DerivesFromModel(metadata, handle, modelMemo, []))
+            continue;
+
+        var name = metadata.GetString(definition.Name);
+        var @namespace = metadata.GetString(definition.Namespace);
+        modelNames.Add(string.IsNullOrEmpty(@namespace) ? name : $"{@namespace}.{name}");
+    }
+
+    return modelNames;
+}
+
+static bool DerivesFromModel(
+    MetadataReader metadata,
+    TypeDefinitionHandle handle,
+    Dictionary<TypeDefinitionHandle, bool> memo,
+    HashSet<TypeDefinitionHandle> visiting)
+{
+    if (memo.TryGetValue(handle, out var cached))
+        return cached;
+    if (!visiting.Add(handle))
+        throw new InvalidOperationException("Implementation metadata contains a cyclic base-type graph.");
+
+    var rowNumber = MetadataTokens.GetRowNumber(handle);
+    if (rowNumber <= 0 || rowNumber > metadata.TypeDefinitions.Count)
+    {
+        throw new InvalidOperationException(
+            $"Implementation metadata references invalid TypeDef row {rowNumber}; " +
+            $"table size is {metadata.TypeDefinitions.Count}.");
+    }
+
+    var baseType = metadata.GetTypeDefinition(handle).BaseType;
+    var result = !baseType.IsNil && baseType.Kind switch
+        {
+            HandleKind.TypeDefinition => DerivesFromModel(
+                metadata,
+                (TypeDefinitionHandle)baseType,
+                memo,
+                visiting),
+            HandleKind.TypeReference => IsKnownModelBase(metadata, (TypeReferenceHandle)baseType),
+            _ => false
+        };
+
+    visiting.Remove(handle);
+    memo[handle] = result;
+    return result;
+}
+
+static bool IsKnownModelBase(MetadataReader metadata, TypeReferenceHandle handle)
+{
+    var name = metadata.GetString(metadata.GetTypeReference(handle).Name);
+    return name is
+        "AbstractModel" or
+        "CardModel" or
+        "EncounterModel" or
+        "EnchantmentModel" or
+        "EventModel" or
+        "ModifierModel" or
+        "MonsterModel" or
+        "PotionModel" or
+        "PowerModel" or
+        "RelicModel";
+}
+
+static string DescribeSetDifference(
+    IReadOnlySet<string> left,
+    IReadOnlySet<string> right)
+{
+    var onlyLeft = left.Except(right, StringComparer.Ordinal).Order(StringComparer.Ordinal);
+    var onlyRight = right.Except(left, StringComparer.Ordinal).Order(StringComparer.Ordinal);
+    return $"only-left=[{string.Join(", ", onlyLeft)}], " +
+           $"only-right=[{string.Join(", ", onlyRight)}]";
 }
 
 static void VerifyLegacyRegistrationBridge(

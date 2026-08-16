@@ -1,5 +1,10 @@
-; STS2_Things asset/PCK project for the unified V107.1/V109 package.
-; The DLL is built from STS2_Things/STS2_Things.csproj and is not embedded in the PCK.
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
 
 config_version=5
 
@@ -14,9 +19,6 @@ project/assembly_name="STS2_Things"
 
 [editor]
 
-; BackgroundAssets enumerates the mounted layers directory at runtime and expects
-; actual *.tscn names. Binary export would expose *.tscn.remap entries instead,
-; which the game then tries (and fails) to load as scenes.
 export/convert_text_resources_to_binary=false
 
 [rendering]

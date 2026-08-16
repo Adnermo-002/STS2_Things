@@ -26,11 +26,10 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
         Default,
         OriginFogmog,
         BowlbugProgenitor,
-        ScaleBeetle,
+        ThingsScaleBeetle,
         SoulRoes,
         SoulRoe,
-        TheLegacy,
-        ThiefRaider
+        ThingsTheLegacy
     }
 
     private enum BoneRole
@@ -136,28 +135,28 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
         {
             "Attack" => RigPersonality switch
             {
-                RigPersonalityType.ScaleBeetle => 1.03,
+                RigPersonalityType.ThingsScaleBeetle => 1.03,
                 RigPersonalityType.OriginFogmog => 0.77,
-                RigPersonalityType.TheLegacy => 0.92,
+                RigPersonalityType.ThingsTheLegacy => 0.92,
                 _ => 0.78
             },
             "Cast" => RigPersonality switch
             {
-                RigPersonalityType.ScaleBeetle => 1.33,
+                RigPersonalityType.ThingsScaleBeetle => 1.33,
                 RigPersonalityType.OriginFogmog => 2.20,
-                RigPersonalityType.TheLegacy => 1.16,
+                RigPersonalityType.ThingsTheLegacy => 1.16,
                 _ => 0.98
             },
             "Hit" => RigPersonality switch
             {
                 RigPersonalityType.OriginFogmog => 0.58,
-                RigPersonalityType.ScaleBeetle => 0.83,
+                RigPersonalityType.ThingsScaleBeetle => 0.83,
                 _ => 0.46
             },
             "Dead" => RigPersonality switch
             {
                 RigPersonalityType.OriginFogmog => 1.90,
-                RigPersonalityType.ScaleBeetle => 1.37,
+                RigPersonalityType.ThingsScaleBeetle => 1.37,
                 _ => 1.02
             },
             "Revive" => 1.04,
@@ -509,11 +508,10 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
         {
             RigPersonalityType.OriginFogmog => "origin_fogmog",
             RigPersonalityType.BowlbugProgenitor => "bowlbug_progenitor",
-            RigPersonalityType.ScaleBeetle => "scale_beetle",
+            RigPersonalityType.ThingsScaleBeetle => "scale_beetle",
             RigPersonalityType.SoulRoes => "soul_roes",
             RigPersonalityType.SoulRoe => $"soul_roe_{GetSoulRoeVariant() + 1}",
-            RigPersonalityType.TheLegacy => "the_legacy",
-            RigPersonalityType.ThiefRaider => "thief_raider",
+            RigPersonalityType.ThingsTheLegacy => "the_legacy",
             _ => string.Empty
         };
     }
@@ -549,7 +547,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                 ("RearLegA", BoneRole.Right, new Vector2(0.79f, 0.75f), 7.15f),
                 ("RearLegB", BoneRole.Right, new Vector2(0.92f, 0.75f), 7.8f)
             ],
-            RigPersonalityType.ScaleBeetle =>
+            RigPersonalityType.ThingsScaleBeetle =>
             [
                 ("Root", BoneRole.Root, new Vector2(0.55f, 0.80f), 0.0f),
                 ("JawUpper", BoneRole.Left, new Vector2(0.055f, 0.61f), 0.55f),
@@ -598,7 +596,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                 ("Root", BoneRole.Root, new Vector2(0.50f, 0.50f), 0.0f),
                 ("Core", BoneRole.Core, new Vector2(0.50f, 0.54f), 1.25f)
             ],
-            RigPersonalityType.TheLegacy =>
+            RigPersonalityType.ThingsTheLegacy =>
             [
                 ("Root", BoneRole.Root, new Vector2(0.50f, 0.84f), 0.0f),
                 ("HeartAnchor", BoneRole.Core, new Vector2(0.51f, 0.62f), 0.75f),
@@ -609,21 +607,6 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                 ("LeftTubes", BoneRole.Left, new Vector2(0.18f, 0.40f), 4.50f),
                 ("TopTubes", BoneRole.Head, new Vector2(0.49f, 0.21f), 5.25f),
                 ("RightTubes", BoneRole.Right, new Vector2(0.84f, 0.50f), 6.00f)
-            ],
-            RigPersonalityType.ThiefRaider =>
-            [
-                ("Root", BoneRole.Root, new Vector2(0.51f, 0.91f), 0.0f),
-                ("Pelvis", BoneRole.Core, new Vector2(0.52f, 0.72f), 0.8f),
-                ("Torso", BoneRole.Core, new Vector2(0.52f, 0.49f), 1.6f),
-                ("Head", BoneRole.Head, new Vector2(0.55f, 0.20f), 2.4f),
-                ("Bag", BoneRole.Left, new Vector2(0.23f, 0.43f), 3.2f),
-                ("Cloak", BoneRole.Left, new Vector2(0.37f, 0.58f), 4.0f),
-                ("GuardArm", BoneRole.Left, new Vector2(0.43f, 0.46f), 4.8f),
-                ("DaggerUpperArm", BoneRole.Right, new Vector2(0.74f, 0.32f), 5.6f),
-                ("DaggerForearm", BoneRole.Right, new Vector2(0.80f, 0.44f), 6.4f),
-                ("Dagger", BoneRole.Right, new Vector2(0.88f, 0.56f), 7.2f),
-                ("LeftLeg", BoneRole.Left, new Vector2(0.43f, 0.84f), 8.0f),
-                ("RightLeg", BoneRole.Right, new Vector2(0.61f, 0.84f), 8.8f)
             ],
             _ => GetFallbackBoneDefinitions()
         };
@@ -770,13 +753,12 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
     {
         return (RigPersonality, _action) switch
         {
-            (RigPersonalityType.ThiefRaider, "Attack") => 1.32f,
             (RigPersonalityType.OriginFogmog, "Cast") => 1.00f,
             (RigPersonalityType.BowlbugProgenitor, "Cast") => 1.18f,
             (RigPersonalityType.SoulRoes, _) => 1.12f,
             (RigPersonalityType.SoulRoe, "Dead" or "Revive") => 0.58f,
             (RigPersonalityType.SoulRoe, _) => 0.92f,
-            (RigPersonalityType.TheLegacy, "Cast") => 1.00f,
+            (RigPersonalityType.ThingsTheLegacy, "Cast") => 1.00f,
             _ => 1f
         };
     }
@@ -812,7 +794,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                 position.Y -= MathF.Max(0f, slow) * 0.35f * motion;
                 scale += Vector2.One * slow * 0.0012f * motion;
                 break;
-            case RigPersonalityType.ScaleBeetle:
+            case RigPersonalityType.ThingsScaleBeetle:
                 // Shrinker Beetle keeps its armored mass planted for most of its
                 // long idle.  Antenna joints animate separately below, so the
                 // armored stage needs only a barely visible whole-body breath.
@@ -841,13 +823,9 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                 }
                 scale += Vector2.One * quick * 0.004f * motion;
                 break;
-            case RigPersonalityType.TheLegacy:
+            case RigPersonalityType.ThingsTheLegacy:
                 // The reef stage stays planted; HeartAnchor owns the anatomical
                 // contraction while its four rigid child lobes remain locked.
-                break;
-            case RigPersonalityType.ThiefRaider:
-                position.Y -= MathF.Max(0f, slow) * 0.45f * motion;
-                scale += Vector2.One * slow * 0.0014f * motion;
                 break;
             default:
                 if (RigProfile == RigProfileType.Orb)
@@ -879,7 +857,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
     {
         switch (RigPersonality)
         {
-            case RigPersonalityType.ScaleBeetle
+            case RigPersonalityType.ThingsScaleBeetle
                 when bone.Name.StartsWith("Antenna", StringComparison.Ordinal):
                 // Lead each seven-joint sweep from the base.  A travelling phase
                 // plus a weaker counter-wave prevents the chain from rotating as
@@ -911,7 +889,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                 scale += Vector2.One * MathF.Sin(idle * 1.65f) * 0.010f * motion;
                 break;
 
-            case RigPersonalityType.TheLegacy when bone.Name == "HeartAnchor":
+            case RigPersonalityType.ThingsTheLegacy when bone.Name == "HeartAnchor":
                 // Contract the assembled heart from one anatomical anchor.  The
                 // four rigid lobes inherit the same 0.7% peak systole, so their
                 // seams never open and the surrounding tubes remain planted.
@@ -966,7 +944,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                 float attackStabilize = ActionWindow(normalizedAction, 0.76f, 0.86f, 1f);
                 float attackTravel = RigPersonality switch
                 {
-                    RigPersonalityType.BowlbugProgenitor or RigPersonalityType.ThiefRaider => 1.10f,
+                    RigPersonalityType.BowlbugProgenitor => 1.10f,
                     RigPersonalityType.SoulRoes or RigPersonalityType.SoulRoe => 0.72f,
                     _ => 1f
                 };
@@ -1014,7 +992,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                     scale = scale.Lerp(Vector2.One * 0.985f, fogmogFall);
                     break;
                 }
-                if (RigPersonality == RigPersonalityType.ScaleBeetle)
+                if (RigPersonality == RigPersonalityType.ThingsScaleBeetle)
                 {
                     position += new Vector2(42f, 48f) * settle * motion;
                     rotation -= settle * 0.42f * motion;
@@ -1042,7 +1020,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                     scale = scale.Lerp(Vector2.One * 0.985f, revive);
                     break;
                 }
-                if (RigPersonality == RigPersonalityType.ScaleBeetle)
+                if (RigPersonality == RigPersonalityType.ThingsScaleBeetle)
                 {
                     position += new Vector2(42f, 48f) * revive * motion;
                     position.Y -= overshoot * 5f * motion;
@@ -1122,7 +1100,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                 }
                 return true;
 
-            case RigPersonalityType.ScaleBeetle:
+            case RigPersonalityType.ThingsScaleBeetle:
                 switch (_action)
                 {
                     case "Attack":
@@ -1170,7 +1148,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                 }
                 return true;
 
-            case RigPersonalityType.TheLegacy:
+            case RigPersonalityType.ThingsTheLegacy:
                 switch (_action)
                 {
                     case "Attack":
@@ -1268,7 +1246,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                     rotation = bone.RestRotation;
                 break;
 
-            case RigPersonalityType.ScaleBeetle:
+            case RigPersonalityType.ThingsScaleBeetle:
                 // Keep every armored mass at bind pose.  Only actual appendage
                 // joints may rotate; chained antenna motion therefore propagates
                 // naturally without translating or stretching any cutout.
@@ -1282,7 +1260,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                     rotation = bone.RestRotation;
                 break;
 
-            case RigPersonalityType.TheLegacy:
+            case RigPersonalityType.ThingsTheLegacy:
                 // HeartAnchor is the sole organ control.  Each lobe and every
                 // root-level tube stays at its authored local bind transform.
                 if (bone.Name != "HeartAnchor")
@@ -1341,7 +1319,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                             rotation += pulse * 0.18f * motion * flex;
                         break;
 
-                    case RigPersonalityType.ScaleBeetle:
+                    case RigPersonalityType.ThingsScaleBeetle:
                         float beetleCast = ActionWindow(normalizedAction, 0f, 0.20f, 0.42f)
                             + ActionWindow(normalizedAction, 0.32f, 0.52f, 0.78f) * 0.55f;
                         if (bone.Name.StartsWith("Antenna", StringComparison.Ordinal))
@@ -1379,7 +1357,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                         rotation += roeCast * radial.X * 0.18f * motion;
                         break;
 
-                    case RigPersonalityType.TheLegacy:
+                    case RigPersonalityType.ThingsTheLegacy:
                         if (bone.Name == "HeartAnchor")
                         {
                             float legacyCharge = ActionWindow(normalizedAction, 0f, 0.22f, 0.42f);
@@ -1390,34 +1368,6 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                         }
                         break;
 
-                    case RigPersonalityType.ThiefRaider:
-                        if (bone.Name == "GuardArm")
-                        {
-                            position += new Vector2(-10f, -18f) * pulse * motion;
-                            rotation -= 0.42f * pulse * motion * flex;
-                        }
-                        else if (bone.Name == "DaggerUpperArm")
-                        {
-                            position += new Vector2(-6f, -10f) * pulse * motion;
-                            rotation += 0.20f * pulse * motion * flex;
-                        }
-                        else if (bone.Name == "DaggerForearm")
-                        {
-                            position += new Vector2(-4f, -6f) * pulse * motion;
-                            rotation += 0.22f * pulse * motion * flex;
-                        }
-                        else if (bone.Name == "Dagger")
-                        {
-                            rotation += 0.10f * pulse * motion * flex;
-                        }
-                        else if (bone.Name == "Cloak")
-                        {
-                            position.X += pulse * 18f * motion;
-                            scale.X += pulse * 0.11f * motion;
-                        }
-                        else if (bone.Name == "Head")
-                            rotation += pulse * 0.10f * motion;
-                        break;
                 }
                 break;
 
@@ -1454,7 +1404,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                             position.X += attackStrike * 12f * motion;
                         break;
 
-                    case RigPersonalityType.ScaleBeetle:
+                    case RigPersonalityType.ThingsScaleBeetle:
                         float beetleLunge = ActionWindow(normalizedAction, 0.18f, 0.32f, 0.54f);
                         float jawOpen = MathF.Max(
                             ActionWindow(normalizedAction, 0.08f, 0.27f, 0.52f),
@@ -1498,7 +1448,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                         rotation += (GetSoulRoeVariant() - 1) * attackStrike * 0.16f * motion;
                         break;
 
-                    case RigPersonalityType.TheLegacy:
+                    case RigPersonalityType.ThingsTheLegacy:
                         if (bone.Name == "HeartAnchor")
                         {
                             float legacyAnticipation = ActionWindow(normalizedAction, 0f, 0.18f, 0.34f);
@@ -1511,33 +1461,6 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                         }
                         break;
 
-                    case RigPersonalityType.ThiefRaider:
-                        if (bone.Name == "DaggerUpperArm")
-                        {
-                            position += new Vector2(-12f, -8f) * attackStrike * motion;
-                            rotation -= attackStrike * 0.32f * motion * flex;
-                        }
-                        else if (bone.Name == "DaggerForearm")
-                        {
-                            position += new Vector2(-16f, -6f) * attackStrike * motion;
-                            rotation -= attackStrike * 0.48f * motion * flex;
-                        }
-                        else if (bone.Name == "Dagger")
-                        {
-                            position.X -= attackStrike * 8f * motion;
-                            rotation -= attackStrike * 0.18f * motion * flex;
-                        }
-                        else if (bone.Name is "Bag" or "Cloak")
-                        {
-                            position.X += attackStrike * 25f * motion;
-                            rotation += attackStrike * 0.24f * motion * flex;
-                        }
-                        else if (bone.Name.Contains("Leg", StringComparison.Ordinal))
-                        {
-                            position.Y += attackWindup * 13f * motion;
-                            rotation += side * attackWindup * 0.16f * motion;
-                        }
-                        break;
                 }
                 break;
 
@@ -1559,7 +1482,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                         if (bone.Name.Contains("Leg", StringComparison.Ordinal))
                             position += new Vector2(side * 10f, -10f) * pulse * motion;
                         break;
-                    case RigPersonalityType.ScaleBeetle:
+                    case RigPersonalityType.ThingsScaleBeetle:
                         float beetleHitImpact = ActionWindow(normalizedAction, 0f, 0.10f, 0.28f);
                         float beetleHitRebound = ActionWindow(normalizedAction, 0.18f, 0.38f, 0.60f);
                         float beetleJointRecoil = beetleHitImpact - beetleHitRebound * 0.45f;
@@ -1593,7 +1516,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                             position.X += pulse * 12f * motion;
                         rotation += (GetSoulRoeVariant() - 1) * pulse * 0.14f * motion;
                         break;
-                    case RigPersonalityType.TheLegacy:
+                    case RigPersonalityType.ThingsTheLegacy:
                         if (bone.Name == "HeartAnchor")
                         {
                             float legacyHitImpact = ActionWindow(normalizedAction, 0f, 0.10f, 0.28f);
@@ -1603,14 +1526,6 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                             rotation += (legacyHitImpact * 0.010f
                                 - legacyHitRebound * 0.004f) * motion;
                         }
-                        break;
-                    case RigPersonalityType.ThiefRaider:
-                        if (bone.Name == "Head")
-                            position.X += pulse * 22f * motion;
-                        else if (bone.Name == "Bag")
-                            position.X -= pulse * 12f * motion;
-                        else if (bone.Name is "Cloak" or "DaggerUpperArm" or "DaggerForearm" or "Dagger")
-                            rotation += side * pulse * 0.28f * motion * flex;
                         break;
                 }
                 break;
@@ -1639,7 +1554,7 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                         else if (bone.Name is "Mandible" or "Head")
                             position.Y += collapse * 18f * motion;
                         break;
-                    case RigPersonalityType.ScaleBeetle:
+                    case RigPersonalityType.ThingsScaleBeetle:
                         if (bone.Name.Contains("Leg", StringComparison.Ordinal) || bone.Name == "ForeClaw")
                             rotation -= side * collapse * 0.18f * motion * flex;
                         else if (bone.Name.StartsWith("Antenna", StringComparison.Ordinal))
@@ -1669,41 +1584,11 @@ public partial class NThingsCreatureVisuals : NCreatureVisuals
                         if (bone.Name == "Core")
                             scale += Vector2.One * revivalBounce * 0.16f * motion;
                         break;
-                    case RigPersonalityType.TheLegacy:
+                    case RigPersonalityType.ThingsTheLegacy:
                         if (bone.Name == "HeartAnchor")
                         {
                             scale -= Vector2.One * collapse * 0.008f * motion;
                             scale += Vector2.One * revivalBounce * 0.006f * motion;
-                        }
-                        break;
-                    case RigPersonalityType.ThiefRaider:
-                        if (bone.Name.Contains("Leg", StringComparison.Ordinal))
-                        {
-                            position.X += side * collapse * 18f * motion;
-                            position.Y -= collapse * 9f * motion;
-                            rotation += side * collapse * 0.34f * motion * flex;
-                        }
-                        else if (bone.Name == "Torso")
-                        {
-                            position += new Vector2(-18f, 18f) * collapse * motion;
-                            rotation -= collapse * 0.22f * motion * flex;
-                        }
-                        else if (bone.Name is "Head" or "Cloak")
-                            rotation -= collapse * 0.08f * motion * flex;
-                        else if (bone.Name == "DaggerUpperArm")
-                        {
-                            position.Y += collapse * 12f * motion;
-                            rotation += collapse * 0.25f * motion * flex;
-                        }
-                        else if (bone.Name == "DaggerForearm")
-                        {
-                            position.Y += collapse * 10f * motion;
-                            rotation += collapse * 0.25f * motion * flex;
-                        }
-                        else if (bone.Name == "Dagger")
-                        {
-                            position.Y += collapse * 6f * motion;
-                            rotation += collapse * 0.10f * motion * flex;
                         }
                         break;
                 }

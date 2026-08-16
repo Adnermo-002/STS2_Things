@@ -26,5 +26,11 @@ dist/
 *~
 source_assets/**/*.import
 
+# Local scratch and generated intermediates (probe logs, imagegen candidates,
+# decompile dumps). These are regenerable and must never be committed.
+tmp/
+output/
+tmp_vanilla_event_contact*
+
 # Old local reverse-engineering trees must not be added to this Mod repository.
 Slay the Spire 2_decompiled*/

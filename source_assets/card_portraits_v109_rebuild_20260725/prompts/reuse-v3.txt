@@ -1,0 +1,9 @@
+Use case: identity-preserve style transfer.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Edit target priority: Image 1 is the exact scene and geometry to preserve. Keep its large curled green recycling-slime body, central torn opening, embedded scrap pieces, small tail curl, orange flames, central bright conversion flash, low-right mass, crop, and all relative positions. This is a repaint of Image 1, not a new Defect scene. Images 2-4 provide formal V109 Defect card-art language only.
+Primary request: Improve Image 1's visual style while preserving the original reuse metaphor: a green recycling mass burns and converts embedded scraps into usable energy.
+Subject lock: preserve the exact curled silhouette, all visible embedded scrap/stick placements, the central opening, slime lobes, tail curl, and fire placement. Do not introduce Defect, a humanoid, cards, new creatures, or altered anatomy.
+V109 repaint: simplify the slime, fire, and scraps into 3-5 large matte value regions per motif. Use selective dark contour, rounded green liquid shapes, layered orange/yellow fire tongues, and one compact pale conversion flash. Remove dense glossy texture and small painted detail.
+Background: replace the hard red-black crater with 3-5 broad curved wine-red, dark-navy, burnt-orange, and muted-cyan bands that wrap around the curled slime. Let the orange fire flow in one main arc behind the subject rather than many sharp flames.
+Constraints: change visual style and background language only; preserve Image 1's geometry and action. Raw artwork only; no text, card UI, frame, logo, watermark, collage, new character, or new object category.
+Avoid: Defect character, human figure, changed slime silhouette, missing scraps, extra limbs, huge explosion, painterly texture, glossy photorealism, dense facets, all-angular background, or 3D render.

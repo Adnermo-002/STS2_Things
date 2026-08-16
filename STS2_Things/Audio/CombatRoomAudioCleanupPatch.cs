@@ -1,4 +1,5 @@
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using STS2_Things.Hooks;
 
@@ -13,9 +14,12 @@ internal static class CombatRoomAudioCleanupPatch
     [HarmonyPostfix]
     private static void Postfix()
     {
+        bool restoreRunMusic = NativeSfxPlayer.HasActiveMusic;
         NativeSfxPlayer.StopSequentialLoop();
         NativeSfxPlayer.StopMusic();
         NativeSfxPlayer.CleanupActivePlayers();
+        if (restoreRunMusic)
+            NRunMusicController.Instance?.StopCustomMusic();
         SfxHooks.ResetDeathSfx();
     }
 }

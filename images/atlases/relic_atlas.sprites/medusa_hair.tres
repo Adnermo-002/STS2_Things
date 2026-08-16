@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cjut6l74lreou"]
-
-[ext_resource type="Texture2D" uid="uid://bkamrrintlv" path="res://images/relics/medusa_hair.png" id="1_5qhgl"]
-
-[resource]
-atlas = ExtResource("1_5qhgl")
-region = Rect2(0, 0, 256, 256)

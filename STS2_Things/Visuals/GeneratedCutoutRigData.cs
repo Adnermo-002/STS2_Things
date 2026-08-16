@@ -165,33 +165,6 @@ internal static class GeneratedCutoutRigData
         new("RightTubes", "HeartAnchor", new Vector2(441.000f, 65.500f)),
         new("RightPurpleTubes", "HeartAnchor", new Vector2(551.000f, 175.500f)),
     ];
-
-    private static readonly CutoutBoneSpec[] ThiefRaiderBones =
-    [
-        new("Root", "", new Vector2(13.500f, 219.000f)),
-        new("Pelvis", "Root", new Vector2(13.500f, 18.000f)),
-        new("Torso", "Pelvis", new Vector2(13.500f, -32.000f)),
-        new("DaggerUpperArm", "Torso", new Vector2(83.500f, -97.000f)),
-        new("DaggerForearm", "DaggerUpperArm", new Vector2(105.500f, -32.000f)),
-        new("DaggerHand", "DaggerForearm", new Vector2(120.500f, 23.000f)),
-        new("Dagger", "DaggerHand", new Vector2(133.500f, 33.000f)),
-        new("GuardArm", "Torso", new Vector2(-56.500f, -132.000f)),
-        new("GuardForearm", "GuardArm", new Vector2(-71.500f, -82.000f)),
-        new("GuardHand", "GuardForearm", new Vector2(-13.500f, -95.000f)),
-        new("Scarf", "Torso", new Vector2(30.500f, -122.000f)),
-        new("Head", "Torso", new Vector2(13.500f, -142.000f)),
-        new("LeftLeg", "Pelvis", new Vector2(-31.500f, 53.000f)),
-        new("LeftShin", "LeftLeg", new Vector2(-41.500f, 143.000f)),
-        new("LeftFoot", "LeftShin", new Vector2(-58.500f, 228.000f)),
-        new("RightLeg", "Pelvis", new Vector2(43.500f, 53.000f)),
-        new("RightShin", "RightLeg", new Vector2(48.500f, 138.000f)),
-        new("RightFoot", "RightShin", new Vector2(75.500f, 218.000f)),
-        new("Bag", "Torso", new Vector2(-50.500f, -122.000f)),
-        new("Cloak", "Torso", new Vector2(-31.500f, -77.000f)),
-        new("CloakLeftTail", "Cloak", new Vector2(-107.500f, 33.000f)),
-        new("CloakRightTail", "Cloak", new Vector2(-26.500f, 48.000f)),
-    ];
-
     private static readonly CutoutPartSpec[] OriginFogmog =
     [
         new("base", "Body", "res://images/monsters/rig_parts/origin_fogmog/base.png", new Vector2(0.000f, 143.000f), new Vector2(297.500f, 5.000f), 0, 0, 2, false, "base"),
@@ -259,7 +232,7 @@ internal static class GeneratedCutoutRigData
         new("socket_rear_leg_b", "RearShell", "res://images/monsters/rig_parts/bowlbug_progenitor/socket_rear_leg_b.png", new Vector2(541.500f, 109.000f), new Vector2(59.500f, 85.500f), 31, 0, 2, true, "socket"),
     ];
 
-    private static readonly CutoutPartSpec[] ScaleBeetle =
+    private static readonly CutoutPartSpec[] ThingsScaleBeetle =
     [
         new("base", "Root", "res://images/monsters/rig_parts/scale_beetle/base.png", new Vector2(46.500f, 208.500f), new Vector2(-177.000f, -177.000f), 0, 0, 2, false, "base"),
         new("antenna_front_base", "AntennaFrontBase", "res://images/monsters/rig_parts/scale_beetle/antenna_front_base.png", new Vector2(-437.500f, 110.500f), new Vector2(-1.500f, -19.500f), 60, 3, 2, false, "antenna"),
@@ -338,7 +311,7 @@ internal static class GeneratedCutoutRigData
         new("roe_top_right", "RoeTopRight", "res://images/monsters/rig_parts/soul_roes/roe_top_right.png", new Vector2(41.500f, -84.500f), new Vector2(44.000f, -3.000f), 1, 0, 2, false, "orb"),
     ];
 
-    private static readonly CutoutPartSpec[] TheLegacy =
+    private static readonly CutoutPartSpec[] ThingsTheLegacy =
     [
         new("base", "Root", "res://images/monsters/rig_parts/the_legacy/base.png", new Vector2(1.000f, 215.500f), new Vector2(-101.500f, -215.500f), 0, 0, 2, false, "base"),
         new("coral_left", "CoralLeft", "res://images/monsters/rig_parts/the_legacy/coral_left.png", new Vector2(-379.000f, 85.500f), new Vector2(4.000f, 4.000f), 40, 0, 2, false, "coral"),
@@ -355,37 +328,6 @@ internal static class GeneratedCutoutRigData
         new("right_tubes", "RightTubes", "res://images/monsters/rig_parts/the_legacy/right_tubes.png", new Vector2(441.000f, 65.500f), new Vector2(90.000f, -22.000f), 26, 0, 2, false, "vessel"),
         new("right_purple_tubes", "RightPurpleTubes", "res://images/monsters/rig_parts/the_legacy/right_purple_tubes.png", new Vector2(551.000f, 175.500f), new Vector2(18.000f, 71.000f), 17, 0, 2, false, "vessel"),
     ];
-
-    private static readonly CutoutPartSpec[] ThiefRaider =
-    [
-        new("dagger", "Dagger", "res://images/monsters/rig_parts/thief_raider/dagger.png", new Vector2(133.500f, 33.000f), new Vector2(5.000f, 23.000f), 50, 6, 2, false, "weapon"),
-        new("dagger_hand", "DaggerHand", "res://images/monsters/rig_parts/thief_raider/dagger_hand.png", new Vector2(120.500f, 23.000f), new Vector2(-18.000f, -1.500f), 48, 8, 2, false, "hand"),
-        new("dagger_forearm", "DaggerForearm", "res://images/monsters/rig_parts/thief_raider/dagger_forearm.png", new Vector2(105.500f, -32.000f), new Vector2(-18.500f, 13.000f), 46, 10, 2, false, "limb"),
-        new("dagger_upper_arm", "DaggerUpperArm", "res://images/monsters/rig_parts/thief_raider/dagger_upper_arm.png", new Vector2(83.500f, -97.000f), new Vector2(-21.000f, 10.500f), 43, 12, 2, false, "limb"),
-        new("guard_hand", "GuardHand", "res://images/monsters/rig_parts/thief_raider/guard_hand.png", new Vector2(-13.500f, -95.000f), new Vector2(10.000f, 1.000f), 46, 8, 2, false, "hand"),
-        new("guard_forearm", "GuardForearm", "res://images/monsters/rig_parts/thief_raider/guard_forearm.png", new Vector2(-71.500f, -82.000f), new Vector2(10.500f, 3.000f), 44, 10, 2, false, "limb"),
-        new("guard_arm", "GuardArm", "res://images/monsters/rig_parts/thief_raider/guard_arm.png", new Vector2(-56.500f, -132.000f), new Vector2(-7.500f, -20.000f), 42, 12, 2, false, "limb"),
-        new("scarf", "Scarf", "res://images/monsters/rig_parts/thief_raider/scarf.png", new Vector2(30.500f, -122.000f), new Vector2(2.500f, -3.500f), 40, 8, 2, false, "cloth"),
-        new("face_shadow", "Head", "res://images/monsters/rig_parts/thief_raider/face_shadow.png", new Vector2(13.500f, -142.000f), new Vector2(-2.000f, -65.000f), 39, 4, 2, false, "accent"),
-        new("head", "Head", "res://images/monsters/rig_parts/thief_raider/head.png", new Vector2(13.500f, -142.000f), new Vector2(-13.500f, -77.500f), 38, 8, 2, false, "head"),
-        new("torso", "Torso", "res://images/monsters/rig_parts/thief_raider/torso.png", new Vector2(13.500f, -32.000f), new Vector2(36.000f, -9.500f), 25, 8, 2, false, "core"),
-        new("pelvis", "Pelvis", "res://images/monsters/rig_parts/thief_raider/pelvis.png", new Vector2(13.500f, 18.000f), new Vector2(0.000f, -3.000f), 24, 8, 2, false, "core"),
-        new("left_foot", "LeftFoot", "res://images/monsters/rig_parts/thief_raider/left_foot.png", new Vector2(-58.500f, 228.000f), new Vector2(-13.500f, -6.500f), 21, 8, 2, false, "foot"),
-        new("left_shin", "LeftShin", "res://images/monsters/rig_parts/thief_raider/left_shin.png", new Vector2(-41.500f, 143.000f), new Vector2(-2.000f, -5.500f), 19, 10, 2, false, "limb"),
-        new("left_leg", "LeftLeg", "res://images/monsters/rig_parts/thief_raider/left_leg.png", new Vector2(-31.500f, 53.000f), new Vector2(-2.000f, 8.500f), 17, 12, 2, false, "limb"),
-        new("right_foot", "RightFoot", "res://images/monsters/rig_parts/thief_raider/right_foot.png", new Vector2(75.500f, 218.000f), new Vector2(2.500f, -17.500f), 22, 8, 2, false, "foot"),
-        new("right_shin", "RightShin", "res://images/monsters/rig_parts/thief_raider/right_shin.png", new Vector2(48.500f, 138.000f), new Vector2(13.000f, -7.500f), 20, 10, 2, false, "limb"),
-        new("right_leg", "RightLeg", "res://images/monsters/rig_parts/thief_raider/right_leg.png", new Vector2(43.500f, 53.000f), new Vector2(72.000f, 4.500f), 18, 12, 2, false, "limb"),
-        new("bag", "Bag", "res://images/monsters/rig_parts/thief_raider/bag.png", new Vector2(-50.500f, -122.000f), new Vector2(-21.000f, 1.000f), 5, 8, 2, false, "prop"),
-        new("cloak_left_tail", "CloakLeftTail", "res://images/monsters/rig_parts/thief_raider/cloak_left_tail.png", new Vector2(-107.500f, 33.000f), new Vector2(-16.000f, 0.000f), 9, 10, 2, false, "cloth"),
-        new("cloak_right_tail", "CloakRightTail", "res://images/monsters/rig_parts/thief_raider/cloak_right_tail.png", new Vector2(-26.500f, 48.000f), new Vector2(44.000f, -112.500f), 10, 10, 2, false, "cloth"),
-        new("cloak", "Cloak", "res://images/monsters/rig_parts/thief_raider/cloak.png", new Vector2(-31.500f, -77.000f), new Vector2(-120.000f, -29.500f), 6, 10, 2, false, "cloth"),
-        new("socket_guard_shoulder", "Torso", "res://images/monsters/rig_parts/thief_raider/socket_guard_shoulder.png", new Vector2(13.500f, -32.000f), new Vector2(-73.000f, -97.000f), 39, 0, 2, true, "socket"),
-        new("socket_dagger_shoulder", "Torso", "res://images/monsters/rig_parts/thief_raider/socket_dagger_shoulder.png", new Vector2(13.500f, -32.000f), new Vector2(61.500f, -72.000f), 39, 0, 2, true, "socket"),
-        new("socket_left_hip", "Pelvis", "res://images/monsters/rig_parts/thief_raider/socket_left_hip.png", new Vector2(13.500f, 18.000f), new Vector2(-42.000f, 28.000f), 15, 0, 2, true, "socket"),
-        new("socket_right_hip", "Pelvis", "res://images/monsters/rig_parts/thief_raider/socket_right_hip.png", new Vector2(13.500f, 18.000f), new Vector2(30.500f, 30.500f), 15, 0, 2, true, "socket"),
-    ];
-
     internal static IReadOnlyList<CutoutBoneSpec> GetBones(string key)
     {
         return key switch
@@ -398,7 +340,6 @@ internal static class GeneratedCutoutRigData
             "soul_roe_3" => SoulRoe3Bones,
             "soul_roes" => SoulRoesBones,
             "the_legacy" => TheLegacyBones,
-            "thief_raider" => ThiefRaiderBones,
             _ => throw new KeyNotFoundException($"Unknown cutout rig key: {key}")
         };
     }
@@ -409,13 +350,12 @@ internal static class GeneratedCutoutRigData
         {
             "origin_fogmog" => OriginFogmog,
             "bowlbug_progenitor" => BowlbugProgenitor,
-            "scale_beetle" => ScaleBeetle,
+            "scale_beetle" => ThingsScaleBeetle,
             "soul_roe_1" => SoulRoe1,
             "soul_roe_2" => SoulRoe2,
             "soul_roe_3" => SoulRoe3,
             "soul_roes" => SoulRoes,
-            "the_legacy" => TheLegacy,
-            "thief_raider" => ThiefRaider,
+            "the_legacy" => ThingsTheLegacy,
             _ => throw new KeyNotFoundException($"Unknown cutout rig key: {key}")
         };
     }

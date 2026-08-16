@@ -3,8 +3,8 @@ param(
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
 
-    [ValidateSet('v107.1', 'v109')]
-    [string]$TargetVersion = 'v109',
+    [ValidateSet('v107.1', 'v110')]
+    [string]$TargetVersion = 'v110',
 
     [string]$PythonExe = $env:STS2_PYTHON,
 
@@ -115,7 +115,7 @@ if ([string]::IsNullOrWhiteSpace($DataDir)) {
         $DataDir = $env:STS2_DATA_DIR_V107_1
     }
     else {
-        $DataDir = $env:STS2_DATA_DIR_V109
+        $DataDir = $env:STS2_DATA_DIR_V110
     }
 }
 if ([string]::IsNullOrWhiteSpace($DataDir)) {
@@ -128,9 +128,9 @@ if ([string]::IsNullOrWhiteSpace($SourceRoot)) {
         $SourceRoot = $env:STS2_SOURCE_ROOT_V107_1
     }
     else {
-        $SourceRoot = $env:STS2_SOURCE_ROOT_V109
+        $SourceRoot = $env:STS2_SOURCE_ROOT_V110
         if ([string]::IsNullOrWhiteSpace($SourceRoot)) {
-            $SourceRoot = Join-Path (Split-Path $Root -Parent) 'STS2-V109'
+            $SourceRoot = Join-Path (Split-Path $Root -Parent) 'STS2-V110'
         }
     }
 }
@@ -152,8 +152,14 @@ $dataGameRoot = Split-Path $DataDir -Parent
 $releaseInfoPath = Join-Path $dataGameRoot 'release_info.json'
 if (Test-Path -LiteralPath $releaseInfoPath) {
     $releaseInfo = Get-Content -Raw -LiteralPath $releaseInfoPath | ConvertFrom-Json
-    $expectedRelease = if ($TargetVersion -eq 'v107.1') { 'v0.107.1' } else { 'v0.109.0' }
-    if ($releaseInfo.version -ne $expectedRelease) {
+    $releaseMatchesTarget = if ($TargetVersion -eq 'v107.1') {
+        $releaseInfo.version -eq 'v0.107.1'
+    }
+    else {
+        $releaseInfo.version -match '^v0\.110\.\d+$'
+    }
+    if (-not $releaseMatchesTarget) {
+        $expectedRelease = if ($TargetVersion -eq 'v107.1') { 'v0.107.1' } else { 'v0.110.x' }
         throw "Target $TargetVersion expects $expectedRelease, but '$GameDir' contains $($releaseInfo.version). Pass the matching -DataDir."
     }
 }
@@ -205,6 +211,57 @@ if (Test-Path -LiteralPath $monsterTextureBuild) {
     if ($LASTEXITCODE -ne 0) {
         throw "Monster texture build failed with exit code $LASTEXITCODE"
     }
+}
+
+$quirkyHopperTextureBuild = Join-Path $PSScriptRoot 'build_quirky_hopper_texture.py'
+if (-not (Test-Path -LiteralPath $quirkyHopperTextureBuild -PathType Leaf)) {
+    throw "Quirky Hopper texture build script was not found: $quirkyHopperTextureBuild"
+}
+Write-Host 'Building Quirky Hopper body palette and bone-bound bow...'
+& $PythonExe -X utf8 $quirkyHopperTextureBuild
+if ($LASTEXITCODE -ne 0) {
+    throw "Quirky Hopper texture build failed with exit code $LASTEXITCODE"
+}
+
+$gravetideSlugAtlasBuild = Join-Path $PSScriptRoot 'build_gravetide_slug_atlas.py'
+if (-not (Test-Path -LiteralPath $gravetideSlugAtlasBuild -PathType Leaf)) {
+    throw "Gravetide Slug atlas build script was not found: $gravetideSlugAtlasBuild"
+}
+Write-Host 'Packing ImageGen Gravetide Slug skin into the native Corpse Slug atlas contract...'
+& $PythonExe -X utf8 $gravetideSlugAtlasBuild
+if ($LASTEXITCODE -ne 0) {
+    throw "Gravetide Slug atlas build failed with exit code $LASTEXITCODE"
+}
+
+$gravetideUiBuild = Join-Path $PSScriptRoot 'build_gravetide_ui_assets.py'
+if (-not (Test-Path -LiteralPath $gravetideUiBuild -PathType Leaf)) {
+    throw "Gravetide UI asset build script was not found: $gravetideUiBuild"
+}
+Write-Host 'Building Gravetide map, run-history, and Power UI assets...'
+& $PythonExe -X utf8 $gravetideUiBuild
+if ($LASTEXITCODE -ne 0) {
+    throw "Gravetide UI asset build failed with exit code $LASTEXITCODE"
+}
+
+$gravetideAudioBuild = Join-Path $PSScriptRoot 'build_gravetide_audio_assets.py'
+if (-not (Test-Path -LiteralPath $gravetideAudioBuild -PathType Leaf)) {
+    throw "Gravetide audio asset build script was not found: $gravetideAudioBuild"
+}
+Write-Host 'Building Gravetide boss theme and combat SFX...'
+& $PythonExe -X utf8 $gravetideAudioBuild
+if ($LASTEXITCODE -ne 0) {
+    throw "Gravetide audio asset build failed with exit code $LASTEXITCODE"
+}
+
+$gravetideAudioAudit = Join-Path $PSScriptRoot 'audit_gravetide_audio_style.py'
+if (-not (Test-Path -LiteralPath $gravetideAudioAudit -PathType Leaf)) {
+    throw "Gravetide audio audit script was not found: $gravetideAudioAudit"
+}
+Write-Host 'Validating Gravetide audio duration, dynamics, spectrum, and stereo contract...'
+& $PythonExe -X utf8 $gravetideAudioAudit --outputs-only `
+    --out (Join-Path $Root 'build\style_audit\gravetide_audio_output_metrics.json')
+if ($LASTEXITCODE -ne 0) {
+    throw "Gravetide audio output audit failed with exit code $LASTEXITCODE"
 }
 
 $staticMonsterBuild = Join-Path $PSScriptRoot 'build_static_monster_scenes.py'
@@ -275,14 +332,15 @@ if ($ExportPck) {
     # the .NET export plugin queries them. Without --editor, 4.5.1 can complete
     # the pack successfully but still emit a spurious _EDITOR_GET ERROR at exit,
     # which correctly trips the strict log gate below.
-    & $GodotExe --headless --editor --path $Root --export-pack 'STS2 PCK' $Pck --log-file $exportLog
+    & $GodotExe --headless --editor --path $Root --export-pack 'STS2 PCK' $Pck `
+        --quit --log-file $exportLog
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $Pck)) {
         throw "Godot PCK export failed with exit code $LASTEXITCODE"
     }
     Assert-GodotLogClean $exportLog
 
     $forbiddenPackEntries = Select-String -LiteralPath $exportLog `
-        -Pattern 'res://(bootstrap|tools|manifests|source_assets|docs|scripts|build|dist)/|res://STS2_Things\.json' `
+        -Pattern 'res://(bootstrap|tmp|tools|manifests|source_assets|docs|scripts|build|dist)/|res://STS2_Things\.json' `
         -CaseSensitive:$false
     if ($forbiddenPackEntries) {
         $preview = ($forbiddenPackEntries | Select-Object -First 12 | ForEach-Object Line) `
@@ -330,6 +388,18 @@ config/name="STS2_Things PCK Verify"
 }
 elseif (-not [string]::IsNullOrWhiteSpace($ReusePck)) {
     Copy-Item -LiteralPath $ReusePck -Destination $Pck -Force
+}
+
+if (-not $SkipPck) {
+    if (-not (Test-Path -LiteralPath $Pck -PathType Leaf)) {
+        throw "Final PCK was not produced: $Pck"
+    }
+    if (Test-Path -LiteralPath $sourceAudit -PathType Leaf) {
+        & $PythonExe -X utf8 $sourceAudit --pck $Pck
+        if ($LASTEXITCODE -ne 0) {
+            throw "Final PCK ModelId audit failed with exit code $LASTEXITCODE"
+        }
+    }
 }
 
 $dll = Join-Path $Root ".godot\mono\temp\bin\$Configuration\STS2_Things.dll"

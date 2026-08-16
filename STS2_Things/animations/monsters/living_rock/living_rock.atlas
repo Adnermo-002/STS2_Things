@@ -1,0 +1,251 @@
+
+living_rock.png
+size: 2033,1734
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm1_1
+  rotate: false
+  xy: 1216, 246
+  size: 261, 248
+  orig: 261, 249
+  offset: 0, 0
+  index: -1
+arm1_2
+  rotate: false
+  xy: 2, 20
+  size: 294, 404
+  orig: 295, 405
+  offset: 0, 1
+  index: -1
+arm1_2_back
+  rotate: true
+  xy: 1024, 30
+  size: 147, 176
+  orig: 149, 176
+  offset: 2, 0
+  index: -1
+arm1_2_back_red
+  rotate: false
+  xy: 1763, 385
+  size: 147, 176
+  orig: 149, 176
+  offset: 2, 0
+  index: -1
+arm1_2_red
+  rotate: false
+  xy: 298, 20
+  size: 294, 404
+  orig: 295, 405
+  offset: 0, 1
+  index: -1
+arm1_3
+  rotate: false
+  xy: 1732, 695
+  size: 196, 182
+  orig: 196, 183
+  offset: 0, 0
+  index: -1
+arm1_3_2
+  rotate: false
+  xy: 1479, 191
+  size: 238, 129
+  orig: 238, 130
+  offset: 0, 0
+  index: -1
+arm2_1
+  rotate: true
+  xy: 1734, 954
+  size: 230, 267
+  orig: 230, 269
+  offset: 0, 2
+  index: -1
+arm2_2
+  rotate: false
+  xy: 1216, 496
+  size: 256, 441
+  orig: 264, 441
+  offset: 8, 0
+  index: -1
+arm2_2_red
+  rotate: false
+  xy: 1474, 496
+  size: 256, 441
+  orig: 264, 441
+  offset: 8, 0
+  index: -1
+arm2_3
+  rotate: false
+  xy: 822, 2
+  size: 200, 175
+  orig: 200, 182
+  offset: 0, 1
+  index: -1
+arm2_3_2
+  rotate: false
+  xy: 1216, 115
+  size: 238, 129
+  orig: 238, 130
+  offset: 0, 0
+  index: -1
+beard1
+  rotate: false
+  xy: 1912, 360
+  size: 43, 201
+  orig: 43, 201
+  offset: 0, 0
+  index: -1
+beard1_red
+  rotate: false
+  xy: 1957, 360
+  size: 43, 201
+  orig: 43, 201
+  offset: 0, 0
+  index: -1
+beard2
+  rotate: true
+  xy: 1202, 40
+  size: 73, 237
+  orig: 73, 237
+  offset: 0, 0
+  index: -1
+beard2_red
+  rotate: true
+  xy: 1456, 116
+  size: 73, 237
+  orig: 73, 237
+  offset: 0, 0
+  index: -1
+beard3
+  rotate: true
+  xy: 1734, 879
+  size: 73, 236
+  orig: 73, 236
+  offset: 0, 0
+  index: -1
+beard3_red
+  rotate: true
+  xy: 1456, 41
+  size: 73, 236
+  orig: 73, 236
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 1080
+  size: 779, 652
+  orig: 779, 652
+  offset: 0, 0
+  index: -1
+body_bottom
+  rotate: false
+  xy: 783, 974
+  size: 516, 758
+  orig: 517, 762
+  offset: 0, 2
+  index: -1
+body_red
+  rotate: false
+  xy: 2, 426
+  size: 779, 652
+  orig: 779, 652
+  offset: 0, 0
+  index: -1
+crastalls_roof
+  rotate: true
+  xy: 1301, 939
+  size: 793, 431
+  orig: 795, 432
+  offset: 0, 0
+  index: -1
+crastalls_roof_red
+  rotate: true
+  xy: 783, 179
+  size: 793, 431
+  orig: 795, 432
+  offset: 0, 0
+  index: -1
+eyes
+  rotate: true
+  xy: 1930, 723
+  size: 154, 70
+  orig: 155, 71
+  offset: 1, 0
+  index: -1
+eyes_red
+  rotate: false
+  xy: 1694, 32
+  size: 154, 70
+  orig: 155, 70
+  offset: 1, 0
+  index: -1
+head
+  rotate: true
+  xy: 594, 10
+  size: 130, 226
+  orig: 131, 226
+  offset: 0, 0
+  index: -1
+head_red
+  rotate: true
+  xy: 1732, 563
+  size: 130, 226
+  orig: 131, 226
+  offset: 0, 0
+  index: -1
+head_skale
+  rotate: true
+  xy: 594, 142
+  size: 282, 172
+  orig: 283, 172
+  offset: 0, 0
+  index: -1
+head_skale_red
+  rotate: false
+  xy: 1479, 322
+  size: 282, 172
+  orig: 283, 172
+  offset: 0, 0
+  index: -1
+horn1
+  rotate: true
+  xy: 1763, 227
+  size: 156, 121
+  orig: 157, 121
+  offset: 0, 0
+  index: -1
+horn1_red
+  rotate: true
+  xy: 1886, 35
+  size: 156, 121
+  orig: 156, 121
+  offset: 0, 0
+  index: -1
+horn2
+  rotate: true
+  xy: 1886, 193
+  size: 165, 121
+  orig: 165, 122
+  offset: 0, 1
+  index: -1
+horn2_red
+  rotate: false
+  xy: 1719, 104
+  size: 165, 121
+  orig: 165, 122
+  offset: 0, 1
+  index: -1
+neck
+  rotate: true
+  xy: 1734, 1460
+  size: 272, 297
+  orig: 274, 301
+  offset: 1, 2
+  index: -1
+neck_red
+  rotate: true
+  xy: 1734, 1186
+  size: 272, 297
+  orig: 274, 301
+  offset: 1, 2
+  index: -1

@@ -47,6 +47,19 @@ try
     harmony.PatchAll(modAssembly);
 
     var savedCache = gameAssembly.GetType("MegaCrit.Sts2.Core.Saves.Runs.SavedPropertiesTypeCache");
+    var merchantBargainType = modAssembly.GetType(
+        "STS2_Things.Features.MerchantBargain.MerchantBargainManager");
+    bool expectsMerchantBargain = savedCache == null;
+    if ((merchantBargainType != null) != expectsMerchantBargain)
+    {
+        throw new InvalidOperationException(
+            expectsMerchantBargain
+                ? "V110 implementation is missing MerchantBargainManager."
+                : "V107.1 implementation unexpectedly contains MerchantBargainManager.");
+    }
+    Console.WriteLine(expectsMerchantBargain
+        ? "V110 merchant bargain conditional contract: PASS"
+        : "V107.1 merchant bargain exclusion contract: PASS");
     if (savedCache != null &&
         savedCache.GetMethod("Init", BindingFlags.Public | BindingFlags.Static) == null)
     {
@@ -56,12 +69,12 @@ try
                 "InitializeBeforeModelDatabase",
                 BindingFlags.Public | BindingFlags.Static)!
             .Invoke(null, null);
-        var curseRemover = modAssembly.GetType("STS2_Things.Relics.CurseRemover", throwOnError: true)!;
+        var curseRemover = modAssembly.GetType("STS2_Things.Relics.ThingsCurseRemover", throwOnError: true)!;
         var properties = (IEnumerable<PropertyInfo>?)savedCache!
             .GetMethod("GetJsonPropertiesForType", BindingFlags.Public | BindingFlags.Static)!
             .Invoke(null, [curseRemover]);
         if (properties?.Any(property => property.Name == "TimesUsed") != true)
-            throw new InvalidOperationException("V107.1 SavedProperty cache is missing CurseRemover.TimesUsed.");
+            throw new InvalidOperationException("V107.1 SavedProperty cache is missing ThingsCurseRemover.TimesUsed.");
         Console.WriteLine("V107.1 SavedProperty bridge: PASS");
     }
     else if (savedCache == null)
@@ -78,19 +91,19 @@ try
                  })
         {
             if (modelIdCache.GetMethod(member, BindingFlags.Public | BindingFlags.Static) == null)
-                throw new InvalidOperationException($"V109 unified serialization cache is missing {member}.");
+                throw new InvalidOperationException($"V110 unified serialization cache is missing {member}.");
         }
 
-        var curseRemover = modAssembly.GetType("STS2_Things.Relics.CurseRemover", throwOnError: true)!;
+        var curseRemover = modAssembly.GetType("STS2_Things.Relics.ThingsCurseRemover", throwOnError: true)!;
         var timesUsed = curseRemover.GetProperty(
             "TimesUsed", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         if (timesUsed?.CustomAttributes.Any(attribute =>
                 attribute.AttributeType.FullName ==
                 "MegaCrit.Sts2.Core.Saves.Runs.SavedPropertyAttribute") != true)
         {
-            throw new InvalidOperationException("V109 CurseRemover.TimesUsed is missing SavedProperty metadata.");
+            throw new InvalidOperationException("V110 ThingsCurseRemover.TimesUsed is missing SavedProperty metadata.");
         }
-        Console.WriteLine("V109 unified SavedProperty cache contract: PASS");
+        Console.WriteLine("V110 unified SavedProperty cache contract: PASS");
     }
 
     Console.WriteLine($"Harmony target probe: PASS ({modAssembly.GetName().Version})");

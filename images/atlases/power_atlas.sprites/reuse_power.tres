@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bbv1phlpddwwc"]
-
-[ext_resource type="Texture2D" uid="uid://bt5ejvmlmrlh6" path="res://images/powers/reuse_power.png" id="1_mo3oi"]
-
-[resource]
-atlas = ExtResource("1_mo3oi")
-region = Rect2(0, 0, 256, 256)

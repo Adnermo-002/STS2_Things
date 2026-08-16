@@ -1,0 +1,11 @@
+Use case: stylized-concept.
+Asset type: raw portrait event-card illustration for Slay the Spire 2 V109, no card frame.
+Primary request: Create a new original illustration for the Things Mod event card Surrender. Preserve only the gameplay idea from Image 1: a deceptive surrender heals the player while redirecting an enemy toward weakness. Do not copy Image 1's exact masked figure, pose, flag shape, background, or rendering.
+Input images: Image 1 is semantic reference only; Images 2-4 establish V109 background, subject, and effect language.
+Scene/backdrop: portrait composition with 2-5 broad flowing midnight-blue, muted violet, and desaturated plum cloud bands. The curves rise behind the flagpole and make a calm spiral toward the distant enemy intent.
+Subject: a small battered hooded scavenger kneels low in the bottom third, wearing layered charcoal cloth and a simple brass multi-lens mask. It holds a long wooden pole diagonally upward with one torn white surrender flag. Keep the figure asymmetrical, compact, and graphic with clear layered cloth and metal seams; no readable writing on the flag.
+Action/composition: the white flag is the dominant bright shape. A thin soft green healing ribbon curls from the scavenger back toward the viewer, while a separate muted violet broken-ring intent ribbon bends past the flag toward a distant shadowy enemy silhouette at the top. The image communicates trickery through the two diverging force paths, with one pale gold point where they split.
+Lighting/mood: quiet, uneasy, clever, restrained rather than violent.
+Materials/textures: 3-6 large flat value regions, selective dark contour, folded fabric, worn brass planes, soft translucent magic ribbon, no fog wall or microtexture.
+Constraints: raw artwork only; no words, letters, numbers, card UI, frame, logo, watermark, copied composition, or collage.
+Avoid: photorealism, 3D render, all-angular background, generic medieval knight, extra characters, huge scenery, visible text on the flag, excessive particles, gore, or a bright effect that obscures the flag.

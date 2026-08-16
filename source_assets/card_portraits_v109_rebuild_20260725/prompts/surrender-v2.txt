@@ -1,0 +1,10 @@
+Use case: stylized-concept.
+Asset type: raw portrait event-card illustration for Slay the Spire 2 V109, no card frame.
+Style priority: Images 1-3 are formal V109 card-art references and control the rendering language: flat matte opaque shapes, 2-4 value steps, selective dark contour, and broad flowing color bands. Image 4 is semantic reference only. Do not copy any exact character, pose, flag, or background.
+Primary request: Create a new original portrait event-card illustration for Surrender. A deceptive surrender heals the player while redirecting an enemy toward weakness. Preserve the white-flag semantic only.
+Background: portrait composition with exactly 3-5 broad flowing midnight-blue, muted violet, and desaturated plum cloud bands. The curves rise behind the flagpole and bend toward a distant enemy intent. No brushwork, gradient-heavy sky, or dense scenery.
+Subject: a small battered hooded scavenger kneels in the bottom third, wearing layered charcoal cloth and a simple brass multi-lens mask. It holds a long wooden pole diagonally upward with one torn white flag. Build the figure from a few large shapes and clear seams; no readable writing on the flag.
+Action/composition: the white flag is the dominant bright shape. A thin soft green healing ribbon curves back toward the viewer, while a separate muted violet broken-ring intent ribbon bends past the flag toward a distant shadowy enemy silhouette above. One pale gold point marks the split. Keep the composition readable after cropping to the existing 606x852 event atlas region.
+Color/value: matte navy and plum shadows, charcoal cloth, muted brass, white flag, one pale green and gold accent. No glossy reflections, soft airbrushing, or microtexture.
+Constraints: raw artwork only; no words, letters, numbers, card UI, frame, logo, watermark, copied composition, or collage.
+Avoid: photorealism, 3D render, all-angular background, generic medieval knight, extra characters, huge scenery, visible text on the flag, excessive particles, gore, or a bright effect obscuring the flag.

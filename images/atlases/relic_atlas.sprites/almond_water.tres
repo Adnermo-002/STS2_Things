@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://5ubtbsbkr404"]
-
-[ext_resource type="Texture2D" uid="uid://8x1ow0u5iboc" path="res://images/relics/almond_water.png" id="1_fsauv"]
-
-[resource]
-atlas = ExtResource("1_fsauv")
-region = Rect2(0, 0, 256, 256)

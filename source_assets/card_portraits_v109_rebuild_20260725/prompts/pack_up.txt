@@ -1,0 +1,11 @@
+Use case: stylized-concept.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Primary request: Create a new original card illustration for the Things Mod card Pack Up. Preserve only the gameplay idea from Image 1: Silent draws a card while deliberately sending another card away from the deck. Do not copy Image 1's exact pose, scroll shape, background, or rendering.
+Input images: Image 1 is semantic reference only; Image 2 locks Silent's canonical anatomy and costume; Images 3-5 establish V109 background, subject, and effect language.
+Scene/backdrop: 2-5 broad curving color masses in deep emerald, navy, violet, and muted lime. Use a sweeping S-curve that leads from a deck-like paper ribbon toward a dark discard hollow. Avoid an all-angular background.
+Subject: Silent is seen three-quarter from the left/back, with a deep-green layered hood and cloak, elongated pale skull mask, lime eye glow, and one matched pair of segmented beige horns. One visible pale bandaged hand has exactly five separated digits. Keep the face silhouette and cloth overlap readable before the effect.
+Action/composition: a large blank parchment-like card ribbon rolls through the foreground from the right toward Silent, while a single darker blank card silhouette peels off and falls in a curved path into a small dark discard vortex below. The main visual verb is sorting and casting away. Medium-close crop with the Silent partially framed by the flowing paper curve; one brighter teal-lime turning point where the drawn card separates from the discarded card.
+Lighting/mood: quick, controlled, intelligent motion; one concentrated mint highlight, no fog.
+Materials/textures: 3-6 large value regions, crisp selective near-black contour, curved cloth shadows, light paper folds, sparse short highlights. Keep it flat graphic and readable, without detailed calligraphy or deck text.
+Constraints: raw artwork only; no words, letters, numbers, card UI, frame, logo, watermark, collage, copied pose, or copied panel. Background flows; subject anchors; effect directs.
+Avoid: human face under the hood, a single horn, metal claws, extra fingers, generic green bodysuit, photorealism, 3D render, dense microtexture, all-angular composition, tiny scenery, excessive particle clutter.

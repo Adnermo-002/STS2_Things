@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://images/backgrounds/gravetide_slug/gravetide_slug_water.png" id="1_water_mask"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gravetide_water"]
+noise_type = 0
+frequency = 0.0259
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gravetide_water"]
+width = 100
+height = 100
+seamless = true
+seamless_blend_skirt = 0.1
+noise = SubResource("FastNoiseLite_gravetide_water")
+
+[sub_resource type="Shader" id="Shader_gravetide_water"]
+code = "shader_type canvas_item;\nrender_mode unshaded;\n\nuniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear;\nuniform sampler2D noise : repeat_enable, filter_linear;\nuniform sampler2D mask : repeat_disable, filter_linear;\nuniform vec4 water_tint : source_color = vec4(0.075, 0.145, 0.17, 1.0);\nuniform float speed : hint_range(0.01, 0.2) = 0.08;\nuniform float strength : hint_range(0.001, 0.04) = 0.02;\nuniform float opacity : hint_range(0.0, 0.25) = 0.10;\n\nvoid fragment() {\n\tvec2 noise_uv_a = UV * vec2(1.30, 0.65) + vec2(-TIME * speed, TIME * speed * 0.11);\n\tvec2 noise_uv_b = UV * vec2(2.10, 0.90) + vec2(TIME * speed * 0.37, -TIME * speed * 0.19);\n\tfloat noise_a = texture(noise, noise_uv_a).r - 0.5;\n\tfloat noise_b = texture(noise, noise_uv_b).r - 0.5;\n\tfloat wave = noise_a * 1.35 + noise_b * 0.65;\n\tfloat water_mask = texture(mask, UV).a;\n\tfloat shore_fade = smoothstep(0.42, 0.58, UV.y);\n\tfloat near_fade = 1.0 - smoothstep(0.88, 1.0, UV.y);\n\tfloat breakup = smoothstep(-0.20, 0.48, wave);\n\tfloat layer_alpha = opacity * water_mask * shore_fade * (0.68 + 0.32 * near_fade) * (0.62 + 0.38 * breakup);\n\tvec2 displacement = vec2(wave * strength, noise_b * strength * 0.14);\n\tvec3 reflected = texture(screen_texture, SCREEN_UV + displacement).rgb;\n\tvec3 tinted = mix(reflected, water_tint.rgb, 0.18);\n\tfloat glint = pow(max(0.0, wave + 0.46), 7.0) * 0.018 * shore_fade * water_mask;\n\tCOLOR = vec4(tinted + vec3(glint), layer_alpha);\n}\n"
+
+[resource]
+shader = SubResource("Shader_gravetide_water")
+shader_parameter/noise = SubResource("NoiseTexture2D_gravetide_water")
+shader_parameter/mask = ExtResource("1_water_mask")
+shader_parameter/water_tint = Color(0.075, 0.145, 0.17, 1)
+shader_parameter/speed = 0.08
+shader_parameter/strength = 0.02
+shader_parameter/opacity = 0.1

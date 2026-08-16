@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <!-- A deliberately compact, hand-cut silhouette: one card and one return motion. -->
+  <path
+    d="M146 42 C184 49 214 77 222 112 C230 146 218 181 191 205 C169 224 137 231 105 220"
+    fill="none"
+    stroke="#d77b18"
+    stroke-width="39"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+  <path
+    d="M147 38 C183 46 208 72 216 107 C223 140 211 173 186 195 C164 214 136 220 105 211"
+    fill="none"
+    stroke="#f5ae2d"
+    stroke-width="31"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+
+  <!-- The dark offset is the same economical depth cue used by the base-game icons. -->
+  <path
+    d="M61 60 C61 54 65 51 72 50 L148 36 C154 35 158 39 159 45 L180 171
+       C181 177 178 182 172 183 L91 201 C85 202 81 199 80 193 Z"
+    fill="#30283b"/>
+  <path
+    d="M53 55 C53 49 57 46 63 45 L140 31 C147 30 151 33 152 40 L172 163
+       C173 170 170 174 164 175 L83 193 C77 194 73 190 72 184 Z"
+    fill="#f2eee4"/>
+  <path
+    d="M65 58 L139 44 L157 158 L84 174 Z"
+    fill="#fffaf0"/>
+
+  <!-- The arrowhead overlaps the card so the return direction survives at 64 px. -->
+  <path
+    d="M75 208 C89 202 103 191 116 178 C113 195 116 216 126 234
+       C108 224 91 215 75 208 Z"
+    fill="#d77b18"/>
+  <path
+    d="M68 203 C84 198 98 187 110 174 C107 192 111 209 119 226
+       C102 217 84 209 68 203 Z"
+    fill="#f5ae2d"/>
+</svg>

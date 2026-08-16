@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c0rkg27vnxpsp"]
-
-[ext_resource type="Texture2D" uid="uid://becdwplvgcqyb" path="res://images/atlases/relic_outline_atlas.sprites/magic_glove_outline.png" id="1_vqqfg"]
-
-[resource]
-atlas = ExtResource("1_vqqfg")
-region = Rect2(0, 0, 256, 256)

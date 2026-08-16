@@ -1,0 +1,10 @@
+Use case: identity-preserve style transfer.
+Asset type: raw Slay the Spire 2 V109 card portrait, one continuous 25:19 landscape illustration, no card frame.
+Edit target priority: Image 1 is the exact scene and geometry to preserve. Keep its centered close portrait, exact hood, horn placement, skull mask proportions, both hands at the temples, crop, and symmetry. This is a repaint of Image 1, not a new pose. Image 2 confirms canonical Silent identity. Images 3-5 provide formal V109 rendering language only.
+Primary request: Improve Image 1's visual style while preserving the original recall gesture: Silent concentrates with both bandaged hands held against the sides of the skull mask.
+Silent lock: preserve the deep-green hood and cloak, elongated pale skull mask, matched pair of segmented beige horns, lime eyes, bandaged forearms, and exact hand placements. Preserve all visible digits from the original and do not add fingers or change the gesture.
+V109 repaint: simplify the mask, wraps, hood, and hands into 3-5 large matte value regions per major form. Use selective dark contour, large curved shadow bands, and only a few clean internal seams. Keep layered cloth and bandages readable.
+Background: replace the hard blue starburst with 3-5 broad concentric indigo, cyan, teal, and muted-lime arcs curving behind the head like a memory echo. Retain a small pale cyan halo immediately behind the horns to focus attention, with no full-frame explosion or texture noise.
+Effect: add one thin cyan returning loop behind the head and at most two faint blank card silhouettes in the far background; do not alter the central figure.
+Constraints: change visual style and background language only; preserve Image 1's geometry and gesture. Raw artwork only; no text, card UI, frame, logo, watermark, collage, new pose, or new character.
+Avoid: changed mask shape, altered horn count, extra fingers, new hands, human face, painterly texture, dense facets, radial spikes, photorealism, or 3D render.

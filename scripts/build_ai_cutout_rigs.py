@@ -79,15 +79,7 @@ class BindQaThresholds:
 
 # Monsters opt into the hard bind gate independently.  Mapping documents may
 # override these values with a top-level ``bind_qa`` object.
-DEFAULT_BIND_QA_THRESHOLDS: dict[str, BindQaThresholds] = {
-    "thief_raider": BindQaThresholds(
-        0.93,
-        0.97,
-        1.03,
-        2.0,
-        SOURCE_IMAGE_ROOT / "thief_raider.png",
-    ),
-}
+DEFAULT_BIND_QA_THRESHOLDS: dict[str, BindQaThresholds] = {}
 
 
 @dataclass(frozen=True)
@@ -334,8 +326,8 @@ def load_bind_qa_thresholds(
     Example mapping fragment::
 
         "bind_qa": {
-          "thief_raider": {
-            "reference_path": "source_assets/monsters/thief_raider_v5/approved_master.png",
+          "scale_beetle": {
+            "reference_path": "source_assets/monsters/scale_beetle.png",
             "alpha_iou_min": 0.93,
             "alpha_area_ratio_min": 0.97,
             "alpha_area_ratio_max": 1.03,

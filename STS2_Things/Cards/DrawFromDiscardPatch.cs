@@ -47,7 +47,7 @@ public static class DrawFromDiscardPatch
     private static bool Prefix(PlayerChoiceContext choiceContext, decimal count, Player player,
         bool fromHandDraw, ref Task<IEnumerable<CardModel>> __result)
     {
-        if (player.Creature.GetPower<RecallPower>() == null)
+        if (player.Creature.GetPower<ThingsRecallPower>() == null)
             return true; // 正常抽牌
 
         var discardPile = PileType.Discard.GetPile(player);

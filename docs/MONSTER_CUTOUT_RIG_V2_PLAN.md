@@ -206,26 +206,6 @@ transforms for Idle/Hit/Cast/Attack; HeartAnchor performs the 1.50 s systole
 (0.5–0.8% scale). Coral/seaweed sway starts only after hidden organ/backdrop
 pixels have been painted beneath their roots.
 
-## 9. Thief Raider — 26 sprite parts / 22 bones
-
-Canvas 353×534. At this resolution, cuts follow the existing dark outlines and
-use 8–14 px opaque socket overlap.
-
-| part/chain | bone pivots | parent | z | existing mask action |
-|---|---|---|---:|---|
-| `base`, `torso` | Torso (190,235) | Pelvis | 0,25 | Torso becomes contour-tight; base holds tiny unclaimed pixels. |
-| `pelvis` | Pelvis (190,285) | Root | 24 | Belt/hip block only. |
-| `head` | Head (190,125) | Torso | 38 | Hood and face void. |
-| `scarf` | Scarf (207,145) | Torso | 40 | Front scarf panel, same torso motion plus ≤1° settle. |
-| `bag` | Bag (126,145) | Torso | 5 | Bag body; strap stays Torso. |
-| `cloak`, `cloak_left_tail`, `cloak_right_tail` | Cloak (145,190); CloakLeftTail (69,300); CloakRightTail (150,315) | Torso chain | 6–10 | Split old cloak along the two visible tail valleys. |
-| `guard_arm`, `guard_forearm`, `guard_hand` | GuardArm (120,135); GuardForearm (105,185); GuardHand (163,172) | Torso chain | 42–46 | Split shoulder plate, bracer/forearm and gripping hand. |
-| `dagger_upper_arm`, `dagger_forearm`, `dagger_hand`, `dagger` | DaggerUpperArm (260,170); DaggerForearm (282,235); DaggerHand (297,290); Dagger (310,300) | Torso chain | 43–50 | Existing upper/forearm tightened; hand separated; dagger parent becomes DaggerHand. |
-| `left_leg`, `left_shin`, `left_foot` | LeftLeg (145,320); LeftShin (135,410); LeftFoot (118,495) | Pelvis chain | 17–21 | Split old left leg at knee armor and ankle wrap. |
-| `right_leg`, `right_shin`, `right_foot` | RightLeg (220,320); RightShin (225,405); RightFoot (252,485) | Pelvis chain | 18–22 | Split old right leg at knee armor and ankle wrap. |
-| `socket_guard_shoulder`, `socket_dagger_shoulder` | Torso | Pelvis | 39 | Parent-owned 10–14 px caps. |
-| `socket_left_hip`, `socket_right_hip` | Pelvis | Root | 15 | Parent-owned 10–12 px caps. |
-
 ## Target totals and migration order
 
 | rig | current parts | V2 parts | current bones | V2 bones |
@@ -238,10 +218,9 @@ use 8–14 px opaque socket overlap.
 | Soul Roe 3 | 2 | 3 | 2 | 3 |
 | Soul Roes | 12 | 12 | 13 | 16 |
 | The Legacy | 8 | 14 | 9 | 14 |
-| Thief Raider | 11 | 26 | 12 | 22 |
-| **Total** | **82** | **158** | **86** | **133** |
+| **Total** | **71** | **132** | **74** | **111** |
 
-Migration order: Scale Beetle → Origin Fogmog → Thief Raider → Bowlbug → Legacy
-→ Soul Roe variants/cluster. Each rig must pass bind-pose RGBA reconstruction,
+Migration order: Scale Beetle → Origin Fogmog → Bowlbug → Legacy → Soul Roe
+variants/cluster. Each rig must pass bind-pose RGBA reconstruction,
 then sampled extreme Attack/Hit/Cast poses, before the next rig replaces its
 old masks.

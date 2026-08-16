@@ -1,5 +1,7 @@
 {
-  "DISPERSE.title": "Disperse",
-  "DISPERSE.description": "This card gains [gold]Ethereal[/gold].",
-  "DISPERSE.smartDescription": "This card gains [gold]Ethereal[/gold]."
+  "THINGS_DISPERSE.title": "Disperse",
+  "THINGS_DISPERSE.description": "This card gains [gold]Ethereal[/gold].",
+  "THINGS_DISPERSE.smartDescription": "This card gains [gold]Ethereal[/gold]."
+  ,"THINGS_SPLIT.title": "Split"
+  ,"THINGS_SPLIT.description": "This card's cost is halved and rounded down. All of its numeric values are halved and rounded up."
 }

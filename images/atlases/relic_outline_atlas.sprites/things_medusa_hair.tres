@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b14hejhuxi8qi"]
+
+[ext_resource type="Texture2D" uid="uid://ccqentbevjyxf" path="res://images/atlases/relic_outline_atlas.sprites/things_medusa_hair_outline.png" id="1_t2ava"]
+
+[resource]
+atlas = ExtResource("1_t2ava")
+region = Rect2(0, 0, 256, 256)

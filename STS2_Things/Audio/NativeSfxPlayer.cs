@@ -23,6 +23,7 @@ public static class NativeSfxPlayer
     private static readonly RandomNumberGenerator _variantRng = new();
     private static readonly object _variantRngLock = new();
     private static AudioStreamPlayer? _musicPlayer;
+    private static string? _musicPath;
     private static AudioStreamPlayer? _seqLooper;
     private static string[]? _seqPaths;
     private static int _seqIndex;
@@ -32,6 +33,11 @@ public static class NativeSfxPlayer
     {
         _variantRng.Randomize();
     }
+
+    public static bool HasActiveMusic =>
+        _musicPlayer != null && GodotObject.IsInstanceValid(_musicPlayer);
+
+    public static string? ActiveMusicPath => HasActiveMusic ? _musicPath : null;
 
     /// <summary>
     /// Rolls a presentation-only probability using the audio RNG. This stream is
@@ -90,7 +96,11 @@ public static class NativeSfxPlayer
             return;
         }
 
+        if (stream is AudioStreamWav wav)
+            wav.LoopMode = AudioStreamWav.LoopModeEnum.Forward;
+
         _musicPlayer = new AudioStreamPlayer { Stream = stream, Bus = bus, VolumeDb = volumeDb };
+        _musicPath = resPath;
         var tree = Engine.GetMainLoop();
         if (tree is SceneTree sceneTree)
         {
@@ -116,6 +126,7 @@ public static class NativeSfxPlayer
             if (_musicPlayer.IsInsideTree()) _musicPlayer.QueueFree();
             _musicPlayer = null;
         }
+        _musicPath = null;
     }
 
     /// <summary>

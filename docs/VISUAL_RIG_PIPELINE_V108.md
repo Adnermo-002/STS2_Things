@@ -16,7 +16,6 @@
 | 视觉 | 场景 | Rig | 骨数 |
 |---|---|---:|---:|
 | Origin Fogmog | `scenes/creature_visuals/origin_fogmog.tscn` | Humanoid | 9 |
-| Thief Raider | `scenes/creature_visuals/thief_raider.tscn` | Humanoid | 9 |
 | Scale Beetle | `scenes/creature_visuals/scale_beetle.tscn` | Wide | 10 |
 | Bowlbug Progenitor | `scenes/creature_visuals/bowlbug_progenitor.tscn` | Wide | 10 |
 | Soul Roes | `scenes/creature_visuals/soul_roes.tscn` | Cluster | 10 |
@@ -149,7 +148,6 @@ cd D:\Things\Things-Workspace\STS2_Things
 
 ```text
 fight ORIGIN_FOGMOG_BOSS_ENCOUNTER
-fight RAID_PARTY
 fight SCALE_BEETLE_BOSS_ENCOUNTER
 fight SOUL_ROES_ENCOUNTER
 fight THE_LEGACY_BOSS_ENCOUNTER

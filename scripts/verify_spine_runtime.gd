@@ -9,7 +9,6 @@ const RIG_KEYS := [
 	"soul_roe_3",
 	"soul_roes",
 	"the_legacy",
-	"thief_raider",
 ]
 
 const REQUIRED_ANIMATIONS := [

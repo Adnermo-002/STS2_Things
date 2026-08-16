@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[node name="Encounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="gravetide_slug" type="Marker2D" parent="."]
+position = Vector2(1440, 710)
+
+[node name="gravetide_corpse_slug_1" type="Marker2D" parent="."]
+position = Vector2(1070, 735)
+
+[node name="gravetide_corpse_slug_2" type="Marker2D" parent="."]
+position = Vector2(1210, 785)
+
+[node name="gravetide_corpse_slug_3" type="Marker2D" parent="."]
+position = Vector2(1440, 825)
+
+[node name="gravetide_corpse_slug_4" type="Marker2D" parent="."]
+position = Vector2(1360, 775)
+
+[node name="gravetide_corpse_slug_5" type="Marker2D" parent="."]
+position = Vector2(1580, 760)
+
+[node name="gravetide_corpse_slug_6" type="Marker2D" parent="."]
+position = Vector2(1770, 805)
