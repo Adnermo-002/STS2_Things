@@ -2044,6 +2044,30 @@ def main() -> int:
                     f"got {image.mode} {image.size}",
                 )
 
+    # 全部 Boss 遭遇的 run-history 图标契约（88x88 RGBA；缺文件会在真实游戏里报
+    # “No loader found for resource: res://images/ui/run_history/<slug>_boss_encounter.png”）。
+    boss_run_history_slugs = (
+        "bowlbug_progenitor",
+        "gravetide_slug",
+        "living_rock",
+        "origin_fogmog",
+        "scale_beetle",
+        "the_legacy",
+    )
+    for slug in boss_run_history_slugs:
+        for variant in ("", "_outline"):
+            icon_path = ROOT / "images/ui/run_history" / f"{slug}_boss_encounter{variant}.png"
+            if not icon_path.is_file():
+                fail(errors, f"boss run-history icon is missing: {icon_path.relative_to(ROOT)}")
+                continue
+            with Image.open(icon_path) as image:
+                if image.mode != "RGBA" or image.size != (88, 88):
+                    fail(
+                        errors,
+                        f"{icon_path.relative_to(ROOT)} must be RGBA (88, 88), "
+                        f"got {image.mode} {image.size}",
+                    )
+
     gravetide_atlas = ROOT / "STS2_Things/animations/monsters/gravetide_slug/gravetide_slug.png"
     if gravetide_atlas.is_file():
         with Image.open(gravetide_atlas) as image:

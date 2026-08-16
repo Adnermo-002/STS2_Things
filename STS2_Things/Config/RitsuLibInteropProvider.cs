@@ -69,19 +69,20 @@ public static class RitsuLibInteropProvider
 
     private static Dictionary<string, object?> BossSection()
     {
+        // 名称与模组本地化一致（monsters.json / encounters.json 的显示名）。
         return Section("bosses", "Boss Encounters", "遭遇战·Boss",
             BossEntry("origin_fogmog_enabled", ThingsModConfig.BossOriginFogmogEnabled, "Origin Fogmog", "始源雾菇"),
             BossForceEntry("origin_fogmog_forced", ThingsModConfig.BossOriginFogmogForced, "Origin Fogmog", "始源雾菇"),
-            BossEntry("scale_beetle_enabled", ThingsModConfig.BossScaleBeetleEnabled, "Scale Beetle", "缩放巨甲虫"),
-            BossForceEntry("scale_beetle_forced", ThingsModConfig.BossScaleBeetleForced, "Scale Beetle", "缩放巨甲虫"),
-            BossEntry("gravetide_slug_enabled", ThingsModConfig.BossGravetideSlugEnabled, "Gravetide Slug", "盛碗虫族母"),
-            BossForceEntry("gravetide_slug_forced", ThingsModConfig.BossGravetideSlugForced, "Gravetide Slug", "盛碗虫族母"),
+            BossEntry("scale_beetle_enabled", ThingsModConfig.BossScaleBeetleEnabled, "Scale Beetle", "放缩巨甲虫"),
+            BossForceEntry("scale_beetle_forced", ThingsModConfig.BossScaleBeetleForced, "Scale Beetle", "放缩巨甲虫"),
+            BossEntry("gravetide_slug_enabled", ThingsModConfig.BossGravetideSlugEnabled, "Gravetide Slug", "墓潮蛞蝓"),
+            BossForceEntry("gravetide_slug_forced", ThingsModConfig.BossGravetideSlugForced, "Gravetide Slug", "墓潮蛞蝓"),
             BossEntry("the_legacy_enabled", ThingsModConfig.BossTheLegacyEnabled, "The Legacy", "腐化之遗"),
             BossForceEntry("the_legacy_forced", ThingsModConfig.BossTheLegacyForced, "The Legacy", "腐化之遗"),
-            BossEntry("bowlbug_progenitor_enabled", ThingsModConfig.BossBowlbugProgenitorEnabled, "Bowlbug Progenitor", "盛碗虫族母（原版系）"),
-            BossForceEntry("bowlbug_progenitor_forced", ThingsModConfig.BossBowlbugProgenitorForced, "Bowlbug Progenitor", "盛碗虫族母（原版系）"),
-            BossEntry("living_rock_enabled", ThingsModConfig.BossLivingRockEnabled, "Living Rock", "生命之岩"),
-            BossForceEntry("living_rock_forced", ThingsModConfig.BossLivingRockForced, "Living Rock", "生命之岩"));
+            BossEntry("bowlbug_progenitor_enabled", ThingsModConfig.BossBowlbugProgenitorEnabled, "Bowlbug Progenitor", "盛碗虫族母"),
+            BossForceEntry("bowlbug_progenitor_forced", ThingsModConfig.BossBowlbugProgenitorForced, "Bowlbug Progenitor", "盛碗虫族母"),
+            BossEntry("living_rock_enabled", ThingsModConfig.BossLivingRockEnabled, "Living Rock", "活体巨岩"),
+            BossForceEntry("living_rock_forced", ThingsModConfig.BossLivingRockForced, "Living Rock", "活体巨岩"));
     }
 
     private static Dictionary<string, object?> EncounterSection()
@@ -93,11 +94,12 @@ public static class RitsuLibInteropProvider
 
     private static Dictionary<string, object?> EventSection()
     {
+        // 名称与模组本地化一致（events.json 的 .title 显示名）。
         return Section("events", "Events", "事件",
             Entry("robbery_fake_merchant_enabled", ThingsModConfig.EventRobberyFakeMerchantEnabled,
-                "Fake Merchant Robbery", "假商人抢劫"),
-            Entry("backrooms_enabled", ThingsModConfig.EventBackroomsEnabled, "Backrooms", "Backrooms"),
-            Entry("medusa_enabled", ThingsModConfig.EventMedusaEnabled, "Medusa", "美杜莎"),
+                "Shifty Shop", "诡谲之店"),
+            Entry("backrooms_enabled", ThingsModConfig.EventBackroomsEnabled, "Stumble", "跌倒"),
+            Entry("medusa_enabled", ThingsModConfig.EventMedusaEnabled, "Medusa", "蛇发女妖"),
             Entry("cutting_it_close_enabled", ThingsModConfig.EventCuttingItCloseEnabled,
                 "Cutting It Close", "命悬一线"));
     }
@@ -112,13 +114,14 @@ public static class RitsuLibInteropProvider
 
     private static Dictionary<string, object?> NeowRelicSection()
     {
+        // 名称与模组本地化一致（relics.json 的 .title 显示名）。
         return Section("neow", "Neow Starting Relics", "涅奥起始遗物",
             Entry("neow_curse_remover_enabled", ThingsModConfig.NeowRelicCurseRemoverEnabled,
-                "Curse Remover", "诅咒清除器"),
+                "Yellow Talisman (Neow)", "黄符（涅奥）"),
             Entry("neow_white_flag_enabled", ThingsModConfig.NeowRelicWhiteFlagEnabled,
-                "White Flag", "白旗"),
+                "White Flag (Neow)", "白旗（涅奥）"),
             Entry("neow_magic_glove_enabled", ThingsModConfig.NeowRelicMagicGloveEnabled,
-                "Magic Glove", "魔法手套"));
+                "Severed Sleeve (Neow)", "断袖（涅奥）"));
     }
 
     private static Dictionary<string, object?> Section(
