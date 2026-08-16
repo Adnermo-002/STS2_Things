@@ -129,12 +129,16 @@ def verify_config_contract(errors: list[str]) -> None:
     missing_in_provider = key_names - set(re.findall(r"ThingsModConfig\.(\w+)", provider_text))
     if missing_in_provider:
         fail(errors, "config contract: RitsuLib provider misses keys: " + ", ".join(sorted(missing_in_provider)))
+    # RitsuLib 文本映射必须用游戏语言码（zhs/zht/en），禁用旧的 zh-CN 键（不匹配会退回英文）。
+    if '"zh-CN"' in provider_text:
+        fail(errors, "config contract: RitsuLib provider must use game language codes, not zh-CN")
 
     # 3) BaseLib 标签本地化：每个键与区段标题都必须在 settings_ui 表中给出
     #    STS2_THINGS-<SLUG>.title（eng 与 zhs）。
     section_names = {"Bosses", "Other Encounters", "Events", "Merchant Bargain", "Neow Starting Relics"}
     label_names = key_names | section_names
     label_keys = {"STS2_THINGS-" + slugify_class_name(name) + ".title" for name in label_names}
+    label_keys.add("STS2_THINGS.mod_title")  # BaseLib 配置列表标题（GetModTitle）
     for language in ("eng", "zhs"):
         loc_path = SOURCE / "localization" / language / "settings_ui.json"
         if not loc_path.is_file():

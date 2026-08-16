@@ -175,12 +175,18 @@ public static class RitsuLibInteropProvider
         return entry;
     }
 
+    /// <summary>
+    /// 语言映射文本：键为游戏本地化语言码（LocManager：eng/zhs/zht…）。
+    /// RitsuLib 的 ResolveLangMap 按当前语言码精确/前缀匹配，最后回退 "en"；
+    /// 简体与繁体中文均显示中文，其余语言回退英文。
+    /// </summary>
     private static Dictionary<string, object?> Text(string en, string zhCn)
     {
         return new Dictionary<string, object?>
         {
             ["en"] = en,
-            ["zh-CN"] = zhCn,
+            ["zhs"] = zhCn,
+            ["zht"] = zhCn,
         };
     }
 }

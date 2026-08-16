@@ -65,7 +65,7 @@ if (Test-Path -LiteralPath $logPath -PathType Leaf) {
 }
 
 Write-Host 'Running BaseLib bridge probe...'
-& $GodotExe --headless --path $ProbeRoot --log-file $logPath -- @($BaseLibDll, $BridgeDll)
+& $GodotExe --headless --path $ProbeRoot --log-file $logPath -- @($BaseLibDll, $ImplementationDll, $BridgeDll)
 if ($LASTEXITCODE -ne 0) {
     throw "BaseLib bridge probe failed with exit code $LASTEXITCODE"
 }

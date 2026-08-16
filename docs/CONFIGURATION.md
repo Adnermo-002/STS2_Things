@@ -1,8 +1,8 @@
 # STS2_Things 配置说明
 
 本模组的遭遇战、事件、商人猜拳与涅奥起始遗物都可以独立开关。配置保存在
-`user://mod_configs/STS2_Things.cfg`（JSON；Windows 下通常在
-`%APPDATA%\Godot\app_userdata\Slay the Spire 2\mod_configs\STS2_Things.cfg`），
+`user://mod_configs/STS2_Things.cfg`（JSON；真实游戏环境下通常在
+`%APPDATA%\SlayTheSpire2\mod_configs\STS2_Things.cfg`），
 首次启动自动生成，损坏时自动备份并回退默认值。
 
 ## 三套配置入口（同一份文件）
@@ -15,6 +15,12 @@
 
 BaseLib 与 RitsuLib **都不是前置依赖**；两者都未安装时模组以默认配置独立运行。
 模组本身从不引用两个库（无编译期依赖，源码审计强制校验）。
+
+### 显示语言
+
+两套配置页的显示语言跟随游戏语言自动切换：游戏为简体中文（`zhs`）或繁体中文（`zht`）时
+显示中文，其余语言回退英文。BaseLib 标签经游戏 `settings_ui` 表解析（缺键自动回退
+`eng` 表）；RitsuLib 文本映射使用游戏语言码 `zhs`/`zht`/`en`。
 
 ## 可配置项
 

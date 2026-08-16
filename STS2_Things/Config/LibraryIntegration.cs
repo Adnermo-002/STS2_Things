@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Runtime.Loader;
 using HarmonyLib;
 
 namespace STS2_Things.Config;
@@ -56,6 +57,20 @@ internal static class LibraryIntegration
             return;
         try
         {
+            // BaseLib 尚未加载（本模组先于它初始化）时跳过；ModManager.State 变为
+            // Initialized 后的重试钩子会再次尝试。
+            Assembly? baseLibAssembly = null;
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                if (assembly.GetName().Name == BaseLibAssemblyName)
+                {
+                    baseLibAssembly = assembly;
+                    break;
+                }
+            }
+            if (baseLibAssembly is null)
+                return;
+
             string? directory = FindModDirectory();
             if (directory is null)
             {
@@ -73,7 +88,14 @@ internal static class LibraryIntegration
                 return;
             }
 
-            Assembly bridge = Assembly.LoadFrom(bridgePath);
+            // 桥必须载入与 BaseLib 相同的 ALC。官方加载器把全部模组 DLL 装入游戏程序集
+            // 上下文（ModManager 用 AssemblyLoadContext.GetLoadContext(Assembly
+            // .GetExecutingAssembly()).LoadFromAssemblyPath），而 Assembly.LoadFrom 会落入
+            // 默认上下文，桥便解析不到 BaseLib（FileNotFoundException，真实游戏日志已确认）。
+            // 这里显式使用 BaseLib 所在上下文加载，与探针验证过的模式一致。
+            AssemblyLoadContext loadContext =
+                AssemblyLoadContext.GetLoadContext(baseLibAssembly) ?? AssemblyLoadContext.Default;
+            Assembly bridge = loadContext.LoadFromAssemblyPath(bridgePath);
             Type? entry = bridge.GetType(BridgeEntryTypeName, throwOnError: false);
             MethodInfo? register = entry?.GetMethod(
                 "Register", BindingFlags.Public | BindingFlags.Static);

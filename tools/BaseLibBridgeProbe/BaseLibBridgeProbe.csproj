@@ -22,10 +22,6 @@
       <HintPath>$(Sts2DataDir)\0Harmony.dll</HintPath>
       <Private>true</Private>
     </Reference>
-    <Reference Include="STS2_Things">
-      <HintPath>$(ImplementationDll)</HintPath>
-      <Private>true</Private>
-    </Reference>
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\System.IO.Hashing.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\JetBrains.Annotations.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\MonoMod.Backports.dll" />

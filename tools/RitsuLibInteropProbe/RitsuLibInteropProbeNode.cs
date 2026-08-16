@@ -52,6 +52,17 @@ public partial class RitsuLibInteropProbeNode : Node
             bool pageFound = (bool)tryGetPage!.Invoke(null, pageArgs)!;
             Assert(pageFound, "Registered page STS2_Things::things is missing from the registry.");
 
+            // 文本映射必须使用游戏语言码（zhs/zht/en）。历史回归：旧实现用 zh-CN 键，
+            // 与 LocManager 语言码 zhs 不匹配，ResolveLangMap 只能退回 en → 页面全英文。
+            IDictionary<string, object?> schema =
+                RitsuLibInteropProvider.CreateRitsuLibSettingsSchema();
+            Assert(schema.TryGetValue("title", out object? title) &&
+                   title is IDictionary<string, object?> titleMap &&
+                   titleMap.ContainsKey("en") &&
+                   titleMap.ContainsKey("zhs") &&
+                   titleMap.ContainsKey("zht"),
+                "Provider text map must carry the en/zhs/zht game language codes.");
+
             // 值访问器往返（与 ThingsModConfig 共享同一内存态）。
             Assert(RitsuLibInteropProvider.GetRitsuLibSettingBool(
                        ThingsModConfig.BossOriginFogmogEnabled),
