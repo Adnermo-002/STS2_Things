@@ -1,0 +1,2 @@
+# Godot must never import ImageGen working outputs (candidate iterations).
+# Committed as a sentinel so the CI source audit can verify the guard exists.
