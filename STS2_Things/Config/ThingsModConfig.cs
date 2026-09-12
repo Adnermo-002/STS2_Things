@@ -53,8 +53,8 @@ public static class ThingsModConfig
     public const string BossTheLegacyForced = "BossTheLegacyForced";
     public const string BossBowlbugProgenitorEnabled = "BossBowlbugProgenitorEnabled";
     public const string BossBowlbugProgenitorForced = "BossBowlbugProgenitorForced";
-    public const string BossLivingRockEnabled = "BossLivingRockEnabled";
-    public const string BossLivingRockForced = "BossLivingRockForced";
+    public const string BossCaveGodEnabled = "BossCaveGodEnabled";
+    public const string BossCaveGodForced = "BossCaveGodForced";
 
     // ---- 遭遇战：非 Boss ----
     public const string EncounterSoulRoesEnabled = "EncounterSoulRoesEnabled";
@@ -87,8 +87,8 @@ public static class ThingsModConfig
         new(BossTheLegacyForced, Category.Boss, Default: false, Slot: SlotUnderdocks),
         new(BossBowlbugProgenitorEnabled, Category.Boss, Default: true, Slot: SlotHive),
         new(BossBowlbugProgenitorForced, Category.Boss, Default: false, Slot: SlotHive),
-        new(BossLivingRockEnabled, Category.Boss, Default: true, Slot: SlotHive),
-        new(BossLivingRockForced, Category.Boss, Default: false, Slot: SlotHive),
+        new(BossCaveGodEnabled, Category.Boss, Default: true, Slot: SlotHive),
+        new(BossCaveGodForced, Category.Boss, Default: false, Slot: SlotHive),
         new(EncounterSoulRoesEnabled, Category.Encounter, Default: true),
         new(EncounterQuirkyHopperEnabled, Category.Encounter, Default: true),
         new(EventRobberyFakeMerchantEnabled, Category.Event, Default: true),

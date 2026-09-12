@@ -81,8 +81,8 @@ public static class RitsuLibInteropProvider
             BossForceEntry("the_legacy_forced", ThingsModConfig.BossTheLegacyForced, "The Legacy", "腐化之遗"),
             BossEntry("bowlbug_progenitor_enabled", ThingsModConfig.BossBowlbugProgenitorEnabled, "Bowlbug Progenitor", "盛碗虫族母"),
             BossForceEntry("bowlbug_progenitor_forced", ThingsModConfig.BossBowlbugProgenitorForced, "Bowlbug Progenitor", "盛碗虫族母"),
-            BossEntry("living_rock_enabled", ThingsModConfig.BossLivingRockEnabled, "Living Rock", "活体巨岩"),
-            BossForceEntry("living_rock_forced", ThingsModConfig.BossLivingRockForced, "Living Rock", "活体巨岩"));
+            BossEntry("cave_god_enabled", ThingsModConfig.BossCaveGodEnabled, "Cave God", "山神"),
+            BossForceEntry("cave_god_forced", ThingsModConfig.BossCaveGodForced, "Cave God", "山神"));
     }
 
     private static Dictionary<string, object?> EncounterSection()

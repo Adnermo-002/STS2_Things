@@ -15,8 +15,9 @@
 	"STS2_THINGS-BOSS_THE_LEGACY_FORCED.title": "The Legacy — force (act boss)",
 	"STS2_THINGS-BOSS_BOWLBUG_PROGENITOR_ENABLED.title": "Bowlbug Progenitor — enabled",
 	"STS2_THINGS-BOSS_BOWLBUG_PROGENITOR_FORCED.title": "Bowlbug Progenitor — force (act boss)",
-	"STS2_THINGS-BOSS_LIVING_ROCK_ENABLED.title": "Living Rock — enabled",
-	"STS2_THINGS-BOSS_LIVING_ROCK_FORCED.title": "Living Rock — force (act boss)",
+	"STS2_THINGS-BOSS_CAVE_GOD_ENABLED.title": "Cave God — enabled",
+	"STS2_THINGS-BOSS_CAVE_GOD_FORCED.title": "Cave God — force (act boss)",
+
 	"STS2_THINGS-ENCOUNTER_SOUL_ROES_ENABLED.title": "Soul Roes — enabled",
 	"STS2_THINGS-ENCOUNTER_QUIRKY_HOPPER_ENABLED.title": "Quirky Hopper — enabled",
 	"STS2_THINGS-EVENT_ROBBERY_FAKE_MERCHANT_ENABLED.title": "Shifty Shop — enabled",

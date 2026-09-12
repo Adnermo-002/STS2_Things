@@ -118,12 +118,13 @@ public partial class ThingsConfigProbeNode : Node
 
     private static void VerifyForceImpliesEnabled()
     {
-        ThingsModConfig.SetValue(ThingsModConfig.BossLivingRockEnabled, false);
-        ThingsModConfig.SetValue(ThingsModConfig.BossLivingRockForced, true);
-        Assert(ThingsModConfig.IsEnabled(ThingsModConfig.BossLivingRockEnabled),
-            "Forcing Living Rock must imply enabled.");
+        ThingsModConfig.SetValue(ThingsModConfig.BossCaveGodEnabled, false);
+        ThingsModConfig.SetValue(ThingsModConfig.BossCaveGodForced, true);
+        Assert(ThingsModConfig.IsEnabled(ThingsModConfig.BossCaveGodEnabled),
+            "Forcing Cave God must imply enabled.");
         ResetAll();
     }
+
 
     // ---- 门控集成（补丁已随 STS2_ThingsInit.Initialize 安装）----
 

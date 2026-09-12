@@ -53,7 +53,10 @@
   "GRAVETIDE_CORPSE_SLUG.moves.GOOP.title": "黏液",
   "GRAVETIDE_SLUG_CORPSE.name": "噬尸蛞蝓尸体",
   "GRAVETIDE_SLUG_CORPSE.moves.REMAINS.title": "遗骸",
-  "THINGS_LIVING_ROCK.name": "活体巨岩",
-  "THINGS_LIVING_ROCK.moves.LEFT_PUNCH.title": "左拳",
-  "THINGS_LIVING_ROCK.moves.RIGHT_PUNCH.title": "右拳"
+  "THINGS_CAVE_GOD.name": "山神",
+  "THINGS_CAVE_GOD.moves.CENTRAL_SLAM.title": "泰山压顶",
+  "THINGS_CAVE_GOD.moves.FRONT_SWEEP.title": "向心横扫",
+  "THINGS_CAVE_GOD.moves.ALTERNATING_JABS.title": "交替重拳",
+  "THINGS_CAVE_GOD.moves.DOUBLE_FIST_CRUSH.title": "巨岩合击",
+  "THINGS_CAVE_GOD.moves.GRAB_PLAYER.title": "山神擒拿"
 }

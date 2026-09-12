@@ -53,7 +53,10 @@
   "GRAVETIDE_CORPSE_SLUG.moves.GOOP.title": "Goop",
   "GRAVETIDE_SLUG_CORPSE.name": "Corpse Slug Remains",
   "GRAVETIDE_SLUG_CORPSE.moves.REMAINS.title": "Remains",
-  "THINGS_LIVING_ROCK.name": "Living Rock",
-  "THINGS_LIVING_ROCK.moves.LEFT_PUNCH.title": "Left Punch",
-  "THINGS_LIVING_ROCK.moves.RIGHT_PUNCH.title": "Right Punch"
+  "THINGS_CAVE_GOD.name": "Cave God",
+  "THINGS_CAVE_GOD.moves.CENTRAL_SLAM.title": "Central Slam",
+  "THINGS_CAVE_GOD.moves.FRONT_SWEEP.title": "Front Sweep",
+  "THINGS_CAVE_GOD.moves.ALTERNATING_JABS.title": "Alternating Jabs",
+  "THINGS_CAVE_GOD.moves.DOUBLE_FIST_CRUSH.title": "Double Fist Crush",
+  "THINGS_CAVE_GOD.moves.GRAB_PLAYER.title": "Grab Player"
 }

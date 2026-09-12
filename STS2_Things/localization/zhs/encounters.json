@@ -20,6 +20,7 @@
   "GRAVETIDE_SLUG_BOSS_ENCOUNTER.title": "墓潮蛞蝓",
   "GRAVETIDE_SLUG_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]卷起的尸潮吞没了……",
 
-  "LIVING_ROCK_BOSS_ENCOUNTER.title": "活体巨岩",
-  "LIVING_ROCK_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]碾碎了。"
+  "CAVE_GOD_BOSS_ENCOUNTER.title": "山神",
+  "CAVE_GOD_BOSS_ENCOUNTER.loss": "{character}被[gold]{encounter}[/gold]碾为齑粉。"
 }
+

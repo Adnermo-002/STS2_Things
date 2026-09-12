@@ -33,7 +33,8 @@ BaseLib 与 RitsuLib **都不是前置依赖**；两者都未安装时模组以�
 | `BossGravetideSlugEnabled` / `BossGravetideSlugForced` | true / false | 盛碗虫族母（Underdocks） |
 | `BossTheLegacyEnabled` / `BossTheLegacyForced` | true / false | 腐化之遗（Underdocks） |
 | `BossBowlbugProgenitorEnabled` / `BossBowlbugProgenitorForced` | true / false | 盛碗虫族母·原版系（Hive） |
-| `BossLivingRockEnabled` / `BossLivingRockForced` | true / false | 生命之岩（Hive） |
+| `BossCaveGodEnabled` / `BossCaveGodForced` | true / false | 山神（Hive） |
+
 
 - `Enabled=false`：该 Boss 从对应 Act 的遭遇池与 Boss 候选移除（不会随机到）。
 - `Forced=true`：本幕结尾**必定遭遇**该 Boss（BossDiscoveryOrder 只保留它）。

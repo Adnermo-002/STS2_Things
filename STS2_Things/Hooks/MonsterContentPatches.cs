@@ -40,7 +40,7 @@ internal static class MonsterEncounterCatalog
         return Add(source,
             (ThingsModConfig.EncounterQuirkyHopperEnabled, ModelDb.Encounter<QuirkyHopperWeak>()),
             (ThingsModConfig.BossBowlbugProgenitorEnabled, ModelDb.Encounter<BowlbugProgenitorBossEncounter>()),
-            (ThingsModConfig.BossLivingRockEnabled, ModelDb.Encounter<LivingRockBossEncounter>()));
+            (ThingsModConfig.BossCaveGodEnabled, ModelDb.Encounter<CaveGodBossEncounter>()));
     }
 
     public static IEnumerable<EncounterModel> AddOvergrowthBosses(IEnumerable<EncounterModel> source)
@@ -66,8 +66,8 @@ internal static class MonsterEncounterCatalog
         return AddBosses(source, ThingsModConfig.SlotHive,
             (ThingsModConfig.BossBowlbugProgenitorEnabled, ThingsModConfig.BossBowlbugProgenitorForced,
                 ModelDb.Encounter<BowlbugProgenitorBossEncounter>()),
-            (ThingsModConfig.BossLivingRockEnabled, ThingsModConfig.BossLivingRockForced,
-                ModelDb.Encounter<LivingRockBossEncounter>()));
+            (ThingsModConfig.BossCaveGodEnabled, ThingsModConfig.BossCaveGodForced,
+                ModelDb.Encounter<CaveGodBossEncounter>()));
     }
 
     private static IEnumerable<EncounterModel> Add(

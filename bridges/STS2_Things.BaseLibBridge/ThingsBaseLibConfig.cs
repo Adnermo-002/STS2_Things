@@ -54,11 +54,11 @@ public sealed class ThingsBaseLibConfig : SimpleModConfig
     public static bool BossBowlbugProgenitorForced { get; set; }
 
     [ConfigSection("Bosses")]
-    public static bool BossLivingRockEnabled { get; set; } = true;
+    public static bool BossCaveGodEnabled { get; set; } = true;
 
     [ConfigSection("Bosses")]
-    [ConfigVisibleIf(nameof(CanForceLivingRock))]
-    public static bool BossLivingRockForced { get; set; }
+    [ConfigVisibleIf(nameof(CanForceCaveGod))]
+    public static bool BossCaveGodForced { get; set; }
 
     // ---- 遭遇战：其他 ----
 
@@ -108,7 +108,8 @@ public sealed class ThingsBaseLibConfig : SimpleModConfig
 
     public static bool CanForceTheLegacy() => !BossGravetideSlugForced;
 
-    public static bool CanForceBowlbugProgenitor() => !BossLivingRockForced;
+    public static bool CanForceBowlbugProgenitor() => !BossCaveGodForced;
 
-    public static bool CanForceLivingRock() => !BossBowlbugProgenitorForced;
+    public static bool CanForceCaveGod() => !BossBowlbugProgenitorForced;
 }
+

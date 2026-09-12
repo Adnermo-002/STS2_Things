@@ -2048,6 +2048,7 @@ def main() -> int:
     # “No loader found for resource: res://images/ui/run_history/<slug>_boss_encounter.png”）。
     boss_run_history_slugs = (
         "bowlbug_progenitor",
+        "cave_god",
         "gravetide_slug",
         "living_rock",
         "origin_fogmog",

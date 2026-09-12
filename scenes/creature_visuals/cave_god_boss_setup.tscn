@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://STS2_Things/Visuals/NCaveGodBossBackground.cs" id="1_controller"]
+[ext_resource type="SpineSkeletonDataResource" path="res://animations/monsters/cave_god/cave_god_skeleton_data.tres" id="2_skel_data"]
+
+[node name="CaveGod" type="Node2D"]
+script = ExtResource("1_controller")
+
+[node name="Visuals" type="SpineSprite" parent="."]
+unique_name_in_owner = true
+skeleton_data_res = ExtResource("2_skel_data")
+preview_animation = "idle_loop"
+scale = Vector2(0.75, 0.75)

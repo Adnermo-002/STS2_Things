@@ -20,6 +20,6 @@
   "GRAVETIDE_SLUG_BOSS_ENCOUNTER.title": "Gravetide Slug",
   "GRAVETIDE_SLUG_BOSS_ENCOUNTER.loss": "{character} is swallowed by the corpse-laden tide of [gold]{encounter}[/gold]...",
 
-  "LIVING_ROCK_BOSS_ENCOUNTER.title": "Living Rock",
-  "LIVING_ROCK_BOSS_ENCOUNTER.loss": "{character} is crushed beneath [gold]{encounter}[/gold]."
+  "CAVE_GOD_BOSS_ENCOUNTER.title": "Cave God",
+  "CAVE_GOD_BOSS_ENCOUNTER.loss": "{character} is crushed to dust by [gold]{encounter}[/gold]."
 }
