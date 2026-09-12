@@ -1,0 +1,162 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Godot;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Ascension;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.MonsterMoves.Intents;
+using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
+using MegaCrit.Sts2.Core.Nodes.Audio;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Screens.Bestiary;
+using MegaCrit.Sts2.Core.ValueProps;
+using STS2_Things.Visuals;
+
+namespace STS2_Things.Monsters;
+
+/// <summary>
+/// Right Hand / Right Arm entity of Cave God (山神·右臂).
+/// Manages the right side HP bar, intents, and strikes in coordination with NCaveGodBossBackground.
+/// </summary>
+public sealed class ThingsCaveGodRightHand : MonsterModel
+{
+    private const string KaiserMusicTrack = "kaiser_crab_progress";
+    private NCaveGodBossBackground? _background;
+    private bool _enteredAngry;
+
+    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_die";
+    public override bool ShouldFadeAfterDeath => false;
+    public override bool ShouldDisappearFromDoom => false;
+    public override float DeathAnimLengthOverride => 2.5f;
+
+    private NCaveGodBossBackground? Background
+    {
+        get
+        {
+            AssertMutable();
+            if (_background == null)
+            {
+                _background = (NCombatRoom.Instance?.Background ?? NBestiary.Instance?.Layout)?.GetNodeOrNull<NCaveGodBossBackground>("%CaveGod");
+            }
+            return _background;
+        }
+    }
+
+    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 219, 209);
+    public override int MaxInitialHp => MinInitialHp;
+
+    private int RightPunchDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 14, 12);
+    private int CentralSlamDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 22, 19);
+    private int GrabDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 8, 7);
+    private int EarthquakeDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 15, 13);
+    private int EarthquakeStrengthGain => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 3, 2);
+
+    public override async Task AfterAddedToRoom()
+    {
+        await base.AfterAddedToRoom();
+        NRunMusicController.Instance?.UpdateMusicParameter(KaiserMusicTrack, 1f);
+    }
+
+    public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
+    {
+        if (creature == Creature && delta < 0m)
+        {
+            Background?.PlayHurtAnim();
+
+            if (Creature.CurrentHp <= Creature.MaxHp / 2m && !_enteredAngry)
+            {
+                _enteredAngry = true;
+                Background?.SetAngry(true);
+                NRunMusicController.Instance?.UpdateMusicParameter(KaiserMusicTrack, 3f);
+            }
+        }
+        return Task.CompletedTask;
+    }
+
+    public override Task BeforeDeath(Creature creature)
+    {
+        if (creature != Creature)
+            return Task.CompletedTask;
+
+        NAudioManager.Instance?.PlayOneShot(DeathSfx);
+
+        if (CombatManager.Instance.IsOverOrEnding)
+        {
+            Background?.PlayBodyDeathAnim();
+            NRunMusicController.Instance?.UpdateMusicParameter(KaiserMusicTrack, 5f);
+        }
+        else
+        {
+            NRunMusicController.Instance?.UpdateMusicParameter(KaiserMusicTrack, 2f);
+        }
+        return Task.CompletedTask;
+    }
+
+    protected override MonsterMoveStateMachine GenerateMoveStateMachine()
+    {
+        List<MonsterState> states = new();
+
+        MoveState rightPunch = new("RIGHT_PUNCH", RightPunchMove, new SingleAttackIntent(RightPunchDamage));
+        MoveState centralSlam = new("CENTRAL_SLAM", CentralSlamMove, new SingleAttackIntent(CentralSlamDamage));
+        MoveState grabPlayer = new("GRAB_PLAYER", GrabPlayerMove, new SingleAttackIntent(GrabDamage), new DebuffIntent());
+        MoveState earthquake = new("EARTHQUAKE", EarthquakeMove, new SingleAttackIntent(EarthquakeDamage), new BuffIntent());
+
+        rightPunch.FollowUpState = centralSlam;
+        centralSlam.FollowUpState = grabPlayer;
+        grabPlayer.FollowUpState = earthquake;
+        earthquake.FollowUpState = rightPunch;
+
+        states.Add(rightPunch);
+        states.Add(centralSlam);
+        states.Add(grabPlayer);
+        states.Add(earthquake);
+
+        return new MonsterMoveStateMachine(states, rightPunch);
+    }
+
+    private async Task RightPunchMove(IReadOnlyList<Creature> targets)
+    {
+        await (Background?.PlayAttackAnim("rightpunch", 1.0f) ?? Task.CompletedTask);
+        await DamageCmd.Attack(RightPunchDamage)
+            .FromMonster(this)
+            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
+            .Execute(null);
+    }
+
+    private async Task CentralSlamMove(IReadOnlyList<Creature> targets)
+    {
+        await (Background?.PlayAttackAnim("central_slam", 1.0f) ?? Task.CompletedTask);
+        await DamageCmd.Attack(CentralSlamDamage)
+            .FromMonster(this)
+            .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
+            .Execute(null);
+    }
+
+    private async Task GrabPlayerMove(IReadOnlyList<Creature> targets)
+    {
+        await (Background?.PlayAttackAnim("grab_player", 1.0f) ?? Task.CompletedTask);
+        await DamageCmd.Attack(GrabDamage)
+            .FromMonster(this)
+            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_snap")
+            .Execute(null);
+        if (targets.Count > 0)
+        {
+            await PowerCmd.Apply<VulnerablePower>(new ThrowingPlayerChoiceContext(), targets, 2m, Creature, null);
+        }
+    }
+
+    private async Task EarthquakeMove(IReadOnlyList<Creature> targets)
+    {
+        await (Background?.PlayAttackAnim("earthquake", 0.9f) ?? Task.CompletedTask);
+        await DamageCmd.Attack(EarthquakeDamage)
+            .FromMonster(this)
+            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
+            .Execute(null);
+        await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Creature, EarthquakeStrengthGain, Creature, null);
+    }
+}

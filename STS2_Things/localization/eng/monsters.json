@@ -58,5 +58,15 @@
   "THINGS_CAVE_GOD.moves.FRONT_SWEEP.title": "Front Sweep",
   "THINGS_CAVE_GOD.moves.ALTERNATING_JABS.title": "Alternating Jabs",
   "THINGS_CAVE_GOD.moves.DOUBLE_FIST_CRUSH.title": "Double Fist Crush",
-  "THINGS_CAVE_GOD.moves.GRAB_PLAYER.title": "Grab Player"
+  "THINGS_CAVE_GOD.moves.GRAB_PLAYER.title": "Grab Player",
+  "THINGS_CAVE_GOD_LEFT_HAND.name": "Cave God (Left Arm)",
+  "THINGS_CAVE_GOD_LEFT_HAND.moves.LEFT_PUNCH.title": "Left Rock Punch",
+  "THINGS_CAVE_GOD_LEFT_HAND.moves.ALTERNATING_JABS.title": "Alternating Jabs",
+  "THINGS_CAVE_GOD_LEFT_HAND.moves.FRONT_SWEEP.title": "Front Sweep",
+  "THINGS_CAVE_GOD_LEFT_HAND.moves.MOUNTAIN_GUARD.title": "Mountain Guard",
+  "THINGS_CAVE_GOD_RIGHT_HAND.name": "Cave God (Right Arm)",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.RIGHT_PUNCH.title": "Right Rock Punch",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.CENTRAL_SLAM.title": "Central Slam",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.GRAB_PLAYER.title": "Mountain Grip",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.EARTHQUAKE.title": "Earthquake"
 }

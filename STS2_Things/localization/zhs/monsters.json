@@ -58,5 +58,15 @@
   "THINGS_CAVE_GOD.moves.FRONT_SWEEP.title": "向心横扫",
   "THINGS_CAVE_GOD.moves.ALTERNATING_JABS.title": "交替重拳",
   "THINGS_CAVE_GOD.moves.DOUBLE_FIST_CRUSH.title": "巨岩合击",
-  "THINGS_CAVE_GOD.moves.GRAB_PLAYER.title": "山神擒拿"
+  "THINGS_CAVE_GOD.moves.GRAB_PLAYER.title": "山神擒拿",
+  "THINGS_CAVE_GOD_LEFT_HAND.name": "山神·左臂",
+  "THINGS_CAVE_GOD_LEFT_HAND.moves.LEFT_PUNCH.title": "左崩岩拳",
+  "THINGS_CAVE_GOD_LEFT_HAND.moves.ALTERNATING_JABS.title": "连环地陷",
+  "THINGS_CAVE_GOD_LEFT_HAND.moves.FRONT_SWEEP.title": "横断山峦",
+  "THINGS_CAVE_GOD_LEFT_HAND.moves.MOUNTAIN_GUARD.title": "重峦叠嶂",
+  "THINGS_CAVE_GOD_RIGHT_HAND.name": "山神·右臂",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.RIGHT_PUNCH.title": "右崩岩拳",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.CENTRAL_SLAM.title": "泰山压顶",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.GRAB_PLAYER.title": "山岳之握",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.EARTHQUAKE.title": "地壳鸣动"
 }

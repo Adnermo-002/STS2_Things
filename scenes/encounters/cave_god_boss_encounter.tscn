@@ -9,5 +9,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="cave_god" type="Marker2D" parent="."]
-position = Vector2(1280, 720)
+[node name="left_hand" type="Marker2D" parent="."]
+position = Vector2(320, 720)
+
+[node name="right_hand" type="Marker2D" parent="."]
+position = Vector2(1600, 720)

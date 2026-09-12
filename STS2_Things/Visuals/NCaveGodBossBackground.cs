@@ -1,18 +1,22 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
 
 namespace STS2_Things.Visuals;
 
 /// <summary>
-/// Background controller for CaveGod boss encounter.
-/// Manages the full-screen SpineSprite animation tracks in the background layer,
-/// coordinating combat actions (slams, sweeps, jabs, hit recoils, angry phase)
-/// with ThingsCaveGod monster model.
+/// Dual-pass background controller for Cave God boss encounter.
+/// Manages two lock-stepped SpineSprite rigs:
+/// 1. CaveGodBody: Rendered behind the basalt platform foreground layer with all arm/fist slots masked transparent.
+/// 2. CaveGodArms: Rendered in front of the platform foreground layer with all body/crystal/beard slots masked transparent.
+/// This creates an authentic 3D sandwich occlusion depth where the boss's colossal body emerges from the lava behind
+/// the circular platform, while its massive stone fists rest and strike on top of the front edge without occlusion.
 /// </summary>
 [GlobalClass]
 public partial class NCaveGodBossBackground : Node2D
@@ -20,7 +24,28 @@ public partial class NCaveGodBossBackground : Node2D
     private const int MainTrack = 0;
     private const int ReactionTrack = 1;
 
-    private MegaSprite? _animController;
+    private static readonly string[] ArmSlotNames =
+    [
+        "arm1_2_back", "arm1_2_back_red", "arm1_1", "arm2_1",
+        "arm1_2", "arm1_2_red", "arm1_3", "arm2_2", "arm2_2_red", "arm2_3"
+    ];
+
+    private static readonly string[] BodySlotNames =
+    [
+        "body_bottom", "body", "body_red", "neck", "neck_red",
+        "head", "head_red", "eyes", "eyes_red", "beard3", "beard3_red",
+        "beard2", "beard2_red", "beard1", "beard1_red", "crastalls_roof",
+        "crastalls_roof_red", "horn1", "horn1_red", "horn2", "horn2_red",
+        "head_skale", "head_skale_red", "horizon"
+    ];
+
+    private static readonly Color TransparentColor = new(1f, 1f, 1f, 0f);
+
+    private MegaSprite? _bodyController;
+    private MegaSprite? _armsController;
+    private readonly List<GodotObject> _bodyMaskSlots = new();
+    private readonly List<GodotObject> _armsMaskSlots = new();
+
     private bool _isAngry;
     private CancellationTokenSource? _cts;
 
@@ -35,116 +60,166 @@ public partial class NCaveGodBossBackground : Node2D
 
     public override void _Ready()
     {
-        Node2D? visualsNode = GetNodeOrNull<Node2D>("%Visuals");
-        if (visualsNode == null)
+        Node2D? bodyNode = GetNodeOrNull<Node2D>("%CaveGodBody") ?? GetNodeOrNull<Node2D>("CaveGodBody");
+        Node2D? armsNode = GetNodeOrNull<Node2D>("%CaveGodArms") ?? GetParent()?.GetNodeOrNull<Node2D>("%CaveGodArms") ?? GetParent()?.GetNodeOrNull<Node2D>("CaveGodArms");
+
+        if (bodyNode == null || armsNode == null)
         {
-            Log.Error("[CaveGodBackground] Failed to find '%Visuals' node in hierarchy.");
+            Log.Error($"[CaveGodBackground] Setup failed: bodyNode={(bodyNode != null)}, armsNode={(armsNode != null)}");
             return;
         }
 
-        _animController = new MegaSprite(visualsNode);
-        this.RunWhenSpineReady(_animController, state =>
+        _bodyController = new MegaSprite(bodyNode);
+        _armsController = new MegaSprite(armsNode);
+
+        SetupBodySprite(_bodyController);
+        SetupArmsSprite(_armsController);
+
+        Log.Info("[CaveGodBackground] Dual-pass CaveGod Spine controllers initialized.");
+    }
+
+    private void SetupBodySprite(MegaSprite sprite)
+    {
+        this.RunWhenSpineReady(sprite, state =>
         {
-            state.SetAnimation("idle_loop", loop: true, MainTrack);
-            Log.Info("[CaveGodBackground] CaveGod Spine animation state initialized to 'idle_loop'.");
+            state.SetAnimation("idle_front", loop: true, MainTrack);
+            MegaSkeleton? skel = sprite.GetSkeleton();
+            if (skel != null)
+            {
+                foreach (string name in ArmSlotNames)
+                {
+                    Variant slotVar = skel.BoundObject.Call("find_slot", name);
+                    if (slotVar.AsGodotObject() is GodotObject slotObj)
+                    {
+                        _bodyMaskSlots.Add(slotObj);
+                    }
+                }
+            }
+
+            sprite.ConnectBeforeWorldTransformsChange(Callable.From((Variant _) =>
+            {
+                for (int i = 0; i < _bodyMaskSlots.Count; i++)
+                {
+                    _bodyMaskSlots[i].Call("set_color", TransparentColor);
+                }
+            }));
+            Log.Info($"[CaveGodBackground] Body skeleton initialized: {_bodyMaskSlots.Count} arm slots masked transparent.");
+        });
+    }
+
+    private void SetupArmsSprite(MegaSprite sprite)
+    {
+        this.RunWhenSpineReady(sprite, state =>
+        {
+            state.SetAnimation("idle_front", loop: true, MainTrack);
+            MegaSkeleton? skel = sprite.GetSkeleton();
+            if (skel != null)
+            {
+                foreach (string name in BodySlotNames)
+                {
+                    Variant slotVar = skel.BoundObject.Call("find_slot", name);
+                    if (slotVar.AsGodotObject() is GodotObject slotObj)
+                    {
+                        _armsMaskSlots.Add(slotObj);
+                    }
+                }
+            }
+
+            sprite.ConnectBeforeWorldTransformsChange(Callable.From((Variant _) =>
+            {
+                for (int i = 0; i < _armsMaskSlots.Count; i++)
+                {
+                    _armsMaskSlots[i].Call("set_color", TransparentColor);
+                }
+            }));
+            Log.Info($"[CaveGodBackground] Arms skeleton initialized: {_armsMaskSlots.Count} body slots masked transparent.");
         });
     }
 
     public void SetAngry(bool angry)
     {
-        if (_isAngry == angry || _animController == null)
+        if (_isAngry == angry)
             return;
 
         _isAngry = angry;
-        MegaAnimationState? state = _animController.TryGetAnimationState();
-        if (state == null)
-            return;
+        string targetIdle = _isAngry ? "idle_front_angry" : "idle_front";
 
-        string targetIdle = _isAngry ? "angry_idle_loop" : "idle_loop";
-        if (_animController.HasAnimation(targetIdle))
+        SetTrackAnimationBoth(targetIdle, loop: true, MainTrack);
+        Log.Info($"[CaveGodBackground] CaveGod transitioned to {(angry ? "ANGRY" : "NORMAL")} idle ({targetIdle}).");
+    }
+
+    public async Task PlayAttackAnim(string animBase, float duration)
+    {
+        _cts?.Cancel();
+        _cts?.Dispose();
+        _cts = new CancellationTokenSource();
+
+        string anim = animBase;
+        if (_isAngry)
         {
-            state.SetAnimation(targetIdle, loop: true, MainTrack);
-            Log.Info($"[CaveGodBackground] CaveGod transitioned to {(angry ? "ANGRY" : "NORMAL")} idle.");
+            string angryCandidate = animBase + "_angry";
+            if (_bodyController != null && _bodyController.HasAnimation(angryCandidate))
+            {
+                anim = angryCandidate;
+            }
         }
+
+        string idleAnim = _isAngry ? "idle_front_angry" : "idle_front";
+
+        SetTrackAnimationBoth(anim, loop: false, MainTrack);
+        AddTrackAnimationBoth(idleAnim, delay: 0f, loop: true, MainTrack);
+        Log.Info($"[CaveGodBackground] Playing synchronized attack animation: {anim} (duration: {duration:F2}s)");
+
+        await Cmd.Wait(duration, _cts.Token);
     }
 
-    public void PlayCentralSlam()
+    public void PlayHurtAnim()
     {
-        string anim = _isAngry ? "central_slam_angry" : "central_slam";
-        PlayMainAnimation(anim);
-    }
-
-    public void PlayFrontSweep()
-    {
-        string anim = _isAngry ? "front_sweep_angry" : "front_sweep";
-        PlayMainAnimation(anim);
-    }
-
-    public void PlayAlternatingJabs()
-    {
-        PlayMainAnimation("alternating_jabs");
-    }
-
-    public void PlayDoubleFistCrush()
-    {
-        PlayMainAnimation("double_fist_crush");
-    }
-
-    public void PlayGrabPlayer()
-    {
-        PlayMainAnimation("grab_player");
-    }
-
-    public void PlayHitRecoil()
-    {
-        if (_animController == null)
-            return;
-
-        MegaAnimationState? state = _animController.TryGetAnimationState();
-        if (state == null)
-            return;
-
         string hurtAnim = _isAngry ? "hit_recoil_angry" : "hit_recoil";
-        if (_animController.HasAnimation(hurtAnim))
+        SetTrackAnimationBoth(hurtAnim, loop: false, ReactionTrack);
+        AddEmptyReactionAnimation();
+    }
+
+    public void PlayBodyDeathAnim()
+    {
+        string deathAnim = _isAngry ? "hide_angry" : "hide";
+        SetTrackAnimationBoth(deathAnim, loop: false, MainTrack);
+        Log.Info($"[CaveGodBackground] Playing CaveGod body retreat/death animation: {deathAnim}");
+    }
+
+    private void SetTrackAnimationBoth(string animName, bool loop, int track)
+    {
+        MegaAnimationState? bodyState = _bodyController?.TryGetAnimationState();
+        MegaAnimationState? armsState = _armsController?.TryGetAnimationState();
+
+        if (bodyState != null && (_bodyController?.HasAnimation(animName) ?? false))
         {
-            state.SetAnimation(hurtAnim, loop: false, ReactionTrack);
+            bodyState.SetAnimation(animName, loop, track);
+        }
+        if (armsState != null && (_armsController?.HasAnimation(animName) ?? false))
+        {
+            armsState.SetAnimation(animName, loop, track);
         }
     }
 
-    public void PlayDie()
+    private void AddTrackAnimationBoth(string animName, float delay, bool loop, int track)
     {
-        if (_animController == null)
-            return;
+        MegaAnimationState? bodyState = _bodyController?.TryGetAnimationState();
+        MegaAnimationState? armsState = _armsController?.TryGetAnimationState();
 
-        MegaAnimationState? state = _animController.TryGetAnimationState();
-        if (state == null)
-            return;
-
-        if (_animController.HasAnimation("die"))
+        if (bodyState != null && (_bodyController?.HasAnimation(animName) ?? false))
         {
-            state.SetAnimation("die", loop: false, MainTrack);
+            bodyState.AddAnimation(animName, delay, loop, track);
+        }
+        if (armsState != null && (_armsController?.HasAnimation(animName) ?? false))
+        {
+            armsState.AddAnimation(animName, delay, loop, track);
         }
     }
 
-    private void PlayMainAnimation(string animName)
+    private void AddEmptyReactionAnimation()
     {
-        if (_animController == null)
-            return;
-
-        MegaAnimationState? state = _animController.TryGetAnimationState();
-        if (state == null)
-            return;
-
-        if (_animController.HasAnimation(animName))
-        {
-            state.SetAnimation(animName, loop: false, MainTrack);
-            string idle = _isAngry ? "angry_idle_loop" : "idle_loop";
-            state.AddAnimation(idle, delay: 0f, loop: true, MainTrack);
-            Log.Info($"[CaveGodBackground] Playing action animation: {animName}");
-        }
-        else
-        {
-            Log.Warn($"[CaveGodBackground] Animation '{animName}' not found in skeleton, keeping idle.");
-        }
+        _bodyController?.TryGetAnimationState()?.AddEmptyAnimation(ReactionTrack);
+        _armsController?.TryGetAnimationState()?.AddEmptyAnimation(ReactionTrack);
     }
 }

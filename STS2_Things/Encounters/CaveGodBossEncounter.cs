@@ -7,12 +7,14 @@ using STS2_Things.Monsters;
 namespace STS2_Things.Encounters;
 
 /// <summary>
-/// Cave God boss encounter - Built against Kaiser Crab architectural framework.
-/// Uses 0.75x camera scaling, centered players, and full-screen background Spine driver.
+/// Cave God boss encounter - Built against Kaiser Crab dual-monster architectural framework.
+/// Uses 0.75x camera scaling, centered players, dual monster proxies (Left Hand & Right Hand),
+/// and a full-screen dual-pass background Spine driver.
 /// </summary>
 public sealed class CaveGodBossEncounter : ModBossEncounter
 {
-    private const string SlotName = "cave_god";
+    public const string LeftHandSlot = "left_hand";
+    public const string RightHandSlot = "right_hand";
 
     protected override string IconName => "cave_god";
 
@@ -37,18 +39,20 @@ public sealed class CaveGodBossEncounter : ModBossEncounter
 
     public override Vector2 GetCameraOffset() => Vector2.Down * 35f;
 
-    public override IReadOnlyList<string> Slots => [SlotName];
+    public override IReadOnlyList<string> Slots => [LeftHandSlot, RightHandSlot];
 
     public override IEnumerable<MonsterModel> AllPossibleMonsters =>
     [
-        ModelDb.Monster<ThingsCaveGod>()
+        ModelDb.Monster<ThingsCaveGodLeftHand>(),
+        ModelDb.Monster<ThingsCaveGodRightHand>()
     ];
 
     protected override IReadOnlyList<(MonsterModel, string?)> GenerateMonsters()
     {
         return
         [
-            (ModelDb.Monster<ThingsCaveGod>().ToMutable(), SlotName)
+            (ModelDb.Monster<ThingsCaveGodLeftHand>().ToMutable(), LeftHandSlot),
+            (ModelDb.Monster<ThingsCaveGodRightHand>().ToMutable(), RightHandSlot)
         ];
     }
 }
