@@ -1,63 +1,24 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://src/Core/Nodes/Rooms/NCombatBackground.cs" id="1_hhn5n"]
-[ext_resource type="Script" path="res://src/Core/Debug/NBgLayerDebug.cs" id="2_xaqbt"]
-[ext_resource type="Texture2D" path="res://images/rooms/cave_god_boss/cavegod_bg_far.png" id="3_bg_far"]
-[ext_resource type="Texture2D" path="res://images/rooms/cave_god_boss/cavegod_fg_platform.png" id="4_fg_plat"]
-[ext_resource type="PackedScene" path="res://scenes/creature_visuals/cave_god_boss_setup.tscn" id="5_cavegod"]
+[ext_resource type="PackedScene" path="res://scenes/creature_visuals/cave_god_boss_setup.tscn" id="2_cavegod"]
 
 [node name="CaveGodBossEncounterBackground" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_hhn5n")
 
 [node name="Layer_00" type="Control" parent="."]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_xaqbt")
+anchors_preset = 0
+mouse_filter = 2
 
-[node name="Background" type="TextureRect" parent="Layer_00"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_bg_far")
-expand_mode = 1
-stretch_mode = 6
-
-[node name="CaveGod" parent="." instance=ExtResource("5_cavegod")]
+[node name="CaveGod" parent="." instance=ExtResource("2_cavegod")]
 unique_name_in_owner = true
-position = Vector2(960, 680)
+position = Vector2(0, 150)
 
 [node name="Foreground" type="Control" parent="."]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_xaqbt")
-
-[node name="Platform" type="TextureRect" parent="Foreground"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fg_plat")
-expand_mode = 1
-stretch_mode = 6
+anchors_preset = 0
+mouse_filter = 2

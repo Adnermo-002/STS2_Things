@@ -22,6 +22,7 @@ func _initialize() -> void:
 		"scale_beetle_boss_encounter",
 		"the_legacy_boss_encounter",
 		"bowlbug_progenitor_boss_encounter",
+		"cave_god_boss_encounter",
 	]
 	for slug in background_slugs:
 		_verify_background(slug)
