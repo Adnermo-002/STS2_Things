@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3]
 
-[ext_resource type="SpineAtlasResource" path="res://animations/monsters/cave_god/cave_god.atlas" id="1_atlas"]
-[ext_resource type="SpineSkeletonFileResource" path="res://animations/monsters/cave_god/cave_god.skel" id="2_skel"]
+[ext_resource type="SpineAtlasResource" path="res://animations/monsters/cave_god/cave_god.spatlas" id="1_atlas"]
+[ext_resource type="SpineSkeletonFileResource" path="res://animations/monsters/cave_god/cave_god.spskel" id="2_skel"]
 
 [resource]
 atlas_res = ExtResource("1_atlas")

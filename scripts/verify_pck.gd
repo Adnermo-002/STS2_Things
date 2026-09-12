@@ -85,6 +85,10 @@ func _initialize() -> void:
 		"res://STS2_Things/animations/monsters/gravetide_slug/gravetide_slug_skel_data.tres"
 	)
 	_verify_file("res://scenes/creature_visuals/gravetide_slug.tscn")
+	_verify_file("res://animations/monsters/cave_god/cave_god.spatlas")
+	_verify_file("res://animations/monsters/cave_god/cave_god.spskel")
+	_verify_file("res://animations/monsters/cave_god/cave_god_skeleton_data.tres")
+	_verify_file("res://scenes/creature_visuals/things_cave_god.tscn")
 	if _verify_csharp_placeholder_tree("res://STS2_Things") == 0:
 		_fail("PCK exposes no C# script placeholders under res://STS2_Things")
 
