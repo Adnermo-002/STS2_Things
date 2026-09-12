@@ -156,7 +156,7 @@ public sealed class ThingsCaveGod : MonsterModel
         Background?.PlayCentralSlam();
         await DamageCmd.Attack(CentralSlamDamage)
             .FromMonster(this)
-            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_attack_slam")
+            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
             .Execute(null);
     }
 
@@ -184,7 +184,7 @@ public sealed class ThingsCaveGod : MonsterModel
         Background?.PlayDoubleFistCrush();
         await DamageCmd.Attack(DoubleCrushDamage)
             .FromMonster(this)
-            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_attack_slam")
+            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
             .Execute(null);
         await CreatureCmd.GainBlock(Creature, (decimal)DoubleCrushBlock, ValueProp.Move, null);
     }
