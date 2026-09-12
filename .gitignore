@@ -19,6 +19,8 @@ dist/
 *.pck
 *.zip
 *.pdb
+*.dll
+
 
 # Local logs and temporary files
 *.log

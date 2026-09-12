@@ -10,4 +10,11 @@ namespace STS2_Things.Visuals;
 [GlobalClass]
 public partial class NThingsCombatBackground : NCombatBackground
 {
+    public override void _Ready()
+    {
+        base._Ready();
+        GetNode<Control>("Layer_00").ZIndex = -2;
+        GetNode<Control>("Layer_01").ZIndex = 1;
+        GetNode<Control>("Foreground").ZIndex = 3;
+    }
 }

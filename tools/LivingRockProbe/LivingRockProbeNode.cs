@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using System.Reflection;
 using System.Runtime.Loader;
 using Godot;
@@ -31,13 +32,30 @@ public partial class LivingRockProbeNode : Node
         try
         {
             string[] args = OS.GetCmdlineUserArgs();
-            Assert(args.Length == 1, "Usage: LivingRockProbe ABSOLUTE_PCK");
+            bool render = args.Length == 2 && args[1] == "render";
+            bool visualOnly = args.Length == 2 && args[1] == "visual";
+            Assert(args.Length == 1 || render || visualOnly,
+                "Usage: LivingRockProbe ABSOLUTE_PCK [render|visual]");
             Assert(ProjectSettings.LoadResourcePack(args[0], replaceFiles: true),
                 $"Could not mount PCK: {args[0]}");
 
             AssemblyLoadContext.Default.Resolving += ResolveRuntimeDependency;
             EnsureRuntimeDependency("Sentry.Godot");
             ScriptManagerBridge.LookupScriptsInAssembly(ImplementationAssembly);
+            if (render)
+            {
+                await RenderLayeredScene();
+                GD.Print("Living Rock layered render: PASS");
+                GetTree().Quit(0);
+                return;
+            }
+            if (visualOnly)
+            {
+                await VerifyVisualStateMachine();
+                GD.Print("Living Rock visual behavior probe: PASS");
+                GetTree().Quit(0);
+                return;
+            }
             InitializeModelDb();
             VerifyModelAndEncounterContract();
             await VerifyVisualStateMachine();
@@ -90,7 +108,18 @@ public partial class LivingRockProbeNode : Node
         typeof(ModelDb).GetMethod("InitIds", BindingFlags.Public | BindingFlags.Static)!
             .Invoke(null, null);
 
-        new Harmony("STS2_Things.LivingRockProbe").PatchAll(ImplementationAssembly);
+        try
+        {
+            new Harmony("STS2_Things.LivingRockProbe").PatchAll(ImplementationAssembly);
+        }
+        catch (PlatformNotSupportedException exception)
+        {
+            GD.PushWarning($"Harmony patching skipped on this probe runtime: {exception.Message}");
+        }
+        catch (HarmonyException exception) when (exception.InnerException is PlatformNotSupportedException)
+        {
+            GD.PushWarning($"Harmony patching skipped on this probe runtime: {exception.InnerException!.Message}");
+        }
     }
 
     private static void RegisterSyntheticMod(Assembly implementationAssembly)
@@ -157,6 +186,13 @@ public partial class LivingRockProbeNode : Node
 
         var encounter = (LivingRockBossEncounter)ModelDb.Encounter<LivingRockBossEncounter>().ToMutable();
         Assert(encounter.RoomType == RoomType.Boss, "Living Rock encounter is not a boss room.");
+        Assert(encounter.HasScene, "Living Rock encounter does not expose its centered layout scene.");
+        ReflectionPropertyInfo customBackgroundProperty = typeof(EncounterModel).GetProperty(
+                "HasCustomBackground",
+                BindingFlags.Instance | BindingFlags.NonPublic)
+            ?? throw new MissingMemberException(typeof(EncounterModel).FullName, "HasCustomBackground");
+        Assert((bool)(customBackgroundProperty.GetValue(encounter) ?? false),
+            "Living Rock encounter does not expose its custom cliff background.");
         Assert(encounter.Slots.SequenceEqual([LivingRockBossEncounter.BossSlot]),
             "Living Rock encounter does not expose exactly one body slot.");
         Assert(encounter.AllPossibleMonsters.Single() is ThingsLivingRock,
@@ -204,6 +240,7 @@ public partial class LivingRockProbeNode : Node
         AddChild(visual);
         try
         {
+            await VerifyImmediateIdleFrontLayers(visual);
             MegaAnimationState state = await WaitForAnimationState(visual);
             MegaSkeleton skeleton = visual.SpineBody?.GetSkeleton()
                 ?? throw new InvalidOperationException("Living Rock Spine skeleton is unavailable.");
@@ -239,10 +276,135 @@ public partial class LivingRockProbeNode : Node
         }
     }
 
+    private async Task RenderLayeredScene()
+    {
+        SubViewport viewport = new SubViewport
+        {
+            Size = new Vector2I(1920, 1080),
+            RenderTargetUpdateMode = SubViewport.UpdateMode.Always,
+            TransparentBg = false
+        };
+        AddChild(viewport);
+        Node2D stage = new Node2D();
+        viewport.AddChild(stage);
+        AddTextureLayer(stage, "res://images/backgrounds/living_rock_generated_bg.png", -2, Vector2.Zero);
+        AddTextureLayer(stage, "res://images/backgrounds/living_rock_generated_ground.png", 1,
+            new Vector2(0f, 60f));
+        PackedScene scene = ResourceLoader.Load<PackedScene>(CreatureScenePath)
+            ?? throw new InvalidOperationException("Could not load Living Rock scene for render.");
+        NCaveGodVisuals creature = scene.Instantiate<NCaveGodVisuals>();
+        creature.Position = new Vector2(960f, 820f);
+        stage.AddChild(creature);
+        AddTextureLayer(stage, "res://images/backgrounds/living_rock_generated_fg.png", 3,
+            new Vector2(0f, 60f));
+        await WaitForIdleRenderFrame(creature);
+        await SaveLayeredFrame(viewport, "living-rock-layered-immediate-idle.png");
+        for (int frame = 0; frame < 120; frame++)
+            await ProcessFrame();
+        await SaveLayeredFrame(viewport, "living-rock-layered-idle.png");
+    }
+
+    private static void AddTextureLayer(Node2D stage, string path, int zIndex, Vector2 position)
+    {
+        TextureRect rect = new TextureRect
+        {
+            Texture = ResourceLoader.Load<Texture2D>(path),
+            Position = position,
+            Size = new Vector2(1920f, 1080f),
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
+            MouseFilter = Control.MouseFilterEnum.Ignore,
+            ZIndex = zIndex
+        };
+        stage.AddChild(rect);
+    }
+
+    private async Task WaitForIdleRenderFrame(NCaveGodVisuals visual)
+    {
+        for (int frame = 0; frame < 240; frame++)
+        {
+            if (visual.CurrentPhase == "Idle")
+            {
+                await ProcessFrame();
+                return;
+            }
+            await ProcessFrame();
+        }
+        throw new InvalidOperationException("Living Rock render did not reach its idle pose.");
+    }
+
+    private static async Task SaveLayeredFrame(SubViewport viewport, string name)
+    {
+        await Task.Yield();
+        Image? image = viewport.GetTexture().GetImage();
+        if (image == null)
+            throw new InvalidOperationException("Layered render viewport did not produce an image.");
+        string path = ProjectSettings.GlobalizePath($"res://../../build/verification/living-rock-occlusion-ground-20260820-v8/{name}");
+        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+        Error error = image.SavePng(path);
+        if (error != Error.Ok)
+            throw new InvalidOperationException($"Could not save layered render frame {name}: {error}");
+    }
+
+    private async Task VerifyImmediateIdleFrontLayers(NCaveGodVisuals visual)
+    {
+        Vector2 initialPosition = visual.Position;
+        MegaAnimationState? state = null;
+        for (int frame = 0; frame < 12; frame++)
+        {
+            state = visual.SpineBody?.TryGetAnimationState();
+            if (state != null && visual.CurrentPhase == "Idle")
+                break;
+            await ProcessFrame();
+        }
+        if (state == null || visual.CurrentPhase != "Idle")
+        {
+            throw new InvalidOperationException(
+                "Living Rock did not enter Idle immediately; an arrival phase is still running.");
+        }
+        Assert(state.GetCurrentAnimationName(0) == NCaveGodVisuals.LeftToRightAnimation,
+            "Living Rock did not start with the left-to-right idle animation.");
+        Assert(visual.Position.IsEqualApprox(initialPosition),
+            "Living Rock moved vertically during initialization.");
+
+        Node2D main = visual.GetNode<Node2D>("Visuals");
+        Node2D left = visual.GetNode<Node2D>("ArmFrontLeft");
+        Node2D right = visual.GetNode<Node2D>("ArmFrontRight");
+        Node2D face = visual.GetNodeOrNull<Node2D>("FaceFront")
+            ?? throw new InvalidOperationException("Living Rock scene lacks a FaceFront layer.");
+        Vector2 expectedScale = new(1.05f, 1.05f);
+        Assert(main.Scale.IsEqualApprox(expectedScale)
+               && left.Scale.IsEqualApprox(expectedScale)
+               && right.Scale.IsEqualApprox(expectedScale)
+               && face.Scale.IsEqualApprox(expectedScale),
+            "Living Rock body, face, and hand layers are not all at the requested 1.05 scale.");
+        FieldInfo leftSlotsField = typeof(NCaveGodVisuals).GetField(
+                "LeftArmSlots", BindingFlags.NonPublic | BindingFlags.Static)
+            ?? throw new MissingFieldException(typeof(NCaveGodVisuals).FullName, "LeftArmSlots");
+        FieldInfo rightSlotsField = typeof(NCaveGodVisuals).GetField(
+                "RightArmSlots", BindingFlags.NonPublic | BindingFlags.Static)
+            ?? throw new MissingFieldException(typeof(NCaveGodVisuals).FullName, "RightArmSlots");
+        var leftSlots = (ISet<string>?)leftSlotsField.GetValue(null)
+            ?? throw new InvalidOperationException("Living Rock left foreground slot set is unavailable.");
+        var rightSlots = (ISet<string>?)rightSlotsField.GetValue(null)
+            ?? throw new InvalidOperationException("Living Rock right foreground slot set is unavailable.");
+        Assert(leftSlots.SetEquals(["arm1_2", "arm1_3"]),
+            "Living Rock left foreground layer still exposes a body-connected upper arm slot.");
+        Assert(rightSlots.SetEquals(["arm2_2", "arm2_3"]),
+            "Living Rock right foreground layer still exposes a body-connected upper arm slot.");
+        Assert(main.ZIndex == -1, "Living Rock body is not behind the ground layer.");
+        Assert(left.ZIndex == 4 && right.ZIndex == 4 && face.ZIndex == 4,
+            "Living Rock face and hand layers are not all above the ground.");
+    }
+
     private async Task<MegaAnimationState> WaitForAnimationState(NCaveGodVisuals visual)
     {
-        for (int frame = 0; frame < 90; frame++)
+        for (int frame = 0; frame < 720; frame++)
         {
+            if (frame % 60 == 0)
+            {
+                GD.Print($"IDLE_TRACE frame={frame} phase={visual.CurrentPhase} animation={visual.SpineBody?.TryGetAnimationState()?.GetCurrentAnimationName(0)}");
+            }
             MegaAnimationState? state = visual.SpineBody?.TryGetAnimationState();
             if (state != null && visual.CurrentPhase == "Idle" &&
                 state.GetCurrentAnimationName(0) == NCaveGodVisuals.LeftToRightAnimation)

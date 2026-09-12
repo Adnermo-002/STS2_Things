@@ -7,29 +7,34 @@ namespace STS2_Things.Encounters;
 
 public sealed class LivingRockBossEncounter : ModBossEncounter
 {
-    public const string BossSlot = "living_rock";
+	public const string BossSlot = "living_rock";
 
-    protected override string IconName => "living_rock";
+	protected override string IconName => "living_rock";
 
-    public override RoomType RoomType => RoomType.Boss;
+	public override RoomType RoomType => RoomType.Boss;
 
-    public override bool HasScene => true;
+	public override bool HasScene => true;
 
-    public override IReadOnlyList<string> Slots => [BossSlot];
+	protected override bool HasCustomBackground => true;
 
-    public override IEnumerable<MonsterModel> AllPossibleMonsters =>
-    [
-        ModelDb.Monster<ThingsLivingRock>()
-    ];
+	public override IReadOnlyList<string> Slots => [BossSlot];
 
-    public override IEnumerable<string> ExtraAssetPaths =>
-    [
-        "res://images/map/living_rock_boss_icon.png",
-        "res://images/map/living_rock_boss_icon_outline.png"
-    ];
+	public override IEnumerable<MonsterModel> AllPossibleMonsters =>
+	[
+		ModelDb.Monster<ThingsLivingRock>()
+	];
 
-    protected override IReadOnlyList<(MonsterModel, string?)> GenerateMonsters()
-    {
-        return [(ModelDb.Monster<ThingsLivingRock>().ToMutable(), BossSlot)];
-    }
+	public override IEnumerable<string> ExtraAssetPaths =>
+	[
+		"res://images/map/living_rock_boss_icon.png",
+		"res://images/map/living_rock_boss_icon_outline.png",
+		"res://images/backgrounds/living_rock_generated_bg.png",
+		"res://images/backgrounds/living_rock_generated_ground.png",
+        "res://images/backgrounds/living_rock_generated_fg.png"
+	];
+
+	protected override IReadOnlyList<(MonsterModel, string?)> GenerateMonsters()
+	{
+		return [(ModelDb.Monster<ThingsLivingRock>().ToMutable(), BossSlot)];
+	}
 }

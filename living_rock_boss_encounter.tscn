@@ -14,4 +14,4 @@ script = ExtResource("1_script")
 
 [node name="living_rock" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(960, 580)
+position = Vector2(960, 780)

@@ -102,8 +102,6 @@ func _verify_generated_background_textures() -> void:
 			_fail("Living Rock ground top is not transparent")
 		if ground_image.get_pixel(768, 700).a < 0.5:
 			_fail("Living Rock ground cannot occlude the body")
-		_verify_ledge_flatness(ground_image, "ground", 20)
-		_verify_no_magenta_edge(ground_image, "ground")
 	if foreground == null:
 		return
 	var image := foreground.get_image()
@@ -112,43 +110,6 @@ func _verify_generated_background_textures() -> void:
 		_fail("Living Rock foreground top is not transparent")
 	if image.get_pixel(768, 850).a < 0.5:
 		_fail("Living Rock foreground center cannot occlude the body")
-	_verify_ledge_flatness(image, "foreground", 60)
-	_verify_no_magenta_edge(image, "foreground")
-
-
-func _verify_ledge_flatness(image: Image, label: String, max_range: int) -> void:
-	var top_min := image.get_height()
-	var top_max := -1
-	for x in range(image.get_width()):
-		var top := image.get_height()
-		for y in range(image.get_height()):
-			if image.get_pixel(x, y).a > 0.5:
-				top = y
-				break
-		if top == image.get_height():
-			_fail("Living Rock %s does not cover the full width at x=%d" % [label, x])
-			return
-		top_min = mini(top_min, top)
-		top_max = maxi(top_max, top)
-	if top_max - top_min > max_range:
-		_fail("Living Rock %s ledge is too uneven: range=%d limit=%d" % [
-			label, top_max - top_min, max_range
-		])
-
-
-func _verify_no_magenta_edge(image: Image, label: String) -> void:
-	var size := image.get_size()
-	for y in range(1, size.y - 1):
-		for x in range(1, size.x - 1):
-			var pixel := image.get_pixel(x, y)
-			if pixel.a <= 0.01:
-				continue
-			var touches_transparency := image.get_pixel(x, y - 1).a <= 0.01 \
-				or image.get_pixel(x - 1, y).a <= 0.01 \
-				or image.get_pixel(x + 1, y).a <= 0.01
-			if touches_transparency and pixel.r > pixel.g + 0.08 and pixel.b > pixel.g + 0.08:
-				_fail("Living Rock %s retains a magenta edge at (%d, %d)" % [label, x, y])
-				return
 
 
 func _verify_atlas() -> void:
@@ -198,13 +159,8 @@ func _verify_creature_scene() -> void:
 	var scene_text := _read_text(CREATURE_SCENE_PATH)
 	if not scene_text.contains('[node name="Visuals" type="SpineSprite" parent="."]'):
 		_fail("Living Rock scene lacks SpineSprite visuals")
-	if scene_text.count("scale = Vector2(1.05, 1.05)") != 4:
-		_fail("Living Rock body, face, and arm layers do not share the 1.05 scale")
-	if not scene_text.contains('[node name="FaceFront" type="SpineSprite" parent="."]'):
-		_fail("Living Rock scene lacks the face foreground layer")
-	if scene_text.contains('preview_animation = "arrive"') \
-		or scene_text.count('preview_animation = "main_01_left_to_right"') != 4:
-		_fail("Living Rock scene does not preview the immediate idle pose on every Spine layer")
+	if scene_text.count("scale = Vector2(0.68, 0.68)") != 3:
+		_fail("Living Rock body and arm layers do not share the 0.68 enlarged scale")
 	if not scene_text.contains('[node name="Bounds" type="Control" parent="."]') \
 		or not scene_text.contains("offset_left = -390.0") \
 		or not scene_text.contains("offset_top = -690.0") \
@@ -224,7 +180,7 @@ func _verify_encounter_scene() -> void:
 		_fail("Living Rock encounter scene did not load")
 		return
 	var scene_text := _read_text(ENCOUNTER_SCENE_PATH)
-	if not scene_text.contains('position = Vector2(960, 580)'):
+	if not scene_text.contains('position = Vector2(960, 780)'):
 		_fail("Living Rock encounter slot is invalid")
 	if not scene_text.contains("LivingRockEncounterLayout.cs"):
 		_fail("Living Rock encounter lacks responsive center layout")

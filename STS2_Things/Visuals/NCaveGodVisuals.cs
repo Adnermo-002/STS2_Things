@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -62,6 +64,34 @@ public partial class NCaveGodVisuals : NCreatureVisuals
 
     private const float RewindRate = 8f;
     private const float EndEpsilon = 0.002f;
+    private const int BehindGroundZ = -1;
+    private const int AboveGroundZ = 4;
+
+    private static readonly HashSet<string> LeftArmSlots = new(StringComparer.Ordinal)
+    {
+        "arm1_2", "arm1_3"
+    };
+
+    private static readonly HashSet<string> RightArmSlots = new(StringComparer.Ordinal)
+    {
+        "arm2_2", "arm2_3"
+    };
+
+    private static readonly HashSet<string> FaceSlots = new(StringComparer.Ordinal)
+    {
+        "neck", "neck_red", "head", "head_red", "eyes", "eyes_red",
+        "beard1", "beard1_red", "beard2", "beard2_red", "beard3", "beard3_red",
+        "head_skale", "head_skale_red"
+    };
+
+    private static readonly string[] AllLivingRockSlots =
+    [
+        "body_bottom", "body", "body_red", "arm1_2_back", "arm1_2_back_red", "arm1_1", "arm2_1",
+        "neck", "neck_red", "head", "head_red", "eyes", "eyes_red", "beard3", "beard3_red",
+        "beard2", "beard2_red", "beard1", "beard1_red", "crastalls_roof", "crastalls_roof_red",
+        "horn1", "horn1_red", "horn2", "horn2_red", "head_skale", "head_skale_red", "arm1_2",
+        "arm1_2_red", "arm1_3", "arm2_2", "arm2_2_red", "arm2_3", "horizon"
+    ];
 
     private enum Phase
     {
@@ -75,12 +105,18 @@ public partial class NCaveGodVisuals : NCreatureVisuals
 
     private MegaAnimationState? _animationState;
     private MegaSkeleton? _skeleton;
+    private MegaSprite? _leftArmFront;
+    private MegaSprite? _rightArmFront;
+    private MegaSprite? _faceFront;
+    private Node2D? _leftArmFrontNode;
+    private Node2D? _rightArmFrontNode;
+    private Node2D? _faceFrontNode;
+    private bool _frontLayersPrepared;
     private Phase _phase = Phase.WaitingForSpine;
     private LivingRockIdleDirection _idleDirection = LivingRockIdleDirection.LeftToRight;
     private LivingRockPunch? _pendingPunch;
     private LivingRockPunch? _queuedPunch;
     private LivingRockPunch? _activePunch;
-
     public LivingRockIdleDirection IdleDirection => _idleDirection;
     public bool IsRewinding => _phase == Phase.Rewinding;
     public string CurrentPhase => _phase.ToString();
@@ -88,6 +124,7 @@ public partial class NCaveGodVisuals : NCreatureVisuals
     public override void _Ready()
     {
         base._Ready();
+        Body.ZIndex = BehindGroundZ;
         SetProcess(true);
     }
 
@@ -102,11 +139,10 @@ public partial class NCaveGodVisuals : NCreatureVisuals
         if (!EnsureSpineReady())
             return;
 
+        SyncFrontLayerPoses();
+
         switch (_phase)
         {
-            case Phase.WaitingForSpine:
-                StartIdle(LivingRockIdleDirection.LeftToRight);
-                break;
             case Phase.Idle:
                 if (TrackComplete())
                 {
@@ -144,9 +180,19 @@ public partial class NCaveGodVisuals : NCreatureVisuals
 #if !STS2_V107_1
         _animationState?.Dispose();
         _skeleton?.Dispose();
+        _leftArmFront?.Dispose();
+        _rightArmFront?.Dispose();
+        _faceFront?.Dispose();
 #endif
         _animationState = null;
         _skeleton = null;
+        _leftArmFront = null;
+        _rightArmFront = null;
+        _faceFront = null;
+        _leftArmFrontNode = null;
+        _rightArmFrontNode = null;
+        _faceFrontNode = null;
+        _frontLayersPrepared = false;
         base._ExitTree();
     }
 
@@ -191,6 +237,7 @@ public partial class NCaveGodVisuals : NCreatureVisuals
             _skeleton = null;
             return false;
         }
+        EnsureFrontLayersReady();
         if (_phase == Phase.WaitingForSpine)
             StartIdle(LivingRockIdleDirection.LeftToRight);
         if (_queuedPunch.HasValue && _phase == Phase.Idle)
@@ -233,6 +280,7 @@ public partial class NCaveGodVisuals : NCreatureVisuals
         _idleDirection = direction;
         _pendingPunch = null;
         _phase = Phase.Idle;
+        SetFrontLayerDepth();
         if (_queuedPunch.HasValue)
         {
             LivingRockPunch queued = _queuedPunch.Value;
@@ -260,6 +308,133 @@ public partial class NCaveGodVisuals : NCreatureVisuals
         SetCurrentTrackMixDuration(0f);
         SetTrackTimeScale(1f);
         ApplyPose();
+        SetFrontLayerAnimation(_leftArmFront, animation, LeftArmSlots);
+        SetFrontLayerAnimation(_rightArmFront, animation, RightArmSlots);
+        SetFrontLayerAnimation(_faceFront, animation, FaceSlots);
+    }
+
+    private bool EnsureFrontLayersReady()
+    {
+        if (_leftArmFront == null || _rightArmFront == null || _faceFront == null)
+        {
+            _leftArmFrontNode ??= GetNodeOrNull<Node2D>("ArmFrontLeft");
+            _rightArmFrontNode ??= GetNodeOrNull<Node2D>("ArmFrontRight");
+            _faceFrontNode ??= GetNodeOrNull<Node2D>("FaceFront");
+            if (_leftArmFrontNode == null || _rightArmFrontNode == null || _faceFrontNode == null)
+                return false;
+            _leftArmFront ??= new MegaSprite(_leftArmFrontNode);
+            _rightArmFront ??= new MegaSprite(_rightArmFrontNode);
+            _faceFront ??= new MegaSprite(_faceFrontNode);
+        }
+        if (!_leftArmFront.IsAnimationStateReady() || !_rightArmFront.IsAnimationStateReady() ||
+            !_faceFront.IsAnimationStateReady())
+            return false;
+        if (!_frontLayersPrepared)
+        {
+            ConfigureFrontLayer(_leftArmFront, LeftArmSlots);
+            ConfigureFrontLayer(_rightArmFront, RightArmSlots);
+            ConfigureFrontLayer(_faceFront, FaceSlots);
+            _frontLayersPrepared = true;
+        }
+        SetFrontLayerDepth();
+        return true;
+    }
+
+    private static void ConfigureFrontLayer(MegaSprite sprite, HashSet<string> visibleSlots)
+    {
+        MegaSkeleton? skeleton = sprite.GetSkeleton();
+        if (skeleton == null)
+            return;
+        skeleton.SetSlotsToSetupPose();
+        foreach (string slotName in AllLivingRockSlots)
+        {
+            if (!visibleSlots.Contains(slotName))
+                skeleton.BoundObject.Call("set_attachment", slotName, string.Empty);
+        }
+    }
+
+    private static void SetFrontLayerAnimation(
+        MegaSprite? sprite,
+        string animation,
+        HashSet<string> visibleSlots)
+    {
+        if (sprite == null || !sprite.IsAnimationStateReady() || !sprite.HasAnimation(animation))
+            return;
+        MegaAnimationState state = sprite.GetAnimationState();
+        state.SetAnimation(animation, false, 0);
+        state.SetTimeScale(0f);
+        MegaTrackEntry? track = state.GetCurrent(0);
+        if (track != null)
+        {
+            using (track)
+                track.SetTrackTime(0f);
+        }
+        MegaSkeleton? skeleton = sprite.GetSkeleton();
+        if (skeleton != null)
+        {
+            state.Update(0f);
+            state.Apply(skeleton);
+            ConfigureFrontLayer(sprite, visibleSlots);
+        }
+    }
+
+    private void SyncFrontLayerPoses()
+    {
+        if (!EnsureFrontLayersReady() || _animationState == null)
+            return;
+        MegaTrackEntry? mainTrack = _animationState.GetCurrent(0);
+        if (mainTrack == null)
+            return;
+        string animation = mainTrack.GetAnimationName();
+        float time = mainTrack.GetTrackTime();
+        using (mainTrack)
+        {
+        }
+        SyncFrontLayerPose(_leftArmFront, animation, time, LeftArmSlots);
+        SyncFrontLayerPose(_rightArmFront, animation, time, RightArmSlots);
+        SyncFrontLayerPose(_faceFront, animation, time, FaceSlots);
+    }
+
+    private static void SyncFrontLayerPose(
+        MegaSprite? sprite,
+        string animation,
+        float time,
+        HashSet<string> visibleSlots)
+    {
+        if (sprite == null || !sprite.IsAnimationStateReady() || !sprite.HasAnimation(animation))
+            return;
+        MegaAnimationState state = sprite.GetAnimationState();
+        MegaTrackEntry? track = state.GetCurrent(0);
+        if (track == null || track.GetAnimationName() != animation)
+        {
+            if (track != null)
+                track.Dispose();
+            state.SetAnimation(animation, false, 0);
+            state.SetTimeScale(0f);
+            track = state.GetCurrent(0);
+        }
+        if (track != null)
+        {
+            using (track)
+                track.SetTrackTime(time);
+        }
+        MegaSkeleton? skeleton = sprite.GetSkeleton();
+        if (skeleton != null)
+        {
+            state.Update(0f);
+            state.Apply(skeleton);
+            ConfigureFrontLayer(sprite, visibleSlots);
+        }
+    }
+
+    private void SetFrontLayerDepth()
+    {
+        if (_leftArmFrontNode != null)
+            _leftArmFrontNode.ZIndex = AboveGroundZ;
+        if (_rightArmFrontNode != null)
+            _rightArmFrontNode.ZIndex = AboveGroundZ;
+        if (_faceFrontNode != null)
+            _faceFrontNode.ZIndex = AboveGroundZ;
     }
 
     private bool TrackComplete()
