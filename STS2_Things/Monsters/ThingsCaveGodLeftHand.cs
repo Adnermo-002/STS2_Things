@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -50,7 +52,6 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 219, 209);
     public override int MaxInitialHp => MinInitialHp;
 
-    private int LeftPunchDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 14, 12);
     private int JabDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 5, 4);
     private int JabTimes => 3;
     private int FrontSweepDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 11, 10);
@@ -120,65 +121,79 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
 
     private async Task AlternatingJabsMove(IReadOnlyList<Creature> targets)
     {
-        Background?.StartAttackAnim("alternating_jabs");
+        try
+        {
+            Background?.StartAttackAnim("alternating_jabs");
 
-        // Hit 1: Left jab impacts at t = 0.64s
-        await Cmd.Wait(0.64f);
-        await DamageCmd.Attack(JabDamage)
-            .FromMonster(this)
-            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
-            .Execute(null);
+            // Hit 1: Left jab impacts at t = 0.64s
+            await Cmd.Wait(0.64f);
+            await DamageCmd.Attack(JabDamage)
+                .FromMonster(this)
+                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
+                .Execute(null);
 
-        // Hit 2: Right jab impacts at t = 1.34s (dt = 0.70s)
-        await Cmd.Wait(0.70f);
-        await DamageCmd.Attack(JabDamage)
-            .FromMonster(this)
-            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
-            .Execute(null);
+            // Hit 2: Right jab impacts at t = 1.34s (dt = 0.70s)
+            await Cmd.Wait(0.70f);
+            await DamageCmd.Attack(JabDamage)
+                .FromMonster(this)
+                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
+                .Execute(null);
 
-        // Hit 3: Finisher double slam impacts at t = 2.32s (dt = 0.98s)
-        await Cmd.Wait(0.98f);
-        await DamageCmd.Attack(JabDamage)
-            .FromMonster(this)
-            .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
-            .Execute(null);
-
-        // Recovery: returns to idle_front (total 3.50s - 2.32s = 1.18s)
-        await Cmd.Wait(1.18f);
+            // Hit 3: Finisher double slam impacts at t = 2.32s (dt = 0.98s)
+            await Cmd.Wait(0.98f);
+            await DamageCmd.Attack(JabDamage)
+                .FromMonster(this)
+                .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
+                .Execute(null);
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"[ThingsCaveGodLeftHand] AlternatingJabsMove error: {ex}");
+        }
     }
 
     private async Task FrontSweepMove(IReadOnlyList<Creature> targets)
     {
-        Background?.StartAttackAnim("front_sweep");
-
-        // Windup: sweeping arm strikes center at t = 1.35s
-        await Cmd.Wait(1.35f);
-        await DamageCmd.Attack(FrontSweepDamage)
-            .FromMonster(this)
-            .WithHitFx("vfx/vfx_attack_cleave", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_scoop")
-            .Execute(null);
-        if (targets.Count > 0)
+        try
         {
-            await PowerCmd.Apply<WeakPower>(new ThrowingPlayerChoiceContext(), targets, 2m, Creature, null);
-        }
+            Background?.StartAttackAnim("front_sweep");
 
-        // Recovery: arm returns to resting pose (3.45s - 1.35s = 2.10s)
-        await Cmd.Wait(2.10f);
+            // Windup: sweeping arm strikes center at t = 1.35s
+            await Cmd.Wait(1.35f);
+            await DamageCmd.Attack(FrontSweepDamage)
+                .FromMonster(this)
+                .WithHitFx("vfx/vfx_giant_horizontal_slash", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_scoop")
+                .Execute(null);
+
+            if (targets != null && targets.Count > 0)
+            {
+                await PowerCmd.Apply<WeakPower>(new ThrowingPlayerChoiceContext(), targets, 2m, Creature, null);
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"[ThingsCaveGodLeftHand] FrontSweepMove error: {ex}");
+        }
     }
 
     private async Task MountainGuardMove(IReadOnlyList<Creature> targets)
     {
-        Background?.StartAttackAnim("double_fist_crush");
+        try
+        {
+            Background?.StartAttackAnim("double_fist_crush");
 
-        // Windup: both fists crush inward meeting at t = 1.25s
-        await Cmd.Wait(1.25f);
-        await DamageCmd.Attack(MountainGuardDamage)
-            .FromMonster(this)
-            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
-            .Execute(null);
-        await CreatureCmd.GainBlock(Creature, (decimal)MountainGuardBlock, ValueProp.Move, null);
+            // Windup: both fists crush inward meeting at t = 1.25s
+            await Cmd.Wait(1.25f);
+            await DamageCmd.Attack(MountainGuardDamage)
+                .FromMonster(this)
+                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
+                .Execute(null);
 
-        // Recovery: fists unclamp and reset (3.35s - 1.25s = 2.10s)
-        await Cmd.Wait(2.10f);
+            await CreatureCmd.GainBlock(Creature, (decimal)MountainGuardBlock, ValueProp.Move, null);
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"[ThingsCaveGodLeftHand] MountainGuardMove error: {ex}");
+        }
     }
 }
