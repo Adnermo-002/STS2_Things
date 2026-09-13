@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
 
 namespace STS2_Things.Visuals;
 
@@ -75,7 +76,24 @@ public partial class NCaveGodBossBackground : Node2D
         SetupBodySprite(_bodyController);
         SetupArmsSprite(_armsController);
 
+        Callable.From(AlignStageAndPlayers).CallDeferred();
+
         Log.Info("[CaveGodBackground] Dual-pass CaveGod Spine controllers initialized.");
+    }
+
+    /// <summary>
+    /// Aligns the player battle formation onto the central basalt cliff stage.
+    /// Shifts AllyContainer +60px down to perfectly meet Cave God's crushing fists.
+    /// </summary>
+    public void AlignStageAndPlayers()
+    {
+        Control? allyContainer = NCombatRoom.Instance?.GetNodeOrNull<Control>("%AllyContainer");
+        if (allyContainer != null && !allyContainer.HasMeta("CaveGodStageAligned"))
+        {
+            allyContainer.SetMeta("CaveGodStageAligned", true);
+            allyContainer.Position = new Vector2(allyContainer.Position.X, allyContainer.Position.Y + 60f);
+            Log.Info($"[CaveGodBackground] AllyContainer aligned to central stage (Y + 60px -> {allyContainer.Position.Y}).");
+        }
     }
 
     private void SetupBodySprite(MegaSprite sprite)
@@ -148,7 +166,12 @@ public partial class NCaveGodBossBackground : Node2D
         Log.Info($"[CaveGodBackground] CaveGod transitioned to {(angry ? "ANGRY" : "NORMAL")} idle ({targetIdle}).");
     }
 
-    public async Task PlayAttackAnim(string animBase, float duration)
+    /// <summary>
+    /// Starts attack animation without blocking. The monster move logic orchestrates
+    /// precise impact frames (e.g. 1.88s for central_slam, 0.64s/1.34s/2.32s for jabs)
+    /// and recovery phases directly.
+    /// </summary>
+    public void StartAttackAnim(string animBase)
     {
         _cts?.Cancel();
         _cts?.Dispose();
@@ -168,9 +191,16 @@ public partial class NCaveGodBossBackground : Node2D
 
         SetTrackAnimationBoth(anim, loop: false, MainTrack);
         AddTrackAnimationBoth(idleAnim, delay: 0f, loop: true, MainTrack);
-        Log.Info($"[CaveGodBackground] Playing synchronized attack animation: {anim} (duration: {duration:F2}s)");
+        Log.Info($"[CaveGodBackground] Started attack animation: {anim}");
+    }
 
-        await Cmd.Wait(duration, _cts.Token);
+    public async Task PlayAttackAnim(string animBase, float duration)
+    {
+        StartAttackAnim(animBase);
+        if (duration > 0f)
+        {
+            await Cmd.Wait(duration, _cts?.Token ?? CancellationToken.None);
+        }
     }
 
     public void PlayHurtAnim()

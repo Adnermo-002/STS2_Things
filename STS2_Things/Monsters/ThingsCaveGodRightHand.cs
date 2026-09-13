@@ -59,6 +59,7 @@ public sealed class ThingsCaveGodRightHand : MonsterModel
     public override async Task AfterAddedToRoom()
     {
         await base.AfterAddedToRoom();
+        Background?.AlignStageAndPlayers();
         NRunMusicController.Instance?.UpdateMusicParameter(KaiserMusicTrack, 1f);
     }
 
@@ -101,45 +102,42 @@ public sealed class ThingsCaveGodRightHand : MonsterModel
     {
         List<MonsterState> states = new();
 
-        MoveState rightPunch = new("RIGHT_PUNCH", RightPunchMove, new SingleAttackIntent(RightPunchDamage));
         MoveState centralSlam = new("CENTRAL_SLAM", CentralSlamMove, new SingleAttackIntent(CentralSlamDamage));
         MoveState grabPlayer = new("GRAB_PLAYER", GrabPlayerMove, new SingleAttackIntent(GrabDamage), new DebuffIntent());
         MoveState earthquake = new("EARTHQUAKE", EarthquakeMove, new SingleAttackIntent(EarthquakeDamage), new BuffIntent());
 
-        rightPunch.FollowUpState = centralSlam;
         centralSlam.FollowUpState = grabPlayer;
         grabPlayer.FollowUpState = earthquake;
-        earthquake.FollowUpState = rightPunch;
+        earthquake.FollowUpState = centralSlam;
 
-        states.Add(rightPunch);
         states.Add(centralSlam);
         states.Add(grabPlayer);
         states.Add(earthquake);
 
-        return new MonsterMoveStateMachine(states, rightPunch);
-    }
-
-    private async Task RightPunchMove(IReadOnlyList<Creature> targets)
-    {
-        await (Background?.PlayAttackAnim("rightpunch", 1.0f) ?? Task.CompletedTask);
-        await DamageCmd.Attack(RightPunchDamage)
-            .FromMonster(this)
-            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
-            .Execute(null);
+        return new MonsterMoveStateMachine(states, centralSlam);
     }
 
     private async Task CentralSlamMove(IReadOnlyList<Creature> targets)
     {
-        await (Background?.PlayAttackAnim("central_slam", 1.0f) ?? Task.CompletedTask);
+        Background?.StartAttackAnim("central_slam");
+
+        // Windup: giant stone fists rise to apex and smash down onto center at t = 1.88s
+        await Cmd.Wait(1.88f);
         await DamageCmd.Attack(CentralSlamDamage)
             .FromMonster(this)
             .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
             .Execute(null);
+
+        // Recovery: ground recoil and fists return to sides (total 3.75s - 1.88s = 1.87s)
+        await Cmd.Wait(1.87f);
     }
 
     private async Task GrabPlayerMove(IReadOnlyList<Creature> targets)
     {
-        await (Background?.PlayAttackAnim("grab_player", 1.0f) ?? Task.CompletedTask);
+        Background?.StartAttackAnim("grab_player");
+
+        // Windup: stone hand reaches forward and clenches at t = 1.10s
+        await Cmd.Wait(1.10f);
         await DamageCmd.Attack(GrabDamage)
             .FromMonster(this)
             .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_snap")
@@ -148,15 +146,27 @@ public sealed class ThingsCaveGodRightHand : MonsterModel
         {
             await PowerCmd.Apply<VulnerablePower>(new ThrowingPlayerChoiceContext(), targets, 2m, Creature, null);
         }
+
+        // Lift (2.20s) and smash back to ground (3.65s, dt = 2.55s)
+        await Cmd.Wait(2.55f);
+
+        // Recovery: hand retracts to resting pose (5.00s - 3.65s = 1.35s)
+        await Cmd.Wait(1.35f);
     }
 
     private async Task EarthquakeMove(IReadOnlyList<Creature> targets)
     {
-        await (Background?.PlayAttackAnim("earthquake", 0.9f) ?? Task.CompletedTask);
+        Background?.StartAttackAnim("earthquake");
+
+        // Windup: first seismic shockwave erupts at t = 0.87s
+        await Cmd.Wait(0.87f);
         await DamageCmd.Attack(EarthquakeDamage)
             .FromMonster(this)
             .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
             .Execute(null);
         await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Creature, EarthquakeStrengthGain, Creature, null);
+
+        // Tremors continue until animation finishes (4.33s - 0.87s = 3.46s)
+        await Cmd.Wait(3.46f);
     }
 }

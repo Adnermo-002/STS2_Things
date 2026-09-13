@@ -60,6 +60,7 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
     public override async Task AfterAddedToRoom()
     {
         await base.AfterAddedToRoom();
+        Background?.AlignStageAndPlayers();
         NRunMusicController.Instance?.UpdateMusicParameter(KaiserMusicTrack, 1f);
     }
 
@@ -102,46 +103,56 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
     {
         List<MonsterState> states = new();
 
-        MoveState leftPunch = new("LEFT_PUNCH", LeftPunchMove, new SingleAttackIntent(LeftPunchDamage));
         MoveState alternatingJabs = new("ALTERNATING_JABS", AlternatingJabsMove, new MultiAttackIntent(JabDamage, JabTimes));
         MoveState frontSweep = new("FRONT_SWEEP", FrontSweepMove, new SingleAttackIntent(FrontSweepDamage), new DebuffIntent());
         MoveState mountainGuard = new("MOUNTAIN_GUARD", MountainGuardMove, new SingleAttackIntent(MountainGuardDamage), new DefendIntent());
 
-        leftPunch.FollowUpState = alternatingJabs;
         alternatingJabs.FollowUpState = frontSweep;
         frontSweep.FollowUpState = mountainGuard;
-        mountainGuard.FollowUpState = leftPunch;
+        mountainGuard.FollowUpState = alternatingJabs;
 
-        states.Add(leftPunch);
         states.Add(alternatingJabs);
         states.Add(frontSweep);
         states.Add(mountainGuard);
 
-        return new MonsterMoveStateMachine(states, leftPunch);
-    }
-
-    private async Task LeftPunchMove(IReadOnlyList<Creature> targets)
-    {
-        await (Background?.PlayAttackAnim("leftpunch", 1.0f) ?? Task.CompletedTask);
-        await DamageCmd.Attack(LeftPunchDamage)
-            .FromMonster(this)
-            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
-            .Execute(null);
+        return new MonsterMoveStateMachine(states, alternatingJabs);
     }
 
     private async Task AlternatingJabsMove(IReadOnlyList<Creature> targets)
     {
-        await (Background?.PlayAttackAnim("alternating_jabs", 0.8f) ?? Task.CompletedTask);
+        Background?.StartAttackAnim("alternating_jabs");
+
+        // Hit 1: Left jab impacts at t = 0.64s
+        await Cmd.Wait(0.64f);
         await DamageCmd.Attack(JabDamage)
-            .WithHitCount(JabTimes)
             .FromMonster(this)
             .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
             .Execute(null);
+
+        // Hit 2: Right jab impacts at t = 1.34s (dt = 0.70s)
+        await Cmd.Wait(0.70f);
+        await DamageCmd.Attack(JabDamage)
+            .FromMonster(this)
+            .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
+            .Execute(null);
+
+        // Hit 3: Finisher double slam impacts at t = 2.32s (dt = 0.98s)
+        await Cmd.Wait(0.98f);
+        await DamageCmd.Attack(JabDamage)
+            .FromMonster(this)
+            .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
+            .Execute(null);
+
+        // Recovery: returns to idle_front (total 3.50s - 2.32s = 1.18s)
+        await Cmd.Wait(1.18f);
     }
 
     private async Task FrontSweepMove(IReadOnlyList<Creature> targets)
     {
-        await (Background?.PlayAttackAnim("front_sweep", 0.8f) ?? Task.CompletedTask);
+        Background?.StartAttackAnim("front_sweep");
+
+        // Windup: sweeping arm strikes center at t = 1.35s
+        await Cmd.Wait(1.35f);
         await DamageCmd.Attack(FrontSweepDamage)
             .FromMonster(this)
             .WithHitFx("vfx/vfx_attack_cleave", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_scoop")
@@ -150,15 +161,24 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
         {
             await PowerCmd.Apply<WeakPower>(new ThrowingPlayerChoiceContext(), targets, 2m, Creature, null);
         }
+
+        // Recovery: arm returns to resting pose (3.45s - 1.35s = 2.10s)
+        await Cmd.Wait(2.10f);
     }
 
     private async Task MountainGuardMove(IReadOnlyList<Creature> targets)
     {
-        await (Background?.PlayAttackAnim("double_fist_crush", 0.8f) ?? Task.CompletedTask);
+        Background?.StartAttackAnim("double_fist_crush");
+
+        // Windup: both fists crush inward meeting at t = 1.25s
+        await Cmd.Wait(1.25f);
         await DamageCmd.Attack(MountainGuardDamage)
             .FromMonster(this)
             .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
             .Execute(null);
         await CreatureCmd.GainBlock(Creature, (decimal)MountainGuardBlock, ValueProp.Move, null);
+
+        // Recovery: fists unclamp and reset (3.35s - 1.25s = 2.10s)
+        await Cmd.Wait(2.10f);
     }
 }

@@ -10,7 +10,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="left_hand" type="Marker2D" parent="."]
-position = Vector2(320, 720)
+position = Vector2(320, 665)
 
 [node name="right_hand" type="Marker2D" parent="."]
-position = Vector2(1600, 720)
+position = Vector2(1600, 665)
