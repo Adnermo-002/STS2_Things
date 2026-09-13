@@ -206,6 +206,11 @@ public partial class NCaveGodBossBackground : Node2D
         _isAngry = angry;
         string targetIdle = _isAngry ? "idle_front_angry" : "idle_front";
 
+        if (_isAngry)
+        {
+            SfxCmd.Play("event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_eruption");
+        }
+
         SetTrackAnimationBoth(targetIdle, loop: true, MainTrack);
         Log.Info($"[CaveGodBackground] CaveGod transitioned to {(angry ? "ANGRY" : "NORMAL")} idle ({targetIdle}).");
     }

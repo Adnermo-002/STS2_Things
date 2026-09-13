@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using MegaCrit.Sts2.Core.Audio;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Logging;
@@ -37,7 +38,8 @@ public sealed class ThingsCaveGodRightHand : MonsterModel
     private bool _enteredAngry;
     private bool _handBroken;
 
-    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_die";
+    public override DamageSfxType TakeDamageSfxType => DamageSfxType.Stone;
+    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_knockout";
     public override bool ShouldFadeAfterDeath => false;
     public override bool ShouldDisappearFromDoom => false;
     public override float DeathAnimLengthOverride => 2.5f;
@@ -196,7 +198,7 @@ public sealed class ThingsCaveGodRightHand : MonsterModel
             await Cmd.Wait(1.98f);
             await DamageCmd.Attack(CentralSlamDamage)
                 .FromMonster(this)
-                .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
+                .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_attack_stomp")
                 .Execute(null);
         }
         catch (Exception ex)
@@ -216,7 +218,7 @@ public sealed class ThingsCaveGodRightHand : MonsterModel
             await Cmd.Wait(1.15f);
             await DamageCmd.Attack(GrabDamage)
                 .FromMonster(this)
-                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_snap")
+                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_attack_kick")
                 .Execute(null);
 
             if (targets != null && targets.Count > 0)
@@ -310,10 +312,10 @@ public sealed class ThingsCaveGodRightHand : MonsterModel
                 await Background.DropPlayersToGround(isSlam: true);
             }
 
-            NAudioManager.Instance?.PlayOneShot("event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam");
+            NAudioManager.Instance?.PlayOneShot("event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_attack_stomp");
             await DamageCmd.Attack(AirSlamDamage)
                 .FromMonster(this)
-                .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
+                .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_attack_stomp")
                 .Execute(null);
 
             // Remove captive claw
@@ -339,7 +341,7 @@ public sealed class ThingsCaveGodRightHand : MonsterModel
             await Cmd.Wait(0.90f);
             await DamageCmd.Attack(EarthquakeDamage)
                 .FromMonster(this)
-                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
+                .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_eruption")
                 .Execute(null);
 
             await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Creature, EarthquakeStrengthGain, Creature, null);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using MegaCrit.Sts2.Core.Audio;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Logging;
@@ -32,7 +33,8 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
     private NCaveGodBossBackground? _background;
     private bool _enteredAngry;
 
-    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_die";
+    public override DamageSfxType TakeDamageSfxType => DamageSfxType.Stone;
+    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_knockout";
     public override bool ShouldFadeAfterDeath => false;
     public override bool ShouldDisappearFromDoom => false;
     public override float DeathAnimLengthOverride => 2.5f;
@@ -165,21 +167,21 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
             await Cmd.Wait(0.72f);
             await DamageCmd.Attack(JabDamage)
                 .FromMonster(this)
-                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
+                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_attack_kick")
                 .Execute(null);
 
             // Hit 2: Right jab impacts at t = 1.40s (dt = 0.68s)
             await Cmd.Wait(0.68f);
             await DamageCmd.Attack(JabDamage)
                 .FromMonster(this)
-                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
+                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_attack_kick")
                 .Execute(null);
 
             // Hit 3: Finisher double slam impacts at t = 2.42s (dt = 1.02s)
             await Cmd.Wait(1.02f);
             await DamageCmd.Attack(JabDamage)
                 .FromMonster(this)
-                .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
+                .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_attack_stomp")
                 .Execute(null);
         }
         catch (Exception ex)
@@ -198,7 +200,7 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
             await Cmd.Wait(1.35f);
             await DamageCmd.Attack(FrontSweepDamage)
                 .FromMonster(this)
-                .WithHitFx("vfx/vfx_giant_horizontal_slash", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_scoop")
+                .WithHitFx("vfx/vfx_giant_horizontal_slash", "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_attack_kick")
                 .Execute(null);
 
             if (targets != null && targets.Count > 0)
@@ -222,7 +224,7 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
             await Cmd.Wait(1.35f);
             await DamageCmd.Attack(MountainGuardDamage)
                 .FromMonster(this)
-                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
+                .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_attack_stomp")
                 .Execute(null);
 
             await CreatureCmd.GainBlock(Creature, (decimal)MountainGuardBlock, ValueProp.Move, null);

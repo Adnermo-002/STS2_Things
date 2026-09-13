@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Screens.Bestiary;
+using MegaCrit.Sts2.Core.Audio;
 using STS2_Things.Powers;
 using STS2_Things.Visuals;
 
@@ -23,7 +24,8 @@ namespace STS2_Things.Monsters;
 /// </summary>
 public sealed class ThingsCaveGodCaptiveClaw : MonsterModel
 {
-    public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam";
+    public override DamageSfxType TakeDamageSfxType => DamageSfxType.Stone;
+    public override string DeathSfx => FmodSfx.blockBreak;
     public override bool ShouldFadeAfterDeath => false;
     public override bool ShouldDisappearFromDoom => false;
     public override float DeathAnimLengthOverride => 0.5f;
@@ -58,6 +60,7 @@ public sealed class ThingsCaveGodCaptiveClaw : MonsterModel
             return;
 
         NAudioManager.Instance?.PlayOneShot(DeathSfx);
+        SfxCmd.Play("event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_eruption");
         VfxCmd.PlayOnCreatureCenters([Creature], "vfx/vfx_heavy_blunt");
 
         // 1. 通知右手巨臂：石爪已被打破，下回合暴扣落空！
