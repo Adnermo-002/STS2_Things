@@ -40,12 +40,22 @@ public partial class NCaveGodBossBackground : Node2D
         "head_skale", "head_skale_red", "horizon"
     ];
 
+    private static readonly string[] RedSlotNames =
+    [
+        "arm1_2_back_red", "arm1_2_red", "arm2_2_red",
+        "beard1_red", "beard2_red", "beard3_red",
+        "body_red", "crastalls_roof_red", "eyes_red",
+        "head_red", "head_skale_red", "horn1_red", "horn2_red", "neck_red"
+    ];
+
     private static readonly Color TransparentColor = new(1f, 1f, 1f, 0f);
 
     private MegaSprite? _bodyController;
     private MegaSprite? _armsController;
     private readonly List<GodotObject> _bodyMaskSlots = new();
     private readonly List<GodotObject> _armsMaskSlots = new();
+    private readonly List<GodotObject> _bodyRedSlots = new();
+    private readonly List<GodotObject> _armsRedSlots = new();
 
     private bool _isAngry;
     private CancellationTokenSource? _cts;
@@ -112,6 +122,14 @@ public partial class NCaveGodBossBackground : Node2D
                         _bodyMaskSlots.Add(slotObj);
                     }
                 }
+                foreach (string name in RedSlotNames)
+                {
+                    Variant slotVar = skel.BoundObject.Call("find_slot", name);
+                    if (slotVar.AsGodotObject() is GodotObject slotObj)
+                    {
+                        _bodyRedSlots.Add(slotObj);
+                    }
+                }
             }
 
             sprite.ConnectBeforeWorldTransformsChange(Callable.From((Variant _) =>
@@ -120,8 +138,15 @@ public partial class NCaveGodBossBackground : Node2D
                 {
                     _bodyMaskSlots[i].Call("set_color", TransparentColor);
                 }
+                if (!_isAngry)
+                {
+                    for (int i = 0; i < _bodyRedSlots.Count; i++)
+                    {
+                        _bodyRedSlots[i].Call("set_color", TransparentColor);
+                    }
+                }
             }));
-            Log.Info($"[CaveGodBackground] Body skeleton initialized: {_bodyMaskSlots.Count} arm slots masked transparent.");
+            Log.Info($"[CaveGodBackground] Body skeleton initialized: {_bodyMaskSlots.Count} arm slots masked transparent, {_bodyRedSlots.Count} red slots tracked.");
         });
     }
 
@@ -141,6 +166,14 @@ public partial class NCaveGodBossBackground : Node2D
                         _armsMaskSlots.Add(slotObj);
                     }
                 }
+                foreach (string name in RedSlotNames)
+                {
+                    Variant slotVar = skel.BoundObject.Call("find_slot", name);
+                    if (slotVar.AsGodotObject() is GodotObject slotObj)
+                    {
+                        _armsRedSlots.Add(slotObj);
+                    }
+                }
             }
 
             sprite.ConnectBeforeWorldTransformsChange(Callable.From((Variant _) =>
@@ -149,8 +182,15 @@ public partial class NCaveGodBossBackground : Node2D
                 {
                     _armsMaskSlots[i].Call("set_color", TransparentColor);
                 }
+                if (!_isAngry)
+                {
+                    for (int i = 0; i < _armsRedSlots.Count; i++)
+                    {
+                        _armsRedSlots[i].Call("set_color", TransparentColor);
+                    }
+                }
             }));
-            Log.Info($"[CaveGodBackground] Arms skeleton initialized: {_armsMaskSlots.Count} body slots masked transparent.");
+            Log.Info($"[CaveGodBackground] Arms skeleton initialized: {_armsMaskSlots.Count} body slots masked transparent, {_armsRedSlots.Count} red slots tracked.");
         });
     }
 
@@ -186,12 +226,19 @@ public partial class NCaveGodBossBackground : Node2D
                 anim = angryCandidate;
             }
         }
+        else
+        {
+            if (anim.EndsWith("_angry"))
+            {
+                anim = anim.Substring(0, anim.Length - "_angry".Length);
+            }
+        }
 
         string idleAnim = _isAngry ? "idle_front_angry" : "idle_front";
 
         SetTrackAnimationBoth(anim, loop: false, MainTrack);
         AddTrackAnimationBoth(idleAnim, delay: 0f, loop: true, MainTrack);
-        Log.Info($"[CaveGodBackground] Started attack animation: {anim}");
+        Log.Info($"[CaveGodBackground] Started attack animation: {anim} (isAngry={_isAngry})");
     }
 
     public async Task PlayAttackAnim(string animBase, float duration)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
@@ -48,6 +49,12 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
             return _background;
         }
     }
+
+    private ThingsCaveGodRightHand? SiblingHand =>
+        CombatState?.Enemies.Select(c => c.Monster).OfType<ThingsCaveGodRightHand>().FirstOrDefault();
+
+    private bool IsSiblingDead => SiblingHand?.Creature == null || !SiblingHand.Creature.IsAlive;
+    private bool IsAngry => (Background?.IsAngry ?? false) || _enteredAngry;
 
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 219, 209);
     public override int MaxInitialHp => MinInitialHp;
@@ -105,19 +112,48 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
         List<MonsterState> states = new();
 
         MoveState alternatingJabs = new("ALTERNATING_JABS", AlternatingJabsMove, new MultiAttackIntent(JabDamage, JabTimes));
+        MoveState rest1 = new("REST_1", RestMove);
         MoveState frontSweep = new("FRONT_SWEEP", FrontSweepMove, new SingleAttackIntent(FrontSweepDamage), new DebuffIntent());
+        MoveState rest2 = new("REST_2", RestMove);
         MoveState mountainGuard = new("MOUNTAIN_GUARD", MountainGuardMove, new SingleAttackIntent(MountainGuardDamage), new DefendIntent());
+        MoveState rest3 = new("REST_3", RestMove);
 
-        alternatingJabs.FollowUpState = frontSweep;
-        frontSweep.FollowUpState = mountainGuard;
-        mountainGuard.FollowUpState = alternatingJabs;
+        ConditionalBranchState branchAfterJabs = new("BRANCH_AFTER_JABS");
+        branchAfterJabs.AddState(frontSweep, () => IsSiblingDead);
+        branchAfterJabs.AddState(rest1, () => true);
+
+        ConditionalBranchState branchAfterSweep = new("BRANCH_AFTER_SWEEP");
+        branchAfterSweep.AddState(mountainGuard, () => IsSiblingDead);
+        branchAfterSweep.AddState(rest2, () => true);
+
+        ConditionalBranchState branchAfterGuard = new("BRANCH_AFTER_GUARD");
+        branchAfterGuard.AddState(alternatingJabs, () => IsSiblingDead);
+        branchAfterGuard.AddState(rest3, () => true);
+
+        alternatingJabs.FollowUpState = branchAfterJabs;
+        rest1.FollowUpState = frontSweep;
+
+        frontSweep.FollowUpState = branchAfterSweep;
+        rest2.FollowUpState = mountainGuard;
+
+        mountainGuard.FollowUpState = branchAfterGuard;
+        rest3.FollowUpState = alternatingJabs;
 
         states.Add(alternatingJabs);
+        states.Add(branchAfterJabs);
+        states.Add(rest1);
         states.Add(frontSweep);
+        states.Add(branchAfterSweep);
+        states.Add(rest2);
         states.Add(mountainGuard);
+        states.Add(branchAfterGuard);
+        states.Add(rest3);
 
         return new MonsterMoveStateMachine(states, alternatingJabs);
     }
+
+    private static Task RestMove(IReadOnlyList<Creature> _) => Task.CompletedTask;
+
 
     private async Task AlternatingJabsMove(IReadOnlyList<Creature> targets)
     {
