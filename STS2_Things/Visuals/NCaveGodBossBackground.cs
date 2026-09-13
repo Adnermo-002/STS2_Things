@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
+using STS2_Things.Audio;
 
 namespace STS2_Things.Visuals;
 
@@ -26,6 +27,10 @@ public partial class NCaveGodBossBackground : Node2D
 {
     private const int MainTrack = 0;
     private const int ReactionTrack = 1;
+
+    private ulong _lastGroanTicks;
+    private const ulong GroanCooldownMs = 450;
+    private const float GroanChance = 0.70f;
 
     private static readonly string[] ArmSlotNames =
     [
@@ -91,6 +96,12 @@ public partial class NCaveGodBossBackground : Node2D
         SetupArmsSprite(_armsController);
 
         Callable.From(AlignStageAndPlayers).CallDeferred();
+
+        // Preload Cave God hurt audio variants for zero-latency combat feedback
+        for (int i = 1; i <= 5; i++)
+        {
+            NativeSfxPlayer.Preload($"res://sfx/cave_god/cave_god_hurt-{i:D2}.wav");
+        }
 
         Log.Info("[CaveGodBackground] Dual-pass CaveGod Spine controllers initialized.");
     }
@@ -259,11 +270,29 @@ public partial class NCaveGodBossBackground : Node2D
         }
     }
 
-    public void PlayHurtAnim()
+    public void PlayHurtAnim(bool forceGroan = false)
     {
         string hurtAnim = _isAngry ? "hit_recoil_angry" : "hit_recoil";
         SetTrackAnimationBoth(hurtAnim, loop: false, ReactionTrack);
         AddEmptyReactionAnimation();
+        PlayHurtGroan(forceGroan);
+    }
+
+    public void PlayHurtGroan(bool force = false)
+    {
+        ulong now = Time.GetTicksMsec();
+        if (now - _lastGroanTicks < GroanCooldownMs)
+        {
+            return;
+        }
+
+        if (!force && !NativeSfxPlayer.RollChance(GroanChance))
+        {
+            return;
+        }
+
+        _lastGroanTicks = now;
+        NativeSfxPlayer.Play("res://sfx/cave_god/cave_god_hurt", volumeDb: 0f);
     }
 
     public void PlayBodyDeathAnim()

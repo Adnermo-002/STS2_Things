@@ -291,7 +291,7 @@ public sealed class ThingsCaveGodRightHand : MonsterModel
             {
                 // Broken claw branch: slam is aborted! Boss is stunned/recoiling!
                 Log.Info("[ThingsCaveGodRightHand] AirSlam aborted because claw was broken!");
-                Background?.PlayHurtAnim();
+                Background?.PlayHurtAnim(forceGroan: true);
                 await Cmd.Wait(0.8f);
 
                 if (captiveCreature != null && captiveCreature.IsAlive)
