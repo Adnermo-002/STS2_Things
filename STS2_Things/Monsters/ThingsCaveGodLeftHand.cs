@@ -161,22 +161,22 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
         {
             Background?.StartAttackAnim("alternating_jabs");
 
-            // Hit 1: Left jab impacts at t = 0.64s
-            await Cmd.Wait(0.64f);
+            // Hit 1: Left jab impacts at t = 0.72s (calibrated from Spine bone sampling)
+            await Cmd.Wait(0.72f);
             await DamageCmd.Attack(JabDamage)
                 .FromMonster(this)
                 .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
                 .Execute(null);
 
-            // Hit 2: Right jab impacts at t = 1.34s (dt = 0.70s)
-            await Cmd.Wait(0.70f);
+            // Hit 2: Right jab impacts at t = 1.40s (dt = 0.68s)
+            await Cmd.Wait(0.68f);
             await DamageCmd.Attack(JabDamage)
                 .FromMonster(this)
                 .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_right_attack_slam")
                 .Execute(null);
 
-            // Hit 3: Finisher double slam impacts at t = 2.32s (dt = 0.98s)
-            await Cmd.Wait(0.98f);
+            // Hit 3: Finisher double slam impacts at t = 2.42s (dt = 1.02s)
+            await Cmd.Wait(1.02f);
             await DamageCmd.Attack(JabDamage)
                 .FromMonster(this)
                 .WithHitFx("vfx/vfx_heavy_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")
@@ -218,8 +218,8 @@ public sealed class ThingsCaveGodLeftHand : MonsterModel
         {
             Background?.StartAttackAnim("double_fist_crush");
 
-            // Windup: both fists crush inward meeting at t = 1.25s
-            await Cmd.Wait(1.25f);
+            // Windup: both fists crush inward meeting at t = 1.35s (calibrated from Spine bone sampling)
+            await Cmd.Wait(1.35f);
             await DamageCmd.Attack(MountainGuardDamage)
                 .FromMonster(this)
                 .WithHitFx("vfx/vfx_attack_blunt", "event:/sfx/enemy/enemy_attacks/kaiser_crab/kaiser_crab_left_attack_slam")

@@ -1,4 +1,4 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param(
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
@@ -26,6 +26,20 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+
+if (-not (Get-Command 'dotnet' -ErrorAction SilentlyContinue)) {
+    $dotnetCandidates = @(
+        'C:\Program Files\dotnet',
+        'C:\Program Files (x86)\dotnet'
+    )
+    foreach ($cand in $dotnetCandidates) {
+        if (Test-Path -LiteralPath (Join-Path $cand 'dotnet.exe')) {
+            $env:PATH = "$cand;$env:PATH"
+            break
+        }
+    }
+}
+
 $Root = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
 $CommonBuildDir = Join-Path $Root 'build'
 $BuildDir = Join-Path $CommonBuildDir $TargetVersion

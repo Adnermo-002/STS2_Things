@@ -15,6 +15,7 @@ public sealed class CaveGodBossEncounter : ModBossEncounter
 {
     public const string LeftHandSlot = "left_hand";
     public const string RightHandSlot = "right_hand";
+    public const string CaptiveHandSlot = "captive_hand";
 
     protected override string IconName => "cave_god";
 
@@ -39,12 +40,13 @@ public sealed class CaveGodBossEncounter : ModBossEncounter
 
     public override Vector2 GetCameraOffset() => Vector2.Down * 35f;
 
-    public override IReadOnlyList<string> Slots => [LeftHandSlot, RightHandSlot];
+    public override IReadOnlyList<string> Slots => [LeftHandSlot, RightHandSlot, CaptiveHandSlot];
 
     public override IEnumerable<MonsterModel> AllPossibleMonsters =>
     [
         ModelDb.Monster<ThingsCaveGodLeftHand>(),
-        ModelDb.Monster<ThingsCaveGodRightHand>()
+        ModelDb.Monster<ThingsCaveGodRightHand>(),
+        ModelDb.Monster<ThingsCaveGodCaptiveClaw>()
     ];
 
     protected override IReadOnlyList<(MonsterModel, string?)> GenerateMonsters()

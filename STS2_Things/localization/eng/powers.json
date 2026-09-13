@@ -54,5 +54,11 @@
   "GRAVETIDE_DIGESTION_POWER.description": "At the end of the enemy turn, if a Corpse Slug Remains is present, consume all Corpse Slug Remains, heal [gold]{Amount}[/gold] HP, and gain [gold]2 Strength[/gold].",
   "GRAVETIDE_DIGESTION_POWER.smartDescription": "At the end of the enemy turn, if a [gold]Corpse Slug Remains[/gold] is present, consume all Corpse Slug Remains, heal [gold]{Amount}[/gold] HP, and gain [gold]2 Strength[/gold].",
   "GRAVETIDE_MINION_POWER.title": "Gravetide Minion",
-  "GRAVETIDE_MINION_POWER.description": "Internal encounter ownership state."
+  "GRAVETIDE_MINION_POWER.description": "Internal encounter ownership state.",
+  "CAVE_GOD_MARTIAL_POWER.title": "Martial Trial",
+  "CAVE_GOD_MARTIAL_POWER.description": "Held captive by Cave God! You can only play [red]Attack[/red] cards this turn.",
+  "CAVE_GOD_MARTIAL_POWER.smartDescription": "Held captive by Cave God! You can only play [red]Attack[/red] cards this turn.",
+  "CAVE_GOD_ARCANE_POWER.title": "Arcane Trial",
+  "CAVE_GOD_ARCANE_POWER.description": "Held captive by Cave God! You can only play [green]Skill[/green] cards this turn.",
+  "CAVE_GOD_ARCANE_POWER.smartDescription": "Held captive by Cave God! You can only play [green]Skill[/green] cards this turn."
 }

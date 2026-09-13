@@ -11,5 +11,9 @@
 	"THINGS_PACK_UP.description": "Draw 1 card.\nChoose 1 card from your deck and discard it.",
 	"THINGS_PACK_UP.selectionScreenPrompt": "Choose a card to discard.",
 	"THINGS_COLLISION.title": "Collision",
-	"THINGS_COLLISION.description": "Deal {Damage:diff()} damage.\nYou and the target each lose {StrengthLoss:diff()} [gold]Strength[/gold]."
+	"THINGS_COLLISION.description": "Deal {Damage:diff()} damage.\nYou and the target each lose {StrengthLoss:diff()} [gold]Strength[/gold].",
+	"CAVE_GOD_MARTIAL_TRIAL.title": "Martial Trial",
+	"CAVE_GOD_MARTIAL_TRIAL.description": "When chosen, you can only play [red]Attack[/red] cards this turn.",
+	"CAVE_GOD_ARCANE_TRIAL.title": "Arcane Trial",
+	"CAVE_GOD_ARCANE_TRIAL.description": "When chosen, you can only play [green]Skill[/green] cards this turn."
 }

@@ -68,5 +68,8 @@
   "THINGS_CAVE_GOD_RIGHT_HAND.moves.RIGHT_PUNCH.title": "Right Rock Punch",
   "THINGS_CAVE_GOD_RIGHT_HAND.moves.CENTRAL_SLAM.title": "Central Slam",
   "THINGS_CAVE_GOD_RIGHT_HAND.moves.GRAB_PLAYER.title": "Mountain Grip",
-  "THINGS_CAVE_GOD_RIGHT_HAND.moves.EARTHQUAKE.title": "Earthquake"
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.AIR_SLAM.title": "Abyssal Slam",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.EARTHQUAKE.title": "Earthquake",
+  "THINGS_CAVE_GOD_CAPTIVE_CLAW.name": "Captive Stone Claw",
+  "THINGS_CAVE_GOD_CAPTIVE_CLAW.moves.CAPTIVE_HOLD.title": "Tight Grip"
 }

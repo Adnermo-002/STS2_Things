@@ -11,5 +11,9 @@
 	"THINGS_PACK_UP.description": "抽1张牌。\n选择牌库中的1张牌将其丢弃。",
 	"THINGS_PACK_UP.selectionScreenPrompt": "选择一张牌丢弃。",
 	"THINGS_COLLISION.title": "对撞",
-	"THINGS_COLLISION.description": "造成{Damage:diff()}点伤害。\n你与目标各减少{StrengthLoss:diff()}点[gold]力量[/gold]。"
+	"THINGS_COLLISION.description": "造成{Damage:diff()}点伤害。\n你与目标各减少{StrengthLoss:diff()}点[gold]力量[/gold]。",
+	"CAVE_GOD_MARTIAL_TRIAL.title": "唯攻是图",
+	"CAVE_GOD_MARTIAL_TRIAL.description": "选择后，本回合只能打出[red]攻击牌[/red]。",
+	"CAVE_GOD_ARCANE_TRIAL.title": "唯守是图",
+	"CAVE_GOD_ARCANE_TRIAL.description": "选择后，本回合只能打出[green]技能牌[/green]。"
 }

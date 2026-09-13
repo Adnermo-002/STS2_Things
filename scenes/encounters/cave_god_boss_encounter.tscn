@@ -14,3 +14,6 @@ position = Vector2(320, 665)
 
 [node name="right_hand" type="Marker2D" parent="."]
 position = Vector2(1600, 665)
+
+[node name="captive_hand" type="Marker2D" parent="."]
+position = Vector2(960, 360)

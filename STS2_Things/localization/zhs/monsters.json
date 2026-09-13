@@ -68,5 +68,8 @@
   "THINGS_CAVE_GOD_RIGHT_HAND.moves.RIGHT_PUNCH.title": "右崩岩拳",
   "THINGS_CAVE_GOD_RIGHT_HAND.moves.CENTRAL_SLAM.title": "泰山压顶",
   "THINGS_CAVE_GOD_RIGHT_HAND.moves.GRAB_PLAYER.title": "山岳之握",
-  "THINGS_CAVE_GOD_RIGHT_HAND.moves.EARTHQUAKE.title": "地壳鸣动"
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.AIR_SLAM.title": "天渊暴扣",
+  "THINGS_CAVE_GOD_RIGHT_HAND.moves.EARTHQUAKE.title": "地壳鸣动",
+  "THINGS_CAVE_GOD_CAPTIVE_CLAW.name": "拘禁石爪",
+  "THINGS_CAVE_GOD_CAPTIVE_CLAW.moves.CAPTIVE_HOLD.title": "紧握不放"
 }

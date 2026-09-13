@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 
 namespace STS2_Things.Visuals;
@@ -57,6 +59,7 @@ public partial class NCaveGodBossBackground : Node2D
     private readonly List<GodotObject> _bodyRedSlots = new();
     private readonly List<GodotObject> _armsRedSlots = new();
 
+    private readonly List<(NCreature node, Vector2 origPos, float origRot, Vector2 origScale)> _capturedPlayers = new();
     private bool _isAngry;
     private CancellationTokenSource? _cts;
 
@@ -64,6 +67,7 @@ public partial class NCaveGodBossBackground : Node2D
 
     public override void _ExitTree()
     {
+        RestoreCapturedPlayersInstantly();
         _cts?.Cancel();
         _cts?.Dispose();
         _cts = null;
@@ -299,4 +303,171 @@ public partial class NCaveGodBossBackground : Node2D
         _bodyController?.TryGetAnimationState()?.AddEmptyAnimation(ReactionTrack);
         _armsController?.TryGetAnimationState()?.AddEmptyAnimation(ReactionTrack);
     }
+
+    /// <summary>
+    /// Lifts players up into the air during Cave God's grab move.
+    /// Arranges multiple players tightly clustered so they do not overlap.
+    /// </summary>
+    public async Task LiftPlayersToAir(IReadOnlyList<Creature> targets, float duration = 0.70f)
+    {
+        _capturedPlayers.Clear();
+        NCombatRoom? combatRoom = NCombatRoom.Instance;
+        if (combatRoom == null) return;
+
+        foreach (Creature target in targets)
+        {
+            NCreature? node = combatRoom.GetCreatureNode(target);
+            if (node != null && GodotObject.IsInstanceValid(node))
+            {
+                _capturedPlayers.Add((node, node.Position, node.Rotation, node.Scale));
+            }
+        }
+
+        if (_capturedPlayers.Count == 0) return;
+
+        Tween tween = combatRoom.CreateTween().SetParallel().SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quad);
+        for (int i = 0; i < _capturedPlayers.Count; i++)
+        {
+            (NCreature node, Vector2 origPos, _, _) = _capturedPlayers[i];
+            node.AnimDisableUi();
+
+            Vector2 clusterOffset = GetClusterOffset(i, _capturedPlayers.Count);
+            // Converge X towards center while lifting Y up into Cave God's raised fist
+            Vector2 targetPos = new Vector2(origPos.X * 0.35f, origPos.Y - 420f) + clusterOffset;
+            float tilt = GetClusterTilt(i, _capturedPlayers.Count);
+
+            tween.TweenProperty(node, "position", targetPos, duration);
+            tween.TweenProperty(node, "rotation", tilt, duration);
+
+            node.SetAnimationTrigger("Hit");
+        }
+
+        await Cmd.Wait(duration);
+    }
+
+    /// <summary>
+    /// Drops players back to their original stage positions.
+    /// If isSlam is true, slams down violently with expo ease and damage impact.
+    /// If isSlam is false, drops back safely with bounce ease.
+    /// </summary>
+    public async Task DropPlayersToGround(bool isSlam)
+    {
+        if (_capturedPlayers.Count == 0) return;
+        NCombatRoom? combatRoom = NCombatRoom.Instance;
+        if (combatRoom == null)
+        {
+            RestoreCapturedPlayersInstantly();
+            return;
+        }
+
+        float duration = isSlam ? 0.15f : 0.35f;
+        Tween.TransitionType trans = isSlam ? Tween.TransitionType.Expo : Tween.TransitionType.Bounce;
+        Tween.EaseType ease = isSlam ? Tween.EaseType.In : Tween.EaseType.Out;
+
+        Tween tween = combatRoom.CreateTween().SetParallel().SetEase(ease).SetTrans(trans);
+        foreach ((NCreature node, Vector2 origPos, float origRot, Vector2 origScale) in _capturedPlayers)
+        {
+            if (GodotObject.IsInstanceValid(node))
+            {
+                tween.TweenProperty(node, "position", origPos, duration);
+                tween.TweenProperty(node, "rotation", origRot, duration);
+                tween.TweenProperty(node, "scale", origScale, duration);
+            }
+        }
+
+        await Cmd.Wait(duration);
+
+        RestoreCapturedPlayersInstantly();
+    }
+
+    /// <summary>
+    /// Instantly restores all captured players to their original positions and state.
+    /// Guaranteed to be called on room exit, death, or error to prevent permanent coordinate drift.
+    /// </summary>
+    public void RestoreCapturedPlayersInstantly()
+    {
+        foreach ((NCreature node, Vector2 origPos, float origRot, Vector2 origScale) in _capturedPlayers)
+        {
+            if (GodotObject.IsInstanceValid(node))
+            {
+                node.Position = origPos;
+                node.Rotation = origRot;
+                node.Scale = origScale;
+                node.AnimEnableUi();
+                node.SetAnimationTrigger("Idle");
+            }
+        }
+        _capturedPlayers.Clear();
+    }
+
+    private static Vector2 GetClusterOffset(int index, int total)
+    {
+        if (total <= 1) return Vector2.Zero;
+        if (total == 2)
+        {
+            return index == 0 ? new Vector2(-40f, -10f) : new Vector2(40f, 10f);
+        }
+        if (total == 3)
+        {
+            return index switch
+            {
+                0 => new Vector2(0f, -35f),
+                1 => new Vector2(-45f, 15f),
+                _ => new Vector2(45f, 15f)
+            };
+        }
+        return index switch
+        {
+            0 => new Vector2(-35f, -30f),
+            1 => new Vector2(35f, -30f),
+            2 => new Vector2(-50f, 20f),
+            _ => new Vector2(50f, 20f)
+        };
+    }
+
+    private static float GetClusterTilt(int index, int total)
+    {
+        if (total <= 1) return 0f;
+        if (total == 2) return index == 0 ? 0.15f : -0.15f;
+        if (total == 3) return index == 0 ? 0f : (index == 1 ? 0.18f : -0.18f);
+        return (index % 2 == 0) ? 0.12f : -0.12f;
+    }
+
+    /// <summary>
+    /// Pauses Cave God's grab animation at apex (t = 2.20s) so the giant fist remains
+    /// suspended in the air holding the players while they choose cards and attack the claw.
+    /// </summary>
+    public void HoldGrabAnim()
+    {
+        using MegaTrackEntry? trackBody = _bodyController?.TryGetAnimationState()?.GetCurrent(MainTrack);
+        trackBody?.SetTimeScale(0f);
+        using MegaTrackEntry? trackArms = _armsController?.TryGetAnimationState()?.GetCurrent(MainTrack);
+        trackArms?.SetTimeScale(0f);
+        Log.Info("[CaveGodBackground] Grab animation held at apex.");
+    }
+
+    /// <summary>
+    /// Resumes Cave God's slam animation from t = 2.90s at full speed, delivering the downward slam.
+    /// </summary>
+    public void ResumeSlamAnim()
+    {
+        using (MegaTrackEntry? trackBody = _bodyController?.TryGetAnimationState()?.GetCurrent(MainTrack))
+        {
+            if (trackBody != null)
+            {
+                trackBody.SetTrackTime(2.90f);
+                trackBody.SetTimeScale(1f);
+            }
+        }
+        using (MegaTrackEntry? trackArms = _armsController?.TryGetAnimationState()?.GetCurrent(MainTrack))
+        {
+            if (trackArms != null)
+            {
+                trackArms.SetTrackTime(2.90f);
+                trackArms.SetTimeScale(1f);
+            }
+        }
+        Log.Info("[CaveGodBackground] Resumed slam animation from apex down to ground.");
+    }
 }
+

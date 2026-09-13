@@ -54,5 +54,11 @@
   "GRAVETIDE_DIGESTION_POWER.description": "回合结束时，若场上存在噬尸蛞蝓尸体，则清除所有噬尸蛞蝓尸体，恢复[gold]{Amount}[/gold]点生命，并获得[gold]1点力量[/gold]。",
   "GRAVETIDE_DIGESTION_POWER.smartDescription": "回合结束时，若场上存在[gold]噬尸蛞蝓尸体[/gold]，则吞噬所有[gold]噬尸蛞蝓尸体[/gold]，恢复[green]{Amount}[/green]点生命，并获得[gold]1[/gold]点力量。",
   "GRAVETIDE_MINION_POWER.title": "墓潮随从",
-  "GRAVETIDE_MINION_POWER.description": "内部遭遇归属状态。"
+  "GRAVETIDE_MINION_POWER.description": "内部遭遇归属状态。",
+  "CAVE_GOD_MARTIAL_POWER.title": "唯攻是图",
+  "CAVE_GOD_MARTIAL_POWER.description": "受山神石爪禁锢！本回合只能打出[red]攻击牌[/red]。",
+  "CAVE_GOD_MARTIAL_POWER.smartDescription": "受山神石爪禁锢！本回合只能打出[red]攻击牌[/red]。",
+  "CAVE_GOD_ARCANE_POWER.title": "唯守是图",
+  "CAVE_GOD_ARCANE_POWER.description": "受山神石爪禁锢！本回合只能打出[green]技能牌[/green]。",
+  "CAVE_GOD_ARCANE_POWER.smartDescription": "受山神石爪禁锢！本回合只能打出[green]技能牌[/green]。"
 }
