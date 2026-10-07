@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: a single Slay the Spire 2 power icon, transparent PNG.
+Reference image: original game's power icon contact sheet, style only. Create ONE new icon, no sheet.
+Primary request: a squat curled snail shell, pearly muted mint with a cream lip and a very dark warm outline. One broad spiral line. Simple, slightly uneven hand-painted outline and 2-3 flat broad color planes, at most one small highlight, fully readable at 32 pixels. The shell means persistent block.
+Composition: centered shell fills 75 percent of a square frame, complete silhouette with generous transparent padding. No snail body, no eyes, no badge, no numbers, no text, no rays, no particles, no glow, no background, no ground shadow. Real alpha transparency. Keep the graphical simplicity of the reference icons.

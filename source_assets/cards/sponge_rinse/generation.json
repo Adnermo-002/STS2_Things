@@ -1,0 +1,14 @@
+{
+  "model": "gpt-image-2.5-sunburst",
+  "mode": "imagegen bundled CLI edit with vanilla style references",
+  "references": [
+    "status/slimed.png",
+    "colorless/purity.png"
+  ],
+  "portrait_size": [
+    1000,
+    760
+  ],
+  "source_sha256": "13f2950a1911fe61aa41191fbbdf2d41accc2323e379b655f2e8c1dec236b73e",
+  "status": "unused concept; user clarified Rinsed remains a power and affects the next Status drawn"
+}

@@ -1,0 +1,30 @@
+{
+  "ready": true,
+  "originality_scope": "Hash check only rejects exact stock copies; generation provenance and visual review are still required.",
+  "floors": {
+    "hollow_grotto": {
+      "path": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_floor.png",
+      "present": true,
+      "errors": [],
+      "sha256": "95906018c7626b94f63d71ace28cd07bac8150eb393fe4c21bdff22da823615f"
+    },
+    "hollow_grotto_moss": {
+      "path": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_moss_floor.png",
+      "present": true,
+      "errors": [],
+      "sha256": "94b2a4948e094b402eb50981c3316638147de1dba6878b280ed34eba227226fa"
+    },
+    "hollow_grotto_ember": {
+      "path": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_ember_floor.png",
+      "present": true,
+      "errors": [],
+      "sha256": "506e0dd468da7df1dee91a6fdc17295c5cf3e7c4c8ee9e20512eb3d0d4fe99d6"
+    },
+    "hollow_grotto_violet": {
+      "path": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_violet_floor.png",
+      "present": true,
+      "errors": [],
+      "sha256": "2024cf81b8818e07e51a3b30d71074d93897825a511ea5ad6f6c2f755fb1eb96"
+    }
+  }
+}

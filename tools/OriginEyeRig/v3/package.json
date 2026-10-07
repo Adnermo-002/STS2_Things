@@ -1,0 +1,6 @@
+{
+  "name": "origin-eye-rig-v3",
+  "private": true,
+  "type": "module",
+  "dependencies": { "@esotericsoftware/spine-core": "~4.2.43" }
+}

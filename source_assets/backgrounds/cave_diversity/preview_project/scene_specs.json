@@ -1,0 +1,98 @@
+{
+  "cave_skylight": {
+    "name": "天隙岩厅",
+    "subtitle": "破顶天光 · 石灰岩拱 · 开阔岩台",
+    "root": "scenes/backgrounds/cave_skylight/cave_skylight_background.tscn",
+    "layers": [
+      "scenes/backgrounds/cave_skylight/layers/cave_skylight_bg_00_a.tscn",
+      "scenes/backgrounds/cave_skylight/layers/cave_skylight_bg_01_a.tscn",
+      "scenes/backgrounds/cave_skylight/layers/cave_skylight_fg_a.tscn"
+    ],
+    "kind": "new"
+  },
+  "cave_riverbend": {
+    "name": "回水石湾",
+    "subtitle": "地下河湾 · 低岩檐 · 干燥战斗平台",
+    "root": "scenes/backgrounds/cave_riverbend/cave_riverbend_background.tscn",
+    "layers": [
+      "scenes/backgrounds/cave_riverbend/layers/cave_riverbend_bg_00_a.tscn",
+      "scenes/backgrounds/cave_riverbend/layers/cave_riverbend_bg_01_a.tscn",
+      "scenes/backgrounds/cave_riverbend/layers/cave_riverbend_fg_a.tscn"
+    ],
+    "kind": "new"
+  },
+  "cave_quartz": {
+    "name": "白晶裂窟",
+    "subtitle": "乳白晶簇 · 断层岩壁 · 细砂地表",
+    "root": "scenes/backgrounds/cave_quartz/cave_quartz_background.tscn",
+    "layers": [
+      "scenes/backgrounds/cave_quartz/layers/cave_quartz_bg_00_a.tscn",
+      "scenes/backgrounds/cave_quartz/layers/cave_quartz_bg_01_a.tscn",
+      "scenes/backgrounds/cave_quartz/layers/cave_quartz_fg_a.tscn"
+    ],
+    "kind": "new"
+  },
+  "cave_rootfungus": {
+    "name": "根垂菌洞",
+    "subtitle": "垂落根须 · 巨型菌伞 · 土岩地面",
+    "root": "scenes/backgrounds/cave_rootfungus/cave_rootfungus_background.tscn",
+    "layers": [
+      "scenes/backgrounds/cave_rootfungus/layers/cave_rootfungus_bg_00_a.tscn",
+      "scenes/backgrounds/cave_rootfungus/layers/cave_rootfungus_bg_01_a.tscn",
+      "scenes/backgrounds/cave_rootfungus/layers/cave_rootfungus_fg_a.tscn"
+    ],
+    "kind": "new"
+  },
+  "hollow_grotto": {
+    "name": "幽蓝溶洞 · 提亮版",
+    "subtitle": "已生成的新地面 · 暗部与中间调提亮",
+    "root": "scenes/backgrounds/hollow_grotto/hollow_grotto_background.tscn",
+    "layers": [
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_00_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_01_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_02_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_03_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_fg_a.tscn"
+    ],
+    "kind": "brightened_existing"
+  },
+  "hollow_grotto_moss": {
+    "name": "苔光岩窟 · 提亮版",
+    "subtitle": "已生成的新地面 · 暗部与中间调提亮",
+    "root": "scenes/backgrounds/hollow_grotto_moss/hollow_grotto_moss_background.tscn",
+    "layers": [
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_00_a.tscn",
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_01_a.tscn",
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_02_a.tscn",
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_03_a.tscn",
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_fg_a.tscn"
+    ],
+    "kind": "brightened_existing"
+  },
+  "hollow_grotto_ember": {
+    "name": "余烬石窟 · 提亮版",
+    "subtitle": "已生成的新地面 · 暗部与中间调提亮",
+    "root": "scenes/backgrounds/hollow_grotto_ember/hollow_grotto_ember_background.tscn",
+    "layers": [
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_00_a.tscn",
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_01_a.tscn",
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_02_a.tscn",
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_03_a.tscn",
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_fg_a.tscn"
+    ],
+    "kind": "brightened_existing"
+  },
+  "hollow_grotto_violet": {
+    "name": "紫雾深窟 · 提亮版",
+    "subtitle": "已生成的新地面 · 暗部与中间调提亮",
+    "root": "scenes/backgrounds/hollow_grotto_violet/hollow_grotto_violet_background.tscn",
+    "layers": [
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_00_a.tscn",
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_01_a.tscn",
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_02_a.tscn",
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_03_a.tscn",
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_fg_a.tscn"
+    ],
+    "kind": "brightened_existing"
+  }
+}

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3]
+
+
+[node name="UnderdocksBackground" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Layer_00" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -279.0
+offset_top = -533.0
+offset_right = -279.0
+offset_bottom = -533.0
+
+[node name="Layer_01" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+
+[node name="Layer_02" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+
+[node name="Layer_03" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+
+[node name="Layer_04" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+
+[node name="Foreground" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0

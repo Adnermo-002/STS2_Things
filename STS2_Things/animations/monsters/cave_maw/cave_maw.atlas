@@ -1,0 +1,75 @@
+cave_maw.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+rim
+  rotate: false
+  xy: 2, 2
+  size: 1569, 524
+  orig: 1569, 524
+  offset: 0, 0
+  index: -1
+cavity
+  rotate: false
+  xy: 2, 530
+  size: 1026, 344
+  orig: 1026, 344
+  offset: 0, 0
+  index: -1
+tongue
+  rotate: false
+  xy: 1032, 530
+  size: 762, 220
+  orig: 762, 220
+  offset: 0, 0
+  index: -1
+tooth_front_0
+  rotate: false
+  xy: 1798, 530
+  size: 88, 91
+  orig: 88, 91
+  offset: 0, 0
+  index: -1
+tooth_front_1
+  rotate: false
+  xy: 1890, 530
+  size: 101, 91
+  orig: 101, 91
+  offset: 0, 0
+  index: -1
+tooth_back_2
+  rotate: false
+  xy: 2, 878
+  size: 83, 74
+  orig: 83, 74
+  offset: 0, 0
+  index: -1
+tooth_back_1
+  rotate: false
+  xy: 89, 878
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+eye_near
+  rotate: false
+  xy: 164, 878
+  size: 78, 48
+  orig: 78, 48
+  offset: 0, 0
+  index: -1
+eye_far
+  rotate: false
+  xy: 246, 878
+  size: 69, 45
+  orig: 69, 45
+  offset: 0, 0
+  index: -1
+tooth_back_0
+  rotate: false
+  xy: 319, 878
+  size: 53, 44
+  orig: 53, 44
+  offset: 0, 0
+  index: -1

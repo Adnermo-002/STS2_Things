@@ -1,0 +1,102 @@
+{
+  "hollow_grotto": {
+    "requested_model": "gpt-image-2",
+    "mode": "bundled imagegen CLI / reference-conditioned Image API edit",
+    "provider": "user-specified OpenAI-compatible endpoint",
+    "requested_size": [
+      2048,
+      960
+    ],
+    "requested_quality": "high",
+    "raw_file": "D:\\Things\\Things-Workspace\\output\\imagegen\\new_cave_floors\\raw\\hollow_grotto_floor_r01.png",
+    "raw_size": [
+      1831,
+      859
+    ],
+    "raw_format": "PNG",
+    "raw_sha256": "51e992d3ef3c1ce915c24cf280974466d1edc86a753bda91260af5fbaf2ae362",
+    "normalized_file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_floor.png",
+    "normalized_sha256": "95906018c7626b94f63d71ace28cd07bac8150eb393fe4c21bdff22da823615f",
+    "postprocess": "RGBA conversion and Lanczos normalization to 2048x960; no compositing with any old floor",
+    "reference_images": [
+      "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\hollow_grotto_walls_only.png",
+      "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\vanilla_rock_style_only.jpg"
+    ],
+    "prompt": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\prompts\\hollow_grotto.txt"
+  },
+  "hollow_grotto_moss": {
+    "requested_model": "gpt-image-2",
+    "mode": "bundled imagegen CLI / reference-conditioned Image API edit",
+    "provider": "user-specified OpenAI-compatible endpoint",
+    "requested_size": [
+      2048,
+      960
+    ],
+    "requested_quality": "high",
+    "raw_file": "D:\\Things\\Things-Workspace\\output\\imagegen\\new_cave_floors\\raw\\hollow_grotto_moss_floor_r01.png",
+    "raw_size": [
+      1829,
+      860
+    ],
+    "raw_format": "PNG",
+    "raw_sha256": "3fbe181a6c4228aadb3c14bc31e75c07af76aeceada5c823fd15777eaca35506",
+    "normalized_file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_moss_floor.png",
+    "normalized_sha256": "94b2a4948e094b402eb50981c3316638147de1dba6878b280ed34eba227226fa",
+    "postprocess": "RGBA conversion and Lanczos normalization to 2048x960; no compositing with any old floor",
+    "reference_images": [
+      "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\hollow_grotto_moss_walls_only.png",
+      "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\vanilla_rock_style_only.jpg"
+    ],
+    "prompt": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\prompts\\hollow_grotto_moss.txt"
+  },
+  "hollow_grotto_ember": {
+    "requested_model": "gpt-image-2",
+    "mode": "bundled imagegen CLI / reference-conditioned Image API edit",
+    "provider": "user-specified OpenAI-compatible endpoint",
+    "requested_size": [
+      2048,
+      960
+    ],
+    "requested_quality": "high",
+    "raw_file": "D:\\Things\\Things-Workspace\\output\\imagegen\\new_cave_floors\\raw\\hollow_grotto_ember_floor_r01.png",
+    "raw_size": [
+      1829,
+      860
+    ],
+    "raw_format": "PNG",
+    "raw_sha256": "7d51ca96d186064d4592165ac77674dc543c36867467271a7173edab0cbb71f2",
+    "normalized_file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_ember_floor.png",
+    "normalized_sha256": "506e0dd468da7df1dee91a6fdc17295c5cf3e7c4c8ee9e20512eb3d0d4fe99d6",
+    "postprocess": "RGBA conversion and Lanczos normalization to 2048x960; no compositing with any old floor",
+    "reference_images": [
+      "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\hollow_grotto_ember_walls_only.png",
+      "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\vanilla_rock_style_only.jpg"
+    ],
+    "prompt": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\prompts\\hollow_grotto_ember.txt"
+  },
+  "hollow_grotto_violet": {
+    "requested_model": "gpt-image-2",
+    "mode": "bundled imagegen CLI / reference-conditioned Image API edit",
+    "provider": "user-specified OpenAI-compatible endpoint",
+    "requested_size": [
+      2048,
+      960
+    ],
+    "requested_quality": "high",
+    "raw_file": "D:\\Things\\Things-Workspace\\output\\imagegen\\new_cave_floors\\raw\\hollow_grotto_violet_floor_r01.png",
+    "raw_size": [
+      1829,
+      860
+    ],
+    "raw_format": "PNG",
+    "raw_sha256": "660ce533b09a3d4e981bdca5d643fb15c42f656d0d403782455058934821d439",
+    "normalized_file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_violet_floor.png",
+    "normalized_sha256": "2024cf81b8818e07e51a3b30d71074d93897825a511ea5ad6f6c2f755fb1eb96",
+    "postprocess": "RGBA conversion and Lanczos normalization to 2048x960; no compositing with any old floor",
+    "reference_images": [
+      "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\hollow_grotto_violet_walls_only.png",
+      "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\vanilla_rock_style_only.jpg"
+    ],
+    "prompt": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\prompts\\hollow_grotto_violet.txt"
+  }
+}

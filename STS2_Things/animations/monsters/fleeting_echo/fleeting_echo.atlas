@@ -1,0 +1,159 @@
+fleeting_echo.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 2
+  size: 361, 666
+  orig: 361, 666
+  offset: 0, 0
+  index: -1
+lower_left
+  rotate: false
+  xy: 367, 2
+  size: 459, 413
+  orig: 459, 413
+  offset: 0, 0
+  index: -1
+lower_right
+  rotate: false
+  xy: 830, 2
+  size: 487, 391
+  orig: 487, 391
+  offset: 0, 0
+  index: -1
+upper_left
+  rotate: false
+  xy: 1321, 2
+  size: 444, 300
+  orig: 444, 300
+  offset: 0, 0
+  index: -1
+upper_right
+  rotate: false
+  xy: 2, 672
+  size: 566, 241
+  orig: 566, 241
+  offset: 0, 0
+  index: -1
+upper_right_digit0
+  rotate: false
+  xy: 572, 672
+  size: 89, 193
+  orig: 89, 193
+  offset: 0, 0
+  index: -1
+upper_right_digit1
+  rotate: false
+  xy: 665, 672
+  size: 115, 154
+  orig: 115, 154
+  offset: 0, 0
+  index: -1
+lower_right_digit1
+  rotate: false
+  xy: 784, 672
+  size: 81, 143
+  orig: 81, 143
+  offset: 0, 0
+  index: -1
+lower_right_digit2
+  rotate: false
+  xy: 869, 672
+  size: 103, 140
+  orig: 103, 140
+  offset: 0, 0
+  index: -1
+upper_left_digit1
+  rotate: false
+  xy: 976, 672
+  size: 93, 138
+  orig: 93, 138
+  offset: 0, 0
+  index: -1
+upper_left_digit0
+  rotate: false
+  xy: 1073, 672
+  size: 69, 134
+  orig: 69, 134
+  offset: 0, 0
+  index: -1
+upper_right_digit2
+  rotate: false
+  xy: 1146, 672
+  size: 100, 128
+  orig: 100, 128
+  offset: 0, 0
+  index: -1
+lower_left_digit2
+  rotate: false
+  xy: 1250, 672
+  size: 66, 128
+  orig: 66, 128
+  offset: 0, 0
+  index: -1
+lower_left_digit0
+  rotate: false
+  xy: 1320, 672
+  size: 142, 127
+  orig: 142, 127
+  offset: 0, 0
+  index: -1
+lower_right_digit0
+  rotate: false
+  xy: 1466, 672
+  size: 88, 125
+  orig: 88, 125
+  offset: 0, 0
+  index: -1
+lower_left_digit1
+  rotate: false
+  xy: 1558, 672
+  size: 68, 123
+  orig: 68, 123
+  offset: 0, 0
+  index: -1
+upper_left_digit3
+  rotate: false
+  xy: 1630, 672
+  size: 67, 115
+  orig: 67, 115
+  offset: 0, 0
+  index: -1
+core
+  rotate: false
+  xy: 1701, 672
+  size: 66, 111
+  orig: 66, 111
+  offset: 0, 0
+  index: -1
+upper_left_digit2
+  rotate: false
+  xy: 1771, 672
+  size: 116, 94
+  orig: 116, 94
+  offset: 0, 0
+  index: -1
+core_mid
+  rotate: false
+  xy: 1891, 672
+  size: 24, 86
+  orig: 24, 86
+  offset: 0, 0
+  index: -1
+core_top
+  rotate: false
+  xy: 1919, 672
+  size: 20, 58
+  orig: 20, 58
+  offset: 0, 0
+  index: -1
+core_low
+  rotate: false
+  xy: 1943, 672
+  size: 13, 40
+  orig: 13, 40
+  offset: 0, 0
+  index: -1

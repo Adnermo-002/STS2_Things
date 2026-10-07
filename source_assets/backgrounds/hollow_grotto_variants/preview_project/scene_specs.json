@@ -1,0 +1,46 @@
+{
+  "hollow_grotto_moss": {
+    "root": "scenes/backgrounds/hollow_grotto_moss/hollow_grotto_moss_background.tscn",
+    "layers": [
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_00_a.tscn",
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_01_a.tscn",
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_02_a.tscn",
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_03_a.tscn",
+      "scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_fg_a.tscn"
+    ],
+    "name": "苔光岩窟"
+  },
+  "hollow_grotto_ember": {
+    "root": "scenes/backgrounds/hollow_grotto_ember/hollow_grotto_ember_background.tscn",
+    "layers": [
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_00_a.tscn",
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_01_a.tscn",
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_02_a.tscn",
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_03_a.tscn",
+      "scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_fg_a.tscn"
+    ],
+    "name": "余烬石窟"
+  },
+  "hollow_grotto_violet": {
+    "root": "scenes/backgrounds/hollow_grotto_violet/hollow_grotto_violet_background.tscn",
+    "layers": [
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_00_a.tscn",
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_01_a.tscn",
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_02_a.tscn",
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_03_a.tscn",
+      "scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_fg_a.tscn"
+    ],
+    "name": "紫雾深窟"
+  },
+  "hollow_grotto": {
+    "root": "scenes/backgrounds/hollow_grotto/hollow_grotto_background.tscn",
+    "layers": [
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_00_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_01_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_02_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_03_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_fg_a.tscn"
+    ],
+    "name": "幽蓝溶洞 · 新绘水蚀岩床"
+  }
+}

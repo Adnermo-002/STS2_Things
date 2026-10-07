@@ -1,0 +1,208 @@
+the_legacy.png
+size: 2048,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bulb
+  rotate: false
+  xy: 2, 2
+  size: 430, 384
+  orig: 430, 384
+  offset: 0, 0
+  index: -1
+right_lobe
+  rotate: false
+  xy: 436, 2
+  size: 198, 333
+  orig: 198, 333
+  offset: 0, 0
+  index: -1
+mid_lobe
+  rotate: false
+  xy: 638, 2
+  size: 610, 328
+  orig: 610, 328
+  offset: 0, 0
+  index: -1
+atrium
+  rotate: false
+  xy: 1252, 2
+  size: 617, 322
+  orig: 617, 322
+  offset: 0, 0
+  index: -1
+weed_left
+  rotate: false
+  xy: 1873, 2
+  size: 143, 320
+  orig: 143, 320
+  offset: 0, 0
+  index: -1
+purple_mass
+  rotate: false
+  xy: 2, 390
+  size: 516, 295
+  orig: 516, 295
+  offset: 0, 0
+  index: -1
+bottom_lobe
+  rotate: false
+  xy: 522, 390
+  size: 747, 285
+  orig: 747, 285
+  offset: 0, 0
+  index: -1
+purple_lr
+  rotate: false
+  xy: 1273, 390
+  size: 290, 282
+  orig: 290, 282
+  offset: 0, 0
+  index: -1
+weed_top_left
+  rotate: false
+  xy: 1567, 390
+  size: 199, 282
+  orig: 199, 282
+  offset: 0, 0
+  index: -1
+weed_bottom_mid
+  rotate: false
+  xy: 2, 689
+  size: 351, 273
+  orig: 351, 273
+  offset: 0, 0
+  index: -1
+blue_main
+  rotate: false
+  xy: 357, 689
+  size: 400, 255
+  orig: 400, 255
+  offset: 0, 0
+  index: -1
+purple_top
+  rotate: false
+  xy: 761, 689
+  size: 236, 243
+  orig: 236, 243
+  offset: 0, 0
+  index: -1
+coral_purple
+  rotate: false
+  xy: 1001, 689
+  size: 261, 234
+  orig: 261, 234
+  offset: 0, 0
+  index: -1
+weed_bottom_right
+  rotate: false
+  xy: 1266, 689
+  size: 211, 221
+  orig: 211, 221
+  offset: 0, 0
+  index: -1
+bulb_glow
+  rotate: false
+  xy: 1481, 689
+  size: 215, 192
+  orig: 215, 192
+  offset: 0, 0
+  index: -1
+weed_right
+  rotate: false
+  xy: 1700, 689
+  size: 158, 189
+  orig: 158, 189
+  offset: 0, 0
+  index: -1
+coral_pink
+  rotate: false
+  xy: 2, 966
+  size: 236, 181
+  orig: 236, 181
+  offset: 0, 0
+  index: -1
+weed_back_d
+  rotate: false
+  xy: 242, 966
+  size: 85, 180
+  orig: 85, 180
+  offset: 0, 0
+  index: -1
+blue_bottom
+  rotate: false
+  xy: 331, 966
+  size: 167, 171
+  orig: 167, 171
+  offset: 0, 0
+  index: -1
+atrium_glow
+  rotate: false
+  xy: 502, 966
+  size: 308, 161
+  orig: 308, 161
+  offset: 0, 0
+  index: -1
+blue_down
+  rotate: false
+  xy: 814, 966
+  size: 150, 157
+  orig: 150, 157
+  offset: 0, 0
+  index: -1
+weed_ground_left
+  rotate: false
+  xy: 968, 966
+  size: 174, 151
+  orig: 174, 151
+  offset: 0, 0
+  index: -1
+weed_back_b
+  rotate: false
+  xy: 1146, 966
+  size: 116, 146
+  orig: 116, 146
+  offset: 0, 0
+  index: -1
+weed_back_a
+  rotate: false
+  xy: 1266, 966
+  size: 80, 134
+  orig: 80, 134
+  offset: 0, 0
+  index: -1
+weed_blue
+  rotate: false
+  xy: 1350, 966
+  size: 132, 111
+  orig: 132, 111
+  offset: 0, 0
+  index: -1
+weed_back_c
+  rotate: false
+  xy: 1486, 966
+  size: 60, 104
+  orig: 60, 104
+  offset: 0, 0
+  index: -1
+weed_ground_bl
+  rotate: false
+  xy: 1550, 966
+  size: 210, 80
+  orig: 210, 80
+  offset: 0, 0
+  index: -1
+weed_ground_right
+  rotate: false
+  xy: 1764, 966
+  size: 107, 70
+  orig: 107, 70
+  offset: 0, 0
+  index: -1
+weed_edge_right
+  rotate: false
+  xy: 1875, 966
+  size: 64, 67
+  orig: 64, 67
+  offset: 0, 0
+  index: -1

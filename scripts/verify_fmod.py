@@ -222,7 +222,7 @@ def main() -> int:
             }
             for path in sorted((source / "Encounters").glob("*.cs")):
                 text = path.read_text(encoding="utf-8")
-                bgm = re.search(r'CustomBgm\s*=>\s*"([^"]+)"', text)
+                bgm = re.search(r'CustomBgm\s*=>\s*(?:ConfiguredBgm\s*\(\s*)?"([^"]+)"', text)
                 class_name = re.search(r"public sealed class\s+(\w+)", text)
                 if not bgm or not class_name:
                     continue

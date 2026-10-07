@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: concealed body layer for a Spine skeletal creature.
+Input image is the EDIT TARGET, our original crystal-shell snail. Keep its exact 1536x1024 framing, exact ground baseline, facing direction, head position, two eyestalks, face, colors, tail and foot silhouette.
+Remove ONLY the turquoise crystal shell and expose the snail's complete soft dusty-lavender back beneath it. The revealed bare body is a low rounded fleshy mantle connected naturally to the neck and tail, not a tall replacement shell. It should form a smooth modest hump above the long belly-foot. Preserve the existing visible head, neck, foot and tail as closely as possible; only paint the previously concealed back and the shell's attachment area. Remove all cyan crystal material. Do not add a second creature, new limbs, new eyes or new details.
+Match the existing flat painted color planes and low texture density. No glow, no rim aura, no ground shadow. Genuine transparent alpha outside the body. This is a production animation layer, not a new pose or a redesign.

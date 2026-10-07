@@ -1,0 +1,197 @@
+{
+  "engine": "Godot 4.5.1 / D3D12 / Forward Mobile",
+  "scenes": {
+    "cave_skylight": {
+      "kind": "new",
+      "luma_p05_p50_p95": [
+        51.15,
+        104.34,
+        160.59
+      ],
+      "motion_pixels": 311618,
+      "viewports": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ]
+    },
+    "cave_riverbend": {
+      "kind": "new",
+      "luma_p05_p50_p95": [
+        41.67,
+        70.59,
+        96.74
+      ],
+      "motion_pixels": 294104,
+      "viewports": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ]
+    },
+    "cave_quartz": {
+      "kind": "new",
+      "luma_p05_p50_p95": [
+        43.02,
+        87.44,
+        130.01
+      ],
+      "motion_pixels": 409713,
+      "viewports": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ]
+    },
+    "cave_rootfungus": {
+      "kind": "new",
+      "luma_p05_p50_p95": [
+        35.56,
+        62.42,
+        92.2
+      ],
+      "motion_pixels": 309986,
+      "viewports": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ]
+    },
+    "hollow_grotto": {
+      "kind": "brightened_existing",
+      "luma_p05_p50_p95": [
+        30.3,
+        49.6,
+        71.68
+      ],
+      "motion_pixels": 477371,
+      "viewports": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "previous_luma_p50": 33.67,
+      "median_brightness_ratio": 1.473
+    },
+    "hollow_grotto_moss": {
+      "kind": "brightened_existing",
+      "luma_p05_p50_p95": [
+        17.44,
+        46.42,
+        64.58
+      ],
+      "motion_pixels": 356581,
+      "viewports": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "previous_luma_p50": 31.02,
+      "median_brightness_ratio": 1.496
+    },
+    "hollow_grotto_ember": {
+      "kind": "brightened_existing",
+      "luma_p05_p50_p95": [
+        19.49,
+        40.11,
+        66.89
+      ],
+      "motion_pixels": 327313,
+      "viewports": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "previous_luma_p50": 26.2,
+      "median_brightness_ratio": 1.531
+    },
+    "hollow_grotto_violet": {
+      "kind": "brightened_existing",
+      "luma_p05_p50_p95": [
+        28.94,
+        44.21,
+        59.93
+      ],
+      "motion_pixels": 356414,
+      "viewports": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "previous_luma_p50": 29.43,
+      "median_brightness_ratio": 1.502
+    }
+  }
+}

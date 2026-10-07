@@ -1,0 +1,135 @@
+{
+  "review_revision": "r04",
+  "engine": "Godot 4.5.1 / D3D12 / Forward Mobile",
+  "color_measurement": "display-referred Rec.709 weighted RGB on native captures; diagnostic, not a style score",
+  "style_reference_metrics": {
+    "hollow_grotto": {
+      "luma_p05_p50_p95_0_to_255": [
+        19.3,
+        32.39,
+        42.48
+      ],
+      "combat_area_luma_p05_p50_p95": [
+        28.74,
+        35.09,
+        45.69
+      ],
+      "combat_area_neighbor_delta_mean": 0.338
+    },
+    "underdocks": {
+      "luma_p05_p50_p95_0_to_255": [
+        5.43,
+        16.87,
+        62.45
+      ],
+      "combat_area_luma_p05_p50_p95": [
+        5.43,
+        15.08,
+        35.74
+      ],
+      "combat_area_neighbor_delta_mean": 0.965
+    },
+    "overgrowth": {
+      "luma_p05_p50_p95_0_to_255": [
+        11.57,
+        27.73,
+        45.89
+      ],
+      "combat_area_luma_p05_p50_p95": [
+        14.57,
+        31.88,
+        43.21
+      ],
+      "combat_area_neighbor_delta_mean": 0.556
+    },
+    "glory": {
+      "luma_p05_p50_p95_0_to_255": [
+        9.73,
+        25.45,
+        62.85
+      ],
+      "combat_area_luma_p05_p50_p95": [
+        12.43,
+        29.38,
+        62.43
+      ],
+      "combat_area_neighbor_delta_mean": 0.855
+    }
+  },
+  "layers": {
+    "hollow_grotto_00.png": {
+      "size": [
+        2048,
+        960
+      ],
+      "sha256": "77b953f21a9c6b13ad0c31485cada7b083715dc273b4fc558de7d17a6645d4c3",
+      "fully_transparent_fraction": 0.0
+    },
+    "hollow_grotto_01.png": {
+      "size": [
+        2048,
+        960
+      ],
+      "sha256": "3b2e0c4f26f4850d7f194ef0f78713c535002e19dcf66fb3efccbaba3d3e9226",
+      "fully_transparent_fraction": 0.7796
+    },
+    "hollow_grotto_02.png": {
+      "size": [
+        2048,
+        960
+      ],
+      "sha256": "9eb8f6b5caca95179f91f81511dc9c3395fac12baac4afd59c69db2f502585c2",
+      "fully_transparent_fraction": 0.7619
+    },
+    "hollow_grotto_03.png": {
+      "size": [
+        2048,
+        960
+      ],
+      "sha256": "b02a32648ef786c9f2f628136453b9208603b1f14839b1dd5ac74f2c7a73e585",
+      "fully_transparent_fraction": 0.831
+    },
+    "hollow_grotto_fg.png": {
+      "size": [
+        2048,
+        960
+      ],
+      "sha256": "2f1396a5fef780f313dfab192289333ebcff282814405640b844e5851c157761",
+      "fully_transparent_fraction": 0.9163
+    }
+  },
+  "motion": {
+    "frames_apart": 120,
+    "fixed_fps": 60,
+    "pixels_changed": 333288,
+    "pixels_changed_more_than_2_levels": 6201,
+    "max_channel_delta": 27
+  },
+  "native_dependency_paths": [
+    "images/rooms/hollow_grotto/hollow_grotto_00.png",
+    "images/rooms/hollow_grotto/hollow_grotto_01.png",
+    "images/rooms/hollow_grotto/hollow_grotto_02.png",
+    "images/rooms/hollow_grotto/hollow_grotto_03.png",
+    "images/rooms/hollow_grotto/hollow_grotto_fg.png",
+    "images/vfx/dot.png",
+    "images/vfx/fog_sheet_1.png",
+    "images/vfx/light.png",
+    "src/Core/Nodes/Rooms/NCombatBackground.cs"
+  ],
+  "viewports_rendered": [
+    [
+      1920,
+      1080
+    ],
+    [
+      2560,
+      1080
+    ],
+    [
+      1440,
+      1080
+    ]
+  ],
+  "runtime_root": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto\\hollow_grotto_background.tscn",
+  "verification_scope": "Actual Godot layer rendering and resource contracts; no live combat was replaced or run."
+}

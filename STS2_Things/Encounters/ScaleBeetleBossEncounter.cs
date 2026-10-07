@@ -12,7 +12,7 @@ public sealed class ScaleBeetleBossEncounter : ModBossEncounter
     public override RoomType RoomType => RoomType.Boss;
 
     // 复用Vantom的专属Boss音乐（有完整progress参数+升调自动化）
-    public override string CustomBgm => "event:/music/act1_boss_vantom";
+    public override string CustomBgm => ConfiguredBgm("event:/music/act1_boss_vantom");
     public override bool HasScene => true;
     protected override bool HasCustomBackground => true;
 

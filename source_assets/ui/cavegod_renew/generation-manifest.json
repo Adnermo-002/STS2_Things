@@ -1,0 +1,121 @@
+{
+  "model": "gpt-image-2.5-sunburst",
+  "provider": "https://cpa.yuseus.io/v1/",
+  "mode": "official imagegen CLI edit; one job per asset",
+  "jobs": [
+    {
+      "slug": "aging",
+      "kind": "power",
+      "image": "images/powers/things_cave_god_aging_power.png",
+      "reference": "native-power-style.png",
+      "size": "1024x1024",
+      "target": "images/powers/things_cave_god_aging_power.png"
+    },
+    {
+      "slug": "ancient_core",
+      "kind": "power",
+      "image": "images/powers/things_cave_god_ancient_core_power.png",
+      "reference": "native-power-style.png",
+      "size": "1024x1024",
+      "target": "images/powers/things_cave_god_ancient_core_power.png"
+    },
+    {
+      "slug": "crystal_vein",
+      "kind": "power",
+      "image": "images/powers/things_cave_god_crystal_vein_power.png",
+      "reference": "native-power-style.png",
+      "size": "1024x1024",
+      "target": "images/powers/things_cave_god_crystal_vein_power.png"
+    },
+    {
+      "slug": "fissure",
+      "kind": "power",
+      "image": "images/powers/things_cave_god_fissure_power.png",
+      "reference": "native-power-style.png",
+      "size": "1024x1024",
+      "target": "images/powers/things_cave_god_fissure_power.png"
+    },
+    {
+      "slug": "broken_blade_power",
+      "kind": "power",
+      "image": "images/powers/cave_god_broken_blade_power.png",
+      "reference": "native-power-style.png",
+      "size": "1024x1024",
+      "target": "images/powers/cave_god_broken_blade_power.png"
+    },
+    {
+      "slug": "shattered_shield_power",
+      "kind": "power",
+      "image": "images/powers/cave_god_shattered_shield_power.png",
+      "reference": "native-power-style.png",
+      "size": "1024x1024",
+      "target": "images/powers/cave_god_shattered_shield_power.png"
+    },
+    {
+      "slug": "martial_power",
+      "kind": "power",
+      "image": "images/powers/cave_god_martial_power.png",
+      "reference": "native-power-style.png",
+      "size": "1024x1024",
+      "target": "images/powers/cave_god_martial_power.png"
+    },
+    {
+      "slug": "arcane_power",
+      "kind": "power",
+      "image": "images/powers/cave_god_arcane_power.png",
+      "reference": "native-power-style.png",
+      "size": "1024x1024",
+      "target": "images/powers/cave_god_arcane_power.png"
+    },
+    {
+      "slug": "broken_blade",
+      "kind": "card",
+      "image": "images/cards/cave_god_broken_blade.png",
+      "reference": "native-card-style.png",
+      "size": "1536x1024",
+      "target": "images/packed/card_portraits/token/cave_god_broken_blade.png"
+    },
+    {
+      "slug": "shattered_shield",
+      "kind": "card",
+      "image": "images/cards/cave_god_shattered_shield.png",
+      "reference": "native-card-style.png",
+      "size": "1536x1024",
+      "target": "images/packed/card_portraits/token/cave_god_shattered_shield.png"
+    },
+    {
+      "slug": "crystal_shard",
+      "kind": "card",
+      "image": "../STS2-V111/images/packed/card_portraits/status/debris.png",
+      "reference": "native-card-style.png",
+      "size": "1536x1024",
+      "target": "images/packed/card_portraits/token/cave_god_crystal_shard.png",
+      "output": "crystal_shard-v2.png"
+    },
+    {
+      "slug": "martial_trial",
+      "kind": "card",
+      "image": "../STS2-V111/images/packed/card_portraits/token/disintegration.png",
+      "reference": "native-card-style.png",
+      "size": "1536x1024",
+      "target": "images/packed/card_portraits/token/cave_god_martial_trial.png"
+    },
+    {
+      "slug": "arcane_trial",
+      "kind": "card",
+      "image": "../STS2-V111/images/packed/card_portraits/token/mind_rot.png",
+      "reference": "native-card-style.png",
+      "size": "1536x1024",
+      "target": "images/packed/card_portraits/token/cave_god_arcane_trial.png"
+    },
+    {
+      "slug": "boss_avatar",
+      "kind": "avatar",
+      "image": "images/map/cave_god_boss_icon.png",
+      "reference": "native-boss-avatar-style.png",
+      "size": "1024x1024",
+      "target": "images/map/cave_god_boss_icon.png"
+    }
+  ],
+  "outbound_authorized": "User confirmed in this conversation on 2026-10-05; specified endpoint, authentication and listed reference images."
+}

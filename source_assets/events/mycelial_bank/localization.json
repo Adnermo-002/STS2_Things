@@ -1,0 +1,58 @@
+{
+  "zhs": {
+    "events": {
+      "MYCELIAL_BANK.title": "菌根借贷所",
+      "MYCELIAL_BANK.pages.INITIAL.description": "两只蘑菇堵住了去路。瘦的捧着账本，胖的抱着一罐[red]红色种子[/red]。一根粗根将它们连在一起。\n\n[green]“生命放在身上，容易丢。”[/green]瘦蘑菇翻开账本。\n\n胖蘑菇把罐子藏到身后。它看起来很擅长保管。",
+      "MYCELIAL_BANK.pages.INITIAL.options.SHORT.title": "存短期",
+      "MYCELIAL_BANK.pages.INITIAL.options.SHORT.description": "失去[red]{HpLoss}[/red]生命。接下来[blue]{Payments}[/blue]场战斗结束时各回复[green]{Heal}[/green]生命。",
+      "MYCELIAL_BANK.pages.INITIAL.options.SHORT_LOCKED.title": "锁定",
+      "MYCELIAL_BANK.pages.INITIAL.options.SHORT_LOCKED.description": "需要多于[red]{HpLoss}[/red]生命，且尚未存款。",
+      "MYCELIAL_BANK.pages.INITIAL.options.LONG.title": "存长期",
+      "MYCELIAL_BANK.pages.INITIAL.options.LONG.description": "失去[red]{MaxHpCost}[/red]最大生命。击败本章Boss后获得[green]{MaxHpReturn}[/green]最大生命。",
+      "MYCELIAL_BANK.pages.INITIAL.options.LONG_LOCKED.title": "锁定",
+      "MYCELIAL_BANK.pages.INITIAL.options.LONG_LOCKED.description": "需要多于[red]{MaxHpCost}[/red]最大生命，且尚未存款。",
+      "MYCELIAL_BANK.pages.INITIAL.options.GIFT.title": "收下赠礼",
+      "MYCELIAL_BANK.pages.INITIAL.options.GIFT.description": "获得[blue]{SmallGold}[/blue][gold]金币[/gold]。",
+      "MYCELIAL_BANK.pages.SHORT.description": "细根轻轻缠住你的手腕。你感到一阵疲倦，罐子里多了几颗[red]红色种子[/red]。\n\n瘦蘑菇在一片叶子上盖了章。\n\n[green]“分三次送到。根会找到你的。”[/green]",
+      "MYCELIAL_BANK.pages.LONG.description": "一截粗根从你掌心抽走了什么。胖蘑菇的菌盖又撑大了一圈。\n\n[green]“大门后结清。连本带利。”[/green]\n\n瘦蘑菇把存单递给你，顺手拍掉同伴伸向罐口的手。",
+      "MYCELIAL_BANK.pages.GIFT.description": "胖蘑菇往你手里塞了一小把[gold]金币[/gold]。\n\n[green]“见面礼！”[/green]\n\n瘦蘑菇划掉账本上的一行，狠狠看了它一眼。",
+      "MYCELIAL_BANK.pages.DEATH.description": "你眼前一黑。\n\n瘦蘑菇停下笔。胖蘑菇把罐子抱得更紧了。"
+    },
+    "relics": {
+      "MYCELIAL_DEPOSIT.title": "菌根存单",
+      "MYCELIAL_DEPOSIT.description": "{Terms}",
+      "MYCELIAL_DEPOSIT.shortTerms": "接下来[blue]{Payments}[/blue]场战斗结束时，回复[green]{Heal}[/green]生命。",
+      "MYCELIAL_DEPOSIT.longTerms": "击败本章Boss后，获得[green]{MaxHp}[/green]最大生命。",
+      "MYCELIAL_DEPOSIT.flavor": "“本金不许偷吃。”"
+    },
+    "settings_ui": {"STS2_THINGS-EVENT_MYCELIAL_BANK_ENABLED.title": "菌根借贷所 — 启用"}
+  },
+  "eng": {
+    "events": {
+      "MYCELIAL_BANK.title": "Mycelial Bank",
+      "MYCELIAL_BANK.pages.INITIAL.description": "Two mushrooms block the path. The thin one holds a ledger; the stout one hugs a jar of [red]red seeds[/red]. A thick root joins them.\n\n[green]“Life is easily lost if you carry it around.”[/green] The thin one opens the book.\n\nThe stout one hides the jar behind its back. It looks good at keeping things.",
+      "MYCELIAL_BANK.pages.INITIAL.options.SHORT.title": "Short-Term Deposit",
+      "MYCELIAL_BANK.pages.INITIAL.options.SHORT.description": "Lose [red]{HpLoss}[/red] HP. Heal [green]{Heal}[/green] HP after each of the next [blue]{Payments}[/blue] combats.",
+      "MYCELIAL_BANK.pages.INITIAL.options.SHORT_LOCKED.title": "Locked",
+      "MYCELIAL_BANK.pages.INITIAL.options.SHORT_LOCKED.description": "Requires more than [red]{HpLoss}[/red] HP and no previous deposit.",
+      "MYCELIAL_BANK.pages.INITIAL.options.LONG.title": "Long-Term Deposit",
+      "MYCELIAL_BANK.pages.INITIAL.options.LONG.description": "Lose [red]{MaxHpCost}[/red] Max HP. Gain [green]{MaxHpReturn}[/green] Max HP after defeating this Act's Boss.",
+      "MYCELIAL_BANK.pages.INITIAL.options.LONG_LOCKED.title": "Locked",
+      "MYCELIAL_BANK.pages.INITIAL.options.LONG_LOCKED.description": "Requires more than [red]{MaxHpCost}[/red] Max HP and no previous deposit.",
+      "MYCELIAL_BANK.pages.INITIAL.options.GIFT.title": "Accept the Gift",
+      "MYCELIAL_BANK.pages.INITIAL.options.GIFT.description": "Gain [blue]{SmallGold}[/blue] [gold]Gold[/gold].",
+      "MYCELIAL_BANK.pages.SHORT.description": "Fine roots curl around your wrist. You feel tired. A few more [red]seeds[/red] appear in the jar.\n\nThe thin mushroom stamps a leaf.\n\n[green]“Three installments. The roots will find you.”[/green]",
+      "MYCELIAL_BANK.pages.LONG.description": "A thick root draws something from your palm. The stout mushroom's cap swells a little wider.\n\n[green]“Past the big door. Principal and interest.”[/green]\n\nThe thin one hands you the receipt and slaps its partner's hand away from the jar.",
+      "MYCELIAL_BANK.pages.GIFT.description": "The stout mushroom presses a handful of [gold]coins[/gold] into your hand.\n\n[green]“A welcome gift!”[/green]\n\nThe thin one crosses out a line in the ledger and gives it a hard look.",
+      "MYCELIAL_BANK.pages.DEATH.description": "Everything goes dark.\n\nThe thin mushroom stops writing. The stout one hugs the jar tighter."
+    },
+    "relics": {
+      "MYCELIAL_DEPOSIT.title": "Mycelial Deposit",
+      "MYCELIAL_DEPOSIT.description": "{Terms}",
+      "MYCELIAL_DEPOSIT.shortTerms": "Heal [green]{Heal}[/green] HP after each of the next [blue]{Payments}[/blue] combats.",
+      "MYCELIAL_DEPOSIT.longTerms": "Gain [green]{MaxHp}[/green] Max HP after defeating this Act's Boss.",
+      "MYCELIAL_DEPOSIT.flavor": "“No eating the principal.”"
+    },
+    "settings_ui": {"STS2_THINGS-EVENT_MYCELIAL_BANK_ENABLED.title": "Mycelial Bank — enabled"}
+  }
+}

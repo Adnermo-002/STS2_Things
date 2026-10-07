@@ -22,8 +22,7 @@ public sealed class GravetideSlugBossEncounter : ModBossEncounter
 
     public override IEnumerable<EncounterTag> Tags => [EncounterTag.Slugs];
 
-    public override string CustomBgm =>
-        "res://music/gravetide_slug/gravetide_slug_boss_theme.wav";
+    public override string CustomBgm => ConfiguredBgm("res://music/gravetide_slug/gravetide_slug_boss_theme.wav");
 
     public override bool HasScene => true;
 

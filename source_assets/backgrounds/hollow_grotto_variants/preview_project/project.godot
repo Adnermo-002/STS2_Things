@@ -1,0 +1,19 @@
+config_version=5
+
+[application]
+config/name="STS2 Cave Variants"
+run/main_scene="res://preview.tscn"
+config/features=PackedStringArray("4.5", "Mobile")
+
+[display]
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[rendering]
+renderer/rendering_method="mobile"
+rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.0923724, 0.122398, 0.116929, 1)

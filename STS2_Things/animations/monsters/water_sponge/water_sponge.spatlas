@@ -1,0 +1,1 @@
+{"source_path":"res://STS2_Things/animations/monsters/water_sponge/water_sponge.atlas","atlas_data":"water_sponge.png\nsize: 2048,1536\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nskin\n  rotate: false\n  xy: 2, 2\n  size: 1280, 1280\n  orig: 1280, 1280\n  offset: 0, 0\n  index: -1\n","normal_texture_prefix":"n","specular_texture_prefix":"s"}

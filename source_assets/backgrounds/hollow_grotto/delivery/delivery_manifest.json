@@ -1,0 +1,746 @@
+{
+  "README.md": {
+    "sha256": "4cc614e3f0718166c79ce81df992000c5944c9742a1b3fcaaaeb9b310f470c47",
+    "bytes": 6621
+  },
+  "STYLE_AUDIT.md": {
+    "sha256": "effc8809992dd0485b318b66bfd97d41ae34ab7e7cc8d2f0aa9e51a5674bb025",
+    "bytes": 4434
+  },
+  "asset_manifest.json": {
+    "sha256": "2d59a40e8e4cb814f6ef7223c1ca27f997d51d5efd1b507fcef68784737ccee2",
+    "bytes": 1359
+  },
+  "build_art.py": {
+    "sha256": "9b2024d0d3aba780d99e19c9e347a0a4657511baf8bd4a24ff47a87e0d19d4f3",
+    "bytes": 6790
+  },
+  "build_scene.py": {
+    "sha256": "87f0ee1375a9cf75c89ca9bce76bc1c02a37de7a5797631c7a9853e4dd8533bf",
+    "bytes": 9418
+  },
+  "hollow_grotto.pck": {
+    "sha256": "01f8bc5f8817d25dce55e4c14425588034e1d464b3e006559024a47e8129fc88",
+    "bytes": 11025748
+  },
+  "pack.gd": {
+    "sha256": "ab0e8b6a78fbd75c2e0a77163671d8551c1765e0c7fe60f428c665c66f16ed2f",
+    "bytes": 1939
+  },
+  "package_assets.py": {
+    "sha256": "73e23fdc4b8cc266192dc5a2f27daa1fbc28eb244a50d0ba3182c86054d83674",
+    "bytes": 4189
+  },
+  "preview.gd": {
+    "sha256": "9d55b892b5f77d0f8e4d42e9b461b493ff54b03b9513af0ae0f42e1a37c83791",
+    "bytes": 4476
+  },
+  "preview_project/images/rooms/glory/cloud_sheet.png": {
+    "sha256": "d82a6c9c8f4fc499f46d8dab17e03c6f5b6f3b2e9dabfa7009fbd641cfc31cc1",
+    "bytes": 608245
+  },
+  "preview_project/images/rooms/glory/cloud_sheet.png.import": {
+    "sha256": "ef022277b3abbe8dcb7a788ea29cb66d5e04a0b9105958488e02e30db6461bb7",
+    "bytes": 955
+  },
+  "preview_project/images/rooms/glory/glory_00.png": {
+    "sha256": "25a9b7dd83c7aae8f6ffcf3faf762520d87c93a8ebe746d5794ecd97ec02b07f",
+    "bytes": 1290157
+  },
+  "preview_project/images/rooms/glory/glory_00.png.import": {
+    "sha256": "a6f8dd132b01bebbc0aae5f94f19cfa80142d3e5fe52e008a0c580b80246c389",
+    "bytes": 994
+  },
+  "preview_project/images/rooms/glory/glory_01_b.png": {
+    "sha256": "9c9a9c43214ae51fc54ca6609763df77acb4ef67a252b323015e555dbf3890ba",
+    "bytes": 538112
+  },
+  "preview_project/images/rooms/glory/glory_01_b.png.import": {
+    "sha256": "a408758e399fa8e3be8def20290079bbfe9cbbf67bb21b7554efd6759fe16ff4",
+    "bytes": 999
+  },
+  "preview_project/images/rooms/glory/glory_02_a.png": {
+    "sha256": "572e3cc04fc66aaa039869b10c415ef9fd505a9460da57bf6ae5620630c5eff3",
+    "bytes": 282980
+  },
+  "preview_project/images/rooms/glory/glory_02_a.png.import": {
+    "sha256": "62b79ae7319d8b940f486fdc9e733eaeebc561fe5f0f3d17ef0b9980bd478e7f",
+    "bytes": 999
+  },
+  "preview_project/images/rooms/glory/glory_03_a.png": {
+    "sha256": "b6c3cc6ddae20052ba678b67bbcffa35f4908d947a5eb9e5fc155e1537ee7c4c",
+    "bytes": 677112
+  },
+  "preview_project/images/rooms/glory/glory_03_a.png.import": {
+    "sha256": "9bfe83689a4c3036f367e134b0bfc1398f6d3476eeb8fff4b80146283405a339",
+    "bytes": 999
+  },
+  "preview_project/images/rooms/glory/glory_03_a_flag_1.png": {
+    "sha256": "bf86fa1bc2284f415128ca5eefbc912799b4ed3160d69737df002fcc5e7744cf",
+    "bytes": 170751
+  },
+  "preview_project/images/rooms/glory/glory_03_a_flag_1.png.import": {
+    "sha256": "c195095857e229c68501a71fc4beeb3a4ef2ed9450e369b1cc7df8b140727055",
+    "bytes": 1021
+  },
+  "preview_project/images/rooms/glory/glory_03_a_flag_2.png": {
+    "sha256": "e36bc41328777d8ad92ff0429ae2dd0e736e1905baafdedebcb23da5d0218a00",
+    "bytes": 110283
+  },
+  "preview_project/images/rooms/glory/glory_03_a_flag_2.png.import": {
+    "sha256": "4177b6e49580fda182a7b9c6cb9417a7b3c10542ebdd0eb62faf214de549e1e5",
+    "bytes": 1021
+  },
+  "preview_project/images/rooms/glory/glory_03_a_flag_post.png": {
+    "sha256": "64f5eb4dd5ac7ac6dc916ceab692d65d4c0c877220a245f0506973d9db3e3609",
+    "bytes": 154820
+  },
+  "preview_project/images/rooms/glory/glory_03_a_flag_post.png.import": {
+    "sha256": "8f5e4502abaee960c6565a248d65083486ccc0f3bff8acb059e97e143b827874",
+    "bytes": 1030
+  },
+  "preview_project/images/rooms/glory/glory_03_a_pools.png": {
+    "sha256": "4d28155ee988ef0060e671d9d0cc9363d0bc45838ad81bbc847228ce10cf9a3a",
+    "bytes": 70552
+  },
+  "preview_project/images/rooms/glory/glory_03_a_pools.png.import": {
+    "sha256": "1f062136c81708b9b6c4e3d1942ed98303957d47ee0deb5fa05f8e71f98dd0eb",
+    "bytes": 1018
+  },
+  "preview_project/images/rooms/glory/glory_03_torch.png": {
+    "sha256": "cce4dc8b1b180de2393ac449503c95e357d96cea7f3fa66b8038aacd9a3386a3",
+    "bytes": 29388
+  },
+  "preview_project/images/rooms/glory/glory_03_torch.png.import": {
+    "sha256": "0acbeb0c2c023da5ae743e5f4d6730bf660066220aa1ac361463e9b1840a6f72",
+    "bytes": 1012
+  },
+  "preview_project/images/rooms/glory/glory_04_a.png": {
+    "sha256": "89d8b630e40af1ee7f7df1edbeab5324a861003cc1ddd69d87d8c04a61f5788d",
+    "bytes": 137676
+  },
+  "preview_project/images/rooms/glory/glory_04_a.png.import": {
+    "sha256": "5b810a3939232687293af0405a23a753e07c5b6722630a9d1625f04500c85c47",
+    "bytes": 1000
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_00.png": {
+    "sha256": "77b953f21a9c6b13ad0c31485cada7b083715dc273b4fc558de7d17a6645d4c3",
+    "bytes": 426417
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_00.png.import": {
+    "sha256": "b9d50896157dcfc01210186fa6fa36e7acf214214933cf957c7529df242a76d2",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_01.png": {
+    "sha256": "3b2e0c4f26f4850d7f194ef0f78713c535002e19dcf66fb3efccbaba3d3e9226",
+    "bytes": 285923
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_01.png.import": {
+    "sha256": "7da374599f7a8ff588755a78afdb4b40eed592ad38fb10ab8c685e7395809c74",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_02.png": {
+    "sha256": "9eb8f6b5caca95179f91f81511dc9c3395fac12baac4afd59c69db2f502585c2",
+    "bytes": 273995
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_02.png.import": {
+    "sha256": "42285915867e359c7e53ded0abbef7f9bc1b06a4cad7b6e7a3770d622120d517",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_03.png": {
+    "sha256": "b02a32648ef786c9f2f628136453b9208603b1f14839b1dd5ac74f2c7a73e585",
+    "bytes": 145836
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_03.png.import": {
+    "sha256": "d4b5f056fd473564ba2e859c575b374351d3dfec6ff3975923ffcfda8c1bbba9",
+    "bytes": 1025
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_fg.png": {
+    "sha256": "2f1396a5fef780f313dfab192289333ebcff282814405640b844e5851c157761",
+    "bytes": 49168
+  },
+  "preview_project/images/rooms/hollow_grotto/hollow_grotto_fg.png.import": {
+    "sha256": "03dff4c3874358e0b25e80fd0a93391637918f86b8ec7f217ebaa136d24d002d",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_00.png": {
+    "sha256": "63f008ac12f4ce8488a43d2200c6bf29a85b8e2479aedc0f977e0a27273a0865",
+    "bytes": 881825
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_00.png.import": {
+    "sha256": "9f4defa7331eae4774fff025d6505f138bed3af0ab060e56ab9f0926b30362fe",
+    "bytes": 1014
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_01_a.png": {
+    "sha256": "24534391805f987e369f5f303e89161a1a7eb482273b7fcfee0806efef25e722",
+    "bytes": 259760
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_01_a.png.import": {
+    "sha256": "2efee628af84821f198bf897a038f34b3fae305c3882757ceee2913a25d6da81",
+    "bytes": 1020
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_02_a.png": {
+    "sha256": "d625bbf5e94e410670ada2342220ad285bbc7b500044200c8b4e83b285aea3bd",
+    "bytes": 335288
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_02_a.png.import": {
+    "sha256": "79f6e34aa987486f3b8a48d9abe2992d95c3b19a9ef8a38a54e78d7f5111e096",
+    "bytes": 1020
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_03_a.png": {
+    "sha256": "4cdea55b116a4f5dc94045a5b94c07dc9a84aab8f181f966101f99df056231d6",
+    "bytes": 469634
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_03_a.png.import": {
+    "sha256": "84648c6612b8ee770a0950db90f9c0ab9c76ed3b1d36eeed814bb6df06c4533e",
+    "bytes": 1020
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a.png": {
+    "sha256": "256ce604a171db46b90fbe3bf5475c4a65db0c9af057e18b58147eb78c017847",
+    "bytes": 569951
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a.png.import": {
+    "sha256": "b8c22f710862a66410ea4f49b407ca4051ff85bdbfd5735c07137a963531dcad",
+    "bytes": 1020
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_1.png": {
+    "sha256": "8e7b2fd85e60525b877c90af011643806fe07e586f76ab5632c097cba53fe3a7",
+    "bytes": 335635
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_1.png.import": {
+    "sha256": "16892cd7804d5f59e977c6a4ab89db37338db0d844e386aa20baf2f2fcaea1bd",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_10.png": {
+    "sha256": "c5669abf4ba1d2529ffa581ada251bd3d0b45a93e896306f6e9c3d1f01d801e4",
+    "bytes": 144976
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_10.png.import": {
+    "sha256": "df8c368e8917045b54c85f47ccddf8afd4541e51ec12831bd448193afa044105",
+    "bytes": 1029
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_11.png": {
+    "sha256": "5bf53c062f6c8a54f3add752555dd3339f233bfd4d044d23339c38bc9fee854d",
+    "bytes": 217624
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_11.png.import": {
+    "sha256": "3a401e3c064e25267e94c621f901577770058523a9f936819b5a5c15e27b5187",
+    "bytes": 1029
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_12.png": {
+    "sha256": "f2fc2c57c2444ace426ee79df96747d98a9ad44fd7a6837aa57d51b7ca52cda6",
+    "bytes": 101106
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_12.png.import": {
+    "sha256": "8d8ee05cc985fb36d125b18e456e93c6638886eca16e4e82bc81d53bc2f4d372",
+    "bytes": 1029
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_13.png": {
+    "sha256": "6066bf96a1c019d41737359951ae5f66d89e135d61bcc140370f39923ae29436",
+    "bytes": 14326
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_13.png.import": {
+    "sha256": "510a31141acb12118e6bd628267c86f221f3d5445f9d929f3b8f68c0e401987c",
+    "bytes": 1029
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_14.png": {
+    "sha256": "8280a690c2943b702eacbaf427bc81aed2dffbfa088a915206b1b17420027e8c",
+    "bytes": 7882
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_14.png.import": {
+    "sha256": "d1735c1f45ba97b72e59a3821ee6daf6f97e9942ce50e0a398b2dd2a0f062480",
+    "bytes": 1029
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_2.png": {
+    "sha256": "4e1f7afd61edaf207ea50d02efe6179ae6429931316c22d0c82530db4163486f",
+    "bytes": 495349
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_2.png.import": {
+    "sha256": "891506969989a55aaa5a52596ef1b64e8cf652a6c76083aa1125d4936d0bb8e9",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_3.png": {
+    "sha256": "0a04854f873a626273f1035d45da7ebef1ee83b75c6da29c503a31643b5f6ba3",
+    "bytes": 162585
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_3.png.import": {
+    "sha256": "a6ff6a9b5ab029fa170595f8d3a10e74423128ec79085f9a74e9264eceba6494",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_4.png": {
+    "sha256": "0721c4badb9eca35202b5193481022296ca7b91ab45590bcf3ca37e368cb325d",
+    "bytes": 167744
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_4.png.import": {
+    "sha256": "4759137639452f3b1bc5727ad7e1380e65d679107a59b30c57b7e028cb94f3d8",
+    "bytes": 1025
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_5.png": {
+    "sha256": "f2f0199caebb2f931ebc426638f36301b1205a3732e23008253c0544b15e9d35",
+    "bytes": 57460
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_5.png.import": {
+    "sha256": "7f38c26c994544a8ac80cf8479cb16876f452f3b1d52ee3ea971449ed83caf62",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_6.png": {
+    "sha256": "c22c7a972ff40371167caa577f2a4834730ec2c5b01330bf02aa17d8fd11b6a5",
+    "bytes": 337526
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_6.png.import": {
+    "sha256": "e4dff12203671cce364ae8e017d135daed42d9b13d8ec7fa7f8fc8482399a575",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_7.png": {
+    "sha256": "3c412d408c78e5c7b79178c828ed12d455a8662b6dff2c462b56d41aee10a651",
+    "bytes": 188768
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_7.png.import": {
+    "sha256": "d4e01920ec9d97a24def804a2ebe719359fe1a399edb37ee8bbdd088ae3549b5",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_8.png": {
+    "sha256": "d94a279d8652d7a5775cb8432fd940fcbf154db6e02f788ec88920c01f0503e1",
+    "bytes": 273018
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_8.png.import": {
+    "sha256": "3962782c32c83f34e7afa4ab49083e78bb094c02e22e75550fa26c8ae64aec77",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_9.png": {
+    "sha256": "3d39b1a9aead70a3787b0958f416ad8b01c8db5fc895538fb2e617817546283a",
+    "bytes": 159774
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_04_a_9.png.import": {
+    "sha256": "6297f42b09a2cc6311f321524683a5f06d6eaba7254b0a250cb8b8f6bd31b43f",
+    "bytes": 1026
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_06_a.png": {
+    "sha256": "657518354409451f085d204f34cdb98473363ee8e8ff0adf67c01bf1864674c8",
+    "bytes": 289547
+  },
+  "preview_project/images/rooms/overgrowth/overgrowth_06_a.png.import": {
+    "sha256": "11583807b36bf90cb885db749b4b008f83c582cebc39e401039968254d0b857d",
+    "bytes": 1020
+  },
+  "preview_project/images/rooms/underdocks/underdocks_00.png": {
+    "sha256": "bd60e60d3d2be7ea364199bce299faf9a414393566ce3b204d9318a7af5c4085",
+    "bytes": 413390
+  },
+  "preview_project/images/rooms/underdocks/underdocks_00.png.import": {
+    "sha256": "ffee8eb73d35fd6b19ce4bc97a1ec0fda1b7c78bc501686be44ab4fcfa7a39ce",
+    "bytes": 1014
+  },
+  "preview_project/images/rooms/underdocks/underdocks_01_a.png": {
+    "sha256": "ae72600833852b5b3b4cc7f7629c2fab957f9c7c4f090e3fef77f3010df860a1",
+    "bytes": 758975
+  },
+  "preview_project/images/rooms/underdocks/underdocks_01_a.png.import": {
+    "sha256": "cd51883009441edc17fc65c9586a56e55adb488e2cbae2350a348a3f2eafd5f9",
+    "bytes": 1020
+  },
+  "preview_project/images/rooms/underdocks/underdocks_02_a.png": {
+    "sha256": "1e862585e92f847570d49e0d5e69a332f54857e180ba8adb5530a3afbef76e3a",
+    "bytes": 459223
+  },
+  "preview_project/images/rooms/underdocks/underdocks_02_a.png.import": {
+    "sha256": "07c9bf4a4ef1e3600516cf024e558eed81ab23de9c0d7aae8b7d5676df387e32",
+    "bytes": 1020
+  },
+  "preview_project/images/rooms/underdocks/underdocks_03_b.png": {
+    "sha256": "f49b34c57a18fce50bfa8a736837a21f4dd0fcc8958d6bf39ab0fb762a5261dc",
+    "bytes": 485243
+  },
+  "preview_project/images/rooms/underdocks/underdocks_03_b.png.import": {
+    "sha256": "19598f5a1ab96425e99c31f8c22f2eaa95802cb81ac3a6f77e74ac6ad7063f91",
+    "bytes": 1019
+  },
+  "preview_project/images/rooms/underdocks/underdocks_03_b_shadow.png": {
+    "sha256": "171828663e7da16b816b95dcdaa8dbd1c414cf373c67eaf59d9411e655bdde0e",
+    "bytes": 39992
+  },
+  "preview_project/images/rooms/underdocks/underdocks_03_b_shadow.png.import": {
+    "sha256": "bf813e96c6a0bcd2a119b68d221a06f6dc28ad25285bc32ed52641be9d81a030",
+    "bytes": 1041
+  },
+  "preview_project/images/rooms/underdocks/underdocks_04_b.png": {
+    "sha256": "cb081e79fe554bad945157b8976438dc8060dd751e24f5b1db91f61fd7932143",
+    "bytes": 664206
+  },
+  "preview_project/images/rooms/underdocks/underdocks_04_b.png.import": {
+    "sha256": "c6915074c634d0366687c156e3a8f7612df814cc2cb2c8dbd8fb68fcae88220e",
+    "bytes": 1020
+  },
+  "preview_project/images/rooms/underdocks/underdocks_05_b.png": {
+    "sha256": "6a3a6eaec7e590caf4474f2f9af8fcc5da833ade498eb5f0b755d08b21e5e5c1",
+    "bytes": 188702
+  },
+  "preview_project/images/rooms/underdocks/underdocks_05_b.png.import": {
+    "sha256": "4d5f90847ed9c79edf179276a1e71c329a8c454bd936c2ea6e565f6202f82277",
+    "bytes": 1020
+  },
+  "preview_project/images/vfx/dot.png": {
+    "sha256": "15873b93b48f0c67f88c36902080a6d1c61ea4d42cf57461884269c990881df0",
+    "bytes": 21719
+  },
+  "preview_project/images/vfx/dot.png.import": {
+    "sha256": "2507a934e71dcc643351fdf7d00d79325ee665b9ff72e4161aae9bc944c50da1",
+    "bytes": 972
+  },
+  "preview_project/images/vfx/fire/triangle_noise_tile.png": {
+    "sha256": "794321da7484234bc8a93058771fdc3a170fc4848a5432261721aebfc827e952",
+    "bytes": 225910
+  },
+  "preview_project/images/vfx/fire/triangle_noise_tile.png.import": {
+    "sha256": "779f4a368c6c46346763102e7003974426b36f8d2e966d2fd4db8905149d4539",
+    "bytes": 976
+  },
+  "preview_project/images/vfx/fog_sheet_1.png": {
+    "sha256": "8ba5b20c477c57a19310f5e55e48df4ad73c838b446f82ed67ba2487c11a8211",
+    "bytes": 1084290
+  },
+  "preview_project/images/vfx/fog_sheet_1.png.import": {
+    "sha256": "38abe3743222b49641676ec8fcb0dddacae28f6bab6671e7e2fe5b3ff7adee75",
+    "bytes": 994
+  },
+  "preview_project/images/vfx/light.png": {
+    "sha256": "10ee8b6d54f308a738b1d271aeb8446fe9a9f59ef849ee971d5c9c22c71f389b",
+    "bytes": 28168
+  },
+  "preview_project/images/vfx/light.png.import": {
+    "sha256": "ca90600248aea3b9987b211d77bc2b56e21a0c996e3898e47821fb435e769d7f",
+    "bytes": 977
+  },
+  "preview_project/images/vfx/shared_use/smoke_vfx.png": {
+    "sha256": "67e46fcdc7c08121cc1cc4da3ddcf153b7c544306673f15ad63029b1d4cc93a2",
+    "bytes": 75124
+  },
+  "preview_project/images/vfx/shared_use/smoke_vfx.png.import": {
+    "sha256": "75750c789b17bcd93bb0417d7bdfaa261fd3761b3cd6032b2cc21b149686287c",
+    "bytes": 952
+  },
+  "preview_project/images/vfx/shared_use/underdocks_pole_light_mask.png": {
+    "sha256": "6fbdabe742e1ec6b71669fa85016e8f7cc9b6a1de8c93575929eb2a3246dca2b",
+    "bytes": 4994
+  },
+  "preview_project/images/vfx/shared_use/underdocks_pole_light_mask.png.import": {
+    "sha256": "a30e5ab00fd171843b8e4f4be3069015a47ef84da78492d770cb6d651dc0e7d2",
+    "bytes": 1003
+  },
+  "preview_project/images/vfx/tileable_noise_2.png": {
+    "sha256": "676f0a22252ff16177db0d787c331d784d7cc31e811ef67254eb78beebb55167",
+    "bytes": 11015
+  },
+  "preview_project/images/vfx/tileable_noise_2.png.import": {
+    "sha256": "2d77cc273a278344bffd4fb14590bdeeabc9bfd27e0f20887c2e59088fb4cc5d",
+    "bytes": 1010
+  },
+  "preview_project/images/vfx/uplight.png": {
+    "sha256": "93c765dc9e6ecf1d3e955914f508363ff16b876f889bc791e491ab188fab9642",
+    "bytes": 16089
+  },
+  "preview_project/images/vfx/uplight.png.import": {
+    "sha256": "98c731ba18d6103aaa49f59df93ae357233b4f1cd27c52c6c2847761a4f6f4f7",
+    "bytes": 984
+  },
+  "preview_project/images/vfx/vfx_constant_fire/fire_spark.png": {
+    "sha256": "5728b2a40f3d09a3279960ae815c13de0080c92ee98559df87bacdc7bb755a0d",
+    "bytes": 728
+  },
+  "preview_project/images/vfx/vfx_constant_fire/fire_spark.png.import": {
+    "sha256": "19c68e58e37def7ed891a5e5dd51ddb1e6d58f719ff878aca9a06c24d4673af1",
+    "bytes": 1011
+  },
+  "preview_project/images/vfx/vfx_constant_fire/fire_texture_2.png": {
+    "sha256": "d2bdd2e5d6be51ecd4e755c3bfa1fd8872d26adaa00a7d9aab679f059e488424",
+    "bytes": 27058
+  },
+  "preview_project/images/vfx/vfx_constant_fire/fire_texture_2.png.import": {
+    "sha256": "cc2d3d78c47a0717b2285b0f7f6430f624f12187608abb876058eb479723bf99",
+    "bytes": 1023
+  },
+  "preview_project/images/vfx/water_texture.png": {
+    "sha256": "d774658fd15a034db6a36aed9cc7c18fcbf849c78b073f2b97bdc2f00177b631",
+    "bytes": 329867
+  },
+  "preview_project/images/vfx/water_texture.png.import": {
+    "sha256": "7be9271be956ba0e9d61c530207ef40f7feac128a2dc9b9cca9c30a2521db254",
+    "bytes": 1002
+  },
+  "preview_project/pack.gd.uid": {
+    "sha256": "705cfa562180a23f39ea19d72344a32bec4cc71e0c7f41c3a1516b7b4d31cb33",
+    "bytes": 20
+  },
+  "preview_project/preview.gd": {
+    "sha256": "9d55b892b5f77d0f8e4d42e9b461b493ff54b03b9513af0ae0f42e1a37c83791",
+    "bytes": 4476
+  },
+  "preview_project/preview.gd.uid": {
+    "sha256": "4064f586125a362350a3fd9c0eeec80e17c8c7f95c9957f111b8d9fe46abf25f",
+    "bytes": 19
+  },
+  "preview_project/preview.tscn": {
+    "sha256": "a0a9fea1617ef3804094bd2009c9858538d1322debe6d8da571324afd2da1a45",
+    "bytes": 173
+  },
+  "preview_project/project.godot": {
+    "sha256": "b7c7a92965bf837563fb02410e78f28fad431f1f56565608b1cd4040a6902c65",
+    "bytes": 588
+  },
+  "preview_project/scene_specs.json": {
+    "sha256": "42b2e1443d20e161ff7ebfe9dfd66e83cc527baa83d478b8fe6b57dbb2b53b86",
+    "bytes": 2013
+  },
+  "preview_project/scenes/backgrounds/glory/glory_background.tscn": {
+    "sha256": "75ac6a2a2af8755df61e112a8189966e7f4969abf3a93860ad27e6eb8bccd5d0",
+    "bytes": 5837
+  },
+  "preview_project/scenes/backgrounds/glory/layers/glory_bg_00_a.tscn": {
+    "sha256": "1fbb675f9a71a92c6d795bfb75cf2edd5fecde4e2a3d1684cf4fb14c0e77795d",
+    "bytes": 448
+  },
+  "preview_project/scenes/backgrounds/glory/layers/glory_bg_01_b.tscn": {
+    "sha256": "f8ba3bed6c18478050bec2aede5aefe990e482b7f469bae9bcb2b8f4d9b740e0",
+    "bytes": 19478
+  },
+  "preview_project/scenes/backgrounds/glory/layers/glory_bg_02_a.tscn": {
+    "sha256": "f6f15005c75c41f67ba38357c59292dca14a84a0ff8ce9ed4373c2dc2593c8fa",
+    "bytes": 450
+  },
+  "preview_project/scenes/backgrounds/glory/layers/glory_bg_03_a.tscn": {
+    "sha256": "bd2ba8b881e414066e7c0b4faf50ac091362b63b9cf7232e9b6645a4cfc426e6",
+    "bytes": 12908
+  },
+  "preview_project/scenes/backgrounds/glory/layers/glory_fg_a.tscn": {
+    "sha256": "15a0479622bc8f8f1277b69ce7a4b88429910289b1e3f49fefb97a4b1598c584",
+    "bytes": 450
+  },
+  "preview_project/scenes/backgrounds/hollow_grotto/hollow_grotto_background.tscn": {
+    "sha256": "c42ec99b1985d089486cc88c746986064f0959ad3cbab22e18b57fe5f1e0b9a5",
+    "bytes": 743
+  },
+  "preview_project/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_00_a.tscn": {
+    "sha256": "971476fa55f9d1f5b3504142169d7dcf29ac21c16a399a41f7f93517944504e4",
+    "bytes": 449
+  },
+  "preview_project/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_01_a.tscn": {
+    "sha256": "6d27ff7d0e518bc036150c8819799f057b576ea85e7e910223c53b20b24d34ea",
+    "bytes": 3225
+  },
+  "preview_project/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_02_a.tscn": {
+    "sha256": "5c978c3492b9e923f7246d384775fe57ff51d11486e6e23b2465e628864d40a1",
+    "bytes": 449
+  },
+  "preview_project/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_03_a.tscn": {
+    "sha256": "118ac6e5ca9242f196d7e638a064c940b1f18353f23b6275920e65a6557a0d07",
+    "bytes": 449
+  },
+  "preview_project/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_fg_a.tscn": {
+    "sha256": "e224083dc4d011db7b331c45a1457713e14ae90e6f20918471987d689c92eaf0",
+    "bytes": 446
+  },
+  "preview_project/scenes/backgrounds/little_light_script.gd": {
+    "sha256": "befbe59e061981d06e71b7618270b6cf40a7993558cc2ef6d1d74ccbb1ae3074",
+    "bytes": 109
+  },
+  "preview_project/scenes/backgrounds/little_light_script.gd.uid": {
+    "sha256": "0c6275afd8032355d0dbc033a5f023ebdd53f3b1cdb9ed001698848d1a2945b7",
+    "bytes": 19
+  },
+  "preview_project/scenes/backgrounds/overgrowth/layers/overgrowth_bg_00_a.tscn": {
+    "sha256": "b4219615a531ab7bb9dd4be17abd750dde5629cf8e67eebeff409507f6abdd5c",
+    "bytes": 454
+  },
+  "preview_project/scenes/backgrounds/overgrowth/layers/overgrowth_bg_01_a.tscn": {
+    "sha256": "809dbfa99195eff719413ec23a9078fe5a248f5afae0c059f0f399cdfe857035",
+    "bytes": 458
+  },
+  "preview_project/scenes/backgrounds/overgrowth/layers/overgrowth_bg_02_a.tscn": {
+    "sha256": "d0536c16786fbd7d4865097546ecd08bfa3324e2a4a963bdad0533497aab44d5",
+    "bytes": 456
+  },
+  "preview_project/scenes/backgrounds/overgrowth/layers/overgrowth_bg_03_a.tscn": {
+    "sha256": "805fa3c5d0e4ba21fff5477c0be464465ee850c8bfb35e768237ac24c5666c61",
+    "bytes": 1371
+  },
+  "preview_project/scenes/backgrounds/overgrowth/layers/overgrowth_bg_04_a.tscn": {
+    "sha256": "f1a1e2c6d52b53dcb003f54835b392e5388f22ccb40233feeb3c78988d4a7a37",
+    "bytes": 15358
+  },
+  "preview_project/scenes/backgrounds/overgrowth/layers/overgrowth_fg_a.tscn": {
+    "sha256": "719d941394720518ae12be4911db908e73325325ce67223749106cbb35a9efa1",
+    "bytes": 456
+  },
+  "preview_project/scenes/backgrounds/overgrowth/overgrowth_background.tscn": {
+    "sha256": "9c852b9338de8d65a0e6628f52ab51c647423735515d2223d078443da4f4532c",
+    "bytes": 2163
+  },
+  "preview_project/scenes/backgrounds/underdocks/layers/underdocks_bg_00_a.tscn": {
+    "sha256": "7c42f613b5d93995bca8b8dac30c9e45d82df7aaa039b50746c2b11c98a580c9",
+    "bytes": 5395
+  },
+  "preview_project/scenes/backgrounds/underdocks/layers/underdocks_bg_01_a.tscn": {
+    "sha256": "0e9395a3ae20e33d5137f17357e4d10d73e1e0ea1d581930ec2babadb3f51847",
+    "bytes": 8525
+  },
+  "preview_project/scenes/backgrounds/underdocks/layers/underdocks_bg_02_a.tscn": {
+    "sha256": "2deec65049952f30ed2259795bd7aefa234359de2fb5a2bb82fe3ef1c4cf62bb",
+    "bytes": 9834
+  },
+  "preview_project/scenes/backgrounds/underdocks/layers/underdocks_bg_03_b.tscn": {
+    "sha256": "ba8209e9661433d9ee611026dc58f5feb57032ee7e1ac92ab7f3b4b2c75ce4e0",
+    "bytes": 10518
+  },
+  "preview_project/scenes/backgrounds/underdocks/layers/underdocks_bg_04_b.tscn": {
+    "sha256": "ce526c9c4bebe7e01fb7cb2557754bb981ff38f78dcc8213ceb59c53f2ab81e8",
+    "bytes": 9204
+  },
+  "preview_project/scenes/backgrounds/underdocks/layers/underdocks_fg_b.tscn": {
+    "sha256": "4813b37f606695b9b29d63924a718c3995a65c8db054cd57cf3f5a6fb82f76fc",
+    "bytes": 876
+  },
+  "preview_project/scenes/backgrounds/underdocks/underdocks_background.tscn": {
+    "sha256": "40f34daae5ad58449ce485b9de17132c719800a276c2410cb34da282c87d25a0",
+    "bytes": 824
+  },
+  "preview_project/shaders/vfx/vfx_stepped_shader_fire_add.tres": {
+    "sha256": "812c409b00d51d61b426c809f8d18d07e0b8677769b1c023ce710c953400f560",
+    "bytes": 28029
+  },
+  "preview_project/shaders/vfx/vfx_water_reflection.gdshader": {
+    "sha256": "7ff5d9e2661943679cf9068c5c4f3903226f96282571f80434c653a3befd20b1",
+    "bytes": 665
+  },
+  "preview_project/shaders/vfx/vfx_water_reflection.gdshader.uid": {
+    "sha256": "7d138708be36fe235071b0d26813b144d90e06991f88c9714cee027b2323b383",
+    "bytes": 20
+  },
+  "preview_project/shaders/vfx/wind_sway.gdshader": {
+    "sha256": "f0e8ac6e8027a1fa5a53439ade4ff43fca733af4755e416fc45db401f10ee5ff",
+    "bytes": 1981
+  },
+  "preview_project/shaders/vfx/wind_sway.gdshader.uid": {
+    "sha256": "773503b509d24b2fff1a3194bea269ef7d948063b41bd67e48613469b8a66c63",
+    "bytes": 20
+  },
+  "preview_project/themes/canvas_item_material_additive_shared.tres": {
+    "sha256": "0192e2c9ecd5c461ce0824ec94e2e08eee84a2b9a4c4b2a6d5881883a046fa06",
+    "bytes": 80
+  },
+  "review/final/hollow_grotto_1440x1080.png": {
+    "sha256": "4b5cf5f989eec485c5ca48d441355c2e0b074e9455a102867cfc423c5f3f4cb5",
+    "bytes": 689086
+  },
+  "review/final/hollow_grotto_2560x1080.png": {
+    "sha256": "006f1abe5099f11bcb138f6367dcca20427119b80e0062d2966138e9307dd653",
+    "bytes": 1143388
+  },
+  "review/final/hollow_grotto_native.png": {
+    "sha256": "b00d891643e7ca8dacd39ef1489d7ee2ab477f7c35d21e9c18adc9577e199a56",
+    "bytes": 917886
+  },
+  "review/final/hollow_grotto_paint_only.png": {
+    "sha256": "38fba05e293f9d6645b555201e69ef9fd0f24c409ef5f6e37ad97204d906e265",
+    "bytes": 722765
+  },
+  "review/final/layer_breakdown.jpg": {
+    "sha256": "cf5dc66d82d85fc89a780635f6b50f264ddfcc380ec2d155d9d735949266547c",
+    "bytes": 139943
+  },
+  "review/final/style_comparison.jpg": {
+    "sha256": "94a0b19d19b81d325dc9ae00f0dc8cd760a2a41938f4a22b6cc9a76026aff61f",
+    "bytes": 497984
+  },
+  "review/final/validation.json": {
+    "sha256": "aa13fa28f1b5951ae78b51b91d89adb85779f84aa42d08c56eea77d8ed3ffb30",
+    "bytes": 3477
+  },
+  "review/logs/import_r04_mono_environment.log": {
+    "sha256": "a9e1ffaee75a54abf62b0594360bb7046fbca551603620841812f78cd0940205",
+    "bytes": 15092
+  },
+  "review/logs/import_standard_preview.log": {
+    "sha256": "7a2543fdfebff61deb4acd344b059e853a55da7f54f7b8e3662a4e3c49862039",
+    "bytes": 14027
+  },
+  "review/logs/render_r04.log": {
+    "sha256": "0bfa0b9c191524a97c999a818278283f2a302dc086680a802baa3ffaa82920a4",
+    "bytes": 586
+  },
+  "review/logs/render_r04_errors.log": {
+    "sha256": "3fb8bdff76d4e7e5e84c5033a8b6cb6cd84117eb357e42e3963811bd15720cc3",
+    "bytes": 157
+  },
+  "review/logs/standard_preview_run.log": {
+    "sha256": "2e16b3e3393345110c45817bce726695935fe94472a348ced60447f7b441937e",
+    "bytes": 150
+  },
+  "review_assets.py": {
+    "sha256": "95c406b4a4c32dc5ca401ccb2b51cce985843c636e9e82b05d6b90ec3c254e12",
+    "bytes": 5997
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_00.png": {
+    "sha256": "77b953f21a9c6b13ad0c31485cada7b083715dc273b4fc558de7d17a6645d4c3",
+    "bytes": 426417
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_00.png.import": {
+    "sha256": "b9d50896157dcfc01210186fa6fa36e7acf214214933cf957c7529df242a76d2",
+    "bytes": 1026
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_01.png": {
+    "sha256": "3b2e0c4f26f4850d7f194ef0f78713c535002e19dcf66fb3efccbaba3d3e9226",
+    "bytes": 285923
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_01.png.import": {
+    "sha256": "7da374599f7a8ff588755a78afdb4b40eed592ad38fb10ab8c685e7395809c74",
+    "bytes": 1026
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_02.png": {
+    "sha256": "9eb8f6b5caca95179f91f81511dc9c3395fac12baac4afd59c69db2f502585c2",
+    "bytes": 273995
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_02.png.import": {
+    "sha256": "42285915867e359c7e53ded0abbef7f9bc1b06a4cad7b6e7a3770d622120d517",
+    "bytes": 1026
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_03.png": {
+    "sha256": "b02a32648ef786c9f2f628136453b9208603b1f14839b1dd5ac74f2c7a73e585",
+    "bytes": 145836
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_03.png.import": {
+    "sha256": "d4b5f056fd473564ba2e859c575b374351d3dfec6ff3975923ffcfda8c1bbba9",
+    "bytes": 1025
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_fg.png": {
+    "sha256": "2f1396a5fef780f313dfab192289333ebcff282814405640b844e5851c157761",
+    "bytes": 49168
+  },
+  "runtime/images/rooms/hollow_grotto/hollow_grotto_fg.png.import": {
+    "sha256": "03dff4c3874358e0b25e80fd0a93391637918f86b8ec7f217ebaa136d24d002d",
+    "bytes": 1026
+  },
+  "runtime/scenes/backgrounds/hollow_grotto/hollow_grotto_background.tscn": {
+    "sha256": "bda80ae6e3dfb14abb65bb5d3b5d2629272332b25c191dd59d3ded9e14e38a2c",
+    "bytes": 876
+  },
+  "runtime/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_00_a.tscn": {
+    "sha256": "971476fa55f9d1f5b3504142169d7dcf29ac21c16a399a41f7f93517944504e4",
+    "bytes": 449
+  },
+  "runtime/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_01_a.tscn": {
+    "sha256": "6d27ff7d0e518bc036150c8819799f057b576ea85e7e910223c53b20b24d34ea",
+    "bytes": 3225
+  },
+  "runtime/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_02_a.tscn": {
+    "sha256": "5c978c3492b9e923f7246d384775fe57ff51d11486e6e23b2465e628864d40a1",
+    "bytes": 449
+  },
+  "runtime/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_03_a.tscn": {
+    "sha256": "118ac6e5ca9242f196d7e638a064c940b1f18353f23b6275920e65a6557a0d07",
+    "bytes": 449
+  },
+  "runtime/scenes/backgrounds/hollow_grotto/layers/hollow_grotto_fg_a.tscn": {
+    "sha256": "e224083dc4d011db7b331c45a1457713e14ae90e6f20918471987d689c92eaf0",
+    "bytes": 446
+  }
+}

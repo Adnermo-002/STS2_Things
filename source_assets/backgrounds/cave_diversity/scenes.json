@@ -1,0 +1,122 @@
+{
+  "cave_skylight": {
+    "name": "天隙岩厅",
+    "subtitle": "破顶天光 · 石灰岩拱 · 开阔岩台",
+    "design": "A spacious limestone hall with an asymmetrical natural rock arch. A broken opening high in the left-middle roof admits soft warm daylight onto large cream-grey limestone surfaces. There is a smaller cool recess deep on the right. Broad angular slabs and weathered smooth chalk form the walls; absolutely no repeated vertical ribbed coral-like columns. The combat floor is an original broad uninterrupted pale shale and limestone shelf. A few low angular rocks frame the bottom corners, while the entire central arena stays flat and empty. The main ceiling opening must remain inside the central 65 percent of the canvas so it survives the game's center crop.",
+    "palette": "muted warm ivory and grey-green limestone, cool desaturated blue recesses, restrained ochre daylight; readable medium-value paint planes",
+    "fog": [
+      0.16,
+      0.19,
+      0.19,
+      0.14
+    ],
+    "motes": [
+      0.56,
+      0.5,
+      0.34,
+      0.28
+    ],
+    "light": [
+      0.11,
+      0.09,
+      0.06,
+      0.24
+    ],
+    "light_position": [
+      -280,
+      -230
+    ],
+    "prompt_file": "prompts/cave_skylight.txt",
+    "raw_output": "output/imagegen/cave_diversity/raw/cave_skylight_r01.png"
+  },
+  "cave_riverbend": {
+    "name": "回水石湾",
+    "subtitle": "地下河湾 · 低岩檐 · 干燥战斗平台",
+    "design": "A broad subterranean river bend beneath a low, horizontally layered rock overhang. An underground turquoise pool occupies only the rear half of the room, curving toward the far right, with a thin cascade far behind the arena. Water-worn banded shale and rounded boulders create a distinctly horizontal chamber. The lower 50 percent is a wide DRY continuous natural rock terrace where both sides of a combat can stand at the same height. No bridge, central hole or water channel crossing the combat lane. A shallow fringe of water may sit far behind it. Keep low foreground boulders at the bottom outer corners. No ribbed pillar forest.",
+    "palette": "muted turquoise water, grey-blue shale, soft sage and cream highlights; bright enough to read rock faces, never neon",
+    "fog": [
+      0.1,
+      0.22,
+      0.23,
+      0.14
+    ],
+    "motes": [
+      0.25,
+      0.47,
+      0.52,
+      0.2
+    ],
+    "light": [
+      0.06,
+      0.13,
+      0.14,
+      0.24
+    ],
+    "light_position": [
+      200,
+      -120
+    ],
+    "prompt_file": "prompts/cave_riverbend.txt",
+    "raw_output": "output/imagegen/cave_diversity/raw/cave_riverbend_r01.png"
+  },
+  "cave_quartz": {
+    "name": "白晶裂窟",
+    "subtitle": "乳白晶簇 · 断层岩壁 · 细砂地表",
+    "design": "An original fractured chalk-and-quartz cavern. A few large milky mineral clusters emerge diagonally from the left and right walls, forming broad simple faceted silhouettes. Broken layered limestone gives the roof its shape, with a narrow softly illuminated fissure in the upper rear. The quartz is opaque to translucent milky stone, rendered as a few hand-painted color planes, never glossy gems. The central combat floor is completely new continuous chalky bedrock with shallow silt pockets, subtle irregular cracks and very sparse flakes near the outer edges. Keep the middle flat and empty. Do not fill the arena with crystals; do not reuse a purple stalagmite forest.",
+    "palette": "chalk white and muted lavender-grey mineral planes, soft powder blue shadows, restrained pale warm light; no magenta neon, no intense bloom",
+    "fog": [
+      0.18,
+      0.16,
+      0.23,
+      0.12
+    ],
+    "motes": [
+      0.46,
+      0.48,
+      0.59,
+      0.2
+    ],
+    "light": [
+      0.11,
+      0.11,
+      0.15,
+      0.2
+    ],
+    "light_position": [
+      130,
+      -235
+    ],
+    "prompt_file": "prompts/cave_quartz.txt",
+    "raw_output": "output/imagegen/cave_diversity/raw/cave_quartz_r01.png"
+  },
+  "cave_rootfungus": {
+    "name": "根垂菌洞",
+    "subtitle": "垂落根须 · 巨型菌伞 · 土岩地面",
+    "design": "A broad earthy cave shaped by tangled hanging roots and ancient fungi. Thick roots descend from a low ochre stone ceiling; a few large shelf mushrooms and umbrella-shaped mushrooms occupy the side walls and rear corners, with visible simplified cream gills. A small opening far behind the right side suggests deeper connected burrows. Keep the center open rather than filling it with plants. The original ground is a continuous dark-earth and weathered rock surface with a few root impressions at the very outer edges. Both combatants stand on the same clear level stage. No copied fern props, tiled floor, characters or giant central mushroom obstructing combat.",
+    "palette": "muted warm ochre, mushroom cream, russet-brown roots and soft sage-grey stone; gentle warm biological fill light, not saturated fluorescent green",
+    "fog": [
+      0.17,
+      0.17,
+      0.1,
+      0.14
+    ],
+    "motes": [
+      0.54,
+      0.47,
+      0.23,
+      0.3
+    ],
+    "light": [
+      0.12,
+      0.1,
+      0.045,
+      0.2
+    ],
+    "light_position": [
+      250,
+      -150
+    ],
+    "prompt_file": "prompts/cave_rootfungus.txt",
+    "raw_output": "output/imagegen/cave_diversity/raw/cave_rootfungus_r01.png"
+  }
+}

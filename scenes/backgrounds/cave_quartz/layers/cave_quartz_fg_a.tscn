@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://images/rooms/cave_quartz/cave_quartz_occlusion.png" id="1_art"]
+[ext_resource type="Material" path="res://materials/backgrounds/cave_readable_new.tres" id="readability"]
+
+[node name="CaveForegroundOcclusion" type="Control"]
+mouse_filter = 2
+
+[node name="PaintedLayer" type="TextureRect" parent="."]
+material = ExtResource("readability")
+offset_left = -1382.4
+offset_top = -648.0
+offset_right = 1382.4
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("1_art")
+expand_mode = 1

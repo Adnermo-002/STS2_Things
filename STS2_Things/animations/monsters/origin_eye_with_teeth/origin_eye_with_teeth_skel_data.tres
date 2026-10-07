@@ -1,0 +1,9 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3]
+
+[ext_resource type="SpineAtlasResource" path="res://STS2_Things/animations/monsters/origin_eye_with_teeth/origin_eye_with_teeth.spatlas" id="1_atlas"]
+[ext_resource type="SpineSkeletonFileResource" path="res://STS2_Things/animations/monsters/origin_eye_with_teeth/origin_eye_with_teeth.spjson" id="2_json"]
+
+[resource]
+atlas_res = ExtResource("1_atlas")
+skeleton_file_res = ExtResource("2_json")
+default_mix = 0.15

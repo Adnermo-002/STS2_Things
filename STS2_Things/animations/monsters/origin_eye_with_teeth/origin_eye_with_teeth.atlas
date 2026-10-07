@@ -1,0 +1,82 @@
+origin_eye_with_teeth.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+death_still
+  rotate: false
+  xy: 3, 3
+  size: 488, 468
+  orig: 488, 468
+  offset: 0, 0
+  index: -1
+extra vine
+  rotate: false
+  xy: 511, 3
+  size: 52, 652
+  orig: 52, 652
+  offset: 0, 0
+  index: -1
+iris
+  rotate: false
+  xy: 569, 3
+  size: 68, 130
+  orig: 68, 130
+  offset: 0, 0
+  index: -1
+leaf 2
+  rotate: false
+  xy: 765, 3
+  size: 234, 144
+  orig: 234, 144
+  offset: 0, 0
+  index: -1
+back petals
+  rotate: false
+  xy: 3, 477
+  size: 336, 428
+  orig: 336, 428
+  offset: 0, 0
+  index: -1
+leaf 4
+  rotate: false
+  xy: 345, 477
+  size: 160, 276
+  orig: 160, 276
+  offset: 0, 0
+  index: -1
+leaf 3
+  rotate: false
+  xy: 541, 661
+  size: 218, 158
+  orig: 218, 158
+  offset: 0, 0
+  index: -1
+eyeball
+  rotate: false
+  xy: 345, 759
+  size: 190, 190
+  orig: 190, 190
+  offset: 0, 0
+  index: -1
+leaf 1
+  rotate: false
+  xy: 541, 825
+  size: 124, 172
+  orig: 124, 172
+  offset: 0, 0
+  index: -1
+leaf 1 open
+  rotate: false
+  xy: 671, 825
+  size: 114, 166
+  orig: 114, 166
+  offset: 0, 0
+  index: -1
+pupil
+  rotate: false
+  xy: 3, 911
+  size: 42, 80
+  orig: 42, 80
+  offset: 0, 0
+  index: -1

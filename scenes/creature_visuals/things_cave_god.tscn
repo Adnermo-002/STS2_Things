@@ -16,9 +16,9 @@ position = Vector2(0, -200)
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -300.0
+offset_left = -275.0
 offset_top = -450.0
-offset_right = 250.0
+offset_right = 275.0
 offset_bottom = 10.0
 mouse_filter = 2
 
@@ -28,4 +28,4 @@ position = Vector2(0, -200)
 
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -320)
+position = Vector2(0, -310)

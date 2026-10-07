@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: Slay the Spire 2 power/buff HUD icon, readable at 40 pixels.
+Input image 1: STYLE REFERENCE ONLY, a contact sheet of actual original game power icons. Do not copy the sheet, its grid, or its labels.
+Render ONE NEW symbol in precisely this visual language: a slightly irregular strong near-black outline, an instantly recognizable compact silhouette, two or three broad opaque flat color areas, one angular matte highlight. Modest hand-drawn unevenness. Clean, very low detail. The reference's broken sword, shell, gear and shield set the exact line weight and flatness.
+Composition: one isolated icon centered, filling about 76% of a square; generous clean margin. The outline must fully enclose the colored shape.
+Background: completely flat pure chroma green #00FF00, also in all negative-space holes. No shadow cast onto the green. The symbol itself must not contain green.
+Constraints: no text, numbers, borders, tiles or surrounding badge; no glossy bubbles, bevels, gradients, realistic water, sparkles, glow, rays, 3D rendering, fine texture, tiny subsidiary details or cute character faces. Not a miniature scene and not a character portrait.
+
+Subject: a small ochre-yellow rounded sponge cross-section, roughly kidney-shaped, with exactly three large dark pores and one tiny blue water notch being absorbed at its upper edge. One flat golden face, one darker ochre side plane, heavy charcoal outline. No eyes, mouth, limbs or full creature.

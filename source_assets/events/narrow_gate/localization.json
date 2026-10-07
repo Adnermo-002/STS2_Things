@@ -1,0 +1,60 @@
+{
+  "zhs": {
+    "events": {
+      "NARROW_GATE.title": "窄门",
+      "NARROW_GATE.card": "一张牌",
+      "NARROW_GATE.pages.INITIAL.description": "你来到一扇窄小的石门前。刚试着挤过去，门缝就夹住了你的背包，还拽出了几张牌。\n\n门楣上的脸睁开眼睛。\n\n“带得太多了！留下一张。”",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE.title": "轻装通过",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE.description": "从展示的[blue]{Candidates}[/blue]张牌中移除[blue]1[/blue]张。",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE_CARD.title": "放下{Card}",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE_CARD.description": "从你的[gold]牌组[/gold]中移除这张牌。",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE_LOCKED.title": "锁定",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE_LOCKED.description": "没有可移除的牌。",
+      "NARROW_GATE.pages.INITIAL.options.REROLL.title": "换个姿势",
+      "NARROW_GATE.pages.INITIAL.options.REROLL.description": "支付[red]{Gold}[/red][gold]金币[/gold]。更换可移除的牌。仅限一次。",
+      "NARROW_GATE.pages.INITIAL.options.REROLLED.title": "锁定",
+      "NARROW_GATE.pages.INITIAL.options.REROLLED.description": "已经换过一次了。",
+      "NARROW_GATE.pages.INITIAL.options.NO_ALTERNATIVES.title": "锁定",
+      "NARROW_GATE.pages.INITIAL.options.NO_ALTERNATIVES.description": "没有其他可供选择的牌。",
+      "NARROW_GATE.pages.INITIAL.options.NO_GOLD.title": "锁定",
+      "NARROW_GATE.pages.INITIAL.options.NO_GOLD.description": "需要[blue]{Gold}[/blue][gold]金币[/gold]。",
+      "NARROW_GATE.pages.INITIAL.options.REST.title": "靠墙歇脚",
+      "NARROW_GATE.pages.INITIAL.options.REST.description": "回复[green]{Heal}[/green]生命。",
+      "NARROW_GATE.pages.REROLLED.description": "你把[gold]金币[/gold]塞进门缝，换了个角度再挤。\n\n石门松开原先的牌，又夹住了另外几张。\n\n“就这些。别再扭了！”",
+      "NARROW_GATE.pages.REMOVED.description": "你松开那张牌。石门咔哒一声，把它吞了进去。\n\n“这就对了。”\n\n门缝终于宽了些，你侧身挤了过去。",
+      "NARROW_GATE.pages.REST.description": "石门在你的背包上挤了半天，什么也没夹出来。\n\n你索性坐下来歇了一会儿。等你站起身时，它已经睡着了，门缝也松开了一些。"
+    },
+    "settings_ui": {
+      "STS2_THINGS-EVENT_NARROW_GATE_ENABLED.title": "窄门 · 启用"
+    }
+  },
+  "eng": {
+    "events": {
+      "NARROW_GATE.title": "Narrow Gate",
+      "NARROW_GATE.card": "a card",
+      "NARROW_GATE.pages.INITIAL.description": "You try to squeeze through a narrow stone door. The gap catches your pack and pulls out a few cards.\n\nThe face on the lintel opens its eyes.\n\n“Too much luggage! Leave one.”",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE.title": "Travel Light",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE.description": "Remove [blue]1[/blue] of the [blue]{Candidates}[/blue] shown cards.",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE_CARD.title": "Leave {Card}",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE_CARD.description": "Remove this card from your [gold]Deck[/gold].",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE_LOCKED.title": "Locked",
+      "NARROW_GATE.pages.INITIAL.options.REMOVE_LOCKED.description": "You have no removable cards.",
+      "NARROW_GATE.pages.INITIAL.options.REROLL.title": "Try Another Angle",
+      "NARROW_GATE.pages.INITIAL.options.REROLL.description": "Pay [red]{Gold}[/red] [gold]Gold[/gold] to reroll the cards. Once only.",
+      "NARROW_GATE.pages.INITIAL.options.REROLLED.title": "Locked",
+      "NARROW_GATE.pages.INITIAL.options.REROLLED.description": "You have already rerolled the cards.",
+      "NARROW_GATE.pages.INITIAL.options.NO_ALTERNATIVES.title": "Locked",
+      "NARROW_GATE.pages.INITIAL.options.NO_ALTERNATIVES.description": "There are no other eligible cards.",
+      "NARROW_GATE.pages.INITIAL.options.NO_GOLD.title": "Locked",
+      "NARROW_GATE.pages.INITIAL.options.NO_GOLD.description": "Requires [blue]{Gold}[/blue] [gold]Gold[/gold].",
+      "NARROW_GATE.pages.INITIAL.options.REST.title": "Rest by the Wall",
+      "NARROW_GATE.pages.INITIAL.options.REST.description": "Heal [green]{Heal}[/green] HP.",
+      "NARROW_GATE.pages.REROLLED.description": "You slip [gold]coins[/gold] into the gap and turn the other way.\n\nThe door releases the first cards and catches a different set.\n\n“These will do. Stop squirming!”",
+      "NARROW_GATE.pages.REMOVED.description": "You let go of the card. The door swallows it with a click.\n\n“Much better.”\n\nThe gap widens just enough for you to squeeze through.",
+      "NARROW_GATE.pages.REST.description": "The door squeezes your pack for a while, but fails to extract anything.\n\nYou sit down to rest. By the time you stand, it has fallen asleep and the gap has loosened."
+    },
+    "settings_ui": {
+      "STS2_THINGS-EVENT_NARROW_GATE_ENABLED.title": "Narrow Gate — enabled"
+    }
+  }
+}

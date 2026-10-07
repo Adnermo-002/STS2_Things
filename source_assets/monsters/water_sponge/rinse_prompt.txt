@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: One hand-painted positive status icon for Slay the Spire 2, readable at 64x64 pixels.
+Input image: Reference only for the game's compact painted icon style and edge quality; do not copy its subject.
+Subject: One simple CURLING TURQUOISE SPLASH washing away a tiny dull brick-red curled parasite. The broad water crescent is the dominant silhouette, with one single cream four-point sparkle above. Very simple chunky shape, asymmetric hand-painted edges, three or four flat pigment color groups, dark teal inner shadow, almost no fine detail. Centered square icon filling 75 percent of the image with clear margin. The parasite is only a small comma silhouette. No text, letters, numbers, badge, border, UI or multiple icons. Matte Slay the Spire 2 painted game-art feeling, no photorealism or glossy vector logo.
+Backdrop: Pure flat green #00FF00, no green in the symbol, no shadows on the backdrop, no transparency checkerboard.

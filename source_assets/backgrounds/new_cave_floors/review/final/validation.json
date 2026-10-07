@@ -1,0 +1,123 @@
+{
+  "version": "all_new_floors_r01",
+  "engine": "Godot 4.5.1 / D3D12 / Forward Mobile",
+  "variants": {
+    "hollow_grotto": {
+      "new_floor_sha256": "95906018c7626b94f63d71ace28cd07bac8150eb393fe4c21bdff22da823615f",
+      "runtime_floor_pixel_identical_to_generated": true,
+      "frame_size": [
+        1920,
+        1080
+      ],
+      "rendered_sizes": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "motion_changed_pixels": 433828,
+      "motion_delta_gt_2_pixels": 7797,
+      "luma_p05_p50_p95": [
+        18.3,
+        33.67,
+        52.17
+      ]
+    },
+    "hollow_grotto_moss": {
+      "new_floor_sha256": "94b2a4948e094b402eb50981c3316638147de1dba6878b280ed34eba227226fa",
+      "runtime_floor_pixel_identical_to_generated": true,
+      "frame_size": [
+        1920,
+        1080
+      ],
+      "rendered_sizes": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "motion_changed_pixels": 254123,
+      "motion_delta_gt_2_pixels": 983,
+      "luma_p05_p50_p95": [
+        9.44,
+        31.02,
+        46.64
+      ]
+    },
+    "hollow_grotto_ember": {
+      "new_floor_sha256": "506e0dd468da7df1dee91a6fdc17295c5cf3e7c4c8ee9e20512eb3d0d4fe99d6",
+      "runtime_floor_pixel_identical_to_generated": true,
+      "frame_size": [
+        1920,
+        1080
+      ],
+      "rendered_sizes": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "motion_changed_pixels": 264401,
+      "motion_delta_gt_2_pixels": 289,
+      "luma_p05_p50_p95": [
+        10.99,
+        26.2,
+        48.54
+      ]
+    },
+    "hollow_grotto_violet": {
+      "new_floor_sha256": "2024cf81b8818e07e51a3b30d71074d93897825a511ea5ad6f6c2f755fb1eb96",
+      "runtime_floor_pixel_identical_to_generated": true,
+      "frame_size": [
+        1920,
+        1080
+      ],
+      "rendered_sizes": [
+        [
+          1920,
+          1080
+        ],
+        [
+          2560,
+          1080
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "motion_changed_pixels": 361339,
+      "motion_delta_gt_2_pixels": 10325,
+      "luma_p05_p50_p95": [
+        17.36,
+        29.43,
+        41.93
+      ]
+    }
+  },
+  "build_recipes_have_no_stock_floor_dependencies": true
+}

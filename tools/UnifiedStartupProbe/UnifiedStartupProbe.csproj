@@ -1,0 +1,19 @@
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>13.0</LangVersion>
+    <AssemblyName>UnifiedStartupProbe</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="sts2"><HintPath>$(Sts2DataDir)\sts2.dll</HintPath><Private>true</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(Sts2DataDir)\0Harmony.dll</HintPath><Private>true</Private></Reference>
+    <ProbeDependency Include="$(RuntimeDependencyDir)\*.dll"
+                     Exclude="$(RuntimeDependencyDir)\sts2.dll;$(RuntimeDependencyDir)\GodotSharp.dll;$(RuntimeDependencyDir)\GodotSharpEditor.dll;$(RuntimeDependencyDir)\0Harmony.dll" />
+  </ItemGroup>
+  <Target Name="CopyRuntimeDependencies" AfterTargets="Build">
+    <Copy SourceFiles="@(ProbeDependency)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

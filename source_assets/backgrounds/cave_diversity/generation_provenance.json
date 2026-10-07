@@ -1,0 +1,86 @@
+{
+  "cave_skylight": {
+    "requested_model": "gpt-image-2",
+    "requested_quality": "high",
+    "generation_mode": "bundled imagegen CLI; user-approved OpenAI-compatible API",
+    "raw_file": "D:\\Things\\Things-Workspace\\output\\imagegen\\cave_diversity\\raw\\cave_skylight_r02.png",
+    "raw_size": [
+      1829,
+      860
+    ],
+    "raw_sha256": "ddfb96856aa68f04146778280c4bca4fefad76234f92f700ffdf33bd9c231565",
+    "source_painting": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\cave_diversity\\generated\\cave_skylight.png",
+    "normalized_size": [
+      2048,
+      960
+    ],
+    "normalized_sha256": "9fb9bbbc71d5b16cd28b885a9446e53f097d4cea42df5f0ea58772d057089619",
+    "prompt": "prompts/cave_skylight.txt",
+    "revision_prompt": "prompts/cave_skylight_r02.txt",
+    "postprocess": "RGBA/size normalization and foreground fog-occlusion alpha only; painted content is generated",
+    "layer_contract": "full painting + native atmosphere + static foreground holdout; holdout is not independently repositionable"
+  },
+  "cave_riverbend": {
+    "requested_model": "gpt-image-2",
+    "requested_quality": "high",
+    "generation_mode": "bundled imagegen CLI; user-approved OpenAI-compatible API",
+    "raw_file": "D:\\Things\\Things-Workspace\\output\\imagegen\\cave_diversity\\raw\\cave_riverbend_r01.png",
+    "raw_size": [
+      1831,
+      859
+    ],
+    "raw_sha256": "3fcb9df32f81d9cb27d4b9bf3c5f6109f4a452a9b62a1aa9ac3b815078be42a6",
+    "source_painting": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\cave_diversity\\generated\\cave_riverbend.png",
+    "normalized_size": [
+      2048,
+      960
+    ],
+    "normalized_sha256": "46c0b96e0ce2a12bc5edefb92d6aff299b65a9fb11a2db7d2e547d584834d205",
+    "prompt": "prompts/cave_riverbend.txt",
+    "revision_prompt": null,
+    "postprocess": "RGBA/size normalization and foreground fog-occlusion alpha only; painted content is generated",
+    "layer_contract": "full painting + native atmosphere + static foreground holdout; holdout is not independently repositionable"
+  },
+  "cave_quartz": {
+    "requested_model": "gpt-image-2",
+    "requested_quality": "high",
+    "generation_mode": "bundled imagegen CLI; user-approved OpenAI-compatible API",
+    "raw_file": "D:\\Things\\Things-Workspace\\output\\imagegen\\cave_diversity\\raw\\cave_quartz_r02.png",
+    "raw_size": [
+      1829,
+      860
+    ],
+    "raw_sha256": "78b04f4ed77bc2f887130a2989b8bc32a35e73346e569a14b86ec15f6f0100ab",
+    "source_painting": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\cave_diversity\\generated\\cave_quartz.png",
+    "normalized_size": [
+      2048,
+      960
+    ],
+    "normalized_sha256": "b2647080cd470255679bbea61d4480c5df2602a055d3136bc7ddaab58a8f83bc",
+    "prompt": "prompts/cave_quartz.txt",
+    "revision_prompt": "prompts/cave_quartz_r02.txt",
+    "postprocess": "RGBA/size normalization and foreground fog-occlusion alpha only; painted content is generated",
+    "layer_contract": "full painting + native atmosphere + static foreground holdout; holdout is not independently repositionable"
+  },
+  "cave_rootfungus": {
+    "requested_model": "gpt-image-2",
+    "requested_quality": "high",
+    "generation_mode": "bundled imagegen CLI; user-approved OpenAI-compatible API",
+    "raw_file": "D:\\Things\\Things-Workspace\\output\\imagegen\\cave_diversity\\raw\\cave_rootfungus_r02.png",
+    "raw_size": [
+      1831,
+      859
+    ],
+    "raw_sha256": "5aaf5ee640e327910e5f19cb0bf0b73480e0afe00aa5d95990b520aa48762772",
+    "source_painting": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\cave_diversity\\generated\\cave_rootfungus.png",
+    "normalized_size": [
+      2048,
+      960
+    ],
+    "normalized_sha256": "5172086256bc77a8c8da52f31d33b9e3220fe9a5b12c93155fb16de95c80a555",
+    "prompt": "prompts/cave_rootfungus.txt",
+    "revision_prompt": "prompts/cave_rootfungus_r02.txt",
+    "postprocess": "RGBA/size normalization and foreground fog-occlusion alpha only; painted content is generated",
+    "layer_contract": "full painting + native atmosphere + static foreground holdout; holdout is not independently repositionable"
+  }
+}

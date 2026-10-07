@@ -1,0 +1,6 @@
+Use case: stylized-concept
+Asset type: one native Slay the Spire 2 power icon, shown at 40 pixels in battle.
+Input image: ONLY a style reference for ORIGINAL GAME power icons: bold dark edge, simple chunky silhouette, two or three flat painted colour regions. Do not copy its existing symbols.
+Primary request: a single compact symbol for Silk Link: two small ivory card-shaped tags joined by one pale mint silk thread with a clearly visible simple knot between them. The left tag is slightly higher than the right. It must read instantly as two linked cards.
+Style: native STS2 icon: irregular hand-painted dark charcoal outline, muted ivory and sage/mint fill, one restrained ochre shadow. Very simple low-detail game glyph, no realistic material, no detailed card pictures, no card borders inside cards, no letters or numerals. One symbol only, centered with wide empty margin.
+Background: perfectly flat bright magenta #FF00FF for chroma removal. No shadow on background, no frame, no icon panel, no decorative sparkles, no light rays, no gradients, no glossy 3D, no text, no watermark.

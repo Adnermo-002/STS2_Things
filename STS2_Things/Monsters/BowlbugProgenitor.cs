@@ -25,8 +25,10 @@ namespace STS2_Things.Monsters;
 /// 盛碗虫族母 — Hive Act Boss
 /// 状态机循环：召唤 → 干扰/激励(交替) → 准备 → 休息 → 召唤...
 /// 护巢本能：累计受到>=20%最大HP伤害时召唤盛碗虫（固定顺序：卵→蜜→岩→丝循环）
+/// 视觉：原生 Spine 4.2 网格骨骼（animations/monsters/bowlbug_progenitor），产卵播放 summon，
+/// 其余招式播放 cast / power_up。
 /// </summary>
-public sealed class BowlbugProgenitor : MonsterModel
+public sealed class BowlbugProgenitor : ThingsSpineMonster
 {
     // The encounter lives in Hive, so it uses an act2 track that is already
     // loaded by the native Act music lifecycle.
@@ -59,7 +61,7 @@ public sealed class BowlbugProgenitor : MonsterModel
     public override async Task AfterAddedToRoom()
     {
         await base.AfterAddedToRoom();
-        NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 1f);
+        STS2_Things.Audio.ModMusicPolicy.UpdateParameter(_trackName, 1f);
         // 隐藏 Power 保存下一只召唤物索引，使序列进入多人 checksum/full-state。
         await PowerCmd.Apply<BowlbugSequencePower>(
             new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
@@ -76,7 +78,7 @@ public sealed class BowlbugProgenitor : MonsterModel
     {
         if (creature == Creature)
         {
-            NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 5f);
+            STS2_Things.Audio.ModMusicPolicy.UpdateParameter(_trackName, 5f);
         }
         return Task.CompletedTask;
     }
@@ -127,26 +129,66 @@ public sealed class BowlbugProgenitor : MonsterModel
 
     private int PlayerCount => CombatState.Players.Count;
 
+    private int LiveBowlbugCount => CombatState.Enemies.Count(e => e.IsAlive &&
+        (e.Monster is BowlbugSilk || e.Monster is BowlbugRock ||
+         e.Monster is BowlbugNectar || e.Monster is BowlbugEgg));
+
+    private string NextAvailableSlot => CombatState.Encounter?.Slots.FirstOrDefault(
+        candidate => CombatState.Enemies.All(
+            enemy => !enemy.IsAlive || enemy.SlotName != candidate),
+        string.Empty) ?? string.Empty;
+
+    /// <summary>
+    /// 受到伤害阈值触发的响应召唤：单次播放产卵动画，批量生成盛碗虫，并透传合法的 choiceContext。
+    /// 杜绝重复等待1.5秒动画及 ThrowingPlayerChoiceContext 导致的联机选牌软锁。
+    /// </summary>
+    internal async Task SummonFromDamage(PlayerChoiceContext choiceContext, int count = 2)
+    {
+        if (!CombatState.IsLiveCombat()) return;
+
+        SfxCmd.Play(CastSfx);
+        // 产卵动画：卵囊蠕动挤压，0.70s 处“啵”地产出，随后召唤物登场。
+        await CreatureCmd.TriggerAnim(Creature, "Summon", 0.75f);
+
+        for (int i = 0; i < count; i++)
+        {
+            await SpawnSingleBowlbug(choiceContext, 0.5m);
+        }
+
+        var power = Creature.Powers.OfType<BowlbugProgenitorPower>().FirstOrDefault();
+        if (power != null)
+            power.RefreshDescription();
+    }
+
     /// <summary>按固定顺序召唤1只盛碗虫（卵→蜜→岩→丝循环），场上盛碗虫达到16只时取消</summary>
-    internal async Task<bool> SummonNextBowlbug(decimal maxHpMultiplier, bool stunAfterSummon)
+    internal async Task<bool> SummonNextBowlbug(PlayerChoiceContext choiceContext, decimal maxHpMultiplier)
     {
         if (!CombatState.IsLiveCombat()) return false;
+        if (LiveBowlbugCount >= 16) return false;
 
-        // 盛碗虫数量上限16
-        int bowlbugCount = CombatState.Enemies.Count(e => e.IsAlive &&
-            (e.Monster is BowlbugSilk || e.Monster is BowlbugRock ||
-             e.Monster is BowlbugNectar || e.Monster is BowlbugEgg));
-        if (bowlbugCount >= 16) return false;
-
-        // 获取下一个空闲的盛碗虫站位
-        string slot = CombatState.Encounter?.Slots.FirstOrDefault(
-            candidate => CombatState.Enemies.All(
-                enemy => !enemy.IsAlive || enemy.SlotName != candidate),
-            string.Empty) ?? string.Empty;
+        string slot = NextAvailableSlot;
         if (string.IsNullOrEmpty(slot)) return false;
 
         SfxCmd.Play(CastSfx);
-        await CreatureCmd.TriggerAnim(Creature, "Cast", 0.75f);
+        await CreatureCmd.TriggerAnim(Creature, "Summon", 0.75f);
+
+        bool spawned = await SpawnSingleBowlbug(choiceContext, maxHpMultiplier);
+
+        var power = Creature.Powers.OfType<BowlbugProgenitorPower>().FirstOrDefault();
+        if (power != null)
+            power.RefreshDescription();
+
+        return spawned;
+    }
+
+    /// <summary>生成单只盛碗虫底层实现，遵循原版 SpawnedThisTurn 规则，不强行注入 Stun 避免破坏状态机</summary>
+    private async Task<bool> SpawnSingleBowlbug(PlayerChoiceContext choiceContext, decimal maxHpMultiplier)
+    {
+        if (!CombatState.IsLiveCombat()) return false;
+        if (LiveBowlbugCount >= 16) return false;
+
+        string slot = NextAvailableSlot;
+        if (string.IsNullOrEmpty(slot)) return false;
 
         // 固定顺序：0=卵, 1=蜜, 2=岩, 3=丝
         var sequence = Creature.GetPower<BowlbugSequencePower>();
@@ -160,24 +202,18 @@ public sealed class BowlbugProgenitor : MonsterModel
         };
         sequence?.Advance();
 
-        // 爪牙属性
-        await PowerCmd.Apply<MinionPower>(new ThrowingPlayerChoiceContext(), creature, 1m, Creature, null);
+        // 爪牙属性：透传有效 choiceContext，不使用 ThrowingPlayerChoiceContext 避免联机深层 Hook 异常
+        await PowerCmd.Apply<MinionPower>(choiceContext, creature, 1m, Creature, null);
         int newMaxHp = Math.Max(1, (int)(creature.MaxHp * maxHpMultiplier));
         await CreatureCmd.SetMaxAndCurrentHp(creature, newMaxHp);
-        if (stunAfterSummon)
-            await CreatureCmd.Stun(creature);
 
-        // 召唤后刷新护巢本能描述，实时更新预告
-        var power = Creature.Powers.OfType<BowlbugProgenitorPower>().FirstOrDefault();
-        if (power != null)
-            power.RefreshDescription();
         return true;
     }
 
     /// <summary>1. 召唤：召唤1只盛碗虫 + 获得基础20格挡，由 ValueProp.Move 负责多人缩放</summary>
     private async Task SummonMove(IReadOnlyList<Creature> targets)
     {
-        bool summoned = await SummonNextBowlbug(0.7m, stunAfterSummon: false);
+        bool summoned = await SummonNextBowlbug(new ThrowingPlayerChoiceContext(), 0.7m);
         if (!summoned)
             await CreatureCmd.TriggerAnim(Creature, "PowerUp", 0.45f);
         await CreatureCmd.GainBlock(Creature, 20, ValueProp.Move, null, fast: true);
@@ -195,7 +231,7 @@ public sealed class BowlbugProgenitor : MonsterModel
     /// <summary>2b. 激励：召唤1只盛碗虫 + 全体怪物+3力量</summary>
     private async Task RallyMove(IReadOnlyList<Creature> targets)
     {
-        bool summoned = await SummonNextBowlbug(0.7m, stunAfterSummon: false);
+        bool summoned = await SummonNextBowlbug(new ThrowingPlayerChoiceContext(), 0.7m);
         if (!summoned)
             await CreatureCmd.TriggerAnim(Creature, "PowerUp", 0.45f);
         // 全体怪物获得+3力量

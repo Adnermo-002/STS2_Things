@@ -13,15 +13,17 @@ from build_spine_monsters import (
 
 STATIC_SCRIPT = "res://STS2_Things/Visuals/NThingsStaticCreatureVisuals.cs"
 TEXTURE_KEYS = {
-    "origin_fogmog": "origin_fogmog",
-    "bowlbug_progenitor": "bowlbug_progenitor",
-    "scale_beetle": "scale_beetle",
     "soul_roe_1": "soul_roe_1",
     "soul_roe_2": "soul_roe_2",
     "soul_roe_3": "soul_roe_3",
     "soul_roes": "soul_roes",
-    "the_legacy": "the_legacy",
 }
+# the_legacy ships a native Spine 4.2 rig (STS2_Things/animations/monsters/the_legacy);
+# its scene is hand-authored and must not be regenerated as a static Sprite2D.
+# bowlbug_progenitor likewise ships a native Spine 4.2 rig
+# (STS2_Things/animations/monsters/bowlbug_progenitor, source: tools/BowlbugProgenitorRig).
+# origin_fogmog likewise (STS2_Things/animations/monsters/origin_fogmog, source: tools/OriginFogmogRig).
+# scale_beetle has its own weighted rig (tools/ScaleBeetleRig), including Whip/Molt.
 
 
 def write_scene(key: str) -> None:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1_visuals"]
+[ext_resource type="Script" path="res://STS2_Things/Visuals/NCaveGodHandCreatureVisuals.cs" id="1_visuals"]
 
 [node name="CreatureVisuals" type="Node2D"]
 script = ExtResource("1_visuals")
@@ -16,16 +16,24 @@ position = Vector2(0, -100)
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -160.0
-offset_top = -260.0
-offset_right = 160.0
-offset_bottom = 40.0
+offset_left = -130.0
+offset_top = -180.0
+offset_right = 130.0
+offset_bottom = 10.0
 mouse_filter = 2
 
 [node name="CenterPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -120)
+position = Vector2(0, -90)
 
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -320)
+position = Vector2(0, -210)
+
+[node name="StolenCardPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+visible = false
+top_level = true
+z_as_relative = false
+z_index = 1
+scale = Vector2(0.5, 0.5)

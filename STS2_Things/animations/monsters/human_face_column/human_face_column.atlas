@@ -1,0 +1,89 @@
+human_face_column.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+stone_disc
+  rotate: false
+  xy: 2, 2
+  size: 1024, 298
+  orig: 1024, 298
+  offset: 0, 0
+  index: -1
+face_band_0
+  rotate: false
+  xy: 2, 304
+  size: 1024, 158
+  orig: 1024, 158
+  offset: 0, 0
+  index: -1
+face_band_1
+  rotate: false
+  xy: 2, 466
+  size: 1024, 158
+  orig: 1024, 158
+  offset: 0, 0
+  index: -1
+face_band_2
+  rotate: false
+  xy: 2, 628
+  size: 1024, 158
+  orig: 1024, 158
+  offset: 0, 0
+  index: -1
+chip_0
+  rotate: false
+  xy: 1030, 628
+  size: 220, 139
+  orig: 220, 139
+  offset: 0, 0
+  index: -1
+chip_1
+  rotate: false
+  xy: 1254, 628
+  size: 220, 139
+  orig: 220, 139
+  offset: 0, 0
+  index: -1
+chip_2
+  rotate: false
+  xy: 1478, 628
+  size: 220, 139
+  orig: 220, 139
+  offset: 0, 0
+  index: -1
+chip_3
+  rotate: false
+  xy: 1702, 628
+  size: 220, 139
+  orig: 220, 139
+  offset: 0, 0
+  index: -1
+chip_4
+  rotate: false
+  xy: 2, 790
+  size: 220, 139
+  orig: 220, 139
+  offset: 0, 0
+  index: -1
+chip_5
+  rotate: false
+  xy: 226, 790
+  size: 220, 139
+  orig: 220, 139
+  offset: 0, 0
+  index: -1
+chip_6
+  rotate: false
+  xy: 450, 790
+  size: 220, 139
+  orig: 220, 139
+  offset: 0, 0
+  index: -1
+chip_7
+  rotate: false
+  xy: 674, 790
+  size: 220, 139
+  orig: 220, 139
+  offset: 0, 0
+  index: -1

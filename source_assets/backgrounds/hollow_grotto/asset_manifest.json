@@ -1,0 +1,39 @@
+{
+  "name": "Hollow Grotto / 幽蓝溶洞",
+  "method": "New floor generated via the user-provided Image API; existing vanilla-derived walls remain layered separately.",
+  "source_version": "STS2-V111",
+  "source_sha256": {
+    "images/rooms/underdocks/underdocks_03_b.png": "f49b34c57a18fce50bfa8a736837a21f4dd0fcc8958d6bf39ab0fb762a5261dc",
+    "images/rooms/hive/hive_04_a.png": "e8ecc2bf3fc2203107bc122c2ce2067b4500da34c333db7aafe551b9cb4b07b7",
+    "images/rooms/waterfall_giant_bg/waterfallgiant_bg_4_rocksb.png": "4ac8309cbde60240da60975260c47af1a5cce9f60ea1eebf89a2dd1b6d14a873"
+  },
+  "generated_floors": {
+    "hollow_grotto": {
+      "path": "source_assets/backgrounds/new_cave_floors/generated/hollow_grotto_floor.png",
+      "sha256": "95906018c7626b94f63d71ace28cd07bac8150eb393fe4c21bdff22da823615f"
+    }
+  },
+  "texture_size": [
+    2048,
+    960
+  ],
+  "texture_rect": [
+    -1382.4,
+    -648.0,
+    1382.4,
+    648.0
+  ],
+  "nominal_viewport": [
+    1920,
+    1080
+  ],
+  "bg_container_x_offset": 23,
+  "runtime_layers": [
+    "images/rooms/hollow_grotto/hollow_grotto_00.png",
+    "images/rooms/hollow_grotto/hollow_grotto_01.png",
+    "images/rooms/hollow_grotto/hollow_grotto_02.png",
+    "images/rooms/hollow_grotto/hollow_grotto_03.png",
+    "images/rooms/hollow_grotto/hollow_grotto_fg.png"
+  ],
+  "revision": "r05_new_floor"
+}

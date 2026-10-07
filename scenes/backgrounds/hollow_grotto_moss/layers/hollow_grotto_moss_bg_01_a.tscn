@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Material" path="res://materials/backgrounds/cave_readable_existing.tres" id="readability"]
+
+[ext_resource type="Texture2D" path="res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_01.png" id="1_art"]
+
+[ext_resource type="Texture2D" path="res://images/vfx/fog_sheet_1.png" id="2_fog"]
+[ext_resource type="Texture2D" path="res://images/vfx/light.png" id="3_light"]
+[ext_resource type="Texture2D" path="res://images/vfx/dot.png" id="4_dot"]
+
+[sub_resource type="CanvasItemMaterial" id="FogAdditive"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="Additive"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="FogFade"]
+offsets = PackedFloat32Array(0, 0.23, 0.81, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="MoteFade"]
+offsets = PackedFloat32Array(0, 0.3, 0.75, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.6, 1, 1, 1, 0.6, 1, 1, 1, 0)
+
+[node name="HollowGrotto01" type="Control"]
+mouse_filter = 2
+
+[node name="PaintedLayer" type="TextureRect" parent="."]
+material = ExtResource("readability")
+offset_left = -1382.4
+offset_top = -648.0
+offset_right = 1382.4
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("1_art")
+expand_mode = 1
+metadata/plane = "bg_01"
+
+
+[node name="CavernAmbientLight" type="Sprite2D" parent="."]
+material = SubResource("Additive")
+modulate = Color(0.09, 0.23, 0.07, 0.65)
+position = Vector2(-140, -180)
+scale = Vector2(5.7, 3.8)
+texture = ExtResource("3_light")
+
+[node name="FloorMistLeft" type="CPUParticles2D" parent="."]
+material = SubResource("FogAdditive")
+position = Vector2(-1500, 100)
+amount = 4
+lifetime = 95.0
+preprocess = 78.0
+local_coords = true
+texture = ExtResource("2_fog")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 100)
+direction = Vector2(1, 0)
+spread = 2.0
+gravity = Vector2(0.2, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 14.0
+scale_amount_min = 0.38
+scale_amount_max = 0.5
+color = Color(0.10, 0.18, 0.09, 0.20)
+color_ramp = SubResource("FogFade")
+anim_offset_max = 1.0
+
+[node name="FloorMistRight" type="CPUParticles2D" parent="."]
+material = SubResource("FogAdditive")
+position = Vector2(1500, 125)
+amount = 3
+lifetime = 105.0
+preprocess = 80.0
+local_coords = true
+texture = ExtResource("2_fog")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 80)
+direction = Vector2(-1, 0)
+spread = 2.0
+gravity = Vector2(-0.17, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+scale_amount_min = 0.35
+scale_amount_max = 0.55
+color = Color(0.08, 0.16, 0.08, 0.20)
+color_ramp = SubResource("FogFade")
+anim_offset_max = 1.0
+
+[node name="CaveMotes" type="CPUParticles2D" parent="."]
+material = SubResource("Additive")
+position = Vector2(0, -80)
+amount = 22
+lifetime = 22.0
+preprocess = 15.0
+local_coords = true
+texture = ExtResource("4_dot")
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 300)
+direction = Vector2(0, -1)
+spread = 60.0
+gravity = Vector2(0, -0.35)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.5
+scale_amount_min = 0.009
+scale_amount_max = 0.017
+color = Color(0.43, 0.65, 0.17, 0.60)
+color_ramp = SubResource("MoteFade")

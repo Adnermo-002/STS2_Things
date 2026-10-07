@@ -1,0 +1,18 @@
+Use case: precise-object-edit
+Image 1 is the EDIT TARGET: the new cave campsite painting with no people.
+Image 2 is a GEOMETRY REFERENCE ONLY: the real game's seated character sprites at their exact unmodified positions, composited on the same painting. Magenta lines show the required stone seat contact planes; the magenta circle marks the hearth center. None of the people or magenta annotations should appear in the output.
+The supplied mask marks the only background areas that can be changed.
+
+Correct the four stone seats and hearth placement. The current large front benches are too tall and too far outside the character positions, while the rear seats are too far back. Replace them with four smaller chunky worn stone sitting blocks or two naturally stepped stone ledges that EXACTLY support the seated bodies in reference 2. Preserve the entire cave ceiling, side passages, painting style, backpack, general lighting and all unmasked scenery.
+
+On the 2048x960 canvas the required seat top contact locations are:
+1. Front-left: center (777,587); a horizontal supporting top under the seated armored character's hips, spanning roughly x=717..838. Top contact at y=587. Front face descends to about y=678. Leave floor space in front for boots; do not paint the seat up through the character's back.
+2. Front-right: center (1243,581); supporting top spanning roughly x=1185..1300, contact y=581, descending to about y=667. This holds the green-cloaked seated character. Keep clear floor in front of their feet.
+3. Rear-left: center (884,532); top spans roughly x=832..930 at y=532, descending behind the front-left seat to about y=612. This supports the blue/gold mechanical character. It must be in front of the existing rear-left background block's old position, and below the character's hips.
+4. Rear-right: center (1123,533); top spans roughly x=1076..1170 at y=533, with a short front face down to about y=610. Keep the seat behind the hanging robe of the skeletal character and out of the fire pit. The character may hover slightly, but the seat must still be present at the same bench height.
+
+Use the actual characters in reference 2 to judge support, perspective, front-edge placement and empty leg room. Make the stone masses slightly cartoonish and readable, in the original Slay the Spire 2 hand-painted style. Broad quiet color masses, broken soft brush edges, matte surfaces, not realistic 3D rock photographs or dense tiny chips. Do not turn the seats into manufactured chairs.
+
+Move the hearth and its wood slightly left and down so the CENTER of the burning wood nest is at (1008,630), the magenta circle in reference 2. Keep its surrounding stone ring roughly within x=900..1115 and y=570..710. Paint only stacked wood and a few dim coals, NO flames, smoke, glow rays or characters, as the runtime supplies extinguishable fire.
+
+Output exactly one CLEAN EMPTY campsite background, identical framing and 2048x960 canvas. No people, body parts, weapons, floating hands, magenta marks, labels or text. Do not change the surrounding cave. The empty scenery will be put behind the same native character sprites afterward.

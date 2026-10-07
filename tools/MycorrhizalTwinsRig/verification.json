@@ -1,0 +1,24 @@
+[
+  {
+    "key": "mycorrhizal_vanguard",
+    "result": "PASS",
+    "bones": 27,
+    "slots": 8,
+    "animations": 14,
+    "frames": 1304,
+    "invertedTriangles": 0,
+    "loopError": 0,
+    "reviveError": 0
+  },
+  {
+    "key": "mycorrhizal_bulwark",
+    "result": "PASS",
+    "bones": 27,
+    "slots": 8,
+    "animations": 14,
+    "frames": 1304,
+    "invertedTriangles": 0,
+    "loopError": 0,
+    "reviveError": 0
+  }
+]

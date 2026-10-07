@@ -84,15 +84,14 @@ public sealed class BowlbugProgenitorPower : PowerModel
         if (Amount <= 0)
         {
             Flash();
-            // 召唤2只盛碗虫（固定顺序）
+            // 阈值立即由同步的 Owner.MaxHp 重建，防止异步空窗期状态重入或多人校验不一致
+            SetAmount(Math.Max(1, (int)(Owner.MaxHp * 0.2m)));
+
+            // 响应召唤2只盛碗虫（固定顺序），传入合法的 choiceContext 保证联机后续选牌（如头槌等）正常推进
             if (Owner.Monster is BowlbugProgenitor progenitor)
             {
-                await progenitor.SummonNextBowlbug(0.5m, stunAfterSummon: true);
-                await progenitor.SummonNextBowlbug(0.5m, stunAfterSummon: true);
+                await progenitor.SummonFromDamage(choiceContext, count: 2);
             }
-
-            // 阈值可由同步的 Owner.MaxHp 重建，不再依赖未序列化的实例字段。
-            SetAmount(Math.Max(1, (int)(Owner.MaxHp * 0.2m)));
         }
     }
 }

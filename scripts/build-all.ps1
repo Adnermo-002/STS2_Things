@@ -261,7 +261,10 @@ else {
 
         $ritsuLibDll = $RitsuLibRef
         if ([string]::IsNullOrWhiteSpace($ritsuLibDll)) {
-            $ritsuLibDll = 'D:\Steam\steamapps\workshop\content\2868840\3747602295\lib\0.111.0\STS2-RitsuLib.dll'
+            $ritsuLibDll = 'D:\Steam\steamapps\workshop\content\2868840\3747602295\shared\STS2-RitsuLib.Settings.dll'
+            if (-not (Test-Path -LiteralPath $ritsuLibDll -PathType Leaf)) {
+                $ritsuLibDll = 'D:\Steam\steamapps\workshop\content\2868840\3747602295\lib\0.111.0\STS2-RitsuLib.dll'
+            }
         }
         if (Test-Path -LiteralPath $ritsuLibDll -PathType Leaf) {
             Write-Host 'Running the RitsuLib interop probe...'

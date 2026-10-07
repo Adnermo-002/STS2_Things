@@ -1,0 +1,12 @@
+Use case: precise-object-edit
+Image 1 is the edit target: this original blue Lantern Fish monster. Image 2 is a vanilla Slay the Spire 2 style reference only.
+
+Change the facial personality and the sharp details. The player says the creature looks too fierce. Make it fit the game's slightly goofy, cartoonish, strange but endearing enemy cast. It should be an oblivious cave dweller, not a vicious horror fish.
+
+Preserve the full-body pose, body silhouette, all anatomical joint positions, blue body and cream belly, both arms and legs and feet, tail, curved lure and amber lamp exactly where they are. This artwork already has a skeletal rig planned around those positions. Keep its matte painted finish with broad simple color masses and softly textured shadows.
+
+Face edits: remove the heavy angry brow, give it one clearly visible larger ROUND amber eye with a round dark pupil and an innocent slightly puzzled expression. It is looking toward the left. Relax the face. Replace the long pointed protruding fangs with only three very short uneven blunt ivory peg teeth. No long canine teeth, serrated teeth or upward cheek snarl. Give it a wide soft thick pale lower lip, slightly protruding like an awkward underbite. Mouth can be mildly ajar, in a neutral bemused way, not smiling like a human and not snarling. Remove sharp horn-like bumps around its snout; keep the forehead smooth. Round off the dorsal fin tips and the longest claw-like finger tips very slightly. Gill folds should be muted dusty mauve and simplified to two or three broad soft curves, not bloody slash marks. It should read as a slightly dim-witted fish person with an absurdly oversized glowing lantern.
+
+Do not turn it into chibi/anime, a glossy mobile-game character, a plush toy or a generic cute pet. Retain the original game's stylized painted and slightly grotesque charm. Cartoon personality, natural painterly volumes, quiet broad shapes. No uniform black comic outline and no dense scales or tiny brush-daub mosaic. Clear readable midtones, not dark or menacing.
+
+Background remains flat pure green #00FF00. No ground shadow, halo outside the lamp, no UI, text, labels, scenery, extra characters or watermark. Same framing and 1024x1536 canvas.

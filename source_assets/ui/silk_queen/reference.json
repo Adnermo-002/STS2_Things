@@ -1,0 +1,22 @@
+{
+  "reference": "Queen.PuppetStringsMove -> ChainsOfBindingPower -> Bound overlay",
+  "native_scene": "scenes/vfx/ui/card/afflictions/bound/vfx_ui_card_affliction_bound.tscn",
+  "source_scene_sha256": "56df4a08d2cd7b6bc266ab5d3cf6e96797ce67982ceb742dfe3fa5d21df4158a",
+  "texture_contract": {
+    "R": "strand intensity",
+    "G": "native Queen scrolling light field",
+    "A": "silk coverage and soft halo"
+  },
+  "new_texture": "images/vfx/ui/card/silk/silk_main.png",
+  "notes": "Native card mask, border, vignette, glow, particle material and transitions retained. Asymmetric front windings, shaded edge returns, bottom coils and a gathered tuft replace the four corner bundles; opaque strands avoid the rules area.",
+  "native_dependency_remap": {
+    "images/vfx/ui/ui_card_mask.png": "images/vfx/ui/card/silk/native/ui_card_mask.png",
+    "images/vfx/ui/card/ui_card_border_vignette.png": "images/vfx/ui/card/silk/native/ui_card_border_vignette.png",
+    "images/vfx/ui/card/ui_card_border_glow.png": "images/vfx/ui/card/silk/native/ui_card_border_glow.png",
+    "images/vfx/noise/vfx_noise_1.png": "images/vfx/ui/card/silk/native/vfx_noise_1.png",
+    "scenes/vfx/common/vfx_common_specks.tscn": "scenes/vfx/ui/card/silk/native/vfx_common_specks.tscn",
+    "materials/vfx/common/vfx_speck_glow_white.tres": "materials/vfx/ui/card/silk/native/vfx_speck_glow_white.tres",
+    "shaders/vfx/common/vfx_grayscale_particle_shader.gdshader": "shaders/cards/silk_native/vfx_grayscale_particle_shader.gdshader",
+    "images/vfx/common/common_glow_speck.png": "images/vfx/ui/card/silk/native/common_glow_speck.png"
+  }
+}

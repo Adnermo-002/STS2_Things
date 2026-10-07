@@ -1,0 +1,10 @@
+Use case: style-transfer
+Image 1 is the EDIT TARGET: an original Lantern Fish monster on green. Images 2 and 3 are STYLE REFERENCES ONLY: extracted vanilla Slay the Spire 2 sprite atlas pieces. Do not copy their creatures or the disassembled atlas layout.
+
+Repaint the complete fishfolk in image 1 to match the actual vanilla game's painted sprite rendering in images 2 and 3. Preserve its exact silhouette, anatomy, pose, overall placement, slate-blue/cream/amber palette, head, lure, lamp, hands, toes and tail. Keep the green background. Output ONE complete assembled fishfolk, not a sprite sheet.
+
+Specific correction: the current character has overly uniform dark comic outlines and too many small angular brush daubs. Remove the heavy ink-like contours, replacing them with thin soft dark LOCAL-COLOR edge definition only where forms overlap, as in the vanilla references. Simplify the skin into broad clean asymmetrical painted masses, soft grain in shadow transitions, and a few deliberate flat highlight planes. Remove the mottled patchwork texture and most of the tiny surface details. Retain sharp readable shape silhouettes and a slightly grotesque expression; not cute anime, vector art, plastic 3D, realistic fish scales or a generic mobile RPG rendering. Highlights are restrained and matte; strong lighting is reserved for the amber lamp. The wide jaw and belly should be quieter broad cream forms with subtle warm shadow, not a mosaic of facets.
+
+At actual battle size about 270 pixels high, the big head, tiny eye, tooth silhouette and amber lamp must read immediately. Do not darken the entire creature. Keep visible midtones. Match the paint treatment and detail density of the supplied vanilla atlases closely.
+
+All pixels outside the character are uniform pure chroma green #00FF00, no shadow or glow outside silhouette, no text, UI, labels, ground, background, frame or watermark. No added objects. 1024x1536.

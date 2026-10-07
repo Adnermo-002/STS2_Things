@@ -1,0 +1,82 @@
+reverse_salamander.png
+size: 2048,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tail
+  rotate: false
+  xy: 2, 2
+  size: 628, 821
+  orig: 628, 821
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 634, 2
+  size: 1019, 542
+  orig: 1019, 542
+  offset: 0, 0
+  index: -1
+leg_front_near
+  rotate: false
+  xy: 1657, 2
+  size: 300, 346
+  orig: 300, 346
+  offset: 0, 0
+  index: -1
+leg_hind_near
+  rotate: false
+  xy: 2, 827
+  size: 318, 297
+  orig: 318, 297
+  offset: 0, 0
+  index: -1
+leg_front_far
+  rotate: false
+  xy: 324, 827
+  size: 269, 269
+  orig: 269, 269
+  offset: 0, 0
+  index: -1
+leg_hind_far
+  rotate: false
+  xy: 597, 827
+  size: 185, 237
+  orig: 185, 237
+  offset: 0, 0
+  index: -1
+eye_near
+  rotate: false
+  xy: 786, 827
+  size: 153, 151
+  orig: 153, 151
+  offset: 0, 0
+  index: -1
+gill_0
+  rotate: false
+  xy: 943, 827
+  size: 99, 129
+  orig: 99, 129
+  offset: 0, 0
+  index: -1
+eye_far
+  rotate: false
+  xy: 1046, 827
+  size: 104, 124
+  orig: 104, 124
+  offset: 0, 0
+  index: -1
+gill_1
+  rotate: false
+  xy: 1154, 827
+  size: 142, 96
+  orig: 142, 96
+  offset: 0, 0
+  index: -1
+gill_2
+  rotate: false
+  xy: 1300, 827
+  size: 125, 75
+  orig: 125, 75
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,300 @@
+{
+  "revision": "r03_new_floor",
+  "source_version": "STS2-V111",
+  "variants": {
+    "moss": {
+      "name": "苔光岩窟",
+      "slug": "hollow_grotto_moss",
+      "subtitle": "新绘石灰岩 · 苔土过渡 · 稀疏萤光",
+      "air": [
+        [
+          8,
+          18,
+          15
+        ],
+        [
+          25,
+          40,
+          28
+        ],
+        85
+      ],
+      "far": [
+        [
+          10,
+          22,
+          20
+        ],
+        [
+          30,
+          43,
+          31
+        ],
+        44
+      ],
+      "back": [
+        [
+          8,
+          17,
+          18
+        ],
+        [
+          27,
+          37,
+          29
+        ],
+        42
+      ],
+      "stone": [
+        [
+          5,
+          11,
+          12
+        ],
+        [
+          32,
+          42,
+          31
+        ],
+        38
+      ],
+      "roof": [
+        [
+          3,
+          7,
+          6
+        ],
+        [
+          21,
+          28,
+          17
+        ],
+        26
+      ],
+      "front": [
+        [
+          2,
+          4,
+          4
+        ],
+        [
+          13,
+          18,
+          12
+        ],
+        27
+      ],
+      "light": "Color(0.09, 0.23, 0.07, 0.65)",
+      "light_pos": "Vector2(-140, -180)",
+      "fog_left": "Color(0.10, 0.18, 0.09, 0.20)",
+      "fog_right": "Color(0.08, 0.16, 0.08, 0.20)",
+      "motes": "Color(0.43, 0.65, 0.17, 0.60)",
+      "amount": 22
+    },
+    "ember": {
+      "name": "余烬石窟",
+      "slug": "hollow_grotto_ember",
+      "subtitle": "新绘冷却岩流 · 碎薄壳 · 缓升余烬",
+      "air": [
+        [
+          22,
+          12,
+          15
+        ],
+        [
+          48,
+          28,
+          20
+        ],
+        85
+      ],
+      "far": [
+        [
+          21,
+          14,
+          20
+        ],
+        [
+          45,
+          30,
+          27
+        ],
+        44
+      ],
+      "back": [
+        [
+          15,
+          10,
+          18
+        ],
+        [
+          37,
+          23,
+          29
+        ],
+        42
+      ],
+      "stone": [
+        [
+          9,
+          6,
+          13
+        ],
+        [
+          43,
+          28,
+          31
+        ],
+        38
+      ],
+      "roof": [
+        [
+          5,
+          4,
+          8
+        ],
+        [
+          26,
+          17,
+          19
+        ],
+        26
+      ],
+      "front": [
+        [
+          2,
+          2,
+          5
+        ],
+        [
+          17,
+          10,
+          13
+        ],
+        27
+      ],
+      "light": "Color(0.29, 0.11, 0.025, 0.66)",
+      "light_pos": "Vector2(-90, -110)",
+      "fog_left": "Color(0.18, 0.09, 0.035, 0.20)",
+      "fog_right": "Color(0.15, 0.075, 0.03, 0.18)",
+      "motes": "Color(0.95, 0.37, 0.08, 0.70)",
+      "amount": 26
+    },
+    "violet": {
+      "name": "紫雾深窟",
+      "slug": "hollow_grotto_violet",
+      "subtitle": "新绘层状片岩 · 细矿脉 · 紫色薄雾",
+      "air": [
+        [
+          18,
+          11,
+          27
+        ],
+        [
+          35,
+          25,
+          51
+        ],
+        85
+      ],
+      "far": [
+        [
+          22,
+          16,
+          34
+        ],
+        [
+          43,
+          32,
+          57
+        ],
+        44
+      ],
+      "back": [
+        [
+          16,
+          11,
+          26
+        ],
+        [
+          36,
+          27,
+          47
+        ],
+        42
+      ],
+      "stone": [
+        [
+          8,
+          6,
+          18
+        ],
+        [
+          42,
+          31,
+          58
+        ],
+        38
+      ],
+      "roof": [
+        [
+          4,
+          3,
+          11
+        ],
+        [
+          22,
+          15,
+          33
+        ],
+        26
+      ],
+      "front": [
+        [
+          2,
+          2,
+          6
+        ],
+        [
+          15,
+          10,
+          24
+        ],
+        27
+      ],
+      "light": "Color(0.16, 0.075, 0.26, 0.58)",
+      "light_pos": "Vector2(370, -155)",
+      "fog_left": "Color(0.15, 0.09, 0.23, 0.21)",
+      "fog_right": "Color(0.13, 0.07, 0.21, 0.23)",
+      "motes": "Color(0.43, 0.30, 0.62, 0.38)",
+      "amount": 14
+    }
+  },
+  "method": "Four independent generated floor paintings; existing cave walls remain separate layers.",
+  "source_sha256": {
+    "images/rooms/underdocks/underdocks_03_b.png": "f49b34c57a18fce50bfa8a736837a21f4dd0fcc8958d6bf39ab0fb762a5261dc",
+    "images/rooms/hive/hive_04_a.png": "e8ecc2bf3fc2203107bc122c2ce2067b4500da34c333db7aafe551b9cb4b07b7",
+    "images/rooms/waterfall_giant_bg/waterfallgiant_bg_4_rocksb.png": "4ac8309cbde60240da60975260c47af1a5cce9f60ea1eebf89a2dd1b6d14a873",
+    "images/rooms/overgrowth/overgrowth_04_a_1.png": "8e7b2fd85e60525b877c90af011643806fe07e586f76ab5632c097cba53fe3a7",
+    "images/rooms/hive/hive_04_b.png": "02c4f93b4ad7325c918bd78391601ce693be38eed99f2ceeb1bf4be5166f7ac7"
+  },
+  "layer_size": [
+    2048,
+    960
+  ],
+  "generated_floors": {
+    "hollow_grotto_moss": {
+      "path": "source_assets/backgrounds/new_cave_floors/generated/hollow_grotto_moss_floor.png",
+      "sha256": "94b2a4948e094b402eb50981c3316638147de1dba6878b280ed34eba227226fa"
+    },
+    "hollow_grotto_ember": {
+      "path": "source_assets/backgrounds/new_cave_floors/generated/hollow_grotto_ember_floor.png",
+      "sha256": "506e0dd468da7df1dee91a6fdc17295c5cf3e7c4c8ee9e20512eb3d0d4fe99d6"
+    },
+    "hollow_grotto_violet": {
+      "path": "source_assets/backgrounds/new_cave_floors/generated/hollow_grotto_violet_floor.png",
+      "sha256": "2024cf81b8818e07e51a3b30d71074d93897825a511ea5ad6f6c2f755fb1eb96"
+    }
+  },
+  "native_root_script": "res://src/Core/Nodes/Rooms/NCombatBackground.cs"
+}

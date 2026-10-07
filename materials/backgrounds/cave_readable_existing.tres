@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://shaders/backgrounds/cave_readability.gdshader" id="1_readability"]
+
+[resource]
+shader = ExtResource("1_readability")
+shader_parameter/midtone_gamma = 0.82
+shader_parameter/exposure = 1.03

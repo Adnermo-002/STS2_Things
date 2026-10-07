@@ -1,0 +1,47 @@
+silk_moth.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+wing_near
+  rotate: false
+  xy: 2, 2
+  size: 715, 655
+  orig: 715, 655
+  offset: 0, 0
+  index: -1
+wing_far
+  rotate: false
+  xy: 721, 2
+  size: 516, 405
+  orig: 516, 405
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 1241, 2
+  size: 552, 391
+  orig: 552, 391
+  offset: 0, 0
+  index: -1
+silk_b
+  rotate: false
+  xy: 1797, 2
+  size: 107, 332
+  orig: 107, 332
+  offset: 0, 0
+  index: -1
+silk_c
+  rotate: false
+  xy: 2, 661
+  size: 152, 268
+  orig: 152, 268
+  offset: 0, 0
+  index: -1
+silk_a
+  rotate: false
+  xy: 158, 661
+  size: 74, 230
+  orig: 74, 230
+  offset: 0, 0
+  index: -1

@@ -58,8 +58,9 @@ public static class SfxHooks
         return $"res://sfx/{monsterId}/{monsterId}_{actionName}";
     }
 
-    private static void PreloadMonsterSfx(string monsterId)
+    public static IEnumerable<string> GetMonsterSoundAssetPaths(string monsterId)
     {
+        if (!CustomSfxMonsters.Entries.Contains(monsterId)) return [];
         var resDir = $"res://sfx/{monsterId}";
         var files = ListAudioFiles(resDir);
         if (files.Count == 0)
@@ -73,7 +74,7 @@ public static class SfxHooks
                         files.Add($"{resDir}/{Path.GetFileName(filePath)}");
         }
 
-        foreach (var resPath in files) NativeSfxPlayer.Preload(resPath);
+        return files.Where(path => ResourceLoader.Exists(path)).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal);
     }
 
     private static List<string> ListAudioFiles(string resDir)
@@ -85,7 +86,9 @@ public static class SfxHooks
         var fileName = da.GetNext();
         while (fileName != string.Empty)
         {
-            if (!da.CurrentIsDir() && IsAudioFile(fileName)) result.Add($"{resDir}/{fileName}");
+            string logicalName = fileName.EndsWith(".import", StringComparison.Ordinal)
+                ? fileName[..^7] : fileName.EndsWith(".remap", StringComparison.Ordinal) ? fileName[..^6] : fileName;
+            if (!da.CurrentIsDir() && IsAudioFile(logicalName)) result.Add($"{resDir}/{logicalName}");
             fileName = da.GetNext();
         }
 
@@ -156,22 +159,18 @@ public static class SfxHooks
         {
             if (monster == null) return true;
             var entry = monster.Id.Entry.ToLowerInvariant();
-            if (!CustomSfxMonsters.Entries.Contains(entry)) return true;
+            // Some of our creatures reuse a bundled sound owned by another
+            // monster. PlayDeath goes directly to NAudioManager, so the normal
+            // SfxCmd.Play path remapper never sees those aliases.
+            string? nativePath = CustomSfxMonsters.Entries.Contains(entry)
+                ? MapToNativePathForMonster(entry, "die")
+                : monster.GetType().Assembly == typeof(SfxHooks).Assembly
+                    ? MapToNativePath(monster.DeathSfx)
+                    : null;
+            if (nativePath == null) return true;
             if (!CanPlayDeathAudio()) return false;
-            var nativePath = MapToNativePathForMonster(entry, "die");
-            if (nativePath != null)
-                NativeSfxPlayer.Play(nativePath, volumeDb: 0f, allowCombatEnding: true);
+            NativeSfxPlayer.Play(nativePath, volumeDb: 0f, allowCombatEnding: true);
             return false;
-        }
-    }
-
-    [HarmonyPatch(typeof(MonsterModel), nameof(MonsterModel.CreateVisuals))]
-    public static class MonsterCreateVisualsPostfix
-    {
-        public static void Postfix(MonsterModel __instance)
-        {
-            var entry = __instance.Id.Entry.ToLowerInvariant();
-            if (CustomSfxMonsters.Entries.Contains(entry)) PreloadMonsterSfx(entry);
         }
     }
 

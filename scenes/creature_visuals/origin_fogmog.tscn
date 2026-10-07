@@ -1,19 +1,212 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=32 format=3]
 
 [ext_resource type="Script" path="res://STS2_Things/Visuals/NThingsStaticCreatureVisuals.cs" id="1_script"]
-[ext_resource type="Texture2D" path="res://images/monsters/origin_fogmog.png" id="2_texture"]
+[ext_resource type="SpineSkeletonDataResource" path="res://STS2_Things/animations/monsters/origin_fogmog/origin_fogmog_skel_data.tres" id="2_skeleton"]
+[ext_resource type="Script" path="res://STS2_Things/Visuals/NThingsFogmogVfx.cs" id="3_vfx"]
+[ext_resource type="Texture2D" path="res://STS2_Things/animations/monsters/origin_fogmog/vfx/origin_fogmog_dust_particle.png" id="4_dust"]
+[ext_resource type="Texture2D" path="res://STS2_Things/animations/monsters/origin_fogmog/vfx/origin_fogmog_thrust_particle.png" id="5_thrust"]
+
+[sub_resource type="Curve" id="Curve_g0sd1"]
+_data = [Vector2(0, 0.018401146), 0.0, 1.5873333, 0, 0, Vector2(0.35060447, 0.35887092), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wqka1"]
+curve = SubResource("Curve_g0sd1")
+
+[sub_resource type="Gradient" id="Gradient_0xo7k"]
+offsets = PackedFloat32Array(0, 0.99819165)
+colors = PackedColorArray(1, 1, 1, 0.16862746, 1, 1, 1, 0.6901961)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o7ou5"]
+gradient = SubResource("Gradient_0xo7k")
+
+[sub_resource type="Curve" id="Curve_0xo7k"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.5025907, -1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_o7ou5"]
+_data = [Vector2(0, 0.16687822), 0.0, 0.0, 0, 0, Vector2(0.5025907, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_uheiv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_mhw0u"]
+curve_x = SubResource("Curve_0xo7k")
+curve_y = SubResource("Curve_o7ou5")
+curve_z = SubResource("Curve_uheiv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7k51h"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 18.0
+direction = Vector3(-1, 0, 0)
+spread = 20.0
+initial_velocity_min = 75.0
+initial_velocity_max = 190.0
+gravity = Vector3(0, -12, 0)
+scale_min = 0.5
+scale_max = 1.0
+scale_curve = SubResource("CurveXYZTexture_mhw0u")
+color = Color(0.40392157, 0.9882353, 0.3254902, 1)
+color_initial_ramp = SubResource("GradientTexture1D_o7ou5")
+alpha_curve = SubResource("CurveTexture_wqka1")
+
+[sub_resource type="CurveTexture" id="CurveTexture_0xo7k"]
+curve = SubResource("Curve_g0sd1")
+
+[sub_resource type="Gradient" id="Gradient_o7ou5"]
+offsets = PackedFloat32Array(0, 0.9909584)
+colors = PackedColorArray(1, 1, 1, 0.24313726, 1, 1, 1, 0.6862745)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_slgak"]
+gradient = SubResource("Gradient_o7ou5")
+
+[sub_resource type="Curve" id="Curve_slgak"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nlxl3"]
+_data = [Vector2(0, 0.1693548), 0.0, 0.0, 0, 0, Vector2(0.53713304, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_wsgej"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_uheiv"]
+curve_x = SubResource("Curve_slgak")
+curve_y = SubResource("Curve_nlxl3")
+curve_z = SubResource("Curve_wsgej")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o7ou5"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 18.0
+spread = 20.0
+initial_velocity_min = 75.0
+initial_velocity_max = 190.0
+gravity = Vector3(0, -12, 0)
+scale_min = 0.5
+scale_max = 1.0
+scale_curve = SubResource("CurveXYZTexture_uheiv")
+color = Color(0.40392157, 0.9882353, 0.3254902, 1)
+color_initial_ramp = SubResource("GradientTexture1D_slgak")
+alpha_curve = SubResource("CurveTexture_0xo7k")
+
+[sub_resource type="Curve" id="Curve_7k51h"]
+_data = [Vector2(0, 0), 0.0, 42.34125, 0, 0, Vector2(0.062176164, 1), 0.0, 0.0, 0, 0, Vector2(0.20034543, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.01015234), -0.48644674, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_g0sd1"]
+curve = SubResource("Curve_7k51h")
+
+[sub_resource type="Gradient" id="Gradient_wqka1"]
+colors = PackedColorArray(1, 1, 1, 0.007843138, 1, 1, 1, 0.21960784)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0xo7k"]
+gradient = SubResource("Gradient_wqka1")
+
+[sub_resource type="Curve" id="Curve_mhw0u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.78583765, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.117385864), -1.5920055, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_gs0t6"]
+_limits = [0.0, 1.5, 0.0, 1.0]
+_data = [Vector2(0, 0.80092), 0.0, 0.0, 0, 0, Vector2(0.49050084, 1.3267765), 1.1257752, 1.1257752, 0, 0, Vector2(1, 1.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_0hbgf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ay7jv"]
+curve_x = SubResource("Curve_mhw0u")
+curve_y = SubResource("Curve_gs0t6")
+curve_z = SubResource("Curve_0hbgf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wqka1"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(160, 3, 1)
+angle_min = -89.99999
+angle_max = -89.99999
+direction = Vector3(0, -1, 0)
+spread = 32.0
+initial_velocity_min = 110.0
+initial_velocity_max = 260.0
+gravity = Vector3(0, -12, 0)
+scale_min = 0.6
+scale_max = 1.2
+scale_curve = SubResource("CurveXYZTexture_ay7jv")
+color = Color(0.40392157, 0.9882353, 0.3254902, 1)
+color_initial_ramp = SubResource("GradientTexture1D_0xo7k")
+alpha_curve = SubResource("CurveTexture_g0sd1")
 
 [node name="OriginFogmog" type="Node2D"]
 script = ExtResource("1_script")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Visuals" type="Sprite2D" parent="."]
-texture = ExtResource("2_texture")
+[node name="Visuals" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("2_skeleton")
+preview_skin = "default"
+preview_animation = "idle_loop"
+preview_frame = false
+preview_time = 0.0
 unique_name_in_owner = true
-position = Vector2(0, -248.04)
-scale = Vector2(0.52, 0.52)
+position = Vector2(-6.76, -4.68)
+scale = Vector2(0.8966, 0.8966)
 metadata/_edit_lock_ = true
+
+[node name="NThingsFogmogVfx" type="Node" parent="Visuals"]
+script = ExtResource("3_vfx")
+
+[node name="DustSlotNode" type="SpineSlotNode" parent="Visuals"]
+slot_name = "ground_dust_attach"
+show_behind_parent = true
+
+[node name="DustLeftParticles" type="GPUParticles2D" parent="Visuals/DustSlotNode"]
+position = Vector2(-86.5, 0)
+emitting = false
+amount = 20
+texture = ExtResource("4_dust")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_7k51h")
+
+[node name="DustRightParticles" type="GPUParticles2D" parent="Visuals/DustSlotNode"]
+position = Vector2(87.5, 0)
+emitting = false
+amount = 20
+texture = ExtResource("4_dust")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_o7ou5")
+
+[node name="ThrustSlotNode" type="SpineSlotNode" parent="Visuals"]
+slot_name = "head_thrust_attach"
+show_behind_parent = true
+
+[node name="ThrustParticles" type="GPUParticles2D" parent="Visuals/ThrustSlotNode"]
+position = Vector2(1.7621984, -2.0266266)
+rotation = -0.11612161
+emitting = false
+amount = 64
+texture = ExtResource("4_dust")
+lifetime = 0.85
+fixed_fps = 0
+trail_lifetime = 0.85
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_wqka1")
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

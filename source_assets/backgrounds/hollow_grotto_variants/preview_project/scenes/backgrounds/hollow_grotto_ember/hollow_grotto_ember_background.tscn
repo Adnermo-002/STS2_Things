@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3]
+
+
+[node name="HollowGrottoEmberBackground" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Layer_00" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Layer_01" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Layer_02" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Layer_03" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Foreground" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+mouse_filter = 2

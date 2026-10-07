@@ -1,0 +1,64 @@
+{
+  "status": "complete",
+  "all_floors_must_be_new": true,
+  "reference_policy": "style only; no stock floor images are supplied",
+  "jobs": [
+    {
+      "slug": "hollow_grotto",
+      "name": "幽蓝溶洞",
+      "palette": "muted blue-slate, deep indigo shadows, a faint cool teal atmospheric distance",
+      "design": "An original naturally water-worn cave floor of broad continuous slate bedrock. Long irregular erosion furrows curve diagonally through the outer foreground. Shallow silt pockets and a few small rounded pebbles collect at the edges. The broad central combat area remains flat and quiet. Invent the bedrock silhouette, fissures, erosion pattern and pebble placement from scratch. No assembled paving stones.",
+      "prompt_file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\prompts\\hollow_grotto.txt",
+      "reference_images": [
+        "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\hollow_grotto_walls_only.png",
+        "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\vanilla_rock_style_only.jpg"
+      ],
+      "expected_generated_image": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_floor.png",
+      "runtime_destination": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto\\hollow_grotto_00.png"
+    },
+    {
+      "slug": "hollow_grotto_moss",
+      "name": "苔光岩窟",
+      "palette": "deep muted moss green, cool charcoal stone, olive-brown damp earth",
+      "design": "An original damp karst cave floor: continuous rounded limestone worn nearly smooth, irregular seams filled with dark earth, a few thin moss islands and shallow worn depressions toward the outer edges. Use a completely new organic layout. Keep moss sparse enough that the stone still reads as a cave floor; no grass field, copied fern shapes or forest flagstones.",
+      "prompt_file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\prompts\\hollow_grotto_moss.txt",
+      "reference_images": [
+        "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\hollow_grotto_moss_walls_only.png",
+        "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\vanilla_rock_style_only.jpg"
+      ],
+      "expected_generated_image": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_moss_floor.png",
+      "runtime_destination": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_00.png"
+    },
+    {
+      "slug": "hollow_grotto_ember",
+      "name": "余烬石窟",
+      "palette": "charcoal plum shadows, muted brown-ochre rock, restrained distant amber illumination",
+      "design": "An original dry volcanic cave floor: broad overlapping flows of cooled rock with long asymmetrical wrinkles, broken thin crusts and a few charcoal chips at the side edges. The quiet flat central stage is continuous geological rock. Design fresh irregular forms without polygonal cell tessellation, hexagons, honeycomb, paving tiles or a copy of the game's Hive floor. No bright lava rivers or luminous cracks.",
+      "prompt_file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\prompts\\hollow_grotto_ember.txt",
+      "reference_images": [
+        "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\hollow_grotto_ember_walls_only.png",
+        "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\vanilla_rock_style_only.jpg"
+      ],
+      "expected_generated_image": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_ember_floor.png",
+      "runtime_destination": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_00.png"
+    },
+    {
+      "slug": "hollow_grotto_violet",
+      "name": "紫雾深窟",
+      "palette": "deep charcoal-violet, muted mauve slate, a faint lilac atmospheric distance",
+      "design": "An original ancient cave floor formed from gently folded layers of schist. Broad low strata, thin irregular mineral veins and sparse chipped flakes lie mostly near the side foreground. The central walking surface remains flat and uninterrupted. Invent a new asymmetrical geological arrangement rather than individual laid stones. No masonry blocks, geometric paving, crystal clusters, neon veins or reused Glory floor pattern.",
+      "prompt_file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\prompts\\hollow_grotto_violet.txt",
+      "reference_images": [
+        "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\hollow_grotto_violet_walls_only.png",
+        "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\references\\vanilla_rock_style_only.jpg"
+      ],
+      "expected_generated_image": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\new_cave_floors\\generated\\hollow_grotto_violet_floor.png",
+      "runtime_destination": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_00.png"
+    }
+  ],
+  "target_size": [
+    2048,
+    960
+  ],
+  "runtime_state": "all four newly generated floor paintings integrated, visually reviewed and validated in native Godot rendering"
+}

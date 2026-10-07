@@ -1,0 +1,61 @@
+mycorrhizal_vanguard.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 2
+  size: 371, 634
+  orig: 371, 634
+  offset: 0, 0
+  index: -1
+cap
+  rotate: false
+  xy: 377, 2
+  size: 751, 461
+  orig: 751, 461
+  offset: 0, 0
+  index: -1
+arm_near
+  rotate: false
+  xy: 1132, 2
+  size: 251, 372
+  orig: 251, 372
+  offset: 0, 0
+  index: -1
+arm_far
+  rotate: false
+  xy: 1387, 2
+  size: 219, 371
+  orig: 219, 371
+  offset: 0, 0
+  index: -1
+foot_far
+  rotate: false
+  xy: 1610, 2
+  size: 179, 89
+  orig: 179, 89
+  offset: 0, 0
+  index: -1
+foot_near
+  rotate: false
+  xy: 1793, 2
+  size: 220, 89
+  orig: 220, 89
+  offset: 0, 0
+  index: -1
+eye_1
+  rotate: false
+  xy: 2, 640
+  size: 81, 66
+  orig: 81, 66
+  offset: 0, 0
+  index: -1
+eye_0
+  rotate: false
+  xy: 87, 640
+  size: 54, 59
+  orig: 54, 59
+  offset: 0, 0
+  index: -1

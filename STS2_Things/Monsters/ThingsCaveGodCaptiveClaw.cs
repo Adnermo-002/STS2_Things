@@ -1,25 +1,26 @@
 using System.Collections.Generic;
+using Godot;
 using System.Linq;
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
-using MegaCrit.Sts2.Core.Nodes.Audio;
+using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Screens.Bestiary;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 using MegaCrit.Sts2.Core.Audio;
-using STS2_Things.Powers;
 using STS2_Things.Visuals;
 
 namespace STS2_Things.Monsters;
 
 /// <summary>
-/// 抓取模式下的山神石爪（拘禁之手）。
-/// 拥有独立 30 点生命值（进阶 35 点，多人每人 +20 点）。
+/// 抓取模式下的活体巨岩石爪（岩之手）。
+/// 拥有独立 30 点生命值（进阶 35 点，多人使用原版遭遇血量缩放）。
 /// 玩家打空此血条即可打碎石爪、解除牌型封印并提前将玩家安全放回地面！
 /// </summary>
 public sealed class ThingsCaveGodCaptiveClaw : MonsterModel
@@ -30,17 +31,12 @@ public sealed class ThingsCaveGodCaptiveClaw : MonsterModel
     public override bool ShouldDisappearFromDoom => false;
     public override float DeathAnimLengthOverride => 0.5f;
 
-    public override int MinInitialHp
-    {
-        get
-        {
-            int baseHp = AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 35, 30);
-            int playerCount = CombatState?.Players.Count ?? 1;
-            return baseHp + (playerCount > 1 ? (playerCount - 1) * 20 : 0);
-        }
-    }
+    protected override string VisualsPath => SceneHelper.GetScenePath("creature_visuals/things_cave_god_captive_claw");
 
+    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 35, 30);
     public override int MaxInitialHp => MinInitialHp;
+
+    public bool IsSlamResolved { get; set; }
 
     private NCaveGodBossBackground? Background =>
         (NCombatRoom.Instance?.Background ?? NBestiary.Instance?.Layout)?.GetNodeOrNull<NCaveGodBossBackground>("%CaveGod");
@@ -54,40 +50,29 @@ public sealed class ThingsCaveGodCaptiveClaw : MonsterModel
 
     private static Task CaptiveHoldMove(IReadOnlyList<Creature> _) => Task.CompletedTask;
 
-    public override async Task BeforeDeath(Creature creature)
+    public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        if (creature != Creature)
-            return;
-
-        NAudioManager.Instance?.PlayOneShot(DeathSfx);
-        SfxCmd.Play("event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_eruption");
-        VfxCmd.PlayOnCreatureCenters([Creature], "vfx/vfx_heavy_blunt");
-
-        // 1. 通知右手巨臂：石爪已被打破，下回合暴扣落空！
-        ThingsCaveGodRightHand? rightHand = CombatState?.Enemies
-            .Select(c => c.Monster).OfType<ThingsCaveGodRightHand>().FirstOrDefault();
-        rightHand?.OnHandBroken();
-
-        // 2. 移除所有玩家的二选一牌型禁锢
-        if (CombatState != null)
+        if (IsSlamResolved) return Task.CompletedTask;
+        if (creature == Creature && delta < 0m)
         {
-            foreach (Creature player in CombatState.PlayerCreatures)
-            {
-                if (player.HasPower<CaveGodMartialPower>())
-                {
-                    await PowerCmd.Remove<CaveGodMartialPower>(player);
-                }
-                if (player.HasPower<CaveGodArcanePower>())
-                {
-                    await PowerCmd.Remove<CaveGodArcanePower>(player);
-                }
-            }
+            Vector2? hitPos = creature.GetCreatureNode()?.VfxSpawnPosition ?? creature.GetCreatureNode()?.GlobalPosition;
+            Background?.PlayHurtAnim(forceGroan: true, hitPos: hitPos);
         }
+        return Task.CompletedTask;
+    }
 
-        // 3. 将被抓取的玩家安全平稳放回战台地面
-        if (Background != null)
+    public override async Task AfterDeath(PlayerChoiceContext choiceContext,
+        Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    {
+        if (creature != Creature || wasRemovalPrevented || IsSlamResolved) return;
+        ThingsCaveGodBody? body = CombatState?.Enemies.Select(c => c.Monster).OfType<ThingsCaveGodBody>().FirstOrDefault();
+        // A successful escape cancels the telegraphed slam. The body never substitutes an unseen hit.
+        if (body != null) await body.ReleaseCaptives(stun: true);
+        if (NCombatRoom.Instance != null)
         {
-            await Background.DropPlayersToGround(isSlam: false);
+            SfxCmd.Play("event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_eruption");
+            VfxCmd.PlayOnCreatureCenters([Creature], "vfx/vfx_rock_shatter");
+            NGame.Instance?.ScreenShake(ShakeStrength.Strong, ShakeDuration.Short);
         }
     }
 }

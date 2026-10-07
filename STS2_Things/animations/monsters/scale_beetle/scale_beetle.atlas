@@ -1,0 +1,173 @@
+scale_beetle.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+antenna_far
+  rotate: false
+  xy: 2, 2
+  size: 382, 578
+  orig: 382, 578
+  offset: 0, 0
+  index: -1
+antenna_near
+  rotate: false
+  xy: 388, 2
+  size: 454, 484
+  orig: 454, 484
+  offset: 0, 0
+  index: -1
+shell_near
+  rotate: false
+  xy: 846, 2
+  size: 649, 413
+  orig: 649, 413
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 584
+  size: 772, 386
+  orig: 772, 386
+  offset: 0, 0
+  index: -1
+collar
+  rotate: false
+  xy: 778, 584
+  size: 139, 368
+  orig: 139, 368
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 921, 584
+  size: 368, 356
+  orig: 368, 356
+  offset: 0, 0
+  index: -1
+neck_shield
+  rotate: false
+  xy: 1293, 584
+  size: 148, 355
+  orig: 148, 355
+  offset: 0, 0
+  index: -1
+shell_far
+  rotate: false
+  xy: 2, 974
+  size: 641, 335
+  orig: 641, 335
+  offset: 0, 0
+  index: -1
+leg_rear
+  rotate: false
+  xy: 647, 974
+  size: 257, 291
+  orig: 257, 291
+  offset: 0, 0
+  index: -1
+antenna_far_glow
+  rotate: false
+  xy: 908, 974
+  size: 191, 289
+  orig: 191, 289
+  offset: 0, 0
+  index: -1
+antenna_near_glow
+  rotate: false
+  xy: 1103, 974
+  size: 227, 242
+  orig: 227, 242
+  offset: 0, 0
+  index: -1
+leg_middle
+  rotate: false
+  xy: 1334, 974
+  size: 208, 241
+  orig: 208, 241
+  offset: 0, 0
+  index: -1
+leg_front
+  rotate: false
+  xy: 1546, 974
+  size: 439, 240
+  orig: 439, 240
+  offset: 0, 0
+  index: -1
+shell_near_glow
+  rotate: false
+  xy: 2, 1313
+  size: 324, 206
+  orig: 324, 206
+  offset: 0, 0
+  index: -1
+collar_glow
+  rotate: false
+  xy: 330, 1313
+  size: 70, 184
+  orig: 70, 184
+  offset: 0, 0
+  index: -1
+shell_far_glow
+  rotate: false
+  xy: 404, 1313
+  size: 320, 168
+  orig: 320, 168
+  offset: 0, 0
+  index: -1
+leg_far_front
+  rotate: false
+  xy: 728, 1313
+  size: 329, 126
+  orig: 329, 126
+  offset: 0, 0
+  index: -1
+jaw_far
+  rotate: false
+  xy: 1061, 1313
+  size: 52, 100
+  orig: 52, 100
+  offset: 0, 0
+  index: -1
+jaw_near
+  rotate: false
+  xy: 1117, 1313
+  size: 134, 99
+  orig: 134, 99
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 1255, 1313
+  size: 104, 98
+  orig: 104, 98
+  offset: 0, 0
+  index: -1
+leg_far_middle
+  rotate: false
+  xy: 1363, 1313
+  size: 129, 69
+  orig: 129, 69
+  offset: 0, 0
+  index: -1
+leg_far_rear
+  rotate: false
+  xy: 1496, 1313
+  size: 129, 69
+  orig: 129, 69
+  offset: 0, 0
+  index: -1
+eye_glow
+  rotate: false
+  xy: 1629, 1313
+  size: 52, 49
+  orig: 52, 49
+  offset: 0, 0
+  index: -1
+ground_shadow
+  rotate: false
+  xy: 2, 1523
+  size: 1127, 35
+  orig: 1127, 35
+  offset: 0, 0
+  index: -1

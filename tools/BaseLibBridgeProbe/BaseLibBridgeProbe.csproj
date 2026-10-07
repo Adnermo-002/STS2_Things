@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\ThingsConfigProbe\ConfigNetworkFakes.cs" Link="ConfigNetworkFakes.cs" />
     <Compile Remove="obj\**\*.cs" />
     <Compile Remove="bin\**\*.cs" />
     <Reference Include="sts2">

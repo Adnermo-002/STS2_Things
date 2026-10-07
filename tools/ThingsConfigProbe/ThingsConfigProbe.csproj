@@ -5,6 +5,7 @@
     <AssemblyName>ThingsConfigProbe</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <DefineConstants Condition="'$(Sts2TargetVersion)' == 'v107.1'">$(DefineConstants);STS2_V107_1</DefineConstants>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64</Sts2DataDir>
     <RuntimeDependencyDir Condition="'$(RuntimeDependencyDir)' == ''">D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64</RuntimeDependencyDir>
@@ -14,8 +15,13 @@
   <ItemGroup>
     <Compile Remove="obj\**\*.cs" />
     <Compile Remove="bin\**\*.cs" />
+    <Compile Remove="ConfigNetworkLiveProbe.cs" Condition="'$(Sts2TargetVersion)' == 'v107.1'" />
     <Reference Include="sts2">
       <HintPath>$(Sts2DataDir)\sts2.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Steamworks.NET">
+      <HintPath>$(RuntimeDependencyDir)\Steamworks.NET.dll</HintPath>
       <Private>true</Private>
     </Reference>
     <Reference Include="0Harmony">
@@ -31,7 +37,7 @@
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\MonoMod.Backports.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\MonoMod.ILHelpers.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Sentry.dll" />
-    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Sentry.Godot.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Sentry.Godot.dll" Condition="Exists('$(RuntimeDependencyDir)\Sentry.Godot.dll')" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SharpGen.Runtime.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SharpGen.Runtime.COM.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SmartFormat.dll" />

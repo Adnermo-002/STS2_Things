@@ -1,0 +1,21 @@
+{
+  "model": "gpt-image-2.5-sunburst",
+  "size": [
+    1536,
+    123
+  ],
+  "removed_decorations": [
+    {
+      "x": 529,
+      "y": 533,
+      "width": 104,
+      "height": 118
+    },
+    {
+      "x": 1504,
+      "y": 575,
+      "width": 85,
+      "height": 98
+    }
+  ]
+}

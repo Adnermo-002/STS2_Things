@@ -1,0 +1,64 @@
+{
+  "zhs": {
+    "events": {
+      "SHADOW_CLOAKROOM.title": "影子寄存处",
+      "SHADOW_CLOAKROOM.pages.INITIAL.description": "石壁间嵌着一间寄存处。你还没走近，自己的影子已经靠在柜台上，不耐烦地敲着桌面。\n\n柜员从一排空衣钩间抬起头，把一张收据推给你。\n\n「一张牌，[gold]{Gold}[/gold]枚金币。到这层的大门前，送还给你。我们会替你……[gold]收拾一下[/gold]。」",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.DEPOSIT.title": "递出一张牌",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.DEPOSIT.description": "支付[gold]{Gold}金币[/gold]。寄存[blue]{Cards}[/blue]张牌，本章Boss战前[green]升级[/green]并归还。",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.NO_GOLD.title": "已锁定",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.NO_GOLD.description": "需要[gold]{Gold}金币[/gold]。",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.NO_CARD.title": "已锁定",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.NO_CARD.description": "没有可寄存的牌。",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.ALREADY_STORED.title": "已锁定",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.ALREADY_STORED.description": "你已经领过一张收据了。",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.LEAVE.title": "把影子领走",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.LEAVE.description": "离开。",
+      "SHADOW_CLOAKROOM.selectionPrompt": "选择一张牌寄存。本章Boss战前升级并归还。",
+      "SHADOW_CLOAKROOM.pages.DEPOSITED.description": "柜员捏住牌的一角，轻轻一抖。它变成了一件薄薄的黑衣，被挂到身后的衣钩上。\n\n「不会弄丢吧？」\n\n柜员看了看你脚下。\n\n「你的影子知道路。」\n\n你收好收据。离开时，影子比平常轻快了一点。",
+      "SHADOW_CLOAKROOM.pages.LEAVE.description": "你招呼影子离开。它又敲了两下柜台，才不情愿地贴回脚下。\n\n柜员把收据收了回去。\n\n「下次请一起到。」",
+      "SHADOW_CLOAKROOM.pages.ABORTED.description": "你把伸出去的手收了回来。\n\n柜员没有催促，只把空衣钩转向了下一位。你脚下的影子叹了口气。",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.COINS.title": "认领零钱",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.COINS.description": "获得[blue]{SmallGold}[/blue][gold]金币[/gold]。",
+      "SHADOW_CLOAKROOM.pages.COINS.description": "影子从柜台缝里摸出几枚[gold]金币[/gold]。柜员看了一眼，没有拦它。\n\n[green]“失物终于有人领了。”[/green]"
+    },
+    "relics": {
+      "SHADOW_CLAIM_TICKET.title": "寄存收据",
+      "SHADOW_CLAIM_TICKET.description": "在本章Boss战前，归还并[green]升级[/green]寄存的牌。",
+      "SHADOW_CLAIM_TICKET.flavor": "「凭影领取。」"
+    },
+    "settings_ui": {
+      "STS2_THINGS-EVENT_SHADOW_CLOAKROOM_ENABLED.title": "影子寄存处 — 启用"
+    }
+  },
+  "eng": {
+    "events": {
+      "SHADOW_CLOAKROOM.title": "Shadow Cloakroom",
+      "SHADOW_CLOAKROOM.pages.INITIAL.description": "A cloakroom is tucked into the cavern wall. Your shadow is already at the counter, tapping its fingers impatiently.\n\nThe clerk looks up from a row of empty hooks and slides you a claim ticket.\n\n\"One card. [gold]{Gold}[/gold] Gold. Back before the big door. We will give it a little... [gold]attention[/gold].\"",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.DEPOSIT.title": "Hand Over a Card",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.DEPOSIT.description": "Pay [gold]{Gold} Gold[/gold]. Store [blue]{Cards}[/blue] card. It returns [green]Upgraded[/green] before this Act's Boss.",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.NO_GOLD.title": "Locked",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.NO_GOLD.description": "Requires [gold]{Gold} Gold[/gold].",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.NO_CARD.title": "Locked",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.NO_CARD.description": "No eligible cards to store.",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.ALREADY_STORED.title": "Locked",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.ALREADY_STORED.description": "You have already collected a claim ticket.",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.LEAVE.title": "Collect Your Shadow",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.LEAVE.description": "Leave.",
+      "SHADOW_CLOAKROOM.selectionPrompt": "Store a card. It returns Upgraded before this Act's Boss.",
+      "SHADOW_CLOAKROOM.pages.DEPOSITED.description": "The clerk takes the card by one corner and gives it a shake. It unfolds into a thin black coat, which goes on a hook behind the counter.\n\n\"You won't lose it?\"\n\nThe clerk glances at your feet.\n\n\"Your shadow knows the way.\"\n\nYou pocket the ticket. Your shadow seems a little lighter on the way out.",
+      "SHADOW_CLOAKROOM.pages.LEAVE.description": "You beckon your shadow away. It taps the counter twice more before reluctantly settling beneath your feet.\n\nThe clerk puts the ticket away.\n\n\"Next time, arrive together.\"",
+      "SHADOW_CLOAKROOM.pages.ABORTED.description": "You draw your hand back.\n\nThe clerk does not hurry you, simply turning the empty hook toward the next customer. Your shadow sighs.",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.COINS.title": "Claim the Loose Change",
+      "SHADOW_CLOAKROOM.pages.INITIAL.options.COINS.description": "Gain [blue]{SmallGold}[/blue] [gold]Gold[/gold].",
+      "SHADOW_CLOAKROOM.pages.COINS.description": "Your shadow fishes a few [gold]coins[/gold] out of a crack in the counter. The clerk makes no objection.\n\n[green]“Finally. Someone claimed them.”[/green]"
+    },
+    "relics": {
+      "SHADOW_CLAIM_TICKET.title": "Claim Ticket",
+      "SHADOW_CLAIM_TICKET.description": "Before this Act's Boss, return and [green]Upgrade[/green] the stored card.",
+      "SHADOW_CLAIM_TICKET.flavor": "\"Shadow required for collection.\""
+    },
+    "settings_ui": {
+      "STS2_THINGS-EVENT_SHADOW_CLOAKROOM_ENABLED.title": "Shadow Cloakroom — enabled"
+    }
+  }
+}

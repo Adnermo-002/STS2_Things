@@ -1,0 +1,44 @@
+{
+  "hollow_grotto": {
+    "root": "scenes/backgrounds/hollow_grotto/hollow_grotto_background.tscn",
+    "layers": [
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_00_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_01_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_02_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_03_a.tscn",
+      "scenes/backgrounds/hollow_grotto/layers/hollow_grotto_fg_a.tscn"
+    ]
+  },
+  "underdocks": {
+    "root": "scenes/backgrounds/underdocks/underdocks_background.tscn",
+    "layers": [
+      "scenes/backgrounds/underdocks/layers/underdocks_bg_00_a.tscn",
+      "scenes/backgrounds/underdocks/layers/underdocks_bg_01_a.tscn",
+      "scenes/backgrounds/underdocks/layers/underdocks_bg_02_a.tscn",
+      "scenes/backgrounds/underdocks/layers/underdocks_bg_03_b.tscn",
+      "scenes/backgrounds/underdocks/layers/underdocks_bg_04_b.tscn",
+      "scenes/backgrounds/underdocks/layers/underdocks_fg_b.tscn"
+    ]
+  },
+  "overgrowth": {
+    "root": "scenes/backgrounds/overgrowth/overgrowth_background.tscn",
+    "layers": [
+      "scenes/backgrounds/overgrowth/layers/overgrowth_bg_00_a.tscn",
+      "scenes/backgrounds/overgrowth/layers/overgrowth_bg_01_a.tscn",
+      "scenes/backgrounds/overgrowth/layers/overgrowth_bg_02_a.tscn",
+      "scenes/backgrounds/overgrowth/layers/overgrowth_bg_03_a.tscn",
+      "scenes/backgrounds/overgrowth/layers/overgrowth_bg_04_a.tscn",
+      "scenes/backgrounds/overgrowth/layers/overgrowth_fg_a.tscn"
+    ]
+  },
+  "glory": {
+    "root": "scenes/backgrounds/glory/glory_background.tscn",
+    "layers": [
+      "scenes/backgrounds/glory/layers/glory_bg_00_a.tscn",
+      "scenes/backgrounds/glory/layers/glory_bg_01_b.tscn",
+      "scenes/backgrounds/glory/layers/glory_bg_02_a.tscn",
+      "scenes/backgrounds/glory/layers/glory_bg_03_a.tscn",
+      "scenes/backgrounds/glory/layers/glory_fg_a.tscn"
+    ]
+  }
+}

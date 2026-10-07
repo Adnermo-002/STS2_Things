@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using MegaCrit.Sts2.Core.Animation;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Audio;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Ascension;
@@ -18,13 +20,66 @@ using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2_Things.Powers;
+using static STS2_Things.Compatibility.Sts2VersionCompatibility;
 
 namespace STS2_Things.Monsters;
 
-public sealed class OriginFogmog : MonsterModel
+// Native Spine 4.2 mesh rig (animations/monsters/origin_fogmog, source in tools/OriginFogmogRig);
+// ThingsSpineMonster maps Attack/PowerUp/Summon/Hit/Dead to the eight Spine animations.
+public sealed class OriginFogmog : ThingsSpineMonster
 {
     public const string IllusionMoveId = "ILLUSION_MOVE";
     public const string SwipeMoveId = "SWIPE_MOVE";
+    public const float SwipeContact = 0.64f;
+    public const float HeadbuttContact = 0.80f;
+    public const float SummonRelease = 0.82f;
+    public const float HealRelease = 0.68f;
+    public static readonly float[] TripleContacts = [0.48f, 0.94f, 1.40f];
+
+    protected override void AddExtraAnimationStates(CreatureAnimator animator, AnimState idle)
+    {
+        animator.AddAnyState("Headbutt", new AnimState("headbutt") { NextState = idle });
+        animator.AddAnyState("Triple", new AnimState("triple_attack") { NextState = idle });
+    }
+
+    private async Task WaitForStrike(string animation, float contact, float fallback)
+    {
+        var sprite = Creature.GetCreatureNode()?.Visuals?.SpineBody;
+        float wait = fallback;
+        using (TrackEntryScope(sprite?.TryGetAnimationState()?.GetCurrent(0), out MegaTrackEntry? track))
+            if (track != null && track.GetAnimationName() == animation)
+                wait = Math.Max(0, contact - track.GetTrackTime());
+        await Cmd.Wait(wait);
+        // Native instant mode skips waits. Commit the contact pose before hit VFX.
+        using var scope = TrackEntryScope(sprite?.TryGetAnimationState()?.GetCurrent(0), out MegaTrackEntry? current);
+        if (current != null && current.GetAnimationName() == animation && current.GetTrackTime() < contact)
+        {
+            current.SetMixDuration(0);
+            current.SetTrackTime(contact);
+            sprite!.BoundObject.Call("update_skeleton", 0f);
+        }
+    }
+
+    private async Task BeginStrike(string trigger, string animation, float contact)
+    {
+        await CreatureCmd.TriggerAnim(Creature, trigger, 0f);
+        await WaitForStrike(animation, contact, contact);
+    }
+
+    private async Task FinishMotion(string animation)
+    {
+        var sprite = Creature.GetCreatureNode()?.Visuals?.SpineBody;
+        float end;
+        using (TrackEntryScope(sprite?.TryGetAnimationState()?.GetCurrent(0), out MegaTrackEntry? track))
+        {
+            // Reactions and death may interrupt an attack. Let that new state win.
+            if (track == null || track.GetAnimationName() != animation) return;
+            end = track.GetAnimationEnd();
+        }
+        // The return steps belong to the move. Finish them before another actor
+        // starts; instant mode commits the resting pose without an extra wait.
+        await WaitForStrike(animation, end, 0f);
+    }
 
     // 对应CustomBgm "act1_boss_the_kin" 的FMOD参数
     private const string _trackName = "the_kin_progress";
@@ -76,7 +131,7 @@ public sealed class OriginFogmog : MonsterModel
     {
         await base.AfterAddedToRoom();
         // 初始化专属音乐参数（CustomBgm = act1_boss_the_kin）
-        NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 1f);
+        STS2_Things.Audio.ModMusicPolicy.UpdateParameter(_trackName, 1f);
         // ThingsOriginPower 的 Amount 是半血阈值，ShouldScaleInMultiplayer=true 会自动按玩家数缩放。
         // 必须用缩放前的原始 HP 计算，避免双重缩放导致阈值错误。
         var baseHp = Creature.MonsterMaxHpBeforeModification ?? Creature.MaxHp;
@@ -90,7 +145,7 @@ public sealed class OriginFogmog : MonsterModel
         if (creature == Creature)
         {
             // 死亡升调（the_kin_progress=5 触发 FMOD 自动化）
-            NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 5f);
+            STS2_Things.Audio.ModMusicPolicy.UpdateParameter(_trackName, 5f);
         }
         return Task.CompletedTask;
     }
@@ -105,7 +160,7 @@ public sealed class OriginFogmog : MonsterModel
         _hasTransformed = true;
         Log.Info("[OriginFogmog] Phase2 transition triggered!");
         SfxCmd.Play(CastSfx);
-        NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 2f);
+        STS2_Things.Audio.ModMusicPolicy.UpdateParameter(_trackName, 2f);
     }
 
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()
@@ -180,7 +235,8 @@ public sealed class OriginFogmog : MonsterModel
         if (!hasFreeSlot) return;
 
         SfxCmd.Play(CastSfx);
-        await CreatureCmd.TriggerAnim(Creature, "Summon", 0.75f);
+        await CreatureCmd.TriggerAnim(Creature, "Summon", 0f);
+        await WaitForStrike("summon", SummonRelease, SummonRelease);
         for (var i = 0; i < maxCount; i++)
         {
             // Re-evaluate after every add because CreatureCmd.Add can run hooks.
@@ -196,6 +252,7 @@ public sealed class OriginFogmog : MonsterModel
             var eye = await CreatureCmd.Add<OriginEyeWithTeeth>(combatState, slotName);
             await PowerCmd.Apply<OriginGainEnergyPower>(new ThrowingPlayerChoiceContext(), eye, 1m, Creature, null);
         }
+        await FinishMotion("summon");
     }
 
 
@@ -203,49 +260,72 @@ public sealed class OriginFogmog : MonsterModel
     {
         await DamageCmd.Attack(SwipeDamage)
             .FromMonster(this)
-            .WithAttackerAnim("Attack", 0.5f)
+            .WithNoAttackerAnim()
+            .AfterAttackerAnim(() => BeginStrike("Attack", "attack", SwipeContact))
             .WithAttackerFx(null, AttackSfx)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(null);
         await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Creature, 2m, Creature, null);
+        await FinishMotion("attack");
     }
 
     private async Task SwipeBlockMove(IReadOnlyList<Creature> targets)
     {
         await DamageCmd.Attack(SwipeDamage)
             .FromMonster(this)
-            .WithAttackerAnim("Attack", 0.5f)
+            .WithNoAttackerAnim()
+            .AfterAttackerAnim(() => BeginStrike("Attack", "attack", SwipeContact))
             .WithAttackerFx(null, AttackSfx)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(null);
         // Enemy move block is scaled exactly once by V110 MultiplayerScalingModel.
         await CreatureCmd.GainBlock(Creature, BlockAmount, ValueProp.Move, null);
+        await FinishMotion("attack");
     }
 
     private async Task HeadbuttMove(IReadOnlyList<Creature> targets)
     {
         await DamageCmd.Attack(HeadbuttDamage)
             .FromMonster(this)
-            .WithAttackerAnim("Attack", 0.5f)
+            .WithNoAttackerAnim()
+            .AfterAttackerAnim(() => BeginStrike("Headbutt", "headbutt", HeadbuttContact))
             .WithAttackerFx(null, AttackSfx)
-            .WithHitFx("vfx/vfx_attack_slash")
+            .WithHitFx("vfx/vfx_attack_blunt")
             .Execute(null);
+        await FinishMotion("headbutt");
     }
 
     private async Task TripleMove(IReadOnlyList<Creature> targets)
     {
+        int strike = 0;
         await DamageCmd.Attack(TripleDamage)
             .FromMonster(this)
             .WithHitCount(3)
-            .WithAttackerAnim("Attack", 0.5f)
+            .WithNoAttackerAnim()
+            .AfterAttackerAnim(async () =>
+            {
+                // Keep one native multi-hit command: AfterAttack and hit-count
+                // modifiers retain their original semantics.
+                int beat = strike++ % TripleContacts.Length;
+                if (beat == 0)
+                {
+                    if (strike > 1) await FinishMotion("triple_attack");
+                    await CreatureCmd.TriggerAnim(Creature, "Triple", 0f);
+                }
+                float previous = beat == 0 ? 0 : TripleContacts[beat - 1];
+                await WaitForStrike("triple_attack", TripleContacts[beat], TripleContacts[beat] - previous);
+            })
             .WithAttackerFx(null, AttackSfx)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(null);
+        await FinishMotion("triple_attack");
     }
 
     private async Task HealMove(IReadOnlyList<Creature> targets)
     {
-        await CreatureCmd.TriggerAnim(Creature, "PowerUp", 0.55f);
+        await CreatureCmd.TriggerAnim(Creature, "PowerUp", 0f);
+        await WaitForStrike("power_up", HealRelease, HealRelease);
         await CreatureCmd.Heal(Creature, HealAmount * CombatState.Players.Count);
+        await FinishMotion("power_up");
     }
 }

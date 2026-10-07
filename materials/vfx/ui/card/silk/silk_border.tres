@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+[ext_resource type="Shader" path="res://shaders/cards/silk_binding_border.gdshader" id="1"]
+[ext_resource type="Texture2D" path="res://images/vfx/ui/card/silk/native/ui_card_border_vignette.png" id="2"]
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1")
+shader_parameter/main_st = Vector4(1, 3, 0.25, 0)
+shader_parameter/mask_erosion = Vector2(0.4, 0.6)
+shader_parameter/mask = ExtResource("2")
+shader_parameter/effect_amount = 1.0

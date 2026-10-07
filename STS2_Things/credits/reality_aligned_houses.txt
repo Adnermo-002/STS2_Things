@@ -1,0 +1,22 @@
+Reality Aligned Houses / 对齐之屋
+
+Inspired by and adapted from:
+Level 995 - "Reality Aligned Houses", by RiemannHypothesis
+(also credited on the page as RiemannHypothesis/FoodPieIntegration), Backrooms Wiki.
+https://backrooms-wiki.wikidot.com/level-995
+Source license: Creative Commons Attribution-ShareAlike 3.0 Unported.
+https://creativecommons.org/licenses/by-sa/3.0/
+
+Changes: a new short encounter for the Depths in STS2_Things, new Chinese and
+English narrative, four gameplay choices (including a bounded repeatable route),
+and a new generated event illustration. Revision 1.19.1 moves the setting into
+an open prairie with two infinite rows of houses and a Frutiger Aero atmosphere.
+The source article's research-report wording and its photograph are not reused.
+The adapted narrative under REALITY_ALIGNED_HOUSES localization keys and the new
+reality_aligned_houses.png illustration are offered under CC BY-SA 3.0.
+Existing code and other assets retain their respective licenses.
+
+Illustration: gpt-image-2.5-sunburst through the imagegen skill's official CLI,
+using the user's configured API. Original STS2 event images were style/layout
+references. Generation prompts and artwork provenance are retained in the source
+project under source_assets/events/reality_aligned_houses/.

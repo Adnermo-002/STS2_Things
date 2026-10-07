@@ -44,9 +44,23 @@ var expectedResource = expectedTarget switch
 };
 const string expectedAssemblyName = "STS2_Things";
 const int minimumReasonableModelCount = 50;
-const int maximumReasonableModelCount = 80;
 string[] requiredModelNames =
 [
+    "STS2_Things.Acts.Depths",
+    "STS2_Things.Encounters.LanternFishWeak",
+    "STS2_Things.Encounters.LanternFishEncounter",
+    "STS2_Things.Monsters.LanternFish",
+    "STS2_Things.Encounters.SanguineLeechWeak",
+    "STS2_Things.Encounters.SanguineLeechEncounter",
+    "STS2_Things.Monsters.SanguineLeech",
+    "STS2_Things.Monsters.SilkMoth",
+    "STS2_Things.Encounters.SilkMothWeak",
+    "STS2_Things.Encounters.SilkMothEncounter",
+    "STS2_Things.Powers.SilkThreadPower",
+    "STS2_Things.Afflictions.SilkLead",
+    "STS2_Things.Afflictions.SilkBound",
+    "STS2_Things.Cards.LeechParasite",
+    "STS2_Things.Powers.LanternBlindnessPower",
     "STS2_Things.Cards.ThingsCollision",
     "STS2_Things.Enchantments.ThingsDisperse",
     "STS2_Things.Enchantments.ThingsSplit",
@@ -140,13 +154,16 @@ try
         .Select(type => type.FullName ?? type.Name)
         .ToHashSet(StringComparer.Ordinal);
     var modelCount = modelNames.Count;
-    if (modelCount is < minimumReasonableModelCount or > maximumReasonableModelCount)
+    if (modelCount < minimumReasonableModelCount)
     {
         throw new InvalidOperationException(
             $"Selected implementation exposes {modelCount} AbstractModel types; " +
-            $"expected a total between {minimumReasonableModelCount} and " +
-            $"{maximumReasonableModelCount}.");
+            $"expected at least {minimumReasonableModelCount}.");
     }
+    // New content legitimately grows this assembly. Reject foreign game models
+    // directly instead of imposing a ceiling that breaks after each content update.
+    if (modelNames.Any(name => !name.StartsWith("STS2_Things.", StringComparison.Ordinal)))
+        throw new InvalidOperationException("Selected implementation contains models outside the mod namespace.");
 
     var missingRequiredModels = requiredModelNames
         .Where(required => !modelNames.Contains(required))
@@ -319,6 +336,8 @@ static bool IsKnownModelBase(MetadataReader metadata, TypeReferenceHandle handle
     var name = metadata.GetString(metadata.GetTypeReference(handle).Name);
     return name is
         "AbstractModel" or
+        "ActModel" or
+        "AfflictionModel" or
         "CardModel" or
         "EncounterModel" or
         "EnchantmentModel" or

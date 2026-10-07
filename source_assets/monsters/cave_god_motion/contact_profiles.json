@@ -1,0 +1,750 @@
+[
+  {
+    "clip": "alternating_jabs",
+    "start": 0.32,
+    "hit": 0.64,
+    "hold": 0.72,
+    "end": 1,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -87.29317,
+      -187.48866
+    ],
+    "offset": [
+      74.32887,
+      -56.38585
+    ],
+    "size": [
+      287.51434,
+      225.95354
+    ],
+    "grab": false
+  },
+  {
+    "clip": "alternating_jabs",
+    "start": 1.02,
+    "hit": 1.34,
+    "hold": 1.42,
+    "end": 1.7,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      73.06318,
+      -184.11148
+    ],
+    "offset": [
+      -68.19306,
+      -32.29676
+    ],
+    "size": [
+      279.07236,
+      223.12585
+    ],
+    "grab": false
+  },
+  {
+    "clip": "alternating_jabs",
+    "start": 1.9,
+    "hit": 2.32,
+    "hold": 2.42,
+    "end": 3.35,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -94.36822,
+      -187.73482
+    ],
+    "offset": [
+      84.24138,
+      -63.62116
+    ],
+    "size": [
+      312.81059,
+      246.52389
+    ],
+    "grab": false
+  },
+  {
+    "clip": "alternating_jabs_angry",
+    "start": 0.32,
+    "hit": 0.64,
+    "hold": 0.72,
+    "end": 1,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -87.29317,
+      -187.48866
+    ],
+    "offset": [
+      74.32887,
+      -56.38585
+    ],
+    "size": [
+      287.51434,
+      225.95354
+    ],
+    "grab": false
+  },
+  {
+    "clip": "alternating_jabs_angry",
+    "start": 1.02,
+    "hit": 1.34,
+    "hold": 1.42,
+    "end": 1.7,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      73.06318,
+      -184.11148
+    ],
+    "offset": [
+      -68.19306,
+      -32.29676
+    ],
+    "size": [
+      279.07236,
+      223.12585
+    ],
+    "grab": false
+  },
+  {
+    "clip": "alternating_jabs_angry",
+    "start": 1.9,
+    "hit": 2.32,
+    "hold": 2.42,
+    "end": 3.35,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -94.36822,
+      -187.73482
+    ],
+    "offset": [
+      84.24138,
+      -63.62116
+    ],
+    "size": [
+      312.81059,
+      246.52389
+    ],
+    "grab": false
+  },
+  {
+    "clip": "central_slam",
+    "start": 1.05,
+    "hit": 1.88,
+    "hold": 2.1,
+    "end": 3.6,
+    "hand": "arm1_3",
+    "paired": true,
+    "center": [
+      -157.75154,
+      -215.16794
+    ],
+    "offset": [
+      -6.20549,
+      -64.00254
+    ],
+    "size": [
+      284.75669,
+      185.5274
+    ],
+    "grab": false
+  },
+  {
+    "clip": "central_slam",
+    "start": 1.05,
+    "hit": 1.88,
+    "hold": 2.1,
+    "end": 3.6,
+    "hand": "arm2_3",
+    "paired": true,
+    "center": [
+      159.30869,
+      -206.38021
+    ],
+    "offset": [
+      7.17406,
+      -55.2163
+    ],
+    "size": [
+      287.10144,
+      169.48091
+    ],
+    "grab": false
+  },
+  {
+    "clip": "central_slam_angry",
+    "start": 1.05,
+    "hit": 1.88,
+    "hold": 2.1,
+    "end": 3.6,
+    "hand": "arm1_3",
+    "paired": true,
+    "center": [
+      -157.75154,
+      -215.16794
+    ],
+    "offset": [
+      -6.20549,
+      -64.00254
+    ],
+    "size": [
+      284.75669,
+      185.5274
+    ],
+    "grab": false
+  },
+  {
+    "clip": "central_slam_angry",
+    "start": 1.05,
+    "hit": 1.88,
+    "hold": 2.1,
+    "end": 3.6,
+    "hand": "arm2_3",
+    "paired": true,
+    "center": [
+      159.30869,
+      -206.38021
+    ],
+    "offset": [
+      7.17406,
+      -55.2163
+    ],
+    "size": [
+      287.10144,
+      169.48091
+    ],
+    "grab": false
+  },
+  {
+    "clip": "double_fist_crush",
+    "start": 0.65,
+    "hit": 1.25,
+    "hold": 1.53,
+    "end": 3.18,
+    "hand": "arm1_3",
+    "paired": true,
+    "center": [
+      -56.24269,
+      -160.45605
+    ],
+    "offset": [
+      50.13418,
+      -69.17828
+    ],
+    "size": [
+      239.97642,
+      231.31837
+    ],
+    "grab": false
+  },
+  {
+    "clip": "double_fist_crush",
+    "start": 0.65,
+    "hit": 1.25,
+    "hold": 1.53,
+    "end": 3.18,
+    "hand": "arm2_3",
+    "paired": true,
+    "center": [
+      61.43821,
+      -158.0589
+    ],
+    "offset": [
+      -45.58205,
+      -46.65228
+    ],
+    "size": [
+      241.56496,
+      224.98607
+    ],
+    "grab": false
+  },
+  {
+    "clip": "double_fist_crush_angry",
+    "start": 0.65,
+    "hit": 1.25,
+    "hold": 1.53,
+    "end": 3.18,
+    "hand": "arm1_3",
+    "paired": true,
+    "center": [
+      -56.24269,
+      -160.45605
+    ],
+    "offset": [
+      50.13418,
+      -69.17828
+    ],
+    "size": [
+      239.97642,
+      231.31837
+    ],
+    "grab": false
+  },
+  {
+    "clip": "double_fist_crush_angry",
+    "start": 0.65,
+    "hit": 1.25,
+    "hold": 1.53,
+    "end": 3.18,
+    "hand": "arm2_3",
+    "paired": true,
+    "center": [
+      61.43821,
+      -158.0589
+    ],
+    "offset": [
+      -45.58205,
+      -46.65228
+    ],
+    "size": [
+      241.56496,
+      224.98607
+    ],
+    "grab": false
+  },
+  {
+    "clip": "front_sweep",
+    "start": 0.76,
+    "hit": 1.35,
+    "hold": 1.48,
+    "end": 3.22,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -95.24548,
+      -229.54409
+    ],
+    "offset": [
+      76.70897,
+      11.1339
+    ],
+    "size": [
+      269.15748,
+      225.10261
+    ],
+    "grab": false
+  },
+  {
+    "clip": "front_sweep_angry",
+    "start": 0.76,
+    "hit": 1.35,
+    "hold": 1.48,
+    "end": 3.22,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -95.24548,
+      -229.54409
+    ],
+    "offset": [
+      76.70897,
+      11.1339
+    ],
+    "size": [
+      269.15748,
+      225.10261
+    ],
+    "grab": false
+  },
+  {
+    "clip": "front_sweep_right",
+    "start": 0.76,
+    "hit": 1.35,
+    "hold": 1.48,
+    "end": 3.22,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      175.95282,
+      -162.63377
+    ],
+    "offset": [
+      -60.26654,
+      18.46499
+    ],
+    "size": [
+      245.57123,
+      229.5803
+    ],
+    "grab": false
+  },
+  {
+    "clip": "front_sweep_right_angry",
+    "start": 0.76,
+    "hit": 1.35,
+    "hold": 1.48,
+    "end": 3.22,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      175.95282,
+      -162.63377
+    ],
+    "offset": [
+      -60.26654,
+      18.46499
+    ],
+    "size": [
+      245.57123,
+      229.5803
+    ],
+    "grab": false
+  },
+  {
+    "clip": "card_snatch",
+    "start": 1,
+    "hit": 1.36,
+    "hold": 1.68,
+    "end": 3.08,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -22.94657,
+      -170.91028
+    ],
+    "offset": [
+      56.2518,
+      -55.54634
+    ],
+    "size": [
+      202.19571,
+      274.03558
+    ],
+    "grab": false
+  },
+  {
+    "clip": "card_snatch_angry",
+    "start": 1,
+    "hit": 1.36,
+    "hold": 1.68,
+    "end": 3.08,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -22.94657,
+      -170.91028
+    ],
+    "offset": [
+      56.2518,
+      -55.54634
+    ],
+    "size": [
+      202.19571,
+      274.03558
+    ],
+    "grab": false
+  },
+  {
+    "clip": "card_snatch_right",
+    "start": 1,
+    "hit": 1.36,
+    "hold": 1.68,
+    "end": 3.08,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      40.50192,
+      -171.41679
+    ],
+    "offset": [
+      -39.42678,
+      -55.84864
+    ],
+    "size": [
+      212.60751,
+      254.0955
+    ],
+    "grab": false
+  },
+  {
+    "clip": "card_snatch_right_angry",
+    "start": 1,
+    "hit": 1.36,
+    "hold": 1.68,
+    "end": 3.08,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      40.50192,
+      -171.41679
+    ],
+    "offset": [
+      -39.42678,
+      -55.84864
+    ],
+    "size": [
+      212.60751,
+      254.0955
+    ],
+    "grab": false
+  },
+  {
+    "clip": "weak_attack",
+    "start": 0.6,
+    "hit": 1.2,
+    "hold": 1.35,
+    "end": 2.5,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      53.99691,
+      -186.07354
+    ],
+    "offset": [
+      -77.47734,
+      -38.92963
+    ],
+    "size": [
+      271.64446,
+      243.73659
+    ],
+    "grab": false
+  },
+  {
+    "clip": "weak_attack_angry",
+    "start": 0.6,
+    "hit": 1.2,
+    "hold": 1.35,
+    "end": 2.5,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      53.99691,
+      -186.07354
+    ],
+    "offset": [
+      -77.47734,
+      -38.92963
+    ],
+    "size": [
+      271.64446,
+      243.73659
+    ],
+    "grab": false
+  },
+  {
+    "clip": "weak_attack_right",
+    "start": 0.6,
+    "hit": 1.2,
+    "hold": 1.35,
+    "end": 2.5,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -51.53381,
+      -209.84723
+    ],
+    "offset": [
+      79.62842,
+      -63.46937
+    ],
+    "size": [
+      285.40073,
+      252.73755
+    ],
+    "grab": false
+  },
+  {
+    "clip": "weak_attack_right_angry",
+    "start": 0.6,
+    "hit": 1.2,
+    "hold": 1.35,
+    "end": 2.5,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      -51.53381,
+      -209.84723
+    ],
+    "offset": [
+      79.62842,
+      -63.46937
+    ],
+    "size": [
+      285.40073,
+      252.73755
+    ],
+    "grab": false
+  },
+  {
+    "clip": "grab_player",
+    "start": 0.65,
+    "hit": 1.1,
+    "hold": 1.28,
+    "end": 2.2,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      1.18957,
+      -185.59385
+    ],
+    "offset": [
+      62.71323,
+      -44.41156
+    ],
+    "size": [
+      251.11048,
+      200.7603
+    ],
+    "grab": true
+  },
+  {
+    "clip": "grab_player_angry",
+    "start": 0.65,
+    "hit": 1.1,
+    "hold": 1.28,
+    "end": 2.2,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      1.18957,
+      -185.59385
+    ],
+    "offset": [
+      62.71323,
+      -44.41156
+    ],
+    "size": [
+      251.11048,
+      200.7603
+    ],
+    "grab": true
+  },
+  {
+    "clip": "grab_player_right",
+    "start": 0.65,
+    "hit": 1.1,
+    "hold": 1.28,
+    "end": 2.2,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      6.96608,
+      -165.63501
+    ],
+    "offset": [
+      -55.34599,
+      -25.05627
+    ],
+    "size": [
+      247.71313,
+      195.94006
+    ],
+    "grab": true
+  },
+  {
+    "clip": "grab_player_right_angry",
+    "start": 0.65,
+    "hit": 1.1,
+    "hold": 1.28,
+    "end": 2.2,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      6.96608,
+      -165.63501
+    ],
+    "offset": [
+      -55.34599,
+      -25.05627
+    ],
+    "size": [
+      247.71313,
+      195.94006
+    ],
+    "grab": true
+  },
+  {
+    "clip": "grab_slam",
+    "start": 0.22,
+    "hit": 0.75,
+    "hold": 0.83,
+    "end": 1.62,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      10.29959,
+      -179.51311
+    ],
+    "offset": [
+      71.57238,
+      -31.87166
+    ],
+    "size": [
+      251.46476,
+      211.6426
+    ],
+    "grab": true
+  },
+  {
+    "clip": "grab_slam_angry",
+    "start": 0.22,
+    "hit": 0.75,
+    "hold": 0.83,
+    "end": 1.62,
+    "hand": "arm1_3",
+    "paired": false,
+    "center": [
+      10.29959,
+      -179.51311
+    ],
+    "offset": [
+      71.57238,
+      -31.87166
+    ],
+    "size": [
+      251.46476,
+      211.6426
+    ],
+    "grab": true
+  },
+  {
+    "clip": "grab_slam_right",
+    "start": 0.22,
+    "hit": 0.75,
+    "hold": 0.83,
+    "end": 1.62,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      -1.17691,
+      -164.34308
+    ],
+    "offset": [
+      -63.20243,
+      -16.63684
+    ],
+    "size": [
+      246.70242,
+      201.46477
+    ],
+    "grab": true
+  },
+  {
+    "clip": "grab_slam_right_angry",
+    "start": 0.22,
+    "hit": 0.75,
+    "hold": 0.83,
+    "end": 1.62,
+    "hand": "arm2_3",
+    "paired": false,
+    "center": [
+      -1.17691,
+      -164.34308
+    ],
+    "offset": [
+      -63.20243,
+      -16.63684
+    ],
+    "size": [
+      246.70242,
+      201.46477
+    ],
+    "grab": true
+  }
+]

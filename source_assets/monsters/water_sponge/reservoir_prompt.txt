@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: One hand-painted buff icon for Slay the Spire 2, readable at 64x64 pixels.
+Input image: Reference only for the game's compact painted icon style and edge quality; do not copy its subject.
+Subject: A single fat irregular BLUE WATER DROP with three simple pale cyan round bubbles inside it. Bold asymmetric hand-painted silhouette, deep teal shadow on the lower-right, one broad cream-blue light plane, very few marks. Four flat colors, selective rough edges, no thin outlines. The drop is a water reservoir, not a gem or bottle. The entire symbol fills the central 75 percent of a square image. No letters, numbers, circular badge, border, UI or extra items. Matte painted game art, no photorealism, 3D shading or glossy vector logo.
+Backdrop: Pure flat green #00FF00, no green in the symbol, no shadows on the backdrop, no transparency checkerboard.

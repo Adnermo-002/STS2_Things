@@ -35,7 +35,7 @@ namespace STS2_Things.Monsters;
 ///     第4次: 2点力量 + 1层死亡律动
 ///     之后循环: n+1层人工制品 + 外壳HP/(n+1) + 2点力量 + 1层死亡律动
 /// </summary>
-public sealed class ThingsTheLegacy : MonsterModel
+public sealed class ThingsTheLegacy : ThingsSpineMonster
 {
     // The encounter lives in Underdocks, so it uses an act1_b track that is
     // already loaded by the native Act music lifecycle.
@@ -75,7 +75,7 @@ public sealed class ThingsTheLegacy : MonsterModel
     {
         await base.AfterAddedToRoom();
         // 初始化专属音乐参数（CustomBgm = act1_b_boss_waterfall_giant）
-        NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 1f);
+        STS2_Things.Audio.ModMusicPolicy.UpdateParameter(_trackName, 1f);
         // 心跳循环：血量越低跳得越快
         _heartbeatCts = new CancellationTokenSource();
         _ = HeartbeatLoop(_heartbeatCts.Token);
@@ -221,7 +221,7 @@ public sealed class ThingsTheLegacy : MonsterModel
         {
             StopHeartbeat();
             // 死亡升调（vantom_progress=5 触发FMOD升调自动化）
-            NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 5f);
+            STS2_Things.Audio.ModMusicPolicy.UpdateParameter(_trackName, 5f);
         }
         return Task.CompletedTask;
     }

@@ -1,0 +1,285 @@
+bowlbug_progenitor.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+rear_shell
+  rotate: false
+  xy: 2, 2
+  size: 524, 673
+  orig: 524, 673
+  offset: 0, 0
+  index: -1
+membrane_rear
+  rotate: false
+  xy: 530, 2
+  size: 803, 587
+  orig: 803, 587
+  offset: 0, 0
+  index: -1
+egg_sac
+  rotate: false
+  xy: 1337, 2
+  size: 473, 562
+  orig: 473, 562
+  offset: 0, 0
+  index: -1
+shell_mid
+  rotate: false
+  xy: 2, 679
+  size: 406, 512
+  orig: 406, 512
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 412, 679
+  size: 376, 501
+  orig: 376, 501
+  offset: 0, 0
+  index: -1
+membrane_front
+  rotate: false
+  xy: 792, 679
+  size: 512, 458
+  orig: 512, 458
+  offset: 0, 0
+  index: -1
+leaf_plate
+  rotate: false
+  xy: 1308, 679
+  size: 184, 382
+  orig: 184, 382
+  offset: 0, 0
+  index: -1
+crest_3
+  rotate: false
+  xy: 1496, 679
+  size: 226, 330
+  orig: 226, 330
+  offset: 0, 0
+  index: -1
+shell_front
+  rotate: false
+  xy: 1726, 679
+  size: 286, 286
+  orig: 286, 286
+  offset: 0, 0
+  index: -1
+egg_sac_glow
+  rotate: false
+  xy: 2, 1195
+  size: 223, 246
+  orig: 223, 246
+  offset: 0, 0
+  index: -1
+rear_shell_glow
+  rotate: false
+  xy: 229, 1195
+  size: 244, 216
+  orig: 244, 216
+  offset: 0, 0
+  index: -1
+crest_1
+  rotate: false
+  xy: 477, 1195
+  size: 102, 214
+  orig: 102, 214
+  offset: 0, 0
+  index: -1
+crest_2
+  rotate: false
+  xy: 583, 1195
+  size: 152, 202
+  orig: 152, 202
+  offset: 0, 0
+  index: -1
+crest_4
+  rotate: false
+  xy: 739, 1195
+  size: 165, 202
+  orig: 165, 202
+  offset: 0, 0
+  index: -1
+dome2
+  rotate: false
+  xy: 908, 1195
+  size: 154, 178
+  orig: 154, 178
+  offset: 0, 0
+  index: -1
+mandible_upper
+  rotate: false
+  xy: 1066, 1195
+  size: 119, 170
+  orig: 119, 170
+  offset: 0, 0
+  index: -1
+leg2_shin
+  rotate: false
+  xy: 1189, 1195
+  size: 88, 154
+  orig: 88, 154
+  offset: 0, 0
+  index: -1
+mandible_lower
+  rotate: false
+  xy: 1281, 1195
+  size: 204, 150
+  orig: 204, 150
+  offset: 0, 0
+  index: -1
+leg1_shin
+  rotate: false
+  xy: 1489, 1195
+  size: 95, 144
+  orig: 95, 144
+  offset: 0, 0
+  index: -1
+leg3_shin
+  rotate: false
+  xy: 1588, 1195
+  size: 102, 143
+  orig: 102, 143
+  offset: 0, 0
+  index: -1
+shell_mid_glow
+  rotate: false
+  xy: 1694, 1195
+  size: 182, 136
+  orig: 182, 136
+  offset: 0, 0
+  index: -1
+dome3
+  rotate: false
+  xy: 2, 1445
+  size: 171, 133
+  orig: 171, 133
+  offset: 0, 0
+  index: -1
+leg4_shin
+  rotate: false
+  xy: 177, 1445
+  size: 114, 131
+  orig: 114, 131
+  offset: 0, 0
+  index: -1
+leg5_shin
+  rotate: false
+  xy: 295, 1445
+  size: 98, 129
+  orig: 98, 129
+  offset: 0, 0
+  index: -1
+head_glow
+  rotate: false
+  xy: 397, 1445
+  size: 76, 124
+  orig: 76, 124
+  offset: 0, 0
+  index: -1
+crest_5
+  rotate: false
+  xy: 477, 1445
+  size: 102, 122
+  orig: 102, 122
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 583, 1445
+  size: 102, 118
+  orig: 102, 118
+  offset: 0, 0
+  index: -1
+leg1_upper
+  rotate: false
+  xy: 689, 1445
+  size: 147, 103
+  orig: 147, 103
+  offset: 0, 0
+  index: -1
+leg2_upper
+  rotate: false
+  xy: 840, 1445
+  size: 71, 85
+  orig: 71, 85
+  offset: 0, 0
+  index: -1
+leg3_upper
+  rotate: false
+  xy: 915, 1445
+  size: 73, 77
+  orig: 73, 77
+  offset: 0, 0
+  index: -1
+leg5_upper
+  rotate: false
+  xy: 992, 1445
+  size: 70, 76
+  orig: 70, 76
+  offset: 0, 0
+  index: -1
+eye_glow
+  rotate: false
+  xy: 1066, 1445
+  size: 62, 69
+  orig: 62, 69
+  offset: 0, 0
+  index: -1
+leg4_upper
+  rotate: false
+  xy: 1132, 1445
+  size: 69, 68
+  orig: 69, 68
+  offset: 0, 0
+  index: -1
+shell_front_glow
+  rotate: false
+  xy: 1205, 1445
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+pupil
+  rotate: false
+  xy: 1265, 1445
+  size: 41, 51
+  orig: 41, 51
+  offset: 0, 0
+  index: -1
+leg2_claw
+  rotate: false
+  xy: 1310, 1445
+  size: 60, 50
+  orig: 60, 50
+  offset: 0, 0
+  index: -1
+leg1_claw
+  rotate: false
+  xy: 1374, 1445
+  size: 64, 49
+  orig: 64, 49
+  offset: 0, 0
+  index: -1
+leg5_claw
+  rotate: false
+  xy: 1442, 1445
+  size: 73, 48
+  orig: 73, 48
+  offset: 0, 0
+  index: -1
+leg4_claw
+  rotate: false
+  xy: 1519, 1445
+  size: 85, 48
+  orig: 85, 48
+  offset: 0, 0
+  index: -1
+leg3_claw
+  rotate: false
+  xy: 1608, 1445
+  size: 72, 46
+  orig: 72, 46
+  offset: 0, 0
+  index: -1

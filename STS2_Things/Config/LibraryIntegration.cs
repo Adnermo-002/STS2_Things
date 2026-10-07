@@ -19,6 +19,7 @@ internal static class LibraryIntegration
 {
     private const string BaseLibAssemblyName = "BaseLib";
     private const string RitsuLibAssemblyName = "STS2-RitsuLib";
+    private const string RitsuSettingsAssemblyName = "STS2-RitsuLib.Settings";
     private const string BridgeFileName = "STS2_Things.BaseLibBridge.dll";
     private const string BridgeEntryTypeName = "STS2_Things.BaseLibBridge.BridgeEntry";
     private const string RitsuMirrorTypeName =
@@ -46,7 +47,7 @@ internal static class LibraryIntegration
             string name = assembly.GetName().Name ?? string.Empty;
             if (name == BaseLibAssemblyName)
                 TryRegisterBaseLib();
-            else if (name == RitsuLibAssemblyName)
+            else if (name is RitsuLibAssemblyName or RitsuSettingsAssemblyName)
                 TryRegisterRitsuLib(assembly);
         }
     }
@@ -133,8 +134,8 @@ internal static class LibraryIntegration
                 modifiers: null);
             if (register is null)
             {
-                MegaCrit.Sts2.Core.Logging.Log.Warn(
-                    "STS2_Things: RitsuLib mirror API was not found; skipping settings page registration.");
+                // Newer RitsuLib versions keep the mirror in the shared Settings
+                // assembly. Its bootstrap can be present before that is loaded.
                 return;
             }
 
@@ -144,7 +145,7 @@ internal static class LibraryIntegration
                  typeof(RitsuLibInteropProvider).Assembly.GetName().Name]) ?? 0);
             MegaCrit.Sts2.Core.Logging.Log.Info(
                 $"STS2_Things: registered the config page with RitsuLib ({registered} page(s)).");
-            _ritsuDone = true;
+            _ritsuDone = registered > 0;
         }
         catch (Exception exception)
         {

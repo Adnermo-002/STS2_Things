@@ -1,0 +1,194 @@
+origin_fogmog.png
+size: 2048,1088
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+blink 1
+  rotate: false
+  xy: 1464, 597
+  size: 212, 138
+  orig: 212, 138
+  offset: 0, 0
+  index: -1
+blink 1 copy
+  rotate: false
+  xy: 1678, 597
+  size: 212, 138
+  orig: 212, 138
+  offset: 0, 0
+  index: -1
+blink 1 copy 2
+  rotate: false
+  xy: 2, 895
+  size: 212, 138
+  orig: 212, 138
+  offset: 0, 0
+  index: -1
+blink 1 copy 3
+  rotate: false
+  xy: 216, 895
+  size: 212, 138
+  orig: 212, 138
+  offset: 0, 0
+  index: -1
+bod
+  rotate: false
+  xy: 2, 2
+  size: 440, 593
+  orig: 440, 593
+  offset: 0, 0
+  index: -1
+bottom arm
+  rotate: false
+  xy: 1630, 2
+  size: 300, 304
+  orig: 300, 304
+  offset: 0, 0
+  index: -1
+bottom foot
+  rotate: false
+  xy: 1328, 895
+  size: 257, 106
+  orig: 257, 106
+  offset: 0, 0
+  index: -1
+bottom leg
+  rotate: false
+  xy: 1205, 597
+  size: 257, 195
+  orig: 257, 195
+  offset: 0, 0
+  index: -1
+cap_glow
+  rotate: false
+  xy: 760, 597
+  size: 443, 209
+  orig: 443, 209
+  offset: 0, 0
+  index: -1
+bottom finger 3
+  rotate: false
+  xy: 1670, 895
+  size: 44, 95
+  orig: 44, 95
+  offset: 0, 0
+  index: -1
+bottom finger 1
+  rotate: false
+  xy: 1716, 895
+  size: 39, 88
+  orig: 39, 88
+  offset: 0, 0
+  index: -1
+bottom finger 2
+  rotate: false
+  xy: 1802, 895
+  size: 48, 63
+  orig: 48, 63
+  offset: 0, 0
+  index: -1
+top finger 2
+  rotate: false
+  xy: 1757, 895
+  size: 43, 76
+  orig: 43, 76
+  offset: 0, 0
+  index: -1
+top finger 1
+  rotate: false
+  xy: 1587, 895
+  size: 40, 96
+  orig: 40, 96
+  offset: 0, 0
+  index: -1
+top finger 3
+  rotate: false
+  xy: 1629, 895
+  size: 39, 96
+  orig: 39, 96
+  offset: 0, 0
+  index: -1
+top finger 4
+  rotate: false
+  xy: 1852, 895
+  size: 30, 56
+  orig: 30, 56
+  offset: 0, 0
+  index: -1
+eyes
+  rotate: false
+  xy: 430, 895
+  size: 212, 138
+  orig: 212, 138
+  offset: 0, 0
+  index: -1
+eyes_dry
+  rotate: false
+  xy: 644, 895
+  size: 212, 138
+  orig: 212, 138
+  offset: 0, 0
+  index: -1
+eyes_lookleft
+  rotate: false
+  xy: 858, 895
+  size: 212, 138
+  orig: 212, 138
+  offset: 0, 0
+  index: -1
+face_glow
+  rotate: false
+  xy: 2, 597
+  size: 220, 296
+  orig: 220, 296
+  offset: 0, 0
+  index: -1
+head top
+  rotate: false
+  xy: 444, 2
+  size: 886, 418
+  orig: 886, 418
+  offset: 0, 0
+  index: -1
+moth_dry
+  rotate: false
+  xy: 224, 597
+  size: 138, 233
+  orig: 138, 233
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 364, 597
+  size: 138, 233
+  orig: 138, 233
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 2, 1035
+  size: 256, 48
+  orig: 256, 48
+  offset: 0, 0
+  index: -1
+top arm
+  rotate: false
+  xy: 1332, 2
+  size: 296, 370
+  orig: 296, 370
+  offset: 0, 0
+  index: -1
+top foot
+  rotate: false
+  xy: 1072, 895
+  size: 254, 125
+  orig: 254, 125
+  offset: 0, 0
+  index: -1
+top leg
+  rotate: false
+  xy: 504, 597
+  size: 254, 212
+  orig: 254, 212
+  offset: 0, 0
+  index: -1

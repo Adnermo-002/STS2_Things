@@ -1,0 +1,33 @@
+crystal_snail.png
+size: 2048,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shell
+  rotate: false
+  xy: 2, 2
+  size: 822, 794
+  orig: 822, 794
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 800
+  size: 1289, 430
+  orig: 1289, 430
+  offset: 0, 0
+  index: -1
+eye_1
+  rotate: false
+  xy: 1295, 800
+  size: 75, 53
+  orig: 75, 53
+  offset: 0, 0
+  index: -1
+eye_0
+  rotate: false
+  xy: 1374, 800
+  size: 65, 48
+  orig: 65, 48
+  offset: 0, 0
+  index: -1

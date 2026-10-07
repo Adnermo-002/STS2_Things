@@ -1,0 +1,4 @@
+Use case: stylized-concept
+Asset type: Slay the Spire 2 native power icon, readable at 64 pixels.
+Primary request: one simple organic pictogram of two small asymmetrical mushroom caps joined at their stalks by a single thick twisting root loop. One cap taller, one shorter. Ivory/gold root, subdued moss green and muted ochre caps. Communicate a shared living root, with very few chunky shapes and one dark recessed seam.
+Style: match original Slay the Spire power symbols, hand-painted matte color blocks, restrained highlights, irregular soft dark edging, low detail, no realistic texture, no glossy surface, no badge or surrounding circle. Single centered cutout on genuinely transparent background with wide empty margin. No text, no numbers, no shadow, no decoration, no watermark.

@@ -1,0 +1,170 @@
+{
+  "model": "gpt-image-2",
+  "mode": "CLI Image API edit",
+  "parts": {
+    "head": {
+      "crop": {
+        "x": 53,
+        "y": 366,
+        "w": 368,
+        "h": 351
+      },
+      "raw_rgba_sha256": "d6e48bf467f5d5b6a0f365b90400dfc2e24f2784ae261b12b9d598915f7eff67",
+      "patched_rgba_sha256": "0518ee54faa158cf2f147de4a546040112c760ff017dfe0fbdfe6d228ed5592c",
+      "generated_sha256": "36882826a9f980fe7bc0846a5029252b0a16d9f3888051c39c766d79c8086b46",
+      "edited_pixels": 33404,
+      "protected_pixel_error": 0,
+      "registration_score": 0.98649,
+      "registration": [
+        [
+          0.9971489906311035,
+          0.0021180000621825457,
+          0.6277279853820801
+        ],
+        [
+          0.0024689999409019947,
+          0.9999930262565613,
+          -0.44513899087905884
+        ]
+      ],
+      "colour_correction": [
+        [
+          0.89337,
+          15.87815
+        ],
+        [
+          0.90433,
+          17.62469
+        ],
+        [
+          1.05284,
+          1.02737
+        ]
+      ],
+      "prompt": "tools/ScaleBeetleRig/art_edits/head.txt"
+    },
+    "shell_near": {
+      "crop": {
+        "x": 478,
+        "y": 396,
+        "w": 649,
+        "h": 413
+      },
+      "raw_rgba_sha256": "1903632f8a7418918ffd09203b0746a9939208183412d536548ca8dba9c8b5b4",
+      "patched_rgba_sha256": "435b5d71dacdff212e2992298d421a7d21ca6bb27c612a75e7f422a62601f3cf",
+      "generated_sha256": "cfc95b0eee4ef02abc3bbe0284a19a315f5e4977f4abc46c6201a93209578cc9",
+      "edited_pixels": 27840,
+      "protected_pixel_error": 0,
+      "registration_score": 0.91787,
+      "registration": [
+        [
+          0.9990519881248474,
+          0.0032949999440461397,
+          -0.12789399921894073
+        ],
+        [
+          -0.002051000017672777,
+          1.0029410123825073,
+          0.35836300253868103
+        ]
+      ],
+      "colour_correction": [
+        [
+          0.93875,
+          10.1333
+        ],
+        [
+          0.91653,
+          11.62793
+        ],
+        [
+          0.8744,
+          7.23958
+        ]
+      ],
+      "prompt": "tools/ScaleBeetleRig/art_edits/shell_near.txt"
+    },
+    "shell_far": {
+      "crop": {
+        "x": 486,
+        "y": 278,
+        "w": 641,
+        "h": 335
+      },
+      "raw_rgba_sha256": "0949cd35aaee76a19a46b9975446a8faf24f588f6caa0e599d4fb5f4e9fa266b",
+      "patched_rgba_sha256": "600352e3d8451a3637f23affd900d7cb4cf21fd2b44ef03836d4389b083ce91e",
+      "generated_sha256": "66619d1f1902872d7a79d9e1eef5568efc6f2c012a7d6c5ab7c627d4bab66f7c",
+      "edited_pixels": 49285,
+      "protected_pixel_error": 0,
+      "registration_score": 0.99242,
+      "registration": [
+        [
+          1.0013940334320068,
+          -0.0015539999585598707,
+          -0.08158499747514725
+        ],
+        [
+          -0.000826000003144145,
+          1.0021840333938599,
+          0.03307700157165527
+        ]
+      ],
+      "colour_correction": [
+        [
+          0.88292,
+          18.0
+        ],
+        [
+          0.8692,
+          18.0
+        ],
+        [
+          0.85,
+          14.73866
+        ]
+      ],
+      "prompt": "tools/ScaleBeetleRig/art_edits/shell_far.txt"
+    },
+    "body": {
+      "crop": {
+        "x": 305,
+        "y": 419,
+        "w": 772,
+        "h": 386
+      },
+      "raw_rgba_sha256": "68fa8a90d83418811b2201b4b2b25d086bbbae3cadd6ad6ea59beef203703508",
+      "patched_rgba_sha256": "3b6475e93c5c5f73e97ed1f9a08b99e11e3e2767f8a8ef233c923f3058b3e95b",
+      "generated_sha256": "d25ad38710c80e923b705d4d7cc6b660643675aa9d69a1cfe3e036d74eaed35b",
+      "edited_pixels": 186971,
+      "protected_pixel_error": 0,
+      "registration_score": 0.98043,
+      "registration": [
+        [
+          0.9976909756660461,
+          -0.00634399987757206,
+          2.5583200454711914
+        ],
+        [
+          -0.006575999781489372,
+          0.9917539954185486,
+          3.5713329315185547
+        ]
+      ],
+      "colour_correction": [
+        [
+          0.9402,
+          6.29307
+        ],
+        [
+          0.9339,
+          9.72357
+        ],
+        [
+          0.95445,
+          -0.17386
+        ]
+      ],
+      "prompt": "tools/ScaleBeetleRig/art_edits/body.txt"
+    }
+  }
+}

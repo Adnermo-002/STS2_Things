@@ -31,8 +31,21 @@ unique_name_in_owner = true
 anchors_preset = 0
 mouse_filter = 2
 
+[node name="StolenCardPosLeft" type="Marker2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_as_relative = false
+scale = Vector2(0.5, 0.5)
+
+[node name="StolenCardPosRight" type="Marker2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_as_relative = false
+scale = Vector2(0.5, 0.5)
+
 [node name="CaveGodArms" type="SpineSprite" parent="."]
 unique_name_in_owner = true
+z_as_relative = false
 skeleton_data_res = ExtResource("3_skel_data")
 preview_animation = "idle_front"
 position = Vector2(0, 15)

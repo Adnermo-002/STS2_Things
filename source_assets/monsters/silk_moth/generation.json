@@ -1,0 +1,20 @@
+{
+  "model": "gpt-image-2.5-sunburst",
+  "mode": "imagegen bundled CLI edit with vanilla style references",
+  "prompts": [
+    "character_prompt.txt",
+    "power_prompt.txt"
+  ],
+  "quality": "high",
+  "references": [
+    "STS2-V111/animations/monsters/thieving_hopper/thievinghopper.png",
+    "STS2-V111/animations/monsters/wriggler/wriggler.png",
+    "source_assets/ui/depths_icons_v2/reference_native.png"
+  ],
+  "files": {
+    "character_generated.png": "e50342cc4ee79e301e00b898f462589df7d041954c5fd58f7e10991e2a15760a",
+    "character_final.png": "31eb70c90d8556f393c550605b908106108850e94791f904e56fc747601cad28",
+    "power_generated.png": "61d6ac5b02fb72eed253e5d2d4426f04bba86b3c31e580070dd9d8e4fe63e26e",
+    "power_final.png": "9d02018ce1b1596db6bcc72cdf725044c06b5c3e91e8e59354787620e8e342d2"
+  }
+}

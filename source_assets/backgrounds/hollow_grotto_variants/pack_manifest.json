@@ -1,0 +1,254 @@
+[
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_00.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_00.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_00.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_00.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_moss_00.png-e9507b7171a60189b10dfd66355f62f7.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_moss_00.png-e9507b7171a60189b10dfd66355f62f7.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_01.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_01.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_01.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_01.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_moss_01.png-6aa394b00596e66ee6ae20894f4a78e9.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_moss_01.png-6aa394b00596e66ee6ae20894f4a78e9.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_02.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_02.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_02.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_02.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_moss_02.png-604b5eab516f9575d36c0fae266d8d2a.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_moss_02.png-604b5eab516f9575d36c0fae266d8d2a.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_03.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_03.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_03.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_03.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_moss_03.png-4ffebe141431fe35b069baa48054cb65.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_moss_03.png-4ffebe141431fe35b069baa48054cb65.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_fg.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_fg.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_moss/hollow_grotto_moss_fg.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_moss\\hollow_grotto_moss_fg.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_moss_fg.png-8ac04054a804132447f649a31a00d127.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_moss_fg.png-8ac04054a804132447f649a31a00d127.bptc.ctex"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_moss/hollow_grotto_moss_background.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_moss\\hollow_grotto_moss_background.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_00_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_moss\\layers\\hollow_grotto_moss_bg_00_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_01_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_moss\\layers\\hollow_grotto_moss_bg_01_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_02_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_moss\\layers\\hollow_grotto_moss_bg_02_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_bg_03_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_moss\\layers\\hollow_grotto_moss_bg_03_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_moss/layers/hollow_grotto_moss_fg_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_moss\\layers\\hollow_grotto_moss_fg_a.tscn"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_00.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_00.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_00.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_00.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_ember_00.png-7a53c39f44cb96a2009ede770c07d590.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_ember_00.png-7a53c39f44cb96a2009ede770c07d590.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_01.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_01.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_01.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_01.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_ember_01.png-3a2e51b2de63bf275433bbb88301224e.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_ember_01.png-3a2e51b2de63bf275433bbb88301224e.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_02.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_02.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_02.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_02.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_ember_02.png-8fcd905a5e084150210188806bfe394b.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_ember_02.png-8fcd905a5e084150210188806bfe394b.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_03.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_03.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_03.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_03.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_ember_03.png-5430c44fd3d71e116f6cc70c29a72bcc.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_ember_03.png-5430c44fd3d71e116f6cc70c29a72bcc.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_fg.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_fg.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_ember/hollow_grotto_ember_fg.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_ember\\hollow_grotto_ember_fg.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_ember_fg.png-e6fbcae06934037427ca6eb28b0db8bc.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_ember_fg.png-e6fbcae06934037427ca6eb28b0db8bc.bptc.ctex"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_ember/hollow_grotto_ember_background.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_ember\\hollow_grotto_ember_background.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_00_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_ember\\layers\\hollow_grotto_ember_bg_00_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_01_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_ember\\layers\\hollow_grotto_ember_bg_01_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_02_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_ember\\layers\\hollow_grotto_ember_bg_02_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_bg_03_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_ember\\layers\\hollow_grotto_ember_bg_03_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_ember/layers/hollow_grotto_ember_fg_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_ember\\layers\\hollow_grotto_ember_fg_a.tscn"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_00.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_00.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_00.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_00.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_violet_00.png-9569d4efbf9cdc324e224081b0a91039.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_violet_00.png-9569d4efbf9cdc324e224081b0a91039.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_01.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_01.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_01.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_01.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_violet_01.png-2709936aebc745e9f15d05d26f97f4ea.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_violet_01.png-2709936aebc745e9f15d05d26f97f4ea.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_02.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_02.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_02.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_02.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_violet_02.png-341ab1a5ab895fdb7f011ada31db77fb.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_violet_02.png-341ab1a5ab895fdb7f011ada31db77fb.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_03.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_03.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_03.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_03.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_violet_03.png-75535b675bb63416a025e5e2c37672d6.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_violet_03.png-75535b675bb63416a025e5e2c37672d6.bptc.ctex"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_fg.png",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_fg.png"
+  },
+  {
+    "resource": "res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_fg.png.import",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\images\\rooms\\hollow_grotto_violet\\hollow_grotto_violet_fg.png.import"
+  },
+  {
+    "resource": "res://.godot/imported/hollow_grotto_violet_fg.png-d1027433f43458bc7f9590a75436bbd4.bptc.ctex",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\source_assets\\backgrounds\\hollow_grotto_variants\\preview_project\\.godot\\imported\\hollow_grotto_violet_fg.png-d1027433f43458bc7f9590a75436bbd4.bptc.ctex"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_violet/hollow_grotto_violet_background.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_violet\\hollow_grotto_violet_background.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_00_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_violet\\layers\\hollow_grotto_violet_bg_00_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_01_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_violet\\layers\\hollow_grotto_violet_bg_01_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_02_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_violet\\layers\\hollow_grotto_violet_bg_02_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_bg_03_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_violet\\layers\\hollow_grotto_violet_bg_03_a.tscn"
+  },
+  {
+    "resource": "res://scenes/backgrounds/hollow_grotto_violet/layers/hollow_grotto_violet_fg_a.tscn",
+    "file": "D:\\Things\\Things-Workspace\\STS2_Things\\scenes\\backgrounds\\hollow_grotto_violet\\layers\\hollow_grotto_violet_fg_a.tscn"
+  }
+]

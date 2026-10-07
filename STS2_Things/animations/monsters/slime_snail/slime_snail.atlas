@@ -1,0 +1,33 @@
+slime_snail.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 2
+  size: 1244, 782
+  orig: 1244, 782
+  offset: 0, 0
+  index: -1
+drool_2
+  rotate: false
+  xy: 1250, 2
+  size: 53, 156
+  orig: 53, 156
+  offset: 0, 0
+  index: -1
+drool_0
+  rotate: false
+  xy: 1307, 2
+  size: 47, 132
+  orig: 47, 132
+  offset: 0, 0
+  index: -1
+drool_1
+  rotate: false
+  xy: 1358, 2
+  size: 45, 127
+  orig: 45, 127
+  offset: 0, 0
+  index: -1

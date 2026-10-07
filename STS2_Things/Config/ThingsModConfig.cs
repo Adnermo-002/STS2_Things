@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Globalization;
 using Godot;
 
 namespace STS2_Things.Config;
@@ -26,6 +27,7 @@ public static class ThingsModConfig
         Event,
         Feature,
         NeowRelic,
+        Audio,
     }
 
     /// <summary>Boss 槽位（冲突分组）。同一槽位只能有一个强制 Boss。</summary>
@@ -36,11 +38,22 @@ public static class ThingsModConfig
     public sealed record Entry(
         string Key,
         Category Category,
-        bool Default,
-        string? Slot = null);
+        object Default,
+        string? Slot = null,
+        int Min = 0,
+        int Max = 1000);
 
     // ===== 键常量（单一来源：BaseLib 桥属性名、RitsuLib schema 与门控代码都引用这里）=====
     public const string SchemaVersion = "SchemaVersion";
+    public const string FeatureCustomBgmEnabled = "FeatureCustomBgmEnabled";
+    public const string BossOnlyModBosses = "BossOnlyModBosses";
+    public const string BossOriginFogmogWeightPercent = "BossOriginFogmogWeightPercent";
+    public const string BossScaleBeetleWeightPercent = "BossScaleBeetleWeightPercent";
+    public const string BossGravetideSlugWeightPercent = "BossGravetideSlugWeightPercent";
+    public const string BossTheLegacyWeightPercent = "BossTheLegacyWeightPercent";
+    public const string BossBowlbugProgenitorWeightPercent = "BossBowlbugProgenitorWeightPercent";
+    public const string BossCaveGodWeightPercent = "BossCaveGodWeightPercent";
+    public const string EncounterSoulRoesWeightPercent = "EncounterSoulRoesWeightPercent";
 
     // ---- 遭遇战：Boss ----
     public const string BossOriginFogmogEnabled = "BossOriginFogmogEnabled";
@@ -65,6 +78,15 @@ public static class ThingsModConfig
     public const string EventBackroomsEnabled = "EventBackroomsEnabled";
     public const string EventMedusaEnabled = "EventMedusaEnabled";
     public const string EventCuttingItCloseEnabled = "EventCuttingItCloseEnabled";
+    public const string EventRealityAlignedHousesEnabled = "EventRealityAlignedHousesEnabled";
+    public const string EventShadowCloakroomEnabled = "EventShadowCloakroomEnabled";
+    public const string EventEchoingWellEnabled = "EventEchoingWellEnabled";
+    public const string EventPoliteMawEnabled = "EventPoliteMawEnabled";
+    public const string EventMycelialBankEnabled = "EventMycelialBankEnabled";
+    public const string EventUnlitFireEnabled = "EventUnlitFireEnabled";
+    public const string EventRelicWorkshopEnabled = "EventRelicWorkshopEnabled";
+    public const string EventPotionTastingEnabled = "EventPotionTastingEnabled";
+    public const string EventNarrowGateEnabled = "EventNarrowGateEnabled";
 
     // ---- 商人猜拳 ----
     public const string FeatureMerchantBargainEnabled = "FeatureMerchantBargainEnabled";
@@ -77,31 +99,49 @@ public static class ThingsModConfig
     /// <summary>规范顺序即冲突裁决顺序：同槽位第一个强制项生效。</summary>
     public static readonly IReadOnlyList<Entry> Entries =
     [
+        new(FeatureCustomBgmEnabled, Category.Audio, Default: true),
+        new(BossOnlyModBosses, Category.Boss, Default: false),
         new(BossOriginFogmogEnabled, Category.Boss, Default: true, Slot: SlotOvergrowth),
         new(BossOriginFogmogForced, Category.Boss, Default: false, Slot: SlotOvergrowth),
+        new(BossOriginFogmogWeightPercent, Category.Boss, Default: 100, Slot: SlotOvergrowth),
         new(BossScaleBeetleEnabled, Category.Boss, Default: true, Slot: SlotOvergrowth),
         new(BossScaleBeetleForced, Category.Boss, Default: false, Slot: SlotOvergrowth),
+        new(BossScaleBeetleWeightPercent, Category.Boss, Default: 100, Slot: SlotOvergrowth),
         new(BossGravetideSlugEnabled, Category.Boss, Default: true, Slot: SlotUnderdocks),
         new(BossGravetideSlugForced, Category.Boss, Default: false, Slot: SlotUnderdocks),
+        new(BossGravetideSlugWeightPercent, Category.Boss, Default: 100, Slot: SlotUnderdocks),
         new(BossTheLegacyEnabled, Category.Boss, Default: true, Slot: SlotUnderdocks),
         new(BossTheLegacyForced, Category.Boss, Default: false, Slot: SlotUnderdocks),
+        new(BossTheLegacyWeightPercent, Category.Boss, Default: 100, Slot: SlotUnderdocks),
         new(BossBowlbugProgenitorEnabled, Category.Boss, Default: true, Slot: SlotHive),
         new(BossBowlbugProgenitorForced, Category.Boss, Default: false, Slot: SlotHive),
+        new(BossBowlbugProgenitorWeightPercent, Category.Boss, Default: 100, Slot: SlotHive),
         new(BossCaveGodEnabled, Category.Boss, Default: true, Slot: SlotHive),
         new(BossCaveGodForced, Category.Boss, Default: false, Slot: SlotHive),
+        new(BossCaveGodWeightPercent, Category.Boss, Default: 100, Slot: SlotHive),
         new(EncounterSoulRoesEnabled, Category.Encounter, Default: true),
+        new(EncounterSoulRoesWeightPercent, Category.Encounter, Default: 100),
         new(EncounterQuirkyHopperEnabled, Category.Encounter, Default: true),
         new(EventRobberyFakeMerchantEnabled, Category.Event, Default: true),
         new(EventBackroomsEnabled, Category.Event, Default: true),
         new(EventMedusaEnabled, Category.Event, Default: true),
         new(EventCuttingItCloseEnabled, Category.Event, Default: true),
+        new(EventRealityAlignedHousesEnabled, Category.Event, Default: true),
         new(FeatureMerchantBargainEnabled, Category.Feature, Default: true),
         new(NeowRelicCurseRemoverEnabled, Category.NeowRelic, Default: true),
         new(NeowRelicWhiteFlagEnabled, Category.NeowRelic, Default: true),
         new(NeowRelicMagicGloveEnabled, Category.NeowRelic, Default: true),
+        new(EventShadowCloakroomEnabled, Category.Event, Default: true),
+        new(EventEchoingWellEnabled, Category.Event, Default: true),
+        new(EventPoliteMawEnabled, Category.Event, Default: true),
+        new(EventMycelialBankEnabled, Category.Event, Default: true),
+        new(EventUnlitFireEnabled, Category.Event, Default: true),
+        new(EventRelicWorkshopEnabled, Category.Event, Default: true),
+        new(EventPotionTastingEnabled, Category.Event, Default: true),
+        new(EventNarrowGateEnabled, Category.Event, Default: true),
     ];
 
-    private static readonly Dictionary<string, bool> Values =
+    private static readonly Dictionary<string, object> Values =
         Entries.ToDictionary(entry => entry.Key, entry => entry.Default);
 
     private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
@@ -109,24 +149,40 @@ public static class ThingsModConfig
     /// <summary>配置发生变化（含强制冲突裁决后的降级）时触发。</summary>
     public static event Action? Changed;
 
+    internal static event Action? LocalChanged;
+
+    public static bool IsUsingSession => MultiplayerConfig.IsActive;
+
+    public static bool CanEdit(string key) => MultiplayerConfig.CanEdit(key);
+
+    internal static void NotifyEffectiveChanged() => Changed?.Invoke();
+
+    internal static object? GetLocalValue(string key) => Values.GetValueOrDefault(key);
+
     public static string ConfigPath =>
         Path.Combine(OS.GetUserDataDir(), "mod_configs", "STS2_Things.cfg");
 
     public static bool IsEnabled(string key)
     {
-        return Values.TryGetValue(key, out bool value) && value;
+        return GetBool(key);
     }
 
     public static bool IsForced(string key)
     {
-        return Values.TryGetValue(key, out bool value) && value;
+        return GetBool(key);
     }
 
     /// <summary>读取任意布尔键（含 Forced 键）。</summary>
     public static bool GetBool(string key)
     {
-        return Values.TryGetValue(key, out bool value) && value;
+        return GetValue(key) is true;
     }
+
+    public static int GetInt(string key) =>
+        GetValue(key) is int integer ? integer : 0;
+
+    public static bool HasBossWeightOverrides(string slot) =>
+        Entries.Any(entry => entry.Slot == slot && entry.Default is int && GetInt(entry.Key) != (int)entry.Default);
 
     /// <summary>
     /// 返回指定槽位当前的强制 Boss 键（如 <see cref="BossOriginFogmogEnabled"/>），没有则为 null。
@@ -157,36 +213,39 @@ public static class ThingsModConfig
 
     public static void Load()
     {
+        Dictionary<string, object> previous = new(Values);
         Values.Clear();
         foreach (Entry entry in Entries)
             Values[entry.Key] = entry.Default;
 
         string path = ConfigPath;
+        bool needsSave = !File.Exists(path);
         if (File.Exists(path))
         {
             try
             {
                 using JsonDocument document = JsonDocument.Parse(File.ReadAllText(path));
-                if (document.RootElement.ValueKind == JsonValueKind.Object)
+                if (document.RootElement.ValueKind != JsonValueKind.Object)
+                    throw new JsonException("Configuration root must be an object.");
+                // BaseLib deserializes Dictionary<string, string>. Migrate legacy
+                // bool/number JSON before its optional page loads the shared file.
+                needsSave |= document.RootElement.EnumerateObject().Any(property => property.Value.ValueKind != JsonValueKind.String);
+                foreach (Entry entry in Entries)
                 {
-                    foreach (JsonProperty property in document.RootElement.EnumerateObject())
+                    if (document.RootElement.TryGetProperty(entry.Key, out JsonElement element) &&
+                        TryNormalize(entry, element, out object normalized))
                     {
-                        if (!Values.ContainsKey(property.Name))
-                            continue;
-                        // BaseLib 的 ModConfig 把 bool 属性写成 "True"/"False" 字符串；
-                        // 独立模式写 JSON 布尔。两种都接受。
-                        if (property.Value.ValueKind == JsonValueKind.True)
-                            Values[property.Name] = true;
-                        else if (property.Value.ValueKind == JsonValueKind.False)
-                            Values[property.Name] = false;
-                        else if (property.Value.ValueKind == JsonValueKind.String &&
-                                 bool.TryParse(property.Value.GetString(), out bool parsed))
-                            Values[property.Name] = parsed;
+                        Values[entry.Key] = normalized;
                     }
+                    else
+                        needsSave = true;
                 }
             }
             catch (Exception exception)
             {
+                needsSave = true;
+                foreach (Entry entry in Entries)
+                    Values[entry.Key] = entry.Default;
                 MegaCrit.Sts2.Core.Logging.Log.Warn(
                     $"STS2_Things config '{path}' is unreadable ({exception.Message}); backing it up and using defaults.");
                 try
@@ -199,12 +258,14 @@ public static class ThingsModConfig
                 }
             }
         }
-        else
-        {
+        needsSave |= ResolveConflicts(logWarnings: true);
+        if (needsSave)
             Save();
+        if (Values.Any(pair => !previous.TryGetValue(pair.Key, out object? old) || !Equals(old, pair.Value)))
+        {
+            LocalChanged?.Invoke();
+            Changed?.Invoke();
         }
-
-        ResolveConflicts(logWarnings: true);
     }
 
     public static void Save()
@@ -213,8 +274,12 @@ public static class ThingsModConfig
         {
             string directory = Path.GetDirectoryName(ConfigPath)!;
             Directory.CreateDirectory(directory);
-            Dictionary<string, bool> payload = new(Values) { [SchemaVersion] = true };
-            File.WriteAllText(ConfigPath, JsonSerializer.Serialize(payload, JsonOptions));
+            Dictionary<string, string> payload = Values.ToDictionary(pair => pair.Key,
+                pair => Convert.ToString(pair.Value, CultureInfo.InvariantCulture)!);
+            payload[SchemaVersion] = "2";
+            string temporary = ConfigPath + ".things-new";
+            File.WriteAllText(temporary, JsonSerializer.Serialize(payload, JsonOptions));
+            File.Move(temporary, ConfigPath, overwrite: true);
         }
         catch (Exception exception)
         {
@@ -226,22 +291,65 @@ public static class ThingsModConfig
     /// <summary>读取一个键（RitsuLib 互操作访问器用；缺失返回 null）。</summary>
     public static object? GetValue(string key)
     {
-        return Values.TryGetValue(key, out bool value) ? value : null;
+        return MultiplayerConfig.GetOverride(key) ?? GetLocalValue(key);
     }
 
     /// <summary>写入一个键并执行冲突裁决（RitsuLib 互操作访问器与测试用）。</summary>
     public static void SetValue(string key, object? value)
     {
-        if (!Values.ContainsKey(key) || value is not bool boolean)
-            return;
+        SetValues(new Dictionary<string, object?> { [key] = value });
+    }
 
-        bool changed = Values[key] != boolean;
+    /// <summary>UI adapters apply a complete edit atomically before conflict resolution.</summary>
+    public static void SetValues(IDictionary<string, object?> changes)
+    {
+        bool changed = false;
+        foreach ((string key, object? value) in changes)
+        {
+            Entry? entry = Entries.FirstOrDefault(candidate => candidate.Key == key);
+            if (entry is null || !CanEdit(key) || !TryNormalize(entry, value, out object normalized) || Equals(Values[key], normalized))
+                continue;
+            Values[key] = normalized;
+            changed = true;
+        }
         if (!changed)
             return;
-
-        Values[key] = boolean;
         ResolveConflicts(logWarnings: true);
+        LocalChanged?.Invoke();
         Changed?.Invoke();
+    }
+
+    private static bool TryNormalize(Entry entry, object? value, out object normalized)
+    {
+        normalized = entry.Default;
+        if (value is JsonElement element)
+        {
+            value = element.ValueKind switch
+            {
+                JsonValueKind.True => true,
+                JsonValueKind.False => false,
+                JsonValueKind.String => element.GetString(),
+                JsonValueKind.Number when element.TryGetDouble(out double number) => number,
+                _ => null,
+            };
+        }
+        if (entry.Default is bool)
+        {
+            if (value is bool boolean)
+                normalized = boolean;
+            else if (value is string text && bool.TryParse(text, out boolean))
+                normalized = boolean;
+            else
+                return false;
+            return true;
+        }
+        if (value is not (byte or short or int or long or float or double or decimal or string))
+            return false;
+        if (!double.TryParse(Convert.ToString(value, CultureInfo.InvariantCulture),
+                NumberStyles.Float, CultureInfo.InvariantCulture, out double numeric) || !double.IsFinite(numeric))
+            return false;
+        normalized = (int)Math.Round(Math.Clamp(numeric, entry.Min, entry.Max), MidpointRounding.AwayFromZero);
+        return true;
     }
 
     /// <summary>
@@ -254,7 +362,7 @@ public static class ThingsModConfig
         foreach (Entry entry in Entries)
         {
             if (entry.Key.EndsWith("Enabled", StringComparison.Ordinal) &&
-                entry.Slot is { } slot && IsForced(ForcedKeyFor(slot, entry.Key)) && !IsEnabled(entry.Key))
+                entry.Slot is { } slot && Values.GetValueOrDefault(ForcedKeyFor(slot, entry.Key)) is true && Values[entry.Key] is false)
             {
                 Values[entry.Key] = true;
                 changed = true;
@@ -268,7 +376,7 @@ public static class ThingsModConfig
             {
                 if (entry.Slot != slot || !entry.Key.EndsWith("Forced", StringComparison.Ordinal))
                     continue;
-                if (!IsForced(entry.Key))
+                if (Values[entry.Key] is not true)
                     continue;
                 if (first is null)
                 {

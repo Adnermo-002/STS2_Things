@@ -19,6 +19,9 @@ using STS2_Things.Events;
 using STS2_Things.Monsters;
 using STS2_Things.Powers;
 using STS2_Things.Relics;
+using STS2_Things.Modifiers;
+using MegaCrit.Sts2.Core.Multiplayer.Serialization;
+using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace Hoursmod
 {
@@ -79,6 +82,13 @@ public partial class ThingsModelIdProbeNode : Node
             RegisterSyntheticMods(implementationAssembly);
             STS2_ThingsInit.Initialize();
             InitializeModelDb(implementationAssembly);
+            if (OS.GetCmdlineUserArgs().Contains("--crossroad-ledger"))
+            {
+                VerifyCrossroadLedger();
+                GD.Print("CROSSROADS_SAVE_COMPAT_PASS native modifier JSON/network roundtrip");
+                GetTree().Quit(0);
+                return;
+            }
             VerifyHoursmodFixtureCoexists();
             VerifyRenamedModelIds();
             VerifyPools();
@@ -96,7 +106,7 @@ public partial class ThingsModelIdProbeNode : Node
 
     private static void MountPublishedPck()
     {
-        string[] args = OS.GetCmdlineUserArgs();
+        string[] args = OS.GetCmdlineUserArgs().Where(a => a != "--crossroad-ledger").ToArray();
         Assert(args.Length is 1 or 2,
             "Probe requires an absolute PCK path and accepts an optional Hoursmod DLL path.");
         Assert(ProjectSettings.LoadResourcePack(args[0], replaceFiles: true),
@@ -151,6 +161,34 @@ public partial class ThingsModelIdProbeNode : Node
             .Invoke(null, null);
         typeof(ModelDb).GetMethod("InitIds", BindingFlags.Public | BindingFlags.Static)!
             .Invoke(null, null);
+    }
+
+    private static void VerifyCrossroadLedger()
+    {
+        typeof(MegaCrit.Sts2.Core.GameActions.Multiplayer.ActionTypes).GetMethod("Initialize", BindingFlags.Public | BindingFlags.Static)?.Invoke(null, null);
+        var action = new STS2_Things.Map.NetUnlockCrossroadAction
+        {
+            Act = 1, Fingerprint = 123456, From = new(1, 6), To = new(3, 6), Price = 50,
+        };
+        Assert(MegaCrit.Sts2.Core.GameActions.Multiplayer.ActionTypes.ToId(action) >= 0, "Unlock action was not registered");
+        var actionWriter = new PacketWriter(); action.Serialize(actionWriter);
+        var actionReader = new PacketReader(); actionReader.Reset(actionWriter.Buffer);
+        var decodedAction = new STS2_Things.Map.NetUnlockCrossroadAction(); decodedAction.Deserialize(actionReader);
+        Assert(decodedAction.Fingerprint == action.Fingerprint && decodedAction.From == action.From &&
+            decodedAction.To == action.To && decodedAction.Price == 50, "Unlock action packet changed");
+        var ledger = (ThingsCrossroads)ModelDb.Modifier<ThingsCrossroads>().ToMutable();
+        ledger.Data = "{\"Version\":1,\"Acts\":[{\"Act\":0,\"Fingerprint\":123,\"Roads\":[{\"Row\":6,\"Left\":1,\"Right\":3,\"FromColumn\":1,\"Payer\":2}],\"History\":[{\"col\":1,\"row\":6},{\"col\":3,\"row\":6}]}]}";
+        var save = ledger.ToSerializable();
+        var writer = new PacketWriter(); save.Serialize(writer);
+        var reader = new PacketReader(); reader.Reset(writer.Buffer);
+        var decoded = new SerializableModifier(); decoded.Deserialize(reader);
+        var restored = (ThingsCrossroads)ModifierModel.FromSerializable(decoded);
+        Assert(restored.Data == ledger.Data, "Route ledger lost data in native save/network serialization");
+        var options = new JsonSerializerOptions { IncludeFields = true };
+        string json = JsonSerializer.Serialize(save, options);
+        var jsonSave = JsonSerializer.Deserialize<SerializableModifier>(json, options)!;
+        var jsonRestored = (ThingsCrossroads)ModifierModel.FromSerializable(jsonSave);
+        Assert(jsonRestored.Data == ledger.Data, "JSON save omitted route state");
     }
 
     private static void VerifyHoursmodFixtureCoexists()

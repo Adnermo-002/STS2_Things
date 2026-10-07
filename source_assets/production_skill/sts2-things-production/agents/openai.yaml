@@ -1,0 +1,7 @@
+interface:
+  display_name: "尖塔：琐事制作规范"
+  short_description: "沿用你的原版画风、骨骼动画、原生玩法及精致交付传统制作内容"
+  default_prompt: "使用 $sts2-things-production，按我的制作规范完成本次尖塔：琐事内容，并读取与任务相关的细则。"
+
+policy:
+  allow_implicit_invocation: true

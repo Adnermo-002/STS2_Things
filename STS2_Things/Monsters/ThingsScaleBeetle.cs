@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Audio;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -16,6 +18,8 @@ using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2_Things.Powers;
+using STS2_Things.Visuals;
+using static STS2_Things.Compatibility.Sts2VersionCompatibility;
 
 namespace STS2_Things.Monsters;
 
@@ -25,11 +29,15 @@ namespace STS2_Things.Monsters;
 ///     循环: 撕咬 → 触角鞭打 → 蜕壳 → 循环
 ///     ThingsScaleBeetlePower: 对玩家造成未被抵挡的伤害时，该玩家获得5层缩小
 /// </summary>
-public sealed class ThingsScaleBeetle : MonsterModel
+public sealed class ThingsScaleBeetle : ThingsSpineMonster
 {
     // 对应CustomBgm "act1_boss_vantom" 的FMOD参数
     private const string _trackName = "vantom_progress";
     private const int MoltBlock = 14;
+    public const float BiteContact = 0.68f;
+    public const float ReconstructRelease = 0.76f;
+    public const float MoltRelease = 0.80f;
+    public static readonly float[] WhipContacts = [0.60f, 1.12f, 1.68f];
 
     // Match the creature's beetle body and scale-changing cast to its vanilla kin.
     protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/shrinker_beetle/shrinker_beetle_attack";
@@ -39,6 +47,48 @@ public sealed class ThingsScaleBeetle : MonsterModel
     public override Vector2 ExtraDeathVfxPadding => new(2.3f, 2.1f);
 
     public override bool CanChangeScale => true;
+
+    protected override void AddExtraAnimationStates(CreatureAnimator animator, AnimState idle)
+    {
+        animator.AddAnyState("Whip", new AnimState("whip") { NextState = idle });
+        animator.AddAnyState("Molt", new AnimState("molt") { NextState = idle });
+    }
+
+    private async Task WaitForPose(string animation, float moment, float fallback)
+    {
+        var sprite = Creature.GetCreatureNode()?.Visuals?.SpineBody;
+        float wait = fallback;
+        using (TrackEntryScope(sprite?.TryGetAnimationState()?.GetCurrent(0), out MegaTrackEntry? track))
+            if (track != null && track.GetAnimationName() == animation)
+                wait = Math.Max(0, moment - track.GetTrackTime());
+        await Cmd.Wait(wait);
+        // Instant mode still commits the authored contact before damage or powers.
+        using var scope = TrackEntryScope(sprite?.TryGetAnimationState()?.GetCurrent(0), out MegaTrackEntry? current);
+        if (current != null && current.GetAnimationName() == animation && current.GetTrackTime() < moment)
+        {
+            current.SetMixDuration(0);
+            current.SetTrackTime(moment);
+            sprite!.BoundObject.Call("update_skeleton", 0f);
+        }
+    }
+
+    private async Task BeginMotion(string trigger, string animation, float contact)
+    {
+        await CreatureCmd.TriggerAnim(Creature, trigger, 0f);
+        await WaitForPose(animation, contact, contact);
+    }
+
+    private async Task FinishMotion(string animation)
+    {
+        var sprite = Creature.GetCreatureNode()?.Visuals?.SpineBody;
+        float end;
+        using (TrackEntryScope(sprite?.TryGetAnimationState()?.GetCurrent(0), out MegaTrackEntry? track))
+        {
+            if (track == null || track.GetAnimationName() != animation) return;
+            end = track.GetAnimationEnd();
+        }
+        await WaitForPose(animation, end, 0f);
+    }
 
     public override IEnumerable<string> AssetPaths => base.AssetPaths.Concat(
     [
@@ -51,7 +101,7 @@ public sealed class ThingsScaleBeetle : MonsterModel
     {
         await base.AfterAddedToRoom();
         // 初始化专属音乐参数（CustomBgm = act1_boss_vantom）
-        NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 1f);
+        STS2_Things.Audio.ModMusicPolicy.UpdateParameter(_trackName, 1f);
         // 常驻buff：对玩家造成未被抵挡伤害时施加缩小
         await PowerCmd.Apply<ThingsScaleBeetlePower>(new ThrowingPlayerChoiceContext(), Creature, 1m, Creature, null);
     }
@@ -62,7 +112,7 @@ public sealed class ThingsScaleBeetle : MonsterModel
         if (creature == Creature)
         {
             // 死亡升调（vantom_progress=5 触发FMOD升调自动化）
-            NRunMusicController.Instance?.UpdateMusicParameter(_trackName, 5f);
+            STS2_Things.Audio.ModMusicPolicy.UpdateParameter(_trackName, 5f);
         }
         return Task.CompletedTask;
     }
@@ -119,40 +169,70 @@ public sealed class ThingsScaleBeetle : MonsterModel
     private async Task ReconstructMove(IReadOnlyList<Creature> targets)
     {
         SfxCmd.Play(CastSfx);
-        await CreatureCmd.TriggerAnim(Creature, "Cast", 0.5f);
+        await BeginMotion("Cast", "cast", ReconstructRelease);
 
         await PowerCmd.Apply<ThingsScaleDownPower>(new ThrowingPlayerChoiceContext(),
             targets, 15m, Creature, null);
         await PowerCmd.Apply<ThingsScaleUpPower>(new ThrowingPlayerChoiceContext(),
             Creature, 15m, Creature, null);
+        await FinishMotion("cast");
     }
 
     private async Task BiteMove(IReadOnlyList<Creature> targets)
     {
         await DamageCmd.Attack(BiteDamage)
             .FromMonster(this)
-            .WithAttackerAnim("Attack", 0.5f)
+            .WithNoAttackerAnim()
+            .AfterAttackerAnim(() => BeginMotion("Attack", "attack", BiteContact))
             .WithAttackerFx(null, AttackSfx)
             .Execute(null);
+        await FinishMotion("attack");
     }
 
     private async Task WhipMove(IReadOnlyList<Creature> targets)
     {
-        await DamageCmd.Attack(WhipDamage)
-            .FromMonster(this)
-            .WithHitCount(3)
-            .WithAttackerAnim("Attack", 0.5f)
-            .WithAttackerFx(null, AttackSfx)
-            .Execute(null);
+        int strike = 0;
+        var motion = Creature.GetCreatureNode()?.Visuals?.GetNodeOrNull<NThingsScaleBeetleMotion>("Visuals/MotionTiming");
+        try
+        {
+            await DamageCmd.Attack(WhipDamage)
+                .FromMonster(this)
+                .WithHitCount(3)
+                .WithNoAttackerAnim()
+                .AfterAttackerAnim(async () =>
+                {
+                    int beat = strike++ % WhipContacts.Length;
+                    if (beat == 0)
+                    {
+                        if (strike > 1)
+                        {
+                            motion?.FinishCombo();
+                            await FinishMotion("whip");
+                        }
+                        await CreatureCmd.TriggerAnim(Creature, "Whip", 0f);
+                    }
+                    motion?.AllowBeat(beat + 1);
+                    float previous = beat == 0 ? 0 : WhipContacts[beat - 1];
+                    await WaitForPose("whip", WhipContacts[beat], WhipContacts[beat] - previous);
+                })
+                .WithAttackerFx(null, AttackSfx)
+                .Execute(null);
+        }
+        finally
+        {
+            motion?.FinishCombo();
+        }
+        await FinishMotion("whip");
     }
 
     private async Task MoltMove(IReadOnlyList<Creature> targets)
     {
         SfxCmd.Play(CastSfx);
-        await CreatureCmd.TriggerAnim(Creature, "Cast", 0.5f);
+        await BeginMotion("Molt", "molt", MoltRelease);
 
         await CreatureCmd.GainBlock(Creature, MoltBlock, ValueProp.Move, null);
         await PowerCmd.Apply<ThingsScaleUpPower>(new ThrowingPlayerChoiceContext(),
             Creature, 15m, Creature, null);
+        await FinishMotion("molt");
     }
 }

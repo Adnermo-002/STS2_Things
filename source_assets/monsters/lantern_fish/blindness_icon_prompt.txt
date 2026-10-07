@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: readable 2D debuff icon for a Slay the Spire 2 mod.
+Primary request: one compact icon representing blindness from an anglerfish lantern. A simple cream-colored eye silhouette is crossed by three jagged cyan-violet interference bands, with a small amber flash behind the eye. Bold uneven dark outlines, broad painted color planes, simple emblem-like silhouette readable at 32 pixels. The eye should read as obscured by light and static, not injured. No letters, numerals, labels or badge frame.
+Composition: centered single symbol filling roughly 75 percent of a 1024x1024 square, all parts in frame, clean margin. Match the hand-painted illustrated game UI feel, no photorealism, no 3D gloss, no tiny decorative details.
+Background: flat pure chroma green (#00FF00), no gradient, shadow, texture or green edge spill. Do not use green in the symbol itself. Output one opaque PNG for subsequent alpha extraction.

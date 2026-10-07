@@ -45,6 +45,8 @@ public static class STS2_ThingsInit
             // 可配置门控：读取 user://mod_configs/STS2_Things.cfg（缺失时生成默认值），
             // 并尝试接入外部模组配置页框架（可选，非前置依赖）。
             ThingsModConfig.Load();
+            MultiplayerConfig.Initialize();
+            STS2_Things.Audio.ModMusicPolicy.Initialize();
             LibraryIntegration.Initialize();
 
             // ---- 卡牌 & 遗物 模型池注册 ----
@@ -54,17 +56,31 @@ public static class STS2_ThingsInit
             ModHelper.AddModelToPool<SilentCardPool, SoulfyshDisease>();
             ModHelper.AddModelToPool<SilentCardPool, ThingsRecall>();
             ModHelper.AddModelToPool<SilentCardPool, ThingsPackUp>();
+            ModHelper.AddModelToPool<TokenCardPool, CaveGodBrokenBladeTrial>();
+            ModHelper.AddModelToPool<TokenCardPool, CaveGodShatteredShieldTrial>();
+            ModHelper.AddModelToPool<TokenCardPool, CaveGodMartialTrial>();
+            ModHelper.AddModelToPool<TokenCardPool, CaveGodArcaneTrial>();
+            ModHelper.AddModelToPool<TokenCardPool, ThingsCaveGodCrystalShard>();
+            ModHelper.AddModelToPool<TokenCardPool, LeechParasite>();
+            ModHelper.AddModelToPool<TokenCardPool, SnailCrystalChip>();
             ModHelper.AddModelToPool<EventRelicPool, ThingsWhiteFlag>();
             ModHelper.AddModelToPool<EventRelicPool, ThingsCurseRemover>();
             ModHelper.AddModelToPool<EventRelicPool, ThingsMagicGlove>();
             ModHelper.AddModelToPool<EventRelicPool, ThingsAlmondWater>();
             ModHelper.AddModelToPool<EventRelicPool, ThingsMedusaHair>();
-            if (ThingsModConfig.IsEnabled(ThingsModConfig.EncounterQuirkyHopperEnabled))
-            {
-                ModHelper.SubscribeForRunStateHooks(
-                    "Adnermo.STS2_Things.QuirkyHopperRewardPolicy",
-                    static _ => [ModelDb.Modifier<QuirkyHopperRewardPolicy>()]);
-            }
+            ModHelper.AddModelToPool<EventRelicPool, ShadowClaimTicket>();
+            ModHelper.AddModelToPool<EventRelicPool, BottledEcho>();
+            ModHelper.AddModelToPool<EventRelicPool, MycelialDeposit>();
+            ModHelper.AddModelToPool<EventRelicPool, BorrowedEmber>();
+            // Register deterministically on every peer, even when its local
+            // preference disables this encounter. The policy already checks the
+            // actual room, including encounters restored from a saved run.
+            ModHelper.SubscribeForRunStateHooks(
+                "Adnermo.STS2_Things.QuirkyHopperRewardPolicy",
+                static _ => [ModelDb.Modifier<QuirkyHopperRewardPolicy>()]);
+            ModHelper.SubscribeForRunStateHooks(
+                "Adnermo.STS2_Things.SpentEmberRestPolicy",
+                static _ => [ModelDb.Modifier<SpentEmberRestPolicy>()]);
 
             // ---- Harmony 初始化 ----
             var harmony = new Harmony(HarmonyId);
@@ -103,6 +119,20 @@ internal static class ThingsEventCatalog
     {
         return Add(source,
             (ThingsModConfig.EventMedusaEnabled, ModelDb.Event<ThingsMedusa>()));
+    }
+
+    public static IEnumerable<EventModel> AddDepthsEvents(IEnumerable<EventModel> source)
+    {
+        return Add(source,
+            (ThingsModConfig.EventRealityAlignedHousesEnabled, ModelDb.Event<RealityAlignedHouses>()),
+            (ThingsModConfig.EventShadowCloakroomEnabled, ModelDb.Event<ShadowCloakroom>()),
+            (ThingsModConfig.EventEchoingWellEnabled, ModelDb.Event<EchoingWell>()),
+            (ThingsModConfig.EventPoliteMawEnabled, ModelDb.Event<PoliteMaw>()),
+            (ThingsModConfig.EventMycelialBankEnabled, ModelDb.Event<MycelialBank>()),
+            (ThingsModConfig.EventUnlitFireEnabled, ModelDb.Event<UnlitFire>()),
+            (ThingsModConfig.EventRelicWorkshopEnabled, ModelDb.Event<RelicWorkshop>()),
+            (ThingsModConfig.EventPotionTastingEnabled, ModelDb.Event<PotionTasting>()),
+            (ThingsModConfig.EventNarrowGateEnabled, ModelDb.Event<NarrowGate>()));
     }
 
     private static IEnumerable<EventModel> Add(
@@ -167,6 +197,9 @@ public static class NeowCurseOptionsPatch
             AddRelicToList<ThingsWhiteFlag>(__instance, list);
         if (ThingsModConfig.IsEnabled(ThingsModConfig.NeowRelicMagicGloveEnabled))
             AddRelicToList<ThingsMagicGlove>(__instance, list);
+        // This conflict belongs to our Neow options, not every relic picker.
+        if (list.Any(option => option.Relic is ThingsMagicGlove))
+            list.RemoveAll(option => option.Relic?.Id.Entry == "PRECARIOUS_SHEARS");
         __result = list;
     }
 
@@ -195,24 +228,5 @@ public static class NeowCurseOptionsPatch
             relic.HoverTipsExcludingRelic
         ).WithRelic(relic);
         list.Add(option);
-    }
-}
-
-// ==================== 涅奥遗物互斥 ====================
-
-[HarmonyPatch(typeof(RelicSelectCmd), nameof(RelicSelectCmd.FromChooseARelicScreen))]
-public static class RelicExclusionPatch
-{
-    private static void Prefix(ref IReadOnlyList<RelicModel> relics)
-    {
-        var hasMagicGlove = relics.Any(r => r is ThingsMagicGlove);
-        var hasShears = relics.Any(r => r.Id.Entry == "PRECARIOUS_SHEARS");
-
-        if (!hasMagicGlove || !hasShears) return;
-
-        relics = relics
-            .Where(r => r.Id.Entry != "PRECARIOUS_SHEARS")
-            .ToList();
-        Log.Info("[Things] Removed PrecariousShears (conflicts with ThingsMagicGlove).");
     }
 }

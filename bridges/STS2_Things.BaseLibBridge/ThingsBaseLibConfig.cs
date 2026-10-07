@@ -1,4 +1,7 @@
 using BaseLib.Config;
+using BaseLib.Config.UI;
+using Godot;
+using MegaCrit.Sts2.Core.Localization;
 
 namespace STS2_Things.BaseLibBridge;
 
@@ -16,7 +19,54 @@ namespace STS2_Things.BaseLibBridge;
 /// </summary>
 public sealed class ThingsBaseLibConfig : SimpleModConfig
 {
+    private readonly List<(Control Control, string Key, Control.MouseFilterEnum Mouse, Control.FocusModeEnum Focus)> _access = [];
+
+    public override void SetupConfigUI(Control optionContainer)
+    {
+        _access.Clear();
+        optionContainer.AddChild(new Label
+        {
+            Text = new LocString("settings_ui", "STS2_THINGS-MULTIPLAYER_POLICY").GetFormattedText(),
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
+        });
+        base.SetupConfigUI(optionContainer);
+        void Remember(Node node, string key)
+        {
+            if (node is Control control) _access.Add((control, key, control.MouseFilter, control.FocusMode));
+            foreach (Node child in node.GetChildren()) Remember(child, key);
+        }
+        void Visit(Node node)
+        {
+            if (node is NConfigOptionRow row) Remember(row.SettingControl, row.Name.ToString());
+            else if (node.Name == "ResetDefaultsButton") Remember(node, nameof(BossOnlyModBosses));
+            else foreach (Node child in node.GetChildren()) Visit(child);
+        }
+        Visit(optionContainer);
+        RefreshSessionAccess();
+    }
+
+    public void RefreshSessionAccess()
+    {
+        foreach (var (control, key, mouse, focus) in _access)
+        {
+            if (!GodotObject.IsInstanceValid(control)) continue;
+            bool editable = BridgeEntry.CanEdit(key);
+            control.MouseFilter = editable ? mouse : Control.MouseFilterEnum.Ignore;
+            control.FocusMode = editable ? focus : Control.FocusModeEnum.None;
+            control.ProcessMode = editable ? Node.ProcessModeEnum.Inherit : Node.ProcessModeEnum.Disabled;
+            control.SelfModulate = editable ? Colors.White : new Color(1, 1, 1, 0.45f);
+        }
+    }
+
+    [ConfigSection("Audio")]
+    [ConfigHoverTip]
+    public static bool FeatureCustomBgmEnabled { get; set; } = true;
+
     // ---- 遭遇战：Boss ----
+
+    [ConfigSection("Bosses")]
+    [ConfigHoverTip]
+    public static bool BossOnlyModBosses { get; set; }
 
     [ConfigSection("Bosses")]
     public static bool BossOriginFogmogEnabled { get; set; } = true;
@@ -26,11 +76,21 @@ public sealed class ThingsBaseLibConfig : SimpleModConfig
     public static bool BossOriginFogmogForced { get; set; }
 
     [ConfigSection("Bosses")]
+    [ConfigHoverTip]
+    [ConfigSlider(0, 1000, 10, Format = "{0}%")]
+    public static int BossOriginFogmogWeightPercent { get; set; } = 100;
+
+    [ConfigSection("Bosses")]
     public static bool BossScaleBeetleEnabled { get; set; } = true;
 
     [ConfigSection("Bosses")]
     [ConfigVisibleIf(nameof(CanForceScaleBeetle))]
     public static bool BossScaleBeetleForced { get; set; }
+
+    [ConfigSection("Bosses")]
+    [ConfigHoverTip]
+    [ConfigSlider(0, 1000, 10, Format = "{0}%")]
+    public static int BossScaleBeetleWeightPercent { get; set; } = 100;
 
     [ConfigSection("Bosses")]
     public static bool BossGravetideSlugEnabled { get; set; } = true;
@@ -40,11 +100,21 @@ public sealed class ThingsBaseLibConfig : SimpleModConfig
     public static bool BossGravetideSlugForced { get; set; }
 
     [ConfigSection("Bosses")]
+    [ConfigHoverTip]
+    [ConfigSlider(0, 1000, 10, Format = "{0}%")]
+    public static int BossGravetideSlugWeightPercent { get; set; } = 100;
+
+    [ConfigSection("Bosses")]
     public static bool BossTheLegacyEnabled { get; set; } = true;
 
     [ConfigSection("Bosses")]
     [ConfigVisibleIf(nameof(CanForceTheLegacy))]
     public static bool BossTheLegacyForced { get; set; }
+
+    [ConfigSection("Bosses")]
+    [ConfigHoverTip]
+    [ConfigSlider(0, 1000, 10, Format = "{0}%")]
+    public static int BossTheLegacyWeightPercent { get; set; } = 100;
 
     [ConfigSection("Bosses")]
     public static bool BossBowlbugProgenitorEnabled { get; set; } = true;
@@ -54,16 +124,31 @@ public sealed class ThingsBaseLibConfig : SimpleModConfig
     public static bool BossBowlbugProgenitorForced { get; set; }
 
     [ConfigSection("Bosses")]
+    [ConfigHoverTip]
+    [ConfigSlider(0, 1000, 10, Format = "{0}%")]
+    public static int BossBowlbugProgenitorWeightPercent { get; set; } = 100;
+
+    [ConfigSection("Bosses")]
     public static bool BossCaveGodEnabled { get; set; } = true;
 
     [ConfigSection("Bosses")]
     [ConfigVisibleIf(nameof(CanForceCaveGod))]
     public static bool BossCaveGodForced { get; set; }
 
+    [ConfigSection("Bosses")]
+    [ConfigHoverTip]
+    [ConfigSlider(0, 1000, 10, Format = "{0}%")]
+    public static int BossCaveGodWeightPercent { get; set; } = 100;
+
     // ---- 遭遇战：其他 ----
 
     [ConfigSection("Other Encounters")]
     public static bool EncounterSoulRoesEnabled { get; set; } = true;
+
+    [ConfigSection("Other Encounters")]
+    [ConfigHoverTip]
+    [ConfigSlider(0, 1000, 10, Format = "{0}%")]
+    public static int EncounterSoulRoesWeightPercent { get; set; } = 100;
 
     [ConfigSection("Other Encounters")]
     public static bool EncounterQuirkyHopperEnabled { get; set; } = true;
@@ -81,6 +166,33 @@ public sealed class ThingsBaseLibConfig : SimpleModConfig
 
     [ConfigSection("Events")]
     public static bool EventCuttingItCloseEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventRealityAlignedHousesEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventShadowCloakroomEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventEchoingWellEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventPoliteMawEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventMycelialBankEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventUnlitFireEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventRelicWorkshopEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventPotionTastingEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventNarrowGateEnabled { get; set; } = true;
 
     // ---- 商人猜拳 ----
 
@@ -112,4 +224,3 @@ public sealed class ThingsBaseLibConfig : SimpleModConfig
 
     public static bool CanForceCaveGod() => !BossBowlbugProgenitorForced;
 }
-

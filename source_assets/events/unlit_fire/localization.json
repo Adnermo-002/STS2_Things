@@ -1,0 +1,74 @@
+{
+  "zhs": {
+    "events": {
+      "UNLIT_FIRE.title": "还没烧起来的火",
+      "UNLIT_FIRE.pages.INITIAL.description": "木柴还没点着，灰烬却是热的。旁边的沙漏里，沙子正往上落。\n\n一块木牌写着：[gold]“昨日开放。”[/gold]\n\n你伸出手。远处某个火堆的温度，提前到了这里。",
+      "UNLIT_FIRE.pages.INITIAL.options.REST.title": "借一点温暖",
+      "UNLIT_FIRE.pages.INITIAL.options.REST.description": "立即休息，回复[green]{Heal}[/green]生命。你下一处休息点[red]无法行动[/red]。",
+      "UNLIT_FIRE.pages.INITIAL.options.REST_LOCKED.title": "锁定",
+      "UNLIT_FIRE.pages.INITIAL.options.REST_LOCKED.description": "无法休息、没有前方火堆，或已有余烬约定。",
+      "UNLIT_FIRE.pages.INITIAL.options.SMITH.title": "借一点火候",
+      "UNLIT_FIRE.pages.INITIAL.options.SMITH.description": "立即[green]锻造[/green]。你下一处休息点[red]无法行动[/red]。",
+      "UNLIT_FIRE.pages.INITIAL.options.SMITH_LOCKED.title": "锁定",
+      "UNLIT_FIRE.pages.INITIAL.options.SMITH_LOCKED.description": "无法锻造、没有前方火堆，或已有余烬约定。",
+      "UNLIT_FIRE.pages.INITIAL.options.FUEL.title": "添些柴火",
+      "UNLIT_FIRE.pages.INITIAL.options.FUEL.description": "支付[blue]{Gold}[/blue][gold]金币[/gold]。到达下一处休息点时额外回复[green]{BonusHeal}[/green]生命。",
+      "UNLIT_FIRE.pages.INITIAL.options.FUEL_LOCKED.title": "锁定",
+      "UNLIT_FIRE.pages.INITIAL.options.FUEL_LOCKED.description": "需要[blue]{Gold}[/blue][gold]金币[/gold]、前方火堆，且尚未立下约定。",
+      "UNLIT_FIRE.pages.INITIAL.options.CHARCOAL.title": "拨开灰烬",
+      "UNLIT_FIRE.pages.INITIAL.options.CHARCOAL.description": "获得[blue]{SmallGold}[/blue][gold]金币[/gold]。",
+      "UNLIT_FIRE.pages.REST.description": "你在冰冷的木柴旁坐下，却暖和得很快睡着了。\n\n醒来时，沙漏已经空了。\n\n你隐约记得，下一次经过这里时自己会觉得冷。",
+      "UNLIT_FIRE.pages.SMITH.description": "火没有烧起来，牌的边缘却亮了。\n\n你收好它。远处传来一声很轻的噗响，像有人吹灭了火。",
+      "UNLIT_FIRE.pages.FUEL.description": "你把金币压在木牌下，抱来一捆干柴。\n\n沙漏中的沙子终于开始向下落了。\n\n有一处火堆正在等你，烧得比刚才暖些。",
+      "UNLIT_FIRE.pages.CHARCOAL.description": "灰烬底下露出了几枚[gold]金币[/gold]。你掸掉灰，收进了口袋。\n\n看来已经有人付过账了。"
+    },
+    "relics": {
+      "BORROWED_EMBER.title": "余烬约定",
+      "BORROWED_EMBER.description": "{Terms}",
+      "BORROWED_EMBER.debtTerms": "你下一处休息点无法执行休息点行动。",
+      "BORROWED_EMBER.kindledTerms": "到达下一处休息点时，额外回复[green]{Heal}[/green]生命。",
+      "BORROWED_EMBER.flavor": "有些火，已经替你烧过了。"
+    },
+    "rest_site_ui": {
+      "OPTION_THINGS_SPENT_EMBER.name": "余烬已尽",
+      "OPTION_THINGS_SPENT_EMBER.description": "这处火堆的机会已经提前用掉了。收拾行囊，继续前进。"
+    },
+    "settings_ui": {"STS2_THINGS-EVENT_UNLIT_FIRE_ENABLED.title": "还没烧起来的火 — 启用"}
+  },
+  "eng": {
+    "events": {
+      "UNLIT_FIRE.title": "The Unlit Fire",
+      "UNLIT_FIRE.pages.INITIAL.description": "The logs have not caught, but the ashes are warm. Sand climbs upward through an hourglass.\n\nA wooden sign reads: [gold]“Open yesterday.”[/gold]\n\nYou hold out a hand. Warmth from a fire farther ahead has arrived early.",
+      "UNLIT_FIRE.pages.INITIAL.options.REST.title": "Borrow Some Warmth",
+      "UNLIT_FIRE.pages.INITIAL.options.REST.description": "Rest now. Heal [green]{Heal}[/green] HP. You [red]cannot act[/red] at your next Rest Site.",
+      "UNLIT_FIRE.pages.INITIAL.options.REST_LOCKED.title": "Locked",
+      "UNLIT_FIRE.pages.INITIAL.options.REST_LOCKED.description": "Rest unavailable, no camp ahead, or you already have an Ember Pact.",
+      "UNLIT_FIRE.pages.INITIAL.options.SMITH.title": "Borrow Some Heat",
+      "UNLIT_FIRE.pages.INITIAL.options.SMITH.description": "[green]Smith[/green] now. You [red]cannot act[/red] at your next Rest Site.",
+      "UNLIT_FIRE.pages.INITIAL.options.SMITH_LOCKED.title": "Locked",
+      "UNLIT_FIRE.pages.INITIAL.options.SMITH_LOCKED.description": "Smith unavailable, no camp ahead, or you already have an Ember Pact.",
+      "UNLIT_FIRE.pages.INITIAL.options.FUEL.title": "Add Kindling",
+      "UNLIT_FIRE.pages.INITIAL.options.FUEL.description": "Pay [blue]{Gold}[/blue] [gold]Gold[/gold]. Heal an extra [green]{BonusHeal}[/green] HP on arrival at your next Rest Site.",
+      "UNLIT_FIRE.pages.INITIAL.options.FUEL_LOCKED.title": "Locked",
+      "UNLIT_FIRE.pages.INITIAL.options.FUEL_LOCKED.description": "Requires [blue]{Gold}[/blue] [gold]Gold[/gold], a camp ahead, and no existing pact.",
+      "UNLIT_FIRE.pages.INITIAL.options.CHARCOAL.title": "Rake the Ashes",
+      "UNLIT_FIRE.pages.INITIAL.options.CHARCOAL.description": "Gain [blue]{SmallGold}[/blue] [gold]Gold[/gold].",
+      "UNLIT_FIRE.pages.REST.description": "You sit beside the cold logs and soon fall asleep in their warmth.\n\nWhen you wake, the hourglass is empty.\n\nYou dimly remember feeling cold the next time you came here.",
+      "UNLIT_FIRE.pages.SMITH.description": "The fire never catches, but the edges of your card glow.\n\nYou put it away. Far off, something softly goes out.",
+      "UNLIT_FIRE.pages.FUEL.description": "You tuck the coins beneath the sign and bring over a bundle of dry wood.\n\nThe sand finally begins to fall downward.\n\nSomewhere ahead, a warmer fire waits for you.",
+      "UNLIT_FIRE.pages.CHARCOAL.description": "[gold]Coins[/gold] glint beneath the ashes. You brush them clean and pocket them.\n\nApparently, someone has already paid."
+    },
+    "relics": {
+      "BORROWED_EMBER.title": "Ember Pact",
+      "BORROWED_EMBER.description": "{Terms}",
+      "BORROWED_EMBER.debtTerms": "You cannot use Rest Site actions at your next Rest Site.",
+      "BORROWED_EMBER.kindledTerms": "Heal an extra [green]{Heal}[/green] HP on arrival at your next Rest Site.",
+      "BORROWED_EMBER.flavor": "Some fires have already burned for you."
+    },
+    "rest_site_ui": {
+      "OPTION_THINGS_SPENT_EMBER.name": "Spent Embers",
+      "OPTION_THINGS_SPENT_EMBER.description": "You already used this fire's opportunity. Pack up and continue."
+    },
+    "settings_ui": {"STS2_THINGS-EVENT_UNLIT_FIRE_ENABLED.title": "The Unlit Fire — enabled"}
+  }
+}

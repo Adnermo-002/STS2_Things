@@ -1,0 +1,33 @@
+rock_snail.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shell
+  rotate: false
+  xy: 2, 2
+  size: 970, 574
+  orig: 970, 574
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 580
+  size: 1364, 436
+  orig: 1364, 436
+  offset: 0, 0
+  index: -1
+eye_1
+  rotate: false
+  xy: 1370, 580
+  size: 72, 40
+  orig: 72, 40
+  offset: 0, 0
+  index: -1
+eye_0
+  rotate: false
+  xy: 1446, 580
+  size: 70, 39
+  orig: 70, 39
+  offset: 0, 0
+  index: -1

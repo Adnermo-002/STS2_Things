@@ -9,14 +9,18 @@ using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Acts;
 using MegaCrit.Sts2.Core.TestSupport;
+using MegaCrit.Sts2.Core.Random;
+using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Unlocks;
 using STS2_Things;
 using STS2_Things.Config;
 using STS2_Things.Encounters;
 using STS2_Things.Events;
+using STS2_Things.Hooks;
 
 public partial class ThingsConfigProbeNode : Node
 {
-    public override void _Ready()
+    public override async void _Ready()
     {
         try
         {
@@ -28,18 +32,46 @@ public partial class ThingsConfigProbeNode : Node
             RegisterSyntheticMod(implementationAssembly);
             STS2_ThingsInit.Initialize();
             InitializeModelDb(implementationAssembly);
+            Assert(OS.GetUserDataDir().Contains("Things Config Probe", StringComparison.OrdinalIgnoreCase),
+                "Probe must use an isolated user-data directory.");
 
             // 归一化：清掉上次探针运行遗留的配置写入，从默认值开始。
             ResetAll();
             ThingsModConfig.Save();
 
+            if (OS.GetCmdlineUserArgs().Contains("--neow-only"))
+            {
+                await NeowOptionRegression.Run();
+                GD.Print("Things Neow probe: PASS");
+                GetTree().Quit(0);
+                return;
+            }
+
+#if !STS2_V107_1
+            if (OS.GetCmdlineUserArgs().Length > 1)
+            {
+                AddChild(new ConfigNetworkLiveProbe());
+                return;
+            }
+#endif
+
             VerifyConfigDefaultsAndFile();
+            await NeowOptionRegression.Run();
             VerifyConfigRoundTrip();
+            VerifyTypedConfigMigration();
             VerifyConflictRule();
             VerifyForceImpliesEnabled();
             VerifyCatalogGating();
             VerifyBossForcing();
+            VerifyActualBossSelection();
+            VerifyWeightedSelection();
+            VerifyEliteFrequency();
+            VerifyMusicSetting();
+            foreach (CardModel trial in new CardModel[]
+                     { ModelDb.Card<STS2_Things.Cards.CaveGodBrokenBladeTrial>(), ModelDb.Card<STS2_Things.Cards.CaveGodShatteredShieldTrial>() })
+                Assert(trial.HasPortrait && ResourceLoader.Exists(trial.PortraitPath), $"Trial portrait is hidden: {trial.Id}");
             VerifyEventGating();
+            MultiplayerConfigChecks.Run();
 
             GD.Print("Things config probe: PASS");
             GetTree().Quit(0);
@@ -57,8 +89,8 @@ public partial class ThingsConfigProbeNode : Node
     {
         foreach (ThingsModConfig.Entry entry in ThingsModConfig.Entries)
         {
-            Assert(ThingsModConfig.GetBool(entry.Key) == entry.Default,
-                $"{entry.Key} default is {ThingsModConfig.GetBool(entry.Key)}, expected {entry.Default}.");
+            Assert(Equals(ThingsModConfig.GetValue(entry.Key), entry.Default),
+                $"{entry.Key} default is {ThingsModConfig.GetValue(entry.Key)}, expected {entry.Default}.");
         }
 
         string path = ThingsModConfig.ConfigPath;
@@ -72,8 +104,10 @@ public partial class ThingsConfigProbeNode : Node
         }
 
         Assert(document.RootElement.TryGetProperty(ThingsModConfig.SchemaVersion, out JsonElement schema) &&
-              schema.ValueKind == JsonValueKind.True,
-            "Config file misses SchemaVersion=true.");
+              schema.GetString() == "2",
+            "Config file misses SchemaVersion=2.");
+        Assert(document.RootElement.EnumerateObject().All(property => property.Value.ValueKind == JsonValueKind.String),
+            "Shared config must remain readable by BaseLib's string dictionary.");
     }
 
     private static void VerifyConfigRoundTrip()
@@ -81,12 +115,37 @@ public partial class ThingsConfigProbeNode : Node
         ThingsModConfig.SetValue(ThingsModConfig.BossOriginFogmogEnabled, false);
         ThingsModConfig.Save();
         using JsonDocument document = JsonDocument.Parse(File.ReadAllText(ThingsModConfig.ConfigPath));
-        Assert(document.RootElement.GetProperty(ThingsModConfig.BossOriginFogmogEnabled).GetBoolean() == false,
+        Assert(document.RootElement.GetProperty(ThingsModConfig.BossOriginFogmogEnabled).GetString() == "False",
             "Config file did not persist BossOriginFogmogEnabled=false.");
         ThingsModConfig.Load();
         Assert(!ThingsModConfig.IsEnabled(ThingsModConfig.BossOriginFogmogEnabled),
             "Load() did not restore BossOriginFogmogEnabled=false.");
         ResetAll();
+    }
+
+    private static void VerifyTypedConfigMigration()
+    {
+        File.WriteAllText(ThingsModConfig.ConfigPath,
+            "{\"SchemaVersion\":true,\"FeatureCustomBgmEnabled\":false,\"BossOriginFogmogEnabled\":false," +
+            "\"BossScaleBeetleWeightPercent\":\"275\",\"EncounterSoulRoesWeightPercent\":50}");
+        ThingsModConfig.Load();
+        Assert(!ThingsModConfig.GetBool(ThingsModConfig.FeatureCustomBgmEnabled), "Legacy bool preference was lost.");
+        Assert(!ThingsModConfig.GetBool(ThingsModConfig.BossOriginFogmogEnabled), "Existing disabled boss was re-enabled.");
+        Assert(ThingsModConfig.GetInt(ThingsModConfig.BossScaleBeetleWeightPercent) == 275, "String integer did not load.");
+        Assert(ThingsModConfig.GetInt(ThingsModConfig.EncounterSoulRoesWeightPercent) == 50, "JSON number did not load.");
+        Assert(ThingsModConfig.GetInt(ThingsModConfig.BossCaveGodWeightPercent) == 100, "Missing weight did not default to 100.");
+        ThingsModConfig.SetValue(ThingsModConfig.BossScaleBeetleWeightPercent, -1);
+        Assert(ThingsModConfig.GetInt(ThingsModConfig.BossScaleBeetleWeightPercent) == 0, "Negative rate was not clamped.");
+        ThingsModConfig.SetValue(ThingsModConfig.BossScaleBeetleWeightPercent, 50000.0);
+        Assert(ThingsModConfig.GetInt(ThingsModConfig.BossScaleBeetleWeightPercent) == 1000, "Large rate was not clamped.");
+        ThingsModConfig.SetValue(ThingsModConfig.BossScaleBeetleWeightPercent, double.NaN);
+        Assert(ThingsModConfig.GetInt(ThingsModConfig.BossScaleBeetleWeightPercent) == 1000, "NaN changed a valid rate.");
+        ThingsModConfig.SetValue(ThingsModConfig.BossScaleBeetleWeightPercent, "125.5");
+        ThingsModConfig.Save();
+        ThingsModConfig.Load();
+        Assert(ThingsModConfig.GetInt(ThingsModConfig.BossScaleBeetleWeightPercent) == 126, "Fractional input did not normalize deterministically.");
+        ResetAll();
+        ThingsModConfig.Save();
     }
 
     private static void VerifyConflictRule()
@@ -192,10 +251,127 @@ public partial class ThingsConfigProbeNode : Node
         ResetAll();
     }
 
+    private static void VerifyActualBossSelection()
+    {
+        ResetAll();
+        Overgrowth cached = (Overgrowth)ModelDb.Act<Overgrowth>().ToMutable();
+        _ = cached.AllBossEncounters.ToList();
+        ThingsModConfig.SetValue(ThingsModConfig.BossScaleBeetleForced, true);
+        ThingsModConfig.SetValue(ThingsModConfig.BossScaleBeetleWeightPercent, 0);
+        for (uint seed = 0; seed < 24; seed++)
+        {
+            Overgrowth act = seed == 0 ? cached : (Overgrowth)ModelDb.Act<Overgrowth>().ToMutable();
+            act.GenerateRooms(new Rng(seed), UnlockState.all);
+            act.ApplyDiscoveryOrderModifications(UnlockState.all);
+            Assert(act.BossEncounter is ScaleBeetleBossEncounter, "Forced boss was not selected after actual room generation/discovery.");
+            act.SetSecondBossEncounter(null);
+            Assert(act.SecondBossEncounter is ScaleBeetleBossEncounter, "Single-boss mode removed the Double Boss fight.");
+        }
+        ResetAll();
+        ThingsModConfig.SetValue(ThingsModConfig.BossOnlyModBosses, true);
+        foreach (ActModel canonical in new ActModel[] { ModelDb.Act<Overgrowth>(), ModelDb.Act<Underdocks>(), ModelDb.Act<Hive>() })
+        {
+            for (uint seed = 0; seed < 12; seed++)
+            {
+                ActModel act = (ActModel)canonical.ToMutable();
+                act.GenerateRooms(new Rng(seed), UnlockState.all);
+                act.ApplyDiscoveryOrderModifications(UnlockState.all);
+                Assert(EncounterSelectionPolicy.IsOwnedBoss(act.BossEncounter), "Only-mod mode selected a vanilla boss.");
+            }
+        }
+        ThingsModConfig.SetValues(new Dictionary<string, object?>
+        {
+            [ThingsModConfig.BossOriginFogmogWeightPercent] = 0,
+            [ThingsModConfig.BossScaleBeetleEnabled] = false,
+        });
+        var fallback = (Overgrowth)ModelDb.Act<Overgrowth>().ToMutable();
+        fallback.GenerateRooms(new Rng(36), UnlockState.all);
+        Assert(fallback.BossEncounter is not null && !EncounterSelectionPolicy.IsOwnedBoss(fallback.BossEncounter),
+            "All-disabled / only-mod mode failed to keep a playable fallback.");
+        ResetAll();
+    }
+
+    private static void VerifyWeightedSelection()
+    {
+        EncounterModel mod = ModelDb.Encounter<OriginFogmogBossEncounter>();
+        EncounterModel vanilla = ModelDb.Act<Overgrowth>().BossDiscoveryOrder.First(encounter => !EncounterSelectionPolicy.IsOwnedBoss(encounter));
+        EncounterModel[] pool = [mod, vanilla];
+        var actualRng = new Rng(901);
+        var expectedRng = new Rng(901);
+        for (int i = 0; i < 100; i++)
+            Assert(EncounterSelectionPolicy.ChooseBoss(actualRng, pool) == expectedRng.NextItem(pool), "Defaults changed seeded selection.");
+        Assert(actualRng.NextInt() == expectedRng.NextInt(), "Defaults consumed extra randomness.");
+        ThingsModConfig.SetValue(ThingsModConfig.BossOriginFogmogWeightPercent, 900);
+        var first = new Rng(761);
+        var second = new Rng(761);
+        int selected = 0;
+        for (int i = 0; i < 2000; i++)
+        {
+            EncounterModel? pick = EncounterSelectionPolicy.ChooseBoss(first, pool);
+            Assert(pick == EncounterSelectionPolicy.ChooseBoss(second, pool), "Weighted selection is not seed-deterministic.");
+            if (pick == mod) selected++;
+        }
+        Assert(selected is > 1680 and < 1900, $"900:100 weights produced {selected}/2000 mod bosses.");
+        ThingsModConfig.SetValue(ThingsModConfig.BossOriginFogmogWeightPercent, 0);
+        for (int i = 0; i < 100; i++)
+            Assert(EncounterSelectionPolicy.ChooseBoss(first, pool) == vanilla, "Zero-weight boss was selected.");
+        ResetAll();
+    }
+
+    private static void VerifyEliteFrequency()
+    {
+        static int CountAtRate(int rate)
+        {
+            ThingsModConfig.SetValue(ThingsModConfig.EncounterSoulRoesWeightPercent, rate);
+            int count = 0;
+            for (uint seed = 0; seed < 64; seed++)
+            {
+                Underdocks act = (Underdocks)ModelDb.Act<Underdocks>().ToMutable();
+                act.GenerateRooms(new Rng(seed + 124), UnlockState.all);
+                Underdocks replay = (Underdocks)ModelDb.Act<Underdocks>().ToMutable();
+                replay.GenerateRooms(new Rng(seed + 124), UnlockState.all);
+                EncounterModel? previous = null;
+                for (int room = 0; room < 15; room++)
+                {
+                    EncounterModel next = act.PullNextEncounter(RoomType.Elite);
+                    Assert(next.Id == replay.PullNextEncounter(RoomType.Elite).Id,
+                        "Elite selection is not seed-deterministic.");
+                    if (rate is not (0 or 100))
+                        Assert(next != previous && !next.SharesTagsWith(previous),
+                            "Custom elite frequency repeated a consecutive encounter or tag.");
+                    if (next is SoulRoesEncounter) count++;
+                    previous = next;
+                    // PullNextEncounter peeks; the game advances on room entry.
+                    act.MarkRoomVisited(RoomType.Elite);
+                    replay.MarkRoomVisited(RoomType.Elite);
+                }
+            }
+            return count;
+        }
+        int zero = CountAtRate(0), low = CountAtRate(10), standard = CountAtRate(100), high = CountAtRate(1000);
+        Assert(zero == 0, $"Zero-weight elite appeared {zero} times.");
+        Assert(high > low * 3 && high > standard && low < standard,
+            $"Elite weights only reordered bags instead of changing frequency: low={low}, default={standard}, high={high}.");
+        GD.Print($"Elite sampling: disabled={zero}, 10%={low}, default={standard}, 1000%={high} / 960 slots");
+        ResetAll();
+    }
+
+    private static void VerifyMusicSetting()
+    {
+        EncounterModel[] bosses = [ModelDb.Encounter<OriginFogmogBossEncounter>(), ModelDb.Encounter<ScaleBeetleBossEncounter>(),
+            ModelDb.Encounter<GravetideSlugBossEncounter>(), ModelDb.Encounter<TheLegacyBossEncounter>(),
+            ModelDb.Encounter<BowlbugProgenitorBossEncounter>(), ModelDb.Encounter<CaveGodBossEncounter>()];
+        string[] original = bosses.Select(boss => boss.CustomBgm).ToArray();
+        Assert(original.All(track => !string.IsNullOrEmpty(track)), "Default boss music disappeared.");
+        ThingsModConfig.SetValue(ThingsModConfig.FeatureCustomBgmEnabled, false);
+        Assert(bosses.All(boss => boss.CustomBgm == string.Empty && !boss.HasBgm), "Music off did not use the native empty-track sentinel.");
+        ThingsModConfig.SetValue(ThingsModConfig.FeatureCustomBgmEnabled, true);
+        Assert(bosses.Select(boss => boss.CustomBgm).SequenceEqual(original), "Music on did not restore the original tracks.");
+    }
+
     private static void ResetAll()
     {
-        foreach (ThingsModConfig.Entry entry in ThingsModConfig.Entries)
-            ThingsModConfig.SetValue(entry.Key, entry.Default);
+        ThingsModConfig.SetValues(ThingsModConfig.Entries.ToDictionary(entry => entry.Key, entry => (object?)entry.Default));
     }
 
     // ---- 脚手架（沿用 ModelId 探针模式）----
@@ -203,7 +379,7 @@ public partial class ThingsConfigProbeNode : Node
     private static void MountPublishedPck()
     {
         string[] args = OS.GetCmdlineUserArgs();
-        Assert(args.Length == 1, "Probe requires an absolute PCK path.");
+        Assert(args.Length >= 1, "Probe requires an absolute PCK path.");
         Assert(ProjectSettings.LoadResourcePack(args[0], replaceFiles: true),
             $"Could not mount published PCK: {args[0]}");
     }
@@ -214,6 +390,8 @@ public partial class ThingsConfigProbeNode : Node
             .GetValue(null)!;
         mods.Clear();
         mods.Add(CreateSyntheticMod("STS2_Things", "STS2_Things Config Probe", implementationAssembly));
+        if (OS.GetCmdlineUserArgs().Length > 1 && !OS.GetCmdlineUserArgs().Contains("--neow-only"))
+            mods.Add(CreateSyntheticMod("ConfigNetworkProbe", "Config Network Probe", typeof(ThingsConfigProbeNode).Assembly));
     }
 
     private static object CreateSyntheticMod(string id, string name, Assembly assembly)
@@ -240,7 +418,12 @@ public partial class ThingsConfigProbeNode : Node
     private static void InitializeModelDb(Assembly implementationAssembly)
     {
         Type[] implementationTypes = implementationAssembly.GetTypes();
+#if !STS2_V107_1
+        Type[] modTypes = OS.GetCmdlineUserArgs().Length > 1 && !OS.GetCmdlineUserArgs().Contains("--neow-only")
+            ? [.. implementationTypes, typeof(ConfigNetworkProbeMessage)] : implementationTypes;
+#else
         Type[] modTypes = implementationTypes;
+#endif
         Type[] modelTypes = [
             .. AbstractModelSubtypes.All,
             .. implementationTypes.Where(type => !type.IsAbstract && typeof(AbstractModel).IsAssignableFrom(type))

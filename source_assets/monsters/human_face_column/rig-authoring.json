@@ -1,0 +1,33 @@
+{
+  "bones": 167,
+  "weighted_meshes": 48,
+  "faces_per_disc": 3,
+  "rotation_seconds": 12.0,
+  "spine_version": "4.2.43",
+  "scene_scale": [
+    0.41,
+    1.04
+  ],
+  "layer_spacing": 190,
+  "intact_disc_motion": "horizontal only; rigid height; no roll or vertical squash",
+  "animations": [
+    "rotate_cw",
+    "rotate_ccw",
+    "idle_loop",
+    "attack",
+    "cast",
+    "seal",
+    "rattle",
+    "hurt",
+    "stunned_loop",
+    "recover",
+    "fall",
+    "summon",
+    "revive",
+    "power_up",
+    "die"
+  ],
+  "authoring_preview": "Pillow/OpenCV cylindrical projection; not a native game capture",
+  "generator_model": "gpt-image-2.5-sunburst",
+  "parts_source": "output/imagegen/human_face_column/parts_v1.png"
+}

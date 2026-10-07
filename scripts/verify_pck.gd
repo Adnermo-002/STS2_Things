@@ -31,6 +31,12 @@ func _initialize() -> void:
 	_verify_texture("res://images/powers/things_quirk_power_packed.png", Vector2i(64, 64))
 	_verify_texture("res://images/powers/quirky_flutter_power.png", Vector2i(256, 256))
 	_verify_texture("res://images/powers/quirky_flutter_power_packed.png", Vector2i(64, 64))
+	for power in ["absorbent_sponge_power", "sponge_reservoir_power", "sponge_rinse_power", "lantern_blindness_power", "leech_infestation_power"]:
+		_verify_texture("res://images/powers/%s.png" % power, Vector2i(256, 256))
+		_verify_texture("res://images/powers/%s_packed.png" % power, Vector2i(64, 64))
+	_verify_absent("res://images/powers/sponge_rinse_intent.png")
+	_verify_absent("res://STS2_Things/Monsters/SpongeRinseIntent.cs")
+	_verify_absent("res://STS2_Things/Compatibility/SpongeIntentRegistration.cs")
 	var card_portraits := [
 		"res://images/packed/card_portraits/defect/things_reuse.png",
 		"res://images/packed/card_portraits/ironclad/things_collision.png",
@@ -87,6 +93,7 @@ func _initialize() -> void:
 	_verify_file("res://scenes/creature_visuals/gravetide_slug.tscn")
 	_verify_file("res://animations/monsters/cave_god/cave_god.spatlas")
 	_verify_file("res://animations/monsters/cave_god/cave_god.spskel")
+	_verify_file("res://animations/monsters/cave_god/cave_god.spjson")
 	_verify_file("res://animations/monsters/cave_god/cave_god_skeleton_data.tres")
 	_verify_file("res://scenes/creature_visuals/things_cave_god.tscn")
 	_verify_file("res://scenes/creature_visuals/things_cave_god_left_hand.tscn")

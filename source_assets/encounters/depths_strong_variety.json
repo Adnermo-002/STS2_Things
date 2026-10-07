@@ -1,0 +1,158 @@
+[
+  {
+    "model": "LanternSpongeEncounter",
+    "zhs": "潭边生灵",
+    "eng": "Pool Dwellers",
+    "background": "b_cave_riverbend",
+    "roster": [
+      [
+        "LanternFish",
+        "fish",
+        1030,
+        741
+      ],
+      [
+        "WaterSponge",
+        "sponge",
+        1410,
+        760
+      ],
+      [
+        "CrystalSnail",
+        "crystal",
+        1760,
+        768
+      ]
+    ],
+    "tactic": "灯笼鱼扰乱手牌，海绵积水反击，击破晶壳可取得晶片。"
+  },
+  {
+    "model": "SilkSnailEncounter",
+    "zhs": "蛾与蜗牛",
+    "eng": "Moth and Snails",
+    "background": "d_cave_rootfungus",
+    "roster": [
+      [
+        "SilkMoth",
+        "moth",
+        1040,
+        706
+      ],
+      [
+        "RockSnail",
+        "rock",
+        1425,
+        768
+      ],
+      [
+        "SlimeSnail",
+        "slime",
+        1760,
+        736
+      ]
+    ],
+    "tactic": "垂丝蛾限制手牌，涎丝蜗牛修补爬岩蜗牛的壳，碾压前可先打断蓄势。"
+  },
+  {
+    "model": "CaveMawSnailEncounter",
+    "zhs": "洞胃与蜗牛",
+    "eng": "Maw and Snails",
+    "background": "f_hollow_grotto_moss",
+    "roster": [
+      [
+        "CaveMaw",
+        "maw",
+        1010,
+        760
+      ],
+      [
+        "CrystalSnail",
+        "crystal",
+        1420,
+        768
+      ],
+      [
+        "SlimeSnail",
+        "slime",
+        1760,
+        736
+      ]
+    ],
+    "tactic": "洞胃投食后吞食状态牌，涎丝保护晶壳；可以先拆辅助，或破壳取得晶片。"
+  },
+  {
+    "model": "SpongeSnailEncounter",
+    "zhs": "浸水石壳",
+    "eng": "Waterlogged Shells",
+    "background": "c_cave_quartz",
+    "roster": [
+      [
+        "WaterSponge",
+        "sponge",
+        1040,
+        760
+      ],
+      [
+        "RockSnail",
+        "rock",
+        1425,
+        768
+      ],
+      [
+        "CrystalSnail",
+        "crystal",
+        1760,
+        736
+      ]
+    ],
+    "tactic": "爬岩蜗牛积蓄碾压，海绵惩罚分散伤害，晶壳提供破壳回报。"
+  },
+  {
+    "model": "LanternMothEncounter",
+    "zhs": "灯下飞蛾",
+    "eng": "Light and Silk",
+    "background": "b_cave_riverbend",
+    "roster": [
+      [
+        "LanternFish",
+        "fish",
+        1030,
+        741
+      ],
+      [
+        "SilkMoth",
+        "moth",
+        1410,
+        706
+      ],
+      [
+        "CrystalSnail",
+        "crystal",
+        1760,
+        768
+      ]
+    ],
+    "tactic": "缠丝与致盲错开施放，晶壳蜗牛补充伤害；可先击杀较脆的控制目标。"
+  },
+  {
+    "model": "CaveMawLanternEncounter",
+    "zhs": "洞胃与灯鱼",
+    "eng": "Maw and Lanternfish",
+    "background": "b_cave_riverbend",
+    "roster": [
+      [
+        "CaveMaw",
+        "maw",
+        1240,
+        760
+      ],
+      [
+        "LanternFish",
+        "fish",
+        1700,
+        761
+      ]
+    ],
+    "tactic": "皮厚的洞胃持续投食，灯笼鱼扰乱抽牌；两只敌人各有清楚的输出窗口。"
+  }
+]

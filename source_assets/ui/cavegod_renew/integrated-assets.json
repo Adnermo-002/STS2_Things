@@ -1,0 +1,258 @@
+{
+  "images/powers/things_cave_god_aging_power.png": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "sha256": "ea18dba190e886b49cff4aadc298cc6f9544117d7cdc6bec26af2c5a3760e3cb"
+  },
+  "images/powers/things_cave_god_aging_power_packed.png": {
+    "size": [
+      64,
+      64
+    ],
+    "mode": "RGBA",
+    "sha256": "76e57273d886d7e62a3372a161a3216256d2dfb81361ff6b1b0ab32a9653bb06"
+  },
+  "images/powers/things_cave_god_ancient_core_power.png": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "sha256": "f2e177de730a074ddf10ab122f9c163ea88e20d2483a7db29244d9f1d9062f1c"
+  },
+  "images/powers/things_cave_god_ancient_core_power_packed.png": {
+    "size": [
+      64,
+      64
+    ],
+    "mode": "RGBA",
+    "sha256": "dfa96cca6e9764983026a4b907d29928ae279a35f77e14477bb0976db8abf8b1"
+  },
+  "images/powers/things_cave_god_crystal_vein_power.png": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "sha256": "731b3150cb74bb38ff18f71197767d841e3b2f28ddf3783ba5fed6a4018920a5"
+  },
+  "images/powers/things_cave_god_crystal_vein_power_packed.png": {
+    "size": [
+      64,
+      64
+    ],
+    "mode": "RGBA",
+    "sha256": "1c1e1a91338013a74423e25aec63850208fae3f000e6b3e6cd61bed7cce4813e"
+  },
+  "images/powers/things_cave_god_fissure_power.png": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "sha256": "a5e73c52f8cb68bb48d51cbf988a240f89e35ace451b716ef2cfc625651f323a"
+  },
+  "images/powers/things_cave_god_fissure_power_packed.png": {
+    "size": [
+      64,
+      64
+    ],
+    "mode": "RGBA",
+    "sha256": "2224768697dc06a3fde7e2ed4b1215efd489e1e3d1f8b4f557242197413717a0"
+  },
+  "images/powers/cave_god_broken_blade_power.png": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "sha256": "d2dfe9a44cbdd51d75a3ac780f6923eeaf7948da7e8267b2bd83c1c55cf1ce57"
+  },
+  "images/powers/cave_god_broken_blade_power_packed.png": {
+    "size": [
+      64,
+      64
+    ],
+    "mode": "RGBA",
+    "sha256": "b3a11d64c3fd1806612cf4aec10b96c931cd61f63ff09accb0ce38c06860be7a"
+  },
+  "images/powers/cave_god_shattered_shield_power.png": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "sha256": "c0ff47941bed5e81adaee561b7afde5d4fd2b08c8d71e74c3f4de08f9cd83714"
+  },
+  "images/powers/cave_god_shattered_shield_power_packed.png": {
+    "size": [
+      64,
+      64
+    ],
+    "mode": "RGBA",
+    "sha256": "ee907dbeaf1280ca317108a491a2fddb24b77acc88d869948994fae0264ed4c9"
+  },
+  "images/powers/cave_god_martial_power.png": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "sha256": "b4c9c35fe8086003cfabad8b16cb9be22c52b50f9ab45164163404cb8ab9a914"
+  },
+  "images/powers/cave_god_martial_power_packed.png": {
+    "size": [
+      64,
+      64
+    ],
+    "mode": "RGBA",
+    "sha256": "5ac1e88d5e63eb8352b9c39d3cc69608132f5118f00034dc3b4b6698e61114dd"
+  },
+  "images/powers/cave_god_arcane_power.png": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "sha256": "78a3d0c64e49ca716fa347a6364b9d038f8dced34904ca3671b22e7a45395cbb"
+  },
+  "images/powers/cave_god_arcane_power_packed.png": {
+    "size": [
+      64,
+      64
+    ],
+    "mode": "RGBA",
+    "sha256": "798e2109388481f52a4063ee95485381a8a14a060b24c257cbf437bd8ac92a32"
+  },
+  "images/packed/card_portraits/token/cave_god_broken_blade.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "3b998b1f9ee6ac7dd6e1271b1a1a69303ece368f605aafdb131aff94ee11906e"
+  },
+  "images/cards/cave_god_broken_blade.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "3b998b1f9ee6ac7dd6e1271b1a1a69303ece368f605aafdb131aff94ee11906e"
+  },
+  "images/packed/card_portraits/token/cave_god_shattered_shield.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "a9b84f20e8f10b0a4b5764f8c80536a422217b65eb28c234146d891b695c9de2"
+  },
+  "images/cards/cave_god_shattered_shield.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "a9b84f20e8f10b0a4b5764f8c80536a422217b65eb28c234146d891b695c9de2"
+  },
+  "images/packed/card_portraits/token/cave_god_crystal_shard.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "cc72959daa3d9e68be1bc447c7f9473f84fbb2a735408de264e78bcf0aee11db"
+  },
+  "images/cards/cave_god_crystal_shard.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "cc72959daa3d9e68be1bc447c7f9473f84fbb2a735408de264e78bcf0aee11db"
+  },
+  "images/packed/card_portraits/token/cave_god_martial_trial.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "f1a6ae72e72408bd132b984fa03123bf70d3eb1a7fe97aae251a55c4bc404b20"
+  },
+  "images/cards/cave_god_martial_trial.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "f1a6ae72e72408bd132b984fa03123bf70d3eb1a7fe97aae251a55c4bc404b20"
+  },
+  "images/packed/card_portraits/token/cave_god_arcane_trial.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "05a5755773d6085b9642c231a18e6ff6dbf3c4ebefc9760747eee50287b028a7"
+  },
+  "images/cards/cave_god_arcane_trial.png": {
+    "size": [
+      1000,
+      760
+    ],
+    "mode": "RGB",
+    "sha256": "05a5755773d6085b9642c231a18e6ff6dbf3c4ebefc9760747eee50287b028a7"
+  },
+  "images/map/cave_god_boss_icon.png": {
+    "size": [
+      352,
+      300
+    ],
+    "mode": "RGBA",
+    "sha256": "9b58cb5a591749fae077f7d2ff882a1ae44511d965f9535e9986113e758ffc9b"
+  },
+  "images/map/cave_god_boss_icon_outline.png": {
+    "size": [
+      352,
+      300
+    ],
+    "mode": "RGBA",
+    "sha256": "5c906b15ec1b724dd08300fb29c58638c743b881abc127b149ceb0c6f290b2da"
+  },
+  "images/ui/run_history/cave_god_boss.png": {
+    "size": [
+      88,
+      88
+    ],
+    "mode": "RGBA",
+    "sha256": "8990720a2619847c796902559ee9908d39bc7d523c27a0fe9699149ff8acc092"
+  },
+  "images/ui/run_history/cave_god_boss_outline.png": {
+    "size": [
+      88,
+      88
+    ],
+    "mode": "RGBA",
+    "sha256": "5d532b61c8255ba06eba54a617b0030111816d283e07c6638a185672eae20b1f"
+  },
+  "images/ui/run_history/cave_god_boss_encounter.png": {
+    "size": [
+      88,
+      88
+    ],
+    "mode": "RGBA",
+    "sha256": "8990720a2619847c796902559ee9908d39bc7d523c27a0fe9699149ff8acc092"
+  },
+  "images/ui/run_history/cave_god_boss_encounter_outline.png": {
+    "size": [
+      88,
+      88
+    ],
+    "mode": "RGBA",
+    "sha256": "5d532b61c8255ba06eba54a617b0030111816d283e07c6638a185672eae20b1f"
+  }
+}

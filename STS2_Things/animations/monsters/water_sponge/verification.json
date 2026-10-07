@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "runtime": "official Spine 4.2.43",
+  "bones": 14,
+  "animations": 9,
+  "frames": 841,
+  "vertices": 2536,
+  "triangles": 4818,
+  "loopError": 0,
+  "reviveError": 0,
+  "returnErrors": {
+    "idle_loop": 0,
+    "attack": 0,
+    "cast": 0,
+    "soak": 0,
+    "hurt": 0,
+    "revive": 0,
+    "summon": 0,
+    "power_up": 0
+  },
+  "invertedTriangles": 0,
+  "maxDisplacement": 682.0000305175781
+}

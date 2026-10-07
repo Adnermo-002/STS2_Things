@@ -1,0 +1,96 @@
+radio_jellyfish.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tentacle_2
+  rotate: false
+  xy: 2, 2
+  size: 196, 614
+  orig: 196, 614
+  offset: 0, 0
+  index: -1
+tentacle_5
+  rotate: false
+  xy: 202, 2
+  size: 272, 521
+  orig: 272, 521
+  offset: 0, 0
+  index: -1
+bell
+  rotate: false
+  xy: 478, 2
+  size: 808, 519
+  orig: 808, 519
+  offset: 0, 0
+  index: -1
+tentacle_0
+  rotate: false
+  xy: 1290, 2
+  size: 346, 469
+  orig: 346, 469
+  offset: 0, 0
+  index: -1
+tentacle_4
+  rotate: false
+  xy: 1640, 2
+  size: 187, 449
+  orig: 187, 449
+  offset: 0, 0
+  index: -1
+tentacle_1
+  rotate: false
+  xy: 1831, 2
+  size: 190, 396
+  orig: 190, 396
+  offset: 0, 0
+  index: -1
+tentacle_3
+  rotate: false
+  xy: 2, 620
+  size: 132, 372
+  orig: 132, 372
+  offset: 0, 0
+  index: -1
+antenna_left
+  rotate: false
+  xy: 138, 620
+  size: 269, 284
+  orig: 269, 284
+  offset: 0, 0
+  index: -1
+channel_1
+  rotate: false
+  xy: 411, 620
+  size: 217, 199
+  orig: 217, 199
+  offset: 0, 0
+  index: -1
+antenna_right
+  rotate: false
+  xy: 632, 620
+  size: 276, 194
+  orig: 276, 194
+  offset: 0, 0
+  index: -1
+channel_0
+  rotate: false
+  xy: 912, 620
+  size: 168, 187
+  orig: 168, 187
+  offset: 0, 0
+  index: -1
+eye_1
+  rotate: false
+  xy: 1084, 620
+  size: 75, 38
+  orig: 75, 38
+  offset: 0, 0
+  index: -1
+eye_0
+  rotate: false
+  xy: 1163, 620
+  size: 53, 35
+  orig: 53, 35
+  offset: 0, 0
+  index: -1

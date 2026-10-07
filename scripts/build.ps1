@@ -291,6 +291,8 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $sourceAudit = Join-Path $PSScriptRoot 'verify_project.py'
+& $PythonExe -X utf8 (Join-Path $PSScriptRoot 'build_cavegod_trial_icons.py')
+if ($LASTEXITCODE -ne 0) { throw 'CaveGod trial icon build failed.' }
 if (Test-Path -LiteralPath $sourceAudit) {
     & $PythonExe -X utf8 $sourceAudit
     if ($LASTEXITCODE -ne 0) {
@@ -403,7 +405,11 @@ config/name="STS2_Things PCK Verify"
     }
 }
 elseif (-not [string]::IsNullOrWhiteSpace($ReusePck)) {
-    Copy-Item -LiteralPath $ReusePck -Destination $Pck -Force
+    $resolvedReuse = (Resolve-Path -LiteralPath $ReusePck).Path
+    $resolvedPck = if (Test-Path -LiteralPath $Pck) { (Resolve-Path -LiteralPath $Pck).Path } else { $null }
+    if ($resolvedReuse -ne $resolvedPck) {
+        Copy-Item -LiteralPath $ReusePck -Destination $Pck -Force
+    }
 }
 
 if (-not $SkipPck) {

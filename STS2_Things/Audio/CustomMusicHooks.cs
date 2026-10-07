@@ -2,6 +2,7 @@ using System;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Nodes.Audio;
 
 namespace STS2_Things.Audio;
@@ -22,15 +23,29 @@ internal static class CustomMusicPlayPatch
     [HarmonyPrefix]
     private static bool Prefix(NRunMusicController __instance, string customMusic)
     {
-        if (!string.Equals(customMusic, GravetideTheme, StringComparison.Ordinal))
+        try
+        {
+            if (!string.Equals(customMusic, GravetideTheme, StringComparison.Ordinal))
+                return true;
+
+            if (!ModMusicPolicy.Enabled)
+            {
+                StartAfterCombatSetup = false;
+                NativeSfxPlayer.StopMusic();
+                return false;
+            }
+
+            StartAfterCombatSetup = true;
+            __instance.GetNodeOrNull<Node>("Proxy")?.Call("stop_music");
+            NativeSfxPlayer.StopMusic();
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Log.Warn($"[CustomMusicPlayPatch] Prefix error: {ex.Message}");
             return true;
-
-        StartAfterCombatSetup = true;
-        __instance.GetNodeOrNull<Node>("Proxy")?.Call("stop_music");
-        NativeSfxPlayer.StopMusic();
-        return false;
+        }
     }
-
 }
 
 [HarmonyPatch(
@@ -42,13 +57,27 @@ internal static class CustomMusicStartAfterCombatSetupPatch
     [HarmonyPostfix]
     private static void Postfix()
     {
-        if (!CustomMusicPlayPatch.StartAfterCombatSetup ||
-            !CombatManager.Instance.IsInProgress)
+        try
         {
-            return;
-        }
+            if (!ModMusicPolicy.Enabled)
+            {
+                CustomMusicPlayPatch.StartAfterCombatSetup = false;
+                if (NativeSfxPlayer.ActiveMusicPath == CustomMusicPlayPatch.GravetideTheme)
+                    NativeSfxPlayer.StopMusic();
+                return;
+            }
+            if (!CustomMusicPlayPatch.StartAfterCombatSetup ||
+                !CombatManager.Instance.IsInProgress)
+            {
+                return;
+            }
 
-        CustomMusicPlayPatch.StartAfterCombatSetup = false;
-        NativeSfxPlayer.PlayMusic(CustomMusicPlayPatch.GravetideTheme, "Master", -2f);
+            CustomMusicPlayPatch.StartAfterCombatSetup = false;
+            NativeSfxPlayer.PlayMusic(CustomMusicPlayPatch.GravetideTheme, "Master", -2f);
+        }
+        catch (Exception ex)
+        {
+            Log.Warn($"[CustomMusicStartAfterCombatSetupPatch] Postfix error: {ex.Message}");
+        }
     }
 }

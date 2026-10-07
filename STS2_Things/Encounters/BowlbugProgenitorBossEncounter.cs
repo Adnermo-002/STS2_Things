@@ -15,7 +15,7 @@ public sealed class BowlbugProgenitorBossEncounter : ModBossEncounter
 
     // Keep the BGM in Hive's native act2 bank. EncounterModel has no cross-Act
     // bank declaration, so cross-bank music needs an invasive loader patch.
-    public override string CustomBgm => "event:/music/act2_boss_kaiser_crab";
+    public override string CustomBgm => ConfiguredBgm("event:/music/act2_boss_kaiser_crab");
 
     public override bool HasScene => true;
 

@@ -32,7 +32,7 @@ public sealed class OriginEyeWithTeeth : MonsterModel
     public override string DeathSfx =>
         "event:/sfx/enemy/enemy_attacks/obscura/obscura_hologram_die";
 
-    protected override string VisualsPath => SceneHelper.GetScenePath("creature_visuals/eye_with_teeth");
+    protected override string VisualsPath => SceneHelper.GetScenePath("creature_visuals/origin_eye_with_teeth");
 
     public override int MinInitialHp => 9;
 
@@ -113,14 +113,28 @@ public sealed class OriginEyeWithTeeth : MonsterModel
             visuals.Modulate = Colors.White;
     }
 
+    /// <summary>
+    /// Origin-exclusive Eye rig (animations/monsters/origin_eye_with_teeth, source in
+    /// tools/OriginEyeRig).  Besides the native Attack/Dead triggers it maps the
+    /// IllusionPower lifecycle: StunTrigger holds the collapsed "die" pose while the
+    /// illusion waits to revive, WakeUpTrigger plays "revive", Hit plays "hurt".
+    /// </summary>
     public override CreatureAnimator GenerateAnimator(MegaSprite controller)
     {
         var animState = new AnimState("idle_loop", true);
         var animState2 = new AnimState("attack");
+        var hurt = new AnimState("hurt");
+        var revive = new AnimState("revive");
         var state = new AnimState("die");
+        var downed = new AnimState("die");
         animState2.NextState = animState;
+        hurt.NextState = animState;
+        revive.NextState = animState;
         var creatureAnimator = new CreatureAnimator(animState, controller);
         creatureAnimator.AddAnyState("Attack", animState2);
+        creatureAnimator.AddAnyState(CreatureAnimator.hitTrigger, hurt);
+        creatureAnimator.AddAnyState(IllusionPower.stunTrigger, downed);
+        creatureAnimator.AddAnyState(IllusionPower.wakeUpTrigger, revive);
         creatureAnimator.AddAnyState("Dead", state,
             () => !CombatState.GetTeammatesOf(Creature).Any(t => t != null && t.IsPrimaryEnemy && t.IsAlive));
         return creatureAnimator;

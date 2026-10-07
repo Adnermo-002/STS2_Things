@@ -1,7 +1,10 @@
 using System.Reflection;
 using System.Runtime.Loader;
+using System.Text.Json;
 using Godot;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Multiplayer.Serialization;
+using System.Collections;
 
 public partial class BaseLibBridgeProbeNode : Node
 {
@@ -9,6 +12,8 @@ public partial class BaseLibBridgeProbeNode : Node
     {
         try
         {
+            Assert(OS.GetUserDataDir().Contains("BaseLib Bridge Probe", StringComparison.Ordinal),
+                "Refusing to change settings outside the isolated probe profile.");
             string[] args = OS.GetCmdlineUserArgs();
             Assert(args.Length == 3,
                 "Probe requires BaseLib.dll, the implementation DLL and the bridge DLL paths.");
@@ -58,6 +63,13 @@ public partial class BaseLibBridgeProbeNode : Node
             // LibraryIntegration.Initialize()：它必须找到 BaseLib 程序集、按 BaseLib
             // 所在上下文加载桥并注册成功。
             Assembly implementation = gameContext.LoadFromAssemblyPath(implementationPath);
+            Type thingsConfig = implementation.GetType("STS2_Things.Config.ThingsModConfig", true)!;
+            string sharedPath = (string)thingsConfig.GetProperty("ConfigPath")!.GetValue(null)!;
+            Directory.CreateDirectory(Path.GetDirectoryName(sharedPath)!);
+            // Simulate an older config containing JSON primitives. Main startup
+            // must migrate it before BaseLib's Dictionary<string,string> reader.
+            File.WriteAllText(sharedPath, """{"FeatureCustomBgmEnabled":false,"BossScaleBeetleWeightPercent":240}""");
+            thingsConfig.GetMethod("Load")!.Invoke(null, null);
             string modDir = Path.GetDirectoryName(implementationPath)!;
             string stagedBridgePath = Path.Combine(modDir, "STS2_Things.BaseLibBridge.dll");
             if (!string.Equals(stagedBridgePath, bridgePath, StringComparison.OrdinalIgnoreCase))
@@ -101,6 +113,12 @@ public partial class BaseLibBridgeProbeNode : Node
                 "Bridge BossOriginFogmogEnabled default is false.");
             Assert(!GetBridgeBool(bridge, "BossOriginFogmogForced"),
                 "Bridge BossOriginFogmogForced default is true.");
+            Assert(!GetBridgeBool(bridge, "FeatureCustomBgmEnabled") &&
+                   (int)GetBridgeValue(bridge, "BossScaleBeetleWeightPercent") == 240,
+                "BaseLib lost migrated boolean/numeric preferences during construction.");
+            Assert((int)config!.GetType().GetMethod("GetDefaultValue")!.MakeGenericMethod(typeof(int))
+                       .Invoke(config, ["BossScaleBeetleWeightPercent"])! == 100,
+                "BaseLib captured the persisted weight as its reset default.");
 
             // 强制冲突可见规则（与主模组规则一致）。
             Assert(GetBridgeBool(bridge, "CanForceScaleBeetle"),
@@ -110,9 +128,31 @@ public partial class BaseLibBridgeProbeNode : Node
                 "CanForceScaleBeetle must hide once Origin Fogmog is forced.");
             SetBridgeBool(bridge, "BossOriginFogmogForced", false);
 
+            // Real controls call Changed BEFORE Save. The live model must receive
+            // the new properties immediately instead of reloading stale disk state.
+            SetBridgeValue(bridge, "BossScaleBeetleWeightPercent", 370);
+            SetBridgeBool(bridge, "FeatureCustomBgmEnabled", true);
+            SetBridgeBool(bridge, "BossOnlyModBosses", true);
+            InvokeBridge(config!, "Changed");
+            Assert((int)thingsConfig.GetMethod("GetInt")!.Invoke(null, ["BossScaleBeetleWeightPercent"])! == 370,
+                "Slider change did not reach the live model before Save.");
+            Assert((bool)thingsConfig.GetMethod("GetBool")!.Invoke(null, ["FeatureCustomBgmEnabled"])! &&
+                   (bool)thingsConfig.GetMethod("GetBool")!.Invoke(null, ["BossOnlyModBosses"])!,
+                "New toggle changes did not reach the live model before Save.");
+            // RitsuLib/main writes must also update the mirror before a delayed
+            // BaseLib save, or switching pages would silently discard the edit.
+            thingsConfig.GetMethod("SetValue")!.Invoke(null, ["BossScaleBeetleWeightPercent", 620]);
+            Assert((int)GetBridgeValue(bridge, "BossScaleBeetleWeightPercent") == 620,
+                "Main-to-BaseLib numeric synchronization failed.");
+            InvokeBridge(config!, "Save");
+            thingsConfig.GetMethod("Load")!.Invoke(null, null);
+            Assert((int)thingsConfig.GetMethod("GetInt")!.Invoke(null, ["BossScaleBeetleWeightPercent"])! == 620,
+                "Delayed BaseLib save overwrote another settings page's change.");
+            using (JsonDocument saved = JsonDocument.Parse(File.ReadAllText(sharedPath)))
+                Assert(saved.RootElement.EnumerateObject().All(property => property.Value.ValueKind == JsonValueKind.String),
+                    "Shared settings cannot be read by BaseLib's string dictionary.");
+
             // 桥保存后：配置文件存在且主模组可重载同一份值。
-            Type thingsConfig = implementation.GetType(
-                "STS2_Things.Config.ThingsModConfig", throwOnError: true)!;
             PropertyInfo? configPath = thingsConfig.GetProperty(
                 "ConfigPath", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
             Assert(configPath is not null, "ThingsModConfig.ConfigPath was not found.");
@@ -123,14 +163,55 @@ public partial class BaseLibBridgeProbeNode : Node
             Assert(load is not null && isForced is not null,
                 "ThingsModConfig.Load/IsForced were not found.");
             SetBridgeBool(bridge, "BossScaleBeetleForced", true);
-            InvokeBridgeSave(bridge, config!);
+            SetBridgeBool(bridge, "BossScaleBeetleEnabled", false);
+            SetBridgeValue(bridge, "BossScaleBeetleWeightPercent", 0);
+            InvokeBridge(config!, "Changed");
+            Assert(GetBridgeBool(bridge, "BossScaleBeetleEnabled"),
+                "Forced implies enabled was not reflected back to BaseLib.");
+            InvokeBridge(config!, "Save");
             Assert(File.Exists((string)configPath!.GetValue(null)!),
                 $"Bridge did not create the shared config file at {configPath}.");
             load!.Invoke(null, null);
             Assert((bool)isForced!.Invoke(null, ["BossScaleBeetleForced"])!,
                 "Main mod did not reload the bridge-written forced flag.");
             SetBridgeBool(bridge, "BossScaleBeetleForced", false);
-            InvokeBridgeSave(bridge, config!);
+            SetBridgeBool(bridge, "BossOnlyModBosses", false);
+            SetBridgeValue(bridge, "BossScaleBeetleWeightPercent", 100);
+            InvokeBridge(config!, "Changed");
+            InvokeBridge(config!, "Save");
+
+            // A client's UI shows the host snapshot, but neither normal nor
+            // debounced BaseLib saves may write it into the client's preferences.
+            thingsConfig.GetMethod("Save")!.Invoke(null, null);
+            string personalFile = File.ReadAllText(sharedPath);
+            Type multiplayer = implementation.GetType("STS2_Things.Config.MultiplayerConfig", true)!;
+            var (client, wire) = ConfigNetworkFake.Peer();
+            multiplayer.GetMethod("Bind")!.Invoke(null, [client, false]);
+            object[] settings = ((IEnumerable)thingsConfig.GetField("Entries")!.GetValue(null)!).Cast<object>().ToArray();
+            string Key(object entry) => (string)entry.GetType().GetProperty("Key")!.GetValue(entry)!;
+            int[] values = settings.Select(entry => Convert.ToInt32(thingsConfig.GetMethod("GetValue")!.Invoke(null, [Key(entry)]))).ToArray();
+            values[Array.FindIndex(settings, entry => Key(entry) == "BossScaleBeetleWeightPercent")] = 900;
+            values[Array.FindIndex(settings, entry => Key(entry) == "FeatureCustomBgmEnabled")] = 0;
+            Type messageType = implementation.GetType("STS2_Things.Config.ThingsConfigSnapshotMessage", true)!;
+            object snapshot = Activator.CreateInstance(messageType)!;
+            foreach (var pair in new Dictionary<string, object>
+                     { ["Version"] = 1, ["SchemaHash"] = messageType.GetField("Schema")!.GetValue(null)!,
+                       ["Revision"] = 1u, ["Locked"] = true, ["Values"] = values })
+                messageType.GetField(pair.Key)!.SetValue(snapshot, pair.Value);
+            wire.Deliver((INetMessage)snapshot);
+            Assert((int)GetBridgeValue(bridge, "BossScaleBeetleWeightPercent") == 900,
+                "BaseLib did not display the host snapshot.");
+            SetBridgeValue(bridge, "BossScaleBeetleWeightPercent", 0);
+            InvokeBridge(config!, "Changed");
+            Assert((int)GetBridgeValue(bridge, "BossScaleBeetleWeightPercent") == 900,
+                "Client BaseLib edit overrode the host.");
+            InvokeBridge(config!, "Save");
+            config!.GetType().GetMethod("SaveDebounced", BindingFlags.Public | BindingFlags.Instance, [typeof(int)])!
+                .Invoke(config, [0]);
+            Assert(File.ReadAllText(sharedPath) == personalFile, "BaseLib persisted the host's temporary values.");
+            multiplayer.GetMethod("Clear")!.Invoke(null, null);
+            Assert((int)GetBridgeValue(bridge, "BossScaleBeetleWeightPercent") == 100,
+                "BaseLib did not restore personal values after leaving.");
 
             GD.Print("BaseLib bridge probe: PASS");
             GetTree().Quit(0);
@@ -154,6 +235,13 @@ public partial class BaseLibBridgeProbeNode : Node
     }
 
     private static void SetBridgeBool(Assembly bridge, string property, bool value)
+        => SetBridgeValue(bridge, property, value);
+
+    private static object GetBridgeValue(Assembly bridge, string property)
+        => bridge.GetType("STS2_Things.BaseLibBridge.ThingsBaseLibConfig", true)!
+            .GetProperty(property, BindingFlags.Public | BindingFlags.Static)!.GetValue(null)!;
+
+    private static void SetBridgeValue(Assembly bridge, string property, object value)
     {
         Type? type = bridge.GetType("STS2_Things.BaseLibBridge.ThingsBaseLibConfig", throwOnError: true);
         PropertyInfo? propertyInfo = type?.GetProperty(property, BindingFlags.Public | BindingFlags.Static);
@@ -161,11 +249,11 @@ public partial class BaseLibBridgeProbeNode : Node
         propertyInfo!.SetValue(null, value);
     }
 
-    private static void InvokeBridgeSave(Assembly bridge, object config)
+    private static void InvokeBridge(object config, string method)
     {
         MethodInfo? save = config.GetType().GetMethod(
-            "Save", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
-        Assert(save is not null, "Bridge config Save() was not found.");
+            method, BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
+        Assert(save is not null, $"Bridge config {method}() was not found.");
         save!.Invoke(config, null);
     }
 

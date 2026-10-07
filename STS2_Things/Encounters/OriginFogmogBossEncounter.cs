@@ -18,7 +18,7 @@ public sealed class OriginFogmogBossEncounter : ModBossEncounter
     public override RoomType RoomType => RoomType.Boss;
 
     // 复用TheKin(Queen)的专属Boss音乐（多阶段+随从，与Fogmog机制相似）
-    public override string CustomBgm => "event:/music/act1_boss_the_kin";
+    public override string CustomBgm => ConfiguredBgm("event:/music/act1_boss_the_kin");
 
     public override bool HasScene => true;
 

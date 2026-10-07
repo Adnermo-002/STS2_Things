@@ -1,0 +1,61 @@
+mycorrhizal_bulwark.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 2
+  size: 406, 323
+  orig: 406, 323
+  offset: 0, 0
+  index: -1
+cap
+  rotate: false
+  xy: 2, 329
+  size: 739, 300
+  orig: 739, 300
+  offset: 0, 0
+  index: -1
+arm_far
+  rotate: false
+  xy: 745, 329
+  size: 191, 188
+  orig: 191, 188
+  offset: 0, 0
+  index: -1
+arm_near
+  rotate: false
+  xy: 2, 633
+  size: 190, 171
+  orig: 190, 171
+  offset: 0, 0
+  index: -1
+foot_far
+  rotate: false
+  xy: 196, 633
+  size: 220, 75
+  orig: 220, 75
+  offset: 0, 0
+  index: -1
+foot_near
+  rotate: false
+  xy: 420, 633
+  size: 230, 73
+  orig: 230, 73
+  offset: 0, 0
+  index: -1
+eye_0
+  rotate: false
+  xy: 654, 633
+  size: 80, 54
+  orig: 80, 54
+  offset: 0, 0
+  index: -1
+eye_1
+  rotate: false
+  xy: 738, 633
+  size: 85, 54
+  orig: 85, 54
+  offset: 0, 0
+  index: -1

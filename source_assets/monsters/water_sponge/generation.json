@@ -1,0 +1,17 @@
+{
+  "model": "gpt-image-2.5-sunburst",
+  "user_requested_name": "image2.5sunbrust",
+  "mode": "imagegen bundled CLI edit; inputs used only as style references",
+  "references": [
+    "STS2-V111/animations/monsters/wriggler/wriggler.png",
+    "STS2-V111/animations/monsters/twig_slime_m/twig_slime_m.png"
+  ],
+  "quality": "high",
+  "requested_size": "1024x1024",
+  "files": {
+    "character_final.png": "9bf9de5f1bf082b29de120a86fbee4ebdac2cb8b96e5791f6d69a45710fc09af",
+    "character_generated.png": "a5677e209256a761ffb15720c5402d4d2043a37cb71388f2ea8169c2f27cd354",
+    "reservoir_generated.png": "97cdd4f42b01b18edd8ce63e89a6403ef0490a22547766417b5b28cd91982929",
+    "rinse_generated.png": "5c3c092d012330622d71653bff969ebc1406b22e9aedef72446495b72be86f4a"
+  }
+}

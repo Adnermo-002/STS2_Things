@@ -1,0 +1,11 @@
+{
+  "SILK_LEAD.title": "Silken Link · 1",
+  "SILK_LEAD.description": "Play this card to unlock the card marked [gold]2[/gold].",
+  "SILK_LEAD.extraCardText": "[gold]Silken Link · 1[/gold]",
+  "SILK_BOUND.title": "Silken Link · 2",
+  "SILK_BOUND.description": "Cannot be played until you play the card marked [gold]1[/gold].",
+  "SILK_BOUND.extraCardText": "[gold]Silken Link · 2[/gold]",
+  "UPSTREAM_RECALL.title": "Reflux",
+  "UPSTREAM_RECALL.extraCardText": "[gold]Reflux[/gold]",
+  "UPSTREAM_RECALL.description": "Costs [blue]1[/blue] less this turn.\nWhen played, living Reverse-Current Salamanders gain [blue]{Amount}[/blue] [gold]Strength[/gold]."
+}

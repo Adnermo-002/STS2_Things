@@ -1,0 +1,56 @@
+{
+  "zhs": {
+    "events": {
+      "ECHOING_WELL.title": "收音井",
+      "ECHOING_WELL.pages.INITIAL.description": "你往井里扔了一块石头。\n\n井下先传来拔剑的声音。过了一会儿，才是落水声。\n\n两只小水母把触须贴在井沿。旁边的小瓶轻轻一震，像在等你再说一句。",
+      "ECHOING_WELL.pages.INITIAL.options.RECORD.title": "把这一招留下",
+      "ECHOING_WELL.pages.INITIAL.options.RECORD.description": "移除[blue]1[/blue]张非X费攻击或技能牌。获得[gold]瓶中回声[/gold]。",
+      "ECHOING_WELL.pages.INITIAL.options.LOCKED.title": "已锁定",
+      "ECHOING_WELL.pages.INITIAL.options.LOCKED.description": "没有可封存的牌，或已获得瓶中回声。",
+      "ECHOING_WELL.pages.INITIAL.options.LEAVE.title": "放轻脚步",
+      "ECHOING_WELL.pages.INITIAL.options.LEAVE.description": "离开。",
+      "ECHOING_WELL.selectionPrompt": "移除一张非X费攻击或技能牌，封存它的回声。",
+      "ECHOING_WELL.pages.RECORDED.description": "牌没入井口，却没有落水。井下传来了你下一次使出它的声音。\n\n你把声音装进瓶子。塞子刚扣好，瓶里轻轻响了[gold]三下[/gold]。\n\n再看手中，原来的牌已经不见了。",
+      "ECHOING_WELL.pages.LEAVE.description": "你没有碰那只瓶子。\n\n走出几步，身后也响起了脚步声。\n\n比你慢了一拍。",
+      "ECHOING_WELL.pages.ABORTED.description": "你收回了手。\n\n井里也传来一声犹豫的轻响。两只水母继续等着。",
+      "ECHOING_WELL.pages.INITIAL.options.COINS.title": "捡起井边的金币",
+      "ECHOING_WELL.pages.INITIAL.options.COINS.description": "获得[blue]{SmallGold}[/blue][gold]金币[/gold]。",
+      "ECHOING_WELL.pages.COINS.description": "你捡起井沿上的几枚[gold]金币[/gold]。\n\n井里传来了一声清脆的道谢。\n\n你还没来得及开口。"
+    },
+    "relics": {
+      "BOTTLED_ECHO.title": "瓶中回声",
+      "BOTTLED_ECHO.description": "接下来的[blue]{Combats}[/blue]场战斗，首回合将封存牌的复制品加入手牌。它耗能为[blue]0[/blue]，具有[gold]消耗[/gold]和[gold]虚无[/gold]。",
+      "BOTTLED_ECHO.flavor": "有些招式，井比你记得更牢。"
+    },
+    "settings_ui": {
+      "STS2_THINGS-EVENT_ECHOING_WELL_ENABLED.title": "收音井 — 启用"
+    }
+  },
+  "eng": {
+    "events": {
+      "ECHOING_WELL.title": "Echoing Well",
+      "ECHOING_WELL.pages.INITIAL.description": "You drop a stone down the well.\n\nFirst comes the sound of a sword being drawn. The splash arrives some time later.\n\nTwo tiny jellyfish press their feelers against the rim. A little bottle trembles beside them, waiting for you to say something else.",
+      "ECHOING_WELL.pages.INITIAL.options.RECORD.title": "Leave a Move Behind",
+      "ECHOING_WELL.pages.INITIAL.options.RECORD.description": "Remove [blue]1[/blue] non-X-cost Attack or Skill. Obtain [gold]Bottled Echo[/gold].",
+      "ECHOING_WELL.pages.INITIAL.options.LOCKED.title": "Locked",
+      "ECHOING_WELL.pages.INITIAL.options.LOCKED.description": "No eligible card, or you already own Bottled Echo.",
+      "ECHOING_WELL.pages.INITIAL.options.LEAVE.title": "Tread Lightly",
+      "ECHOING_WELL.pages.INITIAL.options.LEAVE.description": "Leave.",
+      "ECHOING_WELL.selectionPrompt": "Remove a non-X-cost Attack or Skill to bottle its echo.",
+      "ECHOING_WELL.pages.RECORDED.description": "The card vanishes into the well without a splash. From below comes the sound of the next time you would have used it.\n\nYou catch the sound in the bottle. As the cork settles, it taps [gold]three times[/gold].\n\nThe original card is gone.",
+      "ECHOING_WELL.pages.LEAVE.description": "You leave the bottle alone.\n\nA few steps later, footsteps follow behind you.\n\nOne beat late.",
+      "ECHOING_WELL.pages.ABORTED.description": "You pull your hand back.\n\nA small, hesitant sound rises from the well. The jellyfish keep waiting.",
+      "ECHOING_WELL.pages.INITIAL.options.COINS.title": "Take the Coins",
+      "ECHOING_WELL.pages.INITIAL.options.COINS.description": "Gain [blue]{SmallGold}[/blue] [gold]Gold[/gold].",
+      "ECHOING_WELL.pages.COINS.description": "You collect a few [gold]coins[/gold] from the rim.\n\nA clear voice thanks the well.\n\nYou had not spoken yet."
+    },
+    "relics": {
+      "BOTTLED_ECHO.title": "Bottled Echo",
+      "BOTTLED_ECHO.description": "For the next [blue]{Combats}[/blue] combats, add a copy of the stored card to your hand on turn 1. It costs [blue]0[/blue] and has [gold]Exhaust[/gold] and [gold]Ethereal[/gold].",
+      "BOTTLED_ECHO.flavor": "Some moves, the well remembers better than you do."
+    },
+    "settings_ui": {
+      "STS2_THINGS-EVENT_ECHOING_WELL_ENABLED.title": "Echoing Well — enabled"
+    }
+  }
+}

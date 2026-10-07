@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Texture2D" path="res://images/rooms/cave_god_boss/cavegod_bg_far.png" id="1_bg_far"]
+[ext_resource type="Texture2D" path="res://images/rooms/cave_god_boss/cavegod_bg_far_blue.png" id="1_bg_blue"]
+[ext_resource type="Texture2D" path="res://images/rooms/cave_god_boss/cavegod_bg_far.png" id="2_bg_red"]
 
 [node name="A" type="TextureRect"]
 anchors_preset = 8
@@ -15,6 +16,19 @@ offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("1_bg_far")
+texture = ExtResource("1_bg_blue")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RedBg" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg_red")
 expand_mode = 1
 stretch_mode = 6

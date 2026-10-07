@@ -13,7 +13,7 @@ public sealed class TheLegacyBossEncounter : ModBossEncounter
 
     // Keep the BGM in Underdocks' native act1_b bank. EncounterModel has no
     // cross-Act bank declaration, so cross-bank music needs an invasive loader patch.
-    public override string CustomBgm => "event:/music/act1_b_boss_waterfall_giant";
+    public override string CustomBgm => ConfiguredBgm("event:/music/act1_b_boss_waterfall_giant");
 
     public override bool HasScene => true;
     protected override bool HasCustomBackground => true;

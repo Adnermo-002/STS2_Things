@@ -1,0 +1,7 @@
+Use case: stylized-concept
+Asset type: original Slay the Spire 2 status-card portrait artwork, landscape, no card frame or text.
+Input image 1 (original Slimed card) and image 2 (original Purity card) are STYLE REFERENCES ONLY. Match their broad flat painted shapes, simple graphic contours, very limited shading and slight cartoon quality. Do not reproduce their slime or flower.
+Primary request: a clear cool-blue wash of water sweeping one small curled brick-red parasite off a simple dark ochre stone. Water arcs diagonally across the portrait as one broad flowing ribbon with two pale blue angular foam shapes. The little parasite is harmless-looking, stylized, short and plump, pushed toward the outer edge. The main subject is the cleansing water motion.
+Composition: large simple central graphic shapes, a shallow dark teal cave-water background, high silhouette readability. Keep essential water and parasite within the middle 75% so this can be cropped to the game's 1000 by 760 portrait.
+Palette: slate teal background, moderate sky-blue and pale blue water, one muted brick-red parasite, ochre stone. Flat color areas and at most one shadow per shape.
+Avoid: typography, card borders, UI, numbers, photorealistic water, glossy droplets, heavy gradients, glowing aura, sparkles, intricate scenery, full monsters or characters, horror, wounds and gore. Produce just the finished card illustration.

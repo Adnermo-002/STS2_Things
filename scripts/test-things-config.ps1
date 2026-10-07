@@ -16,6 +16,10 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Pck,
 
+    [string]$NativePck,
+
+    [switch]$NeowOnly,
+
     [string]$GodotExe = $env:GODOT_4_5_1_MONO
 )
 
@@ -45,6 +49,13 @@ $ImplementationDll = [IO.Path]::GetFullPath($ImplementationDll)
 $RuntimeDependencyDir = [IO.Path]::GetFullPath($RuntimeDependencyDir)
 $Pck = [IO.Path]::GetFullPath($Pck)
 $GodotExe = [IO.Path]::GetFullPath($GodotExe)
+if ([string]::IsNullOrWhiteSpace($NativePck)) {
+    $NativePck = Join-Path (Split-Path $RuntimeDependencyDir -Parent) 'SlayTheSpire2.pck'
+}
+if (-not (Test-Path -LiteralPath $NativePck -PathType Leaf)) {
+    throw "Native localization pack was not found: $NativePck"
+}
+$env:STS2_NEOW_NATIVE_PCK = [IO.Path]::GetFullPath($NativePck)
 
 $portableDotnet = Join-Path $Root '.tmp\dotnet9'
 if (Test-Path -LiteralPath (Join-Path $portableDotnet 'dotnet.exe') -PathType Leaf) {
@@ -55,6 +66,7 @@ if (Test-Path -LiteralPath (Join-Path $portableDotnet 'dotnet.exe') -PathType Le
 
 Write-Host "Building config probe for $TargetVersion..."
 & dotnet build $ProbeProject -t:Rebuild -c Debug --nologo `
+    "/p:Sts2TargetVersion=$TargetVersion" `
     "/p:Sts2DataDir=$DataDir" `
     "/p:RuntimeDependencyDir=$RuntimeDependencyDir" `
     "/p:ImplementationDll=$ImplementationDll"
@@ -62,13 +74,16 @@ if ($LASTEXITCODE -ne 0) {
     throw "Config probe build failed for $TargetVersion with exit code $LASTEXITCODE"
 }
 
-$logPath = Join-Path $ProbeRoot "probe-$TargetVersion.log"
+$logName = if ($NeowOnly) { "neow-$TargetVersion.log" } else { "probe-$TargetVersion.log" }
+$logPath = Join-Path $ProbeRoot $logName
 if (Test-Path -LiteralPath $logPath -PathType Leaf) {
     Remove-Item -LiteralPath $logPath -Force
 }
 
 Write-Host "Running config probe for $TargetVersion..."
-& $GodotExe --headless --path $ProbeRoot --log-file $logPath -- @($Pck)
+$probeArgs = @($Pck)
+if ($NeowOnly) { $probeArgs += '--neow-only' }
+& $GodotExe --headless --path $ProbeRoot --log-file $logPath -- @probeArgs
 if ($LASTEXITCODE -ne 0) {
     throw "Config probe failed for $TargetVersion with exit code $LASTEXITCODE"
 }
@@ -84,7 +99,8 @@ if ($errors) {
     throw "Config probe reported errors for ${TargetVersion}:`n$preview"
 }
 $logText = Get-Content -LiteralPath $logPath -Raw
-if ($logText.IndexOf('Things config probe: PASS', [StringComparison]::Ordinal) -lt 0) {
+$successMarker = if ($NeowOnly) { 'Things Neow probe: PASS' } else { 'Things config probe: PASS' }
+if ($logText.IndexOf($successMarker, [StringComparison]::Ordinal) -lt 0) {
     throw "Config probe did not report PASS for $TargetVersion."
 }
 

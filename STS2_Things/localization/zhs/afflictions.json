@@ -1,0 +1,11 @@
+{
+  "SILK_LEAD.title": "牵丝·1",
+  "SILK_LEAD.description": "打出这张牌，解除标记[gold]2[/gold]的牌的限制。",
+  "SILK_LEAD.extraCardText": "[gold]牵丝·1[/gold]",
+  "SILK_BOUND.title": "牵丝·2",
+  "SILK_BOUND.description": "打出标记[gold]1[/gold]的牌前，无法打出这张牌。",
+  "SILK_BOUND.extraCardText": "[gold]牵丝·2[/gold]",
+  "UPSTREAM_RECALL.title": "回流",
+  "UPSTREAM_RECALL.extraCardText": "[gold]回流[/gold]",
+  "UPSTREAM_RECALL.description": "本回合耗能少[blue]1[/blue]。\n打出时，存活的逆流蝾螈获得[blue]{Amount}[/blue]点[gold]力量[/gold]。"
+}

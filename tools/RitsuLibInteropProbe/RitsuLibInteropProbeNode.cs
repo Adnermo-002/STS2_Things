@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Collections;
 using System.Runtime.Loader;
 using Godot;
 using MegaCrit.Sts2.Core.Models;
@@ -10,6 +11,9 @@ public partial class RitsuLibInteropProbeNode : Node
     {
         try
         {
+            Assert(OS.GetUserDataDir().Contains("RitsuLib Interop Probe", StringComparison.Ordinal),
+                "Refusing to change settings outside the isolated probe profile.");
+            ThingsModConfig.SetValues(ThingsModConfig.Entries.ToDictionary(entry => entry.Key, entry => (object?)entry.Default));
             string[] args = OS.GetCmdlineUserArgs();
             Assert(args.Length == 1, "Probe requires the RitsuLib DLL path.");
             string ritsuLibPath = Path.GetFullPath(args[0]);
@@ -18,25 +22,17 @@ public partial class RitsuLibInteropProbeNode : Node
             AssemblyLoadContext loadContext =
                 AssemblyLoadContext.GetLoadContext(typeof(ModelDb).Assembly)
                 ?? AssemblyLoadContext.Default;
+            // Modular RitsuLib keeps Settings and its dependencies together.
+            loadContext.Resolving += (context, name) =>
+            {
+                string candidate = Path.Combine(Path.GetDirectoryName(ritsuLibPath)!, name.Name + ".dll");
+                return File.Exists(candidate) ? context.LoadFromAssemblyPath(candidate) : null;
+            };
             Assembly ritsuLib = loadContext.LoadFromAssemblyPath(ritsuLibPath);
 
-            // 与 LibraryIntegration 相同的注册路径：互操作镜像 + 字符串注册。
-            Type? mirror = ritsuLib.GetType(
-                "STS2RitsuLib.Settings.ModSettingsRuntimeReflectionInteropMirror",
-                throwOnError: true);
-            MethodInfo? register = mirror?.GetMethod(
-                "RegisterProviderTypeAndTryRegister",
-                BindingFlags.Public | BindingFlags.Static,
-                binder: null,
-                types: [typeof(string), typeof(string)],
-                modifiers: null);
-            Assert(register is not null, "RitsuLib mirror registration API was not found.");
-
-            string providerFullName = typeof(RitsuLibInteropProvider).FullName!;
-            string providerAssembly = typeof(RitsuLibInteropProvider).Assembly.GetName().Name!;
-            int registered = (int)(register!.Invoke(null, [providerFullName, providerAssembly]) ?? 0);
-            Assert(registered >= 1,
-                $"RitsuLib registered {registered} page(s); expected at least 1.");
+            // Exercise the actual production discovery path, including split assemblies.
+            Type integration = typeof(ThingsModConfig).Assembly.GetType("STS2_Things.Config.LibraryIntegration", true)!;
+            integration.GetMethod("Initialize", BindingFlags.Public | BindingFlags.Static)!.Invoke(null, null);
 
             // 注册表必须包含 STS2_Things::things 页面。
             Type? registry = ritsuLib.GetType(
@@ -63,6 +59,39 @@ public partial class RitsuLibInteropProbeNode : Node
                    titleMap.ContainsKey("zht"),
                 "Provider text map must carry the en/zhs/zht game language codes.");
 
+            // Inspect the page produced by the real library, then edit through
+            // its actual bindings (a schema-only test would miss dropped sliders).
+            object page = pageArgs[2]!;
+            object[] decoratedEntries = ((IEnumerable)Get(page, "Sections")).Cast<object>()
+                .SelectMany(section => ((IEnumerable)Get(section, "Entries")).Cast<object>()).ToArray();
+            object[] actualEntries = decoratedEntries.Select(Unwrap).ToArray();
+            object[] sliders = actualEntries.Where(entry => entry.GetType().Name == "IntSliderModSettingsEntryDefinition").ToArray();
+            Assert(sliders.Length == 7, $"Expected seven registered sliders, got {sliders.Length}.");
+            var entriesById = ((object[])schema["sections"]!).Cast<IDictionary<string, object?>>()
+                .SelectMany(section => (IDictionary<string, object?>[])section["entries"]!)
+                .ToDictionary(entry => (string)entry["id"]!);
+            foreach (object slider in sliders)
+            {
+                Assert((int)Get(slider, "MinValue") == 0 && (int)Get(slider, "MaxValue") == 1000 &&
+                       (int)Get(slider, "Step") == 10, "Registered slider has incorrect bounds.");
+                string key = (string)entriesById[(string)Get(slider, "Id")]["key"]!;
+                object binding = Get(slider, "Binding");
+                binding.GetType().GetMethod("Write")!.Invoke(binding, [370]);
+                Assert(ThingsModConfig.GetInt(key) == 370, $"Real slider binding did not update {key}.");
+                Assert((int)binding.GetType().GetMethod("Read")!.Invoke(binding, null)! == 370,
+                    "Real slider binding did not read its current value.");
+                binding.GetType().GetMethod("Write")!.Invoke(binding, [100]);
+            }
+            foreach ((string id, string key, bool value) in new[]
+                     { ("custom_bgm", ThingsModConfig.FeatureCustomBgmEnabled, false),
+                       ("only_mod_bosses", ThingsModConfig.BossOnlyModBosses, true) })
+            {
+                object entry = actualEntries.Single(entry => (string)Get(entry, "Id") == id);
+                object binding = Get(entry, "Binding");
+                binding.GetType().GetMethod("Write")!.Invoke(binding, [value]);
+                Assert(ThingsModConfig.GetBool(key) == value, $"Real toggle binding did not update {key}.");
+            }
+
             // 值访问器往返（与 ThingsModConfig 共享同一内存态）。
             Assert(RitsuLibInteropProvider.GetRitsuLibSettingBool(
                        ThingsModConfig.BossOriginFogmogEnabled),
@@ -83,6 +112,30 @@ public partial class RitsuLibInteropProbeNode : Node
                 "IsBossForceVisible(Scale Beetle) must hide when Origin Fogmog is forced.");
             RitsuLibInteropProvider.SetRitsuLibSettingBool(ThingsModConfig.BossOriginFogmogForced, false);
 
+            var (client, wire) = ConfigNetworkFake.Peer();
+            MultiplayerConfig.Bind(client);
+            int[] hostValues = ThingsModConfig.Entries.Select(entry => Convert.ToInt32(entry.Default)).ToArray();
+            int weightIndex = ThingsModConfig.Entries.ToList().FindIndex(entry => entry.Key == ThingsModConfig.BossScaleBeetleWeightPercent);
+            hostValues[weightIndex] = 610;
+            wire.Deliver(new ThingsConfigSnapshotMessage
+            {
+                Version = ThingsConfigSnapshotMessage.Protocol, SchemaHash = ThingsConfigSnapshotMessage.Schema,
+                Revision = 1, Locked = true, Values = hostValues,
+            });
+            Assert(decoratedEntries.All(entry => !((Func<bool>)Get(entry, "VisibilityPredicate"))()),
+                "RitsuLib did not hide editing controls for the client.");
+            object weightEntry = actualEntries.Single(entry => (string)Get(entry, "Id") == "scale_beetle_weight");
+            object weightBinding = Get(weightEntry, "Binding");
+            weightBinding.GetType().GetMethod("Write")!.Invoke(weightBinding, [0]);
+            Assert((int)weightBinding.GetType().GetMethod("Read")!.Invoke(weightBinding, null)! == 610,
+                "Client RitsuLib binding overrode host values.");
+            MultiplayerConfig.Clear();
+            Assert(decoratedEntries.All(entry => ((Func<bool>)Get(entry, "VisibilityPredicate"))()),
+                "Leaving did not restore local editing controls.");
+
+            ThingsModConfig.SetValues(ThingsModConfig.Entries.ToDictionary(entry => entry.Key, entry => (object?)entry.Default));
+            ThingsModConfig.Save();
+
             GD.Print("RitsuLib interop probe: PASS");
             GetTree().Quit(0);
         }
@@ -91,6 +144,16 @@ public partial class RitsuLibInteropProbeNode : Node
             GD.PushError(exception.ToString());
             GetTree().Quit(1);
         }
+    }
+
+    private static object Get(object target, string property) => target.GetType().GetProperty(property)!.GetValue(target)!;
+
+    private static object Unwrap(object entry)
+    {
+        for (Type? type = entry.GetType(); type is not null; type = type.BaseType)
+            if (type.GetProperty("Inner", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly) is { } inner)
+                return Unwrap(inner.GetValue(entry)!);
+        return entry;
     }
 
     private static void Assert(bool condition, string message)

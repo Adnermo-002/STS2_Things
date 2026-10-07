@@ -1,0 +1,46 @@
+{
+  "zhs": {
+    "monsters": {
+      "HUMAN_FACE_COLUMN.name": "人面柱",
+      "HUMAN_FACE_COLUMN.moves.KNOCK_MOVE.title": "磕碰",
+      "HUMAN_FACE_COLUMN.moves.REBUKE_MOVE.title": "呵斥",
+      "HUMAN_FACE_COLUMN.moves.SEAL_MOVE.title": "合缝",
+      "HUMAN_FACE_COLUMN.moves.RATTLE_MOVE.title": "震击"
+    },
+    "powers": {
+      "HUMAN_FACE_COLUMN_POWER.title": "叠柱",
+      "HUMAN_FACE_COLUMN_POWER.description": "共[blue]6[/blue]层，同时显露[blue]3[/blue]层。\n上层免疫伤害，中层受到的伤害降低[blue]50%[/blue]。\n击碎底层后，原中层[gold]眩晕[/gold]一回合。",
+      "HUMAN_FACE_COLUMN_POWER.topDescription": "剩余[blue]{Amount}[/blue]层。\n免疫伤害。\n击碎底层后，原中层[gold]眩晕[/gold]一回合。",
+      "HUMAN_FACE_COLUMN_POWER.middleDescription": "剩余[blue]{Amount}[/blue]层。\n受到的伤害降低[blue]50%[/blue]。\n击碎底层后，原中层[gold]眩晕[/gold]一回合。",
+      "HUMAN_FACE_COLUMN_POWER.bottomDescription": "剩余[blue]{Amount}[/blue]层。\n击碎底层后，原中层[gold]眩晕[/gold]一回合。"
+    },
+    "encounters": {
+      "HUMAN_FACE_COLUMN_WEAK.title": "人面柱",
+      "HUMAN_FACE_COLUMN_WEAK.loss": "{character}被[gold]{encounter}[/gold]压垮了。",
+      "HUMAN_FACE_COLUMN_ENCOUNTER.title": "柱下住客",
+      "HUMAN_FACE_COLUMN_ENCOUNTER.loss": "{character}没能躲过[gold]{encounter}[/gold]。"
+    }
+  },
+  "eng": {
+    "monsters": {
+      "HUMAN_FACE_COLUMN.name": "Human-Faced Column",
+      "HUMAN_FACE_COLUMN.moves.KNOCK_MOVE.title": "Knock",
+      "HUMAN_FACE_COLUMN.moves.REBUKE_MOVE.title": "Rebuke",
+      "HUMAN_FACE_COLUMN.moves.SEAL_MOVE.title": "Seal",
+      "HUMAN_FACE_COLUMN.moves.RATTLE_MOVE.title": "Rattle"
+    },
+    "powers": {
+      "HUMAN_FACE_COLUMN_POWER.title": "Stacked",
+      "HUMAN_FACE_COLUMN_POWER.description": "[blue]6[/blue] layers; [blue]3[/blue] exposed at a time.\nThe top takes no damage. The middle takes [blue]50%[/blue] less damage.\nBreaking the bottom layer [gold]Stuns[/gold] the former middle layer for a turn.",
+      "HUMAN_FACE_COLUMN_POWER.topDescription": "[blue]{Amount}[/blue] layers remain.\nTakes no damage.\nBreaking the bottom layer [gold]Stuns[/gold] the former middle layer for a turn.",
+      "HUMAN_FACE_COLUMN_POWER.middleDescription": "[blue]{Amount}[/blue] layers remain.\nTakes [blue]50%[/blue] less damage.\nBreaking the bottom layer [gold]Stuns[/gold] the former middle layer for a turn.",
+      "HUMAN_FACE_COLUMN_POWER.bottomDescription": "[blue]{Amount}[/blue] layers remain.\nBreaking the bottom layer [gold]Stuns[/gold] the former middle layer for a turn."
+    },
+    "encounters": {
+      "HUMAN_FACE_COLUMN_WEAK.title": "Human-Faced Column",
+      "HUMAN_FACE_COLUMN_WEAK.loss": "{character} was crushed beneath the [gold]{encounter}[/gold].",
+      "HUMAN_FACE_COLUMN_ENCOUNTER.title": "Column Dwellers",
+      "HUMAN_FACE_COLUMN_ENCOUNTER.loss": "{character} could not get past the [gold]{encounter}[/gold]."
+    }
+  }
+}

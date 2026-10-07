@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_00_a.tscn" id="0"]
+[ext_resource type="PackedScene" path="res://scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_01_a.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_02_a.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/backgrounds/hollow_grotto/layers/hollow_grotto_bg_03_a.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/backgrounds/hollow_grotto/layers/hollow_grotto_fg_a.tscn" id="4"]
+
+[node name="CompleteCaveVariant" type="Control"]
+mouse_filter = 2
+metadata/depths_variant = "hollow_grotto"
+
+[node name="Layer_00" parent="." instance=ExtResource("0")]
+
+[node name="Layer_01" parent="." instance=ExtResource("1")]
+
+[node name="Layer_02" parent="." instance=ExtResource("2")]
+
+[node name="Layer_03" parent="." instance=ExtResource("3")]
+
+[node name="Layer_04" parent="." instance=ExtResource("4")]

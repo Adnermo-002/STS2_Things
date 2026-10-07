@@ -1,4 +1,5 @@
 using MegaCrit.Sts2.Core.Models;
+using STS2_Things.Audio;
 
 namespace STS2_Things.Encounters;
 
@@ -8,6 +9,8 @@ namespace STS2_Things.Encounters;
 public abstract class ModBossEncounter : EncounterModel
 {
     protected abstract string IconName { get; }
+
+    protected static string ConfiguredBgm(string track) => ModMusicPolicy.Enabled ? track : string.Empty;
 
     public override string BossNodePath =>
         $"res://images/map/{IconName}_boss_icon";

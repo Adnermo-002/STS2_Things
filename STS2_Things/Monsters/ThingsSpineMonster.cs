@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Models;
+using STS2_Things.Hooks;
 
 namespace STS2_Things.Monsters;
 
@@ -11,6 +12,9 @@ namespace STS2_Things.Monsters;
 /// </summary>
 public abstract class ThingsSpineMonster : MonsterModel
 {
+    public override IEnumerable<string> AssetPaths => base.AssetPaths
+        .Concat(SfxHooks.GetMonsterSoundAssetPaths(Id.Entry.ToLowerInvariant()));
+
     public override CreatureAnimator GenerateAnimator(MegaSprite controller)
     {
         var idle = new AnimState("idle_loop", isLooping: true);
@@ -31,8 +35,11 @@ public abstract class ThingsSpineMonster : MonsterModel
         animator.AddAnyState(CreatureAnimator.powerUpTrigger, powerUp);
         animator.AddAnyState(CreatureAnimator.reviveTrigger, revive);
         animator.AddAnyState("Summon", summon);
+        AddExtraAnimationStates(animator, idle);
         return animator;
     }
+
+    protected virtual void AddExtraAnimationStates(CreatureAnimator animator, AnimState idle) { }
 
     private static AnimState ReturnToIdle(string animationName, AnimState idle)
     {

@@ -1,0 +1,147 @@
+{
+  "revision": "r02",
+  "engine": "Godot 4.5.1 / D3D12 / Forward Mobile",
+  "variants": {
+    "hollow_grotto_moss": {
+      "luma_p05_p50_p95": [
+        9.44,
+        29.58,
+        40.74
+      ],
+      "animation_pixels_delta_gt_2": 983,
+      "frames_apart": 120,
+      "fps": 60,
+      "textures": {
+        "hollow_grotto_moss_00.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "d8726b71f5a2b7e3ac2b41e9e381b314ba69e8fff9d1be85ca007d95c3abb8bb"
+        },
+        "hollow_grotto_moss_01.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "e441c5136f9c420798bd0de5c74916327676468becfb78e9c8a5b85fcb73b3c1"
+        },
+        "hollow_grotto_moss_02.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "295473d53a3f17d627bb9ba48cf1cdb71f40518d4d97e6f102347ed9dd49e06e"
+        },
+        "hollow_grotto_moss_03.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "828ef1d9737101800eecb42eb6c18e8c882f9567db5a94b94006fa3604d51127"
+        },
+        "hollow_grotto_moss_fg.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "6c62bd1d660b3826482b313c69241345266121fe25f43f8cb17e856ea30f688d"
+        }
+      }
+    },
+    "hollow_grotto_ember": {
+      "luma_p05_p50_p95": [
+        10.99,
+        25.83,
+        33.24
+      ],
+      "animation_pixels_delta_gt_2": 289,
+      "frames_apart": 120,
+      "fps": 60,
+      "textures": {
+        "hollow_grotto_ember_00.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "e6686385554654b64a6fb4060eb2be5c5e1871a66e8fa2bb7b85cf54d9ef396e"
+        },
+        "hollow_grotto_ember_01.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "7159ce3cedf7155c882dfa8b14020bddadf981cb45fdc59cf48cbcf6a42953b3"
+        },
+        "hollow_grotto_ember_02.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "888536a137883757ec4ded61aaead68c8f6fac9661ced425377565bec250d5ca"
+        },
+        "hollow_grotto_ember_03.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "5bf3b30d5888b36b1003871cef2364dc817b1e70a6aa424e3ff1327adfeb3436"
+        },
+        "hollow_grotto_ember_fg.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "9d19c3fe8db4b21240bc9f4997bf3a4055ccd016212429f9926fdb0856fbe84a"
+        }
+      }
+    },
+    "hollow_grotto_violet": {
+      "luma_p05_p50_p95": [
+        9.72,
+        20.51,
+        32.43
+      ],
+      "animation_pixels_delta_gt_2": 10325,
+      "frames_apart": 120,
+      "fps": 60,
+      "textures": {
+        "hollow_grotto_violet_00.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "d79b4aca47b56cbdb9b4b413a8bb3cdd6ada774f3cc532e11248ebb4f29c905f"
+        },
+        "hollow_grotto_violet_01.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "53572b2e4d7c7f9ccd8f8468cb05bb27d42d85b5aeba7e012b7862747773eca0"
+        },
+        "hollow_grotto_violet_02.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "78e2f08803911a7d5fc6ffff21769c678510470ed08fed27a00505ec8ed8a1d0"
+        },
+        "hollow_grotto_violet_03.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "0fd504340095d259e3c8488e5e06ee6fc0d05972cdeef844f937c02cd531d907"
+        },
+        "hollow_grotto_violet_fg.png": {
+          "size": [
+            2048,
+            960
+          ],
+          "sha256": "2c988d74522ef3d0d2835c55162d2bef929cb32798d502ab226eee7f5cd3a16f"
+        }
+      }
+    }
+  }
+}

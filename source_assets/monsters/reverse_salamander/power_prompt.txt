@@ -1,0 +1,4 @@
+Use case: stylized-concept
+Asset type: one Slay the Spire 2 power icon, readable at 64 pixels.
+Primary request: a single chunky aqua water curl flowing upward and backward around one small ivory playing-card silhouette. The card is plain with one subtle dark center mark, no text. The water forms a clear counterclockwise return gesture with a blunt rounded tip, not a technical arrow. Muted blue-green shadows and one cream highlight.
+Style: original Slay the Spire 2 power-symbol language, simple matte hand-painted blocks, slightly irregular dark edging, sparse texture, very few details, 2-3 value groups. No icon button, circular badge, border, glossy surface, realistic water, tiny particles, words, numbers or watermark. Centered cutout on genuinely transparent background with generous margins.

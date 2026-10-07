@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://images/rooms/hollow_grotto_violet/hollow_grotto_violet_02.png" id="1_art"]
+
+[node name="HollowGrotto02" type="Control"]
+mouse_filter = 2
+
+[node name="PaintedLayer" type="TextureRect" parent="."]
+offset_left = -1382.4
+offset_top = -648.0
+offset_right = 1382.4
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("1_art")
+expand_mode = 1
+metadata/plane = "bg_02"

@@ -1,0 +1,11 @@
+{"hash":"origineye","dropSlots":["test_BG","guide","tentacle_path_a","tentacle_path_a2","tentacle_path_a3","tentacle_path_a4","tentacle_path_a5"],
+ "recolor":{"slots":["back petals","leaf 1","leaf 2","leaf 3","leaf 4","extra vine","extra vine2","extra vine3","extra vine4","extra vine5","death_still"],"hueFrom":130,"hueTo":14,"k":0.25,"sat":1.35,"val":0.85},
+ "overlays":{"back petals":{"color":"5aff3c","atts":["back petals"]},"leaf 1":{"color":"5aff3c","atts":["leaf 1","leaf 1 open"]},
+   "leaf 2":{"color":"5aff3c","atts":["leaf 2"]},"leaf 3":{"color":"5aff3c","atts":["leaf 3"]},"leaf 4":{"color":"5aff3c","atts":["leaf 4"]}},
+ "animations":{
+  "idle_loop":{"from":"idle_loop","loop":true},
+  "attack":{"from":"attack"},
+  "hurt":{"from":"idle_loop","loop":true,"duration":0.5,"overlay":{"cog":{"r":-14,"x":22,"sx":-0.08,"sy":0.06,"env":"hurt"}},"tint":[1,0.55,0.55,0.6]},
+  "die":{"from":"die"},
+  "revive":{"from":"die","reverse":true,"duration":1.2}
+ }}

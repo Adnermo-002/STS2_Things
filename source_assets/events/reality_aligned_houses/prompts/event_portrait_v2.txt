@@ -1,0 +1,13 @@
+Use case: style-transfer
+Asset type: final Slay the Spire 2 event illustration.
+Input image 1: edit target, the already designed cave lane of aligned cottages.
+Input image 2: original Slay the Spire 2 Field of Man-Sized Holes, STYLE reference.
+Input image 3: original Slay the Spire 2 Reflections, STYLE reference.
+
+Preserve the first image's wide canvas, all important positions, left-focused cottage, row of repeated cottages, warm doorway, farther blue cottage, and quiet dark RIGHT 42% for the game's text panel. Keep the subject readable at normal game size. This is a targeted style correction, not a new composition.
+
+Change only the rendering language and the clarity of the impossible doorframe. Repaint the first image using the exact economical illustrative vocabulary of references 2 and 3: rough angular hand-drawn silhouettes, broad clean flat color planes, sparse irregular dark ink accents and stylized slightly awkward shapes. Each surface has only 2-3 large graphic tone shapes. It must feel drawn and colored by the same artists as these event references, not modeled and lit in 3D. Remove most siding lines and roof tile seams, all smoothly shaded bevels, physically rendered window-frame depth and subtle ambient occlusion. Simplify the cottage into a few bold shapes. No mottled painted texture and no paper grain. Retain indigo shadows, dusty pale walls and a small muted amber doorway highlight.
+
+Make the main doorway visibly impossible in a restrained way: the top third of the doorframe is shifted sideways by roughly the width of one frame beam, while its lower section remains vertical. The house is otherwise mundane and squat. The nearest window's upper and lower horizontal lines have one matching lateral misalignment. Use solid painted geometry only, no digital glitch, scanline or chromatic split. Reduce the chair at the door to a small, simple silhouette partly fused into the threshold. No people or monsters.
+
+No writing, door numbers, UI, border, logos, watermark, lens effects, cinematic realism, volumetric fog, decorative masonry, photorealistic material, or polished 3D render. Opaque full-bleed 2.13:1 image.

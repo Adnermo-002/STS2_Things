@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: concealed body layer for a Spine skeletal creature.
+Input image is the EDIT TARGET, our original rock-shell snail. Keep its exact 1536x1024 framing, exact ground baseline, facing direction, head position, two eyestalks, face, colors, tail and broad belly-foot silhouette.
+Remove ONLY the grey stone shell and its moss, exposing a complete low, broad rust-orange fleshy back beneath it. The bare body should continue naturally from the thick neck to the tail with a modest rounded hump; do not preserve the shell's tall silhouette as flesh. Preserve the existing visible head, eyes, mouth, foot lobes and tail as closely as possible; only paint the previously concealed back and shell attachment area. Remove all rock material. Do not add a second creature, new limbs, new eyes or new details.
+Match the existing flat painted color planes and low texture density. No glow, no rim aura, no ground shadow. Genuine transparent alpha outside the body. This is a production animation layer, not a new pose or a redesign.

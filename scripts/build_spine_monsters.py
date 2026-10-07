@@ -887,7 +887,10 @@ def build_rig(rig: Rig, *, write_scenes: bool = True) -> dict[str, Any]:
         f'''[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3]\n\n[ext_resource type="SpineAtlasResource" path="{spatlas_resource_path}" id="1_atlas"]\n[ext_resource type="SpineSkeletonFileResource" path="{spjson_resource_path}" id="2_json"]\n\n[resource]\natlas_res = ExtResource("1_atlas")\nskeleton_file_res = ExtResource("2_json")\ndefault_mix = 0.05\n''',
         encoding="utf-8", newline="\n")
     tres_resource_path = f"res://animations/monsters/sts2_things/{rig.key}/{rig.key}_skel_data.tres"
-    scene_path = write_scene(rig, tres_resource_path) if write_scenes else None
+    # Current native rigs have dedicated source pipelines. This legacy cutout
+    # exporter may refresh its own historical assets, never their shipping scenes.
+    native_scene_keys = {"the_legacy", "bowlbug_progenitor", "origin_fogmog", "scale_beetle"}
+    scene_path = write_scene(rig, tres_resource_path) if write_scenes and rig.key not in native_scene_keys else None
     return {
         "key": rig.key,
         "bones": len(rig.bones),

@@ -1,0 +1,25 @@
+{
+  "model": "gpt-image-2.5-sunburst",
+  "mode": "imagegen bundled CLI edit with vanilla style references",
+  "reference": "reference_native.png",
+  "quality": "high",
+  "icon_sizes": [
+    256,
+    64
+  ],
+  "source": {
+    "absorbent_generated.png": "7b85f8d0d0a0c3218609070a1a1a88288e801a05fba226ddef2cd92f50f78815",
+    "blindness_generated.png": "5f139585402009fcf82d3a984cce1d8221e0bced55a491ed373f54ca601798d6",
+    "leech_infestation_generated.png": "932b6a32e427b3effda3031ddb437de0082f934f399939d1041f316e6556c868",
+    "reservoir_generated.png": "1919461551b1adc05c3b837d5aa6bc8ea67c4a6af319892c16a0120d56315581",
+    "rinse_generated.png": "8674c67c643636018137eadc323027f9ac4c7b52a186e6108d79afeeea3da053"
+  },
+  "style_review": "Native heavy dark outline, simple silhouettes, two or three matte color planes; reviewed at 40px.",
+  "selected_icons": [
+    "absorbent_sponge_power",
+    "sponge_reservoir_power",
+    "sponge_rinse_power",
+    "lantern_blindness_power",
+    "leech_infestation_power"
+  ]
+}

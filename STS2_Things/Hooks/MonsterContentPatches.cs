@@ -1,6 +1,7 @@
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Acts;
+using MegaCrit.Sts2.Core.Rooms;
 using STS2_Things.Config;
 using STS2_Things.Encounters;
 
@@ -13,34 +14,34 @@ namespace STS2_Things.Hooks;
 ///
 /// 可配置门控（ThingsModConfig）：
 ///   - enabled=false 的遭遇/Boss 从对应 Act 的候选池移除；
-///   - 某个 Boss 槽位存在强制 Boss 时，BossDiscoveryOrder 只返回该 Boss（必定遭遇）；
+///   - 强制/仅模组 Boss 筛选作用于实际候选池，发现顺序不会覆盖自定义权重；
 ///   - 槽位冲突裁决（同槽位多个强制）由 ThingsModConfig 在加载/写入时完成。
 /// </summary>
 internal static class MonsterEncounterCatalog
 {
     public static IEnumerable<EncounterModel> AddOvergrowthEncounters(IEnumerable<EncounterModel> source)
     {
-        return Add(source,
+        return FilterBossPool(Add(source,
             (ThingsModConfig.BossOriginFogmogEnabled, ModelDb.Encounter<OriginFogmogBossEncounter>()),
-            (ThingsModConfig.BossScaleBeetleEnabled, ModelDb.Encounter<ScaleBeetleBossEncounter>()));
+            (ThingsModConfig.BossScaleBeetleEnabled, ModelDb.Encounter<ScaleBeetleBossEncounter>())), ThingsModConfig.SlotOvergrowth);
     }
 
     public static IEnumerable<EncounterModel> AddUnderdocksEncounters(IEnumerable<EncounterModel> source)
     {
-        return Add(source,
+        return FilterBossPool(Add(source,
             (ThingsModConfig.BossGravetideSlugEnabled, ModelDb.Encounter<GravetideSlugBossEncounter>()),
             (ThingsModConfig.EncounterSoulRoesEnabled, ModelDb.Encounter<SoulRoesEncounter>()),
-            (ThingsModConfig.BossTheLegacyEnabled, ModelDb.Encounter<TheLegacyBossEncounter>()));
+            (ThingsModConfig.BossTheLegacyEnabled, ModelDb.Encounter<TheLegacyBossEncounter>())), ThingsModConfig.SlotUnderdocks);
     }
 
     public static IEnumerable<EncounterModel> AddHiveEncounters(IEnumerable<EncounterModel> source)
     {
         // Quirky Hopper 是 Act 2 走廊遭遇，位于原生 ThievingHopperWeak 旁。IsWeak
         // 控制早期走廊子集；它仍是 RoomType.Monster，不进入精英/Boss 目录。
-        return Add(source,
+        return FilterBossPool(Add(source,
             (ThingsModConfig.EncounterQuirkyHopperEnabled, ModelDb.Encounter<QuirkyHopperWeak>()),
             (ThingsModConfig.BossBowlbugProgenitorEnabled, ModelDb.Encounter<BowlbugProgenitorBossEncounter>()),
-            (ThingsModConfig.BossCaveGodEnabled, ModelDb.Encounter<CaveGodBossEncounter>()));
+            (ThingsModConfig.BossCaveGodEnabled, ModelDb.Encounter<CaveGodBossEncounter>())), ThingsModConfig.SlotHive);
     }
 
     public static IEnumerable<EncounterModel> AddOvergrowthBosses(IEnumerable<EncounterModel> source)
@@ -74,11 +75,33 @@ internal static class MonsterEncounterCatalog
         IEnumerable<EncounterModel> source,
         params (string EnabledKey, EncounterModel Encounter)[] candidates)
     {
-        return DeterministicContentOrder.SortBaseThenMods(
-            source.Concat(candidates
+        // Keep this deferred: ActModel caches the enumerable before it generates
+        // rooms (for asset discovery), but settings may change in the meantime.
+        foreach (EncounterModel encounter in DeterministicContentOrder.SortBaseThenMods(
+            source.Where(EncounterSelectionPolicy.IsAvailable).Concat(candidates
                     .Where(candidate => ThingsModConfig.IsEnabled(candidate.EnabledKey))
-                    .Select(candidate => candidate.Encounter))
-                .Distinct());
+                    .Select(candidate => candidate.Encounter)
+                    .Where(EncounterSelectionPolicy.IsAvailable))
+                .Distinct()))
+            yield return encounter;
+    }
+
+    private static IEnumerable<EncounterModel> FilterBossPool(IEnumerable<EncounterModel> source, string slot)
+    {
+        List<EncounterModel> all = source.ToList();
+        string? forced = ThingsModConfig.GetForcedBossKeyForSlot(slot);
+        List<EncounterModel> bosses = all.Where(encounter => encounter.RoomType == RoomType.Boss).ToList();
+        List<EncounterModel> selected = forced is not null
+            ? bosses.Where(encounter => EncounterSelectionPolicy.ForcedKey(encounter) == forced).ToList()
+            : ThingsModConfig.GetBool(ThingsModConfig.BossOnlyModBosses)
+                ? bosses.Where(EncounterSelectionPolicy.IsOwnedBoss).ToList()
+                : bosses;
+        // A contradictory all-disabled / only-mod configuration must stay playable.
+        if (selected.Count == 0)
+            selected = bosses;
+        foreach (EncounterModel encounter in all)
+            if (encounter.RoomType != RoomType.Boss || selected.Contains(encounter))
+                yield return encounter;
     }
 
     private static IEnumerable<EncounterModel> AddBosses(
@@ -100,9 +123,14 @@ internal static class MonsterEncounterCatalog
                 $"STS2_Things config: forced boss key '{forced}' does not belong to slot '{slot}'; ignoring force.");
         }
 
-        return Add(source, bosses
+        IEnumerable<EncounterModel> eligible = FilterBossPool(Add(source, bosses
             .Select(boss => (boss.EnabledKey, boss.Encounter))
-            .ToArray());
+            .ToArray()), slot);
+        // Otherwise an unseen boss replaces the weighted draw during tutorial
+        // discovery. Preserve vanilla discovery only with the default selection.
+        if (ThingsModConfig.GetBool(ThingsModConfig.BossOnlyModBosses) || ThingsModConfig.HasBossWeightOverrides(slot))
+            return [];
+        return eligible;
     }
 }
 

@@ -1,0 +1,4 @@
+[gd_scene format=3]
+
+[node name="Foreground" type="Control"]
+mouse_filter = 2

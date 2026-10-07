@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: Slay the Spire 2 attack card illustration, no card frame or text.
+Reference image: the new crystal snail, for the matte aquamarine shell material and angular painted facets only. Do not depict a snail.
+Primary request: a single broken triangular aquamarine shell shard spinning toward the lower left, with two much smaller chips behind it. Bold simple hand-painted shapes, broad cel-like painterly shadows, stylized slightly cartoonish fantasy. A pale turquoise chipped cutting edge, dark teal underside, a few broad facets, no detailed surface texture.
+Composition: central shard takes most of the square; short diagonal painted motion strokes and a muted deep plum cave backdrop, sufficiently bright to read. Softly simplified background with no realistic depth of field. No characters, hands, letters, numbers, UI, frames, logos, lens effects, photorealism or glow.

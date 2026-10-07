@@ -1,0 +1,76 @@
+{
+  "zhs": {
+    "events": {
+      "RELIC_WORKSHOP.title": "遗物修补摊",
+      "RELIC_WORKSHOP.commonRelic": "一件普通遗物",
+      "RELIC_WORKSHOP.pages.INITIAL.description": "你循着敲打声找到一个小摊。一只戴着护目镜的甲虫，正在给断成两截的[gold]遗物[/gold]缠绷带。\n\n“修不好的也别扔！拿来换，拿来卖，都行！”\n\n他拍了拍身旁鼓鼓的[gold]钱袋[/gold]。",
+      "RELIC_WORKSHOP.pages.INITIAL.options.TRADE.title": "交换",
+      "RELIC_WORKSHOP.pages.INITIAL.options.TRADE.description": "失去一件可交易的[gold]遗物[/gold]。支付[red]{Gold}[/red][gold]金币[/gold]。获得[gold]{Offer}[/gold]。",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_OFFER.title": "锁定",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_OFFER.description": "没有可供交换的普通遗物。",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_RELIC.title": "锁定",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_RELIC.description": "没有可交易的遗物。",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_GOLD.title": "锁定",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_GOLD.description": "需要[blue]{Gold}[/blue][gold]金币[/gold]才能换取[gold]{Offer}[/gold]。",
+      "RELIC_WORKSHOP.pages.INITIAL.options.SELL.title": "出售",
+      "RELIC_WORKSHOP.pages.INITIAL.options.SELL.description": "失去一件可交易的[gold]遗物[/gold]。获得[blue]{SaleGold}[/blue][gold]金币[/gold]。",
+      "RELIC_WORKSHOP.pages.INITIAL.options.SELL_LOCKED.title": "锁定",
+      "RELIC_WORKSHOP.pages.INITIAL.options.SELL_LOCKED.description": "没有可交易的遗物。",
+      "RELIC_WORKSHOP.pages.INITIAL.options.COINS.title": "扶稳桌脚",
+      "RELIC_WORKSHOP.pages.INITIAL.options.COINS.description": "获得[blue]{SmallGold}[/blue][gold]金币[/gold]。",
+      "RELIC_WORKSHOP.pages.SELECT_TRADE.description": "甲虫清出一小块桌面。\n\n“让我看看，你带了什么？”",
+      "RELIC_WORKSHOP.pages.SELECT_SELL.description": "甲虫倒出一堆[gold]金币[/gold]，冲你的背包招了招手。\n\n“哪件不想要了？”",
+      "RELIC_WORKSHOP.pages.SELECT.options.TRADE.title": "交出{Relic}",
+      "RELIC_WORKSHOP.pages.SELECT.options.TRADE.description": "支付[red]{Gold}[/red][gold]金币[/gold]。获得[gold]{Offer}[/gold]。",
+      "RELIC_WORKSHOP.pages.SELECT.options.SELL.title": "出售{Relic}",
+      "RELIC_WORKSHOP.pages.SELECT.options.SELL.description": "获得[blue]{SaleGold}[/blue][gold]金币[/gold]。",
+      "RELIC_WORKSHOP.pages.SELECT.options.MORE.title": "翻一翻背包",
+      "RELIC_WORKSHOP.pages.SELECT.options.MORE.description": "查看其他遗物。（{Page}/{Pages}）",
+      "RELIC_WORKSHOP.pages.SELECT.options.BACK.title": "再想想",
+      "RELIC_WORKSHOP.pages.SELECT.options.BACK.description": "返回。",
+      "RELIC_WORKSHOP.pages.TRADED.description": "甲虫收下旧遗物和[gold]金币[/gold]，把新遗物推给你。\n\n“好眼光！这件我才刚修好。”\n\n你小心地把它收进背包。",
+      "RELIC_WORKSHOP.pages.SOLD.description": "甲虫一把接过遗物，把[gold]钱袋[/gold]塞到你手里。\n\n“正缺这个！”\n\n你还没走远，就听见了拆东西的声音。",
+      "RELIC_WORKSHOP.pages.COINS.description": "你捡起一块石头，垫在晃动的桌脚下面。\n\n甲虫停下手里的活，盯着石头看了一会儿，然后递给你几枚[gold]金币[/gold]。\n\n“这个办法不错。”"
+    },
+    "settings_ui": {
+      "STS2_THINGS-EVENT_RELIC_WORKSHOP_ENABLED.title": "遗物修补摊 · 启用"
+    }
+  },
+  "eng": {
+    "events": {
+      "RELIC_WORKSHOP.title": "Relic Workshop",
+      "RELIC_WORKSHOP.commonRelic": "a Common Relic",
+      "RELIC_WORKSHOP.pages.INITIAL.description": "You follow the sound of hammering to a small stall. A beetle in goggles is bandaging a [gold]relic[/gold] that has snapped in half.\n\n“Do not throw it out! Trade it in! Sell it!”\n\nHe pats the bulging [gold]purse[/gold] beside him.",
+      "RELIC_WORKSHOP.pages.INITIAL.options.TRADE.title": "Trade",
+      "RELIC_WORKSHOP.pages.INITIAL.options.TRADE.description": "Lose a tradable [gold]Relic[/gold]. Pay [red]{Gold}[/red] [gold]Gold[/gold]. Obtain [gold]{Offer}[/gold].",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_OFFER.title": "Locked",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_OFFER.description": "No Common Relic is available for exchange.",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_RELIC.title": "Locked",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_RELIC.description": "You have no tradable Relics.",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_GOLD.title": "Locked",
+      "RELIC_WORKSHOP.pages.INITIAL.options.NO_GOLD.description": "Requires [blue]{Gold}[/blue] [gold]Gold[/gold] to trade for [gold]{Offer}[/gold].",
+      "RELIC_WORKSHOP.pages.INITIAL.options.SELL.title": "Sell",
+      "RELIC_WORKSHOP.pages.INITIAL.options.SELL.description": "Lose a tradable [gold]Relic[/gold]. Gain [blue]{SaleGold}[/blue] [gold]Gold[/gold].",
+      "RELIC_WORKSHOP.pages.INITIAL.options.SELL_LOCKED.title": "Locked",
+      "RELIC_WORKSHOP.pages.INITIAL.options.SELL_LOCKED.description": "You have no tradable Relics.",
+      "RELIC_WORKSHOP.pages.INITIAL.options.COINS.title": "Steady the Table",
+      "RELIC_WORKSHOP.pages.INITIAL.options.COINS.description": "Gain [blue]{SmallGold}[/blue] [gold]Gold[/gold].",
+      "RELIC_WORKSHOP.pages.SELECT_TRADE.description": "The beetle clears a little space on the table.\n\n“Let us see what you have.”",
+      "RELIC_WORKSHOP.pages.SELECT_SELL.description": "The beetle empties a heap of [gold]coins[/gold] onto the table and beckons toward your pack.\n\n“Which one are you tired of?”",
+      "RELIC_WORKSHOP.pages.SELECT.options.TRADE.title": "Give {Relic}",
+      "RELIC_WORKSHOP.pages.SELECT.options.TRADE.description": "Pay [red]{Gold}[/red] [gold]Gold[/gold]. Obtain [gold]{Offer}[/gold].",
+      "RELIC_WORKSHOP.pages.SELECT.options.SELL.title": "Sell {Relic}",
+      "RELIC_WORKSHOP.pages.SELECT.options.SELL.description": "Gain [blue]{SaleGold}[/blue] [gold]Gold[/gold].",
+      "RELIC_WORKSHOP.pages.SELECT.options.MORE.title": "Search Your Pack",
+      "RELIC_WORKSHOP.pages.SELECT.options.MORE.description": "View more Relics. ({Page}/{Pages})",
+      "RELIC_WORKSHOP.pages.SELECT.options.BACK.title": "Reconsider",
+      "RELIC_WORKSHOP.pages.SELECT.options.BACK.description": "Go back.",
+      "RELIC_WORKSHOP.pages.TRADED.description": "The beetle takes your old relic and [gold]coins[/gold], then slides the replacement across the table.\n\n“Good eye! I just finished fixing that one.”\n\nYou carefully put it in your pack.",
+      "RELIC_WORKSHOP.pages.SOLD.description": "The beetle snatches up the relic and presses a [gold]purse[/gold] into your hands.\n\n“Just what I needed!”\n\nYou have barely left when you hear him taking it apart.",
+      "RELIC_WORKSHOP.pages.COINS.description": "You wedge a stone under the wobbling table leg.\n\nThe beetle stops working and stares at it for a moment, then hands you a few [gold]coins[/gold].\n\n“That works.”"
+    },
+    "settings_ui": {
+      "STS2_THINGS-EVENT_RELIC_WORKSHOP_ENABLED.title": "Relic Workshop — enabled"
+    }
+  }
+}

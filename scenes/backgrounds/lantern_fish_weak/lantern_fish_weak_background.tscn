@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/Core/Nodes/Rooms/NCombatBackground.cs" id="native"]
+
+[node name="DepthsBackground" type="Control"]
+mouse_filter = 2
+script = ExtResource("native")
+
+[node name="Layer_00" type="Control" parent="."]
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="Foreground" type="Control" parent="."]
+unique_name_in_owner = true
+mouse_filter = 2

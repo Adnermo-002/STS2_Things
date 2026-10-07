@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+[ext_resource type="Shader" path="res://shaders/monsters/reverse_current.gdshader" id="1"]
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1")
+shader_parameter/flow_region = Vector4(0.0009766,0.0013021,0.3066406,0.5345052)
+shader_parameter/vigor = 0.0

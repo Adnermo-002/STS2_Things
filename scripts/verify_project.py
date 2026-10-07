@@ -112,14 +112,14 @@ def verify_config_contract(errors: list[str]) -> None:
     if bridge_path.is_file():
         bridge_text = bridge_path.read_text(encoding="utf-8")
         bridge_props = set(re.findall(
-            r"public static bool (\w+) \{[^}]*\}",
+            r"public static (?:bool|int) (\w+) \{[^}]*\}",
             bridge_text,
         ))
         if bridge_props != key_names:
             fail(
                 errors,
                 "config contract: BaseLib bridge properties differ from ThingsModConfig keys: "
-                + ", ".join(sorted(bridge_props ^ key_values)),
+                + ", ".join(sorted(bridge_props ^ key_names)),
             )
     else:
         fail(errors, "config contract: BaseLib bridge source is missing")
@@ -135,7 +135,7 @@ def verify_config_contract(errors: list[str]) -> None:
 
     # 3) BaseLib 标签本地化：每个键与区段标题都必须在 settings_ui 表中给出
     #    STS2_THINGS-<SLUG>.title（eng 与 zhs）。
-    section_names = {"Bosses", "Other Encounters", "Events", "Merchant Bargain", "Neow Starting Relics"}
+    section_names = {"Audio", "Bosses", "Other Encounters", "Events", "Merchant Bargain", "Neow Starting Relics"}
     label_names = key_names | section_names
     label_keys = {"STS2_THINGS-" + slugify_class_name(name) + ".title" for name in label_names}
     label_keys.add("STS2_THINGS.mod_title")  # BaseLib 配置列表标题（GetModTitle）
@@ -191,8 +191,12 @@ def audit_model_id_namespace(errors: list[str], pck: Path | None) -> None:
             fail(errors, f"namespaced model source is missing: {relative}")
             continue
         text = path.read_text(encoding="utf-8")
+        # Native Spine monsters inherit MonsterModel through ThingsSpineMonster.
+        base_pattern = (
+            "(?:MonsterModel|ThingsSpineMonster)" if base_type == "MonsterModel" else base_type
+        )
         if re.search(
-            rf"public\s+sealed\s+class\s+{re.escape(type_name)}\s*:\s*{base_type}\b",
+            rf"public\s+sealed\s+class\s+{re.escape(type_name)}\s*:\s*{base_pattern}\b",
             text,
         ) is None:
             fail(errors, f"{relative} does not declare {type_name} : {base_type}")
@@ -246,10 +250,12 @@ def audit_model_id_namespace(errors: list[str], pck: Path | None) -> None:
         # （如 Backrooms/Medusa）天然包含旧类名词形，跳过旧类名扫描。
         if path.resolve() in CONFIG_PATHS:
             continue
+        # Animation labels and comments are not model type references (e.g. "Recall").
+        symbol_text = re.sub(r'(?s)/\*.*?\*/|//[^\n]*|@"(?:""|[^"])*"|"(?:\\.|[^"\\])*"', '', text)
         for legacy_class in legacy_class_names:
             # CacheMode.Reuse is an unrelated Godot enum member, so only reject
             # standalone class-symbol use rather than a dotted API member.
-            if re.search(rf"(?<!\.)\b{re.escape(legacy_class)}\b", text):
+            if re.search(rf"(?<!\.)\b{re.escape(legacy_class)}\b", symbol_text):
                 fail(errors, f"{path.relative_to(ROOT)} still uses legacy model type {legacy_class}")
 
     if pck is None:
@@ -287,6 +293,156 @@ def audit_model_id_namespace(errors: list[str], pck: Path | None) -> None:
             fail(errors, f"final PCK is missing namespaced ModelId resource {namespaced_relative}")
 
 
+# 活体巨岩（Living Megalith / cave_god）合同：手臂 MoveState 走 MoveId() 映射、核心用目标类型
+# new(...)，通用 bestiary 正则都覆盖不到，这里单独校验本地化键、显示名、打击帧与新增资源。
+CAVE_GOD_TIMING_EVENTS = {
+    # const name: (spine animation, event name, occurrence index)
+    "JabsHit1": ("alternating_jabs", "central_hit", 0),
+    "JabsHit2": ("alternating_jabs", "central_hit", 1),
+    "JabsHit3": ("alternating_jabs", "central_hit", 2),
+    "CentralSlamHit": ("central_slam", "central_hit", 0),
+    "DoubleFistCrushHit": ("double_fist_crush", "central_hit", 0),
+    "FrontSweepHit": ("front_sweep", "central_hit", 0),
+    "CardSnatchTouch": ("card_snatch", "central_hit", 0),
+    "CardSnatchClose": ("card_snatch", "card_snatch", 0),
+}
+CAVE_GOD_TIMING_TOLERANCE = 0.05
+
+
+def _spine_clip_length(animation: dict) -> float:
+    length = 0.0
+    stack = [animation]
+    while stack:
+        node = stack.pop()
+        if isinstance(node, dict):
+            if isinstance(node.get("time"), (int, float)):
+                length = max(length, float(node["time"]))
+            stack.extend(node.values())
+        elif isinstance(node, list):
+            stack.extend(node)
+    return length
+
+
+def verify_cave_god_contract(errors: list[str]) -> None:
+    monsters = SOURCE / "Monsters"
+    body_text = (monsters / "ThingsCaveGodBody.cs").read_text(encoding="utf-8")
+    hand_text = (monsters / "ThingsCaveGodHand.cs").read_text(encoding="utf-8")
+
+    constants = dict(re.findall(r'\b(\w+Id)\s*=\s*"([A-Z0-9_]+)"', body_text))
+    body_moves = {constants[name] for name in re.findall(r"\bnew\(\s*(\w+Id)\s*,", body_text) if name in constants}
+    hand_moves = set(re.findall(r'Action\.\w+\s*=>\s*"([A-Z0-9_]+)"', hand_text))
+    if len(body_moves) < 14:
+        fail(errors, f"cave_god: parsed only {len(body_moves)} body move states: {sorted(body_moves)}")
+    if len(hand_moves) != 9:
+        fail(errors, f"cave_god: ThingsCaveGodHand.MoveId must map all 9 actions, parsed {sorted(hand_moves)}")
+    if "nameof(Action." in hand_text or "action.ToString()" in hand_text:
+        fail(errors, "cave_god: hand move ids must come from MoveId(), not enum names")
+    # Native CreatureCmd.Stun inserts a STUNNED state into any monster.
+    hand_moves.add("STUNNED")
+    expected = {f"THINGS_CAVE_GOD_BODY.moves.{m}.title" for m in body_moves}
+    for part in ("LEFT_HAND", "RIGHT_HAND"):
+        expected |= {f"THINGS_CAVE_GOD_{part}.moves.{m}.title" for m in hand_moves}
+
+    display_names = {
+        "zhs": {"THINGS_CAVE_GOD_BODY.name": "活体巨岩", "THINGS_CAVE_GOD_LEFT_HAND.name": "巨岩左臂",
+                "THINGS_CAVE_GOD_RIGHT_HAND.name": "巨岩右臂"},
+        "eng": {"THINGS_CAVE_GOD_BODY.name": "Living Megalith", "THINGS_CAVE_GOD_LEFT_HAND.name": "Megalith Left Arm",
+                "THINGS_CAVE_GOD_RIGHT_HAND.name": "Megalith Right Arm"},
+    }
+    encounter_titles = {"zhs": "活体巨岩", "eng": "Living Megalith"}
+    for lang in ("eng", "zhs"):
+        loc = SOURCE / "localization" / lang
+        table = json.loads((loc / "monsters.json").read_text(encoding="utf-8-sig"))
+        for key in sorted(expected - set(table)):
+            fail(errors, f"cave_god: {lang}/monsters.json missing {key}")
+        stale = sorted(
+            key for key in table
+            if re.match(r"THINGS_CAVE_GOD_(BODY|LEFT_HAND|RIGHT_HAND)\.moves\.", key) and key not in expected
+        )
+        if stale:
+            fail(errors, f"cave_god: {lang}/monsters.json has stale move keys: {stale}")
+        legacy = sorted(key for key in table if key.startswith("THINGS_CAVE_GOD."))
+        if legacy:
+            fail(errors, f"cave_god: {lang}/monsters.json keeps unused legacy entry keys: {legacy}")
+        for key, value in display_names[lang].items():
+            if table.get(key) != value:
+                fail(errors, f"cave_god: {lang} {key} must be {value!r}, got {table.get(key)!r}")
+        encounters = json.loads((loc / "encounters.json").read_text(encoding="utf-8-sig"))
+        if encounters.get("CAVE_GOD_BOSS_ENCOUNTER.title") != encounter_titles[lang]:
+            fail(errors, f"cave_god: {lang} encounter title must be {encounter_titles[lang]!r}")
+        powers = json.loads((loc / "powers.json").read_text(encoding="utf-8-sig"))
+        cards = json.loads((loc / "cards.json").read_text(encoding="utf-8-sig"))
+        for power in ("THINGS_CAVE_GOD_CRYSTAL_VEIN_POWER", "THINGS_CAVE_GOD_FISSURE_POWER"):
+            for suffix in ("title", "description", "smartDescription"):
+                if not powers.get(f"{power}.{suffix}"):
+                    fail(errors, f"cave_god: {lang}/powers.json missing {power}.{suffix}")
+        for suffix in ("title", "description"):
+            if not cards.get(f"THINGS_CAVE_GOD_CRYSTAL_SHARD.{suffix}"):
+                fail(errors, f"cave_god: {lang}/cards.json missing THINGS_CAVE_GOD_CRYSTAL_SHARD.{suffix}")
+
+    # New power icons: 256px source + 64px packed + atlas entry, all RGBA.
+    for power in ("things_cave_god_crystal_vein_power", "things_cave_god_fissure_power"):
+        for suffix, size in (("", (256, 256)), ("_packed", (64, 64))):
+            icon = ROOT / "images" / "powers" / f"{power}{suffix}.png"
+            if not icon.is_file():
+                fail(errors, f"cave_god: missing power icon {icon.relative_to(ROOT)}")
+                continue
+            with Image.open(icon) as image:
+                if image.mode != "RGBA" or image.size != size:
+                    fail(errors, f"cave_god: {icon.relative_to(ROOT)} must be RGBA {size}, got {image.mode} {image.size}")
+        atlas = ROOT / "images" / "atlases" / "power_atlas.sprites" / f"{power}.tres"
+        if not atlas.is_file() or f"res://images/powers/{power}_packed.png" not in atlas.read_text(encoding="utf-8"):
+            fail(errors, f"cave_god: atlas entry {atlas.relative_to(ROOT)} missing or not pointing at the packed icon")
+    if "AddModelToPool<TokenCardPool, ThingsCaveGodCrystalShard>" not in (SOURCE / "STS2_ThingsInit.cs").read_text(encoding="utf-8"):
+        fail(errors, "cave_god: ThingsCaveGodCrystalShard is not registered in TokenCardPool")
+
+    # Gameplay impact waits must match the Spine hit events they drive.
+    timing_text = (SOURCE / "Visuals" / "CaveGodAnimTiming.cs").read_text(encoding="utf-8")
+    timings = {name: float(value) for name, value in re.findall(r"const float (\w+) = ([0-9.]+)f;", timing_text)}
+    spine = json.loads((ROOT / "animations/monsters/cave_god/cave_god.spjson").read_text(encoding="utf-8"))
+    animations = spine.get("animations", {})
+    for name, (clip, event, index) in CAVE_GOD_TIMING_EVENTS.items():
+        times = [float(e.get("time", 0.0)) for e in animations.get(clip, {}).get("events", []) if e.get("name") == event]
+        if name not in timings:
+            fail(errors, f"cave_god: CaveGodAnimTiming.{name} is missing")
+        elif index >= len(times):
+            fail(errors, f"cave_god: spine clip {clip} lacks {event} #{index + 1}")
+        elif abs(timings[name] - times[index]) > CAVE_GOD_TIMING_TOLERANCE:
+            fail(errors, f"cave_god: CaveGodAnimTiming.{name}={timings[name]} drifts from {clip}/{event} at {times[index]}")
+    sweep_length = _spine_clip_length(animations.get("front_sweep", {}))
+    if abs(timings.get("FrontSweepLength", -1.0) - sweep_length) > CAVE_GOD_TIMING_TOLERANCE:
+        fail(errors, f"cave_god: FrontSweepLength must match front_sweep clip length {sweep_length:.2f}")
+    for clip in ("card_snatch", "card_snatch_angry", "card_snatch_right", "card_snatch_right_angry"):
+        if abs(timings.get("CardSnatchLength", -1.0) - _spine_clip_length(animations.get(clip, {}))) > CAVE_GOD_TIMING_TOLERANCE:
+            fail(errors, f"cave_god: {clip} must match CardSnatchLength")
+    snatch_motion = json.loads((ROOT / "source_assets/monsters/cave_god_motion/card_snatch_motion.json").read_text(encoding="utf-8"))
+    for field, constant in {"launch": "Launch", "touch": "Touch", "close": "Close", "retract": "Retract", "settled": "Settled", "duration": "Length"}.items():
+        if abs(timings.get("CardSnatch" + constant, -1) - snatch_motion[field]) > 0.001:
+            fail(errors, f"cave_god: CardSnatch{constant} disagrees with the authored motion")
+    for literal in ("Cmd.Wait(0.90f)", "Cmd.Wait(1.98f)", "Cmd.Wait(0.64f)", "Cmd.Wait(1.25f)"):
+        if literal in body_text or literal in hand_text:
+            fail(errors, f"cave_god: hard-coded impact wait {literal} bypasses CaveGodAnimTiming")
+
+
+
+def verify_origin_fogmog_motion(errors: list[str]) -> None:
+    model = (SOURCE / "Monsters/OriginFogmog.cs").read_text(encoding="utf-8")
+    rig = json.loads((SOURCE / "animations/monsters/origin_fogmog/origin_fogmog.spjson").read_text(encoding="utf-8"))
+    times = {name: float(value) for name, value in re.findall(r"const float (\w+) = ([0-9.]+)f;", model)}
+    for constant, clip, event in (
+        ("SwipeContact", "attack", "attack_hit"), ("HeadbuttContact", "headbutt", "attack_hit"),
+        ("SummonRelease", "summon", "thrust_start"), ("HealRelease", "power_up", "spores_start"),
+    ):
+        events = [e["time"] for e in rig["animations"][clip].get("events", []) if e["name"] == event]
+        if len(events) != 1 or abs(events[0] - times.get(constant, -1)) > .001:
+            fail(errors, f"Origin Fogmog {constant} does not match {clip}/{event}")
+    match = re.search(r"TripleContacts = \[([^]]+)\]", model)
+    triple = [float(v) for v in re.findall(r"([0-9.]+)f", match.group(1))] if match else []
+    hits = [e["time"] for e in rig["animations"]["triple_attack"].get("events", []) if e["name"] == "attack_hit"]
+    if triple != hits or len(hits) != 3:
+        fail(errors, "Origin Fogmog triple attack contact frames disagree with gameplay")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -303,6 +459,8 @@ def main() -> int:
 
     audit_model_id_namespace(errors, args.pck)
     verify_config_contract(errors)
+    verify_cave_god_contract(errors)
+    verify_origin_fogmog_motion(errors)
 
     def source_text(relative: str) -> str:
         return (SOURCE / relative).read_text(encoding="utf-8")
@@ -497,7 +655,10 @@ def main() -> int:
         if injected_types:
             injection_sites[path.relative_to(SOURCE).as_posix()] = injected_types
     expected_injection_sites = {
-        "Compatibility/Sts2VersionCompatibility.cs": {"ThingsCurseRemover"},
+        "Compatibility/Sts2VersionCompatibility.cs": {
+            "ThingsCurseRemover", "ShadowClaimTicket", "BottledEcho",
+            "MycelialDeposit", "BorrowedEmber",
+        },
         "Enchantments/ThingsSplit.cs": {"ThingsSplit"},
     }
     if injection_sites != expected_injection_sites:
@@ -804,9 +965,17 @@ def main() -> int:
         "revive",
     )
 
+    # The Legacy was rebuilt as a native Spine 4.2 mesh rig split from its
+    # full texture; its scene is a SpineSprite instead of a static Sprite2D.
+    # Bowlbug Progenitor followed the same route (tools/BowlbugProgenitorRig),
+    # and so did Origin Fogmog (tools/OriginFogmogRig).
+    native_spine_scene_keys = {"the_legacy", "bowlbug_progenitor", "origin_fogmog", "scale_beetle"}
     for rig_key, (name, _part_count, _bone_count, _model, _death_time) in sorted(
         rig_specs.items()
     ):
+        if rig_key in native_spine_scene_keys:
+            # Checked by the dedicated native Spine block below.
+            continue
         path = ROOT / "scenes" / "creature_visuals" / name
         if not path.is_file():
             fail(errors, f"native creature scene missing: {path.relative_to(ROOT)}")
@@ -861,6 +1030,358 @@ def main() -> int:
                 re.MULTILINE,
             ):
                 fail(errors, f"{path.relative_to(ROOT)} lacks unique %{node_name}")
+    legacy_scene = ROOT / "scenes" / "creature_visuals" / "things_the_legacy.tscn"
+    legacy_dir = ROOT / "STS2_Things" / "animations" / "monsters" / "the_legacy"
+    legacy_res = "res://STS2_Things/animations/monsters/the_legacy"
+    legacy_scene_text = (
+        legacy_scene.read_text(encoding="utf-8") if legacy_scene.is_file() else ""
+    )
+    if not legacy_scene_text:
+        fail(errors, "The Legacy native Spine scene is missing")
+    else:
+        if "res://STS2_Things/Visuals/NThingsStaticCreatureVisuals.cs" not in legacy_scene_text:
+            fail(errors, "The Legacy scene lost its creature-visuals script")
+        if f'path="{legacy_res}/the_legacy_skel_data.tres"' not in legacy_scene_text:
+            fail(errors, "The Legacy scene does not reference its Spine skeleton data")
+        spine_nodes = re.findall(
+            r'^\[node name="([^"]+)" type="SpineSprite"[^\]]*\]',
+            legacy_scene_text,
+            re.MULTILINE,
+        )
+        if spine_nodes != ["Visuals"]:
+            fail(errors, f"The Legacy must have exactly one SpineSprite %Visuals; got {spine_nodes!r}")
+        for forbidden_node_type in ("Sprite2D", "Polygon2D", "Skeleton2D", "Bone2D"):
+            if re.search(rf'type="{forbidden_node_type}"', legacy_scene_text):
+                fail(errors, f"The Legacy scene mixes in {forbidden_node_type}")
+        if re.search(r"^z_(?:index|as_relative)\s*=", legacy_scene_text, re.MULTILINE):
+            fail(errors, "The Legacy scene overrides the creature canvas z-order")
+        for node_name in ("Visuals", "Bounds", "CenterPos", "IntentPos"):
+            node_block = re.search(
+                rf'^\[node name="{node_name}"[^\]]*\]\s*\n(.*?)(?=^\[node |\Z)',
+                legacy_scene_text,
+                re.MULTILINE | re.DOTALL,
+            )
+            if node_block is None or not re.search(
+                r"^unique_name_in_owner\s*=\s*true\s*$", node_block.group(1), re.MULTILINE
+            ):
+                fail(errors, f"The Legacy scene lacks unique %{node_name}")
+    legacy_files = {
+        name: legacy_dir / name
+        for name in (
+            "the_legacy.atlas",
+            "the_legacy.png",
+            "the_legacy.spatlas",
+            "the_legacy.spjson",
+            "the_legacy_skel_data.tres",
+        )
+    }
+    for name, path in legacy_files.items():
+        if not path.is_file():
+            fail(errors, f"The Legacy Spine asset missing: {path.relative_to(ROOT)}")
+    if all(path.is_file() for path in legacy_files.values()):
+        tres_text = legacy_files["the_legacy_skel_data.tres"].read_text(encoding="utf-8")
+        for reference in (f"{legacy_res}/the_legacy.spatlas", f"{legacy_res}/the_legacy.spjson"):
+            if reference not in tres_text:
+                fail(errors, f"The Legacy skeleton data lacks {reference}")
+        try:
+            legacy_skeleton = json.loads(legacy_files["the_legacy.spjson"].read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            legacy_skeleton = {}
+            fail(errors, f"The Legacy spjson is not valid JSON: {exc}")
+        if not str(legacy_skeleton.get("skeleton", {}).get("spine", "")).startswith("4.2"):
+            fail(errors, "The Legacy spjson must be Spine 4.2 data")
+        legacy_animations = legacy_skeleton.get("animations", {})
+        for animation_name in required_spine_animations:
+            animation = legacy_animations.get(animation_name)
+            if not isinstance(animation, dict) or not animation.get("bones"):
+                fail(errors, f"The Legacy Spine animation missing or empty: {animation_name}")
+        legacy_attachments = {
+            attachment_name
+            for skin in legacy_skeleton.get("skins", [])
+            for slot_attachments in skin.get("attachments", {}).values()
+            for attachment_name in slot_attachments
+        }
+        legacy_atlas_text = legacy_files["the_legacy.atlas"].read_text(encoding="utf-8")
+        legacy_regions = set(
+            re.findall(r"^([^\s:\r\n][^:\r\n]*)\r?\n  rotate:", legacy_atlas_text, re.MULTILINE)
+        )
+        if not legacy_attachments or not legacy_attachments <= legacy_regions:
+            fail(
+                errors,
+                "The Legacy attachments lack atlas regions: "
+                f"{sorted(legacy_attachments - legacy_regions)}",
+            )
+        if not legacy_atlas_text.startswith("the_legacy.png"):
+            fail(errors, "The Legacy atlas must page the_legacy.png")
+        spatlas = json.loads(legacy_files["the_legacy.spatlas"].read_text(encoding="utf-8"))
+        if spatlas.get("atlas_data") != legacy_atlas_text:
+            fail(errors, "The Legacy spatlas atlas_data is out of sync with the_legacy.atlas")
+    export_text = (ROOT / "export_presets.cfg").read_text(encoding="utf-8")
+    for pattern in (
+        "STS2_Things/animations/monsters/the_legacy/*.spatlas",
+        "STS2_Things/animations/monsters/the_legacy/*.spjson",
+        "STS2_Things/animations/monsters/the_legacy/the_legacy.png",
+    ):
+        if pattern not in export_text:
+            fail(errors, f"export_presets.cfg does not include {pattern}")
+    static_builder_text = (ROOT / "scripts" / "build_static_monster_scenes.py").read_text(
+        encoding="utf-8"
+    )
+    if '"the_legacy": "the_legacy"' in static_builder_text:
+        fail(errors, "build_static_monster_scenes.py would overwrite The Legacy Spine scene")
+
+    # Bowlbug Progenitor: native Spine 4.2 mesh rig split from its full texture
+    # (source + review renders: tools/BowlbugProgenitorRig).  The old cutout
+    # source rig under animations/monsters/sts2_things stays checked above.
+    bowlbug_scene = ROOT / "scenes" / "creature_visuals" / "bowlbug_progenitor.tscn"
+    bowlbug_dir = ROOT / "STS2_Things" / "animations" / "monsters" / "bowlbug_progenitor"
+    bowlbug_res = "res://STS2_Things/animations/monsters/bowlbug_progenitor"
+    bowlbug_scene_text = (
+        bowlbug_scene.read_text(encoding="utf-8") if bowlbug_scene.is_file() else ""
+    )
+    if not bowlbug_scene_text:
+        fail(errors, "Bowlbug Progenitor native Spine scene is missing")
+    else:
+        if "res://STS2_Things/Visuals/NThingsStaticCreatureVisuals.cs" not in bowlbug_scene_text:
+            fail(errors, "Bowlbug Progenitor scene lost its creature-visuals script")
+        if f'path="{bowlbug_res}/bowlbug_progenitor_skel_data.tres"' not in bowlbug_scene_text:
+            fail(errors, "Bowlbug Progenitor scene does not reference its Spine skeleton data")
+        spine_nodes = re.findall(
+            r'^\[node name="([^"]+)" type="SpineSprite"[^\]]*\]',
+            bowlbug_scene_text,
+            re.MULTILINE,
+        )
+        if spine_nodes != ["Visuals"]:
+            fail(errors, f"Bowlbug Progenitor must have exactly one SpineSprite %Visuals; got {spine_nodes!r}")
+        for forbidden_node_type in ("Sprite2D", "Polygon2D", "Skeleton2D", "Bone2D"):
+            if re.search(rf'type="{forbidden_node_type}"', bowlbug_scene_text):
+                fail(errors, f"Bowlbug Progenitor scene mixes in {forbidden_node_type}")
+        if re.search(r"^z_(?:index|as_relative)\s*=", bowlbug_scene_text, re.MULTILINE):
+            fail(errors, "Bowlbug Progenitor scene overrides the creature canvas z-order")
+        for node_name in ("Visuals", "Bounds", "CenterPos", "IntentPos"):
+            node_block = re.search(
+                rf'^\[node name="{node_name}"[^\]]*\]\s*\n(.*?)(?=^\[node |\Z)',
+                bowlbug_scene_text,
+                re.MULTILINE | re.DOTALL,
+            )
+            if node_block is None or not re.search(
+                r"^unique_name_in_owner\s*=\s*true\s*$", node_block.group(1), re.MULTILINE
+            ):
+                fail(errors, f"Bowlbug Progenitor scene lacks unique %{node_name}")
+    bowlbug_files = {
+        name: bowlbug_dir / name
+        for name in (
+            "bowlbug_progenitor.atlas",
+            "bowlbug_progenitor.png",
+            "bowlbug_progenitor.spatlas",
+            "bowlbug_progenitor.spjson",
+            "bowlbug_progenitor_skel_data.tres",
+        )
+    }
+    for name, path in bowlbug_files.items():
+        if not path.is_file():
+            fail(errors, f"Bowlbug Progenitor Spine asset missing: {path.relative_to(ROOT)}")
+    if all(path.is_file() for path in bowlbug_files.values()):
+        tres_text = bowlbug_files["bowlbug_progenitor_skel_data.tres"].read_text(encoding="utf-8")
+        for reference in (
+            f"{bowlbug_res}/bowlbug_progenitor.spatlas",
+            f"{bowlbug_res}/bowlbug_progenitor.spjson",
+        ):
+            if reference not in tres_text:
+                fail(errors, f"Bowlbug Progenitor skeleton data lacks {reference}")
+        try:
+            bowlbug_skeleton = json.loads(
+                bowlbug_files["bowlbug_progenitor.spjson"].read_text(encoding="utf-8")
+            )
+        except json.JSONDecodeError as exc:
+            bowlbug_skeleton = {}
+            fail(errors, f"Bowlbug Progenitor spjson is not valid JSON: {exc}")
+        if not str(bowlbug_skeleton.get("skeleton", {}).get("spine", "")).startswith("4.2"):
+            fail(errors, "Bowlbug Progenitor spjson must be Spine 4.2 data")
+        bowlbug_animations = bowlbug_skeleton.get("animations", {})
+        for animation_name in required_spine_animations:
+            animation = bowlbug_animations.get(animation_name)
+            if not isinstance(animation, dict) or not animation.get("bones"):
+                fail(errors, f"Bowlbug Progenitor Spine animation missing or empty: {animation_name}")
+        # Game timing: TriggerAnim("Summon", 0.75f) spawns the minion at 0.75s,
+        # so the egg must already be pushed out (egg bones keyed before then).
+        summon_bones = bowlbug_animations.get("summon", {}).get("bones", {})
+        egg_times = [
+            key.get("time", 0.0)
+            for bone_name, timelines in summon_bones.items()
+            if bone_name.startswith("egg") and isinstance(timelines, dict)
+            for timeline in timelines.values()
+            for key in timeline
+        ]
+        if not egg_times or min(egg_times) > 0.75:
+            fail(errors, "Bowlbug Progenitor summon must move the egg sac before the 0.75s spawn")
+        bowlbug_attachments = {
+            attachment_name
+            for skin in bowlbug_skeleton.get("skins", [])
+            for slot_attachments in skin.get("attachments", {}).values()
+            for attachment_name in slot_attachments
+        }
+        bowlbug_atlas_text = bowlbug_files["bowlbug_progenitor.atlas"].read_text(encoding="utf-8")
+        bowlbug_regions = set(
+            re.findall(r"^([^\s:\r\n][^:\r\n]*)\r?\n  rotate:", bowlbug_atlas_text, re.MULTILINE)
+        )
+        if not bowlbug_attachments or not bowlbug_attachments <= bowlbug_regions:
+            fail(
+                errors,
+                "Bowlbug Progenitor attachments lack atlas regions: "
+                f"{sorted(bowlbug_attachments - bowlbug_regions)}",
+            )
+        if not bowlbug_atlas_text.startswith("bowlbug_progenitor.png"):
+            fail(errors, "Bowlbug Progenitor atlas must page bowlbug_progenitor.png")
+        spatlas = json.loads(bowlbug_files["bowlbug_progenitor.spatlas"].read_text(encoding="utf-8"))
+        if spatlas.get("atlas_data") != bowlbug_atlas_text:
+            fail(errors, "Bowlbug Progenitor spatlas atlas_data is out of sync with its atlas")
+    for pattern in (
+        "STS2_Things/animations/monsters/bowlbug_progenitor/*.atlas",
+        "STS2_Things/animations/monsters/bowlbug_progenitor/*.spatlas",
+        "STS2_Things/animations/monsters/bowlbug_progenitor/*.spjson",
+        "STS2_Things/animations/monsters/bowlbug_progenitor/bowlbug_progenitor.png",
+    ):
+        if pattern not in export_text:
+            fail(errors, f"export_presets.cfg does not include {pattern}")
+    if '"bowlbug_progenitor": "bowlbug_progenitor"' in static_builder_text:
+        fail(errors, "build_static_monster_scenes.py would overwrite the Bowlbug Progenitor Spine scene")
+
+    # Origin Fogmog (tools/OriginFogmogRig) and its exclusive illusion Eye
+    # (tools/OriginEyeRig): native Spine 4.2 mesh rigs split from full paintings.
+    def check_native_spine_rig(label, scene_name, key, animations, extra_scene=None):
+        scene = ROOT / "scenes" / "creature_visuals" / scene_name
+        res = f"res://STS2_Things/animations/monsters/{key}"
+        directory = ROOT / "STS2_Things" / "animations" / "monsters" / key
+        text = scene.read_text(encoding="utf-8") if scene.is_file() else ""
+        if not text:
+            fail(errors, f"{label} native Spine scene is missing")
+        else:
+            if "res://STS2_Things/Visuals/NThingsStaticCreatureVisuals.cs" not in text:
+                fail(errors, f"{label} scene lost its creature-visuals script")
+            if f'path="{res}/{key}_skel_data.tres"' not in text:
+                fail(errors, f"{label} scene does not reference its Spine skeleton data")
+            nodes = re.findall(r'^\[node name="([^"]+)" type="SpineSprite"[^\]]*\]', text, re.MULTILINE)
+            if nodes != ["Visuals"]:
+                fail(errors, f"{label} must have exactly one SpineSprite %Visuals; got {nodes!r}")
+            for forbidden_node_type in ("Sprite2D", "Polygon2D", "Skeleton2D", "Bone2D"):
+                if re.search(rf'type="{forbidden_node_type}"', text):
+                    fail(errors, f"{label} scene mixes in {forbidden_node_type}")
+            if re.search(r"^z_(?:index|as_relative)\s*=", text, re.MULTILINE):
+                fail(errors, f"{label} scene overrides the creature canvas z-order")
+            for node_name in ("Visuals", "Bounds", "CenterPos", "IntentPos"):
+                node_block = re.search(
+                    rf'^\[node name="{node_name}"[^\]]*\]\s*\n(.*?)(?=^\[node |\Z)',
+                    text, re.MULTILINE | re.DOTALL,
+                )
+                if node_block is None or not re.search(
+                    r"^unique_name_in_owner\s*=\s*true\s*$", node_block.group(1), re.MULTILINE
+                ):
+                    fail(errors, f"{label} scene lacks unique %{node_name}")
+            for snippet in extra_scene or ():
+                if snippet not in text:
+                    fail(errors, f"{label} scene lacks {snippet!r}")
+        files = {suffix: directory / f"{key}{suffix}" for suffix in
+                 (".atlas", ".png", ".spatlas", ".spjson", "_skel_data.tres")}
+        for path in files.values():
+            if not path.is_file():
+                fail(errors, f"{label} Spine asset missing: {path.relative_to(ROOT)}")
+        if all(path.is_file() for path in files.values()):
+            tres_text = files["_skel_data.tres"].read_text(encoding="utf-8")
+            for reference in (f"{res}/{key}.spatlas", f"{res}/{key}.spjson"):
+                if reference not in tres_text:
+                    fail(errors, f"{label} skeleton data lacks {reference}")
+            try:
+                skeleton = json.loads(files[".spjson"].read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                skeleton = {}
+                fail(errors, f"{label} spjson is not valid JSON: {exc}")
+            if not str(skeleton.get("skeleton", {}).get("spine", "")).startswith("4.2"):
+                fail(errors, f"{label} spjson must be Spine 4.2 data")
+            for animation_name in animations:
+                animation = skeleton.get("animations", {}).get(animation_name)
+                if not isinstance(animation, dict) or not animation.get("bones"):
+                    fail(errors, f"{label} Spine animation missing or empty: {animation_name}")
+            attachments = {
+                name
+                for skin in skeleton.get("skins", [])
+                for slot_attachments in skin.get("attachments", {}).values()
+                for name, attachment in slot_attachments.items()
+                # path / bounding-box / clipping / point attachments carry no texture region
+                # (the Origin Eye keeps the vanilla tentacle path attachments)
+                if not isinstance(attachment, dict)
+                or attachment.get("type", "region") in ("region", "mesh", "linkedmesh")
+            }
+            atlas_text = files[".atlas"].read_text(encoding="utf-8")
+            regions = set(re.findall(r"^([^\s:\r\n][^:\r\n]*)\r?\n  rotate:", atlas_text, re.MULTILINE))
+            if not attachments or not attachments <= regions:
+                fail(errors, f"{label} attachments lack atlas regions: {sorted(attachments - regions)}")
+            if not atlas_text.startswith(f"{key}.png"):
+                fail(errors, f"{label} atlas must page {key}.png")
+            spatlas = json.loads(files[".spatlas"].read_text(encoding="utf-8"))
+            if spatlas.get("atlas_data") != atlas_text:
+                fail(errors, f"{label} spatlas atlas_data is out of sync with its atlas")
+        for pattern in (
+            f"STS2_Things/animations/monsters/{key}/*.atlas",
+            f"STS2_Things/animations/monsters/{key}/*.spatlas",
+            f"STS2_Things/animations/monsters/{key}/*.spjson",
+            f"STS2_Things/animations/monsters/{key}/{key}.png",
+        ):
+            if pattern not in export_text:
+                fail(errors, f"export_presets.cfg does not include {pattern}")
+        return skeleton if all(path.is_file() for path in files.values()) else {}
+
+    beetle_skeleton = check_native_spine_rig(
+        "Scale Beetle", "things_scale_beetle.tscn", "scale_beetle",
+        (*required_spine_animations, "whip", "molt"),
+        extra_scene=("position = Vector2(0, 0)", "scale = Vector2(0.52, 0.52)"),
+    )
+    if '"scale_beetle": "scale_beetle"' in static_builder_text:
+        fail(errors, "static monster builder would overwrite the Scale Beetle Spine scene")
+    beetle_model = source_text("Monsters/ThingsScaleBeetle.cs")
+    for snippet in (
+        "ThingsScaleBeetle : ThingsSpineMonster",
+        'animator.AddAnyState("Whip", new AnimState("whip")',
+        'animator.AddAnyState("Molt", new AnimState("molt")',
+        '.WithHitCount(3)',
+        'await WaitForPose("whip", WhipContacts[beat]',
+        'BeginMotion("Molt", "molt", MoltRelease)',
+    ):
+        if snippet not in beetle_model:
+            fail(errors, f"Scale Beetle animation contract missing {snippet}")
+    if beetle_skeleton and len(beetle_skeleton.get("bones", [])) < 50:
+        fail(errors, "Scale Beetle lost its articulated feelers/leg rig")
+    if beetle_skeleton:
+        moments = {name: float(value) for name, value in re.findall(r"const float (\w+) = ([0-9.]+)f;", beetle_model)}
+        for constant, clip, event in (("BiteContact", "attack", "bite_contact"),
+                                      ("ReconstructRelease", "cast", "reconstruct_release"),
+                                      ("MoltRelease", "molt", "molt_release")):
+            times = [e["time"] for e in beetle_skeleton["animations"][clip]["events"] if e["name"] == event]
+            if times != [moments.get(constant)]:
+                fail(errors, f"Scale Beetle {constant} disagrees with the animation event")
+        match = re.search(r"WhipContacts = \[([^]]+)\]", beetle_model)
+        times = [float(v) for v in re.findall(r"([0-9.]+)f", match.group(1))] if match else []
+        events = [e["time"] for e in beetle_skeleton["animations"]["whip"]["events"] if e["name"] == "whip_contact"]
+        if times != events or len(events) != 3:
+            fail(errors, "Scale Beetle three-hit whip timing disagrees with gameplay")
+
+    fogmog_skeleton = check_native_spine_rig(
+        "Origin Fogmog", "origin_fogmog.tscn", "origin_fogmog", required_spine_animations,
+        # v3 (tools/OriginFogmogRig/v3): 1 skeleton unit = 1/0.58 painting px, so SpineSprite
+        # scale 0.8966 (= 0.52 / 0.58) keeps the former in-battle size and placement
+        extra_scene=("position = Vector2(-6.76, -4.68)", "scale = Vector2(0.8966, 0.8966)"),
+    )
+    if '"origin_fogmog": "origin_fogmog"' in static_builder_text:
+        fail(errors, "build_static_monster_scenes.py would overwrite the Origin Fogmog Spine scene")
+    check_native_spine_rig(
+        "Origin Eye", "origin_eye_with_teeth.tscn", "origin_eye_with_teeth",
+        ("idle_loop", "attack", "hurt", "die", "revive"),
+        # v3: faithful conversion of the vanilla EyeWithTeeth skeleton (path-constraint tentacles,
+        # exact curves) with the grey V1 re-skin (tools/OriginEyeRig/v3), placed exactly like the
+        # vanilla eye_with_teeth scene
+        extra_scene=("position = Vector2(6, -26)", "scale = Vector2(0.35, 0.35)"),
+    )
+
     # Every self-owned shipping monster texture is an exact RGBA mirror of its
     # editable source.  No edge, grain, brightness, outline or palette pass may
     # alter even transparent-canvas pixels.
@@ -1821,13 +2342,30 @@ def main() -> int:
     )
 
     static_models = (
-        "OriginFogmog",
-        "BowlbugProgenitor",
-        "ThingsScaleBeetle",
         "SoulRoe",
         "SoulRoes",
-        "ThingsTheLegacy",
     )
+    legacy_model_text = source_text("Monsters/ThingsTheLegacy.cs")
+    if re.search(
+        r"public sealed class\s+ThingsTheLegacy\s*:\s*ThingsSpineMonster\b",
+        legacy_model_text,
+    ) is None:
+        fail(errors, "Monsters/ThingsTheLegacy.cs must inherit ThingsSpineMonster")
+    bowlbug_model_text = source_text("Monsters/BowlbugProgenitor.cs")
+    if re.search(
+        r"public sealed class\s+BowlbugProgenitor\s*:\s*ThingsSpineMonster\b",
+        bowlbug_model_text,
+    ) is None:
+        fail(errors, "Monsters/BowlbugProgenitor.cs must inherit ThingsSpineMonster")
+    if re.search(
+        r"public sealed class\s+OriginFogmog\s*:\s*ThingsSpineMonster\b",
+        source_text("Monsters/OriginFogmog.cs"),
+    ) is None:
+        fail(errors, "Monsters/OriginFogmog.cs must inherit ThingsSpineMonster")
+    if 'TriggerAnim(Creature, "Summon", 0.75f)' not in bowlbug_model_text:
+        fail(errors, "Monsters/BowlbugProgenitor.cs must play its Spine summon when laying eggs")
+    if "DeathAnimLengthOverride" in bowlbug_model_text:
+        fail(errors, "Monsters/BowlbugProgenitor.cs must not override the death animation length")
     for model_name in static_models:
         relative = f"Monsters/{model_name}.cs"
         model_text = source_text(relative)
@@ -1895,19 +2433,25 @@ def main() -> int:
                 f"PCK export must exclude build-time asset {required_exclude}",
             )
 
-    # Origin Fogmog's summoned eyes intentionally retain the shipped native
-    # Spine scene and animator rather than joining the nine custom atlases.
+    # Origin Fogmog's summoned eyes use their own monochrome illusion rig
+    # (tools/OriginEyeRig) so they read apart from the vanilla Fogmog's eyes;
+    # the illusion lifecycle triggers are mapped to held die / revive.
     require_snippets(
         "Monsters/OriginEyeWithTeeth.cs",
         [
-            'SceneHelper.GetScenePath("creature_visuals/eye_with_teeth")',
+            'SceneHelper.GetScenePath("creature_visuals/origin_eye_with_teeth")',
             "visuals.Modulate = Colors.White;",
             'new AnimState("idle_loop", true)',
             'creatureAnimator.AddAnyState("Attack"',
             'creatureAnimator.AddAnyState("Dead"',
+            "creatureAnimator.AddAnyState(CreatureAnimator.hitTrigger, hurt);",
+            "creatureAnimator.AddAnyState(IllusionPower.stunTrigger, downed);",
+            "creatureAnimator.AddAnyState(IllusionPower.wakeUpTrigger, revive);",
         ],
-        "native Spine Eye material/animation contract",
+        "Origin Eye Spine material/animation contract",
     )
+    if "creature_visuals/eye_with_teeth\"" in source_text("Monsters/OriginEyeWithTeeth.cs"):
+        fail(errors, "OriginEyeWithTeeth still borrows the vanilla Eye With Teeth visuals")
 
     # EncounterModel scene/slot contract. Exact equality catches both missing runtime markers and
     # stale markers that are not represented by EncounterModel.Slots.
@@ -2539,8 +3083,8 @@ def main() -> int:
     if "ModelDb.Power<ThingsQuirkPower>()" in init_text:
         fail(errors, "canonical ThingsQuirkPower is still registered as a global run hook")
     quirk_localization_contracts = {
-        "eng": ("deck", "potion belt", "hand", "killed", "escapes"),
-        "zhs": ("\u724c\u5e93", "\u836f\u6c34\u680f", "\u624b\u724c", "\u51fb\u6740", "\u9003\u8dd1"),
+        "eng": (r"cards|deck", r"potions|potion belt", "hand", r"death|killed", "escapes"),
+        "zhs": (r"卡牌|牌库", r"药水|药水栏", "手牌", "击杀", "逃跑"),
     }
     for lang, (
         card_destination,
@@ -2552,9 +3096,11 @@ def main() -> int:
         table = json.loads((localization / lang / "powers.json").read_text(encoding="utf-8"))
         for key in ("THINGS_QUIRK_POWER.description", "THINGS_QUIRK_POWER.smartDescription"):
             value = table.get(key, "")
-            if card_destination not in value or potion_destination not in value:
-                fail(errors, f"{lang}/{key} does not describe both stolen-item destinations")
-            if killed_outcome not in value or escaped_outcome not in value:
+            # The accepted concise copy names both item types and outcomes;
+            # exact destinations are verified by the native return-policy probe.
+            if not re.search(card_destination, value) or not re.search(potion_destination, value):
+                fail(errors, f"{lang}/{key} does not describe both stolen item types")
+            if not re.search(killed_outcome, value) or escaped_outcome not in value:
                 fail(errors, f"{lang}/{key} does not distinguish kill-return from escape-loss")
             if forbidden_destination in value:
                 fail(errors, f"{lang}/{key} still returns the stolen card to the hand")

@@ -1,0 +1,12 @@
+water_sponge.png
+size: 2048,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skin
+  rotate: false
+  xy: 2, 2
+  size: 1280, 1280
+  orig: 1280, 1280
+  offset: 0, 0
+  index: -1

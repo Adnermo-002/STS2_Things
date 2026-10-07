@@ -5,6 +5,7 @@
 **/obj/
 **/__pycache__/
 *.py[cod]
+**/node_modules/
 
 # IDE state
 .idea/
@@ -30,10 +31,33 @@ source_assets/**/*.import
 
 # Local scratch and generated intermediates (probe logs, imagegen candidates,
 # decompile dumps). These are regenerable and must never be committed.
-tmp/
+tmp/*
+!tmp/.gdignore
+.tmp/*
+!.tmp/.gdignore
+tools/OriginFogmogRig/v3/out/
+tools/OriginFogmogRig/legacy_v2/out/
+tools/OriginFogmogRig/legacy_v2/pkg/
+tools/OriginFogmogRig/legacy_v2/parts/
+tools/OriginFogmogRig/legacy_v2/prev/
+tools/OriginFogmogRig/legacy_v2/review_v1/
+tools/ScaleBeetleRig/out/
+tools/ScaleBeetleRig/parts/
+tools/ScaleBeetleRig/pkg/
+tools/ScaleBeetleRig/prev/
+diff_background.txt
 output/*
 !output/.gdignore
 tmp_vanilla_event_contact*
 
 # Old local reverse-engineering trees must not be added to this Mod repository.
 Slay the Spire 2_decompiled*/
+
+# Regenerable rig previews/intermediates and local art rollback copies.
+tools/**/out/
+tools/**/prev/
+tools/**/review/
+tools/**/pkg/
+tools/**/frames.pkl
+tools/**/labels.npy
+source_assets/archive/
