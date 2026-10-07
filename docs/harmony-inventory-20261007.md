@@ -40,9 +40,9 @@
 | `CardDowngradePatch` | `STS2_Things/Enchantments/ThingsSplit.cs:1188` | 永久成长／费用直接 setter 与读档还原不由战斗输出 Hook 覆盖 |
 | `CardDeserializationPatch` | `STS2_Things/Enchantments/ThingsSplit.cs:1206` | 永久成长／费用直接 setter 与读档还原不由战斗输出 Hook 覆盖 |
 | `CuttingItCloseConsoleReentryPatch` | `STS2_Things/Events/CuttingItClose.cs:133` | 控制台换房前清屏并阻止活动事件重复重入 |
-| `MerchantEntryOnTryPurchaseWrapperPatch` | `STS2_Things/Features/MerchantBargain/MerchantBargainPatches.cs:13` | 购买 wrapper、价格和商人资源目录缺少模型 Hook |
-| `MerchantEntryCostPatch` | `STS2_Things/Features/MerchantBargain/MerchantBargainPatches.cs:47` | 购买 wrapper、价格和商人资源目录缺少模型 Hook |
-| `MerchantBargainAssetPreloadPatch` | `STS2_Things/Features/MerchantBargain/MerchantBargainPatches.cs:68` | 购买 wrapper、价格和商人资源目录缺少模型 Hook |
+| `MerchantEntryOnTryPurchaseWrapperPatch` | `STS2_Things/Features/MerchantBargain/MerchantBargainPatches.cs:13` | 购买前异步猜拳拦截没有等价 Hook；价格职责可单独迁移 |
+| `MerchantEntryCostPatch` | `STS2_Things/Features/MerchantBargain/MerchantBargainPatches.cs:47` | 后续复查发现 `ModifyMerchantPrice` 已存在，可评估迁移；本轮未删除，见全模组复用审查 |
+| `MerchantBargainAssetPreloadPatch` | `STS2_Things/Features/MerchantBargain/MerchantBargainPatches.cs:68` | 商人房间的专属资源目录扩展，不能以价格 Hook 替代 |
 | `DepthsActCatalogPatch` | `STS2_Things/Hooks/DepthsActPatches.cs:9` | 固定章节目录及原版成就枚举不包含自定义章节 |
 | `DepthsVanillaAchievementPatch` | `STS2_Things/Hooks/DepthsActPatches.cs:22` | 固定章节目录及原版成就枚举不包含自定义章节 |
 | `DepthsGeneratedEventsPatch` | `STS2_Things/Hooks/DepthsEventPoolPatch.cs:10` | 1.25.5 延续：原版生成追加共享事件和旧池抽取前清理 |

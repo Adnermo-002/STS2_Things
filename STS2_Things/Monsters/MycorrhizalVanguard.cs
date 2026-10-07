@@ -8,10 +8,10 @@ public sealed class MycorrhizalVanguard : MycorrhizalTwin
     public override bool IsVanguard => true;
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()
     {
-        var lash = new MoveState("LASH_MOVE", _ => Strike(Damage(18,20)), new SingleAttackIntent(Damage(18,20)));
-        var doubleHit = new MoveState("DOUBLE_MOVE", _ => Strike(Damage(8,9),2), new MultiAttackIntent(Damage(8,9),2));
+        var lash = new MoveState("LASH_MOVE", _ => Strike(Damage(15,17)), new SingleAttackIntent(Damage(15,17)));
+        var doubleHit = new MoveState("DOUBLE_MOVE", _ => Strike(Damage(7,8),2), new MultiAttackIntent(Damage(7,8),2));
         var spores = new MoveState("WAR_SPORES_MOVE", _ => Strengthen(), new BuffIntent());
-        var fury = new MoveState("FURY_LASH_MOVE", _ => Strike(Damage(10,11),2), new MultiAttackIntent(Damage(10,11),2));
+        var fury = new MoveState("FURY_LASH_MOVE", _ => Strike(Damage(8,9),2), new MultiAttackIntent(Damage(8,9),2));
         var rageSpores = new MoveState("RAGE_SPORES_MOVE", _ => Strengthen(), new BuffIntent());
         fury.FollowUpState = rageSpores;
         rageSpores.FollowUpState = fury;

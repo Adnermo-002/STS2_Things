@@ -2,7 +2,7 @@
 
 ## 接入原版职责
 
-查目标版本的实际同类实现，采用 `MonsterModel`、`EncounterModel`、原生 MoveState、Intent、Power、Card 与游戏命令。优先使用可扩展入口，仅为确实缺失的入口加窄兼容补丁。
+新增机制、改造自定义流程或审查补丁时，先按[原版实现复用](native-implementation.md)找到同类完整调用链并核对目标版本，再采用 `MonsterModel`、`EncounterModel`、原生 MoveState、Intent、Power、Card 与游戏命令。已有 Hook 需确认分派时机与语义，缺口才由窄兼容补丁承担。
 
 - ModelDb 原型保持不可变；实例状态写在 mutable 模型。临时费用、关键词和生成牌不污染永久牌库或 canonical 模型。
 - 意图类型、次数和显示伤害与下一次实际行动一致，包含力量、形态、易伤及多段修正。状态改变时按原版刷新，并遵守已预告行动的承诺。

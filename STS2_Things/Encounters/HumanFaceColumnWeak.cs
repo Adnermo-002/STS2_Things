@@ -4,6 +4,7 @@ using STS2_Things.Monsters;
 
 namespace STS2_Things.Encounters;
 
+// Retained for old saves and explicit debug fights, excluded from current act pools.
 public sealed class HumanFaceColumnWeak : EncounterModel
 {
     public override RoomType RoomType => RoomType.Monster;

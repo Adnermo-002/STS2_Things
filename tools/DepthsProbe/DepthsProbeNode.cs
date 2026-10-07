@@ -62,6 +62,16 @@ public partial class DepthsProbeNode : Node
             SaveManager.Instance.InitSettingsDataForTest();
             SaveManager.Instance.InitPrefsDataForTest();
             SaveManager.Instance.SettingsSave.Language="zhs";LocManager.Initialize();
+            if(OS.GetCmdlineUserArgs().Contains("--event-refresh-only"))
+            {
+                await VerifyEventRefresh();await ReleaseProbeResources();
+                GD.Print($"Depths event refresh probe: PASS ({_checks} assertions)");GetTree().Quit(0);return;
+            }
+            if(OS.GetCmdlineUserArgs().Contains("--cavegod-shackles-only"))
+            {
+                await VerifyCaveGodShackles();await ReleaseProbeResources();
+                GD.Print($"Depths CaveGod Shackles probe: PASS ({_checks} assertions)");GetTree().Quit(0);return;
+            }
             if(OS.GetCmdlineUserArgs().Contains("--cavegod-doom-only"))
             {
                 await VerifyCaveGodDoom();await ReleaseProbeResources();
@@ -90,7 +100,7 @@ public partial class DepthsProbeNode : Node
             }
             if(OS.GetCmdlineUserArgs().Contains("--column-variants-only"))
             {
-                await VerifyColumnCompanions();await ReleaseProbeResources();
+                await VerifyStandaloneColumns();await ReleaseProbeResources();
                 GD.Print($"Depths column variants probe: PASS ({_checks} assertions)");GetTree().Quit(0);return;
             }
             if(OS.GetCmdlineUserArgs().Contains("--column-rules-only"))
@@ -177,7 +187,7 @@ public partial class DepthsProbeNode : Node
     private static void VerifyPoolsAndConfig()
     {
         var act=ModelDb.Act<Depths>();
-        Assert(act.AllWeakEncounters.Select(e=>e.GetType()).ToHashSet().SetEquals([typeof(LanternFishWeak),typeof(SanguineLeechWeak),typeof(SpongeLeechWeak),typeof(SilkMothWeak),typeof(CaveMawWeak),typeof(SnailTrioWeak),typeof(HumanFaceColumnWeak),typeof(FleetingEchoWeak)]),"Eight weak encounter entries.");
+        Assert(act.AllWeakEncounters.Select(e=>e.GetType()).ToHashSet().SetEquals([typeof(LanternFishWeak),typeof(SanguineLeechWeak),typeof(SpongeLeechWeak),typeof(SilkMothWeak),typeof(CaveMawWeak),typeof(SnailTrioWeak),typeof(FleetingEchoWeak)]),"Seven weak encounter entries; the column belongs only to the strong pool.");
         Assert(act.AllRegularEncounters.Select(e=>e.GetType()).ToHashSet().SetEquals(StrongRosterContracts.Keys),"Twelve independent regular encounter entries.");
         Assert(act.AllEliteEncounters.Select(e=>e.GetType()).ToHashSet().SetEquals([
             typeof(DecimillipedeElite),typeof(EntomancerElite),typeof(InfestedPrismsElite),typeof(MycorrhizalTwinsElite),typeof(ReverseSalamanderElite),typeof(RadioJellyfishElite)]),"Depths has three custom elites and three vanilla elites.");

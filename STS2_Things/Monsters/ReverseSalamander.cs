@@ -19,15 +19,15 @@ namespace STS2_Things.Monsters;
 
 public sealed class ReverseSalamander : ThingsSpineMonster
 {
-    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies,220,196);
+    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies,190,170);
     public override int MaxInitialHp => MinInitialHp;
     public override float HpBarSizeReduction => 10f;
-    public int GrowthAmount => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,3,2);
-    private int TideDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,18,16);
-    private int TailDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,23,20);
-    private int RollDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,8,7);
-    private int GatherDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,16,14);
-    private int GatherBlock => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies,20,16);
+    public int GrowthAmount => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,2,1);
+    private int TideDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,15,13);
+    private int TailDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,19,16);
+    private int RollDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,7,6);
+    private int GatherDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies,13,11);
+    private int GatherBlock => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies,16,12);
     public override DamageSfxType TakeDamageSfxType => DamageSfxType.Magic;
     protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/gravetide_slug/gravetide_slug_attack_light";
     public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/gravetide_slug/gravetide_slug_die";

@@ -29,7 +29,7 @@ public partial class NCaveGodHandCreatureVisuals : NCreatureVisuals
             parentItem.ZAsRelative = false;
 
             // Elevate StateDisplay / HealthBar (health bar, power container, nameplate)
-            Node? healthBar = parentItem.GetNodeOrNull("%HealthBar") 
+            Node? healthBar = parentItem.GetNodeOrNull("%HealthBar")
                 ?? parentItem.GetNodeOrNull("HealthBar")
                 ?? parentItem.GetNodeOrNull("StateDisplay")
                 ?? parentItem.FindChild("HealthBar", recursive: true, owned: false)
@@ -41,10 +41,10 @@ public partial class NCaveGodHandCreatureVisuals : NCreatureVisuals
             }
 
             // Elevate Intents (node in NCreature is %Intents)
-            Node? intents = parentItem.GetNodeOrNull("%Intents") 
+            Node? intents = parentItem.GetNodeOrNull("%Intents")
                 ?? parentItem.GetNodeOrNull("Intents")
-                ?? parentItem.GetNodeOrNull("%IntentContainer") 
-                ?? parentItem.GetNodeOrNull("IntentContainer") 
+                ?? parentItem.GetNodeOrNull("%IntentContainer")
+                ?? parentItem.GetNodeOrNull("IntentContainer")
                 ?? parentItem.FindChild("Intents", recursive: true, owned: false)
                 ?? parentItem.FindChild("IntentContainer", recursive: true, owned: false);
             if (intents is CanvasItem intentCanvas)

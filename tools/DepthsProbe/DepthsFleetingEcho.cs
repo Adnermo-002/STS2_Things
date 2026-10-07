@@ -62,7 +62,7 @@ public partial class DepthsProbeNode
             b = await StrongBattle(ModelDb.Encounter<FleetingEchoWeak>(), count, asc, "echo-timer-"+count+"-"+asc);
             echo = b.Monster<FleetingEcho>();target = echo.Creature;
             foreach (var p in b.Players) { p.Creature.SetMaxHpInternal(10000); p.Creature.SetCurrentHpInternal(10000); }
-            int[] expected = asc == 0 ? [26,31,36,41,46] : [30,35,40,45,50];
+            int[] expected = asc == 0 ? [22,26,30,34,38] : [26,30,34,38,42];
             for (int phase = 0; phase < 5; phase++)
             {
                 int hp = b.Players[0].Creature.CurrentHp;

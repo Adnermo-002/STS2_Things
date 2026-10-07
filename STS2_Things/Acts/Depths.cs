@@ -56,7 +56,6 @@ public sealed class Depths : ActModel
         yield return ModelDb.Encounter<FleetingEchoWeak>();
         yield return ModelDb.Encounter<CaveMawEncounter>();
         yield return ModelDb.Encounter<SnailTrioWeak>();
-        yield return ModelDb.Encounter<HumanFaceColumnWeak>();
         yield return ModelDb.Encounter<HumanFaceColumnEncounter>();
         // Independent entries diversify the native bag; variants inside the column
         // encounter alone cannot dilute the leeches in the other regular fights.

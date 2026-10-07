@@ -473,10 +473,10 @@ public partial class CaveGodProbeNode : Node
         for (int i = 0; i < 4; i++) await Act(s); // next: Crystal Burst (the growth turn)
         await CreatureCmd.Stun(s.Left.Creature);
         await Hook.AfterSideTurnStart(s.State, CombatSide.Player, s.State.PlayerCreatures);
-        Assert(s.Left.IsStunned && !s.Left.ShouldAllowTargeting(s.Left.Creature), "Native stun projection failed.");
+        Assert(s.Left.IsStunned && s.Left.ShouldAllowTargeting(s.Left.Creature), "Native stun skips actions without making a healthy arm untargetable.");
         await Act(s);
         Assert(s.Left.Creature.GetPowerAmount<StrengthPower>() == 2, "Stunned arm silently misses encounter growth.");
-        GD.Print("PASS stunned arm receives cycle growth without losing its protection");
+        GD.Print("PASS healthy stunned arm receives cycle growth and remains targetable");
     }
 
     private static async Task VerifyWeakPhaseSurvivingArmFlow()

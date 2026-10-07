@@ -22,16 +22,16 @@ public abstract class MycorrhizalTwin : ThingsSpineMonster
     public abstract bool IsVanguard { get; }
     public bool IsFurious => Creature.GetPower<MycorrhizalFuryPower>() != null;
     public bool IsRobust => IsFurious || Creature.GetPower<MycorrhizalBondPower>()?.IsRobust == true;
-    public int StrengthGift => IsRobust ? 4 : 2;
-    public int ArmorGift => IsRobust ? 4 : 2;
+    public int StrengthGift => IsRobust ? 3 : 1;
+    public int ArmorGift => IsRobust ? 3 : 2;
     public int ScaleProtection(int value) => (int)Math.Round(value * (IsRobust ? 1.25m : .75m), MidpointRounding.AwayFromZero);
     public MycorrhizalTwin? Partner => CombatState.Enemies.Select(c => c.Monster)
         .OfType<MycorrhizalTwin>().FirstOrDefault(m => m != this && m.IsVanguard != IsVanguard && m.Creature.IsAlive);
-    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 114, 102);
+    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 98, 88);
     public override int MaxInitialHp => MinInitialHp;
     public override float HpBarSizeReduction => 75f;
     protected int Damage(int normal, int hard) => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, hard, normal);
-    protected int Guard => ScaleProtection(AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 16, 14));
+    protected int Guard => ScaleProtection(AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 13, 11));
     protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/fogmog/fogmog_attack";
     public override string DeathSfx => ModelDb.Monster<Fogmog>().DeathSfx;
     public override DamageSfxType TakeDamageSfxType => DamageSfxType.Plant;

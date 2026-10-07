@@ -1,0 +1,35 @@
+{
+  "model": "gpt-image-2.5-sunburst",
+  "endpoint": "https://cpa.yuseus.io/v1/",
+  "mode": "official ImageGen CLI edit with original style references",
+  "selected": {
+    "things_medusa": {
+      "raw": "medusa-raw-v2.png",
+      "portrait_size": [
+        3440,
+        1616
+      ],
+      "continuous_light_field": true
+    },
+    "cutting_it_close": {
+      "raw": "cutting-raw-v1.png",
+      "portrait_size": [
+        3440,
+        1616
+      ],
+      "continuous_light_field": true
+    }
+  },
+  "icons": {
+    "hair": 256,
+    "hair_outline": 256,
+    "split": 64
+  },
+  "prompts": [
+    "medusa-prompt.txt",
+    "medusa-refine-prompt.txt",
+    "cutting-prompt.txt",
+    "hair-prompt.txt",
+    "split-prompt.txt"
+  ]
+}

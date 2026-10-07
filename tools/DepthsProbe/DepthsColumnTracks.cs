@@ -20,7 +20,7 @@ public partial class DepthsProbeNode
             prefix: new HarmonyMethod(typeof(DepthsProbeNode), nameof(SkipTestUiGuard)));
         try
         {
-            var battle = await StrongBattle(ModelDb.Encounter<HumanFaceColumnWeak>());
+            var battle = await StrongBattle(ModelDb.Encounter<HumanFaceColumnEncounter>());
             var stage = new Node2D();AddChild(stage);
             var creatures = new List<NCreature>();
             foreach (var entity in battle.Enemies)

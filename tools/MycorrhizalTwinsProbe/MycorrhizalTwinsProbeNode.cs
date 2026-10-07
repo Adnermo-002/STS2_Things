@@ -83,7 +83,7 @@ public partial class MycorrhizalTwinsProbeNode : Node
             var s=await Scenario(count,asc);
             Assert(s.Encounter.MonstersWithSlots.Count==2&&s.Encounter.RoomType==RoomType.Elite,"Two elite monsters.");
             Assert(s.Tall.Creature.MaxHp==s.Short.Creature.MaxHp,"Equal scaled pools.");
-            Assert(s.Tall.MinInitialHp==(asc==0?102:114),"Hive-scale HP and ascension.");
+            Assert(s.Tall.MinInitialHp==(asc==0?88:98),"Hive-scale HP and ascension.");
             Assert(s.Tall.IsRobust&&!s.Short.IsRobust,"Exactly one robust form starts combat.");
             Assert(s.Tall.NextMove.Intents.Single() is SingleAttackIntent&&s.Short.NextMove.Intents.Single() is DefendIntent,"Roles start attack and defense.");
             int expected=((AttackIntent)s.Tall.NextMove.Intents.Single()).GetTotalDamage(s.Players.Select(p=>p.Creature),s.Tall.Creature);
@@ -105,12 +105,12 @@ public partial class MycorrhizalTwinsProbeNode : Node
         await EndRound(s);Assert(s.Tall.Creature.CurrentHp==67,"Repeated callback cannot swap twice in a round.");
         s.State.RoundNumber++;await EndRound(s);
         Assert(s.Tall.Creature.CurrentHp==21&&s.Short.Creature.CurrentHp==67&&!s.Tall.IsRobust&&s.Short.IsRobust,"Next round exchanges HP and forms.");
-        Assert(s.Tall.StrengthGift==2&&s.Short.ArmorGift==4,"Weak attack buff and strong defense buff follow form.");
+        Assert(s.Tall.StrengthGift==1&&s.Short.ArmorGift==3,"Weak attack buff and strong defense buff follow form.");
         int weakIntent=((AttackIntent)s.Tall.NextMove.Intents.Single()).GetTotalDamage(s.Players.Select(p=>p.Creature),s.Tall.Creature);
         int hp=s.Player.Creature.CurrentHp;await s.Tall.PerformMove();
-        Assert(hp-s.Player.Creature.CurrentHp==weakIntent&&weakIntent==15,"Swapped weak form scales native damage including existing Strength.");
+        Assert(hp-s.Player.Creature.CurrentHp==weakIntent&&weakIntent==12,"Swapped weak form scales native damage including existing Strength.");
         await s.Short.PerformMove();s.Short.RollMove(s.Players.Select(p=>p.Creature));await s.Short.PerformMove();
-        Assert(s.Tall.Creature.GetPower<PlatingPower>()?.Amount==4&&s.Short.Creature.GetPower<PlatingPower>()?.Amount==4,"Robust defender's stronger buff reaches both twins.");
+        Assert(s.Tall.Creature.GetPower<PlatingPower>()?.Amount==3&&s.Short.Creature.GetPower<PlatingPower>()?.Amount==3,"Robust defender's stronger buff reaches both twins.");
         var fresh=await Scenario();await EndRound(fresh);Assert(!fresh.Tall.IsRobust&&fresh.Short.IsRobust,"Equal HP still swaps forms.");
         Assert(s.Short.IsRobust,"A second combat cannot share the first power's internal form data.");
         await CreatureCmd.SetCurrentHp(fresh.Tall.Creature,1);fresh.State.RoundNumber++;await EndRound(fresh);
@@ -121,7 +121,7 @@ public partial class MycorrhizalTwinsProbeNode : Node
         var s=await Scenario();var targets=s.Players.Select(p=>p.Creature).ToArray();
         foreach(var expected in new[]{"LASH_MOVE","DOUBLE_MOVE","WAR_SPORES_MOVE","LASH_MOVE"})
         {Assert(s.Tall.NextMove.Id==expected,"Offensive cycle "+expected);await s.Tall.PerformMove();s.Tall.RollMove(targets);}
-        Assert(s.Tall.Creature.GetPower<StrengthPower>()?.Amount==4&&s.Short.Creature.GetPower<StrengthPower>()?.Amount==4,"Robust elder grants exactly 4 Strength to both.");
+        Assert(s.Tall.Creature.GetPower<StrengthPower>()?.Amount==3&&s.Short.Creature.GetPower<StrengthPower>()?.Amount==3,"Robust elder grants exactly 3 Strength to both.");
         s=await Scenario();targets=s.Players.Select(p=>p.Creature).ToArray();
         foreach(var expected in new[]{"SHELTER_MOVE","ARMOR_MOVE","BASH_MOVE","SHELTER_MOVE"})
         {Assert(s.Short.NextMove.Id==expected,"Defensive cycle "+expected);await s.Short.PerformMove();s.Short.RollMove(targets);}

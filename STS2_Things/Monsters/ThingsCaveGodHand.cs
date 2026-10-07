@@ -90,6 +90,8 @@ public abstract class ThingsCaveGodHand : MonsterModel
     public ThingsCaveGodBody? Body => CombatState?.Enemies.Select(c => c.Monster).OfType<ThingsCaveGodBody>().FirstOrDefault();
     private NCaveGodBossBackground? Background => Body?.Background;
     private bool CanAct => !IsDown && !IsStunned && Body is { IsPhaseTransitionPending: false, IsDefeated: false };
+    private bool IsProtectedRecovery => IsDown || _needsRecovery ||
+        (IsStunned && NextMove?.Id == MoveId(Action.Recover));
 
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 55, 50);
     public override int MaxInitialHp => MinInitialHp;
@@ -99,8 +101,8 @@ public abstract class ThingsCaveGodHand : MonsterModel
     public override bool ShouldDisappearFromDoom => false;
     public override float DeathAnimLengthOverride => 0f;
     public override bool IsHealthBarVisible => !IsDown && !IsGrabbing;
-    public override bool ShouldAllowHitting(Creature creature) => creature != Creature || _applyingGrowth || (!IsDown && !IsStunned && !IsGrabbing);
-    public override bool ShouldAllowTargeting(Creature target) => target != Creature || (!IsDown && !IsStunned && !IsGrabbing);
+    public override bool ShouldAllowHitting(Creature creature) => creature != Creature || _applyingGrowth || (!IsProtectedRecovery && !IsGrabbing);
+    public override bool ShouldAllowTargeting(Creature target) => target != Creature || (!IsProtectedRecovery && !IsGrabbing);
 
     // Direct poison/retaliation damage does not use target selection. A downed or
     // recovering arm must also be protected on the actual damage path.
@@ -111,7 +113,7 @@ public abstract class ThingsCaveGodHand : MonsterModel
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props,
         Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
 #endif
-        => target == Creature && (IsDown || IsStunned) ? 0m : 1m;
+        => target == Creature && IsProtectedRecovery ? 0m : 1m;
 
     private int SweepDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 15, 14);
     private int GrabDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 8, 7);
@@ -292,6 +294,19 @@ public abstract class ThingsCaveGodHand : MonsterModel
 
     internal static async Task ClearDebuffs(Creature creature)
     {
+        // Temporary loss and its eventual refund are a pair. Undo the loss
+        // before deciding whether net Strength is a remaining debuff; this
+        // also preserves positive growth hidden underneath Dark Shackles.
+        foreach (TemporaryStrengthPower temporary in creature.Powers.OfType<TemporaryStrengthPower>()
+            .Where(p => p.TypeForCurrentAmount == PowerType.Debuff).ToList())
+        {
+            int refund = temporary.Amount;
+            temporary.SetAmount(0, silent: true); // queued callbacks must not refund twice
+            if (refund != 0 && creature.GetPower<StrengthPower>() is { } strength)
+                await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(), strength, refund,
+                    creature, null, silent: true);
+            await PowerCmd.Remove(temporary);
+        }
         // StrengthPower.Type is Buff even at -5. Use the same effective classification as Artifact.
         foreach (PowerModel power in creature.Powers.Where(p => p.TypeForCurrentAmount == PowerType.Debuff).ToList())
         {

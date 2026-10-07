@@ -21,16 +21,16 @@ public sealed class LanternFish : ThingsSpineMonster
     public const float FlashRelease = 0.72f;
     public const float GuardRelease = 0.42f;
     public const int BlindCharges = 2;
-    public const int GuardBlock = 12;
+    public const int GuardBlock = 9;
     private int _openingPhase;
     public int OpeningPhase => _openingPhase;
     public void SetOpeningPhase(int phase) { AssertMutable(); _openingPhase = Math.Clamp(phase, 0, 3); }
 
-    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 50, 46);
+    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 44, 40);
     public override int MaxInitialHp => MinInitialHp + 4;
     public override float HpBarSizeReduction => 145f;
-    private int BiteDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 11, 10);
-    private int TailDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 7, 6);
+    private int BiteDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 9, 8);
+    private int TailDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 6, 5);
     protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/thieving_hopper/thieving_hopper_attack";
     protected override string CastSfx => "event:/sfx/enemy/enemy_attacks/soul_fysh/soul_fysh_beckon";
     public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/soul_fysh/soul_fysh_intangible";

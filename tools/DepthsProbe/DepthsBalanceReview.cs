@@ -10,6 +10,9 @@ using MegaCrit.Sts2.Core.Models.Encounters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using STS2_Things.Acts;
+using STS2_Things.Monsters;
+using STS2_Things.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 public partial class DepthsProbeNode
 {
@@ -33,6 +36,20 @@ public partial class DepthsProbeNode
         {
             var b = await StrongBattle(canonical, players, ascension, "depths-balance-" + canonical.Id.Entry);
             foreach (var creature in b.Enemies) await creature.Monster!.AfterAddedToRoom();
+            foreach (var creature in b.Enemies)
+            {
+                if (creature.Monster is ReverseSalamander salamander && creature.GetPower<ReverseCurrentPower>() is { } reflux)
+                {
+                    string text = reflux.HoverTips.OfType<HoverTip>().First().Description;
+                    Assert(text.Contains($"[blue]{salamander.GrowthAmount}[/blue]"),
+                        "Native Reflux tooltip displays the actual A0/A20 Strength gift.");
+                }
+                if (creature.Monster is RadioJellyfish && creature.GetPower<RadioReceptionPower>() is { } reception)
+                {
+                    string text = reception.HoverTips.OfType<HoverTip>().First().Description;
+                    Assert(text.Contains("[blue]1[/blue]"), "Native Reception tooltip displays one point per opening stack.");
+                }
+            }
             foreach (var player in b.Players) { player.Creature.SetMaxHpInternal(10000); player.Creature.SetCurrentHpInternal(10000); }
             var roster = b.Enemies.Select(c => new { monster = c.Monster!.Id.Entry, hp = c.MaxHp,
                 baseMin = c.Monster.MinInitialHp, baseMax = c.Monster.MaxInitialHp, block = c.Block }).ToArray();

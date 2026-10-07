@@ -1,0 +1,66 @@
+{
+  "events": {
+    "zhs": {
+      "THINGS_MEDUSA.pages.INITIAL.description": "你走进一条摆满石像的长廊。每张石脸都带着同样的惊讶。\n\n廊道尽头，一名蛇发女子正在解开一条打结的蛇。\n“看地面。很好。”\n她将一只空碟推到你面前。\n“现在，我们可以谈谈价钱。”",
+      "THINGS_MEDUSA.pages.INITIAL.options.RETURN_TO_OWNER.title": "物归原主",
+      "THINGS_MEDUSA.pages.INITIAL.options.RETURN_TO_OWNER.description": "失去[gold]石化蟾蜍[/gold]。获得[gold]美杜莎之发[/gold]。",
+      "THINGS_MEDUSA.pages.INITIAL.options.RETURN_TO_OWNER_LOCKED.title": "物归原主",
+      "THINGS_MEDUSA.pages.INITIAL.options.RETURN_TO_OWNER_LOCKED.description": "需要[gold]石化蟾蜍[/gold]。",
+      "THINGS_MEDUSA.pages.INITIAL.options.OFFER_GOLD.title": "付钱",
+      "THINGS_MEDUSA.pages.INITIAL.options.OFFER_GOLD.description": "失去[red]{Gold}[/red][gold]金币[/gold]。使一张牌获得[purple]稳定[/purple]。",
+      "THINGS_MEDUSA.pages.INITIAL.options.OFFER_GOLD_LOCKED.title": "付钱",
+      "THINGS_MEDUSA.pages.INITIAL.options.OFFER_GOLD_LOCKED.description": "需要[gold]{Gold}金币[/gold]。",
+      "THINGS_MEDUSA.pages.INITIAL.options.GREET.title": "点头致意",
+      "THINGS_MEDUSA.pages.INITIAL.options.GREET.description": "获得[gold]药水形状的石头[/gold]。",
+      "THINGS_MEDUSA.pages.RETURN_TO_OWNER.description": "你将[gold]石化蟾蜍[/gold]放进碟子。她肩上的蛇齐刷刷地转过头。\n\n“总算找到了。”\n她摘下一绺蛇发，塞进你的掌心。\n“拿好。别让它们自己打结。”",
+      "THINGS_MEDUSA.pages.OFFER_GOLD.description": "你将金币放进碟子，把选中的牌递过去。她用指尖压住牌角。\n\n纸面变得像石头一样僵硬。\n“现在它不会乱跑了。”\n你将牌收好。碟子已经空了。",
+      "THINGS_MEDUSA.pages.GREET.description": "你朝她点了点头，没有靠近那只碟子。\n\n她等了片刻，叹了口气，将一个小瓶子递给你。瓶身、瓶塞，甚至里面的气泡都是石头。\n“送你的。别往牙上磕。”",
+      "CUTTING_IT_CLOSE.pages.INITIAL.description": "你脚下的石板突然一沉。\n\n[jitter]咔嚓！[/jitter]\n一片锯刃从前方的转角滚出，沿着石径朝你冲来。锯齿刮过地面，火星四溅。\n\n两边都是石墙。你摸向手中的牌……",
+      "CUTTING_IT_CLOSE.pages.INITIAL.options.IMPROVISE.title": "一分为二",
+      "CUTTING_IT_CLOSE.pages.INITIAL.options.IMPROVISE.description": "移除一张攻击牌或技能牌。获得[blue]2[/blue]张附有[purple]{Enchantment}[/purple]的复制品。",
+      "CUTTING_IT_CLOSE.pages.INITIAL.options.THROW.title": "卡住锯刃",
+      "CUTTING_IT_CLOSE.pages.INITIAL.options.THROW.description": "[gold]移除[/gold]一张牌。",
+      "CUTTING_IT_CLOSE.pages.IMPROVISE.selectionScreenPrompt": "选择一张攻击牌或技能牌进行分裂。",
+      "CUTTING_IT_CLOSE.pages.THROW.selectionScreenPrompt": "选择一张牌移除。",
+      "CUTTING_IT_CLOSE.pages.ABORTED.description": "你还没抽出那张牌，锯刃就擦着你的衣角滚了过去。\n\n你贴着石墙站了一会儿，等它的声音彻底消失。",
+      "CUTTING_IT_CLOSE.pages.IMPROVISE.description": "你将一张牌迎向锯齿。\n\n[jitter]嘶啦！[/jitter]\n两片纸飘落到你脚边。你捡起它们，发现每片都变成了一张完整的牌。它们摸起来轻了许多。\n\n锯刃继续向前滚去。你检查了一下自己的手指。都在。",
+      "CUTTING_IT_CLOSE.pages.THROW.description": "你将一张牌掷进锯齿。纸片卷进轮毂，锯刃跳了两下，停在你脚边。\n\n你小心地跨过去。它又响了一声，你立刻加快了脚步。"
+    },
+    "eng": {
+      "THINGS_MEDUSA.pages.INITIAL.description": "You enter a gallery lined with statues. Every stone face wears the same surprised expression.\n\nAt the far end, a snake-haired woman is untangling one of her snakes.\n“Eyes on the floor. Good.”\nShe slides an empty dish toward you.\n“Now we can talk prices.”",
+      "THINGS_MEDUSA.pages.INITIAL.options.RETURN_TO_OWNER.title": "Return the Toad",
+      "THINGS_MEDUSA.pages.INITIAL.options.RETURN_TO_OWNER.description": "Lose [gold]Petrified Toad[/gold]. Obtain [gold]Medusa's Hair[/gold].",
+      "THINGS_MEDUSA.pages.INITIAL.options.RETURN_TO_OWNER_LOCKED.title": "Return the Toad",
+      "THINGS_MEDUSA.pages.INITIAL.options.RETURN_TO_OWNER_LOCKED.description": "Requires [gold]Petrified Toad[/gold].",
+      "THINGS_MEDUSA.pages.INITIAL.options.OFFER_GOLD.title": "Pay",
+      "THINGS_MEDUSA.pages.INITIAL.options.OFFER_GOLD.description": "Lose [red]{Gold}[/red] [gold]Gold[/gold]. [gold]Enchant[/gold] a card with [purple]Steady[/purple].",
+      "THINGS_MEDUSA.pages.INITIAL.options.OFFER_GOLD_LOCKED.title": "Pay",
+      "THINGS_MEDUSA.pages.INITIAL.options.OFFER_GOLD_LOCKED.description": "Requires [gold]{Gold} Gold[/gold].",
+      "THINGS_MEDUSA.pages.INITIAL.options.GREET.title": "Give a Nod",
+      "THINGS_MEDUSA.pages.INITIAL.options.GREET.description": "Obtain [gold]Potion-Shaped Rock[/gold].",
+      "THINGS_MEDUSA.pages.RETURN_TO_OWNER.description": "You set the [gold]Petrified Toad[/gold] in the dish. Every snake on her shoulders turns toward it.\n\n“There you are.”\nShe plucks a lock of hair and drops it into your palm.\n“Keep it. And mind the knots.”",
+      "THINGS_MEDUSA.pages.OFFER_GOLD.description": "You put the coins in the dish and hand her your chosen card. She presses a finger to its corner.\n\nThe paper stiffens like stone.\n“That should keep it from wandering off.”\nYou pocket the card. The dish is already empty.",
+      "THINGS_MEDUSA.pages.GREET.description": "You give her a nod and leave the dish alone.\n\nAfter a moment, she sighs and hands you a little bottle. The bottle, its stopper, even its bubbles are made of stone.\n“A gift. Keep it away from your teeth.”",
+      "CUTTING_IT_CLOSE.pages.INITIAL.description": "The flagstone beneath your foot sinks.\n\n[jitter]CLACK![/jitter]\nA sawblade rolls around the bend ahead and comes straight for you. Its teeth scrape the stones, scattering sparks.\n\nWalls on both sides. You reach for your cards...",
+      "CUTTING_IT_CLOSE.pages.INITIAL.options.IMPROVISE.title": "Split It",
+      "CUTTING_IT_CLOSE.pages.INITIAL.options.IMPROVISE.description": "Remove an Attack or Skill card. Add [blue]2[/blue] copies [gold]Enchanted[/gold] with [purple]{Enchantment}[/purple] to your [gold]Deck[/gold].",
+      "CUTTING_IT_CLOSE.pages.INITIAL.options.THROW.title": "Jam the Saw",
+      "CUTTING_IT_CLOSE.pages.INITIAL.options.THROW.description": "[gold]Remove[/gold] a card.",
+      "CUTTING_IT_CLOSE.pages.IMPROVISE.selectionScreenPrompt": "Choose an Attack or Skill card to split.",
+      "CUTTING_IT_CLOSE.pages.THROW.selectionScreenPrompt": "Choose a card to remove.",
+      "CUTTING_IT_CLOSE.pages.ABORTED.description": "Before you can draw the card, the blade grazes your clothes and rolls past.\n\nYou stay against the wall until you can't hear it anymore.",
+      "CUTTING_IT_CLOSE.pages.IMPROVISE.description": "You hold a card up to the teeth.\n\n[jitter]RRRIP![/jitter]\nTwo scraps drift to your feet. When you pick them up, each has become a complete card. They feel much lighter.\n\nThe blade rolls on. You count your fingers. All there.",
+      "CUTTING_IT_CLOSE.pages.THROW.description": "You throw a card into the teeth. Paper winds around the axle. The blade hops twice and stops at your feet.\n\nYou step carefully over it. It clatters again. You hurry on."
+    }
+  },
+  "relics": {
+    "zhs": {
+      "THINGS_MEDUSA_HAIR.description": "战斗开始时，将[gold]岩石铠甲[/gold][green]+[/green]和[gold]巨石[/gold][green]+[/green]加入你的手牌。它们的费用变为[blue]0[/blue]。[gold]巨石[/gold][green]+[/green]获得[gold]消耗[/gold]。",
+      "THINGS_MEDUSA_HAIR.flavor": "离开她的脑袋后，它们终于停止争吵。"
+    },
+    "eng": {
+      "THINGS_MEDUSA_HAIR.description": "At the start of combat, add [gold]Stone Armor[/gold][green]+[/green] and [gold]Giant Rock[/gold][green]+[/green] to your hand. They cost [blue]0[/blue]. [gold]Giant Rock[/gold][green]+[/green] gains [gold]Exhaust[/gold].",
+      "THINGS_MEDUSA_HAIR.flavor": "Off her head, the snakes finally stop arguing."
+    }
+  }
+}

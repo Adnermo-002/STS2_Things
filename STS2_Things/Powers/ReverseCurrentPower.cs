@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
@@ -20,6 +21,12 @@ public sealed class ReverseCurrentPower : PowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.None;
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new IntVar("StrengthAmount", 1)];
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        DynamicVars["StrengthAmount"].BaseValue = Owner.Monster is ReverseSalamander monster ? monster.GrowthAmount : 1;
+        return Task.CompletedTask;
+    }
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [new HoverTip(new LocString("powers", "REVERSE_CURRENT_POWER.refluxTitle"),
             new LocString("powers", "REVERSE_CURRENT_POWER.refluxDescription")),

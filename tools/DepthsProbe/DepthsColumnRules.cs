@@ -13,7 +13,7 @@ public partial class DepthsProbeNode
 {
     private static async Task<Battle> ColumnBattle(int players=1,int ascension=0)
     {
-        var b=await StrongBattle(ModelDb.Encounter<HumanFaceColumnWeak>(),players,ascension,"column-rules");
+        var b=await StrongBattle(ModelDb.Encounter<HumanFaceColumnEncounter>(),players,ascension,"column-rules");
         foreach(var c in b.Enemies)await c.Monster!.AfterAddedToRoom();
         foreach(var p in b.Players){p.Creature.SetMaxHpInternal(10000);p.Creature.SetCurrentHpInternal(10000);}
         return b;
@@ -24,6 +24,7 @@ public partial class DepthsProbeNode
 
     private async Task VerifyColumnRules()
     {
+        await VerifyColumnAttackBudget();
         foreach(int count in new[]{1,4})
         foreach(int asc in new[]{0,20})
         {
@@ -64,7 +65,7 @@ public partial class DepthsProbeNode
             DeactivateSyntheticCombat();
 
             b=await ColumnBattle(count,asc);original=Discs(b);top=original[2];bottom=original[0];
-            Assert(top.MinInitialHp==(asc==0?40:46) && top.MaxInitialHp==(asc==0?46:52),"Both HP endpoints doubled.");
+            Assert(top.MinInitialHp==(asc==0?34:40) && top.MaxInitialHp==(asc==0?40:46),"Both reduced HP endpoints match the balance contract.");
             int hp=top.Creature.CurrentHp;
             await CreatureCmd.Damage(Choice,top.Creature,10,ValueProp.Move,b.Players[0].Creature);
             Assert(top.Creature.CurrentHp==hp,"Top immunity retained.");
@@ -73,18 +74,59 @@ public partial class DepthsProbeNode
             Assert(hp-original[1].Creature.CurrentHp==5,"Middle half damage retained.");
             b.State.CurrentSide=CombatSide.Enemy;
             hp=b.Players[0].Creature.CurrentHp;await top.PerformMove();
-            Assert(hp-b.Players[0].Creature.CurrentHp==10,"Knock fits the shared three-disc attack budget.");
+            Assert(hp-b.Players[0].Creature.CurrentHp==8,"Knock fits the shared three-disc attack budget.");
             top.RollMove(b.Players.Select(p=>p.Creature));await top.PerformMove();
-            Assert(b.Players.All(p=>p.Creature.GetPower<WeakPower>()?.Amount==2),"Rebuke applies two Weak to each player.");
+            Assert(b.Players.All(p=>p.Creature.GetPower<WeakPower>()?.Amount==1),"Rebuke applies one Weak to each player.");
             int block=bottom.Creature.Block;await bottom.PerformMove();
-            int baseBlock=asc==0?14:18;
+            int baseBlock=asc==0?10:14;
             Assert(count==1?bottom.Creature.Block-block==baseBlock:bottom.Creature.Block-block>=baseBlock,
-                $"Seal base Block doubled and multiplayer uses native scaling. players={count}, gained={bottom.Creature.Block-block}");
+                $"Seal reduced base Block and multiplayer uses native scaling. players={count}, gained={bottom.Creature.Block-block}");
             bottom.RollMove(b.Players.Select(p=>p.Creature));hp=b.Players[0].Creature.CurrentHp;
             await bottom.PerformMove();
-            Assert(hp-b.Players[0].Creature.CurrentHp==10,"Rattle has two five-damage hits.");
+            Assert(hp-b.Players[0].Creature.CurrentHp==8,"Rattle has two four-damage hits.");
             DeactivateSyntheticCombat();
         }
-        GD.Print("PASS column rules: A0/A20, 1/4 players, ten-damage attacks, middle-only stun, AoE order and recovery.");
+        GD.Print("PASS column rules: A0/A20, 1/4 players, eight-damage attacks, middle-only stun, AoE order and recovery.");
+    }
+
+    private static async Task VerifyColumnAttackBudget()
+    {
+        foreach (int players in new[] { 1, 4 })
+        foreach (int asc in new[] { 0, 20 })
+        {
+            var b = await ColumnBattle(players, asc);
+            var totals = new List<int>();
+            b.State.CurrentSide = CombatSide.Enemy;
+            for (int turn = 0; turn < 8; turn++)
+            {
+                if (turn == 4)
+                {
+                    b.State.CurrentSide = CombatSide.Player;
+                    await HitColumn(b, Discs(b)[0]);
+                    // A synthetic damage call does not run the native enemy
+                    // turn setup that announces newly summoned creatures.
+                    foreach (var disc in Discs(b))
+                        if (disc.NextMove.Id == "UNSET_MOVE") disc.RollMove(b.Players.Select(p => p.Creature));
+                    b.State.CurrentSide = CombatSide.Enemy;
+                }
+                var before = b.Players.Select(p => p.Creature.CurrentHp).ToArray();
+                foreach (var disc in Discs(b)) await disc.PerformMove();
+                var damage = b.Players.Select((p, i) => before[i] - p.Creature.CurrentHp).ToArray();
+                Assert(damage.All(value => value is >= 0 and <= 30), "Whole column stays within thirty damage per player, including collapse and replacement");
+                if (turn < 4) Assert(damage.All(value => value is >= 8 and <= 16), "Intact column deals eight to sixteen damage per turn");
+                totals.Add(damage.Max());
+                foreach (var disc in Discs(b)) disc.RollMove(b.Players.Select(p => p.Creature));
+            }
+            foreach (string id in new[] { "KNOCK_MOVE", "RATTLE_MOVE" })
+            {
+                foreach (var disc in Discs(b)) disc.SetMoveImmediate(
+                    (MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine.MoveState)disc.MoveStateMachine!.States[id], forceTransition: true);
+                var before = b.Players.Select(p => p.Creature.CurrentHp).ToArray();
+                foreach (var disc in Discs(b)) await disc.PerformMove();
+                Assert(b.Players.Select((p, i) => before[i] - p.Creature.CurrentHp).All(value => value == 24), "Three aligned column attacks total twenty-four damage");
+            }
+            GD.Print($"COLUMN TOTAL {players}p A{asc}: {string.Join(',', totals)}; aligned peak=24");
+            DeactivateSyntheticCombat();
+        }
     }
 }

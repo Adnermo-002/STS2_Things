@@ -18,10 +18,10 @@ public sealed class SlimeSnail : DepthsSnail
     private MoveState? _repair;
     private MoveState? _bite;
     private ConditionalBranchState? _repairChoice;
-    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 27, 24);
+    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 24, 21);
     public override int MaxInitialHp => MinInitialHp + 3;
-    private int BiteDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 9, 8);
-    private int RepairShell => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 9, 7);
+    private int BiteDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 7, 6);
+    private int RepairShell => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 7, 5);
     protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/workbug_goop/workbug_goop_spit";
     public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/workbug_goop/workbug_goop_die";
 

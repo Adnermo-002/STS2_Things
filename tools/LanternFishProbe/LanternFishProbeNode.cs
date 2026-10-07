@@ -232,7 +232,7 @@ public partial class LanternFishProbeNode : Node
         Assert(s.Player.Creature.CurrentHp == hp - 6, "Native bite damage.");
         hp = s.Player.Creature.CurrentHp;
         await ((MoveState)moves["TAIL_MOVE"]).PerformMove([s.Player.Creature]);
-        Assert(s.Player.Creature.CurrentHp == hp - 8, "Native two-hit claw damage.");
+        Assert(s.Player.Creature.CurrentHp == hp - 10, "Native two-hit tail damage.");
         DeactivateSyntheticCombat(); GD.Print("PASS native flash, guard, bite and double tail swipe commands.");
     }
 

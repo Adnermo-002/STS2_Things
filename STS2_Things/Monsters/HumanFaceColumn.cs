@@ -33,13 +33,13 @@ public sealed class HumanFaceColumn : ThingsSpineMonster
     public bool IsDizzy => NextMove?.Id == stunnedMoveId;
     public bool IsReplacement { get; private set; }
 
-    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 46, 40);
+    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 40, 34);
     public override int MaxInitialHp => MinInitialHp + 6;
     public override float HpBarSizeReduction => 24f;
-    // Budget for the complete column: at most three ten-damage attacks per turn.
-    private int KnockDamage => 10;
-    private int RattleDamage => 5;
-    private int SealBlock => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 18, 14);
+    // Budget for the complete column: at most three eight-damage attacks per turn.
+    private int KnockDamage => 8;
+    private int RattleDamage => 4;
+    private int SealBlock => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 14, 10);
     protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/workbug_rock/workbug_rock_attack";
     public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/workbug_rock/workbug_rock_die";
     public override DamageSfxType TakeDamageSfxType => DamageSfxType.Stone;
@@ -126,7 +126,7 @@ public sealed class HumanFaceColumn : ThingsSpineMonster
     {
         await CreatureCmd.TriggerAnim(Creature, "Cast", .5f);
         await PowerCmd.Apply<WeakPower>(new ThrowingPlayerChoiceContext(),
-            targets.Where(target => target.IsAlive).ToArray(), 2, Creature, null);
+            targets.Where(target => target.IsAlive).ToArray(), 1, Creature, null);
     }
 
     private async Task Seal(IReadOnlyList<Creature> _)

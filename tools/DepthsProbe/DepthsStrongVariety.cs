@@ -125,7 +125,7 @@ public partial class DepthsProbeNode
             Type[] actual = b.Encounter.MonstersWithSlots.Select(x => x.Item1.GetType()).ToArray();
             Type[] expected = StrongRosterContracts[canonical.GetType()];
             Assert(actual.Take(expected.Length).SequenceEqual(expected), "Roster contract: " + canonical.Id.Entry);
-            Assert(actual.Length == expected.Length + (canonical is HumanFaceColumnEncounter ? 1 : 0), "No missing/extra enemy.");
+            Assert(actual.Length == expected.Length, "No missing/extra enemy.");
             Assert(b.Enemies.Select(c => c.SlotName).Distinct().Count() == actual.Length, "Occupied slots are unique.");
             Assert(b.Enemies.All(c => b.Encounter.Slots.Contains(c.SlotName!)), "Every enemy has a declared slot.");
             var slots = b.Encounter.CreateScene();
@@ -205,41 +205,26 @@ public partial class DepthsProbeNode
             moves = moves.ToDictionary(kv => kv.Key, kv => kv.Value.Order().ToArray()) };
     }
 
-    private async Task VerifyColumnCompanions()
+    private async Task VerifyStandaloneColumns()
     {
-        // Discover real native seeds; do not replace the encounter's selection code.
-        Type[] expected = [typeof(RockSnail), typeof(CrystalSnail), typeof(SanguineLeech),
-            typeof(LanternFish), typeof(SilkMoth), typeof(WaterSponge)];
-        var seeds = new Dictionary<Type, string>();
         var canonical = ModelDb.Encounter<HumanFaceColumnEncounter>();
-        for (int index = 0; index < 128 && seeds.Count < expected.Length; index++)
-        {
-            string seed = "column-partner-" + index;
-            var b = await StrongBattle(canonical, seed: seed);
-            var partner = b.Enemies.Single(c => c.Monster is not HumanFaceColumn).Monster!.GetType();
-            Assert(expected.Contains(partner), "Column partner belongs to the six-member contract.");
-            seeds.TryAdd(partner, seed);
-            DeactivateSyntheticCombat();
-        }
-        Assert(seeds.Keys.ToHashSet().SetEquals(expected), "All six column companions are reachable with native seeds.");
         var records = new List<object>();
-        foreach (var partner in expected)
+        foreach (string seed in new[] { "column-solo-0", "column-solo-1", "column-solo-2" })
         foreach (int players in new[] { 1, 2, 3, 4 })
         foreach (int ascension in new[] { 0, 20 })
         {
-            var b = await StrongBattle(canonical, players, ascension, seeds[partner]);
-            Assert(b.Enemies.Count(c => c.Monster is HumanFaceColumn) == 3, "Exactly three initial column layers.");
-            Assert(b.Enemies.Single(c => c.Monster is not HumanFaceColumn).Monster!.GetType() == partner,
-                "Native partner selection stays deterministic across player counts and ascension.");
+            var b = await StrongBattle(canonical, players, ascension, seed);
+            Assert(b.Enemies.Length == 3 && b.Enemies.All(c => c.Monster is HumanFaceColumn),
+                "Standalone strong column has three visible discs and no companion, for every tested seed");
             var slots = b.Encounter.CreateScene();
-            Assert(b.Enemies.Select(c => c.SlotName).Distinct().Count() == 4 &&
-                b.Enemies.All(c => slots.HasNode(c.SlotName!)), "All four creatures have distinct shipping slots.");
+            Assert(b.Enemies.Select(c => c.SlotName).Distinct().Count() == 3 &&
+                b.Enemies.All(c => slots.HasNode(c.SlotName!)), "All three discs occupy their native scene slots");
             slots.Free();
-            records.Add(await ExerciseStrongBattle(b, ascension, seeds[partner]));
+            records.Add(await ExerciseStrongBattle(b, ascension, seed));
         }
-        File.WriteAllText(Path.Combine(_output, "column-companion-cases.json"),
+        File.WriteAllText(Path.Combine(_output, "column-standalone-cases.json"),
             JsonSerializer.Serialize(records, new JsonSerializerOptions { WriteIndented = true }));
-        GD.Print($"PASS {records.Count} column companion combat cases: all six partners, 1-4 players, A0/A20, eight rounds and defeat.");
+        GD.Print($"PASS {records.Count} standalone strong-column combat cases: three seeds, 1-4 players, A0/A20, eight rounds and defeat.");
     }
 
     private static async Task VerifySnailInteractions()
@@ -256,7 +241,7 @@ public partial class DepthsProbeNode
             Assert(mender.NextMove.Id == "REPAIR_MOVE", "Mender advertises repair with an intact shell.");
             decimal block = shell.Creature.Block;
             await mender.PerformMove();
-            decimal expectedRepair = players == 1 ? 7 : 33; // Native 4 * 1.2 scale, then truncate.
+            decimal expectedRepair = players == 1 ? 5 : 24; // Native 4 * 1.2 scale, then truncate.
             Assert(shell.Creature.Block == block + expectedRepair, $"Repair applies native multiplayer scaling: {players}p, {block} -> {shell.Creature.Block}.");
             mender.RollMove(b.Players.Select(p => p.Creature));
             await mender.PerformMove();
