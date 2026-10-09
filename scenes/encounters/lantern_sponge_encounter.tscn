@@ -12,4 +12,4 @@ position = Vector2(1030,741)
 [node name="sponge" type="Marker2D" parent="."]
 position = Vector2(1410,760)
 [node name="crystal" type="Marker2D" parent="."]
-position = Vector2(1760,768)
+position = Vector2(1720,736)

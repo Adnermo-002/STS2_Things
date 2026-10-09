@@ -94,6 +94,8 @@ public partial class WaterSpongeProbeNode : Node
         room.CombatState.CurrentSide = CombatSide.Player;
         ActivateSyntheticCombat(room.CombatState);
         await Hook.BeforeCombatStart(run, room.CombatState);
+        foreach (var player in party)
+            await Hook.BeforeHandDraw(room.CombatState, player, Choice);
         // Most isolated effect cases provide their own hand. Pool/opening cases
         // explicitly retain the newly generated opening parasites for inspection.
         if (!keepOpeningHand)
@@ -123,7 +125,7 @@ public partial class WaterSpongeProbeNode : Node
             Assert(s.Sponge.MinInitialHp == 44 && s.Sponge.MaxInitialHp == 48, "A0 sponge HP.");
             foreach (var player in s.Players)
             {
-                Assert(player.PlayerCombatState!.Hand.Cards.OfType<LeechParasite>().Count() == s.Leeches.Length, "Native pre-combat hook puts each leech's parasite directly in hand.");
+                Assert(player.PlayerCombatState!.Hand.Cards.OfType<LeechParasite>().Count() == s.Leeches.Length, "Native opening hand hook puts each leech's parasite directly in hand.");
                 Assert(!player.PlayerCombatState.DrawPile.Cards.OfType<LeechParasite>().Any(), "Opening parasites do not pollute the draw pile.");
                 Assert(!player.Deck.Cards.OfType<LeechParasite>().Any(), "Permanent deck remains parasite-free.");
             }

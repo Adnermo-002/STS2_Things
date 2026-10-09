@@ -9,6 +9,8 @@ namespace STS2_Things.Visuals;
 /// <summary>Three hand-painted-colour filaments follow the animated foreleg.</summary>
 public partial class NSilkCastThreads : Node2D
 {
+    [Export(PropertyHint.Range, "0,0.5,0.01")]
+    public float ReleaseDelay { get; set; }
     private MegaSprite? _spine;
     private NCreature? _owner;
     private float _time = -1;
@@ -25,7 +27,7 @@ public partial class NSilkCastThreads : Node2D
         _time=-1;
         _pixel=1/Mathf.Max(.01f,GlobalTransform.X.Length());
         using var scope=TrackEntryScope(_spine?.TryGetAnimationState()?.GetCurrent(0),out MegaTrackEntry? track);
-        if(track?.GetAnimationName()=="cast") _time=track.GetTrackTime();
+        if(track?.GetAnimationName()=="cast") _time=track.GetTrackTime()-ReleaseDelay;
         _targets.Clear();
         if(_time>=.45f && _time<1.10f && _owner?.Entity is { IsAlive:true } entity)
         {

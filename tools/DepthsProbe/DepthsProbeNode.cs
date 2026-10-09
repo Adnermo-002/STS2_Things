@@ -45,10 +45,12 @@ public partial class DepthsProbeNode : Node
     {
         try
         {
-            _root = Path.GetFullPath(Path.Combine(ProjectSettings.GlobalizePath("res://"), "../.."));
+            _root = System.Environment.GetEnvironmentVariable("THINGS_PROBE_ROOT")
+                ?? Path.GetFullPath(Path.Combine(ProjectSettings.GlobalizePath("res://"), "../.."));
             _output = System.Environment.GetEnvironmentVariable("THINGS_PROBE_OUTPUT") ?? Path.Combine(_root,"build/depths/verification");Directory.CreateDirectory(_output);
             TestMode.TurnOnInternal();
-            ProjectSettings.LoadResourcePack("D:/Steam/steamapps/common/Slay the Spire 2/SlayTheSpire2.pck");
+            Assert(ProjectSettings.LoadResourcePack(System.Environment.GetEnvironmentVariable("THINGS_PROBE_GAME_PCK")
+                ?? "D:/Steam/steamapps/common/Slay the Spire 2/SlayTheSpire2.pck"), "Target game resources mounted.");
             string package=System.Environment.GetEnvironmentVariable("THINGS_PROBE_PCK") ?? Path.Combine(_root,"build/depths/v111/STS2_Things.pck");
             Assert(ProjectSettings.LoadResourcePack(package),"Packaged mod mounted.");
             AssemblyLoadContext.Default.Resolving += ResolveRuntimeDependency;
@@ -62,6 +64,21 @@ public partial class DepthsProbeNode : Node
             SaveManager.Instance.InitSettingsDataForTest();
             SaveManager.Instance.InitPrefsDataForTest();
             SaveManager.Instance.SettingsSave.Language="zhs";LocManager.Initialize();
+            if(OS.GetCmdlineUserArgs().Contains("--actual-victory-only"))
+            {
+                await VerifyActualDepthsVictorySave();await ReleaseProbeResources();
+                GD.Print($"Depths real victory probe: PASS ({_checks} assertions)");GetTree().Quit(0);return;
+            }
+            if(OS.GetCmdlineUserArgs().Contains("--ascension-only"))
+            {
+                await VerifyNativeActProgression();await ReleaseProbeResources();
+                GD.Print($"Depths ascension probe: PASS ({_checks} assertions)");GetTree().Quit(0);return;
+            }
+            if(OS.GetCmdlineUserArgs().Contains("--layout-only"))
+            {
+                await VerifyEncounterHudLayout();await ReleaseProbeResources();
+                GD.Print($"Depths encounter layout probe: PASS ({_checks} assertions)");GetTree().Quit(0);return;
+            }
             if(OS.GetCmdlineUserArgs().Contains("--event-refresh-only"))
             {
                 await VerifyEventRefresh();await ReleaseProbeResources();
@@ -188,7 +205,7 @@ public partial class DepthsProbeNode : Node
     {
         var act=ModelDb.Act<Depths>();
         Assert(act.AllWeakEncounters.Select(e=>e.GetType()).ToHashSet().SetEquals([typeof(LanternFishWeak),typeof(SanguineLeechWeak),typeof(SpongeLeechWeak),typeof(SilkMothWeak),typeof(CaveMawWeak),typeof(SnailTrioWeak),typeof(FleetingEchoWeak)]),"Seven weak encounter entries; the column belongs only to the strong pool.");
-        Assert(act.AllRegularEncounters.Select(e=>e.GetType()).ToHashSet().SetEquals(StrongRosterContracts.Keys),"Twelve independent regular encounter entries.");
+        Assert(act.AllRegularEncounters.Select(e=>e.GetType()).ToHashSet().SetEquals(StrongRosterContracts.Keys),"Independent regular encounter entries match the authored rosters.");
         Assert(act.AllEliteEncounters.Select(e=>e.GetType()).ToHashSet().SetEquals([
             typeof(DecimillipedeElite),typeof(EntomancerElite),typeof(InfestedPrismsElite),typeof(MycorrhizalTwinsElite),typeof(ReverseSalamanderElite),typeof(RadioJellyfishElite)]),"Depths has three custom elites and three vanilla elites.");
         Assert(act.AllBossEncounters.Single() is CaveGodBossEncounter,"Depths defaults to Cave God.");
@@ -233,7 +250,7 @@ public partial class DepthsProbeNode : Node
             Assert(save.SerializableRooms.NormalEncounterIds.Count==(players==1?14:13),"Native room count.");
             Assert(save.SerializableRooms.NormalEncounterIds.Take(2).All(id=>act.AllWeakEncounters.Any(e=>e.Id==id)),"First two encounters use the weak pool.");
             Assert(save.SerializableRooms.NormalEncounterIds.Skip(2).All(id=>act.AllRegularEncounters.Any(e=>e.Id==id)),"Later encounters use the regular pool.");
-            Assert(save.SerializableRooms.NormalEncounterIds.Skip(2).Distinct().Count()==save.SerializableRooms.NormalEncounterIds.Count-2,"Regular entries do not repeat before the twelve-entry bag is exhausted.");
+            Assert(save.SerializableRooms.NormalEncounterIds.Skip(2).Distinct().Count()==save.SerializableRooms.NormalEncounterIds.Count-2,"Regular entries do not repeat before the thirteen-entry bag is exhausted.");
             Assert(save.SerializableRooms.EliteEncounterIds.Count==15 && save.SerializableRooms.AncientId!=null,"Elite and ancient room sets complete.");
             var map=act.CreateMap(run,false);
             Assert(map.startMapPoints.Count>0 && map.GetAllMapPoints().Any(p=>p.PointType==MapPointType.RestSite),"Native map contains traversable starts and camps.");
@@ -255,9 +272,9 @@ public partial class DepthsProbeNode : Node
         Assert(regularSeen.Contains(ModelDb.Encounter<SpongeLeechEncounter>().Id),"Native room generation actually rolls the mixed sponge regular encounter.");
         Assert(weakSeen.Contains(ModelDb.Encounter<SilkMothWeak>().Id),"Native room generation rolls the moth weak encounter.");
         Assert(regularSeen.Contains(ModelDb.Encounter<SilkMothEncounter>().Id),"Native room generation rolls the moth regular encounter.");
-        Assert(regularSeen.SetEquals(ModelDb.Act<Depths>().AllRegularEncounters.Select(e=>e.Id)),"All twelve regular encounters roll organically.");
+        Assert(regularSeen.SetEquals(ModelDb.Act<Depths>().AllRegularEncounters.Select(e=>e.Id)),"All thirteen regular encounters roll organically.");
         Assert(weakSeen.SetEquals(ModelDb.Act<Depths>().AllWeakEncounters.Select(e=>e.Id)),"All seven weak encounters remain reachable.");
-        GD.Print("PASS 64 native 1-4 player room sets, twelve-entry bags, generated maps and binary save/load round trips.");
+        GD.Print("PASS 64 native 1-4 player room sets, thirteen-entry bags, generated maps and binary save/load round trips.");
     }
 
     private async Task VerifyNativeActProgression()
@@ -272,7 +289,8 @@ public partial class DepthsProbeNode : Node
         AchievementsHelper.CheckForDefeatedAllEnemiesAchievement(run.Act,run.Players[0]);
         await RunManager.Instance.SetActInternal(2);
         Assert(run.Act is Glory,"Native progression continues into original third act.");
-        GD.Print("PASS RunManager initializes acts 1 -> Depths -> Glory without replacing vanilla act logic.");
+        VerifyDepthsAscensionUnlock();
+        GD.Print("PASS RunManager initializes acts 1 -> Depths -> Glory and validates native ascension progression.");
     }
 
     private void VerifyResources()

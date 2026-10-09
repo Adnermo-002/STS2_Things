@@ -98,8 +98,8 @@
   "LEECH_INFESTATION_POWER.title": "Persistent Infestation",
   "LEECH_INFESTATION_POWER.description": "Whenever [gold]Parasitism[/gold] is [gold]Exhausted[/gold], add a [gold]Parasitism[/gold] to players' Hands next turn.",
   "SILK_THREAD_POWER.title": "Silken Link",
-  "SILK_THREAD_POWER.description": "After drawing next turn, bind [blue]2[/blue] random cards until turn end.\nPlay card [gold]1[/gold] before card [gold]2[/gold].",
-  "SILK_THREAD_POWER.activeDescription": "Play card [gold]1[/gold] before card [gold]2[/gold].\nEnds at turn end, when either card leaves your Hand, or when ALL Silk Moths die.",
+  "SILK_THREAD_POWER.description": "Bind [blue]2[/blue] random cards after drawing. Play card [gold]1[/gold] before card [gold]2[/gold].",
+  "SILK_THREAD_POWER.activeDescription": "Play card [gold]1[/gold] before card [gold]2[/gold].\nThe current link ends at turn end, when either card leaves your Hand, or when all moths die.",
   "MYCORRHIZAL_BOND_POWER.title": "Shared Roots",
   "MYCORRHIZAL_BOND_POWER.description": "At round end, swap HP with its twin. Higher HP becomes [gold]Robust[/gold]; the other [gold]Withered[/gold]. Ties swap forms.\nWhen its twin dies, gain [blue]4[/blue] [gold]Strength[/gold] and become [gold]Enraged[/gold].",
   "MYCORRHIZAL_FURY_POWER.title": "Severed Fury",
@@ -142,5 +142,9 @@
   "BORROWED_SHADOW_POWER.description": "When damaged by an attack, the attacker gains that much [gold]Block[/gold].",
   "FLEETING_FADE_POWER.title": "Fading",
   "FLEETING_FADE_POWER.description": "Disappears in [blue]{Amount}[/blue] turns.",
-  "FLEETING_FADE_POWER.smartDescription": "Disappears in [blue]{Amount}[/blue] turns."
+  "FLEETING_FADE_POWER.smartDescription": "Disappears in [blue]{Amount}[/blue] turns.",
+  "SILK_THREAD_POWER.smartDescription": "For the next [blue]{Amount}[/blue] turns, bind [blue]2[/blue] random cards after drawing. Play card [gold]1[/gold] before card [gold]2[/gold].",
+  "SILK_THREAD_POWER.unboundDescription": "The current link is released. Bind [blue]2[/blue] cards again after drawing next turn.",
+  "LEECH_MOTHER_SLUMBER_POWER.title": "Slumber",
+  "LEECH_MOTHER_SLUMBER_POWER.description": "After [blue]{Amount}[/blue] more turns without being attacked, leaves combat. No combat rewards are granted.[n]Wakes when attacked or damaged."
 }

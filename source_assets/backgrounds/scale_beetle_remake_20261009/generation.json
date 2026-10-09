@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-09",
+  "generation_tool": "built-in image_gen",
+  "model": "not exposed by built-in tool",
+  "user_authorized_builtin": true,
+  "failed_prior_api": {
+    "model": "gpt-image-2.5-sunburst",
+    "endpoint": "https://cpa.yuseus.io/v1/",
+    "status": 400,
+    "code": "model_not_found",
+    "message": "unknown provider for model gpt-image-2.5-sunburst",
+    "generated_outputs": 0
+  },
+  "reference": {
+    "path": "reference.png",
+    "sha256": "f23136c35e6d87eecc51ee7403eb844815fc276a8ab816592b2802c4d40c7721"
+  },
+  "requests": [
+    {
+      "kind": "background_clean_plate",
+      "transparent_background": false,
+      "prompt": "Edit this exact supplied cave illustration into an opaque background plate for Slay the Spire 2's layered combat scene. Keep the same 16:9 landscape canvas and framing, cyan distant cavern, roof/stalactites, all mid-distance broken rib-like arches and warm amber cracked combat floor. Remove ONLY the very near dark framing rocks, broken spikes, small mushrooms and dark outcrops that cover the lower left edge, lower right edge, and bottom edge in front of the arena. Fill the areas behind those removed foreground objects with a natural continuation of the warm flat painted stone floor. Keep all other composition and artwork as close to the original as possible; the exact same camera and warm/cool colour relationships. No additional objects, no characters or text. This must be a complete opaque clean background; no transparency, no vignette added, no borders. Broad restrained hand-painted angular colour blocks matching the supplied original STS2 style. Do not redesign the cave or replace its middle-distance ruins."
+    },
+    {
+      "kind": "foreground_extraction",
+      "transparent_background": true,
+      "prompt": "Extract a transparent foreground layer from this EXACT cave illustration, for compositing back over the same 16:9 canvas. Keep source object positions, proportions, painted colours and scale on the original canvas. Keep ONLY the nearest dark rock/spike/shell-like broken silhouettes and their tiny mushrooms that frame the LOWER LEFT corner and edge, LOWER RIGHT corner and edge, and VERY BOTTOM edge in front of the warm arena floor. Remove everything else to real alpha transparency: all distant cave, upper roof, mid-distance broken arches, mossy ruins, and the entire central stone floor. Do NOT recenter or arrange the corner shapes side by side: they stay at their original screen coordinates and crop naturally at all three original image edges. Preserve the rocky tip shapes, mushroom stems and caps and original dark hand-painted contours. No new rocks, no text or graphic labels, no white/black/checkerboard background. A clean cutout plate with real alpha, same full wide canvas and no glow or drop shadow."
+    },
+    {
+      "kind": "floor_revision",
+      "transparent_background": false,
+      "prompt": "Edit Image 1 ONLY in the warm combat floor in its LOWER HALF. Image 1 is the exact target composition. Images 2 and 3 are original Slay the Spire 2 environment assets supplied ONLY as references for subdued floor detail and broad value grouping. Preserve the entire cave roof, cyan cavern depth, rib-like mid-distance ruined arches, mushrooms and horizon in Image 1 exactly. Keep its 16:9 canvas. Replace the highly cracked fragmented floor with a mostly uninterrupted dusty worn warm brown stone plane: broad restrained painterly colour shapes, only a FEW very thin soft low-contrast short joins near the extreme lower edges. Remove the busy network of deep black cracks and lots of outlined slabs across the fighting area. At least 85% of the visible central arena should be calm continuous surface without outlines. No paving tile grid, no honeycomb pattern, no cobblestones, no dense microtexture, no blur. The floor still feels hand-painted and dimensional using soft broad warm light and a quiet midtone, a subtle shadow band near its far edge and sparse wear marks. Its brightness and colour should be a little quieter, so STS2 characters remain readable. No near foreground rocks yet: this is the OPAQUE clean BACKGROUND plate. Nothing besides the floor changes; no new subjects, text, frames or UI. Study the supplied original assets' low contrast floor restraint, do not copy their art or green/gold palette."
+    }
+  ],
+  "selected": {
+    "backdrop": "background-floor-revised.png",
+    "foreground": "foreground-generated.png",
+    "floor": "Godot bake_floor.gd export from selected backdrop"
+  },
+  "style_references": [
+    "STS2-V111/images/rooms/overgrowth/overgrowth_00.png",
+    "STS2-V111/images/rooms/hive/hive_00.png"
+  ],
+  "native_layers": [
+    "Layer_00",
+    "Layer_01",
+    "Foreground"
+  ],
+  "width": 1672,
+  "height": 941
+}

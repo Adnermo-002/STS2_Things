@@ -1,0 +1,151 @@
+{
+	"exporter": "Godot PNG/AtlasTexture preparation",
+	"generator": "built-in image_gen; exact model not exposed",
+	"relics": [
+		{
+			"big": [
+				256,
+				256
+			],
+			"crop": [
+				194,
+				98,
+				868,
+				1068
+			],
+			"exports": [
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/bottled_echo.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/bottled_echo_packed.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/atlases/relic_outline_atlas.sprites/bottled_echo_outline.png"
+			],
+			"key": "bottled_echo",
+			"outline": [
+				85,
+				85
+			],
+			"outline_dilation": 2,
+			"packed": [
+				85,
+				85
+			],
+			"source": "D:/Things/Things-Workspace/STS2_Things/source_assets/relics/depths_event_refresh_20261009/generated/bottled_echo-v1.png",
+			"source_sha256": "294f18833bfbc70b48ed48845bed30b16cc7820de6d4bdd3ad59471a5776bc3a"
+		},
+		{
+			"big": [
+				256,
+				256
+			],
+			"crop": [
+				218,
+				65,
+				964,
+				1131
+			],
+			"exports": [
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/shadow_claim_ticket.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/shadow_claim_ticket_packed.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/atlases/relic_outline_atlas.sprites/shadow_claim_ticket_outline.png"
+			],
+			"key": "shadow_claim_ticket",
+			"outline": [
+				85,
+				85
+			],
+			"outline_dilation": 2,
+			"packed": [
+				85,
+				85
+			],
+			"source": "D:/Things/Things-Workspace/STS2_Things/source_assets/relics/depths_event_refresh_20261009/generated/shadow_claim_ticket-v1.png",
+			"source_sha256": "29020c3ca4967af30804b11f984c45a76fad2f47a504e3994a0151b281e3e307"
+		},
+		{
+			"big": [
+				256,
+				256
+			],
+			"crop": [
+				110,
+				147,
+				1053,
+				989
+			],
+			"exports": [
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/mycelial_deposit.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/mycelial_deposit_packed.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/atlases/relic_outline_atlas.sprites/mycelial_deposit_outline.png"
+			],
+			"key": "mycelial_deposit",
+			"outline": [
+				85,
+				85
+			],
+			"outline_dilation": 2,
+			"packed": [
+				85,
+				85
+			],
+			"source": "D:/Things/Things-Workspace/STS2_Things/source_assets/relics/depths_event_refresh_20261009/generated/mycelial_deposit-v1.png",
+			"source_sha256": "e915c4a443f2f7c934b86b8052c7e5258163e7e563536bdfeb861c9501ee1ab0"
+		},
+		{
+			"big": [
+				256,
+				256
+			],
+			"crop": [
+				248,
+				105,
+				781,
+				1051
+			],
+			"exports": [
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/borrowed_ember.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/borrowed_ember_packed.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/atlases/relic_outline_atlas.sprites/borrowed_ember_outline.png"
+			],
+			"key": "borrowed_ember",
+			"outline": [
+				85,
+				85
+			],
+			"outline_dilation": 2,
+			"packed": [
+				85,
+				85
+			],
+			"source": "D:/Things/Things-Workspace/STS2_Things/source_assets/relics/depths_event_refresh_20261009/generated/borrowed_ember-v1.png",
+			"source_sha256": "4b6d5fce960e9b40e9769e7f050827a7aca0c7f31ecd748b06beca033b82eeeb"
+		},
+		{
+			"big": [
+				256,
+				256
+			],
+			"crop": [
+				110,
+				85,
+				1067,
+				1118
+			],
+			"exports": [
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/things_medusa_hair.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/relics/things_medusa_hair_packed.png",
+				"D:/Things/Things-Workspace/STS2_Things/images/atlases/relic_outline_atlas.sprites/things_medusa_hair_outline.png"
+			],
+			"key": "things_medusa_hair",
+			"outline": [
+				85,
+				85
+			],
+			"outline_dilation": 2,
+			"packed": [
+				85,
+				85
+			],
+			"source": "D:/Things/Things-Workspace/STS2_Things/source_assets/relics/depths_event_refresh_20261009/generated/things_medusa_hair-v1.png",
+			"source_sha256": "1a8831a52512b938e45a791ef64cbf61e0224c3bbaa10ae74a17aa5bcf9828d0"
+		}
+	]
+}

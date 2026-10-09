@@ -8,6 +8,7 @@ Steam Workshop 的单个条目只能保存一套 `content/`。从 `1.8.0` 开始
 STS2_Things.json   min_game_version=v0.107.1
 STS2_Things.dll    统一引导与两个内嵌实现
 STS2_Things.pck    两版共用资源
+STS2_Things.BaseLibBridge.dll    可选配置集成桥，随统一包分发
 ```
 
 Steam 不负责按分支选文件。选择发生在游戏加载引导 DLL 时。
@@ -51,7 +52,7 @@ V111 直接调用官方 `ModManager.AssociateAssemblyWithMod`。随后
 - 嵌入资源 SHA256 必须与版本专用构件逐字节一致。
 - 两套 `sts2.dll` 都必须能加载选中的实现全部类型；当前两版各发现相同数量的具体 `AbstractModel`。
 - V107.1 合成 Mod 必须通过类型追加和 assembly 提升验证。
-- 最终 `build/unified` 只包含 manifest、引导 DLL 与共用 PCK。
+- 最终运行目录只包含 manifest、引导 DLL、共用 PCK 和 BaseLib 可选配置桥；不包含原版依赖、MCP 调试桥或后端配置。
 - V111 还必须完成实际 Steam 启动烟雾测试。
 
 跨游戏版本联机不在支持范围；同一局内所有玩家仍必须使用同一游戏版本。

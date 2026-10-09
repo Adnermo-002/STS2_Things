@@ -1,0 +1,59 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=13 format=3]
+[ext_resource type="SpineAtlasResource" path="res://STS2_Things/animations/monsters/great_silk_moth/great_silk_moth.spatlas" id="1_atlas"]
+[ext_resource type="SpineSkeletonFileResource" path="res://STS2_Things/animations/monsters/great_silk_moth/great_silk_moth.spjson" id="2_skeleton"]
+
+[sub_resource type="SpineAnimationMix" id="Mix_0"]
+from = "idle_loop"
+to = "attack"
+mix = 0.055
+
+[sub_resource type="SpineAnimationMix" id="Mix_1"]
+from = "idle_loop"
+to = "cast"
+mix = 0.1
+
+[sub_resource type="SpineAnimationMix" id="Mix_2"]
+from = "idle_loop"
+to = "flutter"
+mix = 0.06
+
+[sub_resource type="SpineAnimationMix" id="Mix_3"]
+from = "idle_loop"
+to = "hurt"
+mix = 0.025
+
+[sub_resource type="SpineAnimationMix" id="Mix_4"]
+from = "attack"
+to = "idle_loop"
+mix = 0.14
+
+[sub_resource type="SpineAnimationMix" id="Mix_5"]
+from = "cast"
+to = "idle_loop"
+mix = 0.14
+
+[sub_resource type="SpineAnimationMix" id="Mix_6"]
+from = "flutter"
+to = "idle_loop"
+mix = 0.14
+
+[sub_resource type="SpineAnimationMix" id="Mix_7"]
+from = "hurt"
+to = "idle_loop"
+mix = 0.11
+
+[sub_resource type="SpineAnimationMix" id="Mix_8"]
+from = "hurt"
+to = "hurt"
+mix = 0.02
+
+[sub_resource type="SpineAnimationMix" id="Mix_9"]
+from = "hurt"
+to = "die"
+mix = 0.035
+
+[resource]
+atlas_res = ExtResource("1_atlas")
+skeleton_file_res = ExtResource("2_skeleton")
+default_mix = 0.08
+animation_mixes = [SubResource("Mix_0"), SubResource("Mix_1"), SubResource("Mix_2"), SubResource("Mix_3"), SubResource("Mix_4"), SubResource("Mix_5"), SubResource("Mix_6"), SubResource("Mix_7"), SubResource("Mix_8"), SubResource("Mix_9")]

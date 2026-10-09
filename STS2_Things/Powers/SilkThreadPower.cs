@@ -20,15 +20,30 @@ public sealed class SilkThreadPower : PowerModel
     private sealed class Data
     {
         public bool Pending = true;
+        public bool ConsumedThisTurn;
         public CardModel? First;
         public CardModel? Second;
     }
 
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
+    public const int MaxLayers = 2;
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        ClampLayers();
+        return Task.CompletedTask;
+    }
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
+        decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (ReferenceEquals(power, this)) ClampLayers();
+        return Task.CompletedTask;
+    }
+    private void ClampLayers() { if (Amount > MaxLayers) SetAmount(MaxLayers); }
     protected override object InitInternalData() => new Data();
     protected override string SmartDescriptionLocKey => IsMutable && !IsPending
-        ? "SILK_THREAD_POWER.activeDescription" : base.SmartDescriptionLocKey;
+        ? HasLivePair ? "SILK_THREAD_POWER.activeDescription" : "SILK_THREAD_POWER.unboundDescription"
+        : base.SmartDescriptionLocKey;
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         HoverTipFactory.FromAffliction<SilkLead>().Concat(HoverTipFactory.FromAffliction<SilkBound>());
 
@@ -44,6 +59,7 @@ public sealed class SilkThreadPower : PowerModel
     {
         if (player.Creature != Owner || !IsPending) return;
         GetInternalData<Data>().Pending = false;
+        GetInternalData<Data>().ConsumedThisTurn = false;
         // Run after the native opening draw and other start-of-turn effects. Never
         // overwrite another affliction, or require playing a Status/Curse/X card.
         var candidates = player.PlayerCombatState!.Hand.Cards
@@ -51,7 +67,7 @@ public sealed class SilkThreadPower : PowerModel
         var starters = candidates.Where(card => card.CanPlay()).ToList();
         if (candidates.Count < 2 || starters.Count == 0)
         {
-            await PowerCmd.Remove(this);
+            await FinishCurrentPair(choiceContext);
             return;
         }
         var rng = player.RunState.Rng.CombatCardSelection;
@@ -63,7 +79,7 @@ public sealed class SilkThreadPower : PowerModel
         data.Second = second;
         await CardCmd.AfflictAndPreview<SilkLead>([first], 1, CardPreviewStyle.None);
         await CardCmd.AfflictAndPreview<SilkBound>([second], 1, CardPreviewStyle.None);
-        if (!HasLivePair) await PowerCmd.Remove(this);
+        if (!HasLivePair) await FinishCurrentPair(choiceContext);
         else Flash();
     }
 
@@ -84,9 +100,9 @@ public sealed class SilkThreadPower : PowerModel
         if (ReferenceEquals(cardPlay.Card, FirstCard) && !cardPlay.Card.IsDupe)
         {
             Flash();
-            await PowerCmd.Remove(this);
+            await FinishCurrentPair(new ThrowingPlayerChoiceContext());
         }
-        else if (!IsPending && !HasLivePair) await PowerCmd.Remove(this);
+        else if (!IsPending && !HasLivePair) await FinishCurrentPair(new ThrowingPlayerChoiceContext());
     }
 
     public override async Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
@@ -94,7 +110,7 @@ public sealed class SilkThreadPower : PowerModel
         if (IsPending) return;
         if (ReferenceEquals(card, FirstCard) && card.Pile?.Type == PileType.Play) return;
         if (ReferenceEquals(card, FirstCard) || ReferenceEquals(card, SecondCard))
-            await PowerCmd.Remove(this);
+            await FinishCurrentPair(new ThrowingPlayerChoiceContext());
         else ClearOrphanMark(card);
     }
 
@@ -114,7 +130,24 @@ public sealed class SilkThreadPower : PowerModel
     public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
-        if (!IsPending && side == Owner.Side && participants.Contains(Owner)) await PowerCmd.Remove(this);
+        if (IsPending || side != Owner.Side || !participants.Contains(Owner)) return;
+        await FinishCurrentPair(choiceContext);
+        if (Amount > 0)
+        {
+            var data = GetInternalData<Data>();
+            data.Pending = true;
+            data.ConsumedThisTurn = false;
+            InvokeDisplayAmountChanged();
+        }
+    }
+
+    private async Task FinishCurrentPair(PlayerChoiceContext context)
+    {
+        var data = GetInternalData<Data>();
+        if (data.ConsumedThisTurn) return;
+        data.ConsumedThisTurn = true;
+        ClearMarks();
+        await PowerCmd.ModifyAmount(context, this, -1, null, null);
     }
 
     public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature,

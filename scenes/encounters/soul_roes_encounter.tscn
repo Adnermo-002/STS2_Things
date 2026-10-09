@@ -31,7 +31,7 @@ position = Vector2(1826, 663)
 position = Vector2(1713, 764)
 
 [node name="soul_roe_7" type="Marker2D" parent="."]
-position = Vector2(1533, 833)
+position = Vector2(1505, 810)
 
 [node name="soul_roe_8" type="Marker2D" parent="."]
 position = Vector2(1345, 783)

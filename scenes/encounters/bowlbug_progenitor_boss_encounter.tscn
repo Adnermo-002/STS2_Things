@@ -16,7 +16,7 @@ position = Vector2(1229, 982)
 position = Vector2(1159, 733)
 
 [node name="bowlbug_14" type="Marker2D" parent="."]
-position = Vector2(1759, 835)
+position = Vector2(1740, 740)
 
 [node name="bowlbug_13" type="Marker2D" parent="."]
 position = Vector2(1252, 841)
@@ -31,13 +31,13 @@ position = Vector2(1026, 689)
 position = Vector2(1078, 944)
 
 [node name="bowlbug_9" type="Marker2D" parent="."]
-position = Vector2(1872, 896)
+position = Vector2(1760, 610)
 
 [node name="bowlbug_8" type="Marker2D" parent="."]
 position = Vector2(1731, 1000)
 
 [node name="bowlbug_7" type="Marker2D" parent="."]
-position = Vector2(1621, 915)
+position = Vector2(1460, 905)
 
 [node name="bowlbug_5" type="Marker2D" parent="."]
 position = Vector2(1378, 934)
@@ -49,7 +49,7 @@ position = Vector2(1048, 824)
 position = Vector2(1876, 740)
 
 [node name="bowlbug_3" type="Marker2D" parent="."]
-position = Vector2(1612, 788)
+position = Vector2(1580, 740)
 
 [node name="bowlbug_2" type="Marker2D" parent="."]
 position = Vector2(1352, 748)

@@ -1,0 +1,7 @@
+/output/
+/.wrangler/
+/.dev.vars*
+/.env*
+!/.env.example
+!/.dev.vars.example
+/node_modules/

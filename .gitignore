@@ -7,6 +7,25 @@
 *.py[cod]
 **/node_modules/
 
+# Cloudflare state, local credentials and diagnostic databases.
+# Keep reproducible configuration examples in source control.
+**/.wrangler/
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+!.env.example
+!**/.env.example
+!.dev.vars.example
+!**/.dev.vars.example
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+*.db-shm
+*.db-wal
+reports-admin-password*.txt
+
 # IDE state
 .idea/
 .vs/

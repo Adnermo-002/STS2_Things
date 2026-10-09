@@ -48,10 +48,12 @@ public sealed class Depths : ActModel
         yield return ModelDb.Encounter<LanternFishEncounter>();
         yield return ModelDb.Encounter<SanguineLeechWeak>();
         yield return ModelDb.Encounter<SanguineLeechEncounter>();
+        yield return ModelDb.Encounter<LeechMotherEncounter>();
         yield return ModelDb.Encounter<SpongeLeechWeak>();
         yield return ModelDb.Encounter<SpongeLeechEncounter>();
         yield return ModelDb.Encounter<SilkMothWeak>();
         yield return ModelDb.Encounter<SilkMothEncounter>();
+        yield return ModelDb.Encounter<SilkMothTrio>();
         yield return ModelDb.Encounter<CaveMawWeak>();
         yield return ModelDb.Encounter<FleetingEchoWeak>();
         yield return ModelDb.Encounter<CaveMawEncounter>();

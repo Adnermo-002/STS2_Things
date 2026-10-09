@@ -4,7 +4,7 @@
     <LangVersion>13.0</LangVersion>
     <AssemblyName>STS2_Things.Bootstrap</AssemblyName>
     <RootNamespace>STS2_Things.Bootstrap</RootNamespace>
-    <Version>1.25.10</Version>
+    <Version>1.25.13</Version>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

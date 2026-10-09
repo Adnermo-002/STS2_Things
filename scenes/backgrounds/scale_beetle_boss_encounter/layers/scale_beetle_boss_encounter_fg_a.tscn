@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Texture2D" path="res://images/backgrounds/scale_beetle_fg_1.png" id="1_texture"]
+[ext_resource type="Texture2D" path="res://images/backgrounds/scale_beetle_remake/foreground.png" id="1_texture"]
 
 [node name="Foreground" type="TextureRect"]
 anchors_preset = 8

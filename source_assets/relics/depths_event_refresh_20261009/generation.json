@@ -1,0 +1,274 @@
+{
+  "completed_date": "2026-10-10",
+  "generator": "built-in image_gen",
+  "model": "not exposed by tool",
+  "selection": "v1 for all five",
+  "transparent_background": true,
+  "authorization": "User allowed built-in image generation in the active art work; do not label outputs Sunburst",
+  "style_references_inspected": [
+    {
+      "path": "STS2-V111/images/relics/ink_bottle.png",
+      "sha256": "2ecde52a6e40afb0a0b53992f84fdc648fbcfa1c66f8382156359fb7160d1b1b",
+      "usage": "native art inspected during comparison; not a shipped custom icon"
+    },
+    {
+      "path": "STS2-V111/images/relics/meal_ticket.png",
+      "sha256": "1b56eb2208a6a91f211c1fed0f6cff2466d83120c24fbfa2df2feb13e1653979",
+      "usage": "native art inspected during comparison; not a shipped custom icon"
+    },
+    {
+      "path": "STS2-V111/images/relics/membership_card.png",
+      "sha256": "e56a9675184e18852d1fdbb3a5463511b0ef3067be238a6e998f7d6edca35f98",
+      "usage": "native art inspected during comparison; not a shipped custom icon"
+    },
+    {
+      "path": "STS2-V111/images/relics/lantern.png",
+      "sha256": "91f0e8ef85aadf51ad107c4f81508a62691461b96b99b59118c041ca6e84a8f8",
+      "usage": "native art inspected during comparison; not a shipped custom icon"
+    },
+    {
+      "path": "STS2-V111/images/relics/maw_bank.png",
+      "sha256": "6e56d7082e44a821edb99f32b39442f46a71b7e8a35e569eeb8b7ae9d8788d98",
+      "usage": "native art inspected during comparison; not a shipped custom icon"
+    },
+    {
+      "path": "STS2-V111/images/relics/ember_tea.png",
+      "sha256": "87167419d0301be7d7a393ce4637452fe196ad901d8233db40424c4f67b20bf0",
+      "usage": "native art inspected during comparison; not a shipped custom icon"
+    },
+    {
+      "path": "STS2-V111/images/relics/silken_tress.png",
+      "sha256": "d8db9319b5316614fd9c5a451c0eac97a630aff12602da66a9f54c7cbc9628b9",
+      "usage": "native art inspected during comparison; not a shipped custom icon"
+    },
+    {
+      "path": "STS2-V111/images/relics/arcane_scroll.png",
+      "sha256": "1bc387afcbe7c6c2c4af36010e73442f04234517fe20ee34332c85254ae3618d",
+      "usage": "native art inspected during comparison; not a shipped custom icon"
+    }
+  ],
+  "relics": [
+    {
+      "key": "bottled_echo",
+      "selected": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/generated/bottled_echo-v1.png",
+        "bytes": 864345,
+        "sha256": "294f18833bfbc70b48ed48845bed30b16cc7820de6d4bdd3ad59471a5776bc3a"
+      },
+      "generated_dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/prompts/bottled_echo.txt",
+        "bytes": 1376,
+        "sha256": "55ae1db1e6955c9493ffd77090b4aa44779c1c0fcd91d1ae0ca65e15d1e45c1a"
+      },
+      "exports": [
+        {
+          "path": "images/relics/bottled_echo.png",
+          "bytes": 56372,
+          "sha256": "74a844fdb502b1475bc1e1134cdd09ab73025a2766a7e1e41e83042dcd355c4b"
+        },
+        {
+          "path": "images/relics/bottled_echo_packed.png",
+          "bytes": 10602,
+          "sha256": "90ffc3cbcdc2bba72626d81a33c83308a29655e2e4acb2bcfc0c2ace2be917d6"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/bottled_echo_outline.png",
+          "bytes": 1848,
+          "sha256": "c4a09cc57d3d705d60f5094fad3bb5a0189e2aa70c46f73e2b2742f3e9e346d9"
+        },
+        {
+          "path": "images/atlases/relic_atlas.sprites/bottled_echo.tres",
+          "bytes": 213,
+          "sha256": "d84ab59e416f17324c49facb2f648d6dadb908c37de6880949bb9e19e33d767f"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/bottled_echo.tres",
+          "bytes": 243,
+          "sha256": "b45994543f3463fc2541115b191e19244e2515a3e83d11a014f9905991c16308"
+        }
+      ]
+    },
+    {
+      "key": "shadow_claim_ticket",
+      "selected": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/generated/shadow_claim_ticket-v1.png",
+        "bytes": 789406,
+        "sha256": "29020c3ca4967af30804b11f984c45a76fad2f47a504e3994a0151b281e3e307"
+      },
+      "generated_dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/prompts/shadow_claim_ticket.txt",
+        "bytes": 1555,
+        "sha256": "b0234c5ca5e498fb4591e70b040cb00ccd099e15c36cb1fbc8275b9999011d2d"
+      },
+      "exports": [
+        {
+          "path": "images/relics/shadow_claim_ticket.png",
+          "bytes": 50298,
+          "sha256": "ea6cedeca508454f52285f1c42099aa2b451b530c4153609daf5522cbddf7d75"
+        },
+        {
+          "path": "images/relics/shadow_claim_ticket_packed.png",
+          "bytes": 8901,
+          "sha256": "216f0b3bfb1b1616600f83d95b93f498fa24b48e0e04ec7d2579a8cdd6294eb2"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/shadow_claim_ticket_outline.png",
+          "bytes": 1923,
+          "sha256": "ad5187572b839d89eb7025349271a5a257104a2d38a209cf9dbecda4eebdaab5"
+        },
+        {
+          "path": "images/atlases/relic_atlas.sprites/shadow_claim_ticket.tres",
+          "bytes": 220,
+          "sha256": "cc44358a420cd3a55d3d86383a4830e27a9afcc1ee0fc4d337cbcae630eb648e"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/shadow_claim_ticket.tres",
+          "bytes": 250,
+          "sha256": "09e5fec5cb00e978a1db7fa4d14a227ae2277819f4483e408daa59c7a6b5d242"
+        }
+      ]
+    },
+    {
+      "key": "mycelial_deposit",
+      "selected": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/generated/mycelial_deposit-v1.png",
+        "bytes": 889040,
+        "sha256": "e915c4a443f2f7c934b86b8052c7e5258163e7e563536bdfeb861c9501ee1ab0"
+      },
+      "generated_dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/prompts/mycelial_deposit.txt",
+        "bytes": 1463,
+        "sha256": "082106471ea8b55c56478bc123446b3a23bc7af1c67c5ec8c410bcfc93ae3406"
+      },
+      "exports": [
+        {
+          "path": "images/relics/mycelial_deposit.png",
+          "bytes": 60909,
+          "sha256": "15bad7520db3c24b3d64946d5e1a58ee6c61dd2d80921092a1637bf792b2a2f8"
+        },
+        {
+          "path": "images/relics/mycelial_deposit_packed.png",
+          "bytes": 11037,
+          "sha256": "1eaec16c7df73745f99be920c2c272463d1eec114ea06e9a0a1077771ed939ef"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/mycelial_deposit_outline.png",
+          "bytes": 2037,
+          "sha256": "0f4b9d6209741a9d44df43939755640e3fd128cbcfbeabf83373c90fa9eb4dae"
+        },
+        {
+          "path": "images/atlases/relic_atlas.sprites/mycelial_deposit.tres",
+          "bytes": 217,
+          "sha256": "e767a84c496b28c4fca2d11182e34efa14a55b5387697f51cbb1f4195585ffd4"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/mycelial_deposit.tres",
+          "bytes": 247,
+          "sha256": "6f02c274a01d3d84926d3f3a10653af5a03b7e1114d9efda5dbc540331e8c571"
+        }
+      ]
+    },
+    {
+      "key": "borrowed_ember",
+      "selected": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/generated/borrowed_ember-v1.png",
+        "bytes": 755601,
+        "sha256": "4b6d5fce960e9b40e9769e7f050827a7aca0c7f31ecd748b06beca033b82eeeb"
+      },
+      "generated_dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/prompts/borrowed_ember.txt",
+        "bytes": 1510,
+        "sha256": "dd270293d648864111f80221e829eecd9c16549512162759b988c6aa511c6fec"
+      },
+      "exports": [
+        {
+          "path": "images/relics/borrowed_ember.png",
+          "bytes": 55836,
+          "sha256": "fab0cbc3feb1d6eaa187c6dc1172e33342bbb441632a28f58bb177c2be2a3c71"
+        },
+        {
+          "path": "images/relics/borrowed_ember_packed.png",
+          "bytes": 10059,
+          "sha256": "3b8943c9a7880da0662d056193e8d8d48483b17bb0f586b17f5522ae2a2603fa"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/borrowed_ember_outline.png",
+          "bytes": 1896,
+          "sha256": "90a613c5242b1e654a22eefbbdc7f253440d8f5a9eceaf7332a973f06d568cf4"
+        },
+        {
+          "path": "images/atlases/relic_atlas.sprites/borrowed_ember.tres",
+          "bytes": 215,
+          "sha256": "f22cdae9ddf1757a8b834374cfbd07328caaf2779a6b9fe8e26652e484d9cd46"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/borrowed_ember.tres",
+          "bytes": 245,
+          "sha256": "f4f3d6c10e2047864411b999bdee9de4594e37e5bce40e150997c4e174b9fa10"
+        }
+      ]
+    },
+    {
+      "key": "things_medusa_hair",
+      "selected": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/generated/things_medusa_hair-v1.png",
+        "bytes": 1040470,
+        "sha256": "1a8831a52512b938e45a791ef64cbf61e0224c3bbaa10ae74a17aa5bcf9828d0"
+      },
+      "generated_dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": {
+        "path": "source_assets/relics/depths_event_refresh_20261009/prompts/things_medusa_hair.txt",
+        "bytes": 1524,
+        "sha256": "090fdea09982c8b69fe5db73bbed2924d7856e8f5dfdf5bad4696c4908b51ff3"
+      },
+      "exports": [
+        {
+          "path": "images/relics/things_medusa_hair.png",
+          "bytes": 62096,
+          "sha256": "711e2db5d5410f1e33784081fcab507cf14b185f9b24cb8f5e59c29a758787c5"
+        },
+        {
+          "path": "images/relics/things_medusa_hair_packed.png",
+          "bytes": 11199,
+          "sha256": "9d4045f81a01c786a52f4d9599d4e8c44070389c7ff65118e40b1f1965221124"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/things_medusa_hair_outline.png",
+          "bytes": 2132,
+          "sha256": "3f030c87de17b707156ce305898f7fca1d85a5a006b93bf08a949ce1dcdd2265"
+        },
+        {
+          "path": "images/atlases/relic_atlas.sprites/things_medusa_hair.tres",
+          "bytes": 219,
+          "sha256": "6aab72b3235ea64111235cc63127e170435e70e268863ad11baa83a1217d9d6a"
+        },
+        {
+          "path": "images/atlases/relic_outline_atlas.sprites/things_medusa_hair.tres",
+          "bytes": 249,
+          "sha256": "aa98cc2f585daa713ee69c0d1c671760aa8b8288c49e6e5d398847761780c587"
+        }
+      ]
+    }
+  ],
+  "preparation": "scripts/export-depths-event-relic-icons.gd; native Godot crop/resize, alpha cleanup and outline export",
+  "self_review": "Compared with native relics at 132/48/32px on dark and light backgrounds; final native component render reviewed"
+}

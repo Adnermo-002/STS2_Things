@@ -55,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 [node name="salamander" type="Marker2D" parent="."]
-position = Vector2(1365,800)
+position = Vector2(1280,770)
 ''','utf-8')
 desc_zhs="玩家回合开始抽牌后，返还其上回合最后一张可[gold]回流[/gold]的牌，本回合耗能少[blue]1[/blue]。\n每当玩家打出[gold]回流[/gold]牌时，获得[blue]{Amount}[/blue]点[gold]力量[/gold]。"
 desc_eng="After players' opening draw, return their last eligible card from the previous turn with [gold]Reflux[/gold]. It costs [blue]1[/blue] less this turn.\nWhenever a player plays it, gain [blue]{Amount}[/blue] [gold]Strength[/gold]."

@@ -13,6 +13,8 @@ param(
     [switch]$ColumnVariantsOnly,
     [switch]$ColumnRulesOnly,
     [switch]$CampOnly,
+    [switch]$AscensionOnly,
+    [switch]$ActualVictoryOnly,
     [switch]$BalanceOnly,
     [switch]$FleetingEchoOnly
 )
@@ -31,9 +33,9 @@ $env:PATH='C:\Program Files\dotnet;'+$env:PATH
 & dotnet build (Join-Path $taskProbe 'DepthsProbe.csproj') -c Debug --nologo "/p:Sts2TargetVersion=$TargetVersion" "/p:Sts2DataDir=$DataDir" "/p:RuntimeDependencyDir=$RuntimeDependencyDir" "/p:ImplementationDll=$taskDll"
 if($LASTEXITCODE -ne 0){throw 'Depths probe compilation failed.'}
 if(Test-Path (Join-Path $taskRoot '.tmp\dotnet9')){$env:DOTNET_ROOT=Join-Path $taskRoot '.tmp\dotnet9';$env:DOTNET_MULTILEVEL_LOOKUP='0'}
-$taskMode=if($ColumnRulesOnly){'column-rules'}elseif($BalanceOnly){'balance'}elseif($FleetingEchoOnly){'fleeting-echo'}elseif($ColumnVariantsOnly){'column-variants'}elseif($EffectsOnly){'effects'}elseif($CampOnly){'camp'}elseif($VarietyVisual){'variety-visual'}elseif($Visual){'visual'}else{"probe-$TargetVersion"}
+$taskMode=if($ActualVictoryOnly){'actual-victory'}elseif($AscensionOnly){'ascension'}elseif($ColumnRulesOnly){'column-rules'}elseif($BalanceOnly){'balance'}elseif($FleetingEchoOnly){'fleeting-echo'}elseif($ColumnVariantsOnly){'column-variants'}elseif($EffectsOnly){'effects'}elseif($CampOnly){'camp'}elseif($VarietyVisual){'variety-visual'}elseif($Visual){'visual'}else{"probe-$TargetVersion"}
 $taskArgs=@('--path',('"'+$taskProbe+'"'),'--rendering-method','gl_compatibility')
-if($ColumnRulesOnly){$taskArgs+=@('--','--column-rules-only')}elseif($BalanceOnly){$taskArgs+=@('--','--balance-only')}elseif($FleetingEchoOnly){$taskArgs+=@('--','--fleeting-echo-only')}elseif($ColumnVariantsOnly){$taskArgs+=@('--','--column-variants-only')}elseif($EffectsOnly){$taskArgs+=@('--','--effects-only')}elseif($CampOnly){$taskArgs+=@('--','--camp-only')}elseif($VarietyVisual){$taskArgs+=@('--','--variety-visual')}elseif($Visual){$taskArgs+=@('--','--visual')}
+if($ActualVictoryOnly){$taskArgs+=@('--','--actual-victory-only')}elseif($AscensionOnly){$taskArgs+=@('--','--ascension-only')}elseif($ColumnRulesOnly){$taskArgs+=@('--','--column-rules-only')}elseif($BalanceOnly){$taskArgs+=@('--','--balance-only')}elseif($FleetingEchoOnly){$taskArgs+=@('--','--fleeting-echo-only')}elseif($ColumnVariantsOnly){$taskArgs+=@('--','--column-variants-only')}elseif($EffectsOnly){$taskArgs+=@('--','--effects-only')}elseif($CampOnly){$taskArgs+=@('--','--camp-only')}elseif($VarietyVisual){$taskArgs+=@('--','--variety-visual')}elseif($Visual){$taskArgs+=@('--','--visual')}
 $taskStdout=Join-Path $taskOut "$taskMode.stdout.log"
 $taskStderr=Join-Path $taskOut "$taskMode.stderr.log"
 $taskProcess=Start-Process -FilePath $GodotExe -ArgumentList $taskArgs -WindowStyle Hidden -PassThru -RedirectStandardOutput $taskStdout -RedirectStandardError $taskStderr

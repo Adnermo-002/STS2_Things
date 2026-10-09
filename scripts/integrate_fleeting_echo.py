@@ -62,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 [node name="echo" type="Marker2D" parent="."]
-position = Vector2(1435,832)
+position = Vector2(1320,800)
 ''','utf-8')
 dest=ROOT/'scenes/backgrounds/fleeting_echo_weak';(dest/'layers').mkdir(parents=True,exist_ok=True)
 shutil.copy2(ROOT/'scenes/backgrounds/sponge_leech_weak/sponge_leech_weak_background.tscn',dest/'fleeting_echo_weak_background.tscn')

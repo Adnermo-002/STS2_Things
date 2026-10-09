@@ -16,4 +16,4 @@ position = Vector2(1095, 789)
 position = Vector2(1415, 737)
 
 [node name="leech_2" type="Marker2D" parent="."]
-position = Vector2(1730, 789)
+position = Vector2(1690, 740)

@@ -1,0 +1,61 @@
+great_silk_moth.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+wing_near
+  rotate: false
+  xy: 2, 2
+  size: 848, 821
+  orig: 848, 821
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 854, 2
+  size: 756, 595
+  orig: 756, 595
+  offset: 0, 0
+  index: -1
+wing_far
+  rotate: false
+  xy: 2, 827
+  size: 672, 462
+  orig: 672, 462
+  offset: 0, 0
+  index: -1
+silk_a
+  rotate: false
+  xy: 678, 827
+  size: 429, 456
+  orig: 429, 456
+  offset: 0, 0
+  index: -1
+wing_hind
+  rotate: false
+  xy: 1111, 827
+  size: 553, 360
+  orig: 553, 360
+  offset: 0, 0
+  index: -1
+silk_b
+  rotate: false
+  xy: 1668, 827
+  size: 281, 357
+  orig: 281, 357
+  offset: 0, 0
+  index: -1
+tail
+  rotate: false
+  xy: 2, 1293
+  size: 565, 281
+  orig: 565, 281
+  offset: 0, 0
+  index: -1
+bridge_silk
+  rotate: false
+  xy: 571, 1293
+  size: 149, 227
+  orig: 149, 227
+  offset: 0, 0
+  index: -1

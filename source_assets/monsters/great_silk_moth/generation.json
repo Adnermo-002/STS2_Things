@@ -1,0 +1,26 @@
+{
+  "model": "gpt-image-2.5-sunburst",
+  "endpoint": "https://cpa.yuseus.io/v1/",
+  "mode": "official imagegen CLI edit with small moth style reference",
+  "prompt": "character-prompt.txt",
+  "reference": "source_assets/monsters/silk_moth/character_final.png",
+  "raw_size": [
+    1402,
+    1122
+  ],
+  "parts": [
+    "body",
+    "wing_far",
+    "wing_near",
+    "wing_hind",
+    "silk_a",
+    "silk_b",
+    "tail",
+    "bridge_silk"
+  ],
+  "alpha_partition": "exact",
+  "files": {
+    "character-final.png": "9ead6c68dd06b2fe9830fad64239be3daa5e349aea86a3108394ddf82e6f493d",
+    "character-generated.png": "f829059fff6c8a4d88b33f9e68590ed2034c43f6b0ecf20682325a33aaca73fb"
+  }
+}

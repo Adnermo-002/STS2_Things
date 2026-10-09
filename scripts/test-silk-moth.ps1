@@ -4,6 +4,8 @@ param(
     [string]$ImplementationDll='',
     [string]$PackagePck='',
     [string]$OutputDir='',
+    [string]$DataDir='',
+    [string]$RuntimeDependencyDir='',
     [switch]$Visual,
     [switch]$Motion,
     [switch]$CardVfx
@@ -15,6 +17,9 @@ if($OutputDir){$taskBuild=[IO.Path]::GetFullPath($OutputDir)}
 $env:THINGS_PROBE_OUTPUT=$taskBuild
 $taskProbe=Join-Path $taskRoot 'tools\SilkMothProbe'
 $taskData=if($TargetVersion -eq 'v107.1'){Join-Path $taskRoot '.tmp\things-collision-v107-data'}else{'D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64'}
+if($DataDir){$taskData=[IO.Path]::GetFullPath($DataDir)}
+if(-not $RuntimeDependencyDir){$RuntimeDependencyDir='D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64'}
+$RuntimeDependencyDir=[IO.Path]::GetFullPath($RuntimeDependencyDir)
 $taskGodot='D:\Download\Godot_v4.5.1-stable_mono_win64\Godot_v4.5.1-stable_mono_win64\Godot_v4.5.1-stable_mono_win64_console.exe'
 $env:PATH='C:\Program Files\dotnet;'+$env:PATH
 New-Item -ItemType Directory -Path $taskBuild -Force | Out-Null
@@ -25,7 +30,7 @@ if(-not $ImplementationDll){
 }
 $ImplementationDll=[IO.Path]::GetFullPath($ImplementationDll)
 if($PackagePck){$env:THINGS_PROBE_PCK=[IO.Path]::GetFullPath($PackagePck)}
-& dotnet build (Join-Path $taskProbe 'SilkMothProbe.csproj') -c Debug --nologo "/p:Sts2TargetVersion=$TargetVersion" "/p:Sts2DataDir=$taskData" "/p:ImplementationDll=$ImplementationDll"
+& dotnet build (Join-Path $taskProbe 'SilkMothProbe.csproj') -c Debug --nologo "/p:Sts2TargetVersion=$TargetVersion" "/p:Sts2DataDir=$taskData" "/p:RuntimeDependencyDir=$RuntimeDependencyDir" "/p:ImplementationDll=$ImplementationDll"
 if($LASTEXITCODE -ne 0){throw 'Moth probe compile failed'}
 $env:DOTNET_ROOT=Join-Path $taskRoot '.tmp\dotnet9';$env:DOTNET_MULTILEVEL_LOOKUP='0'
 $taskMode=if($Visual){'visual'}else{"behavior-$TargetVersion"}

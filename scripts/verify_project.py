@@ -1404,6 +1404,8 @@ def main() -> int:
         # its reproducible source is the Spine render/crop pipeline rather
         # than a second editable master under source_assets/monsters.
         "gravetide_slug_corpse.png",
+        # The mother uses its new Spine portrait as a native small monster image.
+        "leech_mother.png",
     }
     if source_names != expected_source_textures:
         fail(
@@ -2502,8 +2504,11 @@ def main() -> int:
         bg_layers = sorted(layer_dir.glob(f"{slug}_bg_*.tscn")) if layer_dir.is_dir() else []
         if not main_scene.is_file():
             fail(errors, f"native background scene missing: {main_scene.relative_to(ROOT)}")
-        elif "NThingsCombatBackground.cs" not in main_scene.read_text(encoding="utf-8"):
-            fail(errors, f"{main_scene.relative_to(ROOT)} does not use NThingsCombatBackground")
+        else:
+            scene_text = main_scene.read_text(encoding="utf-8")
+            native_script = "res://src/Core/Nodes/Rooms/NCombatBackground.cs"
+            if "NThingsCombatBackground.cs" not in scene_text and native_script not in scene_text:
+                fail(errors, f"{main_scene.relative_to(ROOT)} does not use the native combat background")
         if not bg_layers:
             fail(errors, f"native background layers missing for {slug}")
 
@@ -2649,9 +2654,19 @@ def main() -> int:
                 f"expected {expected_count}",
             )
 
-    # Native background foregrounds rely on tree ordering. Explicit z-index values
-    # raise them above the creature containers and obscure the monsters.
+    # Wrapped backgrounds set ordering in _Ready. The Scale Beetle remake uses
+    # NCombatBackground directly and declares its reviewed layer ordering here.
+    scale_beetle_main = ROOT / "scenes/backgrounds/scale_beetle_boss_encounter/scale_beetle_boss_encounter_background.tscn"
     for path in sorted((ROOT / "scenes" / "backgrounds").rglob("*.tscn")):
+        if path == scale_beetle_main:
+            text = path.read_text(encoding="utf-8")
+            if "res://src/Core/Nodes/Rooms/NCombatBackground.cs" not in text:
+                fail(errors, "Scale Beetle remake must use the original background factory")
+            for node, order in (("Layer_00", -2), ("Layer_01", -1), ("Foreground", 3)):
+                block = re.search(r'\[node name="' + node + r'"[^\]]*\]([^\[]*)', text)
+                if not block or not re.search(rf"^z_index\s*=\s*{order}\s*$", block[1], re.MULTILINE):
+                    fail(errors, f"Scale Beetle {node} has an unexpected layer order")
+            continue
         if path.name.endswith("_background.tscn") or "_fg_" in path.name:
             if re.search(r"^z_index\s*=", path.read_text(encoding="utf-8"), re.MULTILINE):
                 fail(errors, f"{path.relative_to(ROOT)} overrides native background z-order")

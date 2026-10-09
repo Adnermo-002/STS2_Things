@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS intake_rate (bucket TEXT PRIMARY KEY, count INTEGER NOT NULL, updated_at TEXT NOT NULL);

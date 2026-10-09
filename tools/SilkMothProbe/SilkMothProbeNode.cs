@@ -53,13 +53,14 @@ public partial class SilkMothProbeNode : Node
             await VerifyDelayedLink();
             await VerifyCleanup();
             await VerifyEligibilityAndMultiplayer();
+            await VerifyGreatMoth();
             if(OS.GetCmdlineUserArgs().Contains("--visual"))await RenderProbe();
             DeactivateSyntheticCombat();GD.Print($"Silk Moth probe: PASS ({_checks} assertions)");GetTree().Quit(0);
         }
         catch(Exception exception){GD.PushError(exception.ToString());GetTree().Quit(1);}
     }
 
-    private static async Task<Fixture> Scenario(bool weak=false,int players=1,int ascension=0)
+    private static async Task<Fixture> Scenario(bool weak=false,int players=1,int ascension=0,bool trio=false)
     {
         DeactivateSyntheticCombat();
         var party=Enumerable.Range(1,players).Select(i=>Player.CreateForNewRun<Ironclad>(UnlockState.all,(ulong)i)).ToList();
@@ -68,7 +69,7 @@ public partial class SilkMothProbeNode : Node
         typeof(RunManager).GetProperty("State",BindingFlags.NonPublic|BindingFlags.Instance)!.SetValue(RunManager.Instance,run);
         typeof(RunManager).GetProperty("AscensionManager")!.SetValue(RunManager.Instance,new AscensionManager(ascension));
         typeof(RunManager).GetProperty("NetService")!.SetValue(RunManager.Instance,new NetSingleplayerGameService());
-        EncounterModel encounter=(weak?ModelDb.Encounter<SilkMothWeak>() as EncounterModel:ModelDb.Encounter<SilkMothEncounter>()).ToMutable();
+        EncounterModel encounter=(trio?ModelDb.Encounter<SilkMothTrio>() as EncounterModel:weak?ModelDb.Encounter<SilkMothWeak>():ModelDb.Encounter<SilkMothEncounter>()).ToMutable();
         run.AppendToMapPointHistory(MapPointType.Monster,RoomType.Monster,encounter.Id);
         var room=new CombatRoom(encounter,run);run.PushRoom(room);
         foreach(var player in party){player.ResetCombatState();room.CombatState.AddPlayer(player);player.PopulateCombatState(run.Rng.Shuffle,room.CombatState);}
@@ -80,7 +81,11 @@ public partial class SilkMothProbeNode : Node
         }
         room.CombatState.CurrentSide=CombatSide.Player;ActivateSyntheticCombat(room.CombatState);
         await Hook.BeforeCombatStart(run,room.CombatState);
-        foreach(var player in party)await PlayerCmd.SetEnergy(3,player);
+        foreach(var player in party)
+        {
+            await PlayerCmd.SetEnergy(3,player);
+            await Hook.BeforeHandDraw(room.CombatState,player,Choice);
+        }
         return new(run,room,party,encounter);
     }
 
@@ -116,7 +121,7 @@ public partial class SilkMothProbeNode : Node
             var s=await Scenario(weak,players);
             Assert(s.Encounter.MonstersWithSlots.Count==(weak?2:3),"One moth and one/two leeches.");
             Assert(s.Encounter.IsWeak==weak,"Native pool category.");
-            Assert(s.Moth.MinInitialHp==36 && s.Moth.MaxInitialHp==40,"Base HP range.");
+            Assert(s.Moth.MinInitialHp==38 && s.Moth.MaxInitialHp==42,"Base HP range.");
             Assert(s.Encounter.MonstersWithSlots.All(e=>s.Encounter.Slots.Contains(e.Item2!)),"All slots exist.");
             foreach(var player in s.Players)
                 Assert(player.PlayerCombatState!.Hand.Cards.OfType<LeechParasite>().Count()==(weak?1:2),"Native direct-hand parasite count.");
@@ -126,13 +131,13 @@ public partial class SilkMothProbeNode : Node
             s.Moth.RollMove(s.Players.Select(p=>p.Creature));
             Assert(s.Moth.NextMove.Id=="SWOOP_MOVE" && s.Moth.NextMove.Intents.Single() is SingleAttackIntent,"Swoop follows weave.");
             int hp=s.Player.Creature.CurrentHp;await s.Moth.PerformMove();
-            Assert(s.Player.Creature.CurrentHp==hp-7,"Swoop native damage.");
+            Assert(s.Player.Creature.CurrentHp==hp-10,"Swoop native damage.");
             s.Moth.RollMove(s.Players.Select(p=>p.Creature));
             Assert(s.Moth.NextMove.Intents.Single() is MultiAttackIntent,"Native multi-hit intent.");
-            hp=s.Player.Creature.CurrentHp;await s.Moth.PerformMove();Assert(s.Player.Creature.CurrentHp==hp-8,"Two flutter hits.");
+            hp=s.Player.Creature.CurrentHp;await s.Moth.PerformMove();Assert(s.Player.Creature.CurrentHp==hp-10,"Two flutter hits.");
             s.Moth.RollMove(s.Players.Select(p=>p.Creature));Assert(s.Moth.NextMove.Id=="WEAVE_MOVE","Repeating cycle.");
         }
-        var tough=await Scenario(ascension:20);Assert(tough.Moth.MinInitialHp==40 && tough.Moth.MaxInitialHp==44,"Ascension HP.");
+        var tough=await Scenario(ascension:20);Assert(tough.Moth.MinInitialHp==42 && tough.Moth.MaxInitialHp==46,"Ascension HP.");
         GD.Print("PASS weak/strong pools, multiplayer targets, native intents, damage and cycle.");
     }
 
@@ -221,5 +226,5 @@ public partial class SilkMothProbeNode : Node
 
     private static void Assert(bool condition,string text){if(!condition)throw new Exception(text);_checks++;}
     private sealed record Fixture(RunState Run,CombatRoom Room,List<Player> Players,EncounterModel Encounter)
-    { public Player Player=>Players[0];public SilkMoth Moth=>Encounter.MonstersWithSlots.Select(e=>e.Item1).OfType<SilkMoth>().Single(); }
+    { public Player Player=>Players[0];public SilkMoth Moth=>Encounter is SilkMothTrio ? Encounter.MonstersWithSlots.Select(e=>e.Item1).OfType<GreatSilkMoth>().Single() : Encounter.MonstersWithSlots.Select(e=>e.Item1).OfType<SilkMoth>().Single(); }
 }

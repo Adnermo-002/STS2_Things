@@ -33,8 +33,8 @@ position = Vector2(0,-198)
 ''','utf-8')
 
 for key,slots,variant in [
-    ('cave_maw_weak',[('maw',(1435,824))],'d_cave_rootfungus'),
-    ('cave_maw_encounter',[('maw',(1188,824)),('moth',(1495,744)),('leech',(1780,809))],'f_hollow_grotto_moss'),
+    ('cave_maw_weak',[('maw',(1320,800))],'d_cave_rootfungus'),
+    ('cave_maw_encounter',[('maw',(1188,824)),('moth',(1495,744)),('leech',(1740,740))],'f_hollow_grotto_moss'),
 ]:
     scene='''[gd_scene format=3]
 [node name="Encounter" type="Control"]

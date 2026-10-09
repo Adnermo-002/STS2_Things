@@ -1,0 +1,10 @@
+{
+  "model": "gpt-image-2.5-sunburst",
+  "endpoint": "https://cpa.yuseus.io/v1/",
+  "mode": "official imagegen CLI edit",
+  "prompt": "character-prompt.txt",
+  "reference": "source_assets/monsters/sanguine_leech/character_final.png",
+  "rejected": "character-v1-rejected.png",
+  "selection": "new hooded face, tiny slit eyes, toothless sucker and swollen pale body folds",
+  "source_sha256": "4394103d1d163b1ed5d24063b3b7f925242efac7180e73857b46d4758d868481"
+}

@@ -1,0 +1,7 @@
+Use case: precise-object-edit
+Asset type: opaque clean background plate for a layered Slay the Spire 2 combat backdrop.
+Image 1 is the edit target and exact artistic/composition reference.
+Preserve the 16:9 canvas and exact framing, camera, horizon, perspective, painting style, warm amber cracked stone combat floor and muted cyan cavern depth.
+Remove ONLY the very close framing rocks, dark shell/bone-like spikes and mushrooms along the entire lower edge and lower left and right corners in front of the combat floor. Continue the existing flat stone floor naturally behind those removed foreground objects. Do not erase the structures behind the arena, the mid-distance broken arches, mushrooms beside the mid-distance arches, the cavern roof or upper stalactites.
+Keep the centre of the image, the central floor, the distant arches and the cool blue cave as unchanged as possible.
+Native STS2 painted environment: broad angular brush shapes, restrained surface detail, softly atmospheric background, original colour relationships. No extra characters, monsters, UI or text. No photorealism, no extra lights, no blur. Fill the whole canvas, fully opaque.

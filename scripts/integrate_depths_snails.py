@@ -83,7 +83,7 @@ position = Vector2(1105,825)
 [node name="slime" type="Marker2D" parent="."]
 position = Vector2(1405,808)
 [node name="rock" type="Marker2D" parent="."]
-position = Vector2(1720,842)
+position = Vector2(1680,738)
 ''','utf-8')
 
 # The generated shell is normalized to the native 256 / 64 icon convention.

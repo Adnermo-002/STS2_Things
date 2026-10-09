@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ENCOUNTERS = [
     dict(model='LanternSpongeEncounter', zhs='潭边生灵', eng='Pool Dwellers',
          background='b_cave_riverbend',
-         roster=[('LanternFish', 'fish', 1030, 741), ('WaterSponge', 'sponge', 1410, 760), ('CrystalSnail', 'crystal', 1760, 768)],
+         roster=[('LanternFish', 'fish', 1030, 741), ('WaterSponge', 'sponge', 1410, 760), ('CrystalSnail', 'crystal', 1720, 736)],
          tactic='灯笼鱼扰乱手牌，海绵积水反击，击破晶壳可取得晶片。'),
     dict(model='SilkSnailEncounter', zhs='蛾与蜗牛', eng='Moth and Snails',
          background='d_cave_rootfungus',
@@ -27,7 +27,7 @@ ENCOUNTERS = [
          tactic='爬岩蜗牛积蓄碾压，海绵惩罚分散伤害，晶壳提供破壳回报。'),
     dict(model='LanternMothEncounter', zhs='灯下飞蛾', eng='Light and Silk',
          background='b_cave_riverbend',
-         roster=[('LanternFish', 'fish', 1030, 741), ('SilkMoth', 'moth', 1410, 706), ('CrystalSnail', 'crystal', 1760, 768)],
+         roster=[('LanternFish', 'fish', 1030, 741), ('SilkMoth', 'moth', 1410, 706), ('CrystalSnail', 'crystal', 1720, 736)],
          tactic='缠丝与致盲错开施放，晶壳蜗牛补充伤害；可先击杀较脆的控制目标。'),
     dict(model='CaveMawLanternEncounter', zhs='洞胃与灯鱼', eng='Maw and Lanternfish',
          background='b_cave_riverbend',

@@ -12,4 +12,4 @@ position = Vector2(1188,824)
 [node name="moth" type="Marker2D" parent="."]
 position = Vector2(1495,744)
 [node name="leech" type="Marker2D" parent="."]
-position = Vector2(1780,809)
+position = Vector2(1740,740)

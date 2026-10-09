@@ -62,6 +62,38 @@ public partial class SilkMothProbeNode
             typeof(NCreature).GetProperty(nameof(NCreature.Visuals))!.SetValue(node,GD.Load<PackedScene>(path).Instantiate<NCreatureVisuals>());
             node.Position=position;view.AddChild(node);return node;
         }
+        // Instantiate the large caster through the same native creature scene;
+        // this checks exported delay properties as well as the actual silk roots.
+        {
+            var s=await Scenario(trio:true);
+            var bg=NCombatBackground.Create(new BackgroundAssets(s.Encounter.Id.Entry.ToLowerInvariant(),new Rng()));
+            bg.Position=new Vector2(983,540);view.AddChild(bg);
+            var slots=s.Encounter.CreateScene();view.AddChild(slots);
+            AddCreature(s.Player.Creature,"res://scenes/creature_visuals/ironclad.tscn",new Vector2(480,746));
+            NCreature? great=null;
+            foreach(var(monster,slot) in s.Encounter.MonstersWithSlots)
+            {
+                string slug=monster is GreatSilkMoth?"great_silk_moth":"silk_moth";
+                var node=AddCreature(monster.Creature,$"res://scenes/creature_visuals/{slug}.tscn",slots.GetNode<Node2D>(slot!).Position);
+                await node.UpdateIntent([s.Player.Creature]);node.IntentContainer.Modulate=Colors.White;
+                var sprite=node.Visuals.GetNode<Node2D>("Visuals");
+                sprite.Call("set_update_mode",ClassDB.ClassGetIntegerConstant("SpineConstant","UpdateMode_Manual"));
+                Pose(sprite,"idle_loop",0);
+                if(monster is GreatSilkMoth)great=node;
+            }
+            Assert(great!=null,"Large moth has its packaged native visual.");
+            var large=great!.Visuals.GetNode<Node2D>("Visuals");
+            var far=large.GetNode<NSilkCastThreads>("SilkLegFar/CastThreads");
+            var near=large.GetNode<NSilkCastThreads>("SilkLegNear/CastThreads");
+            Assert(far.ReleaseDelay==0 && Math.Abs(near.ReleaseDelay-.16f)<.0001f,
+                "Scene deserializes the two staggered silk releases.");
+            await Capture("great_trio_idle");
+            Pose(large,"cast",.62f);await Capture("great_release_1");
+            Pose(large,"cast",.78f);await Capture("great_release_2");
+            foreach(var child in view.GetChildren()){view.RemoveChild(child);child.QueueFree();}
+            await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);RenderingServer.ForceDraw();
+            DeactivateSyntheticCombat();
+        }
         foreach(bool weak in new[]{true,false})
         {
             var s=await Scenario(weak);

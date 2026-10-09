@@ -60,5 +60,9 @@
   "CAVE_MAW_LANTERN_ENCOUNTER.title": "洞胃与灯鱼",
   "CAVE_MAW_LANTERN_ENCOUNTER.loss": "{character}没能逃出[gold]{encounter}[/gold]的围困。",
   "FLEETING_ECHO_WEAK.title": "余影魔",
-  "FLEETING_ECHO_WEAK.loss": "{character}消失在[gold]{encounter}[/gold]的影子里。"
+  "FLEETING_ECHO_WEAK.loss": "{character}消失在[gold]{encounter}[/gold]的影子里。",
+  "SILK_MOTH_TRIO.title": "织茧蛾群",
+  "SILK_MOTH_TRIO.loss": "{character}被[gold]{encounter}[/gold]裹进了茧中……",
+  "LEECH_MOTHER_ENCOUNTER.title": "血蛭之母",
+  "LEECH_MOTHER_ENCOUNTER.loss": "{character}惊扰了[gold]{encounter}[/gold]的沉眠。"
 }

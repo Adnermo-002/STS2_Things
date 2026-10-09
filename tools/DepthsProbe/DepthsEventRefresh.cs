@@ -13,7 +13,7 @@ public partial class DepthsProbeNode
             ("images/events/things_medusa.png", new Vector2I(3440,1616)),
             ("images/events/cutting_it_close.png", new Vector2I(3440,1616)),
             ("images/relics/things_medusa_hair.png", new Vector2I(256,256)),
-            ("images/atlases/relic_outline_atlas.sprites/things_medusa_hair_outline.png", new Vector2I(256,256)),
+            ("images/atlases/relic_outline_atlas.sprites/things_medusa_hair_outline.png", new Vector2I(85,85)),
             ("images/enchantments/things_split.png", new Vector2I(64,64)) })
         {
             var texture = ResourceLoader.Load<Texture2D>("res://"+path);

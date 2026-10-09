@@ -1,0 +1,26 @@
+leech_mother.png
+size: 2048,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skin
+  rotate: false
+  xy: 2, 2
+  size: 1536, 1024
+  orig: 1536, 1024
+  offset: 0, 0
+  index: -1
+lid_far
+  rotate: false
+  xy: 1542, 2
+  size: 42, 33
+  orig: 42, 33
+  offset: 0, 0
+  index: -1
+lid_near
+  rotate: false
+  xy: 1588, 2
+  size: 36, 32
+  orig: 36, 32
+  offset: 0, 0
+  index: -1

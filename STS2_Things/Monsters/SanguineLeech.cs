@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Audio;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -13,9 +12,6 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
-using MegaCrit.Sts2.Core.Nodes.Cards;
-using MegaCrit.Sts2.Core.Nodes.Rooms;
-using MegaCrit.Sts2.Core.TestSupport;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2_Things.Cards;
 using STS2_Things.Powers;
@@ -33,7 +29,13 @@ public sealed class SanguineLeech : ThingsSpineMonster
     private int _openingPhase;
     private MoveState? _reinfest;
     private bool _reinfestPending;
+    private HashSet<ulong> _openingParasitePlayers = [];
     public int OpeningPhase => _openingPhase;
+    public void SuppressOpeningParasites(IEnumerable<Player> players)
+    {
+        AssertMutable();
+        foreach (var player in players) _openingParasitePlayers.Add(player.NetId);
+    }
     public void SetOpeningPhase(int phase) { AssertMutable(); _openingPhase = Math.Clamp(phase, 0, 3); }
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 34, 30);
     public override int MaxInitialHp => MinInitialHp + 4;
@@ -46,60 +48,26 @@ public sealed class SanguineLeech : ThingsSpineMonster
     public override IEnumerable<string> AssetPaths => base.AssetPaths.Concat([
         ModelDb.Card<LeechParasite>().PortraitPath]);
 
+    protected override void DeepCloneFields()
+    {
+        base.DeepCloneFields();
+        _openingParasitePlayers = [];
+    }
+
     public override async Task BeforeCombatStart()
     {
         if (!Creature.IsAlive) return;
         await PowerCmd.Apply<LeechInfestationPower>(new ThrowingPlayerChoiceContext(), Creature, 1, Creature, null);
-        // Opening parasites are generated directly into the hand with skipVisuals: true
-        // so that pre-combat initialization doesn't create invalid UI holders at (0, 0).
-        // Visual holders will be safely attached at the start of turn 1 in BeforeHandDraw.
-        foreach (var player in CombatState.Players.Where(p => p.Creature.IsAlive))
-        {
-            var card = CombatState.CreateCard<LeechParasite>(player);
-            await CardPileCmd.Add(card, PileType.Hand, CardPilePosition.Bottom, null, skipVisuals: true);
-        }
     }
 
-    public override Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
+    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
-        if (!TestMode.IsOn && LocalContext.IsMe(player) && player.PlayerCombatState?.TurnNumber == 1 &&
-            NCombatRoom.Instance?.Ui?.Hand is { } handUi)
-        {
-            var unassignedList = player.PlayerCombatState.Hand.Cards
-                .OfType<LeechParasite>()
-                .Where(c => handUi.GetCardHolder(c) == null)
-                .ToList();
-            if (unassignedList.Count > 0)
-            {
-                var card = unassignedList[0];
-                var nCard = NCard.Create(card);
-                if (nCard != null)
-                {
-                    nCard.GlobalPosition = Creature.GetCreatureNode()?.GlobalPosition ?? handUi.GlobalPosition;
-                    handUi.Add(nCard);
-                }
-
-                var otherLivingLeeches = combatState.Enemies
-                    .Select(e => e.Monster)
-                    .OfType<SanguineLeech>()
-                    .Where(l => l != this && l.Creature.IsAlive);
-                if (!otherLivingLeeches.Any())
-                {
-                    for (int i = 1; i < unassignedList.Count; i++)
-                    {
-                        var extraCard = unassignedList[i];
-                        var extraNode = NCard.Create(extraCard);
-                        if (extraNode != null)
-                        {
-                            extraNode.GlobalPosition = handUi.GlobalPosition;
-                            handUi.Add(extraNode);
-                        }
-                    }
-                }
-                handUi.ForceRefreshCardIndices();
-            }
-        }
-        return Task.CompletedTask;
+        if (!Creature.IsAlive || !player.Creature.IsAlive || player.PlayerCombatState?.TurnNumber != 1 ||
+            !ReferenceEquals(combatState, CombatState) || !_openingParasitePlayers.Add(player.NetId)) return;
+        // Toolbox uses the same native hook and generation command. Hand ownership,
+        // visual holders, notifications, overflow and indices stay in one lifecycle.
+        var card = combatState.CreateCard<LeechParasite>(player);
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, player);
     }
 
     public void RequestReinfestation()

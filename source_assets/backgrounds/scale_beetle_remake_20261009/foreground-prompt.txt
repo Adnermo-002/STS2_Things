@@ -1,0 +1,6 @@
+Use case: background-extraction
+Asset type: transparent foreground plate for the same Slay the Spire 2 combat background.
+Image 1 is the exact edit target. Keep exactly its 16:9 canvas and object screen positions, proportions, shapes and painted colours.
+Extract ONLY the closest dark framing rocks, broken shell/bone-like spikes and their tiny mushrooms along the LOWER LEFT edge, the LOWER RIGHT edge, and the VERY BOTTOM edge. They are the dark near-camera framing at the front of the amber stone arena, not the distant cavern or the broken arches behind the arena.
+Everything else must be real transparent alpha: all cavern, ceiling, upper stalactites, mid-distance broken arches, and the entire central warm combat floor removed. Keep the middle battle area empty and transparent. Do not invent new objects. No ground plane between the corner silhouettes.
+Preserve the exact irregular silhouette of the rock tips, mushroom stems and caps, and dark paint edges from the reference. No offset, no recentering, no size change. Original STS2 chunky hand-painted style. No cast shadows floating in transparency, no rim glow, no opaque black/white/checkerboard background, no text.

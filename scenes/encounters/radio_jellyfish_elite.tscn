@@ -8,4 +8,4 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 [node name="jellyfish" type="Marker2D" parent="."]
-position = Vector2(1450,819)
+position = Vector2(1320,775)

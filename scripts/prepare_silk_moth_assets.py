@@ -87,7 +87,7 @@ region = Rect2(0, 0, 64, 64)
 
 # Reuse the complete authored moss cavern, so wall, new floor and foreground stay together.
 for key, slots in {
-    'silk_moth_weak': [('moth',1230,750),('leech_1',1615,800)],
+    'silk_moth_weak': [('moth',1230,750),('leech_1',1615,740)],
     'silk_moth_encounter': [('moth',1105,735),('leech_1',1430,800),('leech_2',1750,755)],
 }.items():
     folder = ROOT / 'scenes/backgrounds' / key

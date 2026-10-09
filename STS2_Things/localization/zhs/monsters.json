@@ -191,5 +191,15 @@
   "FLEETING_ECHO.moves.SWEEP_MOVE.title": "横扫",
   "FLEETING_ECHO.moves.GRASP_MOVE.title": "攫取",
   "FLEETING_ECHO.moves.PULSE_MOVE.title": "震荡",
-  "FLEETING_ECHO.moves.SCATTER_MOVE.title": "散形"
+  "FLEETING_ECHO.moves.SCATTER_MOVE.title": "散形",
+  "GREAT_SILK_MOTH.name": "织茧巨蛾",
+  "GREAT_SILK_MOTH.moves.WEAVE_MOVE.title": "牵丝",
+  "GREAT_SILK_MOTH.moves.SWOOP_MOVE.title": "掠翅",
+  "GREAT_SILK_MOTH.moves.FLUTTER_MOVE.title": "连振",
+  "LEECH_MOTHER.name": "血蛭之母",
+  "LEECH_MOTHER.moves.SLEEP.title": "沉眠",
+  "LEECH_MOTHER.moves.BROOD.title": "唤子",
+  "LEECH_MOTHER.moves.SIP.title": "吮血",
+  "LEECH_MOTHER.moves.CRUSH.title": "重压",
+  "LEECH_MOTHER.moves.REST.title": "蜷伏"
 }

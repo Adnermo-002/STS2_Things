@@ -31,8 +31,10 @@ public partial class DepthsProbeNode
     {
         [typeof(LanternFishEncounter)] = [typeof(LanternFish), typeof(LanternFish), typeof(LanternFish)],
         [typeof(SanguineLeechEncounter)] = [typeof(SanguineLeech), typeof(SanguineLeech), typeof(SanguineLeech)],
+        [typeof(LeechMotherEncounter)] = [typeof(LeechMother)],
         [typeof(SpongeLeechEncounter)] = [typeof(WaterSponge), typeof(SanguineLeech), typeof(SanguineLeech)],
         [typeof(SilkMothEncounter)] = [typeof(SilkMoth), typeof(SanguineLeech), typeof(SanguineLeech)],
+        [typeof(SilkMothTrio)] = [typeof(SilkMoth), typeof(GreatSilkMoth), typeof(SilkMoth)],
         [typeof(CaveMawEncounter)] = [typeof(CaveMaw), typeof(SilkMoth), typeof(SanguineLeech)],
         [typeof(HumanFaceColumnEncounter)] = [typeof(HumanFaceColumn), typeof(HumanFaceColumn), typeof(HumanFaceColumn)],
         [typeof(LanternSpongeEncounter)] = [typeof(LanternFish), typeof(WaterSponge), typeof(CrystalSnail)],
@@ -165,6 +167,7 @@ public partial class DepthsProbeNode
             {
                 await player.Creature.AfterTurnStart(CombatSide.Player);
                 await PlayerCmd.SetEnergy(3, player);
+                await Hook.BeforeHandDraw(b.State, player, Choice);
                 await CardPileCmd.Draw(Choice, 5, player);
                 await Hook.AfterPlayerTurnStart(b.State, Choice, player);
                 Assert(player.PlayerCombatState!.Hand.Cards.All(card => card.Owner == player), "Card ownership across combined powers.");

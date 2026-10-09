@@ -124,26 +124,46 @@ public partial class SanguineLeechProbeNode : Node
     private static async Task VerifyOpeningHand()
     {
         foreach (bool weak in new[]{true,false})
+        foreach (int players in new[]{1,2,3,4})
         {
-            var s=Scenario(weak,players:2);
+            var s=Scenario(weak,players:players);
             int deck=s.Player.Deck.Cards.Count;
             await Hook.BeforeCombatStart(s.Run,s.Room.CombatState);
             foreach(var p in s.Players)
             {
-                Assert(p.PlayerCombatState!.Hand.Cards.OfType<LeechParasite>().Count()==s.Leeches.Length,"Each leech generates one opening parasite directly in hand.");
-                Assert(!p.PlayerCombatState.DrawPile.Cards.OfType<LeechParasite>().Any(),"Opening parasites never enter the draw pile.");
-                var method=typeof(CombatManager).GetMethod("SetupPlayerTurn",BindingFlags.Instance|BindingFlags.NonPublic)!;
-                var ctx=new HookPlayerChoiceContext(p,p.NetId,GameActionType.Combat);
-                object?[] args=method.GetParameters().Length==3
-                    ? [typeof(CombatManager).GetField("_turnState",BindingFlags.Instance|BindingFlags.NonPublic)!.GetValue(CombatManager.Instance),p,ctx]
-                    : [p,ctx];
-                await (Task)method.Invoke(CombatManager.Instance,args)!;
-                Assert(p.PlayerCombatState.Hand.Cards.OfType<LeechParasite>().Count()==s.Leeches.Length,"Normal opening draws retain the directly generated parasites.");
+                Assert(p.PlayerCombatState!.Hand.Cards.Count==0,"Pre-combat hooks do not silently populate the hand before native UI setup.");
+                await SetupPlayerTurn(p);
+                Assert(p.PlayerCombatState.Hand.Cards.OfType<LeechParasite>().Count()==s.Leeches.Length,"Native turn setup gives each player one opening parasite per leech.");
                 Assert(p.PlayerCombatState.Hand.Cards.Count==5+s.Leeches.Length,"Five normal opening cards are drawn in addition to the parasites.");
+                Assert(p.PlayerCombatState.Energy==3,"Opening generation preserves native energy reset.");
+                Assert(!p.PlayerCombatState.DrawPile.Cards.OfType<LeechParasite>().Any(),"Opening parasites never enter the draw pile.");
                 Assert(p.Deck.Cards.Count==deck && !p.Deck.Cards.OfType<LeechParasite>().Any(),"Permanent deck unchanged.");
+                await Hook.BeforeHandDraw(s.Room.CombatState,p,Choice);
+                Assert(p.PlayerCombatState.Hand.Cards.OfType<LeechParasite>().Count()==s.Leeches.Length,"Repeating the first-turn hook does not duplicate parasites.");
             }
         }
-        GD.Print("PASS direct opening hand, full normal opening draw, two/three parasites and temporary deck ownership.");
+        // A fresh mutable encounter reuses the same player IDs but owns its own
+        // opening-delivery state, including after previous fixtures generated cards.
+        var full=Scenario();
+        await Hook.BeforeCombatStart(full.Run,full.Room.CombatState);
+        for(int i=0;i<CardPile.MaxCardsInHand;i++)
+            await CardPileCmd.AddGeneratedCardToCombat(full.Room.CombatState.CreateCard<StrikeIronclad>(full.Player),PileType.Hand,full.Player);
+        await Hook.BeforeHandDraw(full.Room.CombatState,full.Player,Choice);
+        Assert(full.Player.PlayerCombatState!.Hand.Cards.Count==CardPile.MaxCardsInHand,"Opening generation observes the native hand limit.");
+        Assert(full.Player.PlayerCombatState.DiscardPile.Cards.OfType<LeechParasite>().Count()==full.Leeches.Length,"Opening overflow goes to discard through the native generation command.");
+        await Hook.BeforeHandDraw(full.Room.CombatState,full.Player,Choice);
+        Assert(full.Player.PlayerCombatState.DiscardPile.Cards.OfType<LeechParasite>().Count()==full.Leeches.Length,"Overflow is delivered only once per leech and player.");
+        GD.Print("PASS native opening turn setup, 1-4 player ownership, full normal draw, energy, fresh encounters, duplicate hooks and full-hand overflow.");
+    }
+
+    private static async Task SetupPlayerTurn(Player player)
+    {
+        var method=typeof(CombatManager).GetMethod("SetupPlayerTurn",BindingFlags.Instance|BindingFlags.NonPublic)!;
+        var ctx=new HookPlayerChoiceContext(player,player.NetId,GameActionType.Combat);
+        object?[] args=method.GetParameters().Length==3
+            ? [typeof(CombatManager).GetField("_turnState",BindingFlags.Instance|BindingFlags.NonPublic)!.GetValue(CombatManager.Instance),player,ctx]
+            : [player,ctx];
+        await (Task)method.Invoke(CombatManager.Instance,args)!;
     }
 
     private static LeechParasite Parasite(Fixture s,Player? player=null,PileType pile=PileType.Hand)

@@ -98,8 +98,8 @@
   "LEECH_INFESTATION_POWER.title": "顽固寄生",
   "LEECH_INFESTATION_POWER.description": "每当[gold]寄生[/gold]被[gold]消耗[/gold]时，下回合将一张[gold]寄生[/gold]放入玩家手牌。",
   "SILK_THREAD_POWER.title": "牵丝",
-  "SILK_THREAD_POWER.description": "下回合抽牌后，随机捆绑[blue]2[/blue]张手牌，直到回合结束。\n先打出[gold]1[/gold]号牌，才能打出[gold]2[/gold]号牌。",
-  "SILK_THREAD_POWER.activeDescription": "先打出[gold]1[/gold]号牌，才能打出[gold]2[/gold]号牌。\n回合结束、任一牌离手或所有垂丝蛾死亡时解除。",
+  "SILK_THREAD_POWER.description": "抽牌后随机缠绕[blue]2[/blue]张手牌。先打出[gold]1[/gold]号牌，才能打出[gold]2[/gold]号牌。",
+  "SILK_THREAD_POWER.activeDescription": "先打出[gold]1[/gold]号牌，才能打出[gold]2[/gold]号牌。\n本回合结束、任一牌离手或所有蛾死亡时解除当前缠绕。",
   "MYCORRHIZAL_BOND_POWER.title": "同根",
   "MYCORRHIZAL_BOND_POWER.description": "每轮结束时，与同伴交换生命，生命较多者变为[gold]丰盛[/gold]，另一方[gold]萎蔫[/gold]。相等时互换体态。\n同伴死亡时，获得[blue]4[/blue]点[gold]力量[/gold]并[gold]狂暴[/gold]。",
   "MYCORRHIZAL_FURY_POWER.title": "断根狂暴",
@@ -142,5 +142,9 @@
   "BORROWED_SHADOW_POWER.description": "受到攻击伤害时，攻击者获得等量[gold]格挡[/gold]。",
   "FLEETING_FADE_POWER.title": "消逝",
   "FLEETING_FADE_POWER.description": "[blue]{Amount}[/blue]回合后消失。",
-  "FLEETING_FADE_POWER.smartDescription": "[blue]{Amount}[/blue]回合后消失。"
+  "FLEETING_FADE_POWER.smartDescription": "[blue]{Amount}[/blue]回合后消失。",
+  "SILK_THREAD_POWER.smartDescription": "接下来[blue]{Amount}[/blue]个回合，抽牌后随机缠绕[blue]2[/blue]张手牌。先打出[gold]1[/gold]号牌，才能打出[gold]2[/gold]号牌。",
+  "SILK_THREAD_POWER.unboundDescription": "当前缠绕已解除。下回合抽牌后，再缠绕[blue]2[/blue]张手牌。",
+  "LEECH_MOTHER_SLUMBER_POWER.title": "沉眠",
+  "LEECH_MOTHER_SLUMBER_POWER.description": "再经过[blue]{Amount}[/blue]回合后，若未被攻击，则离开战斗。不会获得战斗奖励。[n]被攻击或受到伤害时醒来。"
 }

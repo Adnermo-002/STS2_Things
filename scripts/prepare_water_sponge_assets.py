@@ -45,7 +45,7 @@ runpy.run_path(str(ROOT / 'scripts/prepare_depths_power_icons.py'), run_name='__
 
 for encounter, slots in {
     'sponge_leech_weak': [('sponge', 1260, 789), ('leech_1', 1620, 755)],
-    'sponge_leech_encounter': [('sponge', 1095, 789), ('leech_1', 1415, 737), ('leech_2', 1730, 789)],
+    'sponge_leech_encounter': [('sponge', 1095, 789), ('leech_1', 1415, 737), ('leech_2', 1690, 740)],
 }.items():
     text = '''[gd_scene format=3]
 

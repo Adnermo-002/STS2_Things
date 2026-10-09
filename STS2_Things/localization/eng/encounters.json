@@ -60,5 +60,9 @@
   "CAVE_MAW_LANTERN_ENCOUNTER.title": "Maw and Lanternfish",
   "CAVE_MAW_LANTERN_ENCOUNTER.loss": "{character} was overwhelmed by the [gold]{encounter}[/gold].",
   "FLEETING_ECHO_WEAK.title": "Fleeting Echo",
-  "FLEETING_ECHO_WEAK.loss": "{character} vanished into the shadow of the [gold]{encounter}[/gold]."
+  "FLEETING_ECHO_WEAK.loss": "{character} vanished into the shadow of the [gold]{encounter}[/gold].",
+  "SILK_MOTH_TRIO.title": "Silken Brood",
+  "SILK_MOTH_TRIO.loss": "{character} was wrapped into a cocoon by [gold]{encounter}[/gold]...",
+  "LEECH_MOTHER_ENCOUNTER.title": "Leech Mother",
+  "LEECH_MOTHER_ENCOUNTER.loss": "{character} disturbed the [gold]{encounter}[/gold] from her slumber."
 }

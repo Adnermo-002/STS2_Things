@@ -72,7 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 [node name="jellyfish" type="Marker2D" parent="."]
-position = Vector2(1450,819)
+position = Vector2(1320,775)
 ''','utf-8')
 
 zhs='在回放回合，记录每名玩家前[blue]2[/blue]张攻击或技能牌。\n每层使回放伤害和技能回音的[gold]格挡[/gold]提高[blue]{BonusPerStack}[/blue]点。'

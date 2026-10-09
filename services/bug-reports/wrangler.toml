@@ -1,0 +1,21 @@
+name = "sts2-things-reports"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[secrets]
+required = ["ADMIN_PASSWORD", "SESSION_SECRET"]
+
+[[routes]]
+pattern = "reports.adnermo.online"
+custom_domain = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sts2-things-bug-reports"
+database_id = "6bd8fdaf-6a2e-44a4-9d8e-6f7641c32a3e"
+
+[[rules]]
+type = "Text"
+globs = ["**/*.html"]
+fallthrough = true

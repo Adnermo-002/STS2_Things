@@ -28,4 +28,4 @@ position = Vector2(1360, 775)
 position = Vector2(1580, 760)
 
 [node name="gravetide_corpse_slug_6" type="Marker2D" parent="."]
-position = Vector2(1770, 805)
+position = Vector2(1710, 740)

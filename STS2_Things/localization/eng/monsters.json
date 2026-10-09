@@ -191,5 +191,15 @@
   "FLEETING_ECHO.moves.SWEEP_MOVE.title": "Sweep",
   "FLEETING_ECHO.moves.GRASP_MOVE.title": "Grasp",
   "FLEETING_ECHO.moves.PULSE_MOVE.title": "Pulse",
-  "FLEETING_ECHO.moves.SCATTER_MOVE.title": "Scatter"
+  "FLEETING_ECHO.moves.SCATTER_MOVE.title": "Scatter",
+  "GREAT_SILK_MOTH.name": "Great Silk Moth",
+  "GREAT_SILK_MOTH.moves.WEAVE_MOVE.title": "Threadbind",
+  "GREAT_SILK_MOTH.moves.SWOOP_MOVE.title": "Wing Swoop",
+  "GREAT_SILK_MOTH.moves.FLUTTER_MOVE.title": "Ragged Flurry",
+  "LEECH_MOTHER.name": "Leech Mother",
+  "LEECH_MOTHER.moves.SLEEP.title": "Slumber",
+  "LEECH_MOTHER.moves.BROOD.title": "Call the Brood",
+  "LEECH_MOTHER.moves.SIP.title": "Siphon",
+  "LEECH_MOTHER.moves.CRUSH.title": "Crush",
+  "LEECH_MOTHER.moves.REST.title": "Curl Up"
 }

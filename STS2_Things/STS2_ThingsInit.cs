@@ -48,6 +48,7 @@ public static class STS2_ThingsInit
             MultiplayerConfig.Initialize();
             STS2_Things.Audio.ModMusicPolicy.Initialize();
             LibraryIntegration.Initialize();
+            STS2_Things.Diagnostics.BugRunRecorder.Initialize();
 
             // ---- 卡牌 & 遗物 模型池注册 ----
             ModHelper.AddModelToPool<IroncladCardPool, ThingsCollision>();

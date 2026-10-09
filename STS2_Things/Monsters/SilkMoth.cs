@@ -13,15 +13,19 @@ using STS2_Things.Powers;
 
 namespace STS2_Things.Monsters;
 
-public sealed class SilkMoth : ThingsSpineMonster
+public class SilkMoth : ThingsSpineMonster
 {
+    private int _openingPhase;
+    public int OpeningPhase => _openingPhase;
+    public void SetOpeningPhase(int phase) { AssertMutable(); _openingPhase = Math.Clamp(phase, 0, 2); }
     public const float WeaveContact = .62f;
     public const float SwoopContact = .48f;
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 42, 38);
     public override int MaxInitialHp => MinInitialHp + 4;
     public override float HpBarSizeReduction => 130f;
-    private int SwoopDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 12, 10);
-    private int FlutterDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 6, 5);
+    protected virtual int SwoopDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 12, 10);
+    protected virtual int FlutterDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 6, 5);
+    protected virtual int WeaveLayers => 1;
     protected override string AttackSfx => "event:/sfx/enemy/enemy_attacks/thieving_hopper/thieving_hopper_attack_hover";
     protected override string CastSfx => "event:/sfx/enemy/enemy_attacks/workbug_silk/workbug_silk_spit";
     public override string DeathSfx => "event:/sfx/enemy/enemy_attacks/workbug_silk/workbug_silk_die";
@@ -41,15 +45,16 @@ public sealed class SilkMoth : ThingsSpineMonster
         weave.FollowUpState = swoop;
         swoop.FollowUpState = flutter;
         flutter.FollowUpState = weave;
-        return new MonsterMoveStateMachine([weave, swoop, flutter], weave);
+        MoveState[] cycle = [weave, swoop, flutter];
+        return new MonsterMoveStateMachine(cycle, cycle[_openingPhase]);
     }
 
     private async Task Weave(IReadOnlyList<Creature> targets)
     {
         SfxCmd.Play(CastSfx);
         await CreatureCmd.TriggerAnim(Creature, "Cast", WeaveContact);
-        foreach (var target in targets.Where(target => target.IsAlive && target.GetPower<SilkThreadPower>() == null))
-            await PowerCmd.Apply<SilkThreadPower>(new ThrowingPlayerChoiceContext(), target, 1, Creature, null);
+        foreach (var target in targets.Where(target => target.IsAlive))
+            await PowerCmd.Apply<SilkThreadPower>(new ThrowingPlayerChoiceContext(), target, WeaveLayers, Creature, null);
         await Cmd.Wait(.73f);
     }
 

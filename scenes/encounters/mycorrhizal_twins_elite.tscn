@@ -8,6 +8,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 [node name="vanguard" type="Marker2D" parent="."]
-position = Vector2(1235,800)
+position = Vector2(1210,775)
 [node name="bulwark" type="Marker2D" parent="."]
-position = Vector2(1635,790)
+position = Vector2(1610,740)
