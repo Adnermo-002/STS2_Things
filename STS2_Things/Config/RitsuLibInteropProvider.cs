@@ -143,7 +143,11 @@ public static class RitsuLibInteropProvider
             Entry("potion_tasting_enabled", ThingsModConfig.EventPotionTastingEnabled,
                 "Potion Tasting", "药水试饮会"),
             Entry("narrow_gate_enabled", ThingsModConfig.EventNarrowGateEnabled,
-                "Narrow Gate", "窄门"));
+                "Narrow Gate", "窄门"),
+            Entry("biting_chest_enabled", ThingsModConfig.EventBitingChestEnabled,
+                "Biting Chest", "会咬人的宝箱"),
+            Entry("crowded_ward_enabled", ThingsModConfig.EventCrowdedWardEnabled,
+                "Crowded Ward", "满员的病房"));
     }
 
     private static Dictionary<string, object?> MerchantSection()

@@ -194,6 +194,12 @@ public sealed class ThingsBaseLibConfig : SimpleModConfig
     [ConfigSection("Events")]
     public static bool EventNarrowGateEnabled { get; set; } = true;
 
+    [ConfigSection("Events")]
+    public static bool EventBitingChestEnabled { get; set; } = true;
+
+    [ConfigSection("Events")]
+    public static bool EventCrowdedWardEnabled { get; set; } = true;
+
     // ---- 商人猜拳 ----
 
     [ConfigSection("Merchant Bargain")]

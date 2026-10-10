@@ -1,4 +1,3 @@
-﻿#if STS2_V111
 using System;
 using System.Collections.Generic;
 
@@ -102,4 +101,3 @@ public sealed class MerchantBargainSession<TEntry> where TEntry : class
         WinningPrice = null;
     }
 }
-#endif

@@ -46,7 +46,8 @@ public partial class CaveGodProbeNode : Node
         {
             TestMode.TurnOnInternal();
             string root = Path.GetFullPath(Path.Combine(ProjectSettings.GlobalizePath("res://"), "../.."));
-            ProjectSettings.LoadResourcePack("D:/Steam/steamapps/common/Slay the Spire 2/SlayTheSpire2.pck");
+            ProjectSettings.LoadResourcePack(System.Environment.GetEnvironmentVariable("THINGS_PROBE_GAME_PCK")
+                ?? "D:/Steam/steamapps/common/Slay the Spire 2/SlayTheSpire2.pck");
             ProjectSettings.LoadResourcePack(System.Environment.GetEnvironmentVariable("THINGS_PROBE_PCK")
                 ?? Path.Combine(root, "build/v111/STS2_Things.pck"));
             string? overlay=System.Environment.GetEnvironmentVariable("THINGS_PROBE_OVERLAY_PCK");

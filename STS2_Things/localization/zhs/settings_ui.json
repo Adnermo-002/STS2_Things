@@ -73,5 +73,12 @@
   "STS2_THINGS-EVENT_UNLIT_FIRE_ENABLED.title": "还没烧起来的火 — 启用",
   "STS2_THINGS-EVENT_RELIC_WORKSHOP_ENABLED.title": "遗物修补摊 · 启用",
   "STS2_THINGS-EVENT_POTION_TASTING_ENABLED.title": "药水试饮会 · 启用",
-  "STS2_THINGS-EVENT_NARROW_GATE_ENABLED.title": "窄门 · 启用"
+  "STS2_THINGS-EVENT_NARROW_GATE_ENABLED.title": "窄门 · 启用",
+  "STS2_THINGS-EVENT_BITING_CHEST_ENABLED.title": "会咬人的宝箱 · 启用",
+  "STS2_THINGS-EVENT_BITING_CHEST_ENABLED.description": "允许在深处遇到此事件。",
+  "STS2_THINGS-EVENT_CROWDED_WARD_ENABLED.title": "满员的病房 · 启用",
+  "STS2_THINGS-EVENT_CROWDED_WARD_ENABLED.description": "允许在深处遇到此事件。",
+  "THINGS_STARTUP_NOTICE.title": "尖塔：琐事公告",
+  "THINGS_STARTUP_NOTICE.body": "如果在「尖塔：琐事」中遇到卡牌、怪物、事件异常或回合卡住，请按 [gold]F2[/gold]，选择[gold]「琐事 Bug（上传本局）」[/gold]。\n\n请写明具体问题、出错前的操作和复现方式。联机时请注明人数及其他模组，尽量在问题发生后立即上报。\n\n点击发送后，将附带本局路线与战斗状态，帮助作者排查。若发送失败，可在 F2 中选择[gold]「琐事 Bug（重试待发送）」[/gold]再次提交。\n\n感谢你的反馈！",
+  "THINGS_STARTUP_NOTICE.confirm": "我知道了"
 }

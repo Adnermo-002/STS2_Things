@@ -20,6 +20,19 @@ public partial class NCrossroadLayer : Node2D
     private CrossroadActPlan _plan = null!;
     private Dictionary<MapCoord, NMapPoint> _points = [];
     private readonly Dictionary<NCrossroadButton, CrossroadRecord> _buttons = [];
+    private readonly List<RoadVisual> _roadVisuals = [];
+    private Texture2D? _roadDot;
+
+    private sealed class RoadVisual(NMapPoint a, NMapPoint b, NCrossroadButton button, bool isOpen)
+    {
+        public NMapPoint A { get; } = a;
+        public NMapPoint B { get; } = b;
+        public NCrossroadButton Button { get; } = button;
+        public bool IsOpen { get; } = isOpen;
+        public readonly List<TextureRect> Dots = [];
+        public Vector2 LastStart = new(float.NaN, float.NaN);
+        public Vector2 LastEnd = new(float.NaN, float.NaN);
+    }
     private readonly Dictionary<NMapPoint, (NodePath Before, NodePath Road)> _focusLinks = [];
     private NGenericPopup? _popup;
     private bool _asking;
@@ -51,46 +64,82 @@ public partial class NCrossroadLayer : Node2D
     public override void _Ready()
     {
         Crossroads.Changed += OnChanged;
-        var dot = GD.Load<Texture2D>("res://images/atlases/compressed.sprites/map/map_dot.tres");
+        _roadDot = GD.Load<Texture2D>("res://images/atlases/compressed.sprites/map/map_dot.tres");
         foreach (CrossroadRecord road in _plan.Roads)
         {
             if (!_points.TryGetValue(road.A, out var a) || !_points.TryGetValue(road.B, out var b)) continue;
-            // Map point positions are Control origins; their icons sit at the
-            // Control centers. Convert into this layer's space for scrolling/scaling.
-            Vector2 start = ToLocal(a.GetGlobalTransform() * (a.Size / 2));
-            Vector2 end = ToLocal(b.GetGlobalTransform() * (b.Size / 2));
-            Vector2 mid = (start + end) / 2, direction = (end - start).Normalized();
-            if (!road.IsOpen)
-            {
-                for (float distance = 38; distance < start.DistanceTo(end) - 38; distance += 22)
-                {
-                    Vector2 at = start + direction * distance;
-                    if (at.DistanceTo(mid) < 29) continue;
-                    AddChild(new TextureRect
-                    {
-                        Texture = dot,
-                        ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-                        Position = at - Vector2.One * 7, Size = Vector2.One * 14,
-                        PivotOffset = Vector2.One * 7, Rotation = direction.Angle() + Mathf.Pi / 2,
-                        Modulate = new Color(_run.Act.MapUntraveledColor, .7f), MouseFilter = Control.MouseFilterEnum.Ignore,
-                    });
-                }
-            }
-            var hitSize = new Vector2(Math.Max(58, start.DistanceTo(end) - 100), 58);
+            // Native map points can be re-anchored by the real map Control after
+            // SetMap returns. Create the road here and follow the *live* point
+            // transforms below, rather than freezing its icon over a room.
             var button = new NCrossroadButton
             {
-                Name = $"Road_{road.Row}_{road.Left}_{road.Right}", Position = mid - hitSize / 2, Size = hitSize,
+                Name = $"Road_{road.Row}_{road.Left}_{road.Right}", Size = new Vector2(58, 58),
                 FocusMode = Control.FocusModeEnum.All, MouseFilter = Control.MouseFilterEnum.Stop,
                 IsOpenRoad = road.IsOpen, Activate = () => Activate(road),
             };
             AddChild(button);
             _buttons.Add(button, road);
             button.FocusNeighborLeft = a.GetPath(); button.FocusNeighborRight = b.GetPath();
+            var visuals = new RoadVisual(a, b, button, road.IsOpen);
+            _roadVisuals.Add(visuals);
+            UpdateRoadPlacement(visuals);
         }
         RefreshInteraction(refreshNavigation: true);
     }
 
-    public override void _Process(double delta) => RefreshInteraction();
+    public override void _Process(double delta)
+    {
+        // NMapScreen sets native map point positions before the Control anchor
+        // layout has necessarily settled. Reposition icons and dashed roads when
+        // the endpoints move (including viewport resizes or map rebuilds).
+        foreach (var visuals in _roadVisuals) UpdateRoadPlacement(visuals);
+        RefreshInteraction();
+    }
+
+    private void UpdateRoadPlacement(RoadVisual visuals)
+    {
+        if (!GodotObject.IsInstanceValid(visuals.A) || !GodotObject.IsInstanceValid(visuals.B) ||
+            visuals.A.IsQueuedForDeletion() || visuals.B.IsQueuedForDeletion()) return;
+        Vector2 start = ToLocal(visuals.A.GetGlobalTransform() * (visuals.A.Size / 2));
+        Vector2 end = ToLocal(visuals.B.GetGlobalTransform() * (visuals.B.Size / 2));
+        if (start.IsEqualApprox(visuals.LastStart) && end.IsEqualApprox(visuals.LastEnd)) return;
+        float length = start.DistanceTo(end);
+        if (length < 1f) return;
+        visuals.LastStart = start; visuals.LastEnd = end;
+        Vector2 mid = (start + end) / 2;
+        var hitSize = new Vector2(Math.Max(58f, length - 100f), 58f);
+        visuals.Button.Position = mid - hitSize / 2;
+        visuals.Button.Size = hitSize;
+        visuals.Button.CenterIcon();
+        visuals.Button.QueueRedraw();
+
+        if (visuals.IsOpen) return;
+        Vector2 direction = (end - start) / length;
+        int count = (int)MathF.Ceiling(Math.Max(0, length - 76f) / 22f);
+        for (int i = visuals.Dots.Count; i < count; i++)
+        {
+            var dot = new TextureRect
+            {
+                Texture = _roadDot,
+                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+                Size = Vector2.One * 14, PivotOffset = Vector2.One * 7,
+                Modulate = new Color(_run.Act.MapUntraveledColor, .7f),
+                MouseFilter = Control.MouseFilterEnum.Ignore,
+            };
+            AddChild(dot);
+            visuals.Dots.Add(dot);
+        }
+        for (int i = 0; i < visuals.Dots.Count; i++)
+        {
+            float distance = 38f + i * 22f;
+            var dot = visuals.Dots[i];
+            dot.Visible = distance < length - 38f && MathF.Abs(distance - length / 2f) >= 29f;
+            if (!dot.Visible) continue;
+            dot.Position = start + direction * distance - Vector2.One * 7;
+            dot.Rotation = direction.Angle() + Mathf.Pi / 2;
+        }
+    }
 
     private bool CanInteract(CrossroadRecord road) =>
         _screen.IsOpen && _screen.IsTravelEnabled && !_screen.IsTraveling &&

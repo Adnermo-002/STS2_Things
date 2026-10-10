@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-10",
+  "generator": "built-in image_gen",
+  "model": "not exposed",
+  "selected_version": 3,
+  "selected": {
+    "path": "source_assets/events/biting_chest_20261010/portrait-selected.png",
+    "bytes": 1324217,
+    "sha256": "2c13722980e22daf2e9d0038c149149ce47e46e55b060a93fecb5d02a2c8c2e2"
+  },
+  "variants": [
+    {
+      "path": "source_assets/events/biting_chest_20261010/portrait-v1.png",
+      "bytes": 1720414,
+      "sha256": "71f90dd729722cc09b4671aaa9c5f42926e66ed4c6beeecd30be975bf6841265"
+    },
+    {
+      "path": "source_assets/events/biting_chest_20261010/portrait-v2-rejected-style.png",
+      "bytes": 1458726,
+      "sha256": "b8e007bc5b11a1281bffc3d2d8c48ecc625f29f7ef7dd77c098670fcd40fc842"
+    },
+    {
+      "path": "source_assets/events/biting_chest_20261010/portrait-v3.png",
+      "bytes": 1324217,
+      "sha256": "2c13722980e22daf2e9d0038c149149ce47e46e55b060a93fecb5d02a2c8c2e2"
+    }
+  ],
+  "prompts": [
+    {
+      "path": "source_assets/events/biting_chest_20261010/prompt-v2.txt",
+      "bytes": 1528,
+      "sha256": "e89daaebac0a7ff36c1e4388a9ef5795c658b5f575a0793f16dcf47256ebec6a"
+    },
+    {
+      "path": "source_assets/events/biting_chest_20261010/prompt-v3.txt",
+      "bytes": 2570,
+      "sha256": "2d920eefef5609cbe136730c31cc69d36b79d7fb2f746d7810e87e75ac6b0077"
+    },
+    {
+      "path": "source_assets/events/biting_chest_20261010/prompt.txt",
+      "bytes": 2040,
+      "sha256": "a8f00c2ad86d834af6fac660ca41f5d7c654e2c6979ea8870cf821c420976ee5"
+    }
+  ],
+  "native_references_reviewed": [
+    {
+      "path": "STS2-V111/images/events/doll_room.png",
+      "sha256": "0ebfd38b0baa49c2eb02ddcd04fd2e656e46c53534900fa904c6b8d19e5919f2"
+    },
+    {
+      "path": "STS2-V111/images/events/abyssal_baths.png",
+      "sha256": "5fb15768d818c5362b02ecb61c231e22cfae4c38d84aa042a96b96d7049a59c2"
+    },
+    {
+      "path": "STS2-V111/images/events/sunken_treasury.png",
+      "sha256": "7e4562ab83cda5b172fb2b0e574aee7e42d048bcd2bd938a3514ef4c7ae3e3f2"
+    },
+    {
+      "path": "STS2-V111/images/events/brain_leech.png",
+      "sha256": "ac981c4490a851d5d2faac8020ada794bdac6e397efce42af62c118bcd53a4ca"
+    },
+    {
+      "path": "STS2-V111/images/events/tea_master.png",
+      "sha256": "d0255e0c8f953127cbe93073118924203c3449f80157186cf7c9d3b4bc45ee28"
+    },
+    {
+      "path": "STS2-V111/images/events/potion_courier.png",
+      "sha256": "17c33306b07cf8d8db4e1d28f29b48cbd59d9d3024b9016642e31b9357b86b09"
+    },
+    {
+      "path": "STS2-V111/images/events/ranwid_the_elder.png",
+      "sha256": "4656f911d6fb54ff459ecb5259e2530b7894cff6988efc8e7e751292d9a34566"
+    },
+    {
+      "path": "STS2-V111/images/events/symbiote.png",
+      "sha256": "7e2bf21e6978631e7406b00c5f0eeae5bfb8aedb40572564e49042ee76c7819d"
+    },
+    {
+      "path": "STS2-V111/images/events/luminous_choir.png",
+      "sha256": "79e9d375f9a6dd182eff21b18b6a35e544190c820ce413cbe2450be9a93c799f"
+    },
+    {
+      "path": "STS2-V111/images/events/hungry_for_mushrooms.png",
+      "sha256": "2e99b6ff2f5c6575a0409bf83b1b4529050398889b4ab921b5135295b5285946"
+    },
+    {
+      "path": "STS2-V111/images/events/war_historian_repy.png",
+      "sha256": "12ba98126033152e224a54796639759a8be29dce9bd547374189d6944becf2f0"
+    }
+  ],
+  "user_constraints": "No human figures; original event style is not reducible to large flat colour blocks; continuous peripheral scenery and dimming",
+  "preparation": "scripts/prepare-depths-risk-events.gd; original canvas, independent mask and master retained",
+  "runtime": {
+    "path": "images/events/biting_chest.png",
+    "bytes": 1543295,
+    "sha256": "af1e963e42bb66ee43b1ef6d8df3f59245f4e3043ed66557b079ac2e093f19db"
+  }
+}

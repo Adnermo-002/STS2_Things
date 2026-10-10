@@ -166,11 +166,12 @@ function Invoke-VersionBuild(
             throw "$TargetVersion Gravetide Slug probe failed with exit code $LASTEXITCODE"
         }
 
-        if ($TargetVersion -eq 'v111') {
+        if ($TargetVersion -in @('v107.1', 'v111')) {
             $merchantProbeScript = Join-Path $PSScriptRoot 'test-merchant-bargain.ps1'
             $merchantProbeArguments = @{
+                TargetVersion = $TargetVersion
                 DataDir = $DataDir
-                RuntimeDependencyDir = $DataDirV111
+                RuntimeDependencyDir = if(Test-Path (Join-Path $DataDir 'SmartFormat.dll')){$DataDir}else{$DataDirV111}
                 ImplementationDll = Join-Path (Split-Path $PSScriptRoot -Parent) "build\$TargetVersion\STS2_Things.dll"
             }
             if (-not [string]::IsNullOrWhiteSpace($GodotExe)) {
@@ -178,7 +179,7 @@ function Invoke-VersionBuild(
             }
             & $merchantProbeScript @merchantProbeArguments
             if ($LASTEXITCODE -ne 0) {
-                throw "V111 Merchant Bargain probe failed with exit code $LASTEXITCODE"
+                throw "$TargetVersion Merchant Bargain probe failed with exit code $LASTEXITCODE"
             }
         }
     }

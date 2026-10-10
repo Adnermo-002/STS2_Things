@@ -25,7 +25,7 @@ public partial class NBlindCardVeil : Node
     public static void RefreshOnTable(CardModel model)
     {
         if (NCard.FindOnTable(model) is { } node &&
-            (LanternBlindness.IsBlinded(model) || node.HasNode(ChildName)))
+            (LanternBlindness.IsVeiled(model) || node.HasNode(ChildName)))
             node.UpdateVisuals(node.DisplayingPile, CardPreviewMode.Normal);
     }
 
@@ -33,7 +33,7 @@ public partial class NBlindCardVeil : Node
     {
         if (!card.IsNodeReady()) return;
         var veil = card.GetNodeOrNull<NBlindCardVeil>(ChildName);
-        if (veil == null && LanternBlindness.IsBlinded(card.Model))
+        if (veil == null && LanternBlindness.IsVeiled(card.Model))
         {
             veil = new NBlindCardVeil { Name = ChildName, _card = card };
             card.AddChild(veil);
@@ -71,7 +71,7 @@ public partial class NBlindCardVeil : Node
 
     private void RefreshVisuals(bool nativeRefreshed)
     {
-        bool active = LanternBlindness.IsBlinded(_card.Model);
+        bool active = LanternBlindness.IsVeiled(_card.Model);
         bool changed = _active != active;
         _active = active;
         foreach (var rect in _portraits) rect.Visible = active;

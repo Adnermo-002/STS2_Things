@@ -25,6 +25,12 @@ public partial class NCrossroadButton : NButton
             MouseFilter = MouseFilterEnum.Ignore,
         };
         AddChild(_icon);
+        CenterIcon();
+    }
+
+    public void CenterIcon()
+    {
+        if (_icon != null) _icon.Position = (Size - _icon.Size) / 2;
     }
 
     public override void _Draw()

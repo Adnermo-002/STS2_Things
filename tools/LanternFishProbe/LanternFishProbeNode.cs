@@ -32,7 +32,8 @@ public partial class LanternFishProbeNode : Node
         {
             string root = Path.GetFullPath(Path.Combine(ProjectSettings.GlobalizePath("res://"), "../.."));
             TestMode.TurnOnInternal();
-            ProjectSettings.LoadResourcePack("D:/Steam/steamapps/common/Slay the Spire 2/SlayTheSpire2.pck");
+            ProjectSettings.LoadResourcePack(System.Environment.GetEnvironmentVariable("THINGS_PROBE_GAME_PCK")
+                ?? "D:/Steam/steamapps/common/Slay the Spire 2/SlayTheSpire2.pck");
             if (OS.GetCmdlineUserArgs().Contains("--visual"))
                 ProjectSettings.LoadResourcePack(Path.Combine(root, "build/lantern_fish/v111/STS2_Things.pck"));
             SaveManager.Instance.InitSettingsDataForTest();
@@ -50,7 +51,14 @@ public partial class LanternFishProbeNode : Node
                 GD.Print($"Lantern Fish visual probe: PASS ({_assertions} assertions)");
                 GetTree().Quit(0); return;
             }
+            if (OS.GetCmdlineUserArgs().Contains("--blind-prime-only"))
+            {
+                await VerifyDrawVisualPriming();
+                GD.Print($"Lantern Fish draw veil probe: PASS ({_assertions} assertions)");
+                GetTree().Quit(0); return;
+            }
             VerifyEncounter();
+            await VerifyDrawVisualPriming();
             await VerifyDraws();
             await VerifySpecialCosts();
             await VerifyPreventionAndStars();
@@ -125,6 +133,34 @@ public partial class LanternFishProbeNode : Node
     {
         var card = s.Room.CombatState.CreateCard<T>(player);
         pile.GetPile(player).AddInternal(card, silent: true); return card;
+    }
+
+    private static async Task VerifyDrawVisualPriming()
+    {
+        var s = Scenario(players: 2);
+        var player = s.Player;
+        foreach (var participant in s.Players) participant.PlayerCombatState!.DrawPile.Clear(silent: true);
+        var card = Put<StrikeIronclad>(s, player, PileType.Draw);
+        var teammate = Put<StrikeIronclad>(s, s.Players[1], PileType.Draw);
+        var power = await Blind(player, 2);
+        int rngBefore = RngCounter(s.Run.Rng.CombatEnergyCosts);
+
+        // This is the exact gap in native Draw: Add finishes its animation before
+        // AfterCardDrawn is dispatched. The artwork must already be veiled here.
+        await CardPileCmd.Add(teammate, PileType.Hand, skipVisuals: true);
+        Assert(!LanternBlindness.IsVeiled(teammate), "Other player's card is never primed.");
+        await CardPileCmd.Add(card, PileType.Hand, skipVisuals: true);
+        Assert(LanternBlindness.IsVeiled(card) && !LanternBlindness.IsBlinded(card),
+            "Draw pile to hand obscured before AfterCardDrawn.");
+        Assert(power.Amount == 2 && RngCounter(s.Run.Rng.CombatEnergyCosts) == rngBefore,
+            "Pre-cover does not consume charges or combat cost RNG.");
+        await power.AfterCardDrawn(Choice, card, false);
+        Assert(LanternBlindness.IsVeiled(card) && LanternBlindness.IsBlinded(card) && power.Amount == 1,
+            "Native draw hook replaces the provisional veil with the actual mark.");
+        player.PlayerCombatState!.EndOfTurnCleanup();
+        Assert(!LanternBlindness.IsVeiled(card), "Turn cleanup clears real and provisional veils.");
+        DeactivateSyntheticCombat();
+        GD.Print("PASS no-flash draw priming and visual/gameplay separation.");
     }
 
     private static async Task VerifyDraws()

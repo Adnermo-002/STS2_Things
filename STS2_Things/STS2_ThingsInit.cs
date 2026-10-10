@@ -73,6 +73,7 @@ public static class STS2_ThingsInit
             ModHelper.AddModelToPool<EventRelicPool, BottledEcho>();
             ModHelper.AddModelToPool<EventRelicPool, MycelialDeposit>();
             ModHelper.AddModelToPool<EventRelicPool, BorrowedEmber>();
+            ModHelper.AddModelToPool<EventRelicPool, AnestheticChart>();
             // Register deterministically on every peer, even when its local
             // preference disables this encounter. The policy already checks the
             // actual room, including encounters restored from a saved run.
@@ -133,7 +134,9 @@ internal static class ThingsEventCatalog
             (ThingsModConfig.EventUnlitFireEnabled, ModelDb.Event<UnlitFire>()),
             (ThingsModConfig.EventRelicWorkshopEnabled, ModelDb.Event<RelicWorkshop>()),
             (ThingsModConfig.EventPotionTastingEnabled, ModelDb.Event<PotionTasting>()),
-            (ThingsModConfig.EventNarrowGateEnabled, ModelDb.Event<NarrowGate>()));
+            (ThingsModConfig.EventNarrowGateEnabled, ModelDb.Event<NarrowGate>()),
+            (ThingsModConfig.EventBitingChestEnabled, ModelDb.Event<BitingChest>()),
+            (ThingsModConfig.EventCrowdedWardEnabled, ModelDb.Event<CrowdedWard>()));
     }
 
     private static IEnumerable<EventModel> Add(

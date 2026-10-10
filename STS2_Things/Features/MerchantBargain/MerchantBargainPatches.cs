@@ -1,4 +1,3 @@
-﻿#if STS2_V111
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,4 +75,3 @@ internal static class MerchantBargainAssetPreloadPatch
             .Distinct(StringComparer.Ordinal);
     }
 }
-#endif

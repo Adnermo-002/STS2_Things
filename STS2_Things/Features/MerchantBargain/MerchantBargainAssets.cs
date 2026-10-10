@@ -1,4 +1,3 @@
-﻿#if STS2_V111
 using Godot;
 
 namespace STS2_Things.Features.MerchantBargain;
@@ -77,4 +76,3 @@ public static class MerchantBargainAssets
             new Vector2(centerX, viewportSize.Y + hiddenMargin));
     }
 }
-#endif

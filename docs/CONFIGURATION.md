@@ -100,7 +100,7 @@ BaseLib 与 RitsuLib **都不是前置依赖**；两者都未安装时模组以�
 
 | 键 | 默认 | 说明 |
 |---|---|---|
-| `FeatureMerchantBargainEnabled` | true | 商人处的猜拳讨价还价小游戏（仅当前正式版编译） |
+| `FeatureMerchantBargainEnabled` | true | 商人处的猜拳讨价还价小游戏（v107.1／v111；多人由房主决定，各玩家独立交易） |
 
 ### 涅奥起始遗物
 

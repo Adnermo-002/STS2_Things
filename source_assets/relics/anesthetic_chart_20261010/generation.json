@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-10",
+  "generator": "built-in image_gen",
+  "model": "not exposed",
+  "selected": {
+    "path": "source_assets/relics/anesthetic_chart_20261010/icon-generated.png",
+    "bytes": 877007,
+    "sha256": "4587876e5d40cf9a2d12158cbd1b4d8ed0b59bf1fb49570994ac18026166c2e6"
+  },
+  "prompt": {
+    "path": "source_assets/relics/anesthetic_chart_20261010/prompt.txt",
+    "bytes": 987,
+    "sha256": "72809e851641f399a6681aeb147b5ca7ae3d511a1c2dfa709613c99fd5fa3358"
+  },
+  "preparation": "scripts/export-depths-event-relic-icons.gd, optional key anesthetic_chart",
+  "exports": [
+    {
+      "path": "images/relics/anesthetic_chart.png",
+      "bytes": 78175,
+      "sha256": "d4b31e20965cda5f1180e91c2d4a348deebb296f4866334ddfbb4194aceff0c3"
+    },
+    {
+      "path": "images/relics/anesthetic_chart_packed.png",
+      "bytes": 12718,
+      "sha256": "d5ceba0bb2be46d2e3470a9b16a03141111ae29ba683b4159848d81dc9e48b99"
+    }
+  ]
+}

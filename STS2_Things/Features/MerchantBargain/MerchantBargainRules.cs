@@ -1,4 +1,3 @@
-﻿#if STS2_V111
 using MegaCrit.Sts2.Core.Entities.TreasureRelicPicking;
 
 namespace STS2_Things.Features.MerchantBargain;
@@ -34,4 +33,3 @@ public static class MerchantBargainRules
             : MerchantBargainRoundResult.MerchantWon;
     }
 }
-#endif

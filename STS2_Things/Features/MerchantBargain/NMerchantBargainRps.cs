@@ -1,4 +1,3 @@
-﻿#if STS2_V111
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -245,4 +244,3 @@ internal partial class NMerchantBargainRps : Control
             ?? throw new InvalidOperationException($"Merchant bargain texture was not found: {path}");
     }
 }
-#endif

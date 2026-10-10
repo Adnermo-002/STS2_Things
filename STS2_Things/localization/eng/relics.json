@@ -31,5 +31,8 @@
   "BORROWED_EMBER.description": "{Terms}",
   "BORROWED_EMBER.debtTerms": "You cannot use Rest Site actions at your next Rest Site.",
   "BORROWED_EMBER.kindledTerms": "Heal an extra [green]{Heal}[/green] HP on arrival at your next Rest Site.",
-  "BORROWED_EMBER.flavor": "Some fires have already burned for you."
+  "BORROWED_EMBER.flavor": "Some fires have already burned for you.",
+  "ANESTHETIC_CHART.title": "Anesthetic Chart",
+  "ANESTHETIC_CHART.description": "Draw [red]{Cards}[/red] fewer cards on the first turn of your next [blue]{Combats}[/blue] combats.",
+  "ANESTHETIC_CHART.flavor": "“Give your fingers a moment.”"
 }

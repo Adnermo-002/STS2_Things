@@ -31,7 +31,7 @@
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\MonoMod.Backports.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\MonoMod.ILHelpers.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Sentry.dll" />
-    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Sentry.Godot.dll" />
+    <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\Sentry.Godot.dll" Condition="Exists('$(RuntimeDependencyDir)\Sentry.Godot.dll')" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SharpGen.Runtime.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SharpGen.Runtime.COM.dll" />
     <ProbeRuntimeDependency Include="$(RuntimeDependencyDir)\SmartFormat.dll" />

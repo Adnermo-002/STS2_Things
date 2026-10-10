@@ -657,7 +657,7 @@ def main() -> int:
     expected_injection_sites = {
         "Compatibility/Sts2VersionCompatibility.cs": {
             "ThingsCurseRemover", "ShadowClaimTicket", "BottledEcho",
-            "MycelialDeposit", "BorrowedEmber",
+            "MycelialDeposit", "BorrowedEmber", "AnestheticChart",
         },
         "Enchantments/ThingsSplit.cs": {"ThingsSplit"},
     }
@@ -774,7 +774,7 @@ def main() -> int:
             "ModelDb.Enchantment<ThingsSplit>()",
             "CardSelectCmd.FromDeckForEnchantment(",
             "card => card is not null && IsSplitCandidate(split, card)",
-            "card.Type is CardType.Attack or CardType.Skill",
+            "card.Type == CardType.Attack",
             "EventOwner.RunState.CloneCard(selected)",
             "CardCmd.Enchant<ThingsSplit>(copy, 1m);",
             "await CardPileCmd.RemoveFromDeck(selected);",
@@ -914,8 +914,8 @@ def main() -> int:
             "CUTTING_IT_CLOSE.pages.IMPROVISE.selectionScreenPrompt", ""
         )
         required_card_type_terms = {
-            "eng": ("Attack", "Skill"),
-            "zhs": ("攻击牌", "技能牌"),
+            "eng": ("Attack",),
+            "zhs": ("攻击牌",),
         }[lang]
         if any(
             term not in improvise_description or term not in selection_prompt
@@ -923,8 +923,11 @@ def main() -> int:
         ):
             fail(
                 errors,
-                f"{lang} improvise option and prompt must limit selection to Attack or Skill cards",
+                f"{lang} improvise option and prompt must limit selection to Attack cards",
             )
+        excluded_term = "Skill" if lang == "eng" else "技能牌"
+        if excluded_term in improvise_description or excluded_term in selection_prompt:
+            fail(errors, f"{lang} split event still advertises Skill cards")
 
         for key in ("THINGS_SPLIT.title", "THINGS_SPLIT.description"):
             if not enchantments_table.get(key):

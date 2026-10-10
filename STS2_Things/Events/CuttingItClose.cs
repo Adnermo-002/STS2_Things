@@ -42,12 +42,14 @@ public sealed class CuttingItClose : EventModel
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {
+        var split = ModelDb.Enchantment<ThingsSplit>();
+        bool canSplit = EventOwner.Deck.Cards.Any(card => IsSplitCandidate(split, card));
         return
         [
             new EventOption(
                 this,
-                Improvise,
-                InitialOptionKey("IMPROVISE"),
+                canSplit ? Improvise : null,
+                InitialOptionKey(canSplit ? "IMPROVISE" : "IMPROVISE_LOCKED"),
                 HoverTipFactory.FromEnchantment<ThingsSplit>()),
             new EventOption(this, Throw, InitialOptionKey("THROW"))
         ];
@@ -108,7 +110,7 @@ public sealed class CuttingItClose : EventModel
 
     private static bool IsSplitCandidate(ThingsSplit split, CardModel card)
     {
-        return card.Type is CardType.Attack or CardType.Skill &&
+        return card.Type == CardType.Attack &&
                card.IsRemovable &&
                split.CanEnchant(card);
     }

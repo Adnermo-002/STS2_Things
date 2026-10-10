@@ -87,6 +87,8 @@ public static class ThingsModConfig
     public const string EventRelicWorkshopEnabled = "EventRelicWorkshopEnabled";
     public const string EventPotionTastingEnabled = "EventPotionTastingEnabled";
     public const string EventNarrowGateEnabled = "EventNarrowGateEnabled";
+    public const string EventBitingChestEnabled = "EventBitingChestEnabled";
+    public const string EventCrowdedWardEnabled = "EventCrowdedWardEnabled";
 
     // ---- 商人猜拳 ----
     public const string FeatureMerchantBargainEnabled = "FeatureMerchantBargainEnabled";
@@ -139,6 +141,8 @@ public static class ThingsModConfig
         new(EventRelicWorkshopEnabled, Category.Event, Default: true),
         new(EventPotionTastingEnabled, Category.Event, Default: true),
         new(EventNarrowGateEnabled, Category.Event, Default: true),
+        new(EventBitingChestEnabled, Category.Event, Default: true),
+        new(EventCrowdedWardEnabled, Category.Event, Default: true),
     ];
 
     private static readonly Dictionary<string, object> Values =

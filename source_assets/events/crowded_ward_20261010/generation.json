@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-10",
+  "generator": "built-in image_gen",
+  "model": "not exposed",
+  "selected_version": 6,
+  "selected": {
+    "path": "source_assets/events/crowded_ward_20261010/portrait-selected.png",
+    "bytes": 1724602,
+    "sha256": "840f580c6fc158fcb9b33248ac2799ed7b7e4bc719420cb0c047600d8e8b4cb3"
+  },
+  "variants": [
+    {
+      "path": "source_assets/events/crowded_ward_20261010/portrait-v1-rejected-human.png",
+      "bytes": 1916422,
+      "sha256": "a08816348270bf46cfd857bec5dbce26985d6355bc5c87add562e7a81f32c1ac"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/portrait-v2.png",
+      "bytes": 1716700,
+      "sha256": "92286403da8bd93b5d50609c4ffad816ade91fb6bab656fcb59ed9ec8383e1d0"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/portrait-v3-rejected-highlights.png",
+      "bytes": 1565208,
+      "sha256": "49407145362954df7500f914e0146e0a7f57ccc53fbbce46a6b211ef44cf5858"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/portrait-v4-rejected-blocks.png",
+      "bytes": 1556545,
+      "sha256": "2e91bda6c0e41090a209c687bb74f19a44a918a00a9ca5b1a4a4ab087613b3ec"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/portrait-v4.png",
+      "bytes": 1556545,
+      "sha256": "2e91bda6c0e41090a209c687bb74f19a44a918a00a9ca5b1a4a4ab087613b3ec"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/portrait-v5.png",
+      "bytes": 1284111,
+      "sha256": "d969e0434e5cc525f0e54d2820649cd9298c598eadcb794f36e94d8e7c98c97f"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/portrait-v6.png",
+      "bytes": 1724602,
+      "sha256": "840f580c6fc158fcb9b33248ac2799ed7b7e4bc719420cb0c047600d8e8b4cb3"
+    }
+  ],
+  "prompts": [
+    {
+      "path": "source_assets/events/crowded_ward_20261010/prompt-v2.txt",
+      "bytes": 2258,
+      "sha256": "032187aca88141293dba1b8348b15f35a1a7c054b52943b3cd49f0bb7a061db6"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/prompt-v3.txt",
+      "bytes": 2758,
+      "sha256": "2dbba7968db47fa7b05542233cec5e775c579830c916d11142cd2595b4567ed7"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/prompt-v4.txt",
+      "bytes": 2468,
+      "sha256": "cbddecfdc6154644b10c35708ad1db41a2b28e1b336a6fdea25fea1cf286dda3"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/prompt-v5.txt",
+      "bytes": 3333,
+      "sha256": "375957b72fb0272b1f452615669b5805d160c1dbda5f3f0742e8afe706b65b95"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/prompt-v6.txt",
+      "bytes": 1390,
+      "sha256": "4ed74a6ca216b001634410348e1f23aef62df529a35957734e35bbcd7b2c240b"
+    },
+    {
+      "path": "source_assets/events/crowded_ward_20261010/prompt.txt",
+      "bytes": 2077,
+      "sha256": "04dd71ffe82e2a8cbcca6aaa08a12a51651dc69c257d1eb25b7817a2be9e320e"
+    }
+  ],
+  "native_references_reviewed": [
+    {
+      "path": "STS2-V111/images/events/doll_room.png",
+      "sha256": "0ebfd38b0baa49c2eb02ddcd04fd2e656e46c53534900fa904c6b8d19e5919f2"
+    },
+    {
+      "path": "STS2-V111/images/events/abyssal_baths.png",
+      "sha256": "5fb15768d818c5362b02ecb61c231e22cfae4c38d84aa042a96b96d7049a59c2"
+    },
+    {
+      "path": "STS2-V111/images/events/sunken_treasury.png",
+      "sha256": "7e4562ab83cda5b172fb2b0e574aee7e42d048bcd2bd938a3514ef4c7ae3e3f2"
+    },
+    {
+      "path": "STS2-V111/images/events/brain_leech.png",
+      "sha256": "ac981c4490a851d5d2faac8020ada794bdac6e397efce42af62c118bcd53a4ca"
+    },
+    {
+      "path": "STS2-V111/images/events/tea_master.png",
+      "sha256": "d0255e0c8f953127cbe93073118924203c3449f80157186cf7c9d3b4bc45ee28"
+    },
+    {
+      "path": "STS2-V111/images/events/potion_courier.png",
+      "sha256": "17c33306b07cf8d8db4e1d28f29b48cbd59d9d3024b9016642e31b9357b86b09"
+    },
+    {
+      "path": "STS2-V111/images/events/ranwid_the_elder.png",
+      "sha256": "4656f911d6fb54ff459ecb5259e2530b7894cff6988efc8e7e751292d9a34566"
+    },
+    {
+      "path": "STS2-V111/images/events/symbiote.png",
+      "sha256": "7e2bf21e6978631e7406b00c5f0eeae5bfb8aedb40572564e49042ee76c7819d"
+    },
+    {
+      "path": "STS2-V111/images/events/luminous_choir.png",
+      "sha256": "79e9d375f9a6dd182eff21b18b6a35e544190c820ce413cbe2450be9a93c799f"
+    },
+    {
+      "path": "STS2-V111/images/events/hungry_for_mushrooms.png",
+      "sha256": "2e99b6ff2f5c6575a0409bf83b1b4529050398889b4ab921b5135295b5285946"
+    },
+    {
+      "path": "STS2-V111/images/events/war_historian_repy.png",
+      "sha256": "12ba98126033152e224a54796639759a8be29dce9bd547374189d6944becf2f0"
+    }
+  ],
+  "user_constraints": "No human figures; original event style is not reducible to large flat colour blocks; continuous peripheral scenery and dimming",
+  "preparation": "scripts/prepare-depths-risk-events.gd; original canvas, independent mask and master retained",
+  "runtime": {
+    "path": "images/events/crowded_ward.png",
+    "bytes": 2203789,
+    "sha256": "ffaf05cc25fadfb83ad57b7e404b2d331a9a75d26c364556e5c0de46e91874d9"
+  }
+}

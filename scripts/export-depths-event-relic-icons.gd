@@ -7,11 +7,12 @@ const LONGEST_SIDE := 236
 
 func _initialize() -> void:
 	var args := OS.get_cmdline_user_args()
-	if args.size() != 2:
-		_fail("Expected generated source directory and project root")
+	if args.size() < 2 or args.size() > 3:
+		_fail("Expected generated source directory, project root, and optional comma-separated keys")
 		return
 	var report := []
-	for key: String in KEYS:
+	var selected_keys = args[2].split(",") if args.size() == 3 else KEYS
+	for key: String in selected_keys:
 		var source := args[0].path_join(key + "-v1.png")
 		var raw := Image.load_from_file(source)
 		if raw == null:

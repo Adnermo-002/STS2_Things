@@ -736,8 +736,8 @@ public partial class ThingsSplitProbeNode : Node
 
         Assert(IsCandidate(MutableCard<StrikeIronclad>()),
             "Cutting It Close rejected an Attack card from Split selection.");
-        Assert(IsCandidate(MutableCard<DefendIronclad>()),
-            "Cutting It Close rejected a Skill card from Split selection.");
+        Assert(!IsCandidate(MutableCard<DefendIronclad>()),
+            "Cutting It Close accepted a Skill card for Attack-only Split selection.");
         Assert(!IsCandidate(MutableCard<Barricade>()),
             "Cutting It Close accepted a Power card for Split selection.");
         Assert(!IsCandidate(MutableCard<Burn>()),
@@ -776,6 +776,20 @@ public partial class ThingsSplitProbeNode : Node
             silent: true);
         Assert(!eventModel.IsAllowed(powerOnlyRun),
             "Cutting It Close accepted a deck whose only enchantable card was a Power.");
+
+        Player skillOnly = CreateIroncladPlayer(107UL);
+        RunState skillOnlyRun = RunState.CreateForTest([skillOnly], seed: "THINGS_SPLIT_EVENT_SKILL_ONLY");
+        skillOnly.Deck.Clear(silent: true);
+        skillOnly.Deck.AddInternal(skillOnlyRun.CreateCard<DefendIronclad>(skillOnly), silent: true);
+        Assert(!eventModel.IsAllowed(skillOnlyRun),
+            "Cutting It Close accepted a Skill-only deck for Attack-only Split selection.");
+        Player attackPartner = CreateIroncladPlayer(108UL);
+        Player skillPartner = CreateIroncladPlayer(109UL);
+        skillPartner.Deck.Clear(silent: true);
+        RunState mixedRun = RunState.CreateForTest([attackPartner, skillPartner], seed: "THINGS_SPLIT_EVENT_SKILL_PARTNER");
+        skillPartner.Deck.AddInternal(mixedRun.CreateCard<DefendIronclad>(skillPartner), silent: true);
+        Assert(!eventModel.IsAllowed(mixedRun),
+            "Cutting It Close accepted multiplayer with a Skill-only partner.");
     }
 
     private static async Task VerifyImproviseSelectionFilter()
@@ -786,11 +800,12 @@ public partial class ThingsSplitProbeNode : Node
         player.Deck.Clear(silent: true);
 
         CardModel attack = runState.CreateCard<StrikeIronclad>(player);
+        CardModel secondAttack = runState.CreateCard<Bash>(player);
         CardModel skill = runState.CreateCard<DefendIronclad>(player);
         CardModel power = runState.CreateCard<Barricade>(player);
         CardModel status = runState.CreateCard<Burn>(player);
         CardModel curse = runState.CreateCard<AscendersBane>(player);
-        foreach (CardModel card in new[] { attack, skill, power, status, curse })
+        foreach (CardModel card in new[] { attack, secondAttack, skill, power, status, curse })
         {
             player.Deck.AddInternal(card, silent: true);
         }
@@ -802,8 +817,8 @@ public partial class ThingsSplitProbeNode : Node
             await eventModel.CurrentOptions[0].Chosen();
         }
 
-        Assert(selector.Options.SequenceEqual([attack, skill]),
-            "Improvise selection did not expose exactly the Attack and Skill cards.");
+        Assert(selector.Options.Count == 2 && selector.Options.Contains(attack) && selector.Options.Contains(secondAttack),
+            "Improvise selection did not expose exactly the two Attack cards.");
         Assert(eventModel.IsFinished,
             "The selection-filter probe left Cutting It Close unfinished.");
     }

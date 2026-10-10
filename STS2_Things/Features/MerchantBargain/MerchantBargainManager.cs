@@ -1,4 +1,3 @@
-#if STS2_V111
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -206,7 +205,12 @@ internal static class MerchantBargainManager
             player.PlayerRng.Seed ^
             ((floor + 1UL) * 0x9E3779B97F4A7C15UL) ^
             ((playerSlot + 1UL) * 0xBF58476D1CE4E5B9UL));
+#if STS2_V107_1
+        // The older RNG uses a 32-bit seed. Fold both halves so floor and player
+        // slot still select independent local shop streams, without touching Shops.
+        return new Rng(unchecked((uint)(seed ^ (seed >> 32))));
+#else
         return new Rng(seed, "sts2_things_merchant_bargain");
+#endif
     }
 }
-#endif

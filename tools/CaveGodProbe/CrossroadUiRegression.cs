@@ -108,7 +108,7 @@ public partial class CaveGodProbeNode
                 Vector2 expected=(nodes[candidate.A].GetGlobalRect().GetCenter()+nodes[candidate.B].GetGlobalRect().GetCenter())/2;
                 Assert(Button(candidate).GetGlobalRect().GetCenter().DistanceTo(expected)<0.5f,"Lock misses node centers after map scaling/scrolling");
             }
-            foreach(var dot in screen.GetNode<NCrossroadLayer>("TheMap/Points/ThingsCrossroads").GetChildren().OfType<TextureRect>())
+            foreach(var dot in screen.GetNode<NCrossroadLayer>("TheMap/Points/ThingsCrossroads").GetChildren().OfType<TextureRect>().Where(dot=>dot.Visible))
             {
                 Vector2 center=dot.GetGlobalTransform()*(dot.Size/2);
                 float distance=segments.Min(s=>Geometry2D.GetClosestPointToSegment(center,s.Start,s.End).DistanceTo(center));
@@ -130,6 +130,18 @@ public partial class CaveGodProbeNode
                 Assert(attached.Values.All(point=>!point.IsQueuedForDeletion()),"Crossroads retained a map point awaiting deletion");
             }
             await Capture("map-redrawn-same-frame");
+            AssertAligned();
+            // The real native map points can shift when their center anchors or
+            // viewport layout settle after SetMap. Locks and dotted routes must
+            // follow the live room positions, not their initial screen coords.
+            var dynamicPoints = screen.GetNode<Control>("TheMap/Points")
+                .GetChildren().OfType<NMapPoint>().ToArray();
+            foreach (var point in dynamicPoints) point.Position += new Vector2(93, -67);
+            for (int frame = 0; frame < 2; frame++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            AssertAligned();
+            await Capture("map-layout-shifted");
+            foreach (var point in dynamicPoints) point.Position -= new Vector2(93, -67);
+            for (int frame = 0; frame < 2; frame++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             AssertAligned();
             var failures=new List<string>();
             var nodes=screen.GetNode<Control>("TheMap/Points").GetChildren().OfType<NMapPoint>().ToDictionary(p=>p.Point.coord);

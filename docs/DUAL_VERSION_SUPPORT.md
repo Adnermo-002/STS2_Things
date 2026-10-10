@@ -52,6 +52,8 @@ v0.111.0 新增的连接握手类型 `HandshakeManager` 识别游戏版本，只
 
 ## 引导注册
 
+商人猜拳已接入两版实现。旧 107.1 整段排除已移除，仅 RNG 构造适配旧版 32 位种子接口；原生购买、个人库存和奖励同步沿用原版。[兼容与多人检查](merchant-multiplayer-20261010.md)。
+
 - V110：在 `AssemblyInfo.Init()` 前调用官方
   `ModManager.AssociateAssemblyWithMod("STS2_Things", implementationAssembly)`。
 - V107.1：旧版一个 Mod 只记录一个 `assembly`。引导层在 `ModelDb.Init()` 使用的

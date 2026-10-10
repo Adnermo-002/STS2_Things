@@ -6,12 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DefineConstants Condition="'$(Sts2TargetVersion)' == 'v107.1'">$(DefineConstants);STS2_V107_1</DefineConstants>
     <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64</Sts2DataDir>
     <RuntimeDependencyDir Condition="'$(RuntimeDependencyDir)' == ''">$(Sts2DataDir)</RuntimeDependencyDir>
     <ImplementationDll Condition="'$(ImplementationDll)' == ''">$(MSBuildProjectDirectory)\..\..\.godot\mono\temp\bin\Debug\STS2_Things.dll</ImplementationDll>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="../ThingsConfigProbe/ConfigNetworkFakes.cs" Link="ConfigNetworkFakes.cs" />
     <Compile Remove="obj\**\*.cs" />
     <Compile Remove="bin\**\*.cs" />
     <Reference Include="sts2">
@@ -48,7 +50,7 @@
   </Target>
 
   <Target Name="CopyProbeRuntimeDependencies" AfterTargets="Build">
-    <Copy SourceFiles="@(ProbeRuntimeDependency)"
+    <Copy SourceFiles="@(ProbeRuntimeDependency)" Condition="Exists('%(ProbeRuntimeDependency.Identity)')"
           DestinationFolder="$(TargetDir)"
           SkipUnchangedFiles="true" />
   </Target>

@@ -47,6 +47,7 @@ internal static class Sts2VersionCompatibility
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(BottledEcho));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(MycelialDeposit));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(BorrowedEmber));
+        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(AnestheticChart));
         // The route ledger introduces a saved string property in V107. Keep the
         // native property-ID bit width consistent after extending that cache.
         var names = (System.Collections.ICollection)typeof(SavedPropertiesTypeCache)

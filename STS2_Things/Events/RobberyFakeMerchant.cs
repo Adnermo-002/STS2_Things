@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Encounters;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Rewards;
+using STS2_Things.Encounters;
 
 namespace STS2_Things.Events;
 
@@ -50,7 +51,7 @@ public sealed class RobberyFakeMerchant : EventModel
 
     public override EventLayoutType LayoutType => EventLayoutType.Combat;
 
-    public override EncounterModel CanonicalEncounter => ModelDb.Encounter<FakeMerchantEventEncounter>();
+    public override EncounterModel CanonicalEncounter => ModelDb.Encounter<RobberyFakeMerchantEncounter>();
 
     public override bool IsShared => true;
 
@@ -100,7 +101,7 @@ public sealed class RobberyFakeMerchant : EventModel
 
     private async Task Fight()
     {
-        // 假商人血量改为原版一半
+        // 两名原版假商人分别半血，共享场景只调整一次。
 #if STS2_V107_1
         var combatState = _combatStateForCombatLayout
             ?? throw new InvalidOperationException("Robbery Fake Merchant combat layout state is not initialized.");
@@ -110,12 +111,7 @@ public sealed class RobberyFakeMerchant : EventModel
         var combatState = combatSynchronizer.CombatStateForLayout
             ?? throw new InvalidOperationException("Robbery Fake Merchant combat layout state is not initialized.");
 #endif
-        var merchant = combatState.Enemies.FirstOrDefault();
-        if (merchant != null)
-        {
-            int halfHp = merchant.MaxHp / 2;
-            await CreatureCmd.SetMaxAndCurrentHp(merchant, halfHp);
-        }
+        await ((RobberyFakeMerchantEncounter)combatState.Encounter!).PrepareForFight(combatState);
 
         var extraRewards = TrueRelicPool
             .ToList()
@@ -123,6 +119,6 @@ public sealed class RobberyFakeMerchant : EventModel
             .Take((int)DynamicVars["TrueRelicsCount"].BaseValue)
             .Select(relic => (Reward)new RelicReward(relic.ToMutable(), EventOwner))
             .ToList();
-        EnterCombatWithoutExitingEvent<FakeMerchantEventEncounter>(extraRewards, false);
+        EnterCombatWithoutExitingEvent<RobberyFakeMerchantEncounter>(extraRewards, false);
     }
 }

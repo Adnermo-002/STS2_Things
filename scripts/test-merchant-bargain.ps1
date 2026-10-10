@@ -1,5 +1,6 @@
 ﻿[CmdletBinding()]
 param(
+    [ValidateSet('v107.1','v111')][string]$TargetVersion='v111',
     [Parameter(Mandatory = $true)]
     [string]$DataDir,
 
@@ -9,7 +10,8 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$RuntimeDependencyDir,
 
-    [string]$GodotExe = $env:GODOT_4_5_1_MONO
+    [string]$GodotExe = $env:GODOT_4_5_1_MONO,
+    [string]$OutputDir = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -25,7 +27,6 @@ foreach ($requiredPath in @(
     $ProbeProject,
     $ImplementationDll,
     (Join-Path $DataDir 'sts2.dll'),
-    (Join-Path $RuntimeDependencyDir 'Sentry.Godot.dll'),
     $GodotExe
 )) {
     if (-not (Test-Path -LiteralPath $requiredPath -PathType Leaf)) {
@@ -45,21 +46,23 @@ if (Test-Path -LiteralPath (Join-Path $portableDotnet 'dotnet.exe') -PathType Le
     $env:DOTNET_ROLL_FORWARD = 'Major'
 }
 
-Write-Host 'Building Merchant Bargain behavior probe for v111...'
+Write-Host "Building Merchant Bargain behavior probe for $TargetVersion..."
 & dotnet build $ProbeProject -t:Rebuild -c Debug --nologo `
     "/p:Sts2DataDir=$DataDir" `
+    "/p:Sts2TargetVersion=$TargetVersion" `
     "/p:RuntimeDependencyDir=$RuntimeDependencyDir" `
     "/p:ImplementationDll=$ImplementationDll"
 if ($LASTEXITCODE -ne 0) {
     throw "Merchant Bargain probe build failed with exit code $LASTEXITCODE"
 }
 
-$logPath = Join-Path $ProbeRoot 'probe-v111.log'
+$logPath = Join-Path $ProbeRoot "probe-$TargetVersion.log"
+if($OutputDir){New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null;$logPath=Join-Path ([IO.Path]::GetFullPath($OutputDir)) "merchant-$TargetVersion.log"}
 if (Test-Path -LiteralPath $logPath -PathType Leaf) {
     Remove-Item -LiteralPath $logPath -Force
 }
 
-Write-Host 'Running Merchant Bargain behavior probe for v111...'
+Write-Host "Running Merchant Bargain behavior probe for $TargetVersion..."
 & $GodotExe --headless --path $ProbeRoot --log-file $logPath
 if ($LASTEXITCODE -ne 0) {
     throw "Merchant Bargain behavior probe failed with exit code $LASTEXITCODE"
@@ -80,4 +83,4 @@ if ($logText.IndexOf('Merchant bargain behavior probe: PASS', [StringComparison]
     throw 'Merchant Bargain probe did not report PASS.'
 }
 
-Write-Host 'Merchant Bargain behavior probe passed for v111.'
+Write-Host "Merchant Bargain behavior probe passed for $TargetVersion."

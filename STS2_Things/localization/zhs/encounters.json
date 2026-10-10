@@ -64,5 +64,7 @@
   "SILK_MOTH_TRIO.title": "织茧蛾群",
   "SILK_MOTH_TRIO.loss": "{character}被[gold]{encounter}[/gold]裹进了茧中……",
   "LEECH_MOTHER_ENCOUNTER.title": "血蛭之母",
-  "LEECH_MOTHER_ENCOUNTER.loss": "{character}惊扰了[gold]{encounter}[/gold]的沉眠。"
+  "LEECH_MOTHER_ENCOUNTER.loss": "{character}惊扰了[gold]{encounter}[/gold]的沉眠。",
+  "ROBBERY_FAKE_MERCHANT_ENCOUNTER.title": "诡谲双商",
+  "ROBBERY_FAKE_MERCHANT_ENCOUNTER.lossMessage": "下次，记得索要收据。"
 }

@@ -31,5 +31,8 @@
   "BORROWED_EMBER.description": "{Terms}",
   "BORROWED_EMBER.debtTerms": "你下一处休息点无法执行休息点行动。",
   "BORROWED_EMBER.kindledTerms": "到达下一处休息点时，额外回复[green]{Heal}[/green]生命。",
-  "BORROWED_EMBER.flavor": "有些火，已经替你烧过了。"
+  "BORROWED_EMBER.flavor": "有些火，已经替你烧过了。",
+  "ANESTHETIC_CHART.title": "麻醉记录",
+  "ANESTHETIC_CHART.description": "接下来[blue]{Combats}[/blue]场战斗，首回合少抽[red]{Cards}[/red]张牌。",
+  "ANESTHETIC_CHART.flavor": "“别急着握拳。”"
 }

@@ -6,7 +6,7 @@ using STS2_Things.Features.MerchantBargain;
 
 public partial class MerchantBargainProbeNode : Node
 {
-    public override void _Ready()
+    public override async void _Ready()
     {
         if (OS.GetCmdlineUserArgs().FirstOrDefault() == "visual")
         {
@@ -22,6 +22,7 @@ public partial class MerchantBargainProbeNode : Node
             VerifyAssetContract();
             VerifyOverlaySurface();
             VerifyPatchTargets();
+            await MerchantMultiplayerRegression.Run();
             GD.Print("Merchant bargain behavior probe: PASS");
             GetTree().Quit(0);
         }
