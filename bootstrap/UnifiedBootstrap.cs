@@ -89,13 +89,13 @@ public static class UnifiedBootstrap
                 return V111Target;
 
             throw new NotSupportedException(
-                "STS2_Things 1.25.16 supports STS2 v0.107.1 and v0.111.x; " +
+                "STS2_Things 1.25.17 supports STS2 v0.107.1 and v0.111.x; " +
                 "detected a v0.110.x assembly. Update the game to v0.111.x or " +
                 "install the previous mod release that supports v0.110.x.");
         }
 
         throw new NotSupportedException(
-            "STS2_Things 1.25.16 supports STS2 v0.107.1 and v0.111.x. " +
+            "STS2_Things 1.25.17 supports STS2 v0.107.1 and v0.111.x. " +
             $"Detected ModifyDamageMultiplicative parameter counts: {string.Join(", ", parameterCounts)}.");
     }
 

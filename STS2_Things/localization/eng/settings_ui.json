@@ -79,6 +79,6 @@
   "STS2_THINGS-EVENT_CROWDED_WARD_ENABLED.title": "Crowded Ward — enabled",
   "STS2_THINGS-EVENT_CROWDED_WARD_ENABLED.description": "Allow this event in the Depths.",
   "THINGS_STARTUP_NOTICE.title": "Things: Bug Reports",
-  "THINGS_STARTUP_NOTICE.body": "If you encounter a bug with [gold]STS2 Things[/gold], such as a broken card, enemy, event or stuck turn, press [gold]F2[/gold] and select [gold]Things Bug (upload run)[/gold].\n\nDescribe what happened, the actions leading up to it, and how to reproduce it. For multiplayer, include the player count and other mods. Report soon after the problem occurs.\n\nSending attaches your run route and combat state to help the author investigate. If sending fails, use [gold]Things Bug (retry pending)[/gold] in F2.\n\nThank you for your feedback!",
+  "THINGS_STARTUP_NOTICE.body": "Thanks for playing [gold]STS2 Things[/gold]!\n\nIf you run into a bug with the mod, press [gold]F2[/gold] and choose [gold]Things Bug (upload run)[/gold]. A quick note about what happened is plenty.\n\nYour run route and combat state go along with the report to help the author track it down. If it does not send, you can try again later with [gold]Things Bug (retry pending)[/gold] in F2.\n\nThanks for the heads-up, and enjoy your climb!",
   "THINGS_STARTUP_NOTICE.confirm": "Got it"
 }
